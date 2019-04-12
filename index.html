@@ -189,6 +189,7 @@ const blocklist = [
 var mapsize = [1,1];
 var selectedblocks = [];
 var selectedcolors = [];
+var filename = "mapart"; 
 var img = new Image;
 
 function initialize(){
@@ -465,7 +466,7 @@ function getNbt(){
     a.style = "display: none";
     url = window.URL.createObjectURL(blob);
     a.href = url;
-    a.download = "mapart.nbt";
+    a.download = filename + ".nbt";
     a.click();
     window.URL.revokeObjectURL(url);
 }
@@ -513,6 +514,7 @@ function find_closest(pixel){
 
 function loadImg(e) {
     img = new Image;
+    filename = e.target.files[0].name.replace(/\.[^/.]+$/, "");
     img.src = URL.createObjectURL(e.target.files[0]);
     img.onload = function() {
         updateMap();
