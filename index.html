@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <title>MapartCraft</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="MapartCraft">
-    <meta name="author" content="rebane2001">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="js/tooltip.js" type="text/javascript"></script>
-    <script src="js/nbt.js" type="text/javascript"></script>
-    <script src="js/pako_deflate.min.js" type="text/javascript"></script>
-    <script src="js/colorlist.js" type="text/javascript"></script>
-    <script src="js/app.js" type="text/javascript"></script>
-</head>
-<body>
-<h1>MapartCraft</h1>
-<p>A Minecraft mapart schematic generator, designed to be feasible in survival and servers like <a href="https://www.reddit.com/r/2b2t/" target="_blank" rel="noopener">2b2t</a>, running in your browser<br>Inspired by <a href="https://redd.it/2yck3f" target="_blank" rel="noopener">Redstonehelper's map art program</a>, with the goal to add much-requested features and removing the need to download a program<br>Feel free to message me on Discord (rebane2001#3716) or Reddit (<a href="https://www.reddit.com/message/compose/?to=rebane2001" target="_blank" rel="noopener">/u/rebane2001</a>)</p>
-<div id="blockselection" class="section" style="float: left;">
-    <h2>Block selection</h2>
-</div>
-<div id="mapimage" class="section" style="float: left">
-    <h2>Map preview</h2>
-    <input type="file" id="imgupload" style="display: none;" /><br>
-    <canvas width="128" height="128" id="canvas" style="display: none;"></canvas>
-    <canvas width="256" height="256" id="displaycanvas" onclick="chooseFile()" style="float: right;"></canvas><br>
-    <small data-tooltip title="A source image with this resolution will work the best" id="mapres">128x69</small>
-    <small data-tooltip title="Image doesn't match map's aspect ratio" id="mapreswarning" style="color:red;display: none">1920x1080</small>
-</div>
-<div id="settings" class="section" style="float: left">
-    <h2>Settings</h2>
-    <br>
-<b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
-<b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" checked></b><br>
-<b data-tooltip title="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox"></b><br>
-<b data-tooltip title="Adds seemingly random pixels for the illusion of more colors" onchange="updateMap()">Dithering: <select id="dither">
-  <option>None</option>
-  <option selected="selected">Floyd–Steinberg</option>
-</select></b><br>
-<b>Add blocks under: <select id="underblocks">
-  <option>No blocks</option>
-  <option selected="selected">Important blocks</option>
-  <option>All blocks</option>
-</select></b><br>
-<b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b><br><br>
-<img src="img/download.png" onclick="getNbt()" style="cursor: pointer" /><br>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="LUNVZPRV7J8J4" />
-<input type="image" src="img/donate.png" border="0" name="submit" data-tooltip title="donate" style="cursor: pointer" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-</form>
-</div>
-
-<script>
-</script>
-</body>
+    <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>MapartCraft</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="MapartCraft">
+        <meta name="author" content="rebane2001">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="js/tooltip.js" type="text/javascript"></script>
+        <script src="js/nbt.js" type="text/javascript"></script>
+        <script src="js/pako_deflate.min.js" type="text/javascript"></script>
+        <script src="js/colorlist.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>MapartCraft</h1>
+        <p>A Minecraft mapart schematic generator, designed to be feasible in survival and servers like <a href="https://www.reddit.com/r/2b2t/" target="_blank" rel="noopener">2b2t</a>, running in your browser<br>Inspired by <a href="https://redd.it/2yck3f" target="_blank" rel="noopener">Redstonehelper's map art program</a>, with the goal to add much-requested features and removing the need to download a program<br>Feel free to message me on Discord (rebane2001#3716) or Reddit (<a href="https://www.reddit.com/message/compose/?to=rebane2001" target="_blank" rel="noopener">/u/rebane2001</a>)</p>
+        <div id="blockselection" class="section" style="float: left;">
+            <h2>Block selection</h2>
+        </div>
+        <div id="mapimage" class="section" style="float: left">
+            <h2>Map preview</h2>
+            <input type="file" id="imgupload" style="display: none;" /><br>
+            <canvas width="128" height="128" id="canvas" style="display: none;"></canvas>
+            <canvas width="256" height="256" id="displaycanvas" onclick="chooseFile()" style="float: right;"></canvas><br>
+            <small data-tooltip title="A source image with this resolution will work the best" id="mapres">128x69</small>
+            <small data-tooltip title="Image doesn't match map's aspect ratio" id="mapreswarning" style="color:red;display: none">1920x1080</small>
+        </div>
+        <div id="settings" class="section" style="float: left">
+            <h2>Settings</h2>
+            <br>
+            <b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
+            <b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" checked></b><br>
+            <b data-tooltip title="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox"></b><br>
+            <b data-tooltip title="Adds seemingly random pixels for the illusion of more colors" onchange="updateMap()">
+                Dithering:
+                <select id="dither">
+                    <option>None</option>
+                    <option selected="selected">Floyd–Steinberg</option>
+                </select>
+            </b>
+            <br>
+            <b>
+                Add blocks under:
+                <select id="underblocks">
+                    <option>No blocks</option>
+                    <option selected="selected">Important blocks</option>
+                    <option>All blocks</option>
+                </select>
+            </b>
+            <br>
+            <b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
+            <br>
+            <br>
+            <img src="img/download.png" onclick="getNbt()" style="cursor: pointer" />
+            <br>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="LUNVZPRV7J8J4" />
+                <input type="image" src="img/donate.png" border="0" name="submit" data-tooltip title="donate" style="cursor: pointer" alt="Donate with PayPal button" />
+                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+        </div>
+    </body>
 </html>
