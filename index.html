@@ -471,23 +471,6 @@ function getNbt(){
     window.URL.revokeObjectURL(url);
 }
 
-/*
-function diff_colors(p1,p2){
-    r = p1[0] - p2[0];
-    g = p1[1] - p2[1];
-    b = p1[2] - p2[2];
-    return Math.sqrt(r*r+g*g+b*b)
-}
-*/
-/*
-function diff_colors(p1,p2){
-    rmean = ( p1[0] + p2[0] ) / 2;
-    r = p1[0] - p2[0];
-    g = p1[1] - p2[1];
-    b = p1[2] - p2[2];
-    return (((512+rmean)*r*r)>>8) + 4*g*g + (((767-rmean)*b*b)>>8)
-}
-*/
 function diff_colors(p1,p2){
     if (document.getElementById('bettercolor').checked){
         //return deltaE(rgb2lab(p1),rgb2lab(p2))
@@ -576,136 +559,11 @@ function rgb2lab(rgb){
         return [r,g,b];
 }
 
-/*
-
-This is some RGB/LAB code I used earlier. I'm leaving it here in case I ever need it again
-
-//Thx antimatter15
-//github.com/antimatter15/rgb-lab/blob/master/color.js
-function rgb2lab2(rgb){
-  var r = rgb[0] / 255,
-      g = rgb[1] / 255,
-      b = rgb[2] / 255,
-      x, y, z;
-
-    xyz = RGBtoXYZ(r,g,b);
-    x = xyz[0];
-    y = xyz[1];
-    z = xyz[2];
-    return (XYZtoLAB(x,y,z));
-
-  r = (r > 0.04045) ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
-  g = (g > 0.04045) ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
-  b = (b > 0.04045) ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
-
-  x = (r * 0.4124 + g * 0.3576 + b * 0.1805) / 0.95047;
-  y = (r * 0.2126 + g * 0.7152 + b * 0.0722) / 1.00000;
-  z = (r * 0.0193 + g * 0.1192 + b * 0.9505) / 1.08883;
-
-  x = (x > 0.008856) ? Math.pow(x, 1/3) : (7.787 * x) + 16/116;
-  y = (y > 0.008856) ? Math.pow(y, 1/3) : (7.787 * y) + 16/116;
-  z = (z > 0.008856) ? Math.pow(z, 1/3) : (7.787 * z) + 16/116;
-
-  return [(116 * y) - 16, 500 * (x - y), 200 * (y - z)]
-}
-
-//Thx THEjoezack
-//github.com/THEjoezack/ColorMine/blob/master/ColorMine/ColorSpaces/Comparisons/Cie94Comparison.cs
-function deltaE(labA, labB){
-  var deltaL = labA[0] - labB[0];
-  var deltaA = labA[1] - labB[1];
-  var deltaB = labA[2] - labB[2];
-  var c1 = Math.sqrt(labA[1] * labA[1] + labA[2] * labA[2]);
-  var c2 = Math.sqrt(labB[1] * labB[1] + labB[2] * labB[2]);
-  var deltaC = c1 - c2;
-  var deltaH = deltaA * deltaA + deltaB * deltaB - deltaC * deltaC;
-  deltaH = deltaH < 0 ? 0 : Math.sqrt(deltaH);
-  var sc = 1.0 + 0.045 * c1;
-  var sh = 1.0 + 0.015 * c1;
-  var deltaLKlsl = deltaL / (1.0);
-  var deltaCkcsc = deltaC / (sc);
-  var deltaHkhsh = deltaH / (sh);
-  var i = deltaLKlsl * deltaLKlsl + deltaCkcsc * deltaCkcsc + deltaHkhsh * deltaHkhsh;
-  return i < 0 ? 0 : Math.sqrt(i);
-}
-
-function RGBtoXYZ(R, G, B)
-{
-    var_R = parseFloat( R / 255 )        //R from 0 to 255
-    var_G = parseFloat( G / 255 )        //G from 0 to 255
-    var_B = parseFloat( B / 255 )        //B from 0 to 255
-
-    var_R = Math.pow(var_R, 2.19921875);
-    var_G = Math.pow(var_G, 2.19921875);
-    var_B = Math.pow(var_B, 2.19921875);
-
-    var_R = var_R * 100
-    var_G = var_G * 100
-    var_B = var_B * 100
-
-    //Observer. = 2°, Illuminant = D65
-    X = var_R * 0.57667 + var_G * 0.18555 + var_B * 0.18819
-    Y = var_R * 0.29738 + var_G * 0.62735 + var_B * 0.07527
-    Z = var_R * 0.02703 + var_G * 0.07069 + var_B * 0.99110
-    return [X, Y, Z]
-}
-
-function RGBtoXYZ2(R, G, B)
-{
-    var_R = parseFloat( R / 255 )        //R from 0 to 255
-    var_G = parseFloat( G / 255 )        //G from 0 to 255
-    var_B = parseFloat( B / 255 )        //B from 0 to 255
-
-    if ( var_R > 0.04045 ) var_R = Math.pow(( ( var_R + 0.055 ) / 1.055 ), 2.4)
-    else                   var_R = var_R / 12.92
-    if ( var_G > 0.04045 ) var_G = Math.pow(( ( var_G + 0.055 ) / 1.055 ), 2.4)
-    else                   var_G = var_G / 12.92
-    if ( var_B > 0.04045 ) var_B = Math.pow(( ( var_B + 0.055 ) / 1.055 ), 2.4)
-    else                   var_B = var_B / 12.92
-
-    var_R = var_R * 100
-    var_G = var_G * 100
-    var_B = var_B * 100
-
-    //Observer. = 2°, Illuminant = D65
-    X = var_R * 0.4124 + var_G * 0.3576 + var_B * 0.1805
-    Y = var_R * 0.2126 + var_G * 0.7152 + var_B * 0.0722
-    Z = var_R * 0.0193 + var_G * 0.1192 + var_B * 0.9505
-    return [X, Y, Z]
-}
-
-
-function XYZtoLAB(x, y, z)
-{
-    var ref_X =  95.047;
-    var ref_Y = 100.000;
-    var ref_Z = 108.883;
-
-    var_X = x / ref_X          //ref_X =  95.047   Observer= 2°, Illuminant= D65
-    var_Y = y / ref_Y          //ref_Y = 100.000
-    var_Z = z / ref_Z          //ref_Z = 108.883
-
-    if ( var_X > 0.008856 ) var_X = Math.pow(var_X, ( 1/3 ))
-    else                    var_X = ( 7.787 * var_X ) + ( 16 / 116 )
-    if ( var_Y > 0.008856 ) var_Y = Math.pow(var_Y, ( 1/3 ))
-    else                    var_Y = ( 7.787 * var_Y ) + ( 16 / 116 )
-    if ( var_Z > 0.008856 ) var_Z = Math.pow(var_Z, ( 1/3 ))
-    else                    var_Z = ( 7.787 * var_Z ) + ( 16 / 116 )
-
-    CIE_L = ( 116 * var_Y ) - 16
-    CIE_a = 500 * ( var_X - var_Y )
-    CIE_b = 200 * ( var_Y - var_Z )
-
-return [CIE_L, CIE_a, CIE_b]
-}
-*/
-
 //Thx Alexander O'Mara
 //stackoverflow.com/a/41310924
 function cssrgb(values) {
     return 'rgb(' + values.join(', ') + ')';
 }
-
 
 initialize();
 </script>
