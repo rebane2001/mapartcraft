@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+@font-face {
+    font-family: 'kenpixel_mini_square';
+    src: url('kenpixel_mini_square.woff') format('woff');
+}
+
+html {
+    background-color: #333
+}
+
+h1, h2 {
+    margin: 0 0 0 0;
+}
+
+body {
+    font-family: Lato, Open Sans, Arial;
+    color: #FFF;
+    font-size: 16px;
+    margin: 2em auto;
+    max-width: 1600px;
+    padding: 1em;
+    line-height: 1.4;
+    text-align: justify
+}
+
+a, a:visited {
+    color: #7BAE7F
+}
+
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    box-shadow: 0px 0px 3px 0px #00000080, inset 0px 0px 40px 0px #00000080;
+    -webkit-transition: box-shadow 0.2s; /* Safari */
+    transition: box-shadow 0.2s;
+}
+
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    box-shadow: 0px 0px 4px 0px #7BAE7F, inset 0 0 40px 0px #7BAE7F;
+    z-index: 10;
+}
+
+.colorbox {
+    float: left;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+#tooltip {
+    font-family: 'kenpixel_mini_square';
+    position: absolute;
+    background: #7BAE7F;
+    color: #ffffff;
+    padding: 0 7px 2px 7px;
+}
+
+canvas {
+    image-rendering: optimizeSpeed; /* Older versions of FF */
+    image-rendering: -moz-crisp-edges; /* FF 6.0+ */
+    image-rendering: -webkit-optimize-contrast; /* Safari */
+    image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+    image-rendering: pixelated; /* Awesome future-browsers */
+    -ms-interpolation-mode: nearest-neighbor; /* IE */
+    cursor: pointer;
+}
+
+.section {
+    margin-bottom: 30px;
+    margin-right: 30px;
+}
