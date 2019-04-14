@@ -217,7 +217,7 @@ function getNbt() {
                 }
                 if (y == 0) {
                     blocks.push({
-                        "pos": [x, hhhh - toneid, y],
+                        "pos": [x, hhhh, y],
                         "state": 0
                     });
                 }
@@ -262,7 +262,6 @@ function getNbt() {
                     "pos": [x, 1, y + 1],
                     "state": blockid
                 });
-
                 // UNDERBLOCKS
                 if (underblocks == 2) {
                     blocks.push({
