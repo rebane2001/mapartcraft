@@ -215,6 +215,7 @@ function getNbt() {
                         break;
                     }
                 }
+                //NOOBLINE
                 if (y == 0) {
                     blocks.push({
                         "pos": [x, hhhh, y],
@@ -257,6 +258,13 @@ function getNbt() {
                         blockid = i;
                         break;
                     }
+                }
+                //NOOBLINE
+                if (y == 0) {
+                    blocks.push({
+                        "pos": [x, 1, y],
+                        "state": 0
+                    });
                 }
                 blocks.push({
                     "pos": [x, 1, y + 1],
