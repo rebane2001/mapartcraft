@@ -236,7 +236,7 @@ function getNbt() {
                 } else if (underblocks == 1) {
                     selectedblocks.forEach(function(b) {
                         if (arraysEqual(blocklist[b[0]][0][0], nbtblocklist[blockid]["Colors"][0])) {
-                            if (blocklist[b[1]][1][3])
+                            if (blocklist[b[0]][1][b[1]][3])
                                 blocks.push({
                                     "pos": [x, hhhh - 1, y + 1],
                                     "state": 0
@@ -271,7 +271,7 @@ function getNbt() {
                 } else if (underblocks == 1) {
                     selectedblocks.forEach(function(b) {
                         if (arraysEqual(blocklist[b[0]][0][0], nbtblocklist[blockid]["Colors"][0])) {
-                            if (blocklist[b[1]][1][3])
+                            if (blocklist[b[0]][1][b[1]][3])
                                 blocks.push({
                                     "pos": [x, 0, y + 1],
                                     "state": 0

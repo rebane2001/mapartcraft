@@ -70,7 +70,7 @@ window.blocklist = [
             ["log", "'axis':'y','variant':'jungle'", "Jungle Log (vertical)", false, "log_jungle_top"],
             ["planks", "'variant':'jungle'", "Jungle Planks", false, "planks_jungle"],
             ["wooden_slab", "'variant':'jungle'", "Jungle Slab", false, "slabs_jungle"],
-            ["dirt", "", "Dirte", false, ""],
+            ["dirt", "", "Dirt", false, ""],
             ["jukebox", "", "Jukebox", false, "jukebox_top"],
             ["stone", "'variant':'granite'", "Granite", false, "stone_granite"]
         ]
