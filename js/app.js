@@ -20,6 +20,7 @@ function initialize() {
     });
     tooltip.refresh();
     document.getElementById('imgupload').addEventListener('change', loadImg);
+    checkCookie();
     img.src = "img/upload.png";
     img.onload = function() {
         updateMap();
@@ -27,9 +28,9 @@ function initialize() {
 }
 
 function updateMap() {
-    selectedblocks = [];
+    selectedblocks = []; //touching this might break presets, so be careful
     selectedcolors = [];
-    for (let i = 0; i < 51; i++) {
+    for (let i = 0; i < 51; i++) { //51 will also need to be changed in presets code
         blockid = document.querySelector('input[name="color' + i + '"]:checked').value;
         if (blockid == -1) {
             continue
@@ -331,6 +332,69 @@ function getNbt() {
     window.URL.revokeObjectURL(url);
 }
 
+function loadPreset(){
+    if (document.getElementById("presets").selectedIndex > 0){
+        let preset = JSON.parse(getCookie("presets"))[document.getElementById("presets").selectedIndex-1]["blocks"];
+        for (let i = 0; i < 51; i++) { 
+            document.querySelector('input[name="color' + i + '"]:checked').checked = false;
+            document.querySelector('input[name="color' + i + '"][value="-1"]').checked = true;
+        }
+        preset.forEach(function(b) {
+            document.querySelector('input[name="color' + b[0] + '"]:checked').checked = false;
+            document.querySelector('input[name="color' + b[0] + '"][value="' + b[1] + '"]').checked = true;
+        });
+    }
+}
+
+function savePreset(){
+    let presetName = prompt("Enter a name for your preset:", "");
+
+    if (presetName != null) {
+        let presets = JSON.parse(getCookie("presets"));
+        for (let i = 0; i < presets.length; ++i) {
+            if (presets[i]["name"] == presetName){
+                presets.splice(i, 1);
+                break;
+            }
+        }
+        presets.push({"name":presetName,"blocks":selectedblocks});
+        setCookie("presets", JSON.stringify(presets), 90);
+    }
+    loadCookies()
+}
+
+function deletePreset(){
+    let presets = JSON.parse(getCookie("presets"));
+    presets.splice(document.getElementById("presets").selectedIndex-1, 1);
+    setCookie("presets", JSON.stringify(presets), 90);
+    loadCookies()
+}
+
+function initCookie() {
+    if(confirm("To use presets, we need to use cookies. Are you okay with that?")){
+        setCookie("presets", "[{\"name\":\"None\",\"blocks\":[]},{\"name\":\"Everything\",\"blocks\":[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0]]},{\"name\":\"Carpets\",\"blocks\":[[13,1],[14,1],[15,1],[16,1],[17,1],[18,1],[19,1],[20,1],[21,1],[22,1],[23,1],[24,1],[25,1],[26,1],[27,1],[28,1]]}]", 90)
+        loadCookies();
+    }
+}
+
+function loadCookies(){
+    if(document.getElementById("fauxpresets")){ //if loading cookie for the first time since refresh
+        document.getElementById("fauxpresets").outerHTML = ""; //delete faux button
+        document.getElementById("blockselectiontitle").outerHTML = ""; //sketchy workaround - really crappy
+        document.getElementById('blockselection').innerHTML = "<h2>Block selection</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">Delete</button><button type=\"button\" onClick=\"savePreset()\">Save</button><br>" + document.getElementById('blockselection').innerHTML;
+    }
+    document.getElementById("presets").innerHTML = "<option>Presets</option>";
+    let presets = JSON.parse(getCookie("presets"));
+    for (let i = 0; i < presets.length; ++i) {
+        document.getElementById("presets").innerHTML += "<option>" + presets[i]["name"] + "</option>"; //possible XSS but it's client-side so it doesn't really matter
+    }
+}
+
+function checkCookie() {
+    if (getCookie("presets") != "")
+        loadCookies();
+}
+
 function diff_colors(p1, p2) {
     if (document.getElementById('bettercolor').checked) {
         //return deltaE(rgb2lab(p1),rgb2lab(p2))
@@ -370,6 +434,31 @@ function loadImg(e) {
 
 function chooseFile() {
     document.getElementById("imgupload").click();
+}
+
+//Thx
+//https://www.w3schools.com/js/js_cookies.asp
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 // Thx
