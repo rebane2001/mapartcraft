@@ -344,6 +344,7 @@ function loadPreset(){
             document.querySelector('input[name="color' + b[0] + '"][value="' + b[1] + '"]').checked = true;
         });
     }
+    updateMap();
 }
 
 function savePreset(){
