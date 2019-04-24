@@ -51,7 +51,7 @@ a, a:visited {
 
 /* CHECKED STYLES */
 [type=radio]:checked + img {
-    box-shadow: 0px 0px 4px 0px #7BAE7F, inset 0 0 40px 0px #7BAE7F;
+    box-shadow: 0px 0px 5px 1px #7BAE7F, inset 0 0 40px 0px #7BAE7F;
     z-index: 10;
 }
 
