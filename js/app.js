@@ -6,6 +6,8 @@ var img = new Image();
 
 function initialize() {
     let colorid = 0;
+    //load 1.12 blocklist by default
+    window.blocklist = window.blocklists["1.12"];
     window.blocklist.forEach(function(i) {
         blockid = 0;
         document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" style="background: linear-gradient(' + cssrgb(i[0][0]) + ',' + cssrgb(i[0][1]) + ',' + cssrgb(i[0][2]) + ');"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
@@ -63,63 +65,75 @@ function updateMap() {
         upsctx.canvas.width = ctx.canvas.width;
         upsctx.canvas.height = ctx.canvas.height;
     }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < imgData.data.length; i += 4) {
-        //i = r, i+1 = g, i+2 = b, i+3 = a
-        imgData.data[i + 3] = 255; // remove alpha
-        switch (document.getElementById("dither").selectedIndex) {
-            case 0: // no dither
-                newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
-                imgData.data[i + 0] = newpixel[0];
-                imgData.data[i + 1] = newpixel[1];
-                imgData.data[i + 2] = newpixel[2];
-                break;
-            case 1: // floyd
-                oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
-                newpixel = find_closest(oldpixel);
-                quant_error = [];
-                for (var j = 0; j <= 3; j++) {
-                    quant_error.push(oldpixel[j] - newpixel[j]);
-                }
-
-                imgData.data[i + 0] = newpixel[0];
-                imgData.data[i + 1] = newpixel[1];
-                imgData.data[i + 2] = newpixel[2];
-
-                try {
-                    imgData.data[i + 4] += (quant_error[0] * 7 / 16);
-                    imgData.data[i + 5] += (quant_error[1] * 7 / 16);
-                    imgData.data[i + 6] += (quant_error[2] * 7 / 16);
-                    imgData.data[i + canvas.width * 4 - 4] += (quant_error[0] * 3 / 16);
-                    imgData.data[i + canvas.width * 4 - 3] += (quant_error[1] * 3 / 16);
-                    imgData.data[i + canvas.width * 4 - 2] += (quant_error[2] * 3 / 16);
-                    imgData.data[i + canvas.width * 4 + 0] += (quant_error[0] * 5 / 16);
-                    imgData.data[i + canvas.width * 4 + 1] += (quant_error[1] * 5 / 16);
-                    imgData.data[i + canvas.width * 4 + 2] += (quant_error[2] * 5 / 16);
-                    imgData.data[i + canvas.width * 4 + 4] += (quant_error[0] * 1 / 16);
-                    imgData.data[i + canvas.width * 4 + 5] += (quant_error[1] * 1 / 16);
-                    imgData.data[i + canvas.width * 4 + 6] += (quant_error[2] * 1 / 16);
-                } catch (e) {
-                    console.error(e);
-                }
-
-                break;
+    if (document.getElementById('renderpreview').checked) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < imgData.data.length; i += 4) {
+            //i = r, i+1 = g, i+2 = b, i+3 = a
+            imgData.data[i + 3] = 255; // remove alpha
+            switch (document.getElementById("dither").selectedIndex) {
+                case 0: // no dither
+                    newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
+                    imgData.data[i + 0] = newpixel[0];
+                    imgData.data[i + 1] = newpixel[1];
+                    imgData.data[i + 2] = newpixel[2];
+                    break;
+                case 1: // floyd
+                    oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
+                    newpixel = find_closest(oldpixel);
+                    quant_error = [];
+                    for (var j = 0; j <= 3; j++) {
+                        quant_error.push(oldpixel[j] - newpixel[j]);
+                    }
+    
+                    imgData.data[i + 0] = newpixel[0];
+                    imgData.data[i + 1] = newpixel[1];
+                    imgData.data[i + 2] = newpixel[2];
+    
+                    try {
+                        imgData.data[i + 4] += (quant_error[0] * 7 / 16);
+                        imgData.data[i + 5] += (quant_error[1] * 7 / 16);
+                        imgData.data[i + 6] += (quant_error[2] * 7 / 16);
+                        imgData.data[i + canvas.width * 4 - 4] += (quant_error[0] * 3 / 16);
+                        imgData.data[i + canvas.width * 4 - 3] += (quant_error[1] * 3 / 16);
+                        imgData.data[i + canvas.width * 4 - 2] += (quant_error[2] * 3 / 16);
+                        imgData.data[i + canvas.width * 4 + 0] += (quant_error[0] * 5 / 16);
+                        imgData.data[i + canvas.width * 4 + 1] += (quant_error[1] * 5 / 16);
+                        imgData.data[i + canvas.width * 4 + 2] += (quant_error[2] * 5 / 16);
+                        imgData.data[i + canvas.width * 4 + 4] += (quant_error[0] * 1 / 16);
+                        imgData.data[i + canvas.width * 4 + 5] += (quant_error[1] * 1 / 16);
+                        imgData.data[i + canvas.width * 4 + 6] += (quant_error[2] * 1 / 16);
+                    } catch (e) {
+                        console.error(e);
+                    }
+    
+                    break;
+            }
+            let x = (i / 4) % canvas.width;
+            let y = ((i / 4) - x) / canvas.width;
+            upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
+            if (mapsize[0] < 4 && mapsize[1] < 8) {
+                upsctx.fillRect(x * 2, y * 2, 2, 2);
+            } else {
+                upsctx.fillRect(x, y, 1, 1);
+            }
         }
-        let x = (i / 4) % canvas.width;
-        let y = ((i / 4) - x) / canvas.width;
-        upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
-        if (mapsize[0] < 4 && mapsize[1] < 8) {
-            upsctx.fillRect(x * 2, y * 2, 2, 2);
-        } else {
-            upsctx.fillRect(x, y, 1, 1);
-        }
+        ctx.putImageData(imgData, 0, 0);
     }
-    ctx.putImageData(imgData, 0, 0);
 }
 
 function getNbt() {
+    //if no blocks selected, don't download
+    if (selectedblocks.length == 0){
+        alert("Select blocks before downloading!");
+        return;
+    }
+
+    //force render preview
+    document.getElementById('renderpreview').checked = true;
+    updateMap();
+
     var ctx = document.getElementById('canvas').getContext('2d');
     var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
     var blocks = []
@@ -330,6 +344,10 @@ function getNbt() {
     a.download = filename + ".nbt";
     a.click();
     window.URL.revokeObjectURL(url);
+}
+
+function changeVersion(){
+    
 }
 
 function loadPreset(){
