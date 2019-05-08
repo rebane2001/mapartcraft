@@ -208,7 +208,11 @@ function getNbt() {
             }
             maxheight = [Math.min(maxheight[0], minh), Math.max(maxheight[1], maxh + 2)];
             hhhh = 1000 - minh;
-            hhhh += 2;
+            hhhh++;
+            if (underblocks > 0)
+                hhhh++;
+            if (underblocks > 2)
+                hhhh++;
             for (let y = 0; y < ctx.canvas.height; y++) {
                 let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
                 let toneid = 0;
@@ -249,6 +253,15 @@ function getNbt() {
                         "pos": [x, hhhh - 1, y + 1],
                         "state": 0
                     });
+                } else if (underblocks == 3) { //very ugly code, should be made into functions instead
+                    blocks.push({
+                        "pos": [x, hhhh - 1, y + 1],
+                        "state": 0
+                    });
+                    blocks.push({
+                        "pos": [x, hhhh - 2, y + 1],
+                        "state": 0
+                    });
                 } else if (underblocks == 1) {
                     selectedblocks.forEach(function(b) {
                         if (arraysEqual(blocklist[b[0]][0][0], nbtblocklist[blockid]["Colors"][0])) {
@@ -264,6 +277,11 @@ function getNbt() {
             }
         }
     } else { // 2D CODE
+        let hhhh = 0;
+        if (underblocks > 0)
+            hhhh++;
+        if (underblocks > 2)
+            hhhh++;
         for (let x = 0; x < ctx.canvas.width; x++) {
             for (let y = 0; y < ctx.canvas.height; y++) {
                 let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
@@ -277,18 +295,27 @@ function getNbt() {
                 //NOOBLINE
                 if (y == 0) {
                     blocks.push({
-                        "pos": [x, 1, y],
+                        "pos": [x, hhhh, y],
                         "state": 0
                     });
                 }
                 blocks.push({
-                    "pos": [x, 1, y + 1],
+                    "pos": [x, hhhh, y + 1],
                     "state": blockid
                 });
                 // UNDERBLOCKS
                 if (underblocks == 2) {
                     blocks.push({
                         "pos": [x, 0, y + 1],
+                        "state": 0
+                    });
+                } else if (underblocks == 3) {
+                    blocks.push({
+                        "pos": [x, 0, y + 1],
+                        "state": 0
+                    });
+                    blocks.push({
+                        "pos": [x, 1, y + 1],
                         "state": 0
                     });
                 } else if (underblocks == 1) {
