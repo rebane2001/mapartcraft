@@ -246,7 +246,6 @@ function getNbt() {
                     "pos": [x, hhhh, y + 1],
                     "state": blockid
                 });
-                console.log(hhhh);
                 //UNDERBLOCKS
                 if (underblocks == 2) {
                     blocks.push({
