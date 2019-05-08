@@ -142,7 +142,7 @@ function getNbt() {
     if (underblocks > 0) {
         let underblock = document.getElementById("underblock").value;
         nbtblocklist.push({
-            "Colors": [-1, -1, -1],
+            "Colors": [-255, -255, -255],
             "Name": underblock
         });
     }
