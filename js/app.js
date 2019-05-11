@@ -440,6 +440,17 @@ function checkCookie() {
         loadCookies();
 }
 
+function updateVersion(){
+    switch (document.getElementById("version").selectedIndex) {
+                case 0:
+                    window.blocklists["1.12"];
+                    break;
+                case 1:
+                    window.blocklists["1.13"];
+                    break;
+    }
+}
+
 function diff_colors(p1, p2) {
     if (document.getElementById('bettercolor').checked) {
         //return deltaE(rgb2lab(p1),rgb2lab(p2))

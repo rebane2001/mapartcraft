@@ -31,6 +31,13 @@
         <div id="settings" class="section" style="float: left">
             <h2>Settings</h2>
             <br>
+            <b data-tooltip title="Select the version closest to what you're running" onchange="updateVersion()">
+                Version:
+                <select id="version">
+                    <option selected="selected">1.12</option>
+                    <option>1.13</option>
+                </select>
+            </b><br>
             <b data-tooltip title="Turning this off will improve performance when selecting blocks" onclick="updateMap()">Render preview: <input id="renderpreview" type="checkbox" checked></b><br>
             <b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
             <b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" checked></b><br>
