@@ -443,10 +443,10 @@ function checkCookie() {
 function updateVersion(){
     switch (document.getElementById("version").selectedIndex) {
                 case 0:
-                    window.blocklists["1.12"];
+                    window.blocklist = window.blocklists["1.12"];
                     break;
                 case 1:
-                    window.blocklists["1.13"];
+                    window.blocklist = window.blocklists["1.13"];
                     break;
     }
 }
