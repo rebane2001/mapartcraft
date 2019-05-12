@@ -73,6 +73,7 @@ window.blocklists =
             ["planks", "'variant':'jungle'", "Jungle Planks", false, "planks_jungle"],
             ["wooden_slab", "'variant':'jungle'", "Jungle Slab", false, "slabs_jungle"],
             ["dirt", "", "Dirt", false, ""],
+            ["dirt", "'variant':'coarse_dirt'", "Coarse Dirt", false, "coarse_dirt"],
             ["jukebox", "", "Jukebox", false, "jukebox_top"],
             ["stone", "'variant':'granite'", "Granite", false, "stone_granite"]
         ]
@@ -504,6 +505,7 @@ window.blocklists =
             ["jungle_planks", "", "Jungle Planks", false, "planks_jungle"],
             ["jungle_wooden_slab", "", "Jungle Slab", false, "slabs_jungle"],
             ["dirt", "", "Dirt", false, ""],
+            ["coarse_dirt", "", "Coarse Dirt", false, ""],
             ["jukebox", "", "Jukebox", false, "jukebox_top"],
             ["granite", "", "Granite", false, "stone_granite"]
         ]
