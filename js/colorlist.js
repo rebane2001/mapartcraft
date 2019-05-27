@@ -538,7 +538,7 @@ window.blocklists =
     [
         [[180, 177, 172], [220, 217, 211], [255, 252, 245], [135, 133, 129]],
         [
-            ["birch_log", "axis':'x'", "Birch Log (horizontal)", false, "log_birch"],
+            ["birch_log", "'axis':'x'", "Birch Log (horizontal)", false, "log_birch"],
             ["diorite", "", "Diorite", false, "stone_diorite"],
             ["quartz_block", "", "Quartz Block", false, "quartz_block_side"],
             ["sea_lantern", "", "Sea Lantern", false, ""]
