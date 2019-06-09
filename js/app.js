@@ -477,8 +477,9 @@ function find_closest(pixel) {
         newpixel = pixel;
     
         selectedcolors.forEach(function(p) {
-            if (diff_colors(p, pixel) < bestval) {
-                bestval = diff_colors(p, pixel);
+            let diff = diff_colors(p, pixel);
+            if (diff < bestval) {
+                bestval = diff;
                 newpixel = p;
             }
         });
