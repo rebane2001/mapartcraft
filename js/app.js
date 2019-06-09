@@ -3,6 +3,8 @@ var selectedblocks = [];
 var selectedcolors = [];
 var filename = "mapart";
 var img = new Image();
+var colorCache = new Map(); //lru cache
+
 
 function initialize() {
     let colorid = 0;
@@ -66,6 +68,7 @@ function updateMap() {
         upsctx.canvas.height = ctx.canvas.height;
     }
     if (document.getElementById('renderpreview').checked) {
+        colorCache = new Map(); //reset color cache
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -461,22 +464,28 @@ function diff_colors(p1, p2) {
     r = p1[0] - p2[0];
     g = p1[1] - p2[1];
     b = p1[2] - p2[2];
-
+    
     return (r * r) + (g * g) + (b * b);
 }
 
 function find_closest(pixel) {
-    bestval = 9999999;
-    newpixel = pixel;
+    let val = pixel.toString();
+    if (colorCache.has(val)){
+        return colorCache.get(val);
+    }else{
+        bestval = 9999999;
+        newpixel = pixel;
+    
+        selectedcolors.forEach(function(p) {
+            if (diff_colors(p, pixel) < bestval) {
+                bestval = diff_colors(p, pixel);
+                newpixel = p;
+            }
+        });
 
-    selectedcolors.forEach(function(p) {
-        if (diff_colors(p, pixel) < bestval) {
-            bestval = diff_colors(p, pixel);
-            newpixel = p;
-        }
-    });
-
-    return newpixel;
+        colorCache.set(val, newpixel);
+        return newpixel;
+    }
 }
 
 function loadImg(e) {
