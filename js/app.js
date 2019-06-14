@@ -32,6 +32,7 @@ function initialize() {
 }
 
 function updateMap() {
+    let benchmark = performance.now(); //benchmark updateMap() speed
     selectedblocks = []; //touching this might break presets, so be careful
     selectedcolors = [];
     for (let i = 0; i < 51; i++) { //51 will also need to be changed in presets code
@@ -75,43 +76,42 @@ function updateMap() {
         for (var i = 0; i < imgData.data.length; i += 4) {
             //i = r, i+1 = g, i+2 = b, i+3 = a
             imgData.data[i + 3] = 255; // remove alpha
-            switch (document.getElementById("dither").selectedIndex) {
-                case 0: // no dither
-                    newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
-                    imgData.data[i + 0] = newpixel[0];
-                    imgData.data[i + 1] = newpixel[1];
-                    imgData.data[i + 2] = newpixel[2];
-                    break;
-                case 1: // floyd
-                    oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
-                    newpixel = find_closest(oldpixel);
-                    quant_error = [];
-                    for (var j = 0; j <= 3; j++) {
-                        quant_error.push(oldpixel[j] - newpixel[j]);
-                    }
-    
-                    imgData.data[i + 0] = newpixel[0];
-                    imgData.data[i + 1] = newpixel[1];
-                    imgData.data[i + 2] = newpixel[2];
-    
-                    try {
-                        imgData.data[i + 4] += (quant_error[0] * 7 / 16);
-                        imgData.data[i + 5] += (quant_error[1] * 7 / 16);
-                        imgData.data[i + 6] += (quant_error[2] * 7 / 16);
-                        imgData.data[i + canvas.width * 4 - 4] += (quant_error[0] * 3 / 16);
-                        imgData.data[i + canvas.width * 4 - 3] += (quant_error[1] * 3 / 16);
-                        imgData.data[i + canvas.width * 4 - 2] += (quant_error[2] * 3 / 16);
-                        imgData.data[i + canvas.width * 4 + 0] += (quant_error[0] * 5 / 16);
-                        imgData.data[i + canvas.width * 4 + 1] += (quant_error[1] * 5 / 16);
-                        imgData.data[i + canvas.width * 4 + 2] += (quant_error[2] * 5 / 16);
-                        imgData.data[i + canvas.width * 4 + 4] += (quant_error[0] * 1 / 16);
-                        imgData.data[i + canvas.width * 4 + 5] += (quant_error[1] * 1 / 16);
-                        imgData.data[i + canvas.width * 4 + 6] += (quant_error[2] * 1 / 16);
-                    } catch (e) {
-                        console.error(e);
-                    }
-    
-                    break;
+            if (selectedblocks.length != 0){
+                switch (document.getElementById("dither").selectedIndex) {
+                    case 0: // no dither
+                        newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
+                        imgData.data[i + 0] = newpixel[0];
+                        imgData.data[i + 1] = newpixel[1];
+                        imgData.data[i + 2] = newpixel[2];
+                        break;
+                    case 1: // floyd
+                        oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
+                        newpixel = find_closest(oldpixel);
+                        quant_error = [oldpixel[0] - newpixel[0], oldpixel[1] - newpixel[1], oldpixel[2] - newpixel[2]];
+
+                        imgData.data[i + 0] = newpixel[0];
+                        imgData.data[i + 1] = newpixel[1];
+                        imgData.data[i + 2] = newpixel[2];
+        
+                        try {
+                            imgData.data[i + 4] += (quant_error[0] * 7 / 16);
+                            imgData.data[i + 5] += (quant_error[1] * 7 / 16);
+                            imgData.data[i + 6] += (quant_error[2] * 7 / 16);
+                            imgData.data[i + canvas.width * 4 - 4] += (quant_error[0] * 3 / 16);
+                            imgData.data[i + canvas.width * 4 - 3] += (quant_error[1] * 3 / 16);
+                            imgData.data[i + canvas.width * 4 - 2] += (quant_error[2] * 3 / 16);
+                            imgData.data[i + canvas.width * 4 + 0] += (quant_error[0] * 5 / 16);
+                            imgData.data[i + canvas.width * 4 + 1] += (quant_error[1] * 5 / 16);
+                            imgData.data[i + canvas.width * 4 + 2] += (quant_error[2] * 5 / 16);
+                            imgData.data[i + canvas.width * 4 + 4] += (quant_error[0] * 1 / 16);
+                            imgData.data[i + canvas.width * 4 + 5] += (quant_error[1] * 1 / 16);
+                            imgData.data[i + canvas.width * 4 + 6] += (quant_error[2] * 1 / 16);
+                        } catch (e) {
+                            console.error(e);
+                        }
+        
+                        break;
+                }
             }
             let x = (i / 4) % canvas.width;
             let y = ((i / 4) - x) / canvas.width;
@@ -124,6 +124,7 @@ function updateMap() {
         }
         ctx.putImageData(imgData, 0, 0);
     }
+    console.log("updateMap completed in " + (performance.now() - benchmark) + "ms") 
 }
 
 function getNbt() {
