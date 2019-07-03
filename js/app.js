@@ -356,10 +356,9 @@ function getNbt() {
     //Quick bodge, but it works
     let maxheight = 0;
     blocks.forEach(function(r) {
-        console.log(r["pos"][1]);
         maxheight = Math.max(r["pos"][1],maxheight);
     });
-    console.log(maxheight);
+    maxheight++;
     jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + ctx.canvas.width + "," + maxheight + "," + (ctx.canvas.height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":1343}}}";
     //download
     console.log("Parsing JSON and converting to NBT");
