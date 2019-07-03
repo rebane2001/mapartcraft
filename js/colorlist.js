@@ -11,7 +11,7 @@ window.blocklists =
         [[89, 125, 39], [109, 153, 48], [127, 178, 56], [67, 94, 29]],
         [
             ["grass", "", "Grass Block", false, "grass_side"],
-            ["slime", "", "Slime Block", false, ""]
+            ["slime", "", "Slime Block", true, ""]
         ]
     ],
     [
@@ -443,7 +443,7 @@ window.blocklists =
         [[89, 125, 39], [109, 153, 48], [127, 178, 56], [67, 94, 29]],
         [
             ["grass_block", "", "Grass Block", false, "grass_side"],
-            ["slime_block", "", "Slime Block", false, "slime"]
+            ["slime_block", "", "Slime Block", true, "slime"]
         ]
     ],
     [
