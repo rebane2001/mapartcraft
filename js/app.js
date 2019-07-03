@@ -181,7 +181,6 @@ function getNbt() {
             });
         }
     }
-    let maxheight = [0, 2];
     if (document.getElementById('staircasing').checked) { // 3D CODE
         for (let x = 0; x < ctx.canvas.width; x++) {
 
@@ -210,7 +209,6 @@ function getNbt() {
                 minh = Math.min(minh, hhhh);
                 maxh = Math.max(maxh, hhhh);
             }
-            maxheight = [Math.min(maxheight[0], minh), Math.max(maxheight[1], maxh + 2)];
             hhhh = 1000 - minh;
             hhhh++;
             if (underblocks > 0)
@@ -355,7 +353,13 @@ function getNbt() {
             jsonstring += "{\"Name\":{\"type\":\"string\",\"value\":\"" + r["Name"] + "\"}},";
         }
     });
-    maxheight = maxheight[1] - maxheight[0];
+    //Quick bodge, but it works
+    let maxheight = 0;
+    blocks.forEach(function(r) {
+        console.log(r["pos"][1]);
+        maxheight = Math.max(r["pos"][1],maxheight);
+    });
+    console.log(maxheight);
     jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + ctx.canvas.width + "," + maxheight + "," + (ctx.canvas.height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":1343}}}";
     //download
     console.log("Parsing JSON and converting to NBT");
