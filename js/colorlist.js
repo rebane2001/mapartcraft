@@ -337,6 +337,7 @@ window.blocklists =
         [
             ["netherrack", "", "Netherrack", false, ""],
             ["nether_brick", "", "Nether Brick", false, ""],
+            ["stone_slab", "'variant':'nether_brick'", "Nether Brick Slab", false, "nether_brick_slab"],
             ["magma", "", "Magma Block", false, ""]
         ]
     ],
@@ -771,6 +772,7 @@ window.blocklists =
         [
             ["netherrack", "", "Netherrack", false, ""],
             ["nether_bricks", "", "Nether Brick", false, "nether_brick"],
+            ["nether_brick_slab", "", "Nether Brick Slab", false, ""],
             ["magma_block", "", "Magma Block", false, "magma"]
         ]
     ],
