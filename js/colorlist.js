@@ -1,9 +1,3 @@
-//[[Colors], [["block_id","block_data","Block Name",isTransparent,"empty or special image name"],other blocks bla blah]]
-//["block_id","","Block Name",false,""]
-//["","","",false,""]
-//["wool","'color':'orange'","Orange Wool",false,"wool_colored_orange"],["carpet","'color':'orange'","Orange Carpet",true,"carpet_colored_orange"],["stained_glass","'color':'orange'","Orange Stained Glass",true,"glass_orange"],["concrete","'color':'orange'","Orange Concrete",false,"concrete_orange"],["orange_glazed_terracotta","","Orange Glazed Terracotta",false,"glazed_terracotta_orange"]
-//["log","'axis':'y','variant':'birch'","Birch Log (vertical)",false,"special"], ["planks","'variant':'birch'","Birch Planks",false,""], ["wooden_slab","'variant':'birch'","Birch Slab",false,"special"]
-
 window.blocklists = 
 {"1.12":
 [
@@ -454,7 +448,7 @@ window.blocklists =
             ["sandstone", "", "Sandstone", false, "sandstone_normal"],
             ["birch_log", "'axis':'y'", "Birch Log (vertical)", false, "log_birch_top"],
             ["birch_planks", "", "Birch Planks", false, "planks_birch"],
-            ["birch_wooden_slab", "", "Birch Slab", false, "slabs_birch"],
+            ["birch_slab", "", "Birch Slab", false, "slabs_birch"],
             ["glowstone", "", "Glowstone", false, ""],
             ["end_stone", "", "End Stone", false, ""]
         ]
@@ -504,7 +498,7 @@ window.blocklists =
         [
             ["jungle_log", "'axis':'y'", "Jungle Log (vertical)", false, "log_jungle_top"],
             ["jungle_planks", "", "Jungle Planks", false, "planks_jungle"],
-            ["jungle_wooden_slab", "", "Jungle Slab", false, "slabs_jungle"],
+            ["jungle_slab", "", "Jungle Slab", false, "slabs_jungle"],
             ["dirt", "", "Dirt", false, ""],
             ["coarse_dirt", "", "Coarse Dirt", false, ""],
             ["jukebox", "", "Jukebox", false, "jukebox_top"],
@@ -534,7 +528,7 @@ window.blocklists =
         [
             ["oak_log", "'axis':'y'", "Oak Log (vertical)", false, "log_oak_top"],
             ["oak_planks", "", "Oak Planks", false, "planks_oak"],
-            ["oak_wooden_slab", "", "Oak Slab", false, "slabs_oak"], ["crafting_table", "", "Crafting Table", false, "crafting_table_side"]]
+            ["oak_slab", "", "Oak Slab", false, "slabs_oak"], ["crafting_table", "", "Crafting Table", false, "crafting_table_side"]]
     ],
     [
         [[180, 177, 172], [220, 217, 211], [255, 252, 245], [135, 133, 129]],
@@ -567,7 +561,7 @@ window.blocklists =
             ["orange_glazed_terracotta", "", "Orange Glazed Terracotta", false, "glazed_terracotta_orange"],
             ["acacia_log", "'axis':'y'", "Acacia Log (vertical)", false, "log_acacia_top"],
             ["acacia_planks", "", "Acacia Planks", false, "planks_acacia"],
-            ["acacia_wooden_slab", "", "Acacia Slab", false, "slabs_acacia"],
+            ["acacia_slab", "", "Acacia Slab", false, "slabs_acacia"],
             ["red_sand", "", "Red Sand", true, "red_sand"],
             ["red_sandstone", "", "Red Sandstone", false, "red_sandstone_normal"],
             ["terracotta", "", "Terracotta", false, "hardened_clay"]
@@ -690,7 +684,7 @@ window.blocklists =
             ["brown_glazed_terracotta", "", "Brown Glazed Terracotta", false, "glazed_terracotta_brown"],
             ["dark_oak_log", "'axis':'y'", "Dark Oak Log (any direction)", false, "log_big_oak"],
             ["dark_oak_planks", "", "Dark Oak Planks", false, "planks_big_oak"],
-            ["dark_oak_wooden_slab", "", "Dark Oak Slab", false, "slabs_big_oak"],
+            ["dark_oak_slab", "", "Dark Oak Slab", false, "slabs_big_oak"],
             ["spruce_log", "'axis':'x'", "Spruce Log (horizontal)", false, "log_spruce"],
             ["soul_sand", "", "Soul Sand", false, ""]
         ]
@@ -761,7 +755,7 @@ window.blocklists =
         [
             ["spruce_log", "'axis':'y'", "Spruce Log (vertical)", false, "log_spruce_top"],
             ["spruce_planks", "", "Spruce Planks", false, "planks_spruce"],
-            ["spruce_wooden_slab", "", "Spruce Slab", false, "slabs_spruce"],
+            ["spruce_slab", "", "Spruce Slab", false, "slabs_spruce"],
             ["oak_log", "'axis':'x'", "Oak Log (horizontal)", false, "log_oak"],
             ["jungle_log", "'axis':'x'", "Jungle Log (horizontal)", false, "log_jungle"],
             ["podzol", "", "Podzol", false, "dirt_podzol_side"]
@@ -779,97 +773,97 @@ window.blocklists =
     [
         [[147, 124, 113], [180, 152, 138], [209, 177, 161], [110, 93, 85]],
         [
-            ["white_stained_terracotta", "", "White Terracotta", false, "hardened_clay_stained_white"]
+            ["white_terracotta", "", "White Terracotta", false, "hardened_clay_stained_white"]
         ]
     ],
     [
         [[112, 57, 25], [137, 70, 31], [159, 82, 36], [84, 43, 19]],
         [
-            ["orange_stained_terracotta", "", "Orange Terracotta", false, "hardened_clay_stained_orange"]
+            ["orange_terracotta", "", "Orange Terracotta", false, "hardened_clay_stained_orange"]
         ]
     ],
     [
         [[105, 61, 76], [128, 75, 93], [149, 87, 108], [78, 46, 57]],
         [
-            ["magenta_stained_terracotta", "", "Magenta Terracotta", false, "hardened_clay_stained_magenta"]
+            ["magenta_terracotta", "", "Magenta Terracotta", false, "hardened_clay_stained_magenta"]
         ]
     ],
     [
         [[79, 76, 97], [96, 93, 119], [112, 108, 138], [59, 57, 73]],
         [
-            ["light_blue_stained_terracotta", "", "Light Blue Terracotta", false, "hardened_clay_stained_light_blue"]
+            ["light_blue_terracotta", "", "Light Blue Terracotta", false, "hardened_clay_stained_light_blue"]
         ]
     ],
     [
         [[131, 93, 25], [160, 114, 31], [186, 133, 36], [98, 70, 19]],
         [
-            ["yellow_stained_terracotta", "", "Yellow Terracotta", false, "hardened_clay_stained_yellow"]
+            ["yellow_terracotta", "", "Yellow Terracotta", false, "hardened_clay_stained_yellow"]
         ]
     ],
     [
         [[72, 82, 37], [88, 100, 45], [103, 117, 53], [54, 61, 28]],
         [
-            ["lime_stained_terracotta", "", "Lime Terracotta", false, "hardened_clay_stained_lime"]
+            ["lime_terracotta", "", "Lime Terracotta", false, "hardened_clay_stained_lime"]
         ]
     ],
     [
         [[112, 54, 55], [138, 66, 67], [160, 77, 78], [84, 40, 41]],
         [
-            ["pink_stained_terracotta", "", "Pink Terracotta", false, "hardened_clay_stained_pink"]
+            ["pink_terracotta", "", "Pink Terracotta", false, "hardened_clay_stained_pink"]
         ]
     ],
     [
         [[40, 28, 24], [49, 35, 30], [57, 41, 35], [30, 21, 18]],
         [
-            ["gray_stained_terracotta", "", "Gray Terracotta", false, "hardened_clay_stained_gray"]
+            ["gray_terracotta", "", "Gray Terracotta", false, "hardened_clay_stained_gray"]
         ]
     ],
     [
         [[95, 75, 69], [116, 92, 84], [135, 107, 98], [71, 56, 51]],
         [
-            ["light_gray_stained_terracotta", "", "Light Gray Terracotta", false, "hardened_clay_stained_silver"]
+            ["light_gray_terracotta", "", "Light Gray Terracotta", false, "hardened_clay_stained_silver"]
         ]
     ],
     [
         [[61, 64, 64], [75, 79, 79], [87, 92, 92], [46, 48, 48]],
         [
-            ["cyan_stained_terracotta", "", "Cyan Terracotta", false, "hardened_clay_stained_cyan"]
+            ["cyan_terracotta", "", "Cyan Terracotta", false, "hardened_clay_stained_cyan"]
         ]
     ],
     [
         [[86, 51, 62], [105, 62, 75], [122, 73, 88], [64, 38, 46]],
         [
-            ["purple_stained_terracotta", "", "Purple Terracotta", false, "hardened_clay_stained_purple"]
+            ["purple_terracotta", "", "Purple Terracotta", false, "hardened_clay_stained_purple"]
         ]
     ],
     [
         [[53, 43, 64], [65, 53, 79], [76, 62, 92], [40, 32, 48]],
         [
-            ["blue_stained_terracotta", "", "Blue Terracotta", false, "hardened_clay_stained_blue"]
+            ["blue_terracotta", "", "Blue Terracotta", false, "hardened_clay_stained_blue"]
         ]
     ],
     [
         [[53, 35, 24], [65, 43, 30], [76, 50, 35], [40, 26, 18]],
         [
-            ["brown_stained_terracotta", "", "Brown Terracotta", false, "hardened_clay_stained_brown"]
+            ["brown_terracotta", "", "Brown Terracotta", false, "hardened_clay_stained_brown"]
         ]
     ],
     [
         [[53, 57, 29], [65, 70, 36], [76, 82, 42], [40, 43, 22]],
         [
-            ["green_stained_terracotta", "", "Green Terracotta", false, "hardened_clay_stained_green"]
+            ["green_terracotta", "", "Green Terracotta", false, "hardened_clay_stained_green"]
         ]
     ],
     [
         [[100, 42, 32], [122, 51, 39], [142, 60, 46], [75, 31, 24]],
         [
-            ["red_stained_terracotta", "", "Red Terracotta", false, "hardened_clay_stained_red"]
+            ["red_terracotta", "", "Red Terracotta", false, "hardened_clay_stained_red"]
         ]
     ],
     [
         [[26, 15, 11], [31, 18, 13], [37, 22, 16], [19, 11, 8]],
         [
-            ["black_stained_terracotta", "", "Black Terracotta", false, "hardened_clay_stained_black"]
+            ["black_terracotta", "", "Black Terracotta", false, "hardened_clay_stained_black"]
         ]
     ]
 ]
