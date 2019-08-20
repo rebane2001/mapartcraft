@@ -12,7 +12,7 @@ function initialize() {
     window.blocklist = window.blocklists["1.12"];
     window.blocklist.forEach(function(i) {
         blockid = 0;
-        document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" style="background: linear-gradient(' + cssrgb(i[0][0]) + ',' + cssrgb(i[0][1]) + ',' + cssrgb(i[0][2]) + ');"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
+        document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
         i[1].forEach(function(j) {
             let imgfile = j[4]
             if (j[4] == "")
@@ -22,12 +22,27 @@ function initialize() {
         });
         colorid++;
     });
+    updateStyle();
     tooltip.refresh();
     document.getElementById('imgupload').addEventListener('change', loadImg);
     checkCookie();
     img.src = "img/upload.png";
     img.onload = function() {
         updateMap();
+    }
+}
+
+function updateStyle() {
+    if(document.getElementById('staircasing').checked) {
+        for(let cb of document.getElementsByClassName("colorbox")) {
+            let colors = cb.getAttribute("colors").split(";");
+            cb.style = `background: linear-gradient(${colors[0]} 33%, ${colors[1]} 33%, ${colors[1]} 66%, ${colors[2]} 66%);`
+        }
+    } else {
+        for(let cb of document.getElementsByClassName("colorbox")) {
+            let colors = cb.getAttribute("colors").split(";");
+            cb.style = `background: ${colors[1]};`
+        }
     }
 }
 
@@ -48,6 +63,7 @@ function updateMap() {
         }
         selectedcolors.push(window.blocklist[i][0][1]);
     }
+    updateStyle(); // Updating colorbox colors
     mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value]
     var canvas = document.getElementById('canvas');
     var ctx = document.getElementById('canvas').getContext('2d');
