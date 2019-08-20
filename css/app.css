@@ -88,3 +88,7 @@ canvas {
     margin-bottom: 30px;
     margin-right: 30px;
 }
+
+th:nth-child(1) {
+    padding-right: 0.2em
+}

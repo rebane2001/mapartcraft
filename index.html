@@ -67,14 +67,26 @@
             <b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
             <br>
             <br>
-            <img src="img/download.png" onclick="getNbt()" style="cursor: pointer" />
-            <br>
+            <img src="img/download.png" onclick="getNbt()" style="cursor: pointer" /><br>
+            <img src="img/materials.png" onclick="getMaterials()" style="cursor: pointer" /><br>
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
                 <input type="hidden" name="hosted_button_id" value="LUNVZPRV7J8J4" />
                 <input type="image" src="img/donate.png" border="0" name="submit" data-tooltip title="donate" style="cursor: pointer" alt="Donate with PayPal button" />
                 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
             </form>
+        </div>
+        
+        <div id="materials" class="section" style="float: left">
+            <h2>Material list</h2>
+            <table id="materialtable">
+                <tbody>
+                    <tr style="display: table-row;">
+                        <th>Block</th>
+                        <th>Amount</th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
