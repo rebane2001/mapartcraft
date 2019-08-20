@@ -363,6 +363,20 @@ function getMaterials() {
     let htmlString = '<tbody><tr style="display: table-row;"><th>Block</th><th>Amount</th></tr>';
     nbtblocklist.sort((a, b) => b.count - a.count).forEach(block => {
         let amount = block.count;
+        if(amount > 64) {
+            let stacks = Math.floor(amount / 64);
+
+            let leftover = amount - 64*stacks;
+            if (leftover == 0)
+                leftover = "";
+            else
+                leftover = " + " + leftover;
+
+            if (stacks > 27)
+                amount = `${amount.toLocaleString()} (${stacks}x64${leftover}, ${(amount / 64 / 27).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} SB)`
+            else
+                amount = `${amount.toLocaleString()} (${stacks}x64${leftover})`
+        }
 
         let j = [block.Name, "", "Placeholder Block", false, "placeholder"]
         if(block.SelectedBlock[0] != -1)
