@@ -12,7 +12,7 @@ function initialize() {
     window.blocklist = window.blocklists["1.12"];
     window.blocklist.forEach(function(i) {
         blockid = 0;
-        document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" style="background: linear-gradient(' + cssrgb(i[0][0]) + ',' + cssrgb(i[0][1]) + ',' + cssrgb(i[0][2]) + ');"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
+        document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
         i[1].forEach(function(j) {
             let imgfile = j[4]
             if (j[4] == "")
@@ -22,12 +22,27 @@ function initialize() {
         });
         colorid++;
     });
+    updateStyle();
     tooltip.refresh();
     document.getElementById('imgupload').addEventListener('change', loadImg);
     checkCookie();
     img.src = "img/upload.png";
     img.onload = function() {
         updateMap();
+    }
+}
+
+function updateStyle() {
+    if(document.getElementById('staircasing').checked) {
+        for(let cb of document.getElementsByClassName("colorbox")) {
+            let colors = cb.getAttribute("colors").split(";");
+            cb.style = `background: linear-gradient(${colors[0]} 33%, ${colors[1]} 33%, ${colors[1]} 66%, ${colors[2]} 66%);`
+        }
+    } else {
+        for(let cb of document.getElementsByClassName("colorbox")) {
+            let colors = cb.getAttribute("colors").split(";");
+            cb.style = `background: ${colors[1]};`
+        }
     }
 }
 
@@ -48,6 +63,7 @@ function updateMap() {
         }
         selectedcolors.push(window.blocklist[i][0][1]);
     }
+    updateStyle(); // Updating colorbox colors
     mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value]
     var canvas = document.getElementById('canvas');
     var ctx = document.getElementById('canvas').getContext('2d');
@@ -127,27 +143,22 @@ function updateMap() {
     console.log("updateMap completed in " + (performance.now() - benchmark) + "ms") 
 }
 
-function getNbt() {
-    //if no blocks selected, don't download
-    if (selectedblocks.length == 0){
-        alert("Select blocks before downloading!");
-        return;
-    }
-
+function getMap() {
     //force render preview
     document.getElementById('renderpreview').checked = true;
     updateMap();
 
-    var ctx = document.getElementById('canvas').getContext('2d');
-    var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
-    var blocks = []
-    nbtblocklist = []
+    let ctx = document.getElementById('canvas').getContext('2d');
+    let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+    let blocks = []
+    let nbtblocklist = []
     let underblocks = document.getElementById("underblocks").selectedIndex;
     if (underblocks > 0) {
         let underblock = document.getElementById("underblock").value;
         nbtblocklist.push({
             "Colors": [-255, -255, -255],
-            "Name": underblock
+            "Name": underblock,
+            "SelectedBlock": [-1, -1]
         });
     }
     for (let x = 0; x < ctx.canvas.width; x++) {
@@ -155,18 +166,15 @@ function getNbt() {
             color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
             selectedblocks.forEach(function(i) {
                 if (arraysEqual(blocklist[i[0]][0][0], color) || arraysEqual(blocklist[i[0]][0][1], color) || arraysEqual(blocklist[i[0]][0][2], color)) {
-                    if (blocklist[i[0]][1][i[1]][1] == "") {
-                        toPush = {
-                            "Colors": blocklist[i[0]][0],
-                            "Name": "minecraft:" + blocklist[i[0]][1][i[1]][0]
-                        };
-                    } else {
-                        toPush = {
-                            "Colors": blocklist[i[0]][0],
-                            "Name": "minecraft:" + blocklist[i[0]][1][i[1]][0],
-                            "Properties": JSON.parse("{ " + blocklist[i[0]][1][i[1]][1].replace(/'/g, "\"") + " }")
-                        };
-                    }
+                    toPush = {
+                        "Colors": blocklist[i[0]][0],
+                        "Name": "minecraft:" + blocklist[i[0]][1][i[1]][0],
+                        "SelectedBlock": i
+                    };
+
+                    if (blocklist[i[0]][1][i[1]][1] != "")
+                        toPush["Properties"] = JSON.parse("{ " + blocklist[i[0]][1][i[1]][1].replace(/'/g, "\"") + " }")
+
                     try {
                         nbtblocklist.forEach(function(j) { //what the fuck even
                             if (arraysEqual(j["Colors"], toPush["Colors"])) {
@@ -333,9 +341,69 @@ function getNbt() {
             }
         }
     }
-    //edit SIZE parameter!!!
-    //return {"blocks":blocks,"entities":{},"palette":nbtblocklist,"size":[ctx.canvas.width,2,ctx.canvas.height],"author":"rebane2001.com/mapartcraft","DataVersion":1343};
-    jsonstring = "{\"name\":\"\",\"value\":{\"blocks\":{\"type\":\"list\",\"value\":{\"type\":\"compound\",\"value\":[";
+
+    return {
+            blocks, 
+            nbtblocklist, 
+            width: ctx.canvas.width, 
+            height: ctx.canvas.height
+        };
+}
+
+function getMaterials() {
+    if (selectedblocks.length == 0){
+        alert("Select blocks before asking material list!");
+        return;
+    }
+
+    let {blocks, nbtblocklist} = getMap();
+    nbtblocklist.forEach(b => b.count = 0);
+    blocks.forEach(b => nbtblocklist[b.state].count++);
+    
+    let htmlString = '<tbody><tr style="display: table-row;"><th>Block</th><th>Amount</th></tr>';
+    nbtblocklist.sort((a, b) => b.count - a.count).forEach(block => {
+        let amount = block.count;
+        if(amount > 64) {
+            let stacks = Math.floor(amount / 64);
+
+            let leftover = amount - 64*stacks;
+            if (leftover == 0)
+                leftover = "";
+            else
+                leftover = " + " + leftover;
+
+            if (stacks > 27)
+                amount = `${amount.toLocaleString()} (${stacks}x64${leftover}, ${(amount / 64 / 27).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} SB)`
+            else
+                amount = `${amount.toLocaleString()} (${stacks}x64${leftover})`
+        }
+
+        let j = [block.Name, "", "Placeholder Block", false, "placeholder"]
+        if(block.SelectedBlock[0] != -1)
+            j = blocklist[block.SelectedBlock[0]][1][block.SelectedBlock[1]]
+        
+        let imgfile = j[4]
+        if (j[4] == "")
+            imgfile = j[0]
+
+        htmlString += '<tr><th><img src="img/' + imgfile + '.png" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></th>';
+        htmlString += '<th>' + amount + '</th></tr>'
+    });
+
+    htmlString += "</tbody>"
+    document.getElementById("materialtable").innerHTML = htmlString;
+    tooltip.refresh();
+}
+
+function getNbt() {
+    //if no blocks selected, don't download
+    if (selectedblocks.length == 0){
+        alert("Select blocks before downloading!");
+        return;
+    }
+    
+    let {blocks, nbtblocklist, width, height} = getMap();
+    let jsonstring = "{\"name\":\"\",\"value\":{\"blocks\":{\"type\":\"list\",\"value\":{\"type\":\"compound\",\"value\":[";
     blocks.forEach(function(r) {
         jsonstring += "{\"pos\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + r["pos"][0] + "," + r["pos"][1] + "," + r["pos"][2] + "]}},\"state\":{\"type\":\"int\",\"value\":" + r["state"] + "}},";
     });
@@ -359,7 +427,7 @@ function getNbt() {
         maxheight = Math.max(r["pos"][1],maxheight);
     });
     maxheight++;
-    jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + ctx.canvas.width + "," + maxheight + "," + (ctx.canvas.height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":1343}}}";
+    jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + width + "," + maxheight + "," + (height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":1343}}}";
     //download
     console.log("Parsing JSON and converting to NBT");
     let nbtdata = nbt.writeUncompressed(JSON.parse(jsonstring));
