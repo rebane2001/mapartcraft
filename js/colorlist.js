@@ -119,6 +119,7 @@ window.blocklists =
             ["carpet", "'color':'white'", "White Carpet", true, "carpet_colored_white"],
             ["stained_glass", "'color':'white'", "White Stained Glass", true, "glass_white"],
             ["concrete", "'color':'white'", "White Concrete", false, "concrete_white"],
+            ["concrete_powder", "'color':'white'", "White Concrete Powder", false, "concrete_powder_white"],
             ["white_glazed_terracotta", "", "White Glazed Terracotta", false, "glazed_terracotta_white"],
             ["snow", "", "Snow Block", false, ""],
             ["snow_layer", "", "Snow Layer", true, "snow_layer"]
@@ -131,6 +132,7 @@ window.blocklists =
             ["carpet", "'color':'orange'", "Orange Carpet", true, "carpet_colored_orange"],
             ["stained_glass", "'color':'orange'", "Orange Stained Glass", true, "glass_orange"],
             ["concrete", "'color':'orange'", "Orange Concrete", false, "concrete_orange"],
+            ["concrete_powder", "'color':'orange'", "Orange Concrete Powder", false, "concrete_powder_orange"],
             ["orange_glazed_terracotta", "", "Orange Glazed Terracotta", false, "glazed_terracotta_orange"],
             ["log2", "'axis':'y','variant':'acacia'", "Acacia Log (vertical)", false, "log_acacia_top"],
             ["planks", "'variant':'acacia'", "Acacia Planks", false, "planks_acacia"],
@@ -147,6 +149,7 @@ window.blocklists =
             ["carpet", "'color':'magenta'", "Magenta Carpet", true, "carpet_colored_magenta"],
             ["stained_glass", "'color':'magenta'", "Magenta Stained Glass", true, "glass_magenta"],
             ["concrete", "'color':'magenta'", "Magenta Concrete", false, "concrete_magenta"],
+            ["concrete_powder", "'color':'magenta'", "Magenta Concrete Powder", false, "concrete_powder_magenta"],
             ["magenta_glazed_terracotta", "", "Magenta Glazed Terracotta", false, "glazed_terracotta_magenta"],
             ["purpur_block", "", "Purpur Block", false, ""],["purpur_slab", "", "Purpur Slab", false, ""]
         ]
@@ -158,6 +161,7 @@ window.blocklists =
             ["carpet", "'color':'light_blue'", "Light Blue Carpet", true, "carpet_colored_light_blue"],
             ["stained_glass", "'color':'light_blue'", "Light Blue Stained Glass", true, "glass_light_blue"],
             ["concrete", "'color':'light_blue'", "Light Blue Concrete", false, "concrete_light_blue"],
+            ["concrete_powder", "'color':'light_blue'", "Light Blue Powder Concrete", false, "concrete_powder_light_blue"],
             ["light_blue_glazed_terracotta", "", "Light Blue Glazed Terracotta", false, "glazed_terracotta_light_blue"]
         ]
     ],
@@ -168,6 +172,7 @@ window.blocklists =
             ["carpet", "'color':'yellow'", "Yellow Carpet", true, "carpet_colored_yellow"],
             ["stained_glass", "'color':'yellow'", "Yellow Stained Glass", true, "glass_yellow"],
             ["concrete", "'color':'yellow'", "Yellow Concrete", false, "concrete_yellow"],
+            ["concrete_powder", "'color':'yellow'", "Yellow Concrete Powder", false, "concrete_powder_yellow"],
             ["yellow_glazed_terracotta", "", "Yellow Glazed Terracotta", false, "glazed_terracotta_yellow"],
             ["hay_block", "", "Hay Bale", false, "hay_block_side"],["sponge", "", "Sponge (any)", false, ""]
         ]
@@ -179,6 +184,7 @@ window.blocklists =
             ["carpet", "'color':'lime'", "Lime Carpet", true, "carpet_colored_lime"],
             ["stained_glass", "'color':'lime'", "Lime Stained Glass", true, "glass_lime"],
             ["concrete", "'color':'lime'", "Lime Concrete", false, "concrete_lime"],
+            ["concrete_powder", "'color':'lime'", "Lime Concrete Powder", false, "concrete_powder_lime"],
             ["lime_glazed_terracotta", "", "Lime Glazed Terracotta", false, "glazed_terracotta_lime"],
             ["melon_block", "", "Melon", false, "melon_side"]
         ]
@@ -190,6 +196,7 @@ window.blocklists =
             ["carpet", "'color':'pink'", "Pink Carpet", true, "carpet_colored_pink"],
             ["stained_glass", "'color':'pink'", "Pink Stained Glass", true, "glass_pink"],
             ["concrete", "'color':'pink'", "Pink Concrete", false, "concrete_pink"],
+            ["concrete_powder", "'color':'pink'", "Pink Concrete Powder", false, "concrete_powder_pink"],
             ["pink_glazed_terracotta", "", "Pink Glazed Terracotta", false, "glazed_terracotta_pink"]
         ]
     ],
@@ -200,6 +207,7 @@ window.blocklists =
             ["carpet", "'color':'gray'", "Gray Carpet", true, "carpet_colored_gray"],
             ["stained_glass", "'color':'gray'", "Gray Stained Glass", true, "glass_gray"],
             ["concrete", "'color':'gray'", "Gray Concrete", false, "concrete_gray"],
+            ["concrete_powder", "'color':'gray'", "Gray Concrete Powder", false, "concrete_powder_gray"],
             ["gray_glazed_terracotta", "", "Gray Glazed Terracotta", false, "glazed_terracotta_gray"]
         ]
     ],
@@ -210,6 +218,7 @@ window.blocklists =
             ["carpet", "'color':'silver'", "Light Gray Carpet", true, "carpet_colored_silver"],
             ["stained_glass", "'color':'silver'", "Light Gray Stained Glass", true, "glass_silver"],
             ["concrete", "'color':'silver'", "Light Gray Concrete", false, "concrete_silver"],
+            ["concrete_powder", "'color':'silver'", "Light Gray Powder Concrete", false, "concrete_powder_silver"],
             ["silver_glazed_terracotta", "", "Light Gray Glazed Terracotta", false, "glazed_terracotta_silver"]
         ]
     ],
@@ -220,6 +229,7 @@ window.blocklists =
             ["carpet", "'color':'cyan'", "Cyan Carpet", true, "carpet_colored_cyan"],
             ["stained_glass", "'color':'cyan'", "Cyan Stained Glass", true, "glass_cyan"],
             ["concrete", "'color':'cyan'", "Cyan Concrete", false, "concrete_cyan"],
+            ["concrete_powder", "'color':'cyan'", "Cyan Concrete Powder", false, "concrete_powder_cyan"],
             ["cyan_glazed_terracotta", "", "Cyan Glazed Terracotta", false, "glazed_terracotta_cyan"],
             ["prismarine", "", "Prismarine", false, ""]
         ]
@@ -231,6 +241,7 @@ window.blocklists =
             ["carpet", "'color':'purple'", "Purple Carpet", true, "carpet_colored_purple"],
             ["stained_glass", "'color':'purple'", "Purple Stained Glass", true, "glass_purple"],
             ["concrete", "'color':'purple'", "Purple Concrete", false, "concrete_purple"],
+            ["concrete_powder", "'color':'purple'", "Purple Concrete Powder", false, "concrete_powder_purple"],
             ["purple_glazed_terracotta", "", "Purple Glazed Terracotta", false, "glazed_terracotta_purple"],
             ["mycelium", "", "Mycelium", false, "mycelium_side"]
         ]
@@ -242,6 +253,7 @@ window.blocklists =
             ["carpet", "'color':'blue'", "Blue Carpet", true, "carpet_colored_blue"],
             ["stained_glass", "'color':'blue'", "Blue Stained Glass", true, "glass_blue"],
             ["concrete", "'color':'blue'", "Blue Concrete", false, "concrete_blue"],
+            ["concrete_powder", "'color':'blue'", "Blue Concrete Powder", false, "concrete_powder_blue"],
             ["blue_glazed_terracotta", "", "Blue Glazed Terracotta", false, "glazed_terracotta_blue"]
         ]
     ],
@@ -252,6 +264,7 @@ window.blocklists =
             ["carpet", "'color':'brown'", "Brown Carpet", true, "carpet_colored_brown"],
             ["stained_glass", "'color':'brown'", "Brown Stained Glass", true, "glass_brown"],
             ["concrete", "'color':'brown'", "Brown Concrete", false, "concrete_brown"],
+            ["concrete_powder", "'color':'brown'", "Brown Concrete Powder", false, "concrete_powder_brown"],
             ["brown_glazed_terracotta", "", "Brown Glazed Terracotta", false, "glazed_terracotta_brown"],
             ["log2", "'axis':'y','variant':'dark_oak'", "Dark Oak Log (any direction)", false, "log_big_oak"],
             ["planks", "'variant':'dark_oak'", "Dark Oak Planks", false, "planks_big_oak"],
@@ -267,6 +280,7 @@ window.blocklists =
             ["carpet", "'color':'green'", "Green Carpet", true, "carpet_colored_green"],
             ["stained_glass", "'color':'green'", "Green Stained Glass", true, "glass_green"],
             ["concrete", "'color':'green'", "Green Concrete", false, "concrete_green"],
+            ["concrete_powder", "'color':'green'", "Green Concrete Powder", false, "concrete_powder_green"],
             ["green_glazed_terracotta", "", "Green Glazed Terracotta", false, "glazed_terracotta_green"]
         ]
     ],
@@ -277,6 +291,7 @@ window.blocklists =
             ["carpet", "'color':'red'", "Red Carpet", true, "carpet_colored_red"],
             ["stained_glass", "'color':'red'", "Red Stained Glass", true, "glass_red"],
             ["concrete", "'color':'red'", "Red Concrete", false, "concrete_red"],
+            ["concrete_powder", "'color':'red'", "Red Concrete Powder", false, "concrete_powder_red"],
             ["red_glazed_terracotta", "", "Red Glazed Terracotta", false, "glazed_terracotta_red"],
             ["brick_block", "", "Bricks", false, "brick"],
             ["nether_wart_block", "", "Nether Wart Block", false, ""]
@@ -289,6 +304,7 @@ window.blocklists =
             ["carpet", "'color':'black'", "Black Carpet", true, "carpet_colored_black"],
             ["stained_glass", "'color':'black'", "Black Stained Glass", true, "glass_black"],
             ["concrete", "'color':'black'", "Black Concrete", false, "concrete_black"],
+            ["concrete_powder", "'color':'black'", "Black Concrete Powder", false, "concrete_powder_black"],
             ["black_glazed_terracotta", "", "Black Glazed Terracotta", false, "glazed_terracotta_black"],
             ["coal_block", "", "Block of Coal", false, ""], ["obsidian", "", "Obsidian", false, ""]
         ]
@@ -558,6 +574,7 @@ window.blocklists =
             ["white_carpet", "", "White Carpet", true, "carpet_colored_white"],
             ["white_stained_glass", "", "White Stained Glass", true, "glass_white"],
             ["white_concrete", "", "White Concrete", false, "concrete_white"],
+            ["white_concrete_powder", "", "White Concrete Powder", false, "concrete_powder_white"],
             ["white_glazed_terracotta", "", "White Glazed Terracotta", false, "glazed_terracotta_white"],
             ["snow_block", "", "Snow Block", false, "snow"],
             ["snow", "", "Snow Layer", true, "snow_layer"]
@@ -570,6 +587,7 @@ window.blocklists =
             ["orange_carpet", "", "Orange Carpet", true, "carpet_colored_orange"],
             ["orange_stained_glass", "", "Orange Stained Glass", true, "glass_orange"],
             ["orange_concrete", "", "Orange Concrete", false, "concrete_orange"],
+            ["orange_concrete_powder", "", "Orange Concrete Powder", false, "concrete_powder_orange"],
             ["orange_glazed_terracotta", "", "Orange Glazed Terracotta", false, "glazed_terracotta_orange"],
             ["acacia_log", "'axis':'y'", "Acacia Log (vertical)", false, "log_acacia_top"],
             ["acacia_planks", "", "Acacia Planks", false, "planks_acacia"],
@@ -586,6 +604,7 @@ window.blocklists =
             ["magenta_carpet", "", "Magenta Carpet", true, "carpet_colored_magenta"],
             ["magenta_stained_glass", "", "Magenta Stained Glass", true, "glass_magenta"],
             ["magenta_concrete", "", "Magenta Concrete", false, "concrete_magenta"],
+            ["magenta_concrete_powder", "", "Magenta Concrete Powder", false, "concrete_powder_magenta"],
             ["magenta_glazed_terracotta", "", "Magenta Glazed Terracotta", false, "glazed_terracotta_magenta"],
             ["purpur_block", "", "Purpur Block", false, ""],
             ["purpur_slab", "", "Purpur Slab", false, ""]
@@ -598,6 +617,7 @@ window.blocklists =
             ["light_blue_carpet", "", "Light Blue Carpet", true, "carpet_colored_light_blue"],
             ["light_blue_stained_glass", "", "Light Blue Stained Glass", true, "glass_light_blue"],
             ["light_blue_concrete", "", "Light Blue Concrete", false, "concrete_light_blue"],
+            ["light_blue_concrete_powder", "", "Light Blue Concrete Powder", false, "concrete_powder_light_blue"],
             ["light_blue_glazed_terracotta", "", "Light Blue Glazed Terracotta", false, "glazed_terracotta_light_blue"]
         ]
     ],
@@ -608,6 +628,7 @@ window.blocklists =
             ["yellow_carpet", "", "Yellow Carpet", true, "carpet_colored_yellow"],
             ["yellow_stained_glass", "", "Yellow Stained Glass", true, "glass_yellow"],
             ["yellow_concrete", "", "Yellow Concrete", false, "concrete_yellow"],
+            ["yellow_concrete_powder", "", "Yellow Concrete Powder", false, "concrete_powder_yellow"],
             ["yellow_glazed_terracotta", "", "Yellow Glazed Terracotta", false, "glazed_terracotta_yellow"],
             ["hay_block", "", "Hay Bale", false, "hay_block_side"],
             ["sponge", "", "Sponge (any)", false, ""]
@@ -620,6 +641,7 @@ window.blocklists =
             ["lime_carpet", "", "Lime Carpet", true, "carpet_colored_lime"],
             ["lime_stained_glass", "", "Lime Stained Glass", true, "glass_lime"],
             ["lime_concrete", "", "Lime Concrete", false, "concrete_lime"],
+            ["lime_concrete_powder", "", "Lime Concrete Powder", false, "concrete_powder_lime"],
             ["lime_glazed_terracotta", "", "Lime Glazed Terracotta", false, "glazed_terracotta_lime"],
             ["melon", "", "Melon", false, "melon_side"]
         ]
@@ -631,6 +653,7 @@ window.blocklists =
             ["pink_carpet", "", "Pink Carpet", true, "carpet_colored_pink"],
             ["pink_stained_glass", "", "Pink Stained Glass", true, "glass_pink"],
             ["pink_concrete", "", "Pink Concrete", false, "concrete_pink"],
+            ["pink_concrete_powder", "", "Pink Concrete Powder", false, "concrete_powder_pink"],
             ["pink_glazed_terracotta", "", "Pink Glazed Terracotta", false, "glazed_terracotta_pink"]
         ]
     ],
@@ -641,6 +664,7 @@ window.blocklists =
             ["gray_carpet", "", "Gray Carpet", true, "carpet_colored_gray"],
             ["gray_stained_glass", "", "Gray Stained Glass", true, "glass_gray"],
             ["gray_concrete", "", "Gray Concrete", false, "concrete_gray"],
+            ["gray_concrete_powder", "", "Gray Concrete Powder", false, "concrete_powder_gray"],
             ["gray_glazed_terracotta", "", "Gray Glazed Terracotta", false, "glazed_terracotta_gray"]
         ]
     ],
@@ -651,6 +675,7 @@ window.blocklists =
             ["light_gray_carpet", "", "Light Gray Carpet", true, "carpet_colored_silver"],
             ["light_gray_stained_glass", "", "Light Gray Stained Glass", true, "glass_silver"],
             ["light_gray_concrete", "", "Light Gray Concrete", false, "concrete_silver"],
+            ["light_gray_concrete_powder", "", "Light Gray Concrete Powder", false, "concrete_powder_silver"],
             ["light_gray_glazed_terracotta", "", "Light Gray Glazed Terracotta", false, "glazed_terracotta_silver"]
         ]
     ],
@@ -661,6 +686,7 @@ window.blocklists =
             ["cyan_carpet", "", "Cyan Carpet", true, "carpet_colored_cyan"],
             ["cyan_stained_glass", "", "Cyan Stained Glass", true, "glass_cyan"],
             ["cyan_concrete", "", "Cyan Concrete", false, "concrete_cyan"],
+            ["cyan_concrete_powder", "", "Cyan Concrete Powder", false, "concrete_powder_cyan"],
             ["cyan_glazed_terracotta", "", "Cyan Glazed Terracotta", false, "glazed_terracotta_cyan"],
             ["prismarine", "", "Prismarine", false, ""]
         ]
@@ -672,6 +698,7 @@ window.blocklists =
             ["purple_carpet", "", "Purple Carpet", true, "carpet_colored_purple"],
             ["purple_stained_glass", "", "Purple Stained Glass", true, "glass_purple"],
             ["purple_concrete", "", "Purple Concrete", false, "concrete_purple"],
+            ["purple_concrete_powder", "", "Purple Concrete Powder", false, "concrete_powder_purple"],
             ["purple_glazed_terracotta", "", "Purple Glazed Terracotta", false, "glazed_terracotta_purple"],
             ["mycelium", "", "Mycelium", false, "mycelium_side"]
         ]
@@ -683,6 +710,7 @@ window.blocklists =
             ["blue_carpet", "", "Blue Carpet", true, "carpet_colored_blue"],
             ["blue_stained_glass", "", "Blue Stained Glass", true, "glass_blue"],
             ["blue_concrete", "", "Blue Concrete", false, "concrete_blue"],
+            ["blue_concrete_powder", "", "Blue Concrete Powder", false, "concrete_powder_blue"],
             ["blue_glazed_terracotta", "", "Blue Glazed Terracotta", false, "glazed_terracotta_blue"]
         ]
     ],
@@ -693,6 +721,7 @@ window.blocklists =
             ["brown_carpet", "", "Brown Carpet", true, "carpet_colored_brown"],
             ["brown_stained_glass", "", "Brown Stained Glass", true, "glass_brown"],
             ["brown_concrete", "", "Brown Concrete", false, "concrete_brown"],
+            ["brown_concrete_powder", "", "Brown Concrete Powder", false, "concrete_powder_brown"],
             ["brown_glazed_terracotta", "", "Brown Glazed Terracotta", false, "glazed_terracotta_brown"],
             ["dark_oak_log", "'axis':'y'", "Dark Oak Log (any direction)", false, "log_big_oak"],
             ["dark_oak_planks", "", "Dark Oak Planks", false, "planks_big_oak"],
@@ -708,6 +737,7 @@ window.blocklists =
             ["green_carpet", "", "Green Carpet", true, "carpet_colored_green"],
             ["green_stained_glass", "", "Green Stained Glass", true, "glass_green"],
             ["green_concrete", "", "Green Concrete", false, "concrete_green"],
+            ["green_concrete_powder", "", "Green Concrete Powder", false, "concrete_powder_green"],
             ["green_glazed_terracotta", "", "Green Glazed Terracotta", false, "glazed_terracotta_green"]
         ]
     ],
@@ -718,6 +748,7 @@ window.blocklists =
             ["red_carpet", "", "Red Carpet", true, "carpet_colored_red"],
             ["red_stained_glass", "", "Red Stained Glass", true, "glass_red"],
             ["red_concrete", "", "Red Concrete", false, "concrete_red"],
+            ["red_concrete_powder", "", "Red Concrete Powder", false, "concrete_powder_red"],
             ["red_glazed_terracotta", "", "Red Glazed Terracotta", false, "glazed_terracotta_red"],
             ["bricks", "", "Bricks", false, "brick"],
             ["nether_wart_block", "", "Nether Wart Block", false, ""]
@@ -730,6 +761,7 @@ window.blocklists =
             ["black_carpet", "", "Black Carpet", true, "carpet_colored_black"],
             ["black_stained_glass", "", "Black Stained Glass", true, "glass_black"],
             ["black_concrete", "", "Black Concrete", false, "concrete_black"],
+            ["black_concrete_powder", "", "Black Concrete Powder", false, "concrete_powder_black"],
             ["black_glazed_terracotta", "", "Black Glazed Terracotta", false, "glazed_terracotta_black"],
             ["coal_block", "", "Block of Coal", false, ""], ["obsidian", "", "Obsidian", false, ""]
         ]
