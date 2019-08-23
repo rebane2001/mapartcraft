@@ -51,7 +51,12 @@ window.blocklists =
     [
         [[0, 87, 0], [0, 106, 0], [0, 124, 0], [0, 65, 0]],
         [
-            ["leaves", "", "Leaves", false, ""]
+            ["leaves", "'variant':'oak'", "Leaves (Oak)", false, ""],
+            ["leaves", "'variant':'spruce'", "Leaves (Spruce)", false, ""],
+            ["leaves", "'variant':'birch'", "Leaves (Birch)", false, ""],
+            ["leaves", "'variant':'jungle'", "Leaves (Jungle)", false, ""],
+            ["leaves2", "'variant':'acacia'", "Leaves (Acacia)", false, "leaves"],
+            ["leaves2", "'variant':'dark_oak'", "Leaves (Dark Oak)", false, "leaves"]
         ]
     ],
     [
@@ -485,7 +490,12 @@ window.blocklists =
     [
         [[0, 87, 0], [0, 106, 0], [0, 124, 0], [0, 65, 0]],
         [
-            ["oak_leaves", "", "Leaves (Any)", false, "leaves"]
+            ["oak_leaves", "", "Leaves (Oak)", false, "leaves"],
+            ["spruce_leaves", "", "Leaves (Spruce)", false, "leaves"],
+            ["birch_leaves", "", "Leaves (Birch)", false, "leaves"],
+            ["jungle_leaves", "", "Leaves (Jungle)", false, "leaves"],
+            ["acacia_leaves", "", "Leaves (Acacia)", false, "leaves"],
+            ["dark_oak_leaves", "", "Leaves (Dark Oak)", false, "leaves"]
         ]
     ],
     [
