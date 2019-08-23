@@ -103,6 +103,7 @@ window.blocklists =
             ["log", "'variant':'birch','axis':'x'", "Birch Log (horizontal)", false, "log_birch"],
             ["stone", "'variant':'diorite'", "Diorite", false, "stone_diorite"],
             ["quartz_block", "", "Quartz Block", false, "quartz_block_side"],
+            ["stone_slab", "'variant':'quartz'", "Quartz Slab", false, "quartz_slab"],
             ["sea_lantern", "", "Sea Lantern", false, ""]
         ]
     ],
@@ -536,6 +537,7 @@ window.blocklists =
             ["birch_log", "'axis':'x'", "Birch Log (horizontal)", false, "log_birch"],
             ["diorite", "", "Diorite", false, "stone_diorite"],
             ["quartz_block", "", "Quartz Block", false, "quartz_block_side"],
+            ["quartz_slab", "", "Quartz Slab", false, "quartz_slab"],
             ["sea_lantern", "", "Sea Lantern", false, ""]
         ]
     ],
