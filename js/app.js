@@ -92,6 +92,8 @@ function updateMap() {
         for (var i = 0; i < imgData.data.length; i += 4) {
             //i = r, i+1 = g, i+2 = b, i+3 = a
             imgData.data[i + 3] = 255; // remove alpha
+            let x = (i / 4) % canvas.width;
+            let y = ((i / 4) - x) / canvas.width;
             if (selectedblocks.length != 0){
                 switch (document.getElementById("dither").selectedIndex) {
                     case 0: // no dither
@@ -127,10 +129,29 @@ function updateMap() {
                         }
         
                         break;
+                    case 2: // Bayer 4x4
+                    case 3: // Bayer 2x2
+                    case 4: // Ordered 3x3
+                    	patterns = [
+                    		[[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]],
+                    		[[1, 3], [4,2]],
+                    		[[1,7,4],[5,8,3],[6,2,9]]
+                    	];
+                    	pat = patterns[document.getElementById("dither").selectedIndex-2]
+                        oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]]; 
+                        twopixel = find_closest_two(oldpixel); //twopixel = [bestval1,bestval2,newpixel1,newpixel2]
+                        if ((twopixel[0]*(pat[0].length*pat.length+1)/twopixel[1]) > pat[x%pat[0].length][y%pat.length]){
+                        	newpixel = twopixel[3];
+                        }else{
+                        	newpixel = twopixel[2];
+                        }
+                        imgData.data[i + 0] = newpixel[0];
+                        imgData.data[i + 1] = newpixel[1];
+                        imgData.data[i + 2] = newpixel[2];
+                        break;
                 }
             }
-            let x = (i / 4) % canvas.width;
-            let y = ((i / 4) - x) / canvas.width;
+
             upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
             if (mapsize[0] < 4 && mapsize[1] < 8) {
                 upsctx.fillRect(x * 2, y * 2, 2, 2);
@@ -545,8 +566,8 @@ function find_closest(pixel) {
     if (colorCache.has(val)){
         return colorCache.get(val);
     }else{
-        bestval = 9999999;
-        newpixel = pixel;
+        let bestval = 9999999;
+        let newpixel = pixel;
     
         selectedcolors.forEach(function(p) {
             let diff = diff_colors(p, pixel);
@@ -558,6 +579,34 @@ function find_closest(pixel) {
 
         colorCache.set(val, newpixel);
         return newpixel;
+    }
+}
+
+function find_closest_two(pixel) {
+    let val = pixel.toString();
+    if (colorCache.has(val)){
+        return colorCache.get(val);
+    }else{
+        let bestval1 = 9999999;
+        let bestval2 = 9999999;
+        let newpixel1 = pixel;
+        let newpixel2 = pixel;
+    
+        selectedcolors.forEach(function(p) {
+            let diff = diff_colors(p, pixel);
+            if (diff < bestval1) {
+                bestval1 = diff;
+                newpixel1 = p;
+            }
+            if (diff < bestval2 && newpixel1 != p) {
+                bestval2 = diff;
+                newpixel2 = p;
+            }
+        });
+
+        let twopixel = [bestval1,bestval2,newpixel1,newpixel2];
+        colorCache.set(val, twopixel);
+        return twopixel;
     }
 }
 
