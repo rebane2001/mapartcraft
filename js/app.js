@@ -4,7 +4,7 @@ var selectedcolors = [];
 var filename = "mapart";
 var img = new Image();
 var colorCache = new Map(); //lru cache
-
+var currentSplit = [-1,-1]
 
 function initialize() {
     let colorid = 0;
@@ -88,7 +88,16 @@ function updateMap() {
         colorCache = new Map(); //reset color cache
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        if (currentSplit[0] == -1){
+            var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        }else{
+            var imgData = ctx.getImageData(currentSplit[0]*128, currentSplit[1]*128, (currentSplit[1]+1)*128, (currentSplit[1]+1)*128);
+        }
+        if (currentSplit[0] != -1){
+            mapsize = [1,1];
+            ctx.canvas.width = 128;
+            ctx.canvas.height = 128;
+        }
         for (var i = 0; i < imgData.data.length; i += 4) {
             //i = r, i+1 = g, i+2 = b, i+3 = a
             imgData.data[i + 3] = 255; // remove alpha
@@ -162,6 +171,25 @@ function updateMap() {
         ctx.putImageData(imgData, 0, 0);
     }
     console.log("updateMap completed in " + (performance.now() - benchmark) + "ms") 
+}
+
+function getNbtSplit(){
+    //if no blocks selected, don't download
+    if (selectedblocks.length == 0){
+        alert("Select blocks before downloading!");
+        return;
+    }
+    console.log("Downloading as 1x1 split");
+    for (let x = 0; x<document.getElementById('mapsizex').value; x++){
+        for (let y = 0; y<document.getElementById('mapsizey').value; y++){
+            console.log("Currently downloading: " + x + " " + y);
+            currentSplit = [x,y];
+            getNbt();
+        }
+    }
+    currentSplit = [-1,-1];
+    updateMap();
+    console.log("Done!");
 }
 
 function getMap() {
@@ -463,7 +491,11 @@ function getNbt() {
     a.style = "display: none";
     url = window.URL.createObjectURL(blob);
     a.href = url;
-    a.download = filename + ".nbt";
+    if (currentSplit[0] == -1){
+        a.download = filename + ".nbt";
+    }else{
+        a.download = filename + "_s_" + currentSplit[0] + "_" + currentSplit[1] + ".nbt";
+    }
     a.click();
     window.URL.revokeObjectURL(url);
 }
