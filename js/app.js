@@ -64,7 +64,7 @@ function updateMap() {
         selectedcolors.push(window.blocklist[i][0][1]);
     }
     updateStyle(); // Updating colorbox colors
-    mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value]
+    mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
     var canvas = document.getElementById('canvas');
     var ctx = document.getElementById('canvas').getContext('2d');
     var upsctx = document.getElementById('displaycanvas').getContext('2d');
@@ -76,6 +76,8 @@ function updateMap() {
         document.getElementById('mapreswarning').style = "color:red; display: none";
     } else {
         document.getElementById('mapreswarning').style = "color:red; display: inline";
+        if (document.getElementById('cropimg').checked)
+                document.getElementById('mapreswarning').style = "color:orange; display: inline";
     }
     if (mapsize[0] < 4 && mapsize[1] < 8) {
         upsctx.canvas.width = ctx.canvas.width * 2;
@@ -87,7 +89,15 @@ function updateMap() {
     if (document.getElementById('renderpreview').checked) {
         colorCache = new Map(); //reset color cache
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        //crop or scale image
+        if (document.getElementById('cropimg').checked) {
+            let cropdim = cropImg(img.width,img.height);
+            ctx.drawImage(img, cropdim[0], cropdim[1], cropdim[2], cropdim[3], 0, 0, canvas.width, canvas.height);
+        }else{
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        }
+
         if (currentSplit[0] == -1){
             var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         }else{
@@ -171,6 +181,27 @@ function updateMap() {
         ctx.putImageData(imgData, 0, 0);
     }
     console.log("updateMap completed in " + (performance.now() - benchmark) + "ms") 
+}
+
+//calculates correct sizes for cropping an image
+function cropImg(imgWidth,imgHeight){
+    //get size of map
+    mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
+
+    //calculate correct crop for current mapsize
+    let newWidth = imgWidth;
+    let newHeight = Math.round((imgWidth/mapsize[0])*mapsize[1]);
+
+    //if goes out of bounds, calculate the other way
+    if(newHeight>imgHeight){
+        newWidth = Math.round((imgHeight/mapsize[1])*mapsize[0]);
+        if(newWidth>imgWidth)
+            newWidth-=2;
+        newHeight = imgHeight;
+    }
+
+    //return crop values
+    return [Math.floor((imgWidth-newWidth)/2),Math.floor((imgHeight-newHeight)/2),newWidth,newHeight];
 }
 
 function getNbtSplit(){
