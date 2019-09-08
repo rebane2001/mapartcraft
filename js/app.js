@@ -686,6 +686,16 @@ function chooseFile() {
     document.getElementById("imgupload").click();
 }
 
+function findCorners(x,y){
+    let raw = [(x+64)/128,(y+64)/128]
+    return {
+        "topleft": [Math.floor(raw[0])*128-64,Math.floor(raw[1])*128-64],
+        "topright": [Math.ceil(raw[0])*128-64,Math.floor(raw[1])*128-64],
+        "bottomleft": [Math.floor(raw[0])*128-64,Math.ceil(raw[1])*128-64],
+        "bottomright": [Math.ceil(raw[0])*128-64,Math.ceil(raw[1])*128-64],
+    }
+}
+
 //Thx
 //https://www.w3schools.com/js/js_cookies.asp
 function setCookie(cname, cvalue, exdays) {
