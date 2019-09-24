@@ -30,6 +30,10 @@ function initialize() {
     img.onload = function() {
         updateMap();
     }
+    //show warning when using Edge
+    if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
+        alert('Note: using Microsoft Edge is unsupported.\nPlease use Chrome (preferred) or Firefox for MapartCraft');
+    }
 }
 
 function updateStyle() {
@@ -151,18 +155,18 @@ function updateMap() {
                     case 2: // Bayer 4x4
                     case 3: // Bayer 2x2
                     case 4: // Ordered 3x3
-                    	patterns = [
-                    		[[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]],
-                    		[[1, 3], [4,2]],
-                    		[[1,7,4],[5,8,3],[6,2,9]]
-                    	];
-                    	pat = patterns[document.getElementById("dither").selectedIndex-2]
+                        patterns = [
+                            [[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]],
+                            [[1, 3], [4,2]],
+                            [[1,7,4],[5,8,3],[6,2,9]]
+                        ];
+                        pat = patterns[document.getElementById("dither").selectedIndex-2]
                         oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]]; 
                         twopixel = find_closest_two(oldpixel); //twopixel = [bestval1,bestval2,newpixel1,newpixel2]
                         if ((twopixel[0]*(pat[0].length*pat.length+1)/twopixel[1]) > pat[x%pat[0].length][y%pat.length]){
-                        	newpixel = twopixel[3];
+                            newpixel = twopixel[3];
                         }else{
-                        	newpixel = twopixel[2];
+                            newpixel = twopixel[2];
                         }
                         imgData.data[i + 0] = newpixel[0];
                         imgData.data[i + 1] = newpixel[1];
