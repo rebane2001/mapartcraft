@@ -71,7 +71,11 @@ function updateMap() {
     mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
     var canvas = document.getElementById('canvas');
     var ctx = document.getElementById('canvas').getContext('2d');
-    var upsctx = document.getElementById('displaycanvas').getContext('2d');
+    var dspcvs = document.getElementById('displaycanvas');
+    var upsctx = dspcvs.getContext('2d');
+    //this part is so that weird displays scale pixels 1 to int(x)
+    var dpr = window.devicePixelRatio || 1;
+    var sdpr = dpr/Math.floor(dpr);
     ctx.canvas.width = mapsize[0] * 128;
     ctx.canvas.height = mapsize[1] * 128;
     document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
@@ -86,9 +90,13 @@ function updateMap() {
     if (mapsize[0] < 4 && mapsize[1] < 8) {
         upsctx.canvas.width = ctx.canvas.width * 2;
         upsctx.canvas.height = ctx.canvas.height * 2;
+        dspcvs.style.width = (ctx.canvas.width * 2 / dpr) + "px";
+        dspcvs.style.height = (ctx.canvas.height * 2 / dpr) + "px";
     } else {
         upsctx.canvas.width = ctx.canvas.width;
         upsctx.canvas.height = ctx.canvas.height;
+        dspcvs.style.width = (ctx.canvas.width / dpr) + "px";
+        dspcvs.style.height = (ctx.canvas.height / dpr) + "px";
     }
     if (document.getElementById('renderpreview').checked) {
         colorCache = new Map(); //reset color cache
