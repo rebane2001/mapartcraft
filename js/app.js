@@ -6,6 +6,8 @@ var img = new Image();
 var colorCache = new Map(); //lru cache
 var currentSplit = [-1,-1]
 
+const offscreen = new OffscreenCanvas(128, 128);
+
 function initialize() {
     let colorid = 0;
     //load 1.12 blocklist by default
@@ -69,8 +71,7 @@ function updateMap() {
     }
     updateStyle(); // Updating colorbox colors
     mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
-    var canvas = document.getElementById('canvas');
-    var ctx = document.getElementById('canvas').getContext('2d');
+    var ctx = offscreen.getContext('2d');
     var dspcvs = document.getElementById('displaycanvas');
     var upsctx = dspcvs.getContext('2d');
     //this part is so that weird displays scale pixels 1 to int(x)
@@ -240,7 +241,7 @@ function getMap() {
     document.getElementById('renderpreview').checked = true;
     updateMap();
 
-    let ctx = document.getElementById('canvas').getContext('2d');
+    let ctx = offscreen.getContext('2d');
     let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
     let blocks = []
     let nbtblocklist = []
