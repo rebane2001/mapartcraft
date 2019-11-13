@@ -61,6 +61,9 @@ function find_closest_two(pixel) {
             }
         });
 
+        if (bestval2 - diff_colors(newpixel1,newpixel2) >= 0){
+            newpixel2 = newpixel1;
+        }
         let twopixel = [bestval1,bestval2,newpixel1,newpixel2];
         colorCache.set(val, twopixel);
         return twopixel;
