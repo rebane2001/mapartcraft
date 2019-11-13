@@ -101,14 +101,16 @@ onmessage = function(e) {
     
         colorCache = new Map(); //reset color cache
     
-        if (mapsize[0] < 4 && mapsize[1] < 8) {
-            upsctx.canvas.width = canvasSize[0] * 2;
-            upsctx.canvas.height = canvasSize[1] * 2;
-        } else {
-            upsctx.canvas.width = canvasSize[0];
-            upsctx.canvas.height = canvasSize[1];
-        }
-    
+        try{
+            if (mapsize[0] < 4 && mapsize[1] < 8) {
+                upsctx.canvas.width = canvasSize[0] * 2;
+                upsctx.canvas.height = canvasSize[1] * 2;
+            } else {
+                upsctx.canvas.width = canvasSize[0];
+                upsctx.canvas.height = canvasSize[1];
+            }
+        }catch{}
+
         for (var i = 0; i < imgData.data.length; i += 4) {
             //i = r, i+1 = g, i+2 = b, i+3 = a
             imgData.data[i + 3] = 255; // remove alpha
@@ -168,12 +170,14 @@ onmessage = function(e) {
                         break;
                 }
             }
-            upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
-            if (mapsize[0] < 4 && mapsize[1] < 8) {
-                upsctx.fillRect(x * 2, y * 2, 2, 2);
-            } else {
-                upsctx.fillRect(x, y, 1, 1);
-            }
+            try{
+                upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
+                if (mapsize[0] < 4 && mapsize[1] < 8) {
+                    upsctx.fillRect(x * 2, y * 2, 2, 2);
+                } else {
+                    upsctx.fillRect(x, y, 1, 1);
+                }
+            }catch{}
         }
         postMessage(imgData);
     }

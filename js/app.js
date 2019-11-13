@@ -6,15 +6,16 @@ var img = new Image();
 var currentSplit = [-1,-1]
 var benchmark;
 var renderCallback = function(){};
+var firefox = false;
 var splits = [];
 var gotMap = false;
 var mapstatus = 0;
 //0 - idle
 
-const offscreen = new OffscreenCanvas(128, 128);
+var offscreen;
 const worker = new Worker("js/worker.js");
 
-const sheet = new CSSStyleSheet();
+var sheet;
 
 function initialize() {
     let colorid = 0;
@@ -32,12 +33,23 @@ function initialize() {
         });
         colorid++;
     });
-    sheet.replaceSync('* {cursor: progress !important}');
-    document.adoptedStyleSheets = [sheet];
+    try{
+        offscreenscale = document.getElementById('displaycanvas').transferControlToOffscreen();
+        offscreen = new OffscreenCanvas(128, 128);
+        worker.postMessage([offscreenscale,"offscreeninit"],[offscreenscale]);
+        sheet = new CSSStyleSheet();
+        sheet.replaceSync('* {cursor: progress !important}');
+        document.adoptedStyleSheets = [sheet];
+    }catch{
+        //means the user is probably using Firefox, so we're gonna use fixes
+        console.log("Falling back to Firefox mode (slower, no loading cursor)");
+        firefox = true;
+        offscreen = document.createElement('canvas');
+        offscreen.width = 128;
+        offscreen.height = 128;
+    }
     updateStyle();
     tooltip.refresh();
-    offscreenscale = document.getElementById('displaycanvas').transferControlToOffscreen();
-    worker.postMessage([offscreenscale,"offscreeninit"],[offscreenscale]);
     document.getElementById('imgupload').addEventListener('change', loadImg);
     checkCookie();
     img.src = "img/upload.png";
@@ -68,7 +80,8 @@ function updateMap() {
     if (mapstatus == 0 || mapstatus == 4){
         if (mapstatus == 0)
             mapstatus++;
-        sheet.replaceSync('* {cursor: progress !important}');
+        if (!firefox)
+            sheet.replaceSync('* {cursor: progress !important}');
         benchmark = performance.now(); //benchmark updateMap() speed
         selectedblocks = []; //touching this might break presets, so be careful
         selectedcolors = [];
@@ -135,18 +148,15 @@ function updateMap() {
                 ctx.canvas.height = 128;
             }
             //worker code here
-            //offscreen
-            worker.postMessage([imgData,[ctx.canvas.width,ctx.canvas.height],document.getElementById("dither").selectedIndex,(selectedblocks.length != 0),selectedcolors,document.getElementById('bettercolor').checked,mapsize]);
-            /*
-            upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
-            for (var i = 0; i < imgData.data.length; i += 4) {
-                if (mapsize[0] < 4 && mapsize[1] < 8) {
-                    upsctx.fillRect(x * 2, y * 2, 2, 2);
-                } else {
-                    upsctx.fillRect(x, y, 1, 1);
-                }
-            }
-            */
+            worker.postMessage([
+                imgData,
+                [ctx.canvas.width,ctx.canvas.height],
+                document.getElementById("dither").selectedIndex,
+                (selectedblocks.length != 0),
+                selectedcolors,
+                document.getElementById('bettercolor').checked,
+                mapsize,
+                ]);
         }
     }else if(mapstatus == 1){
         mapstatus++;
@@ -157,9 +167,31 @@ worker.onmessage = function(e) {
     imgData = e.data;
     var ctx = offscreen.getContext('2d');
     ctx.putImageData(imgData, 0, 0);
+    if (firefox){
+        console.log("starting Firefox drawing at " + (performance.now() - benchmark) + "ms");
+        upsctx = document.getElementById('displaycanvas').getContext('2d');
+        if (mapsize[0] < 4 && mapsize[1] < 8) {
+            upsctx.canvas.width = ctx.canvas.width * 2;
+            upsctx.canvas.height = ctx.canvas.height * 2;
+        } else {
+            upsctx.canvas.width = ctx.canvas.width;
+            upsctx.canvas.height = ctx.canvas.height;
+        }
+        for (var i = 0; i < imgData.data.length; i += 4) {
+            let x = (i / 4) % ctx.canvas.width;
+            let y = ((i / 4) - x) / ctx.canvas.width;
+            upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
+            if (mapsize[0] < 4 && mapsize[1] < 8) {
+                upsctx.fillRect(x * 2, y * 2, 2, 2);
+            } else {
+                upsctx.fillRect(x, y, 1, 1);
+            }
+        }
+    }
     document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
     console.log("updateMap completed in " + (performance.now() - benchmark) + "ms");
-    sheet.replaceSync('* {}');
+    if (!firefox)
+        sheet.replaceSync('* {}');
     mapstatus--;
     if (mapstatus == 1){
         mapstatus = 0;
