@@ -514,7 +514,7 @@ function getNbt() {
     mapstatus = 3;
         
     if (!gotMap){
-        if (currentSplit[0] == -1 && currentSplit[1] == -1){
+        if (currentSplit[0] == -1){
             renderCallback = function(){resetCallback();getNbt();};
         }
         getMap();
@@ -567,7 +567,7 @@ function getNbt() {
     }
     a.click();
     window.URL.revokeObjectURL(url);
-    if (currentSplit[0] == -1 && currentSplit[1] == -1){
+    if (currentSplit[0] == -1){
         mapstatus = 0;
     }
 }
