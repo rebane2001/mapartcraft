@@ -38,7 +38,7 @@
                 Version:
                 <select id="version">
                     <option selected="selected">1.12</option>
-                    <option>1.13</option>
+                    <option>1.13/1.14</option>
                 </select>
             </b><br>
             <!-- <b data-tooltip title="Turning this off will improve performance when selecting blocks" onclick="updateMap()">Render preview: <input id="renderpreview" type="checkbox" checked></b><br> -->
@@ -70,14 +70,9 @@
             <b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
             <br>
             <br>
-            <img src="img/download.png" onclick="getNbt()" style="cursor: pointer" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="cursor: pointer" /><br>
+            <img src="img/download.png" onclick="getNbt()" style="cursor: pointer" data-tooltip title="Download the nbt" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="cursor: pointer" data-tooltip title="Download the nbt split into 1x1 chunks" /><br>
             <img src="img/materials.png" onclick="getMaterials()" data-tooltip title="Refresh materials list" style="cursor: pointer" /><br>
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="LUNVZPRV7J8J4" />
-                <input type="image" src="img/donate.png" border="0" name="submit" data-tooltip title="donate" style="cursor: pointer" alt="Donate with PayPal button" />
-                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-            </form>
+            <a href="supporters" data-tooltip title="View supporters and donate"><img src="img/donate.png"  style="cursor: pointer" alt="Donate with PayPal button" /></a>
         </div>
         
         <div id="materials" class="section" style="float: left">
