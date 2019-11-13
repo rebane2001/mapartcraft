@@ -3,10 +3,18 @@ var selectedblocks = [];
 var selectedcolors = [];
 var filename = "mapart";
 var img = new Image();
-var colorCache = new Map(); //lru cache
 var currentSplit = [-1,-1]
+var benchmark;
+var renderCallback = function(){};
+var splits = [];
+var gotMap = false;
+var mapstatus = 0;
+//0 - idle
 
 const offscreen = new OffscreenCanvas(128, 128);
+const worker = new Worker("js/worker.js");
+
+const sheet = new CSSStyleSheet();
 
 function initialize() {
     let colorid = 0;
@@ -24,8 +32,12 @@ function initialize() {
         });
         colorid++;
     });
+    sheet.replaceSync('* {cursor: progress !important}');
+    document.adoptedStyleSheets = [sheet];
     updateStyle();
     tooltip.refresh();
+    offscreenscale = document.getElementById('displaycanvas').transferControlToOffscreen();
+    worker.postMessage([offscreenscale,"offscreeninit"],[offscreenscale]);
     document.getElementById('imgupload').addEventListener('change', loadImg);
     checkCookie();
     img.src = "img/upload.png";
@@ -53,147 +65,112 @@ function updateStyle() {
 }
 
 function updateMap() {
-    let benchmark = performance.now(); //benchmark updateMap() speed
-    selectedblocks = []; //touching this might break presets, so be careful
-    selectedcolors = [];
-    for (let i = 0; i < 51; i++) { //51 will also need to be changed in presets code
-        blockid = document.querySelector('input[name="color' + i + '"]:checked').value;
-        if (blockid == -1) {
-            continue
+    if (mapstatus == 0 || mapstatus == 4){
+        if (mapstatus == 0)
+            mapstatus++;
+        sheet.replaceSync('* {cursor: progress !important}');
+        benchmark = performance.now(); //benchmark updateMap() speed
+        selectedblocks = []; //touching this might break presets, so be careful
+        selectedcolors = [];
+        for (let i = 0; i < 51; i++) { //51 will also need to be changed in presets code
+            blockid = document.querySelector('input[name="color' + i + '"]:checked').value;
+            if (blockid == -1) {
+                continue
+            }
+            selectedblocks.push([i, parseInt(blockid)]);
+            // gotta add 2D/3D support here
+            if (document.getElementById('staircasing').checked) {
+                selectedcolors.push(window.blocklist[i][0][0]);
+                selectedcolors.push(window.blocklist[i][0][2]);
+            }
+            selectedcolors.push(window.blocklist[i][0][1]);
         }
-        selectedblocks.push([i, parseInt(blockid)]);
-        // gotta add 2D/3D support here
-        if (document.getElementById('staircasing').checked) {
-            selectedcolors.push(window.blocklist[i][0][0]);
-            selectedcolors.push(window.blocklist[i][0][2]);
+        updateStyle(); // Updating colorbox colors
+        mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
+        var ctx = offscreen.getContext('2d');
+        var dspcvs = document.getElementById('displaycanvas');
+        //this part is so that weird displays scale pixels 1 to int(x)
+        var dpr = window.devicePixelRatio || 1;
+        var sdpr = dpr/Math.floor(dpr);
+        ctx.canvas.width = mapsize[0] * 128;
+        ctx.canvas.height = mapsize[1] * 128;
+        document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
+        document.getElementById('mapreswarning').innerHTML = img.width + "x" + img.height;
+        if (img.width / img.height == ctx.canvas.width / ctx.canvas.height) {
+            document.getElementById('mapreswarning').style = "color:red; display: none";
+        } else {
+            document.getElementById('mapreswarning').style = "color:red; display: inline";
+            if (document.getElementById('cropimg').checked)
+                    document.getElementById('mapreswarning').style = "color:orange; display: inline";
         }
-        selectedcolors.push(window.blocklist[i][0][1]);
-    }
-    updateStyle(); // Updating colorbox colors
-    mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
-    var ctx = offscreen.getContext('2d');
-    var dspcvs = document.getElementById('displaycanvas');
-    var upsctx = dspcvs.getContext('2d');
-    //this part is so that weird displays scale pixels 1 to int(x)
-    var dpr = window.devicePixelRatio || 1;
-    var sdpr = dpr/Math.floor(dpr);
-    ctx.canvas.width = mapsize[0] * 128;
-    ctx.canvas.height = mapsize[1] * 128;
-    document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
-    document.getElementById('mapreswarning').innerHTML = img.width + "x" + img.height;
-    if (img.width / img.height == ctx.canvas.width / ctx.canvas.height) {
-        document.getElementById('mapreswarning').style = "color:red; display: none";
-    } else {
-        document.getElementById('mapreswarning').style = "color:red; display: inline";
-        if (document.getElementById('cropimg').checked)
-                document.getElementById('mapreswarning').style = "color:orange; display: inline";
-    }
-    if (mapsize[0] < 4 && mapsize[1] < 8) {
-        upsctx.canvas.width = ctx.canvas.width * 2;
-        upsctx.canvas.height = ctx.canvas.height * 2;
-        dspcvs.style.width = (ctx.canvas.width * 2 / dpr) + "px";
-        dspcvs.style.height = (ctx.canvas.height * 2 / dpr) + "px";
-    } else {
-        upsctx.canvas.width = ctx.canvas.width;
-        upsctx.canvas.height = ctx.canvas.height;
-        dspcvs.style.width = (ctx.canvas.width / dpr) + "px";
-        dspcvs.style.height = (ctx.canvas.height / dpr) + "px";
-    }
-    if (document.getElementById('renderpreview').checked) {
-        colorCache = new Map(); //reset color cache
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        //crop or scale image
-        if (document.getElementById('cropimg').checked) {
-            let cropdim = cropImg(img.width,img.height);
-            ctx.drawImage(img, cropdim[0], cropdim[1], cropdim[2], cropdim[3], 0, 0, canvas.width, canvas.height);
-        }else{
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        if (mapsize[0] < 4 && mapsize[1] < 8) {
+            dspcvs.style.width = (ctx.canvas.width * 2 / dpr) + "px";
+            dspcvs.style.height = (ctx.canvas.height * 2 / dpr) + "px";
+        } else {
+            dspcvs.style.width = (ctx.canvas.width / dpr) + "px";
+            dspcvs.style.height = (ctx.canvas.height / dpr) + "px";
         }
-
-        if (currentSplit[0] == -1){
-            var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        }else{
-            var imgData = ctx.getImageData(currentSplit[0]*128, currentSplit[1]*128, (currentSplit[1]+1)*128, (currentSplit[1]+1)*128);
-        }
-        if (currentSplit[0] != -1){
-            mapsize = [1,1];
-            ctx.canvas.width = 128;
-            ctx.canvas.height = 128;
-        }
-        for (var i = 0; i < imgData.data.length; i += 4) {
-            //i = r, i+1 = g, i+2 = b, i+3 = a
-            imgData.data[i + 3] = 255; // remove alpha
-            let x = (i / 4) % canvas.width;
-            let y = ((i / 4) - x) / canvas.width;
-            if (selectedblocks.length != 0){
-                switch (document.getElementById("dither").selectedIndex) {
-                    case 0: // no dither
-                        newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
-                        imgData.data[i + 0] = newpixel[0];
-                        imgData.data[i + 1] = newpixel[1];
-                        imgData.data[i + 2] = newpixel[2];
-                        break;
-                    case 1: // floyd
-                        oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
-                        newpixel = find_closest(oldpixel);
-                        quant_error = [oldpixel[0] - newpixel[0], oldpixel[1] - newpixel[1], oldpixel[2] - newpixel[2]];
-
-                        imgData.data[i + 0] = newpixel[0];
-                        imgData.data[i + 1] = newpixel[1];
-                        imgData.data[i + 2] = newpixel[2];
-        
-                        try {
-                            imgData.data[i + 4] += (quant_error[0] * 7 / 16);
-                            imgData.data[i + 5] += (quant_error[1] * 7 / 16);
-                            imgData.data[i + 6] += (quant_error[2] * 7 / 16);
-                            imgData.data[i + canvas.width * 4 - 4] += (quant_error[0] * 3 / 16);
-                            imgData.data[i + canvas.width * 4 - 3] += (quant_error[1] * 3 / 16);
-                            imgData.data[i + canvas.width * 4 - 2] += (quant_error[2] * 3 / 16);
-                            imgData.data[i + canvas.width * 4 + 0] += (quant_error[0] * 5 / 16);
-                            imgData.data[i + canvas.width * 4 + 1] += (quant_error[1] * 5 / 16);
-                            imgData.data[i + canvas.width * 4 + 2] += (quant_error[2] * 5 / 16);
-                            imgData.data[i + canvas.width * 4 + 4] += (quant_error[0] * 1 / 16);
-                            imgData.data[i + canvas.width * 4 + 5] += (quant_error[1] * 1 / 16);
-                            imgData.data[i + canvas.width * 4 + 6] += (quant_error[2] * 1 / 16);
-                        } catch (e) {
-                            console.error(e);
-                        }
-        
-                        break;
-                    case 2: // Bayer 4x4
-                    case 3: // Bayer 2x2
-                    case 4: // Ordered 3x3
-                        patterns = [
-                            [[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]],
-                            [[1, 3], [4,2]],
-                            [[1,7,4],[5,8,3],[6,2,9]]
-                        ];
-                        pat = patterns[document.getElementById("dither").selectedIndex-2]
-                        oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]]; 
-                        twopixel = find_closest_two(oldpixel); //twopixel = [bestval1,bestval2,newpixel1,newpixel2]
-                        if ((twopixel[0]*(pat[0].length*pat.length+1)/twopixel[1]) > pat[x%pat[0].length][y%pat.length]){
-                            newpixel = twopixel[3];
-                        }else{
-                            newpixel = twopixel[2];
-                        }
-                        imgData.data[i + 0] = newpixel[0];
-                        imgData.data[i + 1] = newpixel[1];
-                        imgData.data[i + 2] = newpixel[2];
-                        break;
+        //if (document.getElementById('renderpreview').checked) {
+        if (true) {
+            document.getElementById('mapres').innerHTML = "Rendering...";
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    
+            //crop or scale image
+            if (document.getElementById('cropimg').checked) {
+                let cropdim = cropImg(img.width,img.height);
+                ctx.drawImage(img, cropdim[0], cropdim[1], cropdim[2], cropdim[3], 0, 0, ctx.canvas.width, ctx.canvas.height);
+            }else{
+                ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
+            }
+            if (currentSplit[0] != -1){
+                mapsize = [1,1];
+            }
+            if (currentSplit[0] == -1){
+                var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+            }else{
+                var imgData = ctx.getImageData(currentSplit[0]*128, currentSplit[1]*128, (currentSplit[1]+1)*128, (currentSplit[1]+1)*128);
+            }
+            if (currentSplit[0] != -1){
+                ctx.canvas.width = 128;
+                ctx.canvas.height = 128;
+            }
+            //worker code here
+            //offscreen
+            worker.postMessage([imgData,[ctx.canvas.width,ctx.canvas.height],document.getElementById("dither").selectedIndex,(selectedblocks.length != 0),selectedcolors,document.getElementById('bettercolor').checked,mapsize]);
+            /*
+            upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
+            for (var i = 0; i < imgData.data.length; i += 4) {
+                if (mapsize[0] < 4 && mapsize[1] < 8) {
+                    upsctx.fillRect(x * 2, y * 2, 2, 2);
+                } else {
+                    upsctx.fillRect(x, y, 1, 1);
                 }
             }
-
-            upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
-            if (mapsize[0] < 4 && mapsize[1] < 8) {
-                upsctx.fillRect(x * 2, y * 2, 2, 2);
-            } else {
-                upsctx.fillRect(x, y, 1, 1);
-            }
+            */
         }
-        ctx.putImageData(imgData, 0, 0);
+    }else if(mapstatus == 1){
+        mapstatus++;
     }
-    console.log("updateMap completed in " + (performance.now() - benchmark) + "ms") 
+}
+
+worker.onmessage = function(e) { 
+    imgData = e.data;
+    var ctx = offscreen.getContext('2d');
+    ctx.putImageData(imgData, 0, 0);
+    document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
+    console.log("updateMap completed in " + (performance.now() - benchmark) + "ms");
+    sheet.replaceSync('* {}');
+    mapstatus--;
+    if (mapstatus == 1){
+        mapstatus = 0;
+        updateMap();
+    }else if(mapstatus == 3){
+        renderCallback();
+    }
+}
+
+function resetCallback(){
+    renderCallback = function(){};
 }
 
 //calculates correct sizes for cropping an image
@@ -218,28 +195,55 @@ function cropImg(imgWidth,imgHeight){
 }
 
 function getNbtSplit(){
+    if (mapstatus == 1 || mapstatus == 2)
+        return;
+    mapstatus = 3;
     //if no blocks selected, don't download
     if (selectedblocks.length == 0){
         alert("Select blocks before downloading!");
         return;
     }
+    splits = [];
     console.log("Downloading as 1x1 split");
     for (let x = 0; x<document.getElementById('mapsizex').value; x++){
         for (let y = 0; y<document.getElementById('mapsizey').value; y++){
-            console.log("Currently downloading: " + x + " " + y);
-            currentSplit = [x,y];
-            getNbt();
+            console.log("Preparing: " + x + " " + y);
+            splits.push([x,y]);
         }
     }
-    currentSplit = [-1,-1];
-    updateMap();
-    console.log("Done!");
+    dlNbtSplit()
+}
+
+function dlNbtSplit(){ //call getNbtSplit() first!
+    renderCallback = function(){dlNbtSplit()};
+    if (!gotMap){
+        if (splits.length > 0){
+            currentSplit = splits.shift();
+            console.log("Currently downloading: " + currentSplit[0] + " " + currentSplit[1]);
+            getMap();
+        }else{
+            resetCallback();
+            console.log("Done, rerendering map");
+            mapstatus = 0;
+            currentSplit = [-1,-1];
+            updateMap();
+        }
+    }else{
+        getNbt();
+        dlNbtSplit();
+    }
 }
 
 function getMap() {
     //force render preview
-    document.getElementById('renderpreview').checked = true;
-    updateMap();
+    //document.getElementById('renderpreview').checked = true;
+    if (!gotMap){
+        gotMap = true;
+        mapstatus = 4;
+        updateMap();
+        return;
+    }
+    gotMap = false;
 
     let ctx = offscreen.getContext('2d');
     let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -449,6 +453,15 @@ function getMaterials() {
         return;
     }
 
+    if (mapstatus == 1 || mapstatus == 2)
+        return;
+    mapstatus = 3;
+
+    if (!gotMap){
+        renderCallback = function(){resetCallback();getMaterials();};
+        getMap();
+        return;
+    }
     let {blocks, nbtblocklist} = getMap();
     nbtblocklist.forEach(b => b.count = 0);
     blocks.forEach(b => nbtblocklist[b.state].count++);
@@ -486,6 +499,7 @@ function getMaterials() {
     htmlString += "</tbody>"
     document.getElementById("materialtable").innerHTML = htmlString;
     tooltip.refresh();
+    mapstatus = 0;
 }
 
 function getNbt() {
@@ -494,7 +508,18 @@ function getNbt() {
         alert("Select blocks before downloading!");
         return;
     }
-    
+
+    if (mapstatus == 1 || mapstatus == 2)
+        return;
+    mapstatus = 3;
+        
+    if (!gotMap){
+        if (currentSplit[0] == -1 && currentSplit[1] == -1){
+            renderCallback = function(){resetCallback();getNbt();};
+        }
+        getMap();
+        return;
+    }
     let {blocks, nbtblocklist, width, height} = getMap();
     let jsonstring = "{\"name\":\"\",\"value\":{\"blocks\":{\"type\":\"list\",\"value\":{\"type\":\"compound\",\"value\":[";
     blocks.forEach(function(r) {
@@ -542,6 +567,9 @@ function getNbt() {
     }
     a.click();
     window.URL.revokeObjectURL(url);
+    if (currentSplit[0] == -1 && currentSplit[1] == -1){
+        mapstatus = 0;
+    }
 }
 
 function changeVersion(){
@@ -623,68 +651,7 @@ function updateVersion(){
     }
 }
 
-function diff_colors(p1, p2) {
-    if (document.getElementById('bettercolor').checked) {
-        //return deltaE(rgb2lab(p1),rgb2lab(p2))
-        p1 = rgb2lab(p1);
-        p2 = rgb2lab(p2);
-    }
 
-    r = p1[0] - p2[0];
-    g = p1[1] - p2[1];
-    b = p1[2] - p2[2];
-    
-    return (r * r) + (g * g) + (b * b);
-}
-
-function find_closest(pixel) {
-    let val = pixel.toString();
-    if (colorCache.has(val)){
-        return colorCache.get(val);
-    }else{
-        let bestval = 9999999;
-        let newpixel = pixel;
-    
-        selectedcolors.forEach(function(p) {
-            let diff = diff_colors(p, pixel);
-            if (diff < bestval) {
-                bestval = diff;
-                newpixel = p;
-            }
-        });
-
-        colorCache.set(val, newpixel);
-        return newpixel;
-    }
-}
-
-function find_closest_two(pixel) {
-    let val = pixel.toString();
-    if (colorCache.has(val)){
-        return colorCache.get(val);
-    }else{
-        let bestval1 = 9999999;
-        let bestval2 = 9999999;
-        let newpixel1 = pixel;
-        let newpixel2 = pixel;
-    
-        selectedcolors.forEach(function(p) {
-            let diff = diff_colors(p, pixel);
-            if (diff < bestval1) {
-                bestval1 = diff;
-                newpixel1 = p;
-            }
-            if (diff < bestval2 && newpixel1 != p) {
-                bestval2 = diff;
-                newpixel2 = p;
-            }
-        });
-
-        let twopixel = [bestval1,bestval2,newpixel1,newpixel2];
-        colorCache.set(val, twopixel);
-        return twopixel;
-    }
-}
 
 function loadImg(e) {
     img = new Image;
@@ -751,43 +718,6 @@ function arraysEqual(a, b) {
     }
 
     return true;
-}
-
-// rgb2lab conversion based on the one from redstonehelper's program
-function rgb2lab(rgb) {
-    let r1 = rgb[0] / 255.0,
-        g1 = rgb[1] / 255.0,
-        b1 = rgb[2] / 255.0;
-
-    r1 = 0.04045 >= r1 ? r1 /= 12.0 : Math.pow((r1 + 0.055) / 1.055, 2.4);
-    g1 = 0.04045 >= g1 ? g1 /= 12.0 : Math.pow((g1 + 0.055) / 1.055, 2.4);
-    b1 = 0.04045 >= b1 ? b1 /= 12.0 : Math.pow((b1 + 0.055) / 1.055, 2.4);
-    let f = (0.43605202 * r1 + 0.3850816 * g1 + 0.14308742 * b1) / 0.964221,
-        h = 0.22249159 * r1 + 0.71688604 * g1 + 0.060621485 * b1,
-        k = (0.013929122 * r1 + 0.097097 * g1 + 0.7141855 * b1) / 0.825211,
-        l = 0.008856452 < h ? Math.pow(h, 1 / 3) : (903.2963 * h + 16.0) / 116.0,
-        m = 500.0 * ((0.008856452 < f ? Math.pow(f, 1 / 3) : (903.2963 * f + 16.0) / 116.0) - l),
-        n = 200.0 * (l - (0.008856452 < k ? Math.pow(k, 1 / 3) : (903.2963 * k + 16.0) / 116.0));
-
-    return [2.55 * (116.0 * l - 16.0) + 0.5, m + 0.5, n + 0.5];
-}
-
-function rgb2labint(rgb) {
-    let r1 = rgb[0] / 255.0,
-        g1 = rgb[1] / 255.0,
-        b1 = rgb[2] / 255.0;
-
-    r1 = 0.04045 >= r1 ? r1 /= 12.0 : Math.pow((r1 + 0.055) / 1.055, 2.4);
-    g1 = 0.04045 >= g1 ? g1 /= 12.0 : Math.pow((g1 + 0.055) / 1.055, 2.4);
-    b1 = 0.04045 >= b1 ? b1 /= 12.0 : Math.pow((b1 + 0.055) / 1.055, 2.4);
-    let f = (0.43605202 * r1 + 0.3850816 * g1 + 0.14308742 * b1) / 0.964221,
-        h = 0.22249159 * r1 + 0.71688604 * g1 + 0.060621485 * b1,
-        k = (0.013929122 * r1 + 0.097097 * g1 + 0.7141855 * b1) / 0.825211,
-        l = 0.008856452 < h ? Math.pow(h, 1 / 3) : (903.2963 * h + 16.0) / 116.0,
-        m = 500.0 * ((0.008856452 < f ? Math.pow(f, 1 / 3) : (903.2963 * f + 16.0) / 116.0) - l),
-        n = 200.0 * (l - (0.008856452 < k ? Math.pow(k, 1 / 3) : (903.2963 * k + 16.0) / 116.0));
-
-    return [parseInt(2.55 * (116.0 * l - 16.0) + 0.5, 10), parseInt(m + 0.5, 10), parseInt(n + 0.5, 10)];
 }
 
 // Thx Alexander O'Mara
