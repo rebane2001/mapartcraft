@@ -6,6 +6,15 @@
     src: url('kenpixel_mini_square.woff') format('woff');
 }
 
+div#preloads {
+   position: absolute;
+   overflow: hidden;
+   left: -9999px; 
+   top: -9999px;
+   height: 1px;
+   width: 1px;
+}
+
 html {
     background-color: #333
 }
