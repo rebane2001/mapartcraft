@@ -28,7 +28,7 @@ function initialize() {
             let imgfile = j[4]
             if (j[4] == "")
                 imgfile = j[0]
-            document.getElementById('blockselection').innerHTML += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="img/' + imgfile + '.png" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
+            document.getElementById('blockselection').innerHTML += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
             blockid++;
         });
         colorid++;
