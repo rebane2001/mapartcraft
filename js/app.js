@@ -485,6 +485,8 @@ function getMaterials() {
         return;
     }
 
+    document.getElementById("materials").style = "float: left";
+
     if (mapstatus == 1 || mapstatus == 2)
         return;
     mapstatus = 3;
