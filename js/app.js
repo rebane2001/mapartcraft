@@ -526,7 +526,7 @@ function getMaterials() {
         if (j[4] == "")
             imgfile = j[0]
 
-        htmlString += '<tr><th><img src="img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></th>';
+        htmlString += '<tr><th><img src="img/' + ((imgfile == "placeholder") ? "placeholder.png" : ('null.png" class="block block-' + imgfile)) + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></th>';
         htmlString += '<th>' + amount + '</th></tr>'
     });
 
