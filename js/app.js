@@ -18,6 +18,10 @@ const worker = new Worker("js/worker.js");
 var sheet;
 
 function initialize() {
+	//show warning when using Edge
+    if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
+        alert('Note: using Microsoft Edge is unsupported.\nPlease use Chrome (preferred) or Firefox for MapartCraft');
+    }
     let colorid = 0;
     //load 1.12 blocklist by default
     window.blocklist = window.blocklists["1.12"];
@@ -40,7 +44,7 @@ function initialize() {
         sheet = new CSSStyleSheet();
         sheet.replaceSync('* {cursor: progress !important}');
         document.adoptedStyleSheets = [sheet];
-    }catch{
+    }catch (err){
         //means the user is probably using Firefox, so we're gonna use fixes
         console.log("Falling back to Firefox mode (slower, no loading cursor)");
         firefox = true;
@@ -55,10 +59,6 @@ function initialize() {
     img.src = "img/upload.png";
     img.onload = function() {
         updateMap();
-    }
-    //show warning when using Edge
-    if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
-        alert('Note: using Microsoft Edge is unsupported.\nPlease use Chrome (preferred) or Firefox for MapartCraft');
     }
 }
 
