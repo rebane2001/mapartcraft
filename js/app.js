@@ -24,7 +24,7 @@ function initialize() {
     }
     let colorid = 0;
     //load 1.12 blocklist by default
-    window.blocklist = window.blocklists["1.12"];
+    window.blocklist = window.colorlist_base;
     window.blocklist.forEach(function(i) {
         blockid = 0;
         document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
@@ -613,7 +613,7 @@ function changeVersion(){
 function loadPreset(){
     if (document.getElementById("presets").selectedIndex > 0){
         let preset = JSON.parse(getCookie("presets"))[document.getElementById("presets").selectedIndex-1]["blocks"];
-        for (let i = 0; i < 51; i++) { 
+        for (let i = 0; i < window.blocklist.length; i++) { 
             document.querySelector('input[name="color' + i + '"]:checked').checked = false;
             document.querySelector('input[name="color' + i + '"][value="-1"]').checked = true;
         }
@@ -677,14 +677,24 @@ function checkCookie() {
 function updateVersion(){
     switch (document.getElementById("version").selectedIndex) {
                 case 0:
-                    window.blocklist = window.blocklists["1.12"];
+                    window.blocklist = window.colorlist_base;
                     break;
                 case 1:
-                    window.blocklist = window.blocklists["1.13"];
+                    window.blocklist = window.colorlist_base;
+                    for (let x = 0; x < window.colorlist_patches["1.13"].length; ++x) {
+                        for (let i = 0; i < window.blocklist.length; ++i) { 
+                            if (window.colorlist_patches["1.13"][x][0][0] == window.blocklist[i][2]){
+                                for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
+                                    if (window.colorlist_patches["1.13"][x][0][1] == window.blocklist[i][1][j][5]){
+                                        window.blocklist[i][1][j] = window.colorlist_patches["1.13"][x][1];
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
     }
 }
-
 
 
 function loadImg(e) {
