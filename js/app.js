@@ -661,14 +661,14 @@ function savePreset(){
         presets.push({"name":presetName,"blocks":presetblocks});
         setCookie("presets", JSON.stringify(presets), 9000);
     }
-    loadCookies()
+    loadCookies();
 }
 
 function deletePreset(){
     let presets = JSON.parse(getCookie("presets"));
     presets.splice(document.getElementById("presets").selectedIndex-1, 1);
     setCookie("presets", JSON.stringify(presets), 9000);
-    loadCookies()
+    loadCookies();
 }
 
 function initCookie() {
