@@ -662,6 +662,7 @@ function savePreset(){
         setCookie("presets", JSON.stringify(presets), 9000);
     }
     loadCookies();
+    document.getElementById("presets").selectedIndex = document.getElementById("presets").options.length-1;
 }
 
 function deletePreset(){
