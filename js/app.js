@@ -56,6 +56,9 @@ function initialize() {
     tooltip.refresh();
     document.getElementById('imgupload').addEventListener('change', loadImg);
     checkCookie();
+    let urlParams = new URL(window.location).searchParams;
+    if (urlParams.has('preset'))
+        importPreset(urlParams.get('preset'));
     img.src = "img/upload.png";
     img.onload = function() {
         updateMap();
@@ -606,10 +609,6 @@ function getNbt() {
     }
 }
 
-function changeVersion(){
-    
-}
-
 function loadPreset(){
     if (document.getElementById("presets").selectedIndex > 0){
         let preset = JSON.parse(getCookie("presets"))[document.getElementById("presets").selectedIndex-1]["blocks"];
@@ -665,6 +664,58 @@ function savePreset(){
     document.getElementById("presets").selectedIndex = document.getElementById("presets").options.length-1;
 }
 
+// Import preset from a link
+function importPreset(encodedPreset){
+    if (!/^[0-9A-Za-z]+$/g.test(encodedPreset)){
+        alert("Preset link is corrupted");
+        return;
+    }
+    encodedPreset += "_";
+    let preset = [];
+    let block = [];
+    let text = "";
+    let state = false;
+    for (var i = 0; i < encodedPreset.length; i++) {
+        let char = encodedPreset.charAt(i);
+        let small = /^[0-9a-z_]+$/g.test(char);
+        if (small && state){
+            state = false;
+            block.push(parseInt(text, 26));
+            text = "";
+            preset.push(block);
+            block = [];
+        }else if(!small && !state){
+            state = true;
+            block.push(parseInt(text, 36));
+            text = "";
+        }
+        
+        text += (state) ? char.toLowerCase().replace(/[qrstuvwxyz]/g, (m) => {return {'q':'0','r':'1','s':'2','t':'3','u':'4','v':'5','w':'6','x':'7','y':'8','z':'9'}[m];}) : char;
+    }
+    loadPresetArray(preset);
+}
+
+// Export preset to a link
+function sharePreset(){
+    if (selectedblocks.length == 0){
+        alert("Select blocks before sharing them!");
+        return;
+    }
+    let presetblocks = []
+    for (let i = 0; i < selectedblocks.length; ++i) {
+        let sb = selectedblocks[i];
+        presetblocks.push([
+            window.blocklist[sb[0]][2],
+            window.blocklist[sb[0]][1][sb[1]][5]
+        ]);
+    }
+    let presetstr = ""
+    for (let i = 0; i < presetblocks.length; ++i) {
+        presetstr += (presetblocks[i][0]).toString(36) + (presetblocks[i][1]).toString(26).replace(/[0123456789]/g, (m) => {return {'0':'q','1':'r','2':'s','3':'t','4':'u','5':'v','6':'w','7':'x','8':'y','9':'z'}[m];}).toUpperCase();
+    }
+    prompt("Share this link to share your currently selected blocks", "https://rebane2001.com/mapartcraft/?preset=" + presetstr);
+}
+
 function deletePreset(){
     let presets = JSON.parse(getCookie("presets"));
     presets.splice(document.getElementById("presets").selectedIndex-1, 1);
@@ -676,6 +727,7 @@ function initCookie() {
     if(confirm("To use presets, we need to use cookies. Are you okay with that?")){
         setCookie("presets", "[{\"name\":\"None\",\"blocks\":[]},{\"name\":\"Everything\",\"blocks\":[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0]]},{\"name\":\"Carpets\",\"blocks\":[[13,1],[14,1],[15,1],[16,1],[17,1],[18,1],[19,1],[20,1],[21,1],[22,1],[23,1],[24,1],[25,1],[26,1],[27,1],[28,1]]}]", 9000)
         loadCookies();
+        tooltip.refresh();
     }
 }
 
@@ -683,7 +735,7 @@ function loadCookies(){
     if(document.getElementById("fauxpresets")){ //if loading cookie for the first time since refresh
         document.getElementById("fauxpresets").outerHTML = ""; //delete faux button
         document.getElementById("blockselectiontitle").outerHTML = ""; //sketchy workaround - really crappy
-        document.getElementById('blockselection').innerHTML = "<h2>Block selection</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">Delete</button><button type=\"button\" onClick=\"savePreset()\">Save</button><br>" + document.getElementById('blockselection').innerHTML;
+        document.getElementById('blockselection').innerHTML = "<h2>Block selection</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">Delete</button><button type=\"button\" onClick=\"savePreset()\">Save</button><button type=\"button\" onClick=\"sharePreset()\" data-tooltip title=\"Shares the blocks you have currently selected as a link\">Share</button><br>" + document.getElementById('blockselection').innerHTML;
     }
     document.getElementById("presets").innerHTML = "<option>Presets</option>";
     let presets = JSON.parse(getCookie("presets"));
