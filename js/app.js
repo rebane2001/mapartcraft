@@ -613,15 +613,29 @@ function changeVersion(){
 function loadPreset(){
     if (document.getElementById("presets").selectedIndex > 0){
         let preset = JSON.parse(getCookie("presets"))[document.getElementById("presets").selectedIndex-1]["blocks"];
-        for (let i = 0; i < window.blocklist.length; i++) { 
-            document.querySelector('input[name="color' + i + '"]:checked').checked = false;
-            document.querySelector('input[name="color' + i + '"][value="-1"]').checked = true;
-        }
-        preset.forEach(function(b) {
-            document.querySelector('input[name="color' + b[0] + '"]:checked').checked = false;
-            document.querySelector('input[name="color' + b[0] + '"][value="' + b[1] + '"]').checked = true;
-        });
+        loadPresetArray(preset);
     }
+    
+}
+
+function loadPresetArray(preset){
+    for (let i = 0; i < window.blocklist.length; i++) { 
+        document.querySelector('input[name="color' + i + '"]:checked').checked = false;
+        document.querySelector('input[name="color' + i + '"][value="-1"]').checked = true;
+    }
+    preset.forEach(function(b) {
+        for (let i = 0; i < window.blocklist.length; ++i) { 
+            if (b[0] == window.blocklist[i][2]){
+                for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
+                    if (b[1] == window.blocklist[i][1][j][5]){
+                        document.querySelector('input[name="color' + i + '"]:checked').checked = false;
+                        document.querySelector('input[name="color' + i + '"][value="' + j + '"]').checked = true;
+                    }
+                }
+                break;
+            }
+        }
+    });
     updateMap();
 }
 
@@ -636,7 +650,15 @@ function savePreset(){
                 break;
             }
         }
-        presets.push({"name":presetName,"blocks":selectedblocks});
+        let presetblocks = []
+        for (let i = 0; i < selectedblocks.length; ++i) {
+            let sb = selectedblocks[i];
+            presetblocks.push([
+                window.blocklist[sb[0]][2],
+                window.blocklist[sb[0]][1][sb[1]][5]
+            ]);
+        }
+        presets.push({"name":presetName,"blocks":presetblocks});
         setCookie("presets", JSON.stringify(presets), 9000);
     }
     loadCookies()
@@ -687,8 +709,10 @@ function updateVersion(){
                                 for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
                                     if (window.colorlist_patches["1.13"][x][0][1] == window.blocklist[i][1][j][5]){
                                         window.blocklist[i][1][j] = window.colorlist_patches["1.13"][x][1];
+                                        break;
                                     }
                                 }
+                                break;
                             }
                         }
                     }
