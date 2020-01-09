@@ -666,6 +666,10 @@ function savePreset(){
 
 // Import preset from a link
 function importPreset(encodedPreset){
+    if (encodedPreset == "dQw4w9WgXcQ"){
+        document.location = "https://www.youtube.com/watch?v=cZ5wOPinZd4";
+        return;
+    }
     if (!/^[0-9A-Za-z]+$/g.test(encodedPreset)){
         alert("Preset link is corrupted");
         return;
