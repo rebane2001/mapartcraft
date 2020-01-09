@@ -16,9 +16,9 @@
 .block-iron_block,
 .block-log_oak_top,
 .block-planks_oak,
-.block-slabs_acacia,
-.block-stone_slab,
-.block-wool_colored_purple{
+.block-sea_lantern,
+.block-stone_granite,
+.block-wool_colored_pink{
 	background-position-x: -000%
 }
 
@@ -33,9 +33,9 @@
 .block-iron_trapdoor,
 .block-log_spruce,
 .block-planks_spruce,
-.block-slabs_big_oak,
-.block-tnt_side,
-.block-wool_colored_red{
+.block-slabs_acacia,
+.block-stone_slab,
+.block-wool_colored_purple{
 	background-position-x: -100%
 }
 
@@ -50,9 +50,9 @@
 .block-jukebox_top,
 .block-log_spruce_top,
 .block-prismarine,
-.block-slabs_birch,
-.block-water_bucket,
-.block-wool_colored_silver{
+.block-slabs_big_oak,
+.block-tnt_side,
+.block-wool_colored_red{
 	background-position-x: -200%
 }
 
@@ -67,9 +67,9 @@
 .block-lapis_block,
 .block-magma,
 .block-prismarine_bricks,
-.block-slabs_jungle,
-.block-web,
-.block-wool_colored_white{
+.block-slabs_birch,
+.block-water_bucket,
+.block-wool_colored_silver{
 	background-position-x: -300%
 }
 
@@ -84,9 +84,9 @@
 .block-leaves,
 .block-melon_side,
 .block-prismarine_dark,
-.block-slabs_oak,
-.block-wool_colored_black,
-.block-wool_colored_yellow{
+.block-slabs_jungle,
+.block-web,
+.block-wool_colored_white{
 	background-position-x: -400%
 }
 
@@ -101,8 +101,9 @@
 .block-light_weighted_pressure_plate,
 .block-mycelium_side,
 .block-purpur_block,
-.block-slabs_spruce,
-.block-wool_colored_blue{
+.block-slabs_oak,
+.block-wool_colored_black,
+.block-wool_colored_yellow{
 	background-position-x: -500%
 }
 
@@ -117,8 +118,8 @@
 .block-log_acacia,
 .block-nether_brick,
 .block-purpur_slab,
-.block-slime,
-.block-wool_colored_brown{
+.block-slabs_spruce,
+.block-wool_colored_blue{
 	background-position-x: -600%
 }
 
@@ -133,8 +134,8 @@
 .block-log_acacia_top,
 .block-nether_brick_slab,
 .block-quartz_block_side,
-.block-snow,
-.block-wool_colored_cyan{
+.block-slime,
+.block-wool_colored_brown{
 	background-position-x: -700%
 }
 
@@ -149,8 +150,8 @@
 .block-log_big_oak,
 .block-nether_wart_block,
 .block-quartz_slab,
-.block-snow_layer,
-.block-wool_colored_gray{
+.block-snow,
+.block-wool_colored_cyan{
 	background-position-x: -800%
 }
 
@@ -165,8 +166,8 @@
 .block-log_big_oak_top,
 .block-netherrack,
 .block-red_sand,
-.block-soul_sand,
-.block-wool_colored_green{
+.block-snow_layer,
+.block-wool_colored_gray{
 	background-position-x: -900%
 }
 
@@ -181,8 +182,8 @@
 .block-log_birch,
 .block-obsidian,
 .block-red_sandstone_normal,
-.block-sponge,
-.block-wool_colored_light_blue{
+.block-soul_sand,
+.block-wool_colored_green{
 	background-position-x: -1000%
 }
 
@@ -197,8 +198,8 @@
 .block-log_birch_top,
 .block-planks_acacia,
 .block-redstone_block,
-.block-stone,
-.block-wool_colored_lime{
+.block-sponge,
+.block-wool_colored_light_blue{
 	background-position-x: -1100%
 }
 
@@ -213,8 +214,8 @@
 .block-log_jungle,
 .block-planks_big_oak,
 .block-sand,
-.block-stone_andesite,
-.block-wool_colored_magenta{
+.block-stone,
+.block-wool_colored_lime{
 	background-position-x: -1200%
 }
 
@@ -229,8 +230,8 @@
 .block-log_jungle_top,
 .block-planks_birch,
 .block-sandstone_normal,
-.block-stone_diorite,
-.block-wool_colored_orange{
+.block-stone_andesite,
+.block-wool_colored_magenta{
 	background-position-x: -1300%
 }
 
@@ -244,9 +245,9 @@
 .block-iron_bars,
 .block-log_oak,
 .block-planks_jungle,
-.block-sea_lantern,
-.block-stone_granite,
-.block-wool_colored_pink{
+.block-sandstone_slab,
+.block-stone_diorite,
+.block-wool_colored_orange{
 	background-position-x: -1400%
 }
 
@@ -444,10 +445,11 @@
 .block-redstone_block,
 .block-sand,
 .block-sandstone_normal,
-.block-sea_lantern{
+.block-sandstone_slab{
 	background-position-y: -1000%
 }
 
+.block-sea_lantern,
 .block-slabs_acacia,
 .block-slabs_big_oak,
 .block-slabs_birch,
@@ -461,11 +463,11 @@
 .block-sponge,
 .block-stone,
 .block-stone_andesite,
-.block-stone_diorite,
-.block-stone_granite{
+.block-stone_diorite{
 	background-position-y: -1100%
 }
 
+.block-stone_granite,
 .block-stone_slab,
 .block-tnt_side,
 .block-water_bucket,
@@ -479,11 +481,11 @@
 .block-wool_colored_light_blue,
 .block-wool_colored_lime,
 .block-wool_colored_magenta,
-.block-wool_colored_orange,
-.block-wool_colored_pink{
+.block-wool_colored_orange{
 	background-position-y: -1200%
 }
 
+.block-wool_colored_pink,
 .block-wool_colored_purple,
 .block-wool_colored_red,
 .block-wool_colored_silver,
