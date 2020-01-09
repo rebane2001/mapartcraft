@@ -13,6 +13,7 @@ window.colorlist_base =
         [
             ["sand", "", "Sand", true, "", 0],
             ["sandstone", "", "Sandstone", false, "sandstone_normal", 1],
+            ["stone_slab", "'variant':'sandstone'", "Sandstone Slab", false, "sandstone_slab", 7],
             ["log", "'axis':'y','variant':'birch'", "Birch Log (vertical)", false, "log_birch_top", 2],
             ["planks", "'variant':'birch'", "Birch Planks", false, "planks_birch", 3],
             ["wooden_slab", "'variant':'birch'", "Birch Slab", false, "slabs_birch", 4],
@@ -517,6 +518,7 @@ window.colorlist_patches = {
         [[1,3], ['birch_planks', '', 'Birch Planks', false, 'planks_birch', 3]],
         [[1,4], ['birch_slab', '', 'Birch Slab', false, 'slabs_birch', 4]],
         [[1,6], ['end_stone', '', 'End Stone', false, '', 6]],
+        [[1,7], ["sandstone_slab", "", "Sandstone Slab", false, "sandstone_slab", 7]],
         [[2,0], ['cobweb', '', 'Cobweb', false, 'web', 0]],
         [[3,1], ['redstone_block', '', 'Block of Redstone', false, '', 1]],
         [[4,1], ['packed_ice', '', 'Packed Ice', false, 'ice_packed', 1]],
