@@ -53,7 +53,7 @@ function initialize() {
         offscreen.height = 128;
     }
     updateStyle();
-    tooltip.refresh();
+    //tooltip.refresh();
     document.getElementById('imgupload').addEventListener('change', loadImg);
     checkCookie();
     let urlParams = new URL(window.location).searchParams;
