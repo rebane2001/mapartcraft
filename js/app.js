@@ -12,6 +12,26 @@ var gotMap = false;
 var mapstatus = 0;
 //0 - idle
 
+var versionindex = {
+    "1.12": [1139,0],
+    "1.12.1": [1241,0],
+    "1.12.2": [1343,0],
+    "1.13.0": [1519,1],
+    "1.13.1": [1628,1],
+    "1.13.2": [1631,1],
+    "1.14.0": [1952,1],
+    "1.14.1": [1957,1],
+    "1.14.2": [1963,1],
+    "1.14.3": [1968,1],
+    "1.14.4": [1976,1],
+    "1.15.0": [2225,1],
+    "1.15.1": [2227,1],
+};
+
+var mcversion = "1.12.2";
+var dataversion = 1343;
+var blockversion = 0;
+
 var offscreen;
 const worker = new Worker("js/worker.js");
 
@@ -582,7 +602,7 @@ function getNbt() {
         maxheight = Math.max(r["pos"][1],maxheight);
     });
     maxheight++;
-    jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + width + "," + maxheight + "," + (height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":1343}}}";
+    jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + width + "," + maxheight + "," + (height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":" + dataversion + "}}}";
     //download
     console.log("Parsing JSON and converting to NBT");
     let nbtdata = nbt.writeUncompressed(JSON.parse(jsonstring));
@@ -760,7 +780,9 @@ function checkCookie() {
 }
 
 function updateVersion(){
-    switch (document.getElementById("version").selectedIndex) {
+	mcversion = document.getElementById("version").value;
+    [dataversion,blockversion] = versionindex[mcversion];
+    switch (blockversion) {
                 case 0:
                     window.blocklist = window.colorlist_base;
                     break;
