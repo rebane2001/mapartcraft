@@ -414,7 +414,33 @@ function getMap() {
                         "pos": [x, hhhh - 1, y + 1],
                         "state": 0
                     });
-                } else if (underblocks == 3) { //very ugly code, should be made into functions instead
+                } else if (underblocks == 3) {
+                    blocks.push({
+                        "pos": [x, hhhh - 1, y + 1],
+                        "state": 0
+                    });
+                    blocks.push({
+                        "pos": [x, hhhh - 2, y + 1],
+                        "state": 0
+                    });
+                    if( // spaghetti, I need to break up this entire function into proper smaller functions
+                        indexOfObjOptim({
+                            "pos": [x, hhhh - 1, y + 0],
+                            "state": 0
+                        }, blocks) > -1 &&
+                        indexOfObjOptim({
+                            "pos": [x, hhhh - 1, y - 1],
+                            "state": 0
+                        }, blocks) > -1
+                    ){
+                        let toRemove = indexOfObjOptim({
+                            "pos": [x, hhhh - 2, y + 0],
+                            "state": 0
+                        }, blocks);
+                        if (toRemove > -1)
+                            blocks.splice(toRemove,1)
+                    }
+                } else if (underblocks == 4) { //very ugly code, should be made into functions instead
                     blocks.push({
                         "pos": [x, hhhh - 1, y + 1],
                         "state": 0
@@ -470,7 +496,7 @@ function getMap() {
                         "pos": [x, 0, y + 1],
                         "state": 0
                     });
-                } else if (underblocks == 3) {
+                } else if (underblocks >= 3) {
                     blocks.push({
                         "pos": [x, 0, y + 1],
                         "state": 0
@@ -916,6 +942,29 @@ function arraysEqual(a, b) {
     }
 
     return true;
+}
+
+// Thx
+// https://stackoverflow.com/a/4587130
+// https://stackoverflow.com/a/1144249
+function indexOfObj(obj, list) { // Index of object in list
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function indexOfObjOptim(obj, list) { // Index of object in list (optimized, takes only last 10 values)
+    var i;
+    for (i = list.length - 10; i < list.length; i++) {
+        if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 // Thx Alexander O'Mara
