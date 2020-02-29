@@ -35,6 +35,7 @@ var dataversion = 1343;
 var blockversion = 0;
 
 var offscreen;
+var offscreensplit;
 const worker = new Worker("js/worker.js");
 
 var sheet;
@@ -62,6 +63,7 @@ function initialize() {
   try{
     offscreenscale = document.getElementById('displaycanvas').transferControlToOffscreen();
     offscreen = new OffscreenCanvas(128, 128);
+    offscreensplit = new OffscreenCanvas(128, 128);
     worker.postMessage([offscreenscale,"offscreeninit"],[offscreenscale]);
     sheet = new CSSStyleSheet();
     sheet.replaceSync('* {cursor: progress !important}');
@@ -73,6 +75,9 @@ function initialize() {
     offscreen = document.createElement('canvas');
     offscreen.width = 128;
     offscreen.height = 128;
+    offscreensplit = document.createElement('canvas');
+    offscreensplit.width = 128;
+    offscreensplit.height = 128;
   }
   updateStyle();
   //tooltip.refresh();
@@ -176,18 +181,8 @@ function updateMap() {
       }else{
         ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
       }
-      if (currentSplit[0] != -1){
-        mapsize = [1,1];
-      }
-      if (currentSplit[0] == -1){
-        var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
-      }else{
-        var imgData = ctx.getImageData(currentSplit[0]*128, currentSplit[1]*128, (currentSplit[1]+1)*128, (currentSplit[1]+1)*128);
-      }
-      if (currentSplit[0] != -1){
-        ctx.canvas.width = 128;
-        ctx.canvas.height = 128;
-      }
+      var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+      
       //worker code here
       worker.postMessage([
         imgData,
@@ -202,6 +197,12 @@ function updateMap() {
   }else if(mapstatus == 1){
     mapstatus++;
   }
+}
+
+function updateSplit() {
+  var ctx = offscreen.getContext('2d');
+  let ctxsplt = offscreensplit.getContext('2d');
+  ctxsplt.drawImage(offscreen,currentSplit[0]*128,currentSplit[1]*128,128,128,0,0,128,128);
 }
 
 worker.onmessage = function(e) { 
@@ -276,7 +277,7 @@ function getNbtSplit(){
 
   if (mapstatus == 1 || mapstatus == 2)
     return;
-  mapstatus = 3;
+  mapstatus = 4;
 
   splits = [];
   console.log("Downloading as 1x1 split");
@@ -286,41 +287,41 @@ function getNbtSplit(){
       splits.push([x,y]);
     }
   }
-  dlNbtSplit()
+  renderCallback = function(){dlNbtSplit()};
+  updateMap();
 }
 
 function dlNbtSplit(){ //call getNbtSplit() first!
-  renderCallback = function(){dlNbtSplit()};
-  if (!gotMap){
-    if (splits.length > 0){
-      currentSplit = splits.shift();
-      console.log("Currently downloading: " + currentSplit[0] + " " + currentSplit[1]);
-      getMap();
-    }else{
-      resetCallback();
-      console.log("Done, rerendering map");
-      mapstatus = 0;
-      currentSplit = [-1,-1];
-      updateMap();
-    }
-  }else{
+  if (splits.length > 0){
+    currentSplit = splits.shift();
+    console.log("Currently downloading: " + currentSplit[0] + " " + currentSplit[1]);
+    updateSplit();
     getNbt();
     dlNbtSplit();
+  }else{
+    resetCallback();
+    console.log("Done, rerendering map");
+    mapstatus = 0;
+    currentSplit = [-1,-1];
   }
 }
 
 function getMap() {
-  //force render preview
-  //document.getElementById('renderpreview').checked = true;
-  if (!gotMap){
-    gotMap = true;
-    mapstatus = 4;
-    updateMap();
-    return;
+  let ctx;
+  if (currentSplit[0] == -1){
+    if (!gotMap){
+      gotMap = true;
+      mapstatus = 4;
+      updateMap();
+      return;
+    }
+    gotMap = false;
+    ctx = offscreen.getContext('2d');
+  } else {
+    ctx = offscreensplit.getContext('2d');
   }
-  gotMap = false;
 
-  let ctx = offscreen.getContext('2d');
+  
   let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
   let blocks = []
   let nbtblocklist = []
@@ -539,7 +540,6 @@ function getMap() {
       }
     }
   }
-
   return {
       blocks, 
       nbtblocklist, 
@@ -614,7 +614,7 @@ function getMapDatSplit(){
 
   if (mapstatus == 1 || mapstatus == 2)
     return;
-  mapstatus = 3;
+  mapstatus = 4;
 
   splits = [];
   console.log("Downloading as 1x1 split");
@@ -624,66 +624,61 @@ function getMapDatSplit(){
       splits.push([x,y]);
     }
   }
-  dlMapDatSplit()
+  renderCallback = function(){dlMapDatSplit()};
+  updateMap();
 }
 
 function dlMapDatSplit(){ //call getMapDatSplit() first!
-  renderCallback = function(){dlMapDatSplit()};
-  if (!gotMap){
+  
     if (splits.length > 0){
       currentSplit = splits.shift();
       console.log("Currently downloading: " + currentSplit[0] + " " + currentSplit[1]);
-      mapstatus = 4;
-      updateMap();
-      gotMap = true;
+      updateSplit();
+  
+      let ctx = offscreensplit.getContext('2d');
+      let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+      let colorData = [];
+    
+      for (let y = 0; y < ctx.canvas.height; y++) {
+        for (let x = 0; x < ctx.canvas.width; x++) {
+          color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
+          selectedblocks.forEach((i) => {
+            for (let j of [0,1,2,3]) {
+              if (arraysEqual(blocklist[i[0]][0][j], color)) {
+                let baseColor = window.mapdatmappings[blocklist[i[0]][2]];
+                colorData.push(baseColor*4+j);
+              }
+            }
+          });
+        }
+      }
+    
+      nbtData = nbt.writeUncompressed(
+        {"name":"","value":{"data":{"type":"compound","value":{"scale":{"type":"byte","value":0},"dimension":{"type":"byte","value":0},"trackingPosition":{"type":"byte","value":0},"locked":{"type":"byte","value":1},"height":{"type":"short","value":128},"width":{"type":"short","value":128},"xCenter":{"type":"int","value":0},"zCenter":{"type":"int","value":0},"colors":{"type":"byteArray","value":colorData}}}}}
+      );
+      console.log("Gzipping");
+      let gzipped = pako.gzip(nbtData);
+      console.log("Blobbing");
+      let blob = new Blob([gzipped], {
+        type: 'application/x-gzip'
+      });
+      let a = document.createElement("a");
+      document.body.appendChild(a);
+      a.style = "display: none";
+      url = window.URL.createObjectURL(blob);
+      a.href = url;
+      a.download = filename + "_s_" + currentSplit[0] + "_" + currentSplit[1] + ".dat";
+      a.click();
+      window.URL.revokeObjectURL(url);
+  
+      dlMapDatSplit();
     }else{
       resetCallback();
       console.log("Done, rerendering map");
       mapstatus = 0;
       currentSplit = [-1,-1];
-      updateMap();
     }
-  }else{
-    gotMap = false;
 
-    let ctx = offscreen.getContext('2d');
-    let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
-    let colorData = [];
-  
-    for (let y = 0; y < ctx.canvas.height; y++) {
-      for (let x = 0; x < ctx.canvas.width; x++) {
-        color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
-        selectedblocks.forEach((i) => {
-          for (let j of [0,1,2,3]) {
-            if (arraysEqual(blocklist[i[0]][0][j], color)) {
-              let baseColor = window.mapdatmappings[blocklist[i[0]][2]];
-              colorData.push(baseColor*4+j);
-            }
-          }
-        });
-      }
-    }
-  
-    nbtData = nbt.writeUncompressed(
-      {"name":"","value":{"data":{"type":"compound","value":{"scale":{"type":"byte","value":0},"dimension":{"type":"byte","value":0},"trackingPosition":{"type":"byte","value":0},"locked":{"type":"byte","value":1},"height":{"type":"short","value":128},"width":{"type":"short","value":128},"xCenter":{"type":"int","value":0},"zCenter":{"type":"int","value":0},"colors":{"type":"byteArray","value":colorData}}}}}
-    );
-    console.log("Gzipping");
-    let gzipped = pako.gzip(nbtData);
-    console.log("Blobbing");
-    let blob = new Blob([gzipped], {
-      type: 'application/x-gzip'
-    });
-    let a = document.createElement("a");
-    document.body.appendChild(a);
-    a.style = "display: none";
-    url = window.URL.createObjectURL(blob);
-    a.href = url;
-    a.download = filename + "_s_" + currentSplit[0] + "_" + currentSplit[1] + ".dat";
-    a.click();
-    window.URL.revokeObjectURL(url);
-
-    dlMapDatSplit();
-  }
 }
 
 // Only works with 1x1 maps, use getMapDatSplit
@@ -704,10 +699,8 @@ function getNbt() {
     return;
   mapstatus = 3;
     
-  if (!gotMap){
-    if (currentSplit[0] == -1){
-      renderCallback = function(){resetCallback();getNbt();};
-    }
+  if (!gotMap && currentSplit[0] == -1){
+    renderCallback = function(){resetCallback();getNbt();};
     getMap();
     return;
   }
