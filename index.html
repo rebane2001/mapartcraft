@@ -35,9 +35,17 @@
         <div id="settings" class="section" style="float: left">
             <h2>Settings</h2>
             <br>
-            <b data-tooltip title="Select the version closest to what you're running" onchange="updateVersion()">
+            <b data-tooltip title="Select the mode you'd like to operate in">
+                Mode:
+                <select id="mapmode" onchange="updateMode()">
+                    <option selected="selected">Survival (schematic)</option>
+                    <option>Survival (visual)</option>
+                    <option>Datafile (map.dat)</option>
+                </select>
+            </b><br>
+            <b data-tooltip title="Select the version closest to what you're running">
                 Version:
-                <select id="version">
+                <select id="version" onchange="updateVersion()">
                     <option>1.12</option>
                     <option>1.12.1</option>
                     <option selected="selected">1.12.2</option>
@@ -57,9 +65,9 @@
             <b data-tooltip title="Crops your image instead of stretching it out" onclick="updateMap()">Crop: <input id="cropimg" type="checkbox"></b><br>
             <b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" checked></b><br>
             <b data-tooltip title="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox" checked></b><br>
-            <b data-tooltip title="Adds seemingly random pixels for the illusion of more colors" onchange="updateMap()">
+            <b data-tooltip title="Adds seemingly random pixels for the illusion of more colors">
                 Dithering:
-                <select id="dither">
+                <select id="dither" onchange="updateMap()">
                     <option>None</option>
                     <option selected="selected">Floyd–Steinberg</option>
                     <option>Bayer (4x4)</option>
@@ -68,23 +76,25 @@
                 </select>
             </b>
             <br>
-            <b>
-                Add blocks under:
-                <select id="underblocks">
-                    <option>No blocks</option>
-                    <option selected="selected">Important blocks</option>
-                    <option>All blocks</option>
-                    <option>All double (optimized)</option>
-                    <option>All double</option>
-                </select>
-            </b>
+            <span id="underblockssection">
+                <b>
+                    Add blocks under:
+                    <select id="underblocks">
+                        <option>No blocks</option>
+                        <option selected="selected">Important blocks</option>
+                        <option>All blocks</option>
+                        <option>All double (optimized)</option>
+                        <option>All double</option>
+                    </select>
+                </b>
+                <br>
+                <b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
+                <br>
+            </span>
             <br>
-            <b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
-            <br>
-            <br>
-            <img src="img/download.png" onclick="getNbt()" style="cursor: pointer" data-tooltip title="Download the nbt" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="cursor: pointer" data-tooltip title="Download the nbt split into 1x1 chunks" /><br>
+            <span id="downloadbtnsection"><img src="img/download.png" onclick="getNbt()" style="cursor: pointer" data-tooltip title="Download the nbt" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="cursor: pointer" data-tooltip title="Download the nbt split into 1x1 chunks" /><br></span>
             <img src="img/pdnpalette.png" onclick="getPdnPalette()" data-tooltip title="Downloads color palette for use in Paint.net" style="cursor: pointer" /><br>
-            <img src="img/materials.png" onclick="getMaterials()" data-tooltip title="Refresh materials list" style="cursor: pointer" /><br>
+            <span id="materialsbtnsection"><img src="img/materials.png" onclick="getMaterials()" data-tooltip title="Refresh materials list" style="cursor: pointer" /><br></span>
             <a href="supporters" data-tooltip title="View supporters and donate"><img src="img/donate.png"  style="cursor: pointer" alt="Donate with PayPal button" /></a>
         </div>
         

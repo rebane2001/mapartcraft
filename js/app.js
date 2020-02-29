@@ -12,6 +12,8 @@ var gotMap = false;
 var mapstatus = 0;
 //0 - idle
 
+var mapmode = 0;
+
 var versionindex = {
     "1.12": [1139,0],
     "1.12.1": [1241,0],
@@ -96,6 +98,23 @@ function updateStyle() {
             let colors = cb.getAttribute("colors").split(";");
             cb.style = `background: ${colors[1]};`
         }
+    }
+}
+
+function updateMode() {
+    mapmode = document.getElementById("mapmode").selectedIndex;
+    if (mapmode == 1){
+        document.getElementById("downloadbtnsection").style.display = "none";
+    } else {
+        document.getElementById("downloadbtnsection").style.display = "inline";
+    }
+    if (mapmode < 2){
+        console.log(1);
+        document.getElementById("underblockssection").style.display = "inline";
+        document.getElementById("materialsbtnsection").style.display = "inline";
+    } else {
+        document.getElementById("underblockssection").style.display = "none";
+        document.getElementById("materialsbtnsection").style.display = "none";
     }
 }
 
