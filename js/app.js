@@ -279,8 +279,8 @@ function getNbtSplit(){
   }
   splits = [];
   console.log("Downloading as 1x1 split");
-  for (let x = 0; x<document.getElementById('mapsizex').value; x++){
-    for (let y = 0; y<document.getElementById('mapsizey').value; y++){
+  for (let x = 0; x < document.getElementById('mapsizex').value; x++){
+    for (let y = 0; y < document.getElementById('mapsizey').value; y++){
       console.log("Preparing: " + x + " " + y);
       splits.push([x,y]);
     }
