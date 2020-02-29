@@ -109,7 +109,6 @@ function updateMode() {
     document.getElementById("downloadbtnsection").style.display = "inline";
   }
   if (mapmode < 2){
-    console.log(1);
     document.getElementById("underblockssection").style.display = "inline";
     document.getElementById("materialsbtnsection").style.display = "inline";
   } else {
@@ -269,14 +268,16 @@ function cropImg(imgWidth,imgHeight){
 }
 
 function getNbtSplit(){
-  if (mapstatus == 1 || mapstatus == 2)
-    return;
-  mapstatus = 3;
   //if no blocks selected, don't download
   if (selectedblocks.length == 0){
     alert("Select blocks before downloading!");
     return;
   }
+
+  if (mapstatus == 1 || mapstatus == 2)
+    return;
+  mapstatus = 3;
+
   splits = [];
   console.log("Downloading as 1x1 split");
   for (let x = 0; x < document.getElementById('mapsizex').value; x++){
@@ -601,6 +602,94 @@ function getMaterials() {
   htmlString += "</tbody>"
   document.getElementById("materialtable").innerHTML = htmlString;
   tooltip.refresh();
+  mapstatus = 0;
+}
+
+function getMapDatSplit(){
+  //if no blocks selected, don't download
+  if (selectedblocks.length == 0){
+    alert("Select blocks before downloading!");
+    return;
+  }
+
+  if (mapstatus == 1 || mapstatus == 2)
+    return;
+  mapstatus = 3;
+
+  splits = [];
+  console.log("Downloading as 1x1 split");
+  for (let x = 0; x < document.getElementById('mapsizex').value; x++){
+    for (let y = 0; y < document.getElementById('mapsizey').value; y++){
+      console.log("Preparing: " + x + " " + y);
+      splits.push([x,y]);
+    }
+  }
+  dlMapDatSplit()
+}
+
+function dlMapDatSplit(){ //call getMapDatSplit() first!
+  renderCallback = function(){dlMapDatSplit()};
+  if (!gotMap){
+    if (splits.length > 0){
+      currentSplit = splits.shift();
+      console.log("Currently downloading: " + currentSplit[0] + " " + currentSplit[1]);
+      mapstatus = 4;
+      updateMap();
+      gotMap = true;
+    }else{
+      resetCallback();
+      console.log("Done, rerendering map");
+      mapstatus = 0;
+      currentSplit = [-1,-1];
+      updateMap();
+    }
+  }else{
+    gotMap = false;
+
+    let ctx = offscreen.getContext('2d');
+    let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+    let colorData = [];
+  
+    for (let y = 0; y < ctx.canvas.height; y++) {
+      for (let x = 0; x < ctx.canvas.width; x++) {
+        color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
+        selectedblocks.forEach((i) => {
+          for (let j of [0,1,2,3]) {
+            if (arraysEqual(blocklist[i[0]][0][j], color)) {
+              let baseColor = window.mapdatmappings[blocklist[i[0]][2]];
+              colorData.push(baseColor*4+j);
+            }
+          }
+        });
+      }
+    }
+  
+    nbtData = nbt.writeUncompressed(
+      {"name":"","value":{"data":{"type":"compound","value":{"scale":{"type":"byte","value":0},"dimension":{"type":"byte","value":0},"trackingPosition":{"type":"byte","value":0},"locked":{"type":"byte","value":1},"height":{"type":"short","value":128},"width":{"type":"short","value":128},"xCenter":{"type":"int","value":0},"zCenter":{"type":"int","value":0},"colors":{"type":"byteArray","value":colorData}}}}}
+    );
+    console.log("Gzipping");
+    let gzipped = pako.gzip(nbtData);
+    console.log("Blobbing");
+    let blob = new Blob([gzipped], {
+      type: 'application/x-gzip'
+    });
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+    url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = filename + "_s_" + currentSplit[0] + "_" + currentSplit[1] + ".dat";
+    a.click();
+    window.URL.revokeObjectURL(url);
+
+    dlMapDatSplit();
+  }
+}
+
+// Only works with 1x1 maps, use getMapDatSplit
+function getMapDat() {
+  //TODO: Change this to the 4-color version instead of selectedblocks?
+
   mapstatus = 0;
 }
 
