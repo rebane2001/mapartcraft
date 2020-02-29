@@ -108,18 +108,38 @@ function updateStyle() {
 
 function updateMode() {
   mapmode = document.getElementById("mapmode").selectedIndex;
-  if (mapmode == 1){
-    document.getElementById("downloadbtnsection").style.display = "none";
-  } else {
-    document.getElementById("downloadbtnsection").style.display = "inline";
+  switch (mapmode){
+    case 0:
+      showControl("downloadbtnsection");
+      hideControl("downloadmapdatbtnsection");
+      showControl("materialsbtnsection");
+      showControl("underblockssection");
+      hideControl("unobtainiablesection");
+      break;
+    case 1:
+      hideControl("downloadbtnsection");
+      hideControl("downloadmapdatbtnsection");
+      showControl("materialsbtnsection");
+      showControl("underblockssection");
+      hideControl("unobtainiablesection");
+      break;
+    case 2:
+      hideControl("downloadbtnsection");
+      showControl("downloadmapdatbtnsection");
+      hideControl("materialsbtnsection");
+      hideControl("underblockssection");
+      showControl("unobtainiablesection");
+      break;
   }
-  if (mapmode < 2){
-    document.getElementById("underblockssection").style.display = "inline";
-    document.getElementById("materialsbtnsection").style.display = "inline";
-  } else {
-    document.getElementById("underblockssection").style.display = "none";
-    document.getElementById("materialsbtnsection").style.display = "none";
-  }
+  updateMap();
+}
+
+function showControl(control) {
+  document.getElementById(control).style.display = "inline";
+}
+
+function hideControl(control) {
+  document.getElementById(control).style.display = "none";
 }
 
 function updateMap() {
@@ -141,6 +161,9 @@ function updateMap() {
       if (document.getElementById('staircasing').checked) {
         selectedcolors.push(window.blocklist[i][0][0]);
         selectedcolors.push(window.blocklist[i][0][2]);
+      }
+      if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 2) {
+        selectedcolors.push(window.blocklist[i][0][3]);
       }
       selectedcolors.push(window.blocklist[i][0][1]);
     }
@@ -977,6 +1000,9 @@ function getPdnPalette() {
     selectedcolors.push(window.blocklist[i][0][1]);
     if (document.getElementById('staircasing').checked) {
       selectedcolors.push(window.blocklist[i][0][2]);
+    }
+    if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 2) {
+      selectedcolors.push(window.blocklist[i][0][3]);
     }
   }
   // generate and dl pdn file
