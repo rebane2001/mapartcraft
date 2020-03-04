@@ -208,7 +208,6 @@ function updateMap() {
           document.getElementById('mapreswarning').style = "color:orange; display: inline";
     }
 
-    document.getElementById('mapres').innerHTML = "Rendering...";
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     //crop or scale image
@@ -242,6 +241,16 @@ function updateSplit() {
 }
 
 worker.onmessage = function(e) { 
+  if (!isNaN(e.data)){
+    if ((performance.now() - benchmark > 40 && e.data < 0.1) || performance.now() - benchmark > 400)
+      document.getElementById('progress').style.display = "block";
+    let secondsRemaining = Math.ceil((performance.now() - benchmark)/e.data*(1-e.data)/1000);
+    document.getElementById('progresstext').innerHTML = `${Math.floor(e.data*100)}% - ${secondsRemaining} second${(secondsRemaining != 0) ? "s" : ""} remaining`;
+    document.getElementById('progressdiv').style.width = `${Math.floor(e.data*100)}%`;
+    return;
+  }
+  document.getElementById('progress').style.display = "none";
+
   imgData = e.data;
 
   let octx = offscreen.getContext('2d');

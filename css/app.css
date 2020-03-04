@@ -102,3 +102,18 @@ canvas {
 th:nth-child(1) {
     padding-right: 0.2em
 }
+
+#progress {
+  background-color: black;
+  display: none;
+}
+
+#progresstext {
+  position: absolute;
+  padding-left:6px;
+}
+
+#progressdiv {
+  background-color: #688E6B;
+  height: 24px;
+}

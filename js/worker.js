@@ -103,6 +103,8 @@ onmessage = function(e) {
     imgData.data[i + 3] = 255; // remove alpha
     let x = (i / 4) % canvasSize[0];
     let y = ((i / 4) - x) / canvasSize[0];
+    if (x == 0)
+      postMessage(y/canvasSize[1]);
     if (areBlocksSelected){
       switch (ditherIndex) {
         case 0: // no dither
