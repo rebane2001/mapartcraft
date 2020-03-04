@@ -103,6 +103,13 @@ th:nth-child(1) {
     padding-right: 0.2em
 }
 
+.sizebtn {
+    margin-top: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+    float: right;
+}
+
 #progress {
   background-color: black;
   display: none;

@@ -7,6 +7,8 @@ var currentSplit = [-1,-1]
 var benchmark;
 var renderCallback = function(){};
 var firefox = false;
+var previewScale = 2;
+var devicePixelRatio = window.devicePixelRatio || 1;
 var splits = [];
 var gotMap = false;
 // Set to 1 until page has loaded
@@ -183,19 +185,12 @@ function updateMap() {
 
     let ctx = offscreen.getContext('2d');
     //this part is so that weird displays scale pixels 1 to int(x)
-    let dpr = window.devicePixelRatio || 1;
-    let sdpr = dpr/Math.floor(dpr);
+    devicePixelRatio = window.devicePixelRatio || 1;
 
     ctx.canvas.width = mapsize[0] * 128;
     ctx.canvas.height = mapsize[1] * 128;
 
-    if (mapsize[0] < 4 && mapsize[1] < 8) {
-      displaycanvas.style.width = (ctx.canvas.width * 2 / dpr) + "px";
-      displaycanvas.style.height = (ctx.canvas.height * 2 / dpr) + "px";
-    } else {
-      displaycanvas.style.width = (ctx.canvas.width / dpr) + "px";
-      displaycanvas.style.height = (ctx.canvas.height / dpr) + "px";
-    }
+    updatePreviewScale(0);
 
     document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
     document.getElementById('mapreswarning').innerHTML = img.width + "x" + img.height;
@@ -961,6 +956,14 @@ function updateVersion(){
   }
 }
 
+function updatePreviewScale(i) {
+  devicePixelRatio = window.devicePixelRatio || 1;
+  previewScale = Math.max(previewScale + i,1);
+
+  let ctx = offscreen.getContext('2d');
+  displaycanvas.style.width = (ctx.canvas.width * previewScale / devicePixelRatio) + "px";
+  displaycanvas.style.height = (ctx.canvas.height * previewScale / devicePixelRatio) + "px";
+}
 
 function loadImg(e) {
   img = new Image;
