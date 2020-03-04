@@ -1,8 +1,6 @@
 var colorCache = new Map(); //lru cache
 var selectedcolors = [];
 var bettercolor = false;
-var upcanv;
-var upsctx;
 
 function diff_colors(p1, p2) {
   if (bettercolor) {
@@ -90,98 +88,75 @@ function rgb2lab(rgb) {
 }
 
 onmessage = function(e) {
-  if (e.data[1] == "offscreeninit"){
-    upcanv = e.data[0];
-    upsctx = upcanv.getContext("2d");
-  }else{
-    imgData = e.data[0];
-    canvasSize = e.data[1];
-    ditherIndex = e.data[2];
-    areBlocksSelected = e.data[3];
-    selectedcolors = e.data[4];
-    bettercolor = e.data[5];
-    mapsize = e.data[6];
-  
-    colorCache = new Map(); //reset color cache
-  
-    try{
-      if (mapsize[0] < 4 && mapsize[1] < 8) {
-        upsctx.canvas.width = canvasSize[0] * 2;
-        upsctx.canvas.height = canvasSize[1] * 2;
-      } else {
-        upsctx.canvas.width = canvasSize[0];
-        upsctx.canvas.height = canvasSize[1];
-      }
-    }catch{}
+  imgData = e.data[0];
+  canvasSize = e.data[1];
+  ditherIndex = e.data[2];
+  areBlocksSelected = e.data[3];
+  selectedcolors = e.data[4];
+  bettercolor = e.data[5];
+  mapsize = e.data[6];
 
-    for (var i = 0; i < imgData.data.length; i += 4) {
-      //i = r, i+1 = g, i+2 = b, i+3 = a
-      imgData.data[i + 3] = 255; // remove alpha
-      let x = (i / 4) % canvasSize[0];
-      let y = ((i / 4) - x) / canvasSize[0];
-      if (areBlocksSelected){
-        switch (ditherIndex) {
-          case 0: // no dither
-            newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
-            imgData.data[i + 0] = newpixel[0];
-            imgData.data[i + 1] = newpixel[1];
-            imgData.data[i + 2] = newpixel[2];
-            break;
-          case 1: // floyd
-            oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
-            newpixel = find_closest(oldpixel);
-            quant_error = [oldpixel[0] - newpixel[0], oldpixel[1] - newpixel[1], oldpixel[2] - newpixel[2]];
-            imgData.data[i + 0] = newpixel[0];
-            imgData.data[i + 1] = newpixel[1];
-            imgData.data[i + 2] = newpixel[2];
-            try {
-              imgData.data[i + 4] += (quant_error[0] * 7 / 16);
-              imgData.data[i + 5] += (quant_error[1] * 7 / 16);
-              imgData.data[i + 6] += (quant_error[2] * 7 / 16);
-              imgData.data[i + canvasSize[0] * 4 - 4] += (quant_error[0] * 3 / 16);
-              imgData.data[i + canvasSize[0] * 4 - 3] += (quant_error[1] * 3 / 16);
-              imgData.data[i + canvasSize[0] * 4 - 2] += (quant_error[2] * 3 / 16);
-              imgData.data[i + canvasSize[0] * 4 + 0] += (quant_error[0] * 5 / 16);
-              imgData.data[i + canvasSize[0] * 4 + 1] += (quant_error[1] * 5 / 16);
-              imgData.data[i + canvasSize[0] * 4 + 2] += (quant_error[2] * 5 / 16);
-              imgData.data[i + canvasSize[0] * 4 + 4] += (quant_error[0] * 1 / 16);
-              imgData.data[i + canvasSize[0] * 4 + 5] += (quant_error[1] * 1 / 16);
-              imgData.data[i + canvasSize[0] * 4 + 6] += (quant_error[2] * 1 / 16);
-            } catch (e) {
-              console.error(e);
-            }
-            break;
-          case 2: // Bayer 4x4
-          case 3: // Bayer 2x2
-          case 4: // Ordered 3x3
-            patterns = [
-              [[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]],
-              [[1, 3], [4,2]],
-              [[1,7,4],[5,8,3],[6,2,9]]
-            ];
-            pat = patterns[ditherIndex-2]
-            oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]]; 
-            twopixel = find_closest_two(oldpixel); //twopixel = [bestval1,bestval2,newpixel1,newpixel2]
-            if ((twopixel[0]*(pat[0].length*pat.length+1)/twopixel[1]) > pat[x%pat[0].length][y%pat.length]){
-              newpixel = twopixel[3];
-            }else{
-              newpixel = twopixel[2];
-            }
-            imgData.data[i + 0] = newpixel[0];
-            imgData.data[i + 1] = newpixel[1];
-            imgData.data[i + 2] = newpixel[2];
-            break;
-        }
+  colorCache = new Map(); //reset color cache
+
+  for (var i = 0; i < imgData.data.length; i += 4) {
+    //i = r, i+1 = g, i+2 = b, i+3 = a
+    imgData.data[i + 3] = 255; // remove alpha
+    let x = (i / 4) % canvasSize[0];
+    let y = ((i / 4) - x) / canvasSize[0];
+    if (areBlocksSelected){
+      switch (ditherIndex) {
+        case 0: // no dither
+          newpixel = find_closest([imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]])
+          imgData.data[i + 0] = newpixel[0];
+          imgData.data[i + 1] = newpixel[1];
+          imgData.data[i + 2] = newpixel[2];
+          break;
+        case 1: // floyd
+          oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
+          newpixel = find_closest(oldpixel);
+          quant_error = [oldpixel[0] - newpixel[0], oldpixel[1] - newpixel[1], oldpixel[2] - newpixel[2]];
+          imgData.data[i + 0] = newpixel[0];
+          imgData.data[i + 1] = newpixel[1];
+          imgData.data[i + 2] = newpixel[2];
+          try {
+            imgData.data[i + 4] += (quant_error[0] * 7 / 16);
+            imgData.data[i + 5] += (quant_error[1] * 7 / 16);
+            imgData.data[i + 6] += (quant_error[2] * 7 / 16);
+            imgData.data[i + canvasSize[0] * 4 - 4] += (quant_error[0] * 3 / 16);
+            imgData.data[i + canvasSize[0] * 4 - 3] += (quant_error[1] * 3 / 16);
+            imgData.data[i + canvasSize[0] * 4 - 2] += (quant_error[2] * 3 / 16);
+            imgData.data[i + canvasSize[0] * 4 + 0] += (quant_error[0] * 5 / 16);
+            imgData.data[i + canvasSize[0] * 4 + 1] += (quant_error[1] * 5 / 16);
+            imgData.data[i + canvasSize[0] * 4 + 2] += (quant_error[2] * 5 / 16);
+            imgData.data[i + canvasSize[0] * 4 + 4] += (quant_error[0] * 1 / 16);
+            imgData.data[i + canvasSize[0] * 4 + 5] += (quant_error[1] * 1 / 16);
+            imgData.data[i + canvasSize[0] * 4 + 6] += (quant_error[2] * 1 / 16);
+          } catch (e) {
+            console.error(e);
+          }
+          break;
+        case 2: // Bayer 4x4
+        case 3: // Bayer 2x2
+        case 4: // Ordered 3x3
+          patterns = [
+            [[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]],
+            [[1, 3], [4,2]],
+            [[1,7,4],[5,8,3],[6,2,9]]
+          ];
+          pat = patterns[ditherIndex-2]
+          oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]]; 
+          twopixel = find_closest_two(oldpixel); //twopixel = [bestval1,bestval2,newpixel1,newpixel2]
+          if ((twopixel[0]*(pat[0].length*pat.length+1)/twopixel[1]) > pat[x%pat[0].length][y%pat.length]){
+            newpixel = twopixel[3];
+          }else{
+            newpixel = twopixel[2];
+          }
+          imgData.data[i + 0] = newpixel[0];
+          imgData.data[i + 1] = newpixel[1];
+          imgData.data[i + 2] = newpixel[2];
+          break;
       }
-      try{
-        upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
-        if (mapsize[0] < 4 && mapsize[1] < 8) {
-          upsctx.fillRect(x * 2, y * 2, 2, 2);
-        } else {
-          upsctx.fillRect(x, y, 1, 1);
-        }
-      }catch{}
     }
-    postMessage(imgData);
   }
+  postMessage(imgData);
 }
