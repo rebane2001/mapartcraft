@@ -54,18 +54,20 @@ function initialize() {
   let colorid = 0;
   //load 1.12 blocklist by default
   window.blocklist = window.colorlist_base;
+  let blockseletionhtml = "";
   window.blocklist.forEach(function(i) {
     blockid = 0;
-    document.getElementById('blockselection').innerHTML += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
+    blockseletionhtml += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
     i[1].forEach(function(j) {
       let imgfile = j[4]
       if (j[4] == "")
         imgfile = j[0]
-      document.getElementById('blockselection').innerHTML += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
+      blockseletionhtml += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
       blockid++;
     });
     colorid++;
   });
+  document.getElementById('blockselection').innerHTML += blockseletionhtml;
   displaycanvas = document.getElementById('displaycanvas');
   try{
     offscreen = new OffscreenCanvas(128, 128);
