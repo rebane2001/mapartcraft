@@ -9,8 +9,13 @@ var renderCallback = function(){};
 var firefox = false;
 var splits = [];
 var gotMap = false;
-var mapstatus = 0;
+// Set to 1 until page has loaded
+var mapstatus = 1;
 //0 - idle
+//1 - doing updateMap
+//2 - doing updateMap, but queue another updateMap
+//3 - doing a different task
+//4 - doing an updateMap for a different task
 
 var mapmode = 0;
 
@@ -34,6 +39,7 @@ var mcversion = "1.12.2";
 var dataversion = 1343;
 var blockversion = 0;
 
+var displaycanvas;
 var offscreen;
 var offscreensplit;
 const worker = new Worker("js/worker.js");
@@ -60,13 +66,11 @@ function initialize() {
     });
     colorid++;
   });
+  displaycanvas = document.getElementById('displaycanvas');
   try{
-    offscreenscale = document.getElementById('displaycanvas').transferControlToOffscreen();
     offscreen = new OffscreenCanvas(128, 128);
     offscreensplit = new OffscreenCanvas(128, 128);
-    worker.postMessage([offscreenscale,"offscreeninit"],[offscreenscale]);
     sheet = new CSSStyleSheet();
-    sheet.replaceSync('* {cursor: progress !important}');
     document.adoptedStyleSheets = [sheet];
   }catch (err){
     //means the user is probably using Firefox, so we're gonna use fixes
@@ -88,7 +92,9 @@ function initialize() {
     importPreset(urlParams.get('preset'));
   img.src = "img/upload.png";
   img.onload = function() {
-    updateMap();
+    let dctx = displaycanvas.getContext('2d');
+    dctx.drawImage(img, 0, 0);
+    mapstatus = 0;
   }
 }
 
@@ -146,8 +152,10 @@ function updateMap() {
   if (mapstatus == 0 || mapstatus == 4){
     if (mapstatus == 0)
       mapstatus++;
+
     if (!firefox)
       sheet.replaceSync('* {cursor: progress !important}');
+
     benchmark = performance.now(); //benchmark updateMap() speed
     selectedblocks = []; //touching this might break presets, so be careful
     selectedcolors = [];
@@ -157,7 +165,6 @@ function updateMap() {
         continue
       }
       selectedblocks.push([i, parseInt(blockid)]);
-      // gotta add 2D/3D support here
       if (document.getElementById('staircasing').checked) {
         selectedcolors.push(window.blocklist[i][0][0]);
         selectedcolors.push(window.blocklist[i][0][2]);
@@ -167,17 +174,30 @@ function updateMap() {
       }
       selectedcolors.push(window.blocklist[i][0][1]);
     }
+
     updateStyle(); // Updating colorbox colors
+
     mapsize = [document.getElementById('mapsizex').value, document.getElementById('mapsizey').value];
-    var ctx = offscreen.getContext('2d');
-    var dspcvs = document.getElementById('displaycanvas');
+
+    let ctx = offscreen.getContext('2d');
     //this part is so that weird displays scale pixels 1 to int(x)
-    var dpr = window.devicePixelRatio || 1;
-    var sdpr = dpr/Math.floor(dpr);
+    let dpr = window.devicePixelRatio || 1;
+    let sdpr = dpr/Math.floor(dpr);
+
     ctx.canvas.width = mapsize[0] * 128;
     ctx.canvas.height = mapsize[1] * 128;
+
+    if (mapsize[0] < 4 && mapsize[1] < 8) {
+      displaycanvas.style.width = (ctx.canvas.width * 2 / dpr) + "px";
+      displaycanvas.style.height = (ctx.canvas.height * 2 / dpr) + "px";
+    } else {
+      displaycanvas.style.width = (ctx.canvas.width / dpr) + "px";
+      displaycanvas.style.height = (ctx.canvas.height / dpr) + "px";
+    }
+
     document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
     document.getElementById('mapreswarning').innerHTML = img.width + "x" + img.height;
+
     if (img.width / img.height == ctx.canvas.width / ctx.canvas.height) {
       document.getElementById('mapreswarning').style = "color:red; display: none";
     } else {
@@ -185,75 +205,50 @@ function updateMap() {
       if (document.getElementById('cropimg').checked)
           document.getElementById('mapreswarning').style = "color:orange; display: inline";
     }
-    if (mapsize[0] < 4 && mapsize[1] < 8) {
-      dspcvs.style.width = (ctx.canvas.width * 2 / dpr) + "px";
-      dspcvs.style.height = (ctx.canvas.height * 2 / dpr) + "px";
-    } else {
-      dspcvs.style.width = (ctx.canvas.width / dpr) + "px";
-      dspcvs.style.height = (ctx.canvas.height / dpr) + "px";
+
+    document.getElementById('mapres').innerHTML = "Rendering...";
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    //crop or scale image
+    if (document.getElementById('cropimg').checked) {
+      let cropdim = cropImg(img.width,img.height);
+      ctx.drawImage(img, cropdim[0], cropdim[1], cropdim[2], cropdim[3], 0, 0, ctx.canvas.width, ctx.canvas.height);
+    }else{
+      ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
     }
-    //if (document.getElementById('renderpreview').checked) {
-    if (true) {
-      document.getElementById('mapres').innerHTML = "Rendering...";
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  
-      //crop or scale image
-      if (document.getElementById('cropimg').checked) {
-        let cropdim = cropImg(img.width,img.height);
-        ctx.drawImage(img, cropdim[0], cropdim[1], cropdim[2], cropdim[3], 0, 0, ctx.canvas.width, ctx.canvas.height);
-      }else{
-        ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
-      }
-      var imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
-      
-      //worker code here
-      worker.postMessage([
-        imgData,
-        [ctx.canvas.width,ctx.canvas.height],
-        document.getElementById("dither").selectedIndex,
-        (selectedblocks.length != 0),
-        selectedcolors,
-        document.getElementById('bettercolor').checked,
-        mapsize,
-        ]);
-    }
+    let imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+    
+    //worker code here
+    worker.postMessage([
+      imgData,
+      [ctx.canvas.width,ctx.canvas.height],
+      document.getElementById("dither").selectedIndex,
+      (selectedblocks.length != 0),
+      selectedcolors,
+      document.getElementById('bettercolor').checked,
+      mapsize,
+      ]);
   }else if(mapstatus == 1){
     mapstatus++;
   }
 }
 
 function updateSplit() {
-  var ctx = offscreen.getContext('2d');
+  let ctx = offscreen.getContext('2d');
   let ctxsplt = offscreensplit.getContext('2d');
   ctxsplt.drawImage(offscreen,currentSplit[0]*128,currentSplit[1]*128,128,128,0,0,128,128);
 }
 
 worker.onmessage = function(e) { 
   imgData = e.data;
-  var ctx = offscreen.getContext('2d');
-  ctx.putImageData(imgData, 0, 0);
-  if (firefox){
-    console.log("starting Firefox drawing at " + (performance.now() - benchmark) + "ms");
-    upsctx = document.getElementById('displaycanvas').getContext('2d');
-    if (mapsize[0] < 4 && mapsize[1] < 8) {
-      upsctx.canvas.width = ctx.canvas.width * 2;
-      upsctx.canvas.height = ctx.canvas.height * 2;
-    } else {
-      upsctx.canvas.width = ctx.canvas.width;
-      upsctx.canvas.height = ctx.canvas.height;
-    }
-    for (var i = 0; i < imgData.data.length; i += 4) {
-      let x = (i / 4) % ctx.canvas.width;
-      let y = ((i / 4) - x) / ctx.canvas.width;
-      upsctx.fillStyle = "rgba(" + imgData.data[i + 0] + "," + imgData.data[i + 1] + "," + imgData.data[i + 2] + "," + 255 + ")";
-      if (mapsize[0] < 4 && mapsize[1] < 8) {
-        upsctx.fillRect(x * 2, y * 2, 2, 2);
-      } else {
-        upsctx.fillRect(x, y, 1, 1);
-      }
-    }
-  }
-  document.getElementById('mapres').innerHTML = ctx.canvas.width + "x" + ctx.canvas.height;
+
+  let octx = offscreen.getContext('2d');
+  let dctx = displaycanvas.getContext('2d');
+  displaycanvas.width = octx.canvas.width;
+  displaycanvas.height = octx.canvas.height;
+  octx.putImageData(imgData, 0, 0);
+  dctx.putImageData(imgData, 0, 0);
+  document.getElementById('mapres').innerHTML = octx.canvas.width + "x" + octx.canvas.height;
   console.log("updateMap completed in " + (performance.now() - benchmark) + "ms");
   if (!firefox)
     sheet.replaceSync('* {}');
@@ -849,7 +844,7 @@ function importPreset(encodedPreset){
   let block = [];
   let text = "";
   let state = false;
-  for (var i = 0; i < encodedPreset.length; i++) {
+  for (let i = 0; i < encodedPreset.length; i++) {
     let char = encodedPreset.charAt(i);
     let small = /^[0-9a-z_]+$/g.test(char);
     if (small && state){
@@ -1030,18 +1025,18 @@ function getPdnPalette() {
 //Thx
 //https://www.w3schools.com/js/js_cookies.asp
 function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
+  let d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires="+ d.toUTCString();
+  let expires = "expires="+ d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-  var c = ca[i];
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+  let c = ca[i];
   while (c.charAt(0) == ' ') {
     c = c.substring(1);
   }
@@ -1064,7 +1059,7 @@ function arraysEqual(a, b) {
   // Please note that calling sort on an array will modify that array.
   // you might want to clone your array first.
 
-  for (var i = 0; i < a.length; ++i) {
+  for (let i = 0; i < a.length; ++i) {
     if (a[i] !== b[i]) return false;
   }
 
@@ -1075,7 +1070,7 @@ function arraysEqual(a, b) {
 // https://stackoverflow.com/a/4587130
 // https://stackoverflow.com/a/1144249
 function indexOfObj(obj, list) { // Index of object in list
-  var i;
+  let i;
   for (i = 0; i < list.length; i++) {
     if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
       return i;
@@ -1085,7 +1080,7 @@ function indexOfObj(obj, list) { // Index of object in list
 }
 
 function indexOfObjOptim(obj, list) { // Index of object in list (optimized, takes only last 10 values)
-  var i;
+  let i;
   for (i = list.length - 10; i < list.length; i++) {
     if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
       return i;
