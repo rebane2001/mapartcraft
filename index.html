@@ -24,7 +24,7 @@
         <h1 class="ui header huge" style="margin: 0 0 0 0;">MapartCraft</h1>
         <h3 class="ui header" style="margin: 10px 0 0 0;"><a href="faq.html" target="_blank" rel="noopener">FAQ</a> | <a href="https://youtu.be/bJ-wX68WNHM" target="_blank" rel="noopener">Video tutorial</a> | <a href="https://github.com/rebane2001/mapartcraft" target="_blank" rel="noopener">GitHub</a> | <a href="https://discord.gg/r7Tuerq" target="_blank" rel="noopener">Discord</a> | <a href="https://rebane2001.com/mapartwall" target="_blank" rel="noopener">MapartWall</a></h3>
 
-        <div class="ui floating positive message"><h3 class="ui header" style="margin: 0 0 0 0;">Anniversary update!</h3>A year ago, I released MapartCraft.<br>Today is its anniversary, and what better way to celebrate it than with a design overhaul, that takes the old and ugly MapartCraft and turns it into something modern, sleek, responsive and beautiful!<br><small>(the <a href="old.html" target="_blank" rel="noopener">old version</a> of MapartCraft will still be available until May 1st 2020)</small></div>
+        <div class="ui floating positive message"><h3 class="ui header" style="margin: 0 0 0 0;">Anniversary update!</h3>A year ago, I released MapartCraft.<br>Today is its anniversary, and what better way to celebrate it than with a design overhaul, that takes the old and ugly MapartCraft and turns it into something modern, sleek and beautiful!<br><small>(the <a href="old.html" target="_blank" rel="noopener">old version</a> of MapartCraft will still be available until May 1st 2020)</small></div>
 
         <div class="ui segment">A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like <a href="https://www.reddit.com/r/2b2t/" target="_blank" rel="noopener">2b2t</a>, running in your browser<br>
         Inspired by <a href="https://redd.it/2yck3f" target="_blank" rel="noopener">Redstonehelper's map art program</a>, with the goal to add much-requested features and removing the need to download a program<br>
@@ -68,11 +68,11 @@
           <option>1.15.1</option>
         </select>
         </b><br>
-        <b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
-        <b class="ui" data-content="Crops your image instead of stretching it out" onclick="updateMap()">Crop: <input id="cropimg" type="checkbox"></b><br>
-        <b class="ui" data-content="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" checked></b><br>
-        <span id="unobtainiablesection" style="display: none"><b class="ui" data-content="Enables map.dat colors unobtainiable in schematics" onclick="updateMap()">Unobtainiable colors: <input id="unobtainiable" type="checkbox"></b><br></span>
-        <b class="ui" data-content="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox" checked></b><br>
+        <b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()" class="ui input"><br>
+        <b class="ui" data-content="Crops your image instead of stretching it out" onclick="updateMap()">Crop: <input id="cropimg" type="checkbox" class="ui checkbox"></b><br>
+        <b class="ui" data-content="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" class="ui checkbox" checked></b><br>
+        <span id="unobtainiablesection" style="display: none"><b class="ui" data-content="Enables map.dat colors unobtainiable in schematics" onclick="updateMap()">Unobtainiable colors: <input id="unobtainiable" class="ui checkbox" type="checkbox"></b><br></span>
+        <b class="ui" data-content="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox" class="ui checkbox" checked></b><br>
         <b class="ui" data-content="Adds seemingly random pixels for the illusion of more colors">
         Dithering:
         <select id="dither" onchange="updateMap()" class="ui dropdown">
@@ -96,7 +96,7 @@
           </select>
           </b>
           <br>
-          <b class="ui" data-content="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
+          <b class="ui" data-content="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone" class="ui"></b>
           <br>
         </span>
               <div id="materials" style="display: none">
