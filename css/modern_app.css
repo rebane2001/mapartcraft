@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+@font-face {
+    font-family: 'kenpixel_mini_square';
+    src: url('kenpixel_mini_square.woff') format('woff');
+}
+
+h1, h2, h3 {
+    margin: 0 0 0 0;
+}
+
+div#preloads {
+   position: absolute;
+   overflow: hidden;
+   left: -9999px; 
+   top: -9999px;
+   height: 1px;
+   width: 1px;
+}
+
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+    background-color: #222;
+    -webkit-filter: drop-shadow(0 0 0px #222);
+    transition: background-color 0.2s;
+}
+
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    background-color: #658968;
+    -webkit-filter: drop-shadow(0 0 4px #658968);
+    z-index: 10;
+}
+
+.colorbox {
+    float: left;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+#tooltip {
+    font-family: 'kenpixel_mini_square';
+    position: absolute;
+    background: #7BAE7F;
+    color: #ffffff;
+    padding: 0 7px 2px 7px;
+}
+
+canvas {
+    image-rendering: optimizeSpeed; /* Older versions of FF */
+    image-rendering: -moz-crisp-edges; /* FF 6.0+ */
+    image-rendering: -webkit-optimize-contrast; /* Safari */
+    image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+    image-rendering: pixelated; /* Awesome future-browsers */
+    -ms-interpolation-mode: nearest-neighbor; /* IE */
+    cursor: pointer;
+}
+
+.section {
+    margin-bottom: 30px;
+    margin-right: 30px;
+}
+
+th:nth-child(1) {
+    padding-right: 0.2em
+}
+
+.sizebtn {
+    margin-top: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+    float: right;
+}
+
+#progress {
+  background-color: black;
+  display: none;
+}
+
+#progresstext {
+  position: absolute;
+  padding-left:6px;
+}
+
+#progressdiv {
+  background-color: #688E6B;
+  height: 24px;
+}
