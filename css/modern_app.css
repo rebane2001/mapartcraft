@@ -33,8 +33,7 @@ div#preloads {
     margin-bottom: 3px;
     margin-right: 3px;
     margin-left: 3px;
-    background-color: #222;
-    -webkit-filter: drop-shadow(0 0 0px #222);
+    -webkit-filter: drop-shadow(0 0 0px #000);
     transition: background-color 0.2s;
 }
 
@@ -102,6 +101,6 @@ th:nth-child(1) {
 }
 
 #progressdiv {
-  background-color: #688E6B;
+  background-color: #eee;
   height: 24px;
 }

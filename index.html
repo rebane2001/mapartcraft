@@ -41,7 +41,7 @@
         <h2 class="ui header">Settings</h2>
         <b class="ui" data-content="Select the mode you'd like to operate in">
         Mode:
-        <select id="mapmode" onchange="updateMode()">
+        <select id="mapmode" onchange="updateMode()" class="ui dropdown">
           <option selected="selected">Schematic (nbt)</option>
           <option disabled>Visual (not available)</option>
           <option>Datafile (map.dat)</option>
@@ -49,7 +49,7 @@
         </b><br>
         <b class="ui" data-content="Select the version closest to what you're running">
         Version:
-        <select id="version" onchange="updateVersion()">
+        <select id="version" onchange="updateVersion()" class="ui dropdown">
           <option>1.12</option>
           <option>1.12.1</option>
           <option selected="selected">1.12.2</option>
@@ -72,7 +72,7 @@
         <b class="ui" data-content="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox" checked></b><br>
         <b class="ui" data-content="Adds seemingly random pixels for the illusion of more colors">
         Dithering:
-        <select id="dither" onchange="updateMap()">
+        <select id="dither" onchange="updateMap()" class="ui dropdown">
           <option>None</option>
           <option selected="selected">Floyd–Steinberg</option>
           <option>Bayer (4x4)</option>
@@ -84,7 +84,7 @@
         <span id="underblockssection">
           <b>
           Add blocks under:
-          <select id="underblocks">
+          <select id="underblocks" class="ui dropdown">
             <option>No blocks</option>
             <option selected="selected">Important blocks</option>
             <option>All blocks</option>
@@ -96,10 +96,21 @@
           <b class="ui" data-content="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
           <br>
         </span>
-      </div>
-      <div id="materials" class="ui container" style="display: none">
+              <div id="materials" style="display: none">
         <h2>Materials</h2>
         <table id="materialtable">
+          <tbody>
+            <tr style="display: table-row;">
+              <th>Block</th>
+              <th>Amount</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <div id="aa" class="ui container" style="display: none">
+        <h2>Materials</h2>
+        <table id="dasd">
           <tbody>
             <tr style="display: table-row;">
               <th>Block</th>
