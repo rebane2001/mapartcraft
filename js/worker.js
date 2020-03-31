@@ -1,4 +1,5 @@
 var colorCache = new Map(); //lru cache
+var labCache = new Map();
 var selectedcolors = [];
 var bettercolor = false;
 
@@ -17,7 +18,7 @@ function diff_colors(p1, p2) {
 }
 
 function find_closest(pixel) {
-  let val = pixel.toString();
+  let val = (pixel[0] << 16) + (pixel[1] << 8) + (pixel[2]);
   if (colorCache.has(val)){
     return colorCache.get(val);
   }else{
@@ -38,7 +39,7 @@ function find_closest(pixel) {
 }
 
 function find_closest_two(pixel) {
-  let val = pixel.toString();
+  let val = (pixel[0] << 16) + (pixel[1] << 8) + (pixel[2]);
   if (colorCache.has(val)){
     return colorCache.get(val);
   }else{
@@ -70,6 +71,10 @@ function find_closest_two(pixel) {
 
 // rgb2lab conversion based on the one from redstonehelper's program
 function rgb2lab(rgb) {
+  let val = (rgb[0] << 16) + (rgb[1] << 8) + (rgb[2]);
+  if (labCache.has(val))
+    return labCache.get(val);
+
   let r1 = rgb[0] / 255.0,
     g1 = rgb[1] / 255.0,
     b1 = rgb[2] / 255.0;
@@ -84,7 +89,9 @@ function rgb2lab(rgb) {
     m = 500.0 * ((0.008856452 < f ? Math.pow(f, 1 / 3) : (903.2963 * f + 16.0) / 116.0) - l),
     n = 200.0 * (l - (0.008856452 < k ? Math.pow(k, 1 / 3) : (903.2963 * k + 16.0) / 116.0));
 
-  return [2.55 * (116.0 * l - 16.0) + 0.5, m + 0.5, n + 0.5];
+  rgb = [2.55 * (116.0 * l - 16.0) + 0.5, m + 0.5, n + 0.5];
+  labCache.set(val, rgb);
+  return rgb;
 }
 
 onmessage = function(e) {
