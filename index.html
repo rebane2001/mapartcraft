@@ -4,7 +4,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <title>BannerartCraft</title>
     <meta charset="UTF-8">
-    <meta name="description" content="MapartCraft">
+    <meta name="description" content="BannerartCraft">
     <meta name="author" content="rebane2001">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/spritesheet.css">
@@ -18,11 +18,11 @@
     <h1>BannerartCraft</h1>
     <p>EZ BANNER ART MAKING TOOL</p>
     <div id="blockselection" class="section" style="float: left;">
-      <h2 id="blockselectiontitle">Block selection</h2>
+      <h2 id="blockselectiontitle">Enabled banners selection</h2>
       <button id="fauxpresets" type="button" onClick="initCookie()">Presets</button>
     </div>
     <div id="mapimage" class="section" style="float: left">
-      <h2>Map preview</h2>
+      <h2>Banner preview</h2>
       <input type="file" id="imgupload" style="display: none;" /><br>
       <canvas width="128" height="128" id="displaycanvas" onclick="chooseFile()" style="float: right; width: 256px; height: 256px;"></canvas><br>
       <small data-tooltip title="A source image with this resolution will work the best" id="mapres">128x128</small>
@@ -34,35 +34,35 @@
     <div id="settings" class="section" style="float: left">
       <h2>Settings</h2>
       <br>
-      <b data-tooltip title="Select the mode you'd like to operate in">
+      <b data-tooltip title="Select the mode you'd like to operate in" style="display: none">
         Mode:
         <select id="mapmode" onchange="updateMode()">
           <option selected="selected">Schematic (nbt)</option>
           <option disabled>Visual (not available)</option>
-          <option>Datafile (map.dat)</option>
+          <option disabled>Datafile (banner.dat)</option>
         </select>
-      </b><br>
+      </b>
       <b data-tooltip title="Select the version closest to what you're running">
         Version:
         <select id="version" onchange="updateVersion()">
-          <option>1.12</option>
+          <option disabled>1.12</option>
           <option>1.12.1</option>
           <option selected="selected">1.12.2</option>
-          <option>1.13.0</option>
-          <option>1.13.1</option>
-          <option>1.13.2</option>
-          <option>1.14.0</option>
-          <option>1.14.1</option>
-          <option>1.14.2</option>
-          <option>1.14.3</option>
-          <option>1.14.4</option>
-          <option>1.15.0</option>
-          <option>1.15.1</option>
+          <option disabled>1.13.0</option>
+          <option disabled>1.13.1</option>
+          <option disabled>1.13.2</option>
+          <option disabled>1.14.0</option>
+          <option disabled>1.14.1</option>
+          <option disabled>1.14.2</option>
+          <option disabled>1.14.3</option>
+          <option disabled>1.14.4</option>
+          <option disabled>1.15.0</option>
+          <option disabled>1.15.1</option>
         </select>
       </b><br>
-      <b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
+      <b>Banner size: </b><input id="mapsizex" type="number" min="2" step="1" value="128" style="width: 5em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="2" step="1" value="128" style="width: 5em;" onchange="updateMap()"><br>
       <b data-tooltip title="Crops your image instead of stretching it out" onclick="updateMap()">Crop: <input id="cropimg" type="checkbox"></b><br>
-      <b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox"></b><br>
+      <b style="display: none" data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox"></b><br>
       <span id="unobtainiablesection" style="display: none"><b data-tooltip title="Enables map.dat colors unobtainiable in schematics" onclick="updateMap()">Unobtainiable colors: <input id="unobtainiable" type="checkbox"></b><br></span>
       <b data-tooltip title="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox" checked></b><br>
       <b data-tooltip title="Adds seemingly random pixels for the illusion of more colors">
@@ -76,7 +76,7 @@
         </select>
       </b>
       <br>
-      <span id="underblockssection">
+      <span id="underblockssection" style="display: none">
         <b>
           Add blocks under:
           <select id="underblocks">
@@ -88,15 +88,15 @@
           </select>
         </b>
         <br>
-        <b data-tooltip title="Related to previous option">Block to add: <input type="text" id="underblock" value="minecraft:stone"></b>
+        <b data-tooltip title="Related to previous option">Blocks to stick banners to: <input type="text" id="underblock" value="minecraft:stone"></b>
         <br>
       </span>
       <br>
-      <span id="downloadbtnsection"><img src="img/downloadsmall.png" onclick="getNbt()" style="cursor: pointer" data-tooltip title="Download the nbt" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="cursor: pointer" data-tooltip title="Download the nbt split into 1x1 chunks" /><br></span>
+      <span id="downloadbtnsection"><img src="img/downloadsmall.png" onclick="getNbt()" style="cursor: pointer" data-tooltip title="Download the nbt" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="display: none" data-tooltip title="Download the nbt split into 1x1 chunks" /><br></span>
       <span id="downloadmapdatbtnsection" style="display: none"><img src="img/downloadlarge.png" onclick="getMapDatSplit()" style="cursor: pointer" data-tooltip title="Download the map.dat split into 1x1 chunks" /><br></span>
       <img src="img/pdnpalette.png" onclick="getPdnPalette()" data-tooltip title="Downloads color palette for use in Paint.net" style="cursor: pointer" /><br>
-      <span id="materialsbtnsection"><img src="img/materials.png" onclick="getMaterials()" data-tooltip title="Refresh materials list" style="cursor: pointer" /><br></span>
-      <a href="supporters" data-tooltip title="View supporters and donate"><img src="img/donate.png"  style="cursor: pointer" alt="Donate with PayPal button" /></a>
+      <span id="materialsbtnsection"><img src="img/materials.png" onclick="getMaterials()" data-tooltip title="Refresh materials list" style="display: none" /><br></span>
+      <a href="supporters" data-tooltip title="View supporters and donate"><img src="img/donate.png"  style="display: none" alt="Donate with PayPal button" /></a>
     </div>
     
     <div id="materials" class="section" style="display: none">

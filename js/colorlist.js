@@ -3,112 +3,112 @@ window.colorlist_base =
   [
     [[180, 180, 180], [177, 182, 181], [255, 255, 255], [135, 135, 135]],
     [
-      ["wool", "0", "White Wool", false, "wool_colored_white", 0],
+      ["wool", "0", "White Banner", false, "wool_colored_white", 0],
     ],
     13
   ],
   [
     [[152, 89, 36], [176, 90, 20], [216, 127, 51], [114, 67, 27]],
     [
-      ["wool", "1", "Orange Wool", false, "wool_colored_orange", 0],
+      ["wool", "1", "Orange Banner", false, "wool_colored_orange", 0],
     ],
     14
   ],
   [
     [[125, 53, 152], [141,55, 134], [178, 76, 216], [94, 40, 114]],
     [
-      ["wool", "2", "Magenta Wool", false, "wool_colored_magenta", 0],
+      ["wool", "2", "Magenta Banner", false, "wool_colored_magenta", 0],
     ],
     15
   ],
   [
     [[72, 108, 152], [41, 127, 154], [102, 153, 216], [54, 81, 114]],
     [
-      ["wool", "3", "Light Blue Wool", false, "wool_colored_light_blue", 0],
+      ["wool", "3", "Light Blue Banner", false, "wool_colored_light_blue", 0],
     ],
     16
   ],
   [
     [[161, 161, 36], [180, 152, 42], [229, 229, 51], [121, 121, 27]],
     [
-      ["wool", "4", "Yellow Wool", false, "wool_colored_yellow", 0],
+      ["wool", "4", "Yellow Banner", false, "wool_colored_yellow", 0],
     ],
     17
   ],
   [
     [[89, 144, 17], [91, 141, 22], [127, 204, 25], [67, 108, 13]],
     [
-      ["wool", "5", "Lime Wool", false, "wool_colored_lime", 0],
+      ["wool", "5", "Lime Banner", false, "wool_colored_lime", 0],
     ],
     18
   ],
   [
     [[170, 89, 116], [173, 99, 121], [242, 127, 165], [128, 67, 87]],
     [
-      ["wool", "6", "Pink Wool", false, "wool_colored_pink", 0],
+      ["wool", "6", "Pink Banner", false, "wool_colored_pink", 0],
     ],
     19
   ],
   [
     [[53, 53, 53], [50, 56, 58], [76, 76, 76], [40, 40, 40]],
     [
-      ["wool", "7", "Gray Wool", false, "wool_colored_gray", 0],
+      ["wool", "7", "Gray Banner", false, "wool_colored_gray", 0],
     ],
     20
   ],
   [
     [[108, 108, 108], [111, 111, 106], [153, 153, 153], [81, 81, 81]],
     [
-      ["wool", "8", "Light Gray Wool", false, "wool_colored_silver", 0],
+      ["wool", "8", "Light Gray Banner", false, "wool_colored_silver", 0],
     ],
     21
   ],
   [
     [[53, 89, 108], [15, 110, 110], [76, 127, 153], [40, 67, 81]],
     [
-      ["wool", "9", "Cyan Wool", false, "wool_colored_cyan", 0],
+      ["wool", "9", "Cyan Banner", false, "wool_colored_cyan", 0],
     ],
     22
   ],
   [
     [[89, 44, 125], [97, 35, 130], [127, 63, 178], [67, 33, 94]],
     [
-      ["wool", "10", "Purple Wool", false, "wool_colored_purple", 0],
+      ["wool", "10", "Purple Banner", false, "wool_colored_purple", 0],
     ],
     23
   ],
   [
     [[36, 53, 125], [42, 48, 120], [51, 76, 178], [27, 40, 94]],
     [
-      ["wool", "11", "Blue Wool", false, "wool_colored_blue", 0],
+      ["wool", "11", "Blue Banner", false, "wool_colored_blue", 0],
     ],
     24
   ],
   [
     [[72, 53, 36], [92, 60, 35], [102, 76, 51], [54, 40, 27]],
     [
-      ["wool", "12", "Brown Wool", false, "wool_colored_brown", 0],
+      ["wool", "12", "Brown Banner", false, "wool_colored_brown", 0],
     ],
     25
   ],
   [
     [[72, 89, 36], [66, 88, 16], [102, 127, 51], [54, 67, 27]],
     [
-      ["wool", "13", "Green Wool", false, "wool_colored_green", 0],
+      ["wool", "13", "Green Banner", false, "wool_colored_green", 0],
     ],
     26
   ],
   [
     [[108, 36, 36], [124, 32, 27], [153, 51, 51], [81, 27, 27]],
     [
-      ["wool", "14", "Red Wool", false, "wool_colored_red", 0],
+      ["wool", "14", "Red Banner", false, "wool_colored_red", 0],
     ],
     27
   ],
   [
     [[17, 17, 17], [20, 20, 23], [25, 25, 25], [13, 13, 13]],
     [
-      ["wool", "15", "Black Wool", false, "wool_colored_black", 0],
+      ["wool", "15", "Black Banner", false, "wool_colored_black", 0],
     ],
     28
   ]
