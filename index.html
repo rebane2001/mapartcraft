@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <title>MapartCraft</title>
+    <title>BannerartCraft</title>
     <meta charset="UTF-8">
     <meta name="description" content="MapartCraft">
     <meta name="author" content="rebane2001">
@@ -15,12 +15,8 @@
     <script src="js/app.js" type="text/javascript"></script>
   </head>
   <body>
-    <h1>MapartCraft</h1>
-    <h3><a href="faq.html" target="_blank" rel="noopener">FAQ</a> | <a href="https://youtu.be/bJ-wX68WNHM" target="_blank" rel="noopener">Video tutorial</a> | <a href="https://github.com/rebane2001/mapartcraft" target="_blank" rel="noopener">GitHub</a> | <a href="https://discord.gg/r7Tuerq" target="_blank" rel="noopener">Discord</a> | <a href="https://rebane2001.com/mapartwall" target="_blank" rel="noopener">MapartWall</a></h3>
-    <p>A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like <a href="https://www.reddit.com/r/2b2t/" target="_blank" rel="noopener">2b2t</a>, running in your browser<br>
-    Inspired by <a href="https://redd.it/2yck3f" target="_blank" rel="noopener">Redstonehelper's map art program</a>, with the goal to add much-requested features and removing the need to download a program<br>
-    Feel free to message me on Discord (rebane2001#3716) or Reddit (<a href="https://www.reddit.com/message/compose/?to=rebane2001" target="_blank" rel="noopener">/u/rebane2001</a>), feature requests and bug reports go on <a href="https://github.com/rebane2001/mapartcraft/issues" target="_blank" rel="noopener">GitHub</a><br>
-    <b>Please check the <a href="faq.html" target="_blank" rel="noopener">FAQ</a> before asking any questions anywhere!</b></p>
+    <h1>BannerartCraft</h1>
+    <p>EZ BANNER ART MAKING TOOL</p>
     <div id="blockselection" class="section" style="float: left;">
       <h2 id="blockselectiontitle">Block selection</h2>
       <button id="fauxpresets" type="button" onClick="initCookie()">Presets</button>
@@ -66,7 +62,7 @@
       </b><br>
       <b>Map size: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
       <b data-tooltip title="Crops your image instead of stretching it out" onclick="updateMap()">Crop: <input id="cropimg" type="checkbox"></b><br>
-      <b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox" checked></b><br>
+      <b data-tooltip title="Makes the map 3D. Harder to build, but 3 times the colors!" onclick="updateMap()">Staircasing: <input id="staircasing" type="checkbox"></b><br>
       <span id="unobtainiablesection" style="display: none"><b data-tooltip title="Enables map.dat colors unobtainiable in schematics" onclick="updateMap()">Unobtainiable colors: <input id="unobtainiable" type="checkbox"></b><br></span>
       <b data-tooltip title="Gives you way better colors at the cost of performance" onclick="updateMap()">Better color: <input id="bettercolor" type="checkbox" checked></b><br>
       <b data-tooltip title="Adds seemingly random pixels for the illusion of more colors">

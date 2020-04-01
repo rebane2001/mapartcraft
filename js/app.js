@@ -187,8 +187,8 @@ function updateMap() {
     //this part is so that weird displays scale pixels 1 to int(x)
     devicePixelRatio = window.devicePixelRatio || 1;
 
-    ctx.canvas.width = mapsize[0] * 128;
-    ctx.canvas.height = mapsize[1] * 128;
+    ctx.canvas.width = mapsize[0];
+    ctx.canvas.height = mapsize[1];
 
     updatePreviewScale(0);
 
@@ -232,7 +232,7 @@ function updateMap() {
 function updateSplit() {
   let ctx = offscreen.getContext('2d');
   let ctxsplt = offscreensplit.getContext('2d');
-  ctxsplt.drawImage(offscreen,currentSplit[0]*128,currentSplit[1]*128,128,128,0,0,128,128);
+  ctxsplt.drawImage(offscreen,currentSplit[0],currentSplit[1],128,128,0,0,128,128);
 }
 
 worker.onmessage = function(e) { 
@@ -350,14 +350,23 @@ function getMap() {
   let blocks = []
   let nbtblocklist = []
   let underblocks = document.getElementById("underblocks").selectedIndex;
-  if (underblocks > 0) {
+
+
     let underblock = document.getElementById("underblock").value;
+
+
     nbtblocklist.push({
       "Colors": [-255, -255, -255],
       "Name": underblock,
       "SelectedBlock": [-1, -1]
     });
-  }
+
+        nbtblocklist.push({
+      "Colors": [-255, -255, -255],
+      "Name": "minecraft:wall_banner",
+      "SelectedBlock": [-1, -1]
+    });
+  /*
   for (let x = 0; x < ctx.canvas.width; x++) {
     for (let y = 0; y < ctx.canvas.height; y++) {
       color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
@@ -385,185 +394,48 @@ function getMap() {
         }
       });
     }
-  }
+  }*/
   if (document.getElementById('staircasing').checked) { // 3D CODE
-    for (let x = 0; x < ctx.canvas.width; x++) {
 
-      let hhhh = 1000;
-      let minh = 1000;
-      let maxh = 1000;
-      for (let y = 0; y < ctx.canvas.height; y++) {
-        let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
-        let toneid = 0;
-        for (let i = 0; i < nbtblocklist.length; i++) {
-          if (arraysEqual(nbtblocklist[i]["Colors"][0], color)) {
-            toneid = -1;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][1], color)) {
-            toneid = 0;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][2], color)) {
-            toneid = 1;
-            break;
-          }
-
-        }
-        hhhh += toneid;
-        minh = Math.min(minh, hhhh);
-        maxh = Math.max(maxh, hhhh);
-      }
-      hhhh = 1000 - minh;
-      hhhh++;
-      if (underblocks > 0)
-        hhhh++;
-      if (underblocks > 2)
-        hhhh++;
-      for (let y = 0; y < ctx.canvas.height; y++) {
-        let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
-        let toneid = 0;
-        let blockid = 0;
-        for (let i = 0; i < nbtblocklist.length; i++) {
-          if (arraysEqual(nbtblocklist[i]["Colors"][0], color)) {
-            toneid = -1;
-            blockid = i;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][1], color)) {
-            toneid = 0;
-            blockid = i;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][2], color)) {
-            toneid = 1;
-            blockid = i;
-            break;
-          }
-        }
-        //NOOBLINE
-        if (y == 0) {
-          blocks.push({
-            "pos": [x, hhhh, y],
-            "state": 0
-          });
-        }
-        hhhh += toneid;
-        blocks.push({
-          "pos": [x, hhhh, y + 1],
-          "state": blockid
-        });
-        //UNDERBLOCKS
-        if (underblocks == 2) {
-          blocks.push({
-            "pos": [x, hhhh - 1, y + 1],
-            "state": 0
-          });
-        } else if (underblocks == 3) {
-          blocks.push({
-            "pos": [x, hhhh - 1, y + 1],
-            "state": 0
-          });
-          blocks.push({
-            "pos": [x, hhhh - 2, y + 1],
-            "state": 0
-          });
-          if( // spaghetti, I need to break up this entire function into proper smaller functions
-            indexOfObjOptim({
-              "pos": [x, hhhh - 1, y + 0],
-              "state": 0
-            }, blocks) > -1 &&
-            indexOfObjOptim({
-              "pos": [x, hhhh - 1, y - 1],
-              "state": 0
-            }, blocks) > -1
-          ){
-            let toRemove = indexOfObjOptim({
-              "pos": [x, hhhh - 2, y + 0],
-              "state": 0
-            }, blocks);
-            if (toRemove > -1)
-              blocks.splice(toRemove,1)
-          }
-        } else if (underblocks == 4) { //very ugly code, should be made into functions instead
-          blocks.push({
-            "pos": [x, hhhh - 1, y + 1],
-            "state": 0
-          });
-          blocks.push({
-            "pos": [x, hhhh - 2, y + 1],
-            "state": 0
-          });
-        } else if (underblocks == 1) {
-          selectedblocks.forEach(function(b) {
-            if (arraysEqual(blocklist[b[0]][0][0], nbtblocklist[blockid]["Colors"][0])) {
-              if (blocklist[b[0]][1][b[1]][3])
-                blocks.push({
-                  "pos": [x, hhhh - 1, y + 1],
-                  "state": 0
-                });
-            }
-          });
-        }
-
-      }
-    }
   } else { // 2D CODE
-    let hhhh = 0;
-    if (underblocks > 0)
-      hhhh++;
-    if (underblocks > 2)
-      hhhh++;
+
     for (let x = 0; x < ctx.canvas.width; x++) {
       for (let y = 0; y < ctx.canvas.height; y++) {
+
         let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
         let blockid = 0;
+
+        selectedblocks.forEach(function(i) {
+          if (arraysEqual(blocklist[i[0]][0][1], color)){
+              blocks.push({
+                "pos": [ctx.canvas.width - x, ctx.canvas.height - y, 1],
+                "c": -1,
+                "state": 0
+              });
+              blocks.push({
+                "pos": [ctx.canvas.width - x, ctx.canvas.height -y, 0],
+                "c": blocklist[i[0]][1][0][1],
+                "state": 1
+              });
+          }
+          });/*
         for (let i = 0; i < nbtblocklist.length; i++) {
           if (arraysEqual(nbtblocklist[i]["Colors"][1], color)) {
-            blockid = i;
+            colorid = i;
             break;
           }
-        }
-        //NOOBLINE
-        if (y == 0) {
-          blocks.push({
-            "pos": [x, hhhh, y],
-            "state": 0
-          });
-        }
-        blocks.push({
-          "pos": [x, hhhh, y + 1],
-          "state": blockid
-        });
-        // UNDERBLOCKS
-        if (underblocks == 2) {
-          blocks.push({
-            "pos": [x, 0, y + 1],
-            "state": 0
-          });
-        } else if (underblocks >= 3) {
-          blocks.push({
-            "pos": [x, 0, y + 1],
-            "state": 0
-          });
-          blocks.push({
-            "pos": [x, 1, y + 1],
-            "state": 0
-          });
-        } else if (underblocks == 1) {
-          selectedblocks.forEach(function(b) {
-            if (arraysEqual(blocklist[b[0]][0][0], nbtblocklist[blockid]["Colors"][0])) {
-              if (blocklist[b[0]][1][b[1]][3])
-                blocks.push({
-                  "pos": [x, 0, y + 1],
-                  "state": 0
-                });
-            }
-          });
-        }
+        }*/
+
+
       }
     }
   }
+  console.log({
+      blocks, 
+      nbtblocklist, 
+      width: ctx.canvas.width, 
+      height: ctx.canvas.height
+    });
   return {
       blocks, 
       nbtblocklist, 
@@ -731,7 +603,14 @@ function getNbt() {
   let {blocks, nbtblocklist, width, height} = getMap();
   let jsonstring = "{\"name\":\"\",\"value\":{\"blocks\":{\"type\":\"list\",\"value\":{\"type\":\"compound\",\"value\":[";
   blocks.forEach(function(r) {
-    jsonstring += "{\"pos\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + r["pos"][0] + "," + r["pos"][1] + "," + r["pos"][2] + "]}},\"state\":{\"type\":\"int\",\"value\":" + r["state"] + "}},";
+    let nbtstr = "";
+    if (r["c"] != -1){
+    nbtstr = `"nbt":{"type":"compound","value":{
+      "Base":{"type":"int","value":${15 - r["c"]}},
+      "id":{"type":"string","value":"minecraft:banner"}
+    }},`;
+    }
+    jsonstring += "{" + nbtstr + "\"pos\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + r["pos"][0] + "," + r["pos"][1] + "," + r["pos"][2] + "]}},\"state\":{\"type\":\"int\",\"value\":" + r["state"] + "}},";
   });
   jsonstring = jsonstring.slice(0, -1);
   jsonstring += "]}},\"entities\":{\"type\":\"list\",\"value\":{\"type\":\"compound\",\"value\":[]}},\"palette\":{\"type\":\"list\",\"value\":{\"type\":\"compound\",\"value\":[";
@@ -753,9 +632,9 @@ function getNbt() {
     maxheight = Math.max(r["pos"][1],maxheight);
   });
   maxheight++;
-  jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + width + "," + maxheight + "," + (height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":" + dataversion + "}}}";
+  jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + (width + 1) + "," + maxheight + "," + 3 + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":" + dataversion + "}}}";
   //download
-  console.log("Parsing JSON and converting to NBT");
+  console.log(jsonstring);
   let nbtdata = nbt.writeUncompressed(JSON.parse(jsonstring));
   console.log("Gzipping");
   let gzipped = pako.gzip(nbtdata);
