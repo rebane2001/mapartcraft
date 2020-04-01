@@ -810,29 +810,8 @@ function checkCookie() {
 }
 
 function updateVersion(){
-	mcversion = document.getElementById("version").value;
-  [dataversion,blockversion] = versionindex[mcversion];
-  switch (blockversion) {
-        case 0:
-          window.blocklist = window.colorlist_base;
-          break;
-        case 1:
-          window.blocklist = window.colorlist_base;
-          for (let x = 0; x < window.colorlist_patches["1.13"].length; ++x) {
-            for (let i = 0; i < window.blocklist.length; ++i) { 
-              if (window.colorlist_patches["1.13"][x][0][0] == window.blocklist[i][2]){
-                for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
-                  if (window.colorlist_patches["1.13"][x][0][1] == window.blocklist[i][1][j][5]){
-                    window.blocklist[i][1][j] = window.colorlist_patches["1.13"][x][1];
-                    break;
-                  }
-                }
-                break;
-              }
-            }
-          }
-          break;
-  }
+  [dataversion, blockversion] = [1343, 0]
+  window.blocklist = window.colorlist_base;
 }
 
 function updatePreviewScale(i) {
