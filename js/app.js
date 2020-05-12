@@ -934,6 +934,8 @@ function checkCookie() {
 function updateVersion(){
 	mcversion = document.getElementById("version").value;
   [dataversion,blockversion] = versionindex[mcversion];
+  if (dataversion > 2225)
+    alert("Note: If you are using Litematica 1.15.2, please use the 1.15 version\nLitematica seems to have a bug if you select a different version for some reason")
   switch (blockversion) {
         case 0:
           window.blocklist = window.colorlist_base;
