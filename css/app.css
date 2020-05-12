@@ -124,3 +124,8 @@ th:nth-child(1) {
   background-color: #688E6B;
   height: 24px;
 }
+
+.contactinfo {
+    filter:blur(8px);
+    cursor: pointer;
+}

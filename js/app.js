@@ -1039,6 +1039,16 @@ function getPdnPalette() {
   window.URL.revokeObjectURL(url);
 }
 
+// Reveal contact info
+function contactinfo(event) {
+  event.preventDefault();
+  if (confirm('Have you read the FAQ?')){
+    document.querySelectorAll('.contactinfo').forEach(function(e) {
+        e.outerHTML = e.innerHTML;
+    });
+  }
+}
+
 //Thx
 //https://www.w3schools.com/js/js_cookies.asp
 function setCookie(cname, cvalue, exdays) {
