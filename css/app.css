@@ -129,3 +129,18 @@ th:nth-child(1) {
     filter:blur(8px);
     cursor: pointer;
 }
+
+.greenbtn {
+    font-family: 'kenpixel_mini_square';
+    background:#688E6B;
+    color: #333333;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0 5px 5px 0;
+    cursor: pointer;
+    width:250px;
+    height:29px;
+    font-size:100%;
+}

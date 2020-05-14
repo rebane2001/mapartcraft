@@ -97,11 +97,20 @@
         <br>
       </span>
       <br>
-      <span id="downloadbtnsection"><img src="img/downloadsmall.png" onclick="getNbt()" style="cursor: pointer" data-tooltip title="Download the nbt" /><img src="img/downloadsplit.png" onclick="getNbtSplit()" style="cursor: pointer" data-tooltip title="Download the nbt split into 1x1 chunks" /><br></span>
-      <span id="downloadmapdatbtnsection" style="display: none"><img src="img/downloadlarge.png" onclick="getMapDatSplit()" style="cursor: pointer" data-tooltip title="Download the map.dat split into 1x1 chunks" /><br></span>
-      <img src="img/pdnpalette.png" onclick="getPdnPalette()" data-tooltip title="Downloads color palette for use in Paint.net" style="cursor: pointer" /><br>
-      <span id="materialsbtnsection"><img src="img/materials.png" onclick="getMaterials()" data-tooltip title="Refresh materials list" style="cursor: pointer" /><br></span>
-      <a href="supporters" data-tooltip title="View supporters and donate"><img src="img/donate.png"  style="cursor: pointer" alt="Donate with PayPal button" /></a>
+      <span id="downloadbtnsection">
+        <span class="greenbtn" onclick="getNbt()" data-tooltip title="Download the nbt" style="font-size:32px;height:50px">DOWNLOAD</span><br>
+        <span class="greenbtn" onclick="getNbtSplit()" data-tooltip title="Download the nbt split into 1x1 chunks">DOWNLOAD AS 1x1 SPLIT</span><br>
+      </span>
+      <span id="downloadmapdatbtnsection" style="display: none">
+        <span class="greenbtn" onclick="getMapDatSplit()" data-tooltip title="Download the map.dat split into 1x1 chunks" style="font-size:32px;height:50px">DOWNLOAD</span><br>
+      </span>
+      <span class="greenbtn" onclick="getPdnPalette()" data-tooltip title="Downloads color palette for use in Paint.net">DOWNLOAD PDN PALETTE</span><br>
+      <span id="materialsbtnsection">
+        <span class="greenbtn" onclick="getMaterials()" data-tooltip title="Refresh materials list">REFRESH MATERIALS</span><br>
+      </span>
+      <a href="supporters" data-tooltip title="View supporters and donate" style="text-decoration: none;">
+        <span class="greenbtn" onclick="getMaterials()" >HELP ME SKIP THE QUEUE</span><br>
+      </a>
     </div>
     
     <div id="materials" class="section" style="display: none">
@@ -121,7 +130,6 @@
       <img src="img/placeholder.png">
       <img src="img/null.png">
       <img src="img/upload.png">
-      <p style="font-family: kenpixel_mini_square">preload</p>
     </div>
   </body>
 </html>
