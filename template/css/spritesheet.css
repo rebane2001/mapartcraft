@@ -2,7 +2,7 @@
 .block{
     width: 32px;
     height: 32px;
-    background-image: url(../img/blocks.png);
+    background-image: url(%%ROOTPATH%%/img/blocks.png);
 }
 
 .block-barrier,

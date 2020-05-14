@@ -13,7 +13,7 @@ css = """
 .block{
     width: 32px;
     height: 32px;
-    background-image: url(../img/blocks.png);
+    background-image: url(%%ROOTPATH%%/img/blocks.png);
 }
 
 """
@@ -40,5 +40,5 @@ for i,offset in enumerate(offsets_y):
         css += ".block-" + block + ",\n"
     css = css[:-2] + "{\n\tbackground-position-y: -" + str(i) + "00%\n}\n\n"
 
-with open("css/spritesheet.css","w") as f:
+with open("template/css/spritesheet.css","w") as f:
     f.write(css)

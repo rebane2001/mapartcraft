@@ -1,0 +1,113 @@
+{
+  "index.html": {
+    "FAQ": "FAQ",
+    "VIDEO_TUTORIAL": "Video tutorial",
+
+    "DESCRIPTION1": "A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like ",
+    "DESCRIPTION2": ", running in your browser",
+    "DESCRIPTION3": "Inspired by ",
+    "DESCRIPTION4": "Redstonehelper's map art program",
+    "DESCRIPTION5": ", with the goal to add much-requested features and removing the need to download a program",
+    "DESCRIPTION6": "Feel free to message me on Discord ",
+    "DESCRIPTION7": " or Reddit ",
+    "DESCRIPTION8": ", feature requests and bug reports go on ",
+
+    "FAQTEXT1": "Please check the ",
+    "FAQTEXT2": " before asking any questions anywhere!",
+
+    "BLOCKSELECTIONTITLE": "Block selection",
+    "PRESETS": "Presets",
+
+    "MAPPREVIEWTITLE": "Map preview",
+    "MAPPREVIEW-TT-BESTRES": "A source image with this resolution will work the best",
+    "MAPPREVIEW-TT-DOESNTMATCH": "Image doesn't match map's aspect ratio",
+    "MAPPREVIEW-TT-PREVPLUS": "Make preview bigger",
+    "MAPPREVIEW-TT-PREVMINUS": "Make preview smaller",
+
+    "SETTINGSTITLE": "Settings",
+    "SETTINGS-TT-MODE": "Select the mode you'd like to operate in",
+    "SETTINGS-MODE": "Mode",
+    "SETTINGS-MODE-VISUAL": "Visual",
+    "SETTINGS-MODE-VISUAL-NA": "Visual (not available)",
+    "SETTINGS-TT-VERSION": "Select the version closest to what you're running",
+    "SETTINGS-VERSION": "Version",
+    "SETTINGS-MAPSIZE": "Map size",
+    "SETTINGS-TT-CROP": "Crops your image instead of stretching it out",
+    "SETTINGS-CROP": "Crop",
+    "SETTINGS-TT-3D": "Makes the map 3D. Harder to build, but 3 times the colors!",
+    "SETTINGS-3D": "Staircasing",
+    "SETTINGS-3D-OFF": "Off (2D)",
+    "SETTINGS-3D-OPTIMIZED": "On (optimized)",
+    "SETTINGS-3D-CLASSIC": "On (classic)",
+    "SETTINGS-TT-UNOBT": "Enables map.dat colors unobtainiable in schematics",
+    "SETTINGS-UNOBT": "Unobtainiable colors",
+    "SETTINGS-TT-BETTERCOL": "Gives you better color accuracy",
+    "SETTINGS-BETTERCOL": "Better color",
+    "SETTINGS-TT-DITHER": "Adds seemingly random pixels for the illusion of more colors",
+    "SETTINGS-DITHER": "Dithering",
+    "SETTINGS-DITHER-NONE": "None",
+    "SETTINGS-UNDERBLOCKS": "Add blocks under",
+    "SETTINGS-UNDERBLOCKS-NOBLOCKS": "No blocks",
+    "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Important blocks",
+    "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "All blocks",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "All double (optimized)",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "All double",
+    "SETTINGS-TT-BLOCKTOADD": "Related to previous option",
+    "SETTINGS-BLOCKTOADD": "Block to add",
+
+    "DOWNLOAD-TT-NBT": "Download the nbt",
+    "DOWNLOAD-NBT": "DOWNLOAD",
+    "DOWNLOAD-TT-NBTSPLIT": "Download the nbt split into 1x1 chunks",
+    "DOWNLOAD-NBTSPLIT": "DOWNLOAD AS 1x1 SPLIT",
+    "DOWNLOAD-TT-MAPDAT": "Download the map.dat split into 1x1 chunks",
+    "DOWNLOAD-MAPDAT": "DOWNLOAD",
+    "DOWNLOAD-TT-PDN": "Downloads color palette for use in Paint.net",
+    "DOWNLOAD-PDN": "DOWNLOAD PDN PALETTE",
+    "REFRESHMATERIALS-TT": "Refresh materials list",
+    "REFRESHMATERIALS": "REFRESH MATERIALS",
+    "DONATEBUTTON-TT": "View supporters and donate",
+    "DONATEBUTTON": "HELP ME SKIP THE QUEUE",
+
+    "MATERIALSTITLE": "Materials",
+    "MATERIALS-BLOCK": "Block",
+    "MATERIALS-AMOUNT": "Amount"
+  },
+  "js/app.js": {
+    "NONE": "None",
+
+    "LITEMATICAWARNING": "Note: If you are using Litematica 1.15.2, please use the 1.15 version\\nLitematica seems to have a bug if you select a different version for some reason",
+    "EDGEWARNING": "Note: using Microsoft Edge is unsupported.\\nPlease use Chrome (preferred) or Firefox for MapartCraft",
+    "PDNWARNING1": "Warning, your palette has ",
+    "PDNWARNING2": " colors, while the maximum in Paint.net is 96\\nSome colors will be unavailable in Paint.net",
+
+    "HAVEYOUFAQ": "Have you read the FAQ?",
+    "HELPNOTE": "Note: Help will only be provided in English",
+
+    "TIMEREMAINING-SECOND": "second",
+    "TIMEREMAINING-SECONDS": "seconds",
+    "TIMEREMAINING": "remaining",
+
+    "SELECTBLOCKSWARNING-DOWNLOAD": "Select blocks before downloading!",
+    "SELECTBLOCKSWARNING-SHARE": "Select blocks before sharing them!",
+    "SELECTBLOCKSWARNING-PALETTE": "Select blocks before downloading palette!",
+
+    "BLOCKSELECTIONTITLE": "Block selection",
+
+    "PRESETS-ENTERNAME": "Enter a name for your preset:",
+    "PRESETS-CORRUPTED": "Preset link is corrupted!",
+    "PRESETS-SHARELINK": "Share this link to share your currently selected blocks",
+    "PRESETS-COOKIES": "To use presets, we need to use cookies. Are you okay with that?",
+    "PRESETS-DELETE": "Delete",
+    "PRESETS-SAVE": "Save",
+    "PRESETS-SHARE": "Share",
+    "PRESETS-TT-SHARE": "Shares the blocks you have currently selected as a link",
+    "PRESETS-PRESET-NONE": "None",
+    "PRESETS-PRESET-EVERYTHING": "Everything",
+    "PRESETS-PRESET-CARPETS": "Carpets",
+    "PRESETS": "Presets",
+
+    "MATERIALS-BLOCK": "Block",
+    "MATERIALS-AMOUNT": "Amount",
+    "MATERIALS-PLACEHOLDERBLOCK": "Placeholder Block"
+  }
+}

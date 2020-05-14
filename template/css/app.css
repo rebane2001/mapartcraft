@@ -144,3 +144,8 @@ th:nth-child(1) {
     height:29px;
     font-size:100%;
 }
+
+.languages {
+    position:absolute;
+    right:50px;
+}

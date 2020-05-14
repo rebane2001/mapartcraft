@@ -52,7 +52,7 @@ var sheet;
 function initialize() {
 	//show warning when using Edge
   if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
-    alert('Note: using Microsoft Edge is unsupported.\nPlease use Chrome (preferred) or Firefox for MapartCraft');
+    alert('%%EDGEWARNING%%');
   }
   let colorid = 0;
   //load 1.12 blocklist by default
@@ -60,12 +60,12 @@ function initialize() {
   let blockseletionhtml = "";
   window.blocklist.forEach(function(i) {
     blockid = 0;
-    blockseletionhtml += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="img/barrier.png" alt="None" data-tooltip title="None"></label>';
+    blockseletionhtml += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="%%ROOTPATH%%/img/barrier.png" alt="%%NONE%%" data-tooltip title="%%NONE%%"></label>';
     i[1].forEach(function(j) {
       let imgfile = j[4]
       if (j[4] == "")
         imgfile = j[0]
-      blockseletionhtml += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
+      blockseletionhtml += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="%%ROOTPATH%%/img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
       blockid++;
     });
     colorid++;
@@ -95,7 +95,7 @@ function initialize() {
   let urlParams = new URL(window.location).searchParams;
   if (urlParams.has('preset'))
     importPreset(urlParams.get('preset'));
-  img.src = "img/upload.png";
+  img.src = "%%ROOTPATH%%/img/upload.png";
   img.onload = function() {
     let dctx = displaycanvas.getContext('2d');
     dctx.drawImage(img, 0, 0);
@@ -241,7 +241,7 @@ worker.onmessage = function(e) {
     if ((performance.now() - benchmark > 40 && e.data < 0.1) || performance.now() - benchmark > 400)
       document.getElementById('progress').style.display = "block";
     let secondsRemaining = Math.ceil((performance.now() - benchmark)/e.data*(1-e.data)/1000);
-    document.getElementById('progresstext').innerHTML = `${Math.floor(e.data*100)}% - ${secondsRemaining} second${(secondsRemaining != 0) ? "s" : ""} remaining`;
+    document.getElementById('progresstext').innerHTML = `${Math.floor(e.data*100)}% - ${secondsRemaining} ${(secondsRemaining != 0) ? "%%TIMEREMAINING-SECONDS%%" : "%%TIMEREMAINING-SECOND%%"} %%TIMEREMAINING%%`;
     document.getElementById('progressdiv').style.width = `${Math.floor(e.data*100)}%`;
     return;
   }
@@ -296,7 +296,7 @@ function cropImg(imgWidth,imgHeight){
 function getNbtSplit(){
   //if no blocks selected, don't download
   if (selectedblocks.length == 0){
-    alert("Select blocks before downloading!");
+    alert("%%SELECTBLOCKSWARNING-DOWNLOAD%%");
     return;
   }
 
@@ -594,7 +594,7 @@ function getMaterials() {
   nbtblocklist.forEach(b => b.count = 0);
   blocks.forEach(b => nbtblocklist[b.state].count++);
   
-  let htmlString = '<tbody><tr style="display: table-row;"><th>Block</th><th>Amount</th></tr>';
+  let htmlString = '<tbody><tr style="display: table-row;"><th>%%MATERIALS-BLOCK%%</th><th>%%MATERIALS-AMOUNT%%</th></tr>';
   nbtblocklist.sort((a, b) => b.count - a.count).forEach(block => {
     let amount = block.count;
     if(amount > 64) {
@@ -612,7 +612,7 @@ function getMaterials() {
         amount = `${amount.toLocaleString()} (${stacks}x64${leftover})`
     }
 
-    let j = [block.Name, "", "Placeholder Block", false, "placeholder"]
+    let j = [block.Name, "", "%%MATERIALS-PLACEHOLDERBLOCK%%", false, "placeholder"]
     if(block.SelectedBlock[0] != -1)
       j = blocklist[block.SelectedBlock[0]][1][block.SelectedBlock[1]]
     
@@ -620,7 +620,7 @@ function getMaterials() {
     if (j[4] == "")
       imgfile = j[0]
 
-    htmlString += '<tr><th><img src="img/' + ((imgfile == "placeholder") ? "placeholder.png" : ('null.png" class="block block-' + imgfile)) + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></th>';
+    htmlString += '<tr><th><img src="%%ROOTPATH%%/img/' + ((imgfile == "placeholder") ? "placeholder.png" : ('null.png" class="block block-' + imgfile)) + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></th>';
     htmlString += '<th>' + amount + '</th></tr>'
   });
 
@@ -633,7 +633,7 @@ function getMaterials() {
 function getMapDatSplit(){
   //if no blocks selected, don't download
   if (selectedblocks.length == 0){
-    alert("Select blocks before downloading!");
+    alert("%%SELECTBLOCKSWARNING-DOWNLOAD%%");
     return;
   }
 
@@ -716,7 +716,7 @@ function getMapDat() {
 function getNbt() {
   //if no blocks selected, don't download
   if (selectedblocks.length == 0){
-    alert("Select blocks before downloading!");
+    alert("%%SELECTBLOCKSWARNING-DOWNLOAD%%");
     return;
   }
 
@@ -811,7 +811,7 @@ function loadPresetArray(preset){
 }
 
 function savePreset(){
-  let presetName = prompt("Enter a name for your preset:", "");
+  let presetName = prompt("%%PRESETS-ENTERNAME%%", "");
 
   if (presetName != null) {
     let presets = JSON.parse(getCookie("presets"));
@@ -843,7 +843,7 @@ function importPreset(encodedPreset){
     return;
   }
   if (!/^[0-9A-Za-z]+$/g.test(encodedPreset)){
-    alert("Preset link is corrupted");
+    alert("%%PRESETS-CORRUPTED%%");
     return;
   }
   encodedPreset += "_";
@@ -892,10 +892,10 @@ function exportPreset(){
 // Share preset link
 function sharePreset(){
   if (selectedblocks.length == 0){
-    alert("Select blocks before sharing them!");
+    alert("%%SELECTBLOCKSWARNING-SHARE%%");
     return;
   }
-  prompt("Share this link to share your currently selected blocks", exportPreset());
+  prompt("%%PRESETS-SHARELINK%%", exportPreset());
 }
 
 function deletePreset(){
@@ -906,8 +906,8 @@ function deletePreset(){
 }
 
 function initCookie() {
-  if(confirm("To use presets, we need to use cookies. Are you okay with that?")){
-    setCookie("presets", "[{\"name\":\"None\",\"blocks\":[]},{\"name\":\"Everything\",\"blocks\":[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0]]},{\"name\":\"Carpets\",\"blocks\":[[13,1],[14,1],[15,1],[16,1],[17,1],[18,1],[19,1],[20,1],[21,1],[22,1],[23,1],[24,1],[25,1],[26,1],[27,1],[28,1]]}]", 9000)
+  if(confirm("%%PRESETS-COOKIES%%")){
+    setCookie("presets", "[{\"name\":\"%%PRESETS-PRESET-NONE%%\",\"blocks\":[]},{\"name\":\"%%PRESETS-PRESET-EVERYTHING%%\",\"blocks\":[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0]]},{\"name\":\"%%PRESETS-PRESET-CARPETS%%\",\"blocks\":[[13,1],[14,1],[15,1],[16,1],[17,1],[18,1],[19,1],[20,1],[21,1],[22,1],[23,1],[24,1],[25,1],[26,1],[27,1],[28,1]]}]", 9000)
     loadCookies();
     tooltip.refresh();
   }
@@ -917,9 +917,9 @@ function loadCookies(){
   if(document.getElementById("fauxpresets")){ //if loading cookie for the first time since refresh
     document.getElementById("fauxpresets").outerHTML = ""; //delete faux button
     document.getElementById("blockselectiontitle").outerHTML = ""; //sketchy workaround - really crappy
-    document.getElementById('blockselection').innerHTML = "<h2>Block selection</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">Delete</button><button type=\"button\" onClick=\"savePreset()\">Save</button><button type=\"button\" onClick=\"sharePreset()\" data-tooltip title=\"Shares the blocks you have currently selected as a link\">Share</button><br>" + document.getElementById('blockselection').innerHTML;
+    document.getElementById('blockselection').innerHTML = "<h2>%%BLOCKSELECTIONTITLE%%</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">%%PRESETS-DELETE%%</button><button type=\"button\" onClick=\"savePreset()\">%%PRESETS-SAVE%%</button><button type=\"button\" onClick=\"sharePreset()\" data-tooltip title=\"%%PRESETS-TT-SHARE%%\">%%PRESETS-SHARE%%</button><br>" + document.getElementById('blockselection').innerHTML;
   }
-  document.getElementById("presets").innerHTML = "<option>Presets</option>";
+  document.getElementById("presets").innerHTML = "<option>%%PRESETS%%</option>";
   let presets = JSON.parse(getCookie("presets"));
   for (let i = 0; i < presets.length; ++i) {
     document.getElementById("presets").innerHTML += "<option>" + presets[i]["name"] + "</option>"; //possible XSS but it's client-side so it doesn't really matter
@@ -935,7 +935,7 @@ function updateVersion(){
 	mcversion = document.getElementById("version").value;
   [dataversion,blockversion] = versionindex[mcversion];
   if (dataversion > 2225)
-    alert("Note: If you are using Litematica 1.15.2, please use the 1.15 version\nLitematica seems to have a bug if you select a different version for some reason")
+    alert("%%LITEMATICAWARNING%%")
   switch (blockversion) {
         case 0:
           window.blocklist = window.colorlist_base;
@@ -993,7 +993,7 @@ function findCorners(x,y){
 
 function getPdnPalette() {
   if (selectedblocks.length == 0){
-    alert("Select blocks before downloading palette!");
+    alert("%%SELECTBLOCKSWARNING-PALETTE%%");
     return;
   }
   // refresh selectedcolors
@@ -1024,7 +1024,7 @@ function getPdnPalette() {
     paletteText += ("FF" + Number(color[0]).toString(16).padStart(2,"0") + Number(color[1]).toString(16).padStart(2,"0") + Number(color[2]).toString(16).padStart(2,"0") + "\n").toUpperCase();
   }
   if (selectedcolors.length > 96)
-    alert("Warning, your palette has " + selectedcolors.length + " colors, while the maximum in Paint.net is 96\nSome colors will be unavailable in Paint.net")
+    alert("%%PDNWARNING1%%" + selectedcolors.length + "%%PDNWARNING2%%")
   console.log("Downloading PDN palette");
   let blob = new Blob([paletteText], {
     type: 'text/plain'
@@ -1042,7 +1042,8 @@ function getPdnPalette() {
 // Reveal contact info
 function contactinfo(event) {
   event.preventDefault();
-  if (confirm('Have you read the FAQ?')){
+  if (confirm('%%HAVEYOUFAQ%%')){
+    alert('%%HELPNOTE%%');
     document.querySelectorAll('.contactinfo').forEach(function(e) {
         e.outerHTML = e.innerHTML;
     });
