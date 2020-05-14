@@ -1,0 +1,113 @@
+{
+  "index.html": {
+    "FAQ": "FAQ",
+    "VIDEO_TUTORIAL": "Видео гайд",
+
+    "DESCRIPTION1": "Генератор схематики и карт для создания пиксель-артов, созданный для использования как админами серверов, так и игроками в выживании на серверах наподобие",
+    "DESCRIPTION2": ", запускаемый прямо в браузере",
+    "DESCRIPTION3": "Вдохновлённый ",
+    "DESCRIPTION4": "Redstonehelper's map art программа",
+    "DESCRIPTION5": ", чтобы добавить эти нужные функции без необходимости установки программы",
+    "DESCRIPTION6": "Вы можете свободно писать мне в Discord ",
+    "DESCRIPTION7": " или Reddit ",
+    "DESCRIPTION8": ", предложения о добавлении новых функций и сообщения об ошибках отправляйте в ",
+
+    "FAQTEXT1": "Пожалуйста, прочитайте ",
+    "FAQTEXT2": " перед тем, как задавать вопросы где-либо!",
+
+    "BLOCKSELECTIONTITLE": "Выбор блоков",
+    "PRESETS": "Установки",
+
+    "MAPPREVIEWTITLE": "Предпросмотр",
+    "MAPPREVIEW-TT-BESTRES": "Изображение такого разрешения будет выглядеть лучше всего",
+    "MAPPREVIEW-TT-DOESNTMATCH": "Изображение не соответствует соотношению сторон карты",
+    "MAPPREVIEW-TT-PREVPLUS": "Увеличить мини-карту",
+    "MAPPREVIEW-TT-PREVMINUS": "Уменьшить мини-карту",
+
+    "SETTINGSTITLE": "Настройки",
+    "SETTINGS-TT-MODE": "Выберите мод для работы",
+    "SETTINGS-MODE": "Мод",
+    "SETTINGS-MODE-VISUAL": "Visual",
+    "SETTINGS-MODE-VISUAL-NA": "Visual (нет в наличии)",
+    "SETTINGS-TT-VERSION": "Выберите ближайшую к используемой версию",
+    "SETTINGS-VERSION": "Версия игры",
+    "SETTINGS-MAPSIZE": "Размер карты",
+    "SETTINGS-TT-CROP": "Обрезать, а не растягивать ваше изображение",
+    "SETTINGS-CROP": "Обрезка",
+    "SETTINGS-TT-3D": "Конструировать 3D карту. Строить тяжелее, но цветов в три раза больше!",
+    "SETTINGS-3D": "Ступеньчатость",
+    "SETTINGS-3D-OFF": "Выкл. (2D)",
+    "SETTINGS-3D-OPTIMIZED": "Вкл. (оптимизировано)",
+    "SETTINGS-3D-CLASSIC": "Вкл. (классический)",
+    "SETTINGS-TT-UNOBT": "Включает цвета map.dat, недоступные в схемах",
+    "SETTINGS-UNOBT": "Цвета недоступны",
+    "SETTINGS-TT-BETTERCOL": "Более точное отображение цвета",
+    "SETTINGS-BETTERCOL": "Улучшенный цвет",
+    "SETTINGS-TT-DITHER": "Добавляет случайные пиксели для иллюзии большего количества цветов",
+    "SETTINGS-DITHER": "Смешение",
+    "SETTINGS-DITHER-NONE": "Без смешения",
+    "SETTINGS-UNDERBLOCKS": "Добавить блоки снизу",
+    "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Без блоков",
+    "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Важные блоки",
+    "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Все блоки",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Все двойные (оптимизировано)",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Все двойные",
+    "SETTINGS-TT-BLOCKTOADD": "Связано с предыдущей функцией",
+    "SETTINGS-BLOCKTOADD": "Добавление блоков",
+
+    "DOWNLOAD-TT-NBT": "Загрузить схему",
+    "DOWNLOAD-NBT": "Загрузить",
+    "DOWNLOAD-TT-NBTSPLIT": "Загрузить схему, разделённую почанково",
+    "DOWNLOAD-NBTSPLIT": "Загрузить участок 1х1",
+    "DOWNLOAD-TT-MAPDAT": "Загрузить map.dat разделённую почанково",
+    "DOWNLOAD-MAPDAT": "Загрузить",
+    "DOWNLOAD-TT-PDN": "Загружает цветовую палитру для использования в Paint.net",
+    "DOWNLOAD-PDN": "Загрузить палитру PDN",
+    "REFRESHMATERIALS-TT": "Обновить список материалов",
+    "REFRESHMATERIALS": "Обновить материалы",
+    "DONATEBUTTON-TT": "Показать спонсоров и донаты",
+    "DONATEBUTTON": "Помощь проекту",
+
+    "MATERIALSTITLE": "Материалы",
+    "MATERIALS-BLOCK": "Блоки",
+    "MATERIALS-AMOUNT": "Количество"
+  },
+  "js/app.js": {
+    "NONE": "Нет",
+
+    "LITEMATICAWARNING": "Примечание: если вы используете Litematica 1.15.2, пожалуйста, пользуйтесь версией 1.15, \\nесли вы выбираете другую, по какой-то причине Litematica выдаёт ошибку",
+    "EDGEWARNING": "Примечание: Microsoft Edge не поддерживается.\\nПожалуйста, используйте Chrome (предпочтительно) или Firefox ",
+    "PDNWARNING1": "Внимание, в вашей палитре ",
+    "PDNWARNING2": " цветов, максимум для Paint.net составляет 96\\nНекоторые цвета будут недоступны для Paint.net",
+
+    "HAVEYOUFAQ": "Вы прочитали FAQ?",
+    "HELPNOTE": "Примечание: смогу помочь только на английском",
+
+    "TIMEREMAINING-SECOND": "сек.",
+    "TIMEREMAINING-SECONDS": "сек.",
+    "TIMEREMAINING": "до завершения",
+
+    "SELECTBLOCKSWARNING-DOWNLOAD": "Выберите блоки перед загрузкой!",
+    "SELECTBLOCKSWARNING-SHARE": "Выберите блоки перед тем, как ими делиться!",
+    "SELECTBLOCKSWARNING-PALETTE": "Выберите блоки перед загрузкой палитры!",
+
+    "BLOCKSELECTIONTITLE": "Выбор блоков",
+
+    "PRESETS-ENTERNAME": "Введите название:",
+    "PRESETS-CORRUPTED": "Ссылка повреждена!",
+    "PRESETS-SHARELINK": "Поделитесь этой ссылкой, чтобы поделиться выбранными вами блоками",
+    "PRESETS-COOKIES": "Для сохранения установок, нам нужно использовать cookies. Вы согласны?",
+    "PRESETS-DELETE": "Удалить",
+    "PRESETS-SAVE": "Сохранить",
+    "PRESETS-SHARE": "Поделиться",
+    "PRESETS-TT-SHARE": "Поделиться выбранными блоками ссылкой",
+    "PRESETS-PRESET-NONE": "Нет",
+    "PRESETS-PRESET-EVERYTHING": "Все",
+    "PRESETS-PRESET-CARPETS": "Коврики",
+    "PRESETS": "Установки",
+
+    "MATERIALS-BLOCK": "Блок",
+    "MATERIALS-AMOUNT": "Количество",
+    "MATERIALS-PLACEHOLDERBLOCK": "Заполняющий блок"
+  }
+}
