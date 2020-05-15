@@ -9,6 +9,8 @@ var renderCallback = function(){};
 var firefox = false;
 var previewScale = 2;
 var devicePixelRatio = window.devicePixelRatio || 1;
+var visualStatus = [];
+var visualSetup = false;
 var splits = [];
 var gotMap = false;
 // Set to 1 until page has loaded
@@ -45,6 +47,7 @@ var blockversion = 0;
 var displaycanvas;
 var offscreen;
 var offscreensplit;
+var visualrender;
 const worker = new Worker("js/worker.js");
 
 var sheet;
@@ -87,6 +90,13 @@ function initialize() {
     offscreensplit = document.createElement('canvas');
     offscreensplit.width = 128;
     offscreensplit.height = 128;
+  }
+  try{
+    visualrender = new OffscreenCanvas(128, 128);
+  }catch (err){
+    visualrender = document.createElement('canvas');
+    visualrender.width = 128;
+    visualrender.height = 128;
   }
   updateStyle();
   //tooltip.refresh();
@@ -818,6 +828,285 @@ function getNbt() {
   if (currentSplit[0] == -1){
     mapstatus = 0;
   }
+}
+
+//https://codepen.io/techslides/pen/zowLd
+function launchVisual(){
+  if (!visualSetup)
+    setupVisual()
+  document.getElementById("visualModal").style.display = "block";
+}
+
+function setupVisual(){
+  visualSetup = true;
+
+  let canvas = document.getElementById('visualcanvas');
+
+  
+  let closebtn = document.getElementsByClassName("close")[0];
+  closebtn.onclick = function() {
+    let modal = document.getElementById("visualModal");
+    modal.style.display = "none";
+    history.pushState(null, null, window.location.pathname);
+  };
+
+
+
+        var ctx = canvas.getContext('2d');
+        trackTransforms(ctx);
+        resizeVisual();
+
+  let rotatebtn = document.getElementsByClassName("rotate")[0];
+  rotatebtn.onclick = function() {
+    // rotate 90 degrees
+    ctx.rotate(1.5708);
+    redraw();
+  };
+
+    function redraw(){
+
+          // Clear the entire canvas
+          var p1 = ctx.transformedPoint(0,0);
+          var p2 = ctx.transformedPoint(canvas.width,canvas.height);
+          ctx.clearRect(p1.x,p1.y,p2.x-p1.x,p2.y-p1.y);
+
+
+          ctx.save();
+          ctx.setTransform(1,0,0,1,0,0);
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          ctx.restore();
+
+          let matrix = ctx.getTransform();
+          ctx.imageSmoothingEnabled = (Math.sqrt(matrix.a * matrix.a + matrix.b * matrix.b) < 1);
+          let imatrix = matrix.inverse(); 
+          let blockX = Math.floor((lastX * imatrix.a + lastY * imatrix.c + imatrix.e)/17);
+          let blockZ = Math.floor((lastX * imatrix.b + lastY * imatrix.d + imatrix.f)/17);
+
+          ctx.drawImage(visualrender,0,0);
+
+          ctx.save();
+          ctx.setTransform(1,0,0,1,0,0);
+          try{
+            let i = 1;
+            ctx.font = "30px Times New Roman";
+            ctx.fillStyle = "black";
+            ctx.fillText(`X: ${blockX}`,10,40*++i);
+            ctx.fillText(`Z: ${blockZ}`,10,40*++i);
+            let status = visualStatus[blockX][blockZ];
+            ctx.fillText(`Y: ${status["y"]}`,10,40*++i);
+          }catch{}
+          ctx.restore();
+
+        }
+        redraw();
+
+        function resizeVisual(){
+          let canvas = document.getElementById('visualcanvas');
+          canvas.width = document.documentElement.clientWidth;
+          canvas.height = document.documentElement.clientHeight;
+          redraw();
+        }
+          
+//ctx.imageSmoothingEnabled = (factor > 1);
+      var lastX=canvas.width/2, lastY=canvas.height/2;
+
+      var dragStart,dragged;
+
+      canvas.addEventListener('mousedown',function(evt){
+          document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none';
+          lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
+          lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
+          dragStart = ctx.transformedPoint(lastX,lastY);
+          dragged = false;
+      },false);
+
+      canvas.addEventListener('mousemove',function(evt){
+          lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
+          lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
+          dragged = true;
+          if (dragStart){
+            var pt = ctx.transformedPoint(lastX,lastY);
+            ctx.translate(pt.x-dragStart.x,pt.y-dragStart.y);
+                }
+                redraw();
+      },false);
+
+      canvas.addEventListener('mouseup',function(evt){
+          dragStart = null;
+          if (!dragged) zoom(evt.shiftKey ? -1 : 1 );
+      },false);
+
+      var scaleFactor = 1.1;
+
+      var zoom = function(clicks){
+          var pt = ctx.transformedPoint(lastX,lastY);
+          ctx.translate(pt.x,pt.y);
+          var factor = Math.pow(scaleFactor,clicks);
+          ctx.scale(factor,factor);
+          ctx.translate(-pt.x,-pt.y);
+          redraw();
+      }
+
+      var handleScroll = function(evt){
+          var delta = evt.wheelDelta ? evt.wheelDelta/40 : evt.detail ? -evt.detail : 0;
+          if (delta) zoom(delta);
+          return evt.preventDefault() && false;
+      };
+    
+      canvas.addEventListener('DOMMouseScroll',handleScroll,{passive: false});
+      canvas.addEventListener('mousewheel',handleScroll,{passive: false});
+      window.addEventListener("resize", resizeVisual);
+}
+
+// Adds ctx.getTransform() - returns an SVGMatrix
+// Adds ctx.transformedPoint(x,y) - returns an SVGPoint
+function trackTransforms(ctx){
+    var svg = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+    var xform = svg.createSVGMatrix();
+    ctx.getTransform = function(){ return xform; };
+
+    var savedTransforms = [];
+    var save = ctx.save;
+    ctx.save = function(){
+        savedTransforms.push(xform.translate(0,0));
+        return save.call(ctx);
+    };
+  
+    var restore = ctx.restore;
+    ctx.restore = function(){
+      xform = savedTransforms.pop();
+      return restore.call(ctx);
+        };
+
+    var scale = ctx.scale;
+    ctx.scale = function(sx,sy){
+      xform = xform.scaleNonUniform(sx,sy);
+      return scale.call(ctx,sx,sy);
+        };
+  
+    var rotate = ctx.rotate;
+    ctx.rotate = function(radians){
+        xform = xform.rotate(radians*180/Math.PI);
+        return rotate.call(ctx,radians);
+    };
+  
+    var translate = ctx.translate;
+    ctx.translate = function(dx,dy){
+        xform = xform.translate(dx,dy);
+        return translate.call(ctx,dx,dy);
+    };
+  
+    var transform = ctx.transform;
+    ctx.transform = function(a,b,c,d,e,f){
+        var m2 = svg.createSVGMatrix();
+        m2.a=a; m2.b=b; m2.c=c; m2.d=d; m2.e=e; m2.f=f;
+        xform = xform.multiply(m2);
+        return transform.call(ctx,a,b,c,d,e,f);
+    };
+  
+    var setTransform = ctx.setTransform;
+    ctx.setTransform = function(a,b,c,d,e,f){
+        xform.a = a;
+        xform.b = b;
+        xform.c = c;
+        xform.d = d;
+        xform.e = e;
+        xform.f = f;
+        return setTransform.call(ctx,a,b,c,d,e,f);
+    };
+  
+    var pt  = svg.createSVGPoint();
+    ctx.transformedPoint = function(x,y){
+        pt.x=x; pt.y=y;
+        return pt.matrixTransform(xform.inverse());
+    }
+}
+
+
+
+
+
+
+
+function getVisuals() {
+  //if no blocks selected, don't download
+  if (selectedblocks.length == 0){
+    alert("%%SELECTBLOCKSWARNING-DOWNLOAD%%");
+    return;
+  }
+
+  if (mapstatus == 1 || mapstatus == 2)
+    return;
+  mapstatus = 3;
+    
+  if (!gotMap && currentSplit[0] == -1){
+    renderCallback = function(){resetCallback();getVisuals();};
+    getMap();
+    return;
+  }
+
+  let {blocks, nbtblocklist, width, height} = getMap();
+
+  visualStatus = [];
+
+  for (let i = 0; i < blocks.length; i++) {
+    try {
+      if (visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]]["y"] < blocks[i]["pos"][1])
+        throw 'Old Y is lower than new one';
+    } catch {
+      try {
+        visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]] = {"y":blocks[i]["pos"][1], "state":blocks[i]["state"]};
+      } catch {
+        visualStatus[blocks[i]["pos"][0]] = [];
+        visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]] = {"y":blocks[i]["pos"][1], "state":blocks[i]["state"]}; 
+      }
+    }
+  }
+  let blocksimg = document.getElementById('blocksimg');
+  let placeholderimg = document.getElementById('placeholderimg');
+  let vctx = visualrender.getContext('2d');
+  vctx.fillStyle = "#FF8968";
+  visualrender.width = width*17+1;
+  visualrender.height = height*17+1;
+  vctx.fillRect(0, 0, visualrender.width, visualrender.height);
+  for (let x = 0; x < width; x++) {
+    for (let z = 0; z < height; z++) {
+      vctx.fillStyle = "#222";
+      vctx.fillRect(1 + x * 17, 1 + z * 17, 16, 16);
+      let selectedblock = nbtblocklist[visualStatus[x][z]["state"]]["SelectedBlock"];
+      if (selectedblock[0] == -1){
+        vctx.drawImage(placeholderimg, 0, 0, 32, 32, 1 + x * 17, 1 + z * 17, 16, 16);
+      } else {
+        let blockcoords = selectedToCoords(selectedblock);
+        vctx.drawImage(blocksimg, blockcoords[0], blockcoords[1], 32, 32, 1 + x * 17, 1 + z * 17, 16, 16);
+      }
+      try {
+        if (visualStatus[x][z]["y"] < visualStatus[x][z-1]["y"]){
+          vctx.fillStyle = 'rgba(0,0,32,0.1)';
+          for (let i = 0; i < 4; i++) {
+            vctx.fillRect(1 + x * 17, 1 + z * 17, 16, 1+i);
+          }
+        }
+      } catch{}
+      try {
+        if (visualStatus[x][z]["y"] < visualStatus[x][z+1]["y"]){
+          vctx.fillStyle = 'rgba(0,0,32,0.1)';
+          for (let i = 0; i < 4; i++) {
+            vctx.fillRect(1 + x * 17, 1 + z * 17 + 12 + i, 16, 4-i);
+          }
+        }
+      } catch{}
+    }
+  }
+
+  mapstatus = 0;
+  launchVisual();
+}
+
+function selectedToCoords(selectedblock){
+  let block = window.blocklist[selectedblock[0]][1][selectedblock[1]];
+  let blockstyle = getComputedStyle(document.querySelector(`.block-${(block[4] != "") ? block[4] : block[0]}`));
+  return [parseFloat(blockstyle.backgroundPositionX)/-100*32,parseFloat(blockstyle.backgroundPositionY)/-100*32];
 }
 
 function loadPreset(){

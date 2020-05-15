@@ -105,6 +105,7 @@
       <span id="downloadbtnsection">
         <span class="greenbtn" onclick="getNbt()" data-tooltip title="%%DOWNLOAD-TT-NBT%%" style="font-size:32px;height:50px">%%DOWNLOAD-NBT%%</span><br>
         <span class="greenbtn" onclick="getNbtSplit()" data-tooltip title="%%DOWNLOAD-TT-NBTSPLIT%%">%%DOWNLOAD-NBTSPLIT%%</span><br>
+        <span class="greenbtn" onclick="getVisuals()" data-tooltip title="This feature is still work in progress, expect bugs and incomplete features">View online (prototype)</span><br>
       </span>
       <span id="downloadmapdatbtnsection" style="display: none">
         <span class="greenbtn" onclick="getMapDatSplit()" data-tooltip title="%%DOWNLOAD-TT-MAPDAT%%" style="font-size:32px;height:50px">%%DOWNLOAD-MAPDAT%%</span><br>
@@ -113,8 +114,8 @@
       <span id="materialsbtnsection">
         <span class="greenbtn" onclick="getMaterials()" data-tooltip title="%%REFRESHMATERIALS-TT%%">%%REFRESHMATERIALS%%</span><br>
       </span>
-      <a href="supporters" data-tooltip title="%%DONATEBUTTON-TT%%" style="text-decoration: none;">
-        <span class="greenbtn" onclick="getMaterials()" >%%DONATEBUTTON%%</span><br>
+      <a href="%%ROOTPATH%%/supporters" data-tooltip title="%%DONATEBUTTON-TT%%" style="text-decoration: none;">
+        <span class="greenbtn">%%DONATEBUTTON%%</span><br>
       </a>
     </div>
     
@@ -129,10 +130,16 @@
         </tbody>
       </table>
     </div>
+    <div id="visualModal" class="modal">
+        <span class="modalbtn close">&times;</span>
+        <span class="modalbtn rotate">⭮</span>
+        <span class="modalbtn config">🔧</span>
+        <canvas width="2177" height="2177" id="visualcanvas"></canvas>
+    </div>
     <div id="preloads">
-      <img src="%%ROOTPATH%%/img/blocks.png">
+      <img id="blocksimg" src="%%ROOTPATH%%/img/blocks.png">
       <img src="%%ROOTPATH%%/img/barrier.png">
-      <img src="%%ROOTPATH%%/img/placeholder.png">
+      <img id="placeholderimg" src="%%ROOTPATH%%/img/placeholder.png">
       <img src="%%ROOTPATH%%/img/null.png">
       <img src="%%ROOTPATH%%/img/upload.png">
     </div>
