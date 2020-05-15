@@ -68,7 +68,11 @@
       </b><br>
       <b>%%SETTINGS-MAPSIZE%%: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
       <b data-tooltip title="%%SETTINGS-TT-CROP%%" onclick="updateMap()">%%SETTINGS-CROP%%: <input id="cropimg" type="checkbox"></b><br>
-      <b data-tooltip title="%%SETTINGS-TT-3D%%" onclick="updateMap()">%%SETTINGS-3D%%: <input id="staircasing" type="checkbox" checked></b><br>
+      <b data-tooltip title="%%SETTINGS-TT-3D%%">%%SETTINGS-3D%%:<select id="staircasing" onchange="updateMap()">
+            <option>%%SETTINGS-3D-OFF%%</option>
+            <option>%%SETTINGS-3D-CLASSIC%%</option>
+            <option selected="selected">%%SETTINGS-3D-OPTIMIZED%%</option>
+          </select></b><br>
       <span id="unobtainiablesection" style="display: none"><b data-tooltip title="%%SETTINGS-TT-UNOBT%%" onclick="updateMap()">%%SETTINGS-UNOBT%%: <input id="unobtainiable" type="checkbox"></b><br></span>
       <b data-tooltip title="%%SETTINGS-TT-BETTERCOL%%" onclick="updateMap()">%%SETTINGS-BETTERCOL%%: <input id="bettercolor" type="checkbox" checked></b><br>
       <b data-tooltip title="%%SETTINGS-TT-DITHER%%">

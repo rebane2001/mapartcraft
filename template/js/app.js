@@ -104,7 +104,7 @@ function initialize() {
 }
 
 function updateStyle() {
-  if(document.getElementById('staircasing').checked) {
+  if(document.getElementById("staircasing").selectedIndex > 0) {
     for(let cb of document.getElementsByClassName("colorbox")) {
       let colors = cb.getAttribute("colors").split(";");
       cb.style = `background: linear-gradient(${colors[0]} 33%, ${colors[1]} 33%, ${colors[1]} 66%, ${colors[2]} 66%);`
@@ -170,7 +170,7 @@ function updateMap() {
         continue
       }
       selectedblocks.push([i, parseInt(blockid)]);
-      if (document.getElementById('staircasing').checked) {
+      if (document.getElementById("staircasing").selectedIndex > 0) {
         selectedcolors.push(window.blocklist[i][0][0]);
         selectedcolors.push(window.blocklist[i][0][2]);
       }
@@ -361,7 +361,7 @@ function getMap() {
   }
   for (let x = 0; x < ctx.canvas.width; x++) {
     for (let y = 0; y < ctx.canvas.height; y++) {
-      color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
+      color = getColor(imgData, ctx, x, y);
       selectedblocks.forEach(function(i) {
         if (arraysEqual(blocklist[i[0]][0][0], color) || arraysEqual(blocklist[i[0]][0][1], color) || arraysEqual(blocklist[i[0]][0][2], color)) {
           toPush = {
@@ -387,100 +387,129 @@ function getMap() {
       });
     }
   }
-  if (document.getElementById('staircasing').checked) { // 3D CODE
+  let staircasingMode = document.getElementById("staircasing").selectedIndex;
+  if (staircasingMode > 0) { // CLASSIC 3D CODE
     for (let x = 0; x < ctx.canvas.width; x++) {
+      let base_height = 1001 - staircasingMode;
+      let min_height = base_height;
+      let localminmax = []; // Initialize the minmax array where we will store each min and max sequentially for future comparison
+      let c = -1; // index for the localminmax array
+      let dir = 0; // direction of "stairs", 1 = up, -1 = down, 0 = undetermined
 
-      let hhhh = 1000;
-      let minh = 1000;
-      let maxh = 1000;
       for (let y = 0; y < ctx.canvas.height; y++) {
-        let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
-        let toneid = 0;
-        for (let i = 0; i < nbtblocklist.length; i++) {
-          if (arraysEqual(nbtblocklist[i]["Colors"][0], color)) {
-            toneid = -1;
-            break;
+        let color = getColor(imgData, ctx, x, y);
+        let toneid = getTone(nbtblocklist, color)[0];
+        if (staircasingMode == 2){
+          if (toneid != 0 && toneid != dir){
+            if (dir == 1){
+              let beginRange;
+              for (let y2 = y-1; y2 < ctx.canvas.height; y2--) {
+                if (getTone(nbtblocklist, getColor(imgData, ctx, x, y2))[0] == 1){
+                  beginRange = y2;
+                  break;
+                }
+              }
+              localminmax.push([999-min_height,base_height-min_height-(getTone(nbtblocklist, getColor(imgData, ctx, x, y-1))[0]),beginRange,y-1]);
+              base_height = 1000;
+              min_height = 1000;
+            }
+            dir = toneid;
           }
-          if (arraysEqual(nbtblocklist[i]["Colors"][1], color)) {
-            toneid = 0;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][2], color)) {
-            toneid = 1;
-            break;
-          }
-
         }
-        hhhh += toneid;
-        minh = Math.min(minh, hhhh);
-        maxh = Math.max(maxh, hhhh);
+        base_height += toneid;
+        min_height = Math.min(min_height, base_height);
       }
-      hhhh = 1000 - minh;
-      hhhh++;
+
+      localminmax.push([999-min_height,base_height-min_height,9999,9999]); // Add a final minmax
+      localminmax.push([999-min_height,9999,9999,9999]); // Add a final minmax
+
+      //hacky hack
+      if (getTone(nbtblocklist, getColor(imgData, ctx, x, 0))[0] == 1 && staircasingMode == 2){
+        let hacky = localminmax[0];
+        hacky[0]+=1;
+        hacky[1]+=1;
+        localminmax[0] = hacky;
+      }
+
+      let hackNotComplete = true;
+      while(staircasingMode == 2 && hackNotComplete){
+        hackNotComplete = false;
+        for (let i = 0; i < localminmax.length-1; i++) {
+            if (localminmax[i][1] == localminmax[i+1][0]){
+              localminmax[i][0] += 1;
+              localminmax[i][1] += 1;
+              hackNotComplete = true;
+            }
+        }
+      }
+
+      base_height = (staircasingMode == 2) ?  localminmax[0][0]+1 : (1000 - min_height);
+
+      dir = 0;
+      adj = (staircasingMode == 2) ?  0 : 1;
+
       if (underblocks > 0)
-        hhhh++;
-      if (underblocks > 2)
-        hhhh++;
+        adj += ((underblocks > 2) ? 2 : 1);
+
       for (let y = 0; y < ctx.canvas.height; y++) {
-        let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
-        let toneid = 0;
-        let blockid = 0;
-        for (let i = 0; i < nbtblocklist.length; i++) {
-          if (arraysEqual(nbtblocklist[i]["Colors"][0], color)) {
-            toneid = -1;
-            blockid = i;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][1], color)) {
-            toneid = 0;
-            blockid = i;
-            break;
-          }
-          if (arraysEqual(nbtblocklist[i]["Colors"][2], color)) {
-            toneid = 1;
-            blockid = i;
-            break;
+        let color = getColor(imgData, ctx, x, y);
+        let [toneid, blockid] = getTone(nbtblocklist, color);
+        if (staircasingMode == 2){
+          if (toneid != 0 && toneid != dir){
+            if (dir == 1){
+              base_height = localminmax[++c+1][0]+1;
+            }
+            dir = toneid;
           }
         }
+        //ACTUAL BLOCK
+        base_height += toneid;
+
+        if (localminmax[c+1][2] <= y && localminmax[c+1][3] >= y && staircasingMode == 2){
+          if (localminmax[c+2][0] > localminmax[c+1][1])
+            base_height = localminmax[c+2][0]+1;
+        }
+
         //NOOBLINE
         if (y == 0) {
           blocks.push({
-            "pos": [x, hhhh, y],
+            "pos": [x, ((toneid == 1 && staircasingMode == 2) ? 0 : (base_height - toneid)) + adj, y],
             "state": 0
           });
         }
-        hhhh += toneid;
+
         blocks.push({
-          "pos": [x, hhhh, y + 1],
+          "pos": [x, base_height + adj, y + 1],
           "state": blockid
         });
+        //console.log(base_height + adj);
         //UNDERBLOCKS
         if (underblocks == 2) {
           blocks.push({
-            "pos": [x, hhhh - 1, y + 1],
+            "pos": [x, base_height + adj - 1, y + 1],
             "state": 0
           });
         } else if (underblocks == 3) {
           blocks.push({
-            "pos": [x, hhhh - 1, y + 1],
+            "pos": [x, base_height + adj - 1, y + 1],
             "state": 0
           });
           blocks.push({
-            "pos": [x, hhhh - 2, y + 1],
+            "pos": [x, base_height + adj - 2, y + 1],
             "state": 0
           });
           if( // spaghetti, I need to break up this entire function into proper smaller functions
             indexOfObjOptim({
-              "pos": [x, hhhh - 1, y + 0],
+              "pos": [x, base_height + adj - 1, y + 0],
               "state": 0
             }, blocks) > -1 &&
             indexOfObjOptim({
-              "pos": [x, hhhh - 1, y - 1],
+              "pos": [x, base_height + adj - 1, y - 1],
               "state": 0
             }, blocks) > -1
           ){
             let toRemove = indexOfObjOptim({
-              "pos": [x, hhhh - 2, y + 0],
+              "pos": [x, base_height + adj - 2, y + 0],
               "state": 0
             }, blocks);
             if (toRemove > -1)
@@ -488,11 +517,11 @@ function getMap() {
           }
         } else if (underblocks == 4) { //very ugly code, should be made into functions instead
           blocks.push({
-            "pos": [x, hhhh - 1, y + 1],
+            "pos": [x, base_height + adj - 1, y + 1],
             "state": 0
           });
           blocks.push({
-            "pos": [x, hhhh - 2, y + 1],
+            "pos": [x, base_height + adj - 2, y + 1],
             "state": 0
           });
         } else if (underblocks == 1) {
@@ -500,7 +529,7 @@ function getMap() {
             if (arraysEqual(blocklist[b[0]][0][0], nbtblocklist[blockid]["Colors"][0])) {
               if (blocklist[b[0]][1][b[1]][3])
                 blocks.push({
-                  "pos": [x, hhhh - 1, y + 1],
+                  "pos": [x, base_height + adj - 1, y + 1],
                   "state": 0
                 });
             }
@@ -510,14 +539,15 @@ function getMap() {
       }
     }
   } else { // 2D CODE
-    let hhhh = 0;
+    // Height to start placing blocks at
+    let base_height = 0;
     if (underblocks > 0)
-      hhhh++;
+      base_height++;
     if (underblocks > 2)
-      hhhh++;
+      base_height++;
     for (let x = 0; x < ctx.canvas.width; x++) {
       for (let y = 0; y < ctx.canvas.height; y++) {
-        let color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
+        let color = getColor(imgData, ctx, x, y);
         let blockid = 0;
         for (let i = 0; i < nbtblocklist.length; i++) {
           if (arraysEqual(nbtblocklist[i]["Colors"][1], color)) {
@@ -528,12 +558,13 @@ function getMap() {
         //NOOBLINE
         if (y == 0) {
           blocks.push({
-            "pos": [x, hhhh, y],
+            "pos": [x, base_height, y],
             "state": 0
           });
         }
+        //ACTUAL BLOCK
         blocks.push({
-          "pos": [x, hhhh, y + 1],
+          "pos": [x, base_height, y + 1],
           "state": blockid
         });
         // UNDERBLOCKS
@@ -571,6 +602,21 @@ function getMap() {
       width: ctx.canvas.width, 
       height: ctx.canvas.height
     };
+}
+
+function getColor(imgData, ctx, x, y){
+  return [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
+}
+
+function getTone(nbtblocklist,color){
+  for (let i = 0; i < nbtblocklist.length; i++) {
+    if (arraysEqual(nbtblocklist[i]["Colors"][0], color))
+      return [-1,i];
+    if (arraysEqual(nbtblocklist[i]["Colors"][1], color))
+      return [0,i];
+    if (arraysEqual(nbtblocklist[i]["Colors"][2], color))
+      return [1,i];
+  }
 }
 
 function getMaterials() {
@@ -666,7 +712,7 @@ function dlMapDatSplit(){ //call getMapDatSplit() first!
     
       for (let y = 0; y < ctx.canvas.height; y++) {
         for (let x = 0; x < ctx.canvas.width; x++) {
-          color = [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
+          color = getColor(imgData, ctx, x, y);
           selectedblocks.forEach((i) => {
             for (let j of [0,1,2,3]) {
               if (arraysEqual(blocklist[i[0]][0][j], color)) {
@@ -1006,11 +1052,11 @@ function getPdnPalette() {
     }
     selectedblocks.push([i, parseInt(blockid)]);
     // gotta add 2D/3D support here
-    if (document.getElementById('staircasing').checked) {
+    if (document.getElementById("staircasing").selectedIndex > 0) {
       selectedcolors.push(window.blocklist[i][0][0]);
     }
     selectedcolors.push(window.blocklist[i][0][1]);
-    if (document.getElementById('staircasing').checked) {
+    if (document.getElementById("staircasing").selectedIndex > 0) {
       selectedcolors.push(window.blocklist[i][0][2]);
     }
     if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 2) {
@@ -1018,7 +1064,7 @@ function getPdnPalette() {
     }
   }
   // generate and dl pdn file
-  let paletteText = "; paint.net Palette File\n; Generated by MapartCraft\n; Link to preset: " + exportPreset() + "\n; staircasing: " + ((document.getElementById('staircasing').checked) ? "enabled" : "disabled") + "\n";
+  let paletteText = "; paint.net Palette File\n; Generated by MapartCraft\n; Link to preset: " + exportPreset() + "\n; staircasing: " + ((document.getElementById("staircasing").selectedIndex > 0) ? "enabled" : "disabled") + "\n";
   for (let i = 0; i < selectedcolors.length; i++) {
     let color = selectedcolors[i];
     paletteText += ("FF" + Number(color[0]).toString(16).padStart(2,"0") + Number(color[1]).toString(16).padStart(2,"0") + Number(color[2]).toString(16).padStart(2,"0") + "\n").toUpperCase();
