@@ -752,13 +752,6 @@ function dlMapDatSplit(){ //call getMapDatSplit() first!
 
 }
 
-// Only works with 1x1 maps, use getMapDatSplit
-function getMapDat() {
-  //TODO: Change this to the 4-color version instead of selectedblocks?
-
-  mapstatus = 0;
-}
-
 function getNbt() {
   //if no blocks selected, don't download
   if (selectedblocks.length == 0){
