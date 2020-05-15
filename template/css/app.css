@@ -147,5 +147,6 @@ th:nth-child(1) {
 
 .languages {
     position:absolute;
+    text-align: right;
     right:50px;
 }
