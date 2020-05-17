@@ -17,3 +17,11 @@ The default building mechanism requires the following requierments, but you can 
 Visit [mapartcraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](https://rebane2001.com) or use a mirror on [web.archive.org](https://web.archive.org/web/*/https://rebane2001.com/mapartcraft)  
 Since all the processing occurs client-side, it is possible to host your own built instance with a very simple HTTP server, like python3's http.server  
 However, it is recommended to use the [rebane2001.com](https://rebane2001.com/mapartcraft) site as it is always up to date with new features and bugfixes
+
+# Credits/Thanks
+Minecraft for the block textures  
+[KenPixel Mini Square](https://opengameart.org/content/kenney-fonts) font by [Kenney](https://www.kenney.nl/)  
+[Tooltip.js](https://github.com/matthias-schuetz/Tooltip) by [Matthias Schuetz](http://matthiasschuetz.com)  
+[pako](https://github.com/matthias-schuetz/Tooltip)  
+Translation credits can be seen on the translated pages  
+Code contributors can be seen on the [contributions page](https://github.com/rebane2001/mapartcraft/graphs/contributors)
