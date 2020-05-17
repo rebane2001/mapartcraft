@@ -1,0 +1,115 @@
+{
+  "index.html": {
+    "TRANSLATIONCREDITS": "Traduko: _Almazik_",
+
+    "FAQ": "OD",
+    "VIDEO_TUTORIAL": "Videa instrukcio",
+
+    "DESCRIPTION1": "Minecraft maparta generilo de schematic kaj map.dat, kreita por esti realigita por kaj servilaj administrantoj kaj travivaj ludantoj ĉe serviloj kiel ",
+    "DESCRIPTION2": ", laborebla ĉe via retumilo",
+    "DESCRIPTION3": "Inspirita de ",
+    "DESCRIPTION4": "Redstonehelper's map art programo",
+    "DESCRIPTION5": ", kun la celo por aldoni ofte petatajn apartaĵojn kaj forigi la neceso por enŝuti programon",
+    "DESCRIPTION6": "Vi povas libere mesaĝi al me per Discord ",
+    "DESCRIPTION7": " aŭ Reddit ",
+    "DESCRIPTION8": ", apartaĵajn petojn kaj cimraportojn sendu al ",
+
+    "FAQTEXT1": "Bonvolu vidu la ",
+    "FAQTEXT2": " antaŭ ol demandi iun ie!",
+
+    "BLOCKSELECTIONTITLE": "Blokelektejo",
+    "PRESETS": "Ŝablonoj",
+
+    "MAPPREVIEWTITLE": "Mapa antaŭvido",
+    "MAPPREVIEW-TT-BESTRES": "Origina bildo kun ĉi tia amplekso laboros la plej bone",
+    "MAPPREVIEW-TT-DOESNTMATCH": "Bildo ne sekvas la flankproporcion de mapo",
+    "MAPPREVIEW-TT-PREVPLUS": "Pligrandigu la antaŭvidon",
+    "MAPPREVIEW-TT-PREVMINUS": "Malpligrandigu la antaŭvidon",
+
+    "SETTINGSTITLE": "Agordoj",
+    "SETTINGS-TT-MODE": "Elektu la reĝimo, en kiu vi volus operacii",
+    "SETTINGS-MODE": "Reĝimo",
+    "SETTINGS-MODE-VISUAL": "Vida",
+    "SETTINGS-MODE-VISUAL-NA": "Vida (ne uzebla)",
+    "SETTINGS-TT-VERSION": "Elektu la version la plej proksima al versio ĉeludata de vi",
+    "SETTINGS-VERSION": "Versio",
+    "SETTINGS-MAPSIZE": "Mapa amplekso",
+    "SETTINGS-TT-CROP": "Tio ĉirkaŭtranĉas vian bildon anstataŭ ke plilarĝigi ĝin",
+    "SETTINGS-CROP": "Ĉirkaŭtranĉi",
+    "SETTINGS-TT-3D": "Tio igas la mapon 3D. Estas pli malfacile por konstrui sed triope pliigas la kolorojn!",
+    "SETTINGS-3D": "Ŝtupigado",
+    "SETTINGS-3D-OFF": "Malŝaltita (2D)",
+    "SETTINGS-3D-OPTIMIZED": "Ŝaltita (optimumigita)",
+    "SETTINGS-3D-CLASSIC": "Ŝaltita (klasika)",
+    "SETTINGS-TT-UNOBT": "Tio igas koloroj de map.dat malakirebla en schematic-j",
+    "SETTINGS-UNOBT": "Malakireblaj koloroj",
+    "SETTINGS-TT-BETTERCOL": "Tio igas pli bona kolorakurateco",
+    "SETTINGS-BETTERCOL": "Pli bona koloro",
+    "SETTINGS-TT-DITHER": "Tio aldonas ŝajne hazardajn rastrumerojn por iluzio de pli multe da koloroj",
+    "SETTINGS-DITHER": "Konfuzado",
+    "SETTINGS-DITHER-NONE": "Nula",
+    "SETTINGS-UNDERBLOCKS": "Aldoni subblokojn",
+    "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Sen blokoj",
+    "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Utilaj blokoj",
+    "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Ĉiuj blokoj",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Ĉiuj duope (optimumigita)",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Ĉiuj duope",
+    "SETTINGS-TT-BLOCKTOADD": "Rilatas al la antaŭa opcio",
+    "SETTINGS-BLOCKTOADD": "Bloko por aldoni",
+
+    "DOWNLOAD-TT-NBT": "Enŝuti la nbt-n",
+    "DOWNLOAD-NBT": "ENŜUTI",
+    "DOWNLOAD-TT-NBTSPLIT": "Enŝuti la nbt-n dividitan laŭ 1x1 pecoj",
+    "DOWNLOAD-NBTSPLIT": "ENŜUTI KIEL 1x1 DIVIDAĴOJ",
+    "DOWNLOAD-TT-MAPDAT": "Enŝuti la map.dat-n dividitan laŭ 1x1 pecoj",
+    "DOWNLOAD-MAPDAT": "ENŜUTI",
+    "DOWNLOAD-TT-PDN": "Enŝuti la koloraron por uzi en Paint.net",
+    "DOWNLOAD-PDN": "ENŜUTI PDN KOLORARO",
+    "REFRESHMATERIALS-TT": "Ĝisdatigi materialan liston",
+    "REFRESHMATERIALS": "ĜISDATIGI MATERIALOJN",
+    "DONATEBUTTON-TT": "Montru subtenintojn kaj mondonaci",
+    "DONATEBUTTON": "HELPU MIN PASI LA VICON",
+
+    "MATERIALSTITLE": "Materialoj",
+    "MATERIALS-BLOCK": "Bloko",
+    "MATERIALS-AMOUNT": "Kvanto"
+  },
+  "js/app.js": {
+    "NONE": "Nula",
+
+    "LITEMATICAWARNING": "Atentu: Se vi uzas Litematica 1.15.2, bonvolu uzi la 1.15 version\\nLitematica ŝajnas iel havanta cimon se vi elektas alian version",
+    "EDGEWARNING": "Atentu: uzado de Microsoft Edge estas malsubtenata.\\nBonvolu uzi Chrome (prefere) aŭ Firefox por MapartCraft",
+    "PDNWARNING1": "Averto, vian koloraron enhavas ",
+    "PDNWARNING2": " coloroj, sed la plejgranda koloraro en Paint.net enhaveblas 96\\nIu koloroj estos maluzebla en Paint.net",
+
+    "HAVEYOUFAQ": "Ĉu vi legis la OD-n?",
+    "HELPNOTE": "Atentu: Helpo estos provizita nur en la Angla",
+
+    "TIMEREMAINING-SECOND": "sekundo",
+    "TIMEREMAINING-SECONDS": "sekundoj",
+    "TIMEREMAINING": "restas",
+
+    "SELECTBLOCKSWARNING-DOWNLOAD": "Elektu blokojn antaŭ enŝutado!",
+    "SELECTBLOCKSWARNING-SHARE": "Elektu blokojn antaŭ ol dividi ilin!",
+    "SELECTBLOCKSWARNING-PALETTE": "Elektu blokojn antaŭ ol enŝuti koloraron!",
+
+    "BLOCKSELECTIONTITLE": "Blokelektejo",
+
+    "PRESETS-ENTERNAME": "Entajpu la nomon por la ŝablono:",
+    "PRESETS-CORRUPTED": "Ŝablonligilo estas rompiĝinta!",
+    "PRESETS-SHARELINK": "Dividu ĉi tiun ligilon por dividi viajn nunelektitajn blokojn",
+    "PRESETS-COOKIES": "Por uzi ŝablonoj ni bezonas por uzi cookies-j. Ĉu vi konsentas?",
+    "PRESETS-DELETE": "Forigi",
+    "PRESETS-SAVE": "Konservi",
+    "PRESETS-SHARE": "Dividi",
+    "PRESETS-TT-SHARE": "Tio dividas la nunelektitajb blokojn per ligilo",
+    "PRESETS-PRESET-NONE": "Nenio",
+    "PRESETS-PRESET-EVERYTHING": "Ĉio",
+    "PRESETS-PRESET-CARPETS": "Tapiŝoj",
+    "PRESETS": "Ŝablonoj",
+
+    "MATERIALS-BLOCK": "Bloko",
+    "MATERIALS-AMOUNT": "Kvanto",
+    "MATERIALS-PLACEHOLDERBLOCK": "Anstataŭbloko"
+  }
+}
