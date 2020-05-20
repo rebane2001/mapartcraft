@@ -14,7 +14,7 @@
     "DESCRIPTION7": " aŭ Reddit ",
     "DESCRIPTION8": ", apartaĵajn petojn kaj cimraportojn sendu al ",
 
-    "FAQTEXT1": "Bonvolu vidu la ",
+    "FAQTEXT1": "Bonvolu vidi la ",
     "FAQTEXT2": "-n antaŭ ol demandi iun ie!",
 
     "BLOCKSELECTIONTITLE": "Blokelektejo",
@@ -23,8 +23,8 @@
     "MAPPREVIEWTITLE": "Mapa antaŭvido",
     "MAPPREVIEW-TT-BESTRES": "Origina bildo kun ĉi tia amplekso laboros la plej bone",
     "MAPPREVIEW-TT-DOESNTMATCH": "Bildo ne sekvas la flankproporcion de mapo",
-    "MAPPREVIEW-TT-PREVPLUS": "Pligrandigu la antaŭvidon",
-    "MAPPREVIEW-TT-PREVMINUS": "Malpligrandigu la antaŭvidon",
+    "MAPPREVIEW-TT-PREVPLUS": "Pligrandigi la antaŭvidon",
+    "MAPPREVIEW-TT-PREVMINUS": "Malpligrandigi la antaŭvidon",
 
     "SETTINGSTITLE": "Agordoj",
     "SETTINGS-TT-MODE": "Elektu la reĝimo, en kiu vi volus operacii",
@@ -41,7 +41,7 @@
     "SETTINGS-3D-OFF": "Malŝaltita (2D)",
     "SETTINGS-3D-OPTIMIZED": "Ŝaltita (optimumigita)",
     "SETTINGS-3D-CLASSIC": "Ŝaltita (klasika)",
-    "SETTINGS-TT-UNOBT": "Tio igas koloroj de map.dat malakirebla en schematic-j",
+    "SETTINGS-TT-UNOBT": "Tio ŝaltas koloroj de map.dat malakireblaj en schematic-j",
     "SETTINGS-UNOBT": "Malakireblaj koloroj",
     "SETTINGS-TT-BETTERCOL": "Tio igas pli bonan kolorakuratecon",
     "SETTINGS-BETTERCOL": "Pli bona koloro",
