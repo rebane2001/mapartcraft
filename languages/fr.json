@@ -1,0 +1,115 @@
+{
+  "index.html": {
+    "TRANSLATIONCREDITS": "Traduction: Albatros_, YIemanja",
+
+    "FAQ": "FAQ",
+    "VIDEO_TUTORIAL": "Tutoriel vidéo",
+
+    "DESCRIPTION1": "Un générateur de Mapart: schematic et de map.dat, conçu pour être utilisable à la fois par les administrateurs de serveurs et les joueurs en survie comme sur le serveur ",
+    "DESCRIPTION2": ", tournant sur votre navigateur.",
+    "DESCRIPTION3": "Inspiré par ",
+    "DESCRIPTION4": "Redstonehelper's map art program",
+    "DESCRIPTION5": ", avec l’objectif de rendre accessible une fonctionnalité très demandée sans avoir besoin de télécharger aucun programme.",
+    "DESCRIPTION6": "N'hésitez pas à me contacter sur Discord ",
+    "DESCRIPTION7": " ou Reddit ",
+    "DESCRIPTION8": ", Pour toute demande de fonctionnalité ou de bug signalez les sur ",
+
+    "FAQTEXT1": "Merci de lire la ",
+    "FAQTEXT2": " avant de poser toutes questions!",
+
+    "BLOCKSELECTIONTITLE": "Sélection des blocs",
+    "PRESETS": "Presets",
+
+    "MAPPREVIEWTITLE": "Aperçu de la map",
+    "MAPPREVIEW-TT-BESTRES": "Une image avec cette résolution de base fonctionnera le mieux",
+    "MAPPREVIEW-TT-DOESNTMATCH": "L'image ne correspond pas au format de la map",
+    "MAPPREVIEW-TT-PREVPLUS": "Aperçu plus grand",
+    "MAPPREVIEW-TT-PREVMINUS": "Aperçu plus petit",
+
+    "SETTINGSTITLE": "Paramètres",
+    "SETTINGS-TT-MODE": "choisissez votre mode",
+    "SETTINGS-MODE": "Mode",
+    "SETTINGS-MODE-VISUAL": "Visuel",
+    "SETTINGS-MODE-VISUAL-NA": "Visuel (non disponible)",
+    "SETTINGS-TT-VERSION": "Sélectionnez la version la plus proche de celle que vous utilisez",
+    "SETTINGS-VERSION": "Version",
+    "SETTINGS-MAPSIZE": "Taille de la map",
+    "SETTINGS-TT-CROP": "Recadre votre image au lieu de l'étirer",
+    "SETTINGS-CROP": "Recadrer",
+    "SETTINGS-TT-3D": "Rend la map en 3D. Plus dure à construire, mais 3 fois plus de couleurs !",
+    "SETTINGS-3D": "Escaliers",
+    "SETTINGS-3D-OFF": "Off (2D)",
+    "SETTINGS-3D-OPTIMIZED": "On (optimisé)",
+    "SETTINGS-3D-CLASSIC": "On (classic)",
+    "SETTINGS-TT-UNOBT": "Permet map.dat d'obtenir des couleurs impossibles à obtenir avec schematics",
+    "SETTINGS-UNOBT": "Couleurs introuvables",
+    "SETTINGS-TT-BETTERCOL": "Donne une meilleure précision des couleurs",
+    "SETTINGS-BETTERCOL": "Meilleure couleur",
+    "SETTINGS-TT-DITHER": "Ajoute des pixels aléatoires pour l'illusion de plus de couleurs",
+    "SETTINGS-DITHER": "Dithering",
+    "SETTINGS-DITHER-NONE": "None",
+    "SETTINGS-UNDERBLOCKS": "Ajoute des blocs dessous",
+    "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Aucun blocs",
+    "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Les blocs important",
+    "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Tous les blocs",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Tout en double (optimisé)",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Tout en double",
+    "SETTINGS-TT-BLOCKTOADD": "En rapport avec l'option précédente",
+    "SETTINGS-BLOCKTOADD": "Bloc à ajouter",
+
+    "DOWNLOAD-TT-NBT": "Télécharge le nbt",
+    "DOWNLOAD-NBT": "TÉLÉCHARGER",
+    "DOWNLOAD-TT-NBTSPLIT": "Téléchargez le nbt divisé en chunks de 1x1 ",
+    "DOWNLOAD-NBTSPLIT": "TELECHARGER EN FRACTIONNÉ 1x1",
+    "DOWNLOAD-TT-MAPDAT": "Télécharger le map.dat divisé en chunks de 1x1",
+    "DOWNLOAD-MAPDAT": "TELECHARGER",
+    "DOWNLOAD-TT-PDN": "Télécharger la palette de couleur à utiliser sur Paint.net",
+    "DOWNLOAD-PDN": "TELECHARGER LA PALETTE PND",
+    "REFRESHMATERIALS-TT": "Actualiser la liste des matériaux",
+    "REFRESHMATERIALS": "ACTUALISER LES MATÉRIAUX",
+    "DONATEBUTTON-TT": "Voir les donateurs et soutenir",
+    "DONATEBUTTON": "DONATION POUR LA PRIO Q",
+
+    "MATERIALSTITLE": "Matériaux",
+    "MATERIALS-BLOCK": "Blocs",
+    "MATERIALS-AMOUNT": "Quantité"
+  },
+  "js/app.js": {
+    "NONE": "Aucun",
+
+    "LITEMATICAWARNING": "Note: Si vous utilisez Litematica 1.15.2, merci d’utiliser la version 1.15, version\\nLitematica semble ne pas fonctionner si vous choisissez une version différente",
+    "EDGEWARNING": "Note: Microsoft Edge n’est pas compatible.\\nMerci d’utiliser Chrome (de préférence) ou Firefox pour utiliser MapartCraft",
+    "PDNWARNING1": "Attention, votre palette a ",
+    "PDNWARNING2": " couleurs, alors que le maximum sur Paint.net est de 96\\nCertaines couleurs seront inaccessibles via Paint.net",
+
+    "HAVEYOUFAQ": "Avez-vous lu la FAQ?",
+    "HELPNOTE": "Note: Toutes les questions et réponses seront et devront être en Anglais",
+
+    "TIMEREMAINING-SECOND": "seconde",
+    "TIMEREMAINING-SECONDS": "secondes",
+    "TIMEREMAINING": "restante",
+
+    "SELECTBLOCKSWARNING-DOWNLOAD": "Sélectionnez des blocs avant de télécharger!",
+    "SELECTBLOCKSWARNING-SHARE": "Sélectionnez des blocs avant de les partager!",
+    "SELECTBLOCKSWARNING-PALETTE": "Sélectionnez des blocs avant de télécharger la palette!",
+
+    "BLOCKSELECTIONTITLE": "Sélection des blocs",
+
+    "PRESETS-ENTERNAME": "Entrer un nom pour votre préconfiguration:",
+    "PRESETS-CORRUPTED": "Le lien preset est corrompu!",
+    "PRESETS-SHARELINK": "Partager votre préconfiguration actuel avec un lien",
+    "PRESETS-COOKIES": "Pour utiliser votre préconfiguration nous avons besoin d’utiliser vos cookies. Etes-vous d’accord ?",
+    "PRESETS-DELETE": "Supprimer",
+    "PRESETS-SAVE": "Sauvegarder",
+    "PRESETS-SHARE": "Partager",
+    "PRESETS-TT-SHARE": "Partager les blocs que vous avez actuellement sélectionnés en lien",
+    "PRESETS-PRESET-NONE": "Aucun",
+    "PRESETS-PRESET-EVERYTHING": "Tout",
+    "PRESETS-PRESET-CARPETS": "Carpets",
+    "PRESETS": "Préconfiguration",
+
+    "MATERIALS-BLOCK": "Bloc",
+    "MATERIALS-AMOUNT": "Quantité",
+    "MATERIALS-PLACEHOLDERBLOCK": "Placeholder Bloc"
+  }
+}
