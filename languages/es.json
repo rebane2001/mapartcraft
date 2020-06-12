@@ -1,15 +1,16 @@
 {
   "index.html": {
     "TRANSLATIONCREDITS": "Jalvaviel",
+    "TRANSLATIONNAME": "Spanish",
 
     "FAQ": "Preguntas frecuentes",
     "VIDEO_TUTORIAL": "Videotutorial",
 
     "DESCRIPTION1": "Un generador de map.dat y .schematic para Minecraft. Diseñado para ser factible tanto para administradores de servidores como para jugadores en modo supervivencia en servidores como ",
-    "DESCRIPTION2": ", ejecutándose en tu buscador"
-    "DESCRIPTION3": "Inspirado por "
-    "DESCRIPTION4": "el programa para map art de Redstonehelper"
-    "DESCRIPTION5": ", con el objetivo de añadir caraterísticas altamente demandadas y eliminar la necesidad de descargar un programa"
+    "DESCRIPTION2": ", ejecutándose en tu buscador",
+    "DESCRIPTION3": "Inspirado por ",
+    "DESCRIPTION4": "el programa para map art de Redstonehelper",
+    "DESCRIPTION5": ", con el objetivo de añadir caraterísticas altamente demandadas y eliminar la necesidad de descargar un programa",
     "DESCRIPTION6": "Siéntete libre de mensajearme en Discord ",
     "DESCRIPTION7": " o Reddit ",
     "DESCRIPTION8": ", las peticiones de nuevas características y los reportes de bugs siguen abiertos",
@@ -45,7 +46,7 @@
     "SETTINGS-UNOBT": "Colores no obtenibles",
     "SETTINGS-TT-BETTERCOL": "Da mayor precisión cromática",
     "SETTINGS-BETTERCOL": "Mejores colores",
-    "SETTINGS-TT-DITHER": "Añade píxeles aleatorios para dar mayor impresión de color"
+    "SETTINGS-TT-DITHER": "Añade píxeles aleatorios para dar mayor impresión de color",
     "SETTINGS-DITHER": "Gradiente (dithering)",
     "SETTINGS-DITHER-NONE": "Sin gradiente (dithering)",
     "SETTINGS-UNDERBLOCKS": "Añadir bloques abajo",
