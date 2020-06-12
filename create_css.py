@@ -13,7 +13,7 @@ css = """
 .block{
     width: 32px;
     height: 32px;
-    background-image: url(%%ROOTPATH%%/img/blocks.png);
+    background-image: url(%%ROOTPATH%%/../img/blocks.png);
 }
 
 """

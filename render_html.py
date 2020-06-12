@@ -2,6 +2,16 @@ import shutil
 import json
 import os
 
+def generateTranslationHTML():
+    translationHTML = ""
+    # We are not doing this automatically because we want to decide flag order
+    languages = ["en", "et", "lt", "ru", "de", "fr", "es", "zh", "eo"]
+    for language in languages:
+        with open(f"languages/{language}.json","r", encoding="UTF8") as f:
+            langjson = json.load(f)
+            translationHTML += f"<a href=\"%%ROOTPATH%%/{'' if language == 'en' else language}\"><img src=\"%%ROOTPATH%%/img/flag/{language}.svg\" alt=\"{langjson['index.html']['TRANSLATIONNAME']}\" height=\"50\"></a>"
+    return translationHTML
+
 for langjsonfile in os.listdir('languages'):
     langcode = langjsonfile.split(".")[0]
     print(f"Creating HTML for {langcode}")
@@ -14,7 +24,8 @@ for langjsonfile in os.listdir('languages'):
     for path in langjson:
         with open(f"web/{langcode}/{path}", "r", encoding="UTF8") as f:
             target = f.read()
-        target = target.replace(f"%%ROOTPATH%%","." if langcode == en else "..")
+        target = target.replace(f"%%TRANSLATIONHTML%%",generateTranslationHTML())
+        target = target.replace(f"%%ROOTPATH%%","." if langcode == "en" else "..")
         target = target.replace(f"%%HTMLLANG%%",langcode)
         for key, value in langjson[path].items():
             target = target.replace(f"%%{key}%%",value)
