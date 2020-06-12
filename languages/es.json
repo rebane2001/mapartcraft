@@ -1,0 +1,115 @@
+{
+  "index.html": {
+    "TRANSLATIONCREDITS": "Jalvaviel",
+
+    "FAQ": "Preguntas frecuentes",
+    "VIDEO_TUTORIAL": "Videotutorial",
+
+    "DESCRIPTION1": "Un generador de map.dat y .schematic para Minecraft. Diseñado para ser factible tanto para administradores de servidores como para jugadores en modo supervivencia en servidores como ",
+    "DESCRIPTION2": ", ejecutándose en tu buscador"
+    "DESCRIPTION3": "Inspirado por "
+    "DESCRIPTION4": "el programa para map art de Redstonehelper"
+    "DESCRIPTION5": ", con el objetivo de añadir caraterísticas altamente demandadas y eliminar la necesidad de descargar un programa"
+    "DESCRIPTION6": "Siéntete libre de mensajearme en Discord ",
+    "DESCRIPTION7": " o Reddit ",
+    "DESCRIPTION8": ", las peticiones de nuevas características y los reportes de bugs siguen abiertos",
+
+    "FAQTEXT1": "Por favor, ¡Echa un vistazo a ",
+    "FAQTEXT2": " antes de realizar cualquier pregunta!",
+
+    "BLOCKSELECTIONTITLE": "Selección de bloques",
+    "PRESETS": "Plantillas",
+
+    "MAPPREVIEWTITLE": "Vista previa del Mapa",
+    "MAPPREVIEW-TT-BESTRES": "Una imagen original con esta resolución funcionará mejor",
+    "MAPPREVIEW-TT-DOESNTMATCH": "La imagen no concuerda con la relación de aspecto del mapa",
+    "MAPPREVIEW-TT-PREVPLUS": "Ampliar vista previa ",
+    "MAPPREVIEW-TT-PREVMINUS": "Disminuir vista previa",
+
+    "SETTINGSTITLE": "Opciones",
+    "SETTINGS-TT-MODE": "Selecciona el modo de operación",
+    "SETTINGS-MODE": "Modo",
+    "SETTINGS-MODE-VISUAL": "Visualización",
+    "SETTINGS-MODE-VISUAL-NA": "Visualización (no disponible)",
+    "SETTINGS-TT-VERSION": "Selecciona la versión más cercana a la que estés ejecutando",
+    "SETTINGS-VERSION": "Versión",
+    "SETTINGS-MAPSIZE": "Tamaño del Mapa",
+    "SETTINGS-TT-CROP": "Recorta la imagen en vez de extenderla",
+    "SETTINGS-CROP": "Recortar",
+    "SETTINGS-TT-3D": "Hace el mapa 3D. Más difícil de construir, ¡Pero con 3 veces los colores!",
+    "SETTINGS-3D": "Escalonado",
+    "SETTINGS-3D-OFF": "Apagado (2D)",
+    "SETTINGS-3D-OPTIMIZED": "Encendido (óptimo)",
+    "SETTINGS-3D-CLASSIC": "Encendido (clásico)",
+    "SETTINGS-TT-UNOBT": "Permite colores para map.dat no obtenibles en .schematic",
+    "SETTINGS-UNOBT": "Colores no obtenibles",
+    "SETTINGS-TT-BETTERCOL": "Da mayor precisión cromática",
+    "SETTINGS-BETTERCOL": "Mejores colores",
+    "SETTINGS-TT-DITHER": "Añade píxeles aleatorios para dar mayor impresión de color"
+    "SETTINGS-DITHER": "Gradiente (dithering)",
+    "SETTINGS-DITHER-NONE": "Sin gradiente (dithering)",
+    "SETTINGS-UNDERBLOCKS": "Añadir bloques abajo",
+    "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Sin bloques",
+    "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Bloques importantes",
+    "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Todos los bloques",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Doble capa de bloques abajo (óptimo)",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Todos dobles",
+    "SETTINGS-TT-BLOCKTOADD": "Relacionado con la opción anterior",
+    "SETTINGS-BLOCKTOADD": "Bloque a añadir",
+
+    "DOWNLOAD-TT-NBT": "Descarga el nbt",
+    "DOWNLOAD-NBT": "DESCARGAR",
+    "DOWNLOAD-TT-NBTSPLIT": "Descarga el nbt en fragmentos de 1x1 chunks",
+    "DOWNLOAD-NBTSPLIT": "DESCARGAR EN 1X1",
+    "DOWNLOAD-TT-MAPDAT": "Descarga el map.dat en fragmentos de 1x1 chunks",
+    "DOWNLOAD-MAPDAT": "DESCARGAR",
+    "DOWNLOAD-TT-PDN": "Descarga la paleta de colores para Paint.net",
+    "DOWNLOAD-PDN": "DESCARGAR PALETA EN PDN",
+    "REFRESHMATERIALS-TT": "Refresca la lista de materiales",
+    "REFRESHMATERIALS": "REFRESCAR MATERIALES",
+    "DONATEBUTTON-TT": "Mira los partidarios y dona",
+    "DONATEBUTTON": "AYÚDAME A TENER PRIORIDAD EN LA COLA",
+
+    "MATERIALSTITLE": "Materiales",
+    "MATERIALS-BLOCK": "Bloque",
+    "MATERIALS-AMOUNT": "Cantidad"
+  },
+  "js/app.js": {
+    "NONE": "Vacío",
+
+    "LITEMATICAWARNING": "Nota: Si estás utilizando Litematica 1.15.2, por favor utiliza la versión 1.15\\nLitematica parece tener un fallo si seleccionas otra versión por algún motivo",
+    "EDGEWARNING": "Nota: Sin soporte para Microsoft Edge.\\nPor favor utiliza Chrome o Firefox para MapartCraft", 
+    "PDNWARNING1": "Advertencia, tu paleta tiene ",
+    "PDNWARNING2": " colores, mientras que el máximo para Paint.net es 96\\nAlgunos colores no estarán disponibles en Paint.net",
+
+    "HAVEYOUFAQ": "¿Has leido la sección de preguntas frecuentes?",
+    "HELPNOTE": "Nota: La ayuda solo será en Inglés (al menos de momento)",
+
+    "TIMEREMAINING-SECOND": "segundo",
+    "TIMEREMAINING-SECONDS": "segundos",
+    "TIMEREMAINING": "restante",
+
+    "SELECTBLOCKSWARNING-DOWNLOAD": "¡Selecciona los bloques antes de descargar!",
+    "SELECTBLOCKSWARNING-SHARE": "¡Selecciona los bloques antes de compartirlos!",
+    "SELECTBLOCKSWARNING-PALETTE": "¡Selecciona los bloques antes de descargar la paleta!",
+
+    "BLOCKSELECTIONTITLE": "Selección de bloques",
+
+    "PRESETS-ENTERNAME": "Inserta un nombre para la plantilla:",
+    "PRESETS-CORRUPTED": "¡El enlace de la plantilla está corrupto!",
+    "PRESETS-SHARELINK": "Comparte éste link para compartir tus bloques seleccionados",
+    "PRESETS-COOKIES": "Para importar plantillas, necesitamos tus cookies. ¿Estás de acuerdo?",
+    "PRESETS-DELETE": "Borrar",
+    "PRESETS-SAVE": "Guardar",
+    "PRESETS-SHARE": "Comparte",
+    "PRESETS-TT-SHARE": "Comparte los bloques que has seleccionado como enlace actualmente",
+    "PRESETS-PRESET-NONE": "Vacío",
+    "PRESETS-PRESET-EVERYTHING": "Todo",
+    "PRESETS-PRESET-CARPETS": "Alfombras",
+    "PRESETS": "Plantillas",
+
+    "MATERIALS-BLOCK": "Bloque",
+    "MATERIALS-AMOUNT": "Cantidad",
+    "MATERIALS-PLACEHOLDERBLOCK": "Bloque de muestra"
+  }
+}
