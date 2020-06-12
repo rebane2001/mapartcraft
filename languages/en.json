@@ -44,6 +44,8 @@
     "SETTINGS-3D-CLASSIC": "On (classic)",
     "SETTINGS-TT-UNOBT": "Enables map.dat colors unobtainiable in schematics",
     "SETTINGS-UNOBT": "Unobtainiable colors",
+    "SETTINGS-TT-TRANS": "Enables transparency for map.dat",
+    "SETTINGS-TRANS": "Transparency",
     "SETTINGS-TT-BETTERCOL": "Gives you better color accuracy",
     "SETTINGS-BETTERCOL": "Better color",
     "SETTINGS-TT-DITHER": "Adds seemingly random pixels for the illusion of more colors",

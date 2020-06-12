@@ -1,0 +1,28 @@
+Untranslated strings for German:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for English:
+Untranslated strings for Esperanto:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Spanish:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Estonian:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for French:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Latvian:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Portuguese:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Russian:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Chinese:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS

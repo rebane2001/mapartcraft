@@ -102,12 +102,21 @@ onmessage = function(e) {
   selectedcolors = e.data[4];
   bettercolor = e.data[5];
   mapsize = e.data[6];
+  trans = e.data[7];
 
   colorCache = new Map(); //reset color cache
 
   for (var i = 0; i < imgData.data.length; i += 4) {
     //i = r, i+1 = g, i+2 = b, i+3 = a
+    if (trans && imgData.data[i + 3] < 128){
+      imgData.data[i + 0] = 0;
+      imgData.data[i + 1] = 0;
+      imgData.data[i + 2] = 0;
+      imgData.data[i + 3] = 0;
+      continue;
+    }
     imgData.data[i + 3] = 255; // remove alpha
+    
     let x = (i / 4) % canvasSize[0];
     let y = ((i / 4) - x) / canvasSize[0];
     if (x == 0)

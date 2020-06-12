@@ -234,6 +234,7 @@ function updateMap() {
       selectedcolors,
       document.getElementById('bettercolor').checked,
       mapsize,
+      (document.getElementById('trans').checked  && document.getElementById("mapmode").selectedIndex == 2)
       ]);
   }else if(mapstatus == 1){
     mapstatus++;
@@ -617,6 +618,9 @@ function getMap() {
 function getColor(imgData, ctx, x, y){
   return [imgData.data[x * 4 + y * 4 * ctx.canvas.width], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 1], imgData.data[x * 4 + y * 4 * ctx.canvas.width + 2]];
 }
+function getColorAlpha(imgData, ctx, x, y){
+  return imgData.data[x * 4 + y * 4 * ctx.canvas.width + 3];
+}
 
 function getTone(nbtblocklist,color){
   for (let i = 0; i < nbtblocklist.length; i++) {
@@ -722,6 +726,10 @@ function dlMapDatSplit(){ //call getMapDatSplit() first!
     
       for (let y = 0; y < ctx.canvas.height; y++) {
         for (let x = 0; x < ctx.canvas.width; x++) {
+          if (getColorAlpha(imgData, ctx, x, y) == 0){
+            colorData.push(0);
+            continue;
+          }
           color = getColor(imgData, ctx, x, y);
           selectedblocks.forEach((i) => {
             for (let j of [0,1,2,3]) {
