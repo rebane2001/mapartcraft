@@ -20,6 +20,7 @@ However, it is recommended to use the [rebane2001.com](https://rebane2001.com/ma
 # Credits/Thanks
 Minecraft for the block textures  
 [KenPixel Mini Square](https://opengameart.org/content/kenney-fonts) font by [Kenney](https://www.kenney.nl/)  
+[NBT.js](https://github.com/sjmulder/nbt-js) by [sjmulder](https://github.com/sjmulder)  
 [Tooltip.js](https://github.com/matthias-schuetz/Tooltip) by [Matthias Schuetz](http://matthiasschuetz.com)  
 [pako](https://github.com/matthias-schuetz/Tooltip)  
 Translation credits can be seen on the translated pages  
