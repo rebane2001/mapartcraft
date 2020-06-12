@@ -9,9 +9,8 @@ The default building mechanism requires the following requierments, but you can 
 - Pillow for Python
 
 # Building
-1. Replace `root_path` variable in `render_html.py` with the root path you will be hosting the site from. You can use `.`, but that will break languages other than English  
-2. Run `make.bat`  
-3. Your static website will be in the `web` directory, host it however you wish
+1. Run `make.bat`  
+2. Your static website will be in the `web` directory, host it however you wish
 
 # Usage
 Visit [mapartcraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](https://rebane2001.com) or use a mirror on [web.archive.org](https://web.archive.org/web/*/https://rebane2001.com/mapartcraft)  

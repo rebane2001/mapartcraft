@@ -2,9 +2,6 @@ import shutil
 import json
 import os
 
-# Path to mapartcraft once it is on the web
-root_path = "/web"
-
 for langjsonfile in os.listdir('languages'):
     langcode = langjsonfile.split(".")[0]
     print(f"Creating HTML for {langcode}")
@@ -17,7 +14,7 @@ for langjsonfile in os.listdir('languages'):
     for path in langjson:
         with open(f"web/{langcode}/{path}", "r", encoding="UTF8") as f:
             target = f.read()
-        target = target.replace(f"%%ROOTPATH%%",root_path)
+        target = target.replace(f"%%ROOTPATH%%","." if langcode == en else "..")
         target = target.replace(f"%%HTMLLANG%%",langcode)
         for key, value in langjson[path].items():
             target = target.replace(f"%%{key}%%",value)
