@@ -735,7 +735,7 @@ function dlMapDatSplit(){ //call getMapDatSplit() first!
       }
     
       nbtData = nbt.writeUncompressed(
-        {"name":"","value":{"data":{"type":"compound","value":{"scale":{"type":"byte","value":0},"dimension":{"type":"byte","value":-1},"trackingPosition":{"type":"byte","value":0},"locked":{"type":"byte","value":1},"height":{"type":"short","value":128},"width":{"type":"short","value":128},"xCenter":{"type":"int","value":0},"zCenter":{"type":"int","value":0},"colors":{"type":"byteArray","value":colorData}}}}}
+        {"name":"","value":{"data":{"type":"compound","value":{"scale":{"type":"byte","value":0},"dimension":{"type":"byte","value":-128},"trackingPosition":{"type":"byte","value":0},"locked":{"type":"byte","value":1},"height":{"type":"short","value":128},"width":{"type":"short","value":128},"xCenter":{"type":"int","value":0},"zCenter":{"type":"int","value":0},"colors":{"type":"byteArray","value":colorData}}}}}
       );
       console.log("Gzipping");
       let gzipped = pako.gzip(nbtData);
