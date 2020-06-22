@@ -14,6 +14,9 @@ SETTINGS-TRANS
 Untranslated strings for French:
 SETTINGS-TT-TRANS
 SETTINGS-TRANS
+Untranslated strings for Italian:
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
 Untranslated strings for Latvian:
 SETTINGS-TT-TRANS
 SETTINGS-TRANS

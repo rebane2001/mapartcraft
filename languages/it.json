@@ -1,0 +1,116 @@
+{
+  "index.html": {
+    "TRANSLATIONCREDITS": "Traduzione di psvigia",
+    "TRANSLATIONNAME": "Italian",
+
+    "FAQ": "FAQ",
+    "VIDEO_TUTORIAL": "Video tutorial", 
+    
+    "DESCRIPTION1": "Un generatore di file schematic e map.dat per la realizzazione di mapart in Minecraft, progettato per essere utilizzabile sia da admin sia da giocatori survival su server come ",
+    "DESCRIPTION2": " ed eseguibile nel tuo browser",
+    "DESCRIPTION3": "Ispirato dal ",
+    "DESCRIPTION4": "generatore di mapart di Redstonehelper",
+    "DESCRIPTION5": ", ha l'obbiettivo di implementare funzionalità molto richieste e di eliminare il bisogno di scaricare un programma",
+    "DESCRIPTION6": "Puoi contattarmi su Discord ",
+    "DESCRIPTION7": " oppure su Reddit ",
+    "DESCRIPTION8": ". Le richieste di funzionalità e le segnalazioni di bug possono essere inviate su ",
+    "FAQTEXT1": "Per favore controlla la  ",
+    "FAQTEXT2": "  prima di contattarmi!",
+
+    "BLOCKSELECTIONTITLE": "Selezione dei blocchi",
+    "PRESETS": "Preset",
+
+    "MAPPREVIEWTITLE": "Anteprima",
+    "MAPPREVIEW-TT-BESTRES": "Un'immagine sorgente con questa risoluzione funzionerà al meglio",
+    "MAPPREVIEW-TT-DOESNTMATCH": "L'immagine non rispetta le proporzioni della mappa",
+    "MAPPREVIEW-TT-PREVPLUS": "Ingradire l'anteprima",
+    "MAPPREVIEW-TT-PREVMINUS": "Ridurre l'anteprima",
+
+    "SETTINGSTITLE": "Impostazioni",
+    "SETTINGS-TT-MODE": "Seleziona la modalità in cui vorresti operare",
+    "SETTINGS-MODE": "Modalità",
+
+    "SETTINGS-MODE-VISUAL": "Visiva",
+    "SETTINGS-MODE-VISUAL-NA": "Visiva (non disponibile)",
+    "SETTINGS-TT-VERSION": "Seleziona la versione più vicina alla tua",
+    "SETTINGS-VERSION": "Versione",
+    "SETTINGS-MAPSIZE": "Dimensione della mappa",
+    "SETTINGS-TT-CROP": "Ritaglia la tua immagine invece di deformarla",
+    "SETTINGS-CROP": "Ritaglia",
+    "SETTINGS-TT-3D": "Aggiunge due ulteriori tonalità per ogni colore sfruttando le ombreggiature con cui le mappe rappresentano le differenze di quota",
+    "SETTINGS-3D": "Staircasing",
+    "SETTINGS-3D-OFF": "Off (2D)",
+    "SETTINGS-3D-OPTIMIZED": "On (ottimizzato)",
+    "SETTINGS-3D-CLASSIC": "On (classico)",
+    "SETTINGS-TT-UNOBT": "Abilita i colori del formato map.dat non ottenibili con le schematiche",
+    "SETTINGS-UNOBT": "Colori non ottenibili",
+    "SETTINGS-TT-BETTERCOL": "Garantisce una maggiore precisione del colore",
+    "SETTINGS-BETTERCOL": "Colori migliori",
+    "SETTINGS-TT-DITHER": "Aggiunge pixel con colori apparentemente casuali per rendere l'illusione di una gamma di colori più ampia",
+    "SETTINGS-DITHER": "Dithering",
+    "SETTINGS-DITHER-NONE": "Nulla",
+    "SETTINGS-UNDERBLOCKS": "Aggiungi blocchi sotto",
+    "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Nessun blocco",
+    "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Blocchi importanti",
+    "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Tutti i blocchi",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Tutti doppi (ottimizzato)",
+    "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Tutti doppi",
+    "SETTINGS-TT-BLOCKTOADD": "Relativo all'opzione precedente",
+    "SETTINGS-BLOCKTOADD": "Blocchi da aggiungere",
+
+    "DOWNLOAD-TT-NBT": "Scarica l'nbt",
+    "DOWNLOAD-NBT": "SCARICA",
+    "DOWNLOAD-TT-NBTSPLIT": "Scarica l'nbt diviso in porzioni 1x1",
+    "DOWNLOAD-NBTSPLIT": "SCARICA DIVISO IN PORZIONI 1x1",
+    "DOWNLOAD-TT-MAPDAT": "Scarica il map.dat diviso in porzioni 1x1",
+    "DOWNLOAD-MAPDAT": "SCARICA",
+    "DOWNLOAD-TT-PDN": "Scarica la palette di colori da usare in Paint.net",
+    "DOWNLOAD-PDN": "SCARICA PALETTE PDN",
+    "REFRESHMATERIALS-TT": "Aggiorna la lista di materiali",
+    "REFRESHMATERIALS": "AGGIORNA MATERIALI",
+    "DONATEBUTTON-TT": "Vedi i sostenitori e dona",
+    "DONATEBUTTON": "AIUTAMI A SALTARE LA CODA",
+
+    "MATERIALSTITLE": "Materiali",
+    "MATERIALS-BLOCK": "Blocco",
+    "MATERIALS-AMOUNT": "Quantità"
+  },
+  "js/app.js": {
+    "NONE": "Nulla",
+
+    "LITEMATICAWARNING": "Nota: Se stai usando Litematica 1.15.2, per favore usa la versione 1.15\\nPare che Litematica abbia un bug se selezioni una versione differente",
+    "EDGEWARNING": "Nota: usare Microsoft Edge non è supportato.\\nPer favore usa Chrome (consigliato) o Firefox per MapartCraft",
+    "PDNWARNING1": "Attenzione, la tua palette ha ",
+    "PDNWARNING2": " colori, mentre il massimo in Paint.net è 96\\nAlcuni colori non saranno disponibili in Paint.net",
+
+    "HAVEYOUFAQ": "Hai letto la FAQ?",
+    "HELPNOTE": "Nota: Il supporto verrà fornito solo in inlgese",
+
+    "TIMEREMAINING-SECOND": "secondo",
+    "TIMEREMAINING-SECONDS": "secondi",
+    "TIMEREMAINING": "rimanente/i",
+
+    "SELECTBLOCKSWARNING-DOWNLOAD": "Seleziona dei blocchi prima di scaricare!",
+    "SELECTBLOCKSWARNING-SHARE": "Seleziona dei blocchi prima di condividerli!",
+    "SELECTBLOCKSWARNING-PALETTE": "Seleziona dei blocchi prima di scaricare la palette!",
+
+    "BLOCKSELECTIONTITLE": "Selezione di blocchi",
+
+    "PRESETS-ENTERNAME": "Inserisci un nome per il tuo preset:",
+    "PRESETS-CORRUPTED": "Il link del preset è corrotto!",
+    "PRESETS-SHARELINK": "Condividi questo link per condividere i blocchi attualmente selezionati",
+    "PRESETS-COOKIES": "Per usare i preset, abbiamo bisogno di usare i cookie. Sei d'accordo?",
+    "PRESETS-DELETE": "Elimina",
+    "PRESETS-SAVE": "Salva",
+    "PRESETS-SHARE": "Condividi",
+    "PRESETS-TT-SHARE": "Condivide i blocchi attualmente selezionati attraverso un link",
+    "PRESETS-PRESET-NONE": "Nulla",
+    "PRESETS-PRESET-EVERYTHING": "Tutto",
+    "PRESETS-PRESET-CARPETS": "Carpet",
+    "PRESETS": "Preset",
+
+    "MATERIALS-BLOCK": "Blocco",
+    "MATERIALS-AMOUNT": "Quantità",
+    "MATERIALS-PLACEHOLDERBLOCK": "Blocco esempio"
+  }
+}

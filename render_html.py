@@ -5,7 +5,7 @@ import os
 def generateTranslationHTML():
     translationHTML = ""
     # We are not doing this automatically because we want to decide flag order
-    languages = ["en", "et", "lt", "ru", "de", "fr", "pt", "es", "zh", "eo"]
+    languages = ["en", "et", "lt", "ru", "de", "fr", "it", "pt", "es", "zh", "eo"]
     for language in languages:
         with open(f"languages/{language}.json","r", encoding="UTF8") as f:
             langjson = json.load(f)
