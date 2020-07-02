@@ -77,7 +77,8 @@ function initialize() {
   if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
     alert('%%EDGEWARNING%%');
   }
-  //load 1.12 blocklist by default
+  //load latest version if no version in cookie
+  document.getElementById("version").value = (getCookie("mcversion") != "") ? getCookie("mcversion") : Object.keys(versionindex)[Object.keys(versionindex).length - 1];
   updateVersion();
   displaycanvas = document.getElementById('displaycanvas');
   try{
@@ -1295,6 +1296,7 @@ function updateVersion(){
   let tempPreset = exportPreset();
   console.log(tempPreset);
 	mcversion = document.getElementById("version").value;
+  setCookie("mcversion", mcversion, 9000);
   [dataversion,blockversion] = versionindex[mcversion];
   switch (blockversion) {
         case 0:
