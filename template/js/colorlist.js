@@ -727,7 +727,21 @@ window.colorlist_patches = {
   },
   "1.16": {
     "patch": [],
-    "add": []
+    "add": [
+      [[51,0], ['crimson_nylium', '', 'Crimson Nylium', false, '', 0, false]],
+      [[52,0], ['crimson_stem', '', 'Crimson Stem', false, 'crimson_stem_top', 0, false]],
+      [[52,1], ['stripped_crimson_stem', '', 'Stripped Crimson Stem', false, 'stripped_crimson_stem_top', 1, false]],
+      [[52,2], ['crimson_planks', '', 'Crimson Planks', false, '', 2, false]],
+      [[53,0], ['crimson_hyphae', '', 'Crimson Hyphae', false, 'crimson_stem', 0, false]],
+      [[53,1], ['stripped_crimson_hyphae', '', 'Stripped Crimson Hyphae', false, 'stripped_crimson_stem', 1, false]],
+      [[54,0], ['warped_nylium', '', 'Warped Nylium', false, '', 0, false]],
+      [[55,0], ['warped_stem', '', 'Warped Stem', false, 'warped_stem_top', 0, false]],
+      [[55,1], ['stripped_warped_stem', '', 'Stripped Warped Stem', false, 'stripped_warped_stem_top', 1, false]],
+      [[55,2], ['warped_planks', '', 'Warped Planks', false, '', 2, false]],
+      [[56,0], ['warped_hyphae', '', 'Warped Hyphae', false, 'warped_stem', 0, false]],
+      [[56,1], ['stripped_warped_hyphae', '', 'Stripped Warped Hyphae', false, 'stripped_warped_stem', 1, false]],
+      [[57,0], ['warped_wart_block', '', 'Warped Wart Block', false, '', 0, false]],
+    ]
   },
 }
 window.mapdatmappings = [1,2,3,4,5,6,7,9,10,11,12,13,14,8,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58];
