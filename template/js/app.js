@@ -52,14 +52,8 @@ const worker = new Worker("js/worker.js");
 
 var sheet;
 
-function initialize() {
-	//show warning when using Edge
-  if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
-    alert('%%EDGEWARNING%%');
-  }
+function genBlocklist(){
   let colorid = 0;
-  //load 1.12 blocklist by default
-  window.blocklist = window.colorlist_base;
   let blockseletionhtml = "";
   window.blocklist.forEach(function(i) {
     blockid = 0;
@@ -74,6 +68,16 @@ function initialize() {
     colorid++;
   });
   document.getElementById('blockselection').innerHTML += blockseletionhtml;
+}
+
+function initialize() {
+	//show warning when using Edge
+  if (!(/*@cc_on!@*/false || !!document["documentMode"]) && !!window["StyleMedia"]) {
+    alert('%%EDGEWARNING%%');
+  }
+  //load 1.12 blocklist by default
+  window.blocklist = window.colorlist_base;
+  genBlocklist()
   displaycanvas = document.getElementById('displaycanvas');
   try{
     offscreen = new OffscreenCanvas(128, 128);
@@ -1267,7 +1271,26 @@ function checkCookie() {
     loadCookies();
 }
 
+function applyVersionPatch(version){
+  for (let x = 0; x < window.colorlist_patches[version].length; ++x) {
+    for (let i = 0; i < window.blocklist.length; ++i) { 
+      if (window.colorlist_patches[version][x][0][0] == window.blocklist[i][2]){
+        for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
+          if (window.colorlist_patches[version][x][0][1] == window.blocklist[i][1][j][5]){
+            window.blocklist[i][1][j] = window.colorlist_patches[version][x][1];
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
+}
+
+
 function updateVersion(){
+  let tempPreset = exportPreset();
+  console.log(tempPreset);
 	mcversion = document.getElementById("version").value;
   [dataversion,blockversion] = versionindex[mcversion];
   if (dataversion > 2225)
@@ -1278,21 +1301,13 @@ function updateVersion(){
           break;
         case 1:
           window.blocklist = window.colorlist_base;
-          for (let x = 0; x < window.colorlist_patches["1.13"].length; ++x) {
-            for (let i = 0; i < window.blocklist.length; ++i) { 
-              if (window.colorlist_patches["1.13"][x][0][0] == window.blocklist[i][2]){
-                for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
-                  if (window.colorlist_patches["1.13"][x][0][1] == window.blocklist[i][1][j][5]){
-                    window.blocklist[i][1][j] = window.colorlist_patches["1.13"][x][1];
-                    break;
-                  }
-                }
-                break;
-              }
-            }
-          }
+          applyVersionPatch("1.13")
           break;
   }
+  document.getElementById('blockselection').innerHTML = document.getElementById('blockselection').innerHTML.split('<br><div class="colorbox"')[0];
+  genBlocklist();
+  updateStyle();
+  importPreset(tempPreset.split("?preset=")[1]);
 }
 
 function updatePreviewScale(i) {
