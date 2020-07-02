@@ -38,6 +38,8 @@ var versionindex = {
   "1.15.0": [2225,1],
   "1.15.1": [2227,1],
   "1.15.2": [2230,1],
+  "1.16.0": [2566,2],
+  "1.16.1": [2567,2],
 };
 
 var mcversion = "1.12.2";
@@ -76,8 +78,7 @@ function initialize() {
     alert('%%EDGEWARNING%%');
   }
   //load 1.12 blocklist by default
-  window.blocklist = window.colorlist_base;
-  genBlocklist()
+  updateVersion();
   displaycanvas = document.getElementById('displaycanvas');
   try{
     offscreen = new OffscreenCanvas(128, 128);
@@ -1182,7 +1183,7 @@ function importPreset(encodedPreset){
     document.location = "https://www.youtube.com/watch?v=cZ5wOPinZd4";
     return;
   }
-  if (!/^[0-9A-Za-z]+$/g.test(encodedPreset)){
+  if (!(/^[0-9A-Za-z]+$/g.test(encodedPreset) || encodedPreset == "")){
     alert("%%PRESETS-CORRUPTED%%");
     return;
   }
@@ -1272,17 +1273,23 @@ function checkCookie() {
 }
 
 function applyVersionPatch(version){
-  for (let x = 0; x < window.colorlist_patches[version].length; ++x) {
-    for (let i = 0; i < window.blocklist.length; ++i) { 
-      if (window.colorlist_patches[version][x][0][0] == window.blocklist[i][2]){
+  for (let x = 0; x < window.colorlist_patches[version]["patch"].length; ++x) {
+    for (let i = 0; i < window.blocklist.length; ++i) {
+      if (window.colorlist_patches[version]["patch"][x][0][0] == window.blocklist[i][2]){
         for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
-          if (window.colorlist_patches[version][x][0][1] == window.blocklist[i][1][j][5]){
-            window.blocklist[i][1][j] = window.colorlist_patches[version][x][1];
+          if (window.colorlist_patches[version]["patch"][x][0][1] == window.blocklist[i][1][j][5]){
+            window.blocklist[i][1][j] = window.colorlist_patches[version]["patch"][x][1];
             break;
           }
         }
         break;
       }
+    }
+  }
+  for (let x = 0; x < window.colorlist_patches[version]["add"].length; ++x) {
+    for (let i = 0; i < window.blocklist.length; ++i){
+      if (window.colorlist_patches[version]["add"][x][0][0] == window.blocklist[i][2])
+        window.blocklist[i][1].push(window.colorlist_patches[version]["add"][x][1]);
     }
   }
 }
@@ -1295,13 +1302,19 @@ function updateVersion(){
   [dataversion,blockversion] = versionindex[mcversion];
   switch (blockversion) {
         case 0:
-          window.blocklist = window.colorlist_base;
+          window.blocklist = deepClone(window.colorlist_base);
           break;
         case 1:
-          window.blocklist = window.colorlist_base;
-          applyVersionPatch("1.13")
+          window.blocklist = deepClone(window.colorlist_base);
+          applyVersionPatch("1.13");
+          break;
+        case 2:
+          window.blocklist = deepClone(window.colorlist_base);
+          applyVersionPatch("1.13");
+          applyVersionPatch("1.16");
           break;
   }
+  window.blocklist = window.blocklist.filter((el) => { return (el[1].length != 0) });
   document.getElementById('blockselection').innerHTML = document.getElementById('blockselection').innerHTML.split('<br><div class="colorbox"')[0];
   genBlocklist();
   updateStyle();
@@ -1482,3 +1495,7 @@ function cssrgb(values) {
 document.addEventListener("DOMContentLoaded", function() {
   initialize();
 });
+
+function deepClone(target){
+  return JSON.parse(JSON.stringify(target));
+}
