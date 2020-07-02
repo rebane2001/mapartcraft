@@ -78,7 +78,6 @@
   "js/app.js": {
     "NONE": "Niekas",
 
-    "LITEMATICAWARNING": "Pastaba: jei naudojate „Litematica 1.15.2“, naudokite 1.15 versiją \\ n „Litematica“, regis, turi klaidą, jei dėl kokių nors priežasčių pasirinksite kitą versiją",
     "EDGEWARNING": "Pastaba: nepalaikomas Microsoft Edge naudojimas. \\n Pagal „MapartCraft“ naudokite Chrome (pageidautina) arba Firefox.",
     "PDNWARNING1": "Įspėjimas: jūsų paletė turi ",
     "PDNWARNING2": "spalvų, o maksimali „Paint.net“ yra 96 ​​\\n Kai kurios spalvos „Paint.net“ nebus prieinamos ",

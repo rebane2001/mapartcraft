@@ -78,7 +78,6 @@
   "js/app.js": {
     "NONE": "Nula",
 
-    "LITEMATICAWARNING": "Atentu: Se vi uzas Litematica-n 1.15.2, bonvolu uzi la 1.15 version\\nLitematica ŝajnas iel havanta cimon se vi elektas alian version",
     "EDGEWARNING": "Atentu: uzado de Microsoft Edge estas malsubtenata.\\nBonvolu uzi Chrome-n (prefere) aŭ Firefox-n por MapartCraft",
     "PDNWARNING1": "Averto, via koloraro enhavas ",
     "PDNWARNING2": " colorojn, sed la plejgranda koloraro en Paint.net enhaveblas 96\\nIu koloroj estos maluzebla en Paint.net",

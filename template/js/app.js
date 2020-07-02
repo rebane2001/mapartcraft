@@ -1293,8 +1293,6 @@ function updateVersion(){
   console.log(tempPreset);
 	mcversion = document.getElementById("version").value;
   [dataversion,blockversion] = versionindex[mcversion];
-  if (dataversion > 2225)
-    alert("%%LITEMATICAWARNING%%")
   switch (blockversion) {
         case 0:
           window.blocklist = window.colorlist_base;

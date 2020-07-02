@@ -78,7 +78,6 @@
   "js/app.js": {
     "NONE": "Vacío",
 
-    "LITEMATICAWARNING": "Nota: Si estás utilizando Litematica 1.15.2, por favor utiliza la versión 1.15\\nLitematica parece tener un fallo si seleccionas otra versión por algún motivo",
     "EDGEWARNING": "Nota: Sin soporte para Microsoft Edge.\\nPor favor utiliza Chrome o Firefox para MapartCraft", 
     "PDNWARNING1": "Advertencia, tu paleta tiene ",
     "PDNWARNING2": " colores, mientras que el máximo para Paint.net es 96\\nAlgunos colores no estarán disponibles en Paint.net",

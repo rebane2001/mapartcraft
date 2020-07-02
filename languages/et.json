@@ -78,7 +78,6 @@
   "js/app.js": {
     "NONE": "Puudub",
 
-    "LITEMATICAWARNING": "Märkus: Kui kasutad Litematica 1.15.2, palun vali 1.15 versioon\\nLitematicas on mingi viga muidu",
     "EDGEWARNING": "Märkus: Microsoft Edge kasutamine ei ole toetatud.\\nPalun kasutage Chrome (soovitatud) või Tulirebane MapartCrafti jaoks",
     "PDNWARNING1": "Märkus, sinu palettis on ",
     "PDNWARNING2": " värvi, aga Paint.net\\'i maksimum on 96\\nMõned värvid ei ole saadaval Paint.net\\'is",
