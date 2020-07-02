@@ -97,6 +97,7 @@ window.colorlist_base =
       ["stone", "'variant':'andesite'", "Andesite", false, "stone_andesite", 4, false],
       ["bedrock", "", "Bedrock", false, "", 5, false],
       ["log2", "'variant':'acacia','axis':'x'", "Acacia Log (horizontal)", false, "log_acacia", 6, true],
+      ["gravel", "", "Gravel", false, "", 7, false],
     ],
     9
   ],
