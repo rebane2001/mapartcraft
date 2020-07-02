@@ -1309,6 +1309,13 @@ function loadImg(e) {
   filename = e.target.files[0].name.replace(/\.[^/.]+$/, "");
   img.src = URL.createObjectURL(e.target.files[0]);
   img.onload = function() {
+    // Auto-set map size if resolution looks nice
+    if (img.width % 128 == 0 && img.height % 128 == 0){
+      if (img.width / 128 < 5 && img.height / 128 < 5){
+        document.getElementById('mapsizex').value = img.width / 128;
+        document.getElementById('mapsizey').value = img.height / 128;
+      }
+    }
     updateMap();
   }
 }
