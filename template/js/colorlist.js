@@ -50,6 +50,7 @@ window.colorlist_base =
     [
       ["iron_block", "", "Block of Iron", false, "", 0, false],
       ["iron_trapdoor", "'half':'bottom'", "Iron Trapdoor", true, "", 1, false],
+      ["iron_bars", "", "Iron Bars", true, "", 3, false],
       ["heavy_weighted_pressure_plate", "", "Weighted Pressure Plate (Heavy)", true, "", 2, false],
     ],
     5
