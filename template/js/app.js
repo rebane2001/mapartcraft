@@ -339,7 +339,7 @@ function dlNbtSplit(){ //call getNbtSplit() first!
     console.log("Currently downloading: " + currentSplit[0] + " " + currentSplit[1]);
     updateSplit();
     getNbt();
-    dlNbtSplit();
+    setTimeout(() => { dlNbtSplit(); }, 1000);
   }else{
     resetCallback();
     console.log("Done, rerendering map");
@@ -765,8 +765,7 @@ function dlMapDatSplit(){ //call getMapDatSplit() first!
       a.download = filename + "_s_" + currentSplit[0] + "_" + currentSplit[1] + ".dat";
       a.click();
       window.URL.revokeObjectURL(url);
-  
-      dlMapDatSplit();
+      setTimeout(() => { dlMapDatSplit(); }, 1000);
     }else{
       resetCallback();
       console.log("Done, rerendering map");
