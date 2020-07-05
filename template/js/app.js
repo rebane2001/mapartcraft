@@ -105,7 +105,6 @@ function initialize() {
     visualrender.height = 128;
   }
   updateStyle();
-  //tooltip.refresh();
   document.getElementById('imgupload').addEventListener('change', loadImg);
   checkCookie();
   let urlParams = new URL(window.location).searchParams;
@@ -1316,6 +1315,9 @@ function updateVersion(){
   genBlocklist();
   updateStyle();
   importPreset(tempPreset.split("?preset=")[1]);
+  // hack to only refresh if not launch or else evil bugs shall occur
+  if (displaycanvas instanceof HTMLElement)
+    tooltip.refresh();
 }
 
 function updatePreviewScale(i) {
