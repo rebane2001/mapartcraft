@@ -636,6 +636,7 @@ function getTone(nbtblocklist,color){
     if (arraysEqual(nbtblocklist[i]["Colors"][2], color))
       return [1,i];
   }
+  alert("An error has occured! This is most likely because you are using a privacy-enhanced browser (such as Brave). Please turn off protections/shields or use a different browser such as Chrome or Firefox.");
 }
 
 function getMaterials() {
