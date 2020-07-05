@@ -1,8 +1,8 @@
 # Mapartcraft
 A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like 2b2t, running in your browser  
   
-# Requierments
-The default building mechanism requires the following requierments, but you can easily modify them to work on different systems (eg Linux)  
+# Requirements
+The default building mechanism requires the following requirements, but you can easily modify them to work on different systems (eg Linux)  
 - Windows
 - ImageMagick
 - Python3 (as `python.exe` in %PATH%)
