@@ -40,6 +40,7 @@ var versionindex = {
   "1.15.2": [2230,1],
   "1.16.0": [2566,2],
   "1.16.1": [2567,2],
+  "1.16.2": [2568,3],
 };
 
 var mcversion = "1.12.2";
@@ -1322,6 +1323,12 @@ function updateVersion(){
           window.blocklist = deepClone(window.colorlist_base);
           applyVersionPatch("1.13");
           applyVersionPatch("1.16");
+          break;
+        case 3:
+          window.blocklist = deepClone(window.colorlist_base);
+          applyVersionPatch("1.13");
+          applyVersionPatch("1.16");
+          applyVersionPatch("1.16.2");
           break;
   }
   window.blocklist = window.blocklist.filter((el) => { return (el[1].length != 0) });
