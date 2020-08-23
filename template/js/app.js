@@ -905,15 +905,25 @@ function setupVisual(){
 
           ctx.save();
           ctx.setTransform(1,0,0,1,0,0);
+
+          let boxOffset = [15,25];
+          let textSize = 128;
+          let hoverText = `X: ${blockX}\nZ: ${blockZ}\n`;
+          ctx.font = "20px kenpixel_mini_square";
           try{
-            let i = 1;
-            ctx.font = "30px Times New Roman";
-            ctx.fillStyle = "black";
-            ctx.fillText(`X: ${blockX}`,10,40*++i);
-            ctx.fillText(`Z: ${blockZ}`,10,40*++i);
             let status = visualStatus[blockX][blockZ];
-            ctx.fillText(`Y: ${status["y"]}`,10,40*++i);
+            hoverText += `Y: ${status["y"]}\n`;
+            hoverText += `B: ${status["name"]}\n`;
+            textSize = Math.max(ctx.measureText(`B: ${status["name"]}`).width + 5, textSize);
           }catch{}
+
+            let i = 0;
+            ctx.fillStyle = "#7BAE7F";
+            ctx.fillRect(lastX+boxOffset[0], lastY+boxOffset[1], textSize, 5 + 23*(hoverText.split("\n").length-1));
+            ctx.fillStyle = "white";
+            hoverText.split("\n").forEach(function(t) {
+              ctx.fillText(t,5 + boxOffset[0] + lastX,15.5 + 5 + boxOffset[1] + 23*i++ + lastY);
+            });
           ctx.restore();
 
         }
@@ -1074,10 +1084,12 @@ function getVisuals() {
         throw 'Old Y is lower than new one';
     } catch {
       try {
-        visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]] = {"y":blocks[i]["pos"][1], "state":blocks[i]["state"]};
+        let selectedblock = nbtblocklist[blocks[i]["state"]]["SelectedBlock"];
+        let name = window.blocklist[selectedblock[0]][1][selectedblock[1]][2];
+        visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]] = {"y":blocks[i]["pos"][1], "state":blocks[i]["state"], name};
       } catch {
         visualStatus[blocks[i]["pos"][0]] = [];
-        visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]] = {"y":blocks[i]["pos"][1], "state":blocks[i]["state"]}; 
+        visualStatus[blocks[i]["pos"][0]][blocks[i]["pos"][2]] = {"y":blocks[i]["pos"][1], "state":blocks[i]["state"], "name": "-"}; 
       }
     }
   }
