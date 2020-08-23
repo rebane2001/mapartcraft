@@ -106,7 +106,12 @@ function initialize() {
     visualrender.height = 128;
   }
   updateStyle();
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    document.getElementById('displaycanvas').addEventListener(eventName, preventDefaults, false)
+  })
+  document.getElementById('displaycanvas').addEventListener('drop', loadImg);
   document.getElementById('imgupload').addEventListener('change', loadImg);
+  document.addEventListener('paste', loadImg);
   checkCookie();
   let urlParams = new URL(window.location).searchParams;
   if (urlParams.has('preset'))
@@ -1351,9 +1356,16 @@ function updatePreviewScale(i) {
 }
 
 function loadImg(e) {
+  let files = (e.type == 'change') ? e.target.files : ((e.type == 'drop') ? e.dataTransfer.files : e.clipboardData.files);
+  try{
+    let filename = files[0].name.replace(/\.[^/.]+$/, "");
+  }catch (err){
+    console.log("Couldn't get filename, going with just 'mapart'");
+    let filename = "mapart";
+  }
+  
   img = new Image;
-  filename = e.target.files[0].name.replace(/\.[^/.]+$/, "");
-  img.src = URL.createObjectURL(e.target.files[0]);
+  img.src = URL.createObjectURL(files[0]);
   img.onload = function() {
     // Auto-set map size if resolution looks nice
     if (img.width % 128 == 0 && img.height % 128 == 0){
@@ -1518,4 +1530,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function deepClone(target){
   return JSON.parse(JSON.stringify(target));
+}
+
+function preventDefaults (e) {
+  e.preventDefault()
+  e.stopPropagation()
 }
