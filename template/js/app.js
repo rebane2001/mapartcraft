@@ -1288,6 +1288,19 @@ function applyVersionPatch(version){
         window.blocklist[i][1].push(window.colorlist_patches[version]["add"][x][1]);
     }
   }
+  for (let x = 0; x < window.colorlist_patches[version]["remove"].length; ++x) {
+    for (let i = 0; i < window.blocklist.length; ++i) {
+      if (window.colorlist_patches[version]["remove"][x][0][0] == window.blocklist[i][2]){
+        for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
+          if (window.colorlist_patches[version]["patch"][x][0][1] == window.blocklist[i][1][j][5]){
+            window.blocklist[i][1].splice(j,1);
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
 }
 
 

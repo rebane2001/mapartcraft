@@ -724,7 +724,8 @@ window.colorlist_patches = {
       [[49,0], ['red_terracotta', '', 'Red Terracotta', false, 'hardened_clay_stained_red', 0, false]],
       [[50,0], ['black_terracotta', '', 'Black Terracotta', false, 'hardened_clay_stained_black', 0, false]],
     ],
-    "add": []
+    "add": [],
+    "remove" []
   },
   "1.16": {
     "patch": [],
@@ -742,14 +743,16 @@ window.colorlist_patches = {
       [[56,0], ['warped_hyphae', '', 'Warped Hyphae', false, 'warped_stem', 0, false]],
       [[56,1], ['stripped_warped_hyphae', '', 'Stripped Warped Hyphae', false, 'stripped_warped_stem', 1, false]],
       [[57,0], ['warped_wart_block', '', 'Warped Wart Block', false, '', 0, false]],
-    ]
+    ],
+    "remove" []
   },
   "1.16.2": {
     "patch": [],
     "add": [
       [[52,3], ['crimson_slab', '', 'Crimson Slab', false, '', 3, false]],
       [[55,3], ['warped_slab', '', 'Warped Slab', false, '', 3, false]],
-    ]
+    ],
+    "remove" []
   },
 }
 window.mapdatmappings = [1,2,3,4,5,6,7,9,10,11,12,13,14,8,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58];
