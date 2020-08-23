@@ -1293,7 +1293,7 @@ function applyVersionPatch(version){
     for (let i = 0; i < window.blocklist.length; ++i) {
       if (window.colorlist_patches[version]["remove"][x][0][0] == window.blocklist[i][2]){
         for (let j = 0; j < window.blocklist[i][1].length; ++j) { 
-          if (window.colorlist_patches[version]["patch"][x][0][1] == window.blocklist[i][1][j][5]){
+          if (window.colorlist_patches[version]["remove"][x][0][1] == window.blocklist[i][1][j][5]){
             window.blocklist[i][1].splice(j,1);
             break;
           }
