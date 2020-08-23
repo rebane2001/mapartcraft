@@ -26,6 +26,9 @@ SETTINGS-TRANS
 Untranslated strings for Russian:
 SETTINGS-TT-TRANS
 SETTINGS-TRANS
-Untranslated strings for Chinese:
+Untranslated strings for Chinese (Simplified):
+SETTINGS-TT-TRANS
+SETTINGS-TRANS
+Untranslated strings for Chinese (Traditional):
 SETTINGS-TT-TRANS
 SETTINGS-TRANS
