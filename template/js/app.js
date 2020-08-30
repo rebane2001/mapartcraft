@@ -260,7 +260,7 @@ function updateSplit() {
 
 worker.onmessage = function(e) { 
   if (!isNaN(e.data)){
-    if ((performance.now() - benchmark > 40 && e.data < 0.1) || performance.now() - benchmark > 400)
+    if (((performance.now() - benchmark > 40 && e.data < 0.1) || performance.now() - benchmark > 400) && (mapsize[0] + mapsize[1] > 2))
       document.getElementById('progress').style.display = "block";
     let secondsRemaining = Math.ceil((performance.now() - benchmark)/e.data*(1-e.data)/1000);
     document.getElementById('progresstext').innerHTML = `${Math.floor(e.data*100)}% - ${secondsRemaining} ${(secondsRemaining != 0) ? "%%TIMEREMAINING-SECONDS%%" : "%%TIMEREMAINING-SECOND%%"} %%TIMEREMAINING%%`;
