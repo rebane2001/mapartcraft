@@ -1369,11 +1369,15 @@ function updatePreviewScale(i) {
 
 function loadImg(e) {
   let files = (e.type == 'change') ? e.target.files : ((e.type == 'drop') ? e.dataTransfer.files : e.clipboardData.files);
+
+  if (files.length != 1)
+    return;
+
   try{
-    let filename = files[0].name.replace(/\.[^/.]+$/, "");
+    filename = files[0].name.replace(/\.[^/.]+$/, "");
   }catch (err){
     console.log("Couldn't get filename, going with just 'mapart'");
-    let filename = "mapart";
+    filename = "mapart";
   }
   
   img = new Image;
