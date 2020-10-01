@@ -28,7 +28,10 @@
 		You do not need a .schematic file for use with Baritone, just use Schematica and the "#schematica" command.</p>
 
 		<p><b>But MCEdit doesn't work</b><br>
-		Make sure you're using <a href="https://www.mcedit-unified.net/" target="_blank" rel="noopener">MCEdit Unified</a>.</p>
+		Make sure you're using <a href="https://www.mcedit-unified.net/" target="_blank" rel="noopener">MCEdit Unified</a> and importing the nbt as a schematic, NOT loading it as a world.</p>
+
+		<p><b>Why is there a row of extra blocks? How do I align the map?</b><br>
+		The extra row of blocks (commonly known as a noobline) exists to shade the map properly - without it your map's topmost line will have incorrect colors. You can find the correct place to place your map through trial and error or by using the findCorners(x,y) JavaScript function on MapartCraft, where x and y are your current coordinates. North is always the up-direction on maps and you shouldn't rotate the schematic.</p>
 
 		<h2>Datafile</h2>
 
