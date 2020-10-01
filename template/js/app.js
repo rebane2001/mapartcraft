@@ -665,8 +665,24 @@ function getMaterials() {
     return;
   }
   let {blocks, nbtblocklist} = getMap();
-  nbtblocklist.forEach(b => b.count = 0);
-  blocks.forEach(b => nbtblocklist[b.state].count++);
+
+  if (document.getElementById("splitmaterials").checked){
+    nbtblocklist.forEach(b => b.count = new Array(mapsize[0]*mapsize[1]).fill(0));
+    for (let x = 0; x < mapsize[0]; x++){
+      for (let y = 0; y < mapsize[1]; y++){
+        // The <= and < are different because noobline
+        blocks.filter(block => block.pos[0] >= x*128 && block.pos[0] < x*128+128 && block.pos[2] >= y*128 && block.pos[2] <= y*128+128)
+              .forEach(b => nbtblocklist[b.state].count[mapsize[1]*x+y]++);
+      }
+    }
+    nbtblocklist.forEach(b => b.count = Math.max(...b.count));
+  } else {
+    nbtblocklist.forEach(b => b.count = 0);
+    blocks.forEach(b => nbtblocklist[b.state].count++);
+  }
+
+
+
   
   let htmlString = '<tbody><tr style="display: table-row;"><th>%%MATERIALS-BLOCK%%</th><th>%%MATERIALS-AMOUNT%%</th></tr>';
   nbtblocklist.sort((a, b) => b.count - a.count).forEach(block => {
