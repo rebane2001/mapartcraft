@@ -108,6 +108,7 @@
     "PRESETS-PRESET-NONE": "None",
     "PRESETS-PRESET-EVERYTHING": "Everything",
     "PRESETS-PRESET-CARPETS": "Carpets",
+    "PRESETS-PRESET-GREYSCALE": "Greyscale",
     "PRESETS": "Presets",
 
     "MATERIALS-BLOCK": "Block",
