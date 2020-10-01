@@ -29,7 +29,10 @@
     <div id="mapimage" class="section" style="float: left">
       <h2>%%MAPPREVIEWTITLE%%</h2>
       <input type="file" id="imgupload" style="display: none;" /><br>
-      <canvas width="128" height="128" id="displaycanvas" onclick="chooseFile()" style="float: right; width: 256px; height: 256px;"></canvas><br>
+      <div id="displaycanvasdiv">
+        <span id="gridoverlay" style="display: none; background-image:url('%%ROOTPATH%%/img/gridoverlay.png');"></span>
+        <canvas width="128" height="128" id="displaycanvas" onclick="chooseFile()" style="float: right; width: 256px; height: 256px;"></canvas><br>
+      </div>
       <small data-tooltip title="%%MAPPREVIEW-TT-BESTRES%%" id="mapres">128x128</small>
       <small data-tooltip title="%%MAPPREVIEW-TT-DOESNTMATCH%%" id="mapreswarning" style="color:red;display: none">1920x1080</small>
       <img class="sizebtn" src="%%ROOTPATH%%/img/plus.png" onclick="updatePreviewScale(1)" data-tooltip title="%%MAPPREVIEW-TT-PREVPLUS%%" />
@@ -72,6 +75,7 @@
       </b><br>
       <b>%%SETTINGS-MAPSIZE%%: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
       <b data-tooltip title="%%SETTINGS-TT-CROP%%" onclick="updateMap()">%%SETTINGS-CROP%%: <input id="cropimg" type="checkbox"></b><br>
+      <b data-tooltip title="%%SETTINGS-TT-GRIDOVERLAY%%" onclick="updatePreviewScale(0)">%%SETTINGS-GRIDOVERLAY%%: <input id="gridoverlaytoggle" type="checkbox"></b><br>
       <b data-tooltip title="%%SETTINGS-TT-3D%%">%%SETTINGS-3D%%:<select id="staircasing" onchange="updateMap()">
             <option>%%SETTINGS-3D-OFF%%</option>
             <option>%%SETTINGS-3D-CLASSIC%%</option>

@@ -59,6 +59,8 @@
     "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "All double",
     "SETTINGS-TT-BLOCKTOADD": "Related to previous option",
     "SETTINGS-BLOCKTOADD": "Block to add",
+    "SETTINGS-GRIDOVERLAY": "Grid",
+    "SETTINGS-TT-GRIDOVERLAY": "Overlays a grid that shows 16x16 chunks and 1x1 splits",
     "SETTINGS-SPLITMATERIALS": "Only show max mats per split",
     "SETTINGS-TT-SPLITMATERIALS": "For material reuse with locked maps",
 

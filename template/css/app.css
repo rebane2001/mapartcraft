@@ -97,6 +97,21 @@ canvas {
     subpixel-antialias: none;
 }
 
+#gridoverlay {
+  position: absolute;
+  height: 256px;
+  width: 256px;
+  background-repeat:repeat;
+  background-size: 256px;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+  pointer-events: none;
+}
+
 .section {
     margin-bottom: 30px;
     margin-right: 30px;

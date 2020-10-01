@@ -1428,6 +1428,12 @@ function updatePreviewScale(i) {
   let ctx = offscreen.getContext('2d');
   displaycanvas.style.width = (ctx.canvas.width * previewScale / devicePixelRatio) + "px";
   displaycanvas.style.height = (ctx.canvas.height * previewScale / devicePixelRatio) + "px";
+
+  let gridoverlay = document.getElementById("gridoverlay");
+  gridoverlay.style.width = (ctx.canvas.width * previewScale / devicePixelRatio) + "px";
+  gridoverlay.style.height = (ctx.canvas.height * previewScale / devicePixelRatio) + "px";
+  gridoverlay.style.backgroundSize = (128 * previewScale / devicePixelRatio) + "px";
+  gridoverlay.style.display = document.getElementById("gridoverlaytoggle").checked ? "block" : "none";
 }
 
 function loadImg(e) {
