@@ -146,6 +146,7 @@ function updateMode() {
       showControl("downloadbtnsection");
       hideControl("downloadmapdatbtnsection");
       showControl("materialsbtnsection");
+      document.getElementById("materials").style = "float: left";
       showControl("underblockssection");
       hideControl("unobtainiablesection");
       break;
@@ -153,6 +154,7 @@ function updateMode() {
       hideControl("downloadbtnsection");
       hideControl("downloadmapdatbtnsection");
       showControl("materialsbtnsection");
+      document.getElementById("materials").style = "float: left";
       showControl("underblockssection");
       hideControl("unobtainiablesection");
       break;
@@ -160,6 +162,7 @@ function updateMode() {
       hideControl("downloadbtnsection");
       showControl("downloadmapdatbtnsection");
       hideControl("materialsbtnsection");
+      document.getElementById("materials").style = "display: none";
       hideControl("underblockssection");
       showControl("unobtainiablesection");
       break;
@@ -651,8 +654,6 @@ function getMaterials() {
     alert("Select blocks before asking material list!");
     return;
   }
-
-  document.getElementById("materials").style = "float: left";
 
   if (mapstatus == 1 || mapstatus == 2)
     return;

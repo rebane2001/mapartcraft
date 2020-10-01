@@ -115,16 +115,16 @@
         <span class="greenbtn" onclick="getMapDatSplit()" data-tooltip title="%%DOWNLOAD-TT-MAPDAT%%" style="font-size:32px;height:50px">%%DOWNLOAD-MAPDAT%%</span><br>
       </span>
       <span class="greenbtn" onclick="getPdnPalette()" data-tooltip title="%%DOWNLOAD-TT-PDN%%">%%DOWNLOAD-PDN%%</span><br>
-      <span id="materialsbtnsection">
-        <span class="greenbtn" onclick="getMaterials()" data-tooltip title="%%REFRESHMATERIALS-TT%%">%%REFRESHMATERIALS%%</span><br>
-      </span>
       <a href="%%ROOTPATH%%/supporters" data-tooltip title="%%DONATEBUTTON-TT%%" style="text-decoration: none;">
         <span class="greenbtn">%%DONATEBUTTON%%</span><br>
       </a>
     </div>
     
-    <div id="materials" class="section" style="display: none">
+    <div id="materials" class="section" style="float: left">
       <h2>%%MATERIALSTITLE%%</h2>
+      <span id="materialsbtnsection">
+        <span class="greenbtn" style="width: 162px;height: 17px;" onclick="getMaterials()" data-tooltip title="%%REFRESHMATERIALS-TT%%">%%REFRESHMATERIALS%%</span><br>
+      </span>
       <table id="materialtable">
         <tbody>
           <tr style="display: table-row;">
