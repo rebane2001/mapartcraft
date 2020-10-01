@@ -46,7 +46,7 @@
 			}
 
 			if (tooltipText) {
-				elm.setAttribute("title", "");
+				//elm.setAttribute("title", "");
 				elm.setAttribute("data-tooltip-id", idx);
 				options = _parseOptions(elm.getAttribute("data-tooltip"));
 				
