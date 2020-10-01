@@ -1196,8 +1196,11 @@ function loadPresetArray(preset){
 
 function savePreset(){
   let presetName = prompt("%%PRESETS-ENTERNAME%%", "");
-
-  if (presetName != null) {
+  if (["%%PRESETS-PRESET-NONE%%","%%PRESETS-PRESET-EVERYTHING%%","%%PRESETS-PRESET-CARPETS%%"].indexOf(presetName) > -1){
+    alert("%%PRESETS-DEFAULTERROR%%");
+    return;
+  }
+  if (presetName != null && presetName.length > 0) {
     let presets = JSON.parse(getCookie("presets"));
     for (let i = 0; i < presets.length; ++i) {
       if (presets[i]["name"] == presetName){
@@ -1284,13 +1287,17 @@ function sharePreset(){
 
 function deletePreset(){
   let presets = JSON.parse(getCookie("presets"));
+  if (document.getElementById("presets").selectedIndex < 5){
+    alert("%%PRESETS-DEFAULTERROR%%");
+    return;
+  }
   presets.splice(document.getElementById("presets").selectedIndex-1, 1);
   setCookie("presets", JSON.stringify(presets), 9000);
   loadCookies();
 }
 
 function initCookie() {
-  setCookie("presets", "[{\"name\":\"%%PRESETS-PRESET-NONE%%\",\"blocks\":[]},{\"name\":\"%%PRESETS-PRESET-EVERYTHING%%\",\"blocks\":[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0],[51,0],[52,0],[53,0],[54,0],[55,0],[56,0],[57,0]]},{\"name\":\"%%PRESETS-PRESET-CARPETS%%\",\"blocks\":[[13,1],[14,1],[15,1],[16,1],[17,1],[18,1],[19,1],[20,1],[21,1],[22,1],[23,1],[24,1],[25,1],[26,1],[27,1],[28,1]]}]", 9000)
+  setCookie("presets", "[]", 9000)
   loadCookies();
 }
 
@@ -1301,7 +1308,16 @@ function loadCookies(){
     document.getElementById('blockselection').innerHTML = "<h2>%%BLOCKSELECTIONTITLE%%</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">%%PRESETS-DELETE%%</button><button type=\"button\" onClick=\"savePreset()\">%%PRESETS-SAVE%%</button><button type=\"button\" onClick=\"sharePreset()\" data-tooltip title=\"%%PRESETS-TT-SHARE%%\">%%PRESETS-SHARE%%</button><br>" + document.getElementById('blockselection').innerHTML;
   }
   document.getElementById("presets").innerHTML = "<option>%%PRESETS%%</option>";
-  let presets = JSON.parse(getCookie("presets"));
+  let defaultPresets = [
+      {"name":"%%PRESETS-PRESET-NONE%%","blocks":[]},
+      {"name":"%%PRESETS-PRESET-EVERYTHING%%","blocks":[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0],[51,0],[52,0],[53,0],[54,0],[55,0],[56,0],[57,0]]},
+      {"name":"%%PRESETS-PRESET-CARPETS%%","blocks":[[13,1],[14,1],[15,1],[16,1],[17,1],[18,1],[19,1],[20,1],[21,1],[22,1],[23,1],[24,1],[25,1],[26,1],[27,1],[28,1]]},
+    ];
+  let cookiePresets = JSON.parse(getCookie("presets")).filter((e) => {
+      // Don't load cookie if name conflicts with default presets
+      return (["%%PRESETS-PRESET-NONE%%","%%PRESETS-PRESET-EVERYTHING%%","%%PRESETS-PRESET-CARPETS%%"].indexOf(e.name) == -1);
+    });
+  let presets = [...defaultPresets, ...cookiePresets];
   for (let i = 0; i < presets.length; ++i) {
     document.getElementById("presets").innerHTML += "<option>" + presets[i]["name"] + "</option>"; //possible XSS but it's client-side so it doesn't really matter
   }

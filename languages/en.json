@@ -100,6 +100,7 @@
     "PRESETS-ENTERNAME": "Enter a name for your preset:",
     "PRESETS-CORRUPTED": "Preset link is corrupted!",
     "PRESETS-SHARELINK": "Share this link to share your currently selected blocks",
+    "PRESETS-DEFAULTERROR": "This is a default preset and can't be edited/deleted.",
     "PRESETS-DELETE": "Delete",
     "PRESETS-SAVE": "Save",
     "PRESETS-SHARE": "Share",
