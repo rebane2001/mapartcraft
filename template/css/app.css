@@ -92,6 +92,9 @@ canvas {
     image-rendering: pixelated; /* Awesome future-browsers */
     -ms-interpolation-mode: nearest-neighbor; /* IE */
     cursor: pointer;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    subpixel-antialias: none;
 }
 
 .section {

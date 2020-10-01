@@ -622,7 +622,7 @@ function getMap() {
       blocks, 
       nbtblocklist, 
       width: ctx.canvas.width, 
-      height: ctx.canvas.height
+      height: ctx.canvas.height + 1
     };
 }
 
@@ -822,7 +822,7 @@ function getNbt() {
     maxheight = Math.max(r["pos"][1],maxheight);
   });
   maxheight++;
-  jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + width + "," + maxheight + "," + (height + 1) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":" + dataversion + "}}}";
+  jsonstring = jsonstring.slice(0, -1) + "]}},\"size\":{\"type\":\"list\",\"value\":{\"type\":\"int\",\"value\":[" + width + "," + maxheight + "," + (height) + "]}},\"author\":{\"type\":\"string\",\"value\":\"rebane2001.com/mapartcraft\"},\"DataVersion\":{\"type\":\"int\",\"value\":" + dataversion + "}}}";
   //download
   console.log("Parsing JSON and converting to NBT");
   let nbtdata = nbt.writeUncompressed(JSON.parse(jsonstring));
@@ -901,7 +901,7 @@ function setupVisual(){
           let blockX = Math.floor((lastX * imatrix.a + lastY * imatrix.c + imatrix.e)/17);
           let blockZ = Math.floor((lastX * imatrix.b + lastY * imatrix.d + imatrix.f)/17);
 
-          ctx.drawImage(visualrender,0,0);
+          ctx.drawImage(visualrender,0,0,visualrender.width/2,visualrender.height/2);
 
           ctx.save();
           ctx.setTransform(1,0,0,1,0,0);
@@ -1096,8 +1096,8 @@ function getVisuals() {
   let blocksimg = document.getElementById('blocksimg');
   let placeholderimg = document.getElementById('placeholderimg');
   let vctx = visualrender.getContext('2d');
-  visualrender.width = width*17+1;
-  visualrender.height = height*17+1;
+  visualrender.width = (width*17+1)*2;
+  visualrender.height = (height*17+1)*2;
   //vctx.fillStyle = "#FF8968";
   vctx.fillStyle = "#000";
   vctx.fillRect(0, 0, visualrender.width, visualrender.height);
@@ -1140,6 +1140,20 @@ function getVisuals() {
     }
   }
 
+  // Upscale image so we can have smaller text
+  vctx.imageSmoothingEnabled = false;
+  vctx.drawImage(visualrender, 0, 0, visualrender.width * 2, visualrender.height * 2);
+
+  // Draw height numbers
+  vctx.font = "16px kenpixel_mini_square";
+  vctx.fillStyle = "#FFF";
+  vctx.textAlign = "right";
+  vctx.textBaseline = "alphabetic";
+  for (let x = 0; x < width; x++) {
+    for (let z = 0; z < height; z++) {
+      vctx.fillText(visualStatus[x][z]["y"],x*17*2 + 35,z*17*2 + 33);
+    }
+  }
   mapstatus = 0;
   launchVisual();
 }
