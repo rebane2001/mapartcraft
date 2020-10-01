@@ -1096,14 +1096,23 @@ function getVisuals() {
   let blocksimg = document.getElementById('blocksimg');
   let placeholderimg = document.getElementById('placeholderimg');
   let vctx = visualrender.getContext('2d');
-  vctx.fillStyle = "#FF8968";
   visualrender.width = width*17+1;
   visualrender.height = height*17+1;
+  //vctx.fillStyle = "#FF8968";
+  vctx.fillStyle = "#000";
   vctx.fillRect(0, 0, visualrender.width, visualrender.height);
+  // Draw every block
   for (let x = 0; x < width; x++) {
     for (let z = 0; z < height; z++) {
+      // Add solid dark grey background to block
       vctx.fillStyle = "#222";
       vctx.fillRect(1 + x * 17, 1 + z * 17, 16, 16);
+      // Add chunk borders
+      vctx.fillStyle = "#00F";
+      if (x % 16 == 15)
+        vctx.fillRect(1 + x * 17 + 16, z * 17, 1, 18);
+      if (z % 16 == 0)
+        vctx.fillRect(x * 17, 1 + z * 17 + 16, 18, 1);
       let selectedblock = nbtblocklist[visualStatus[x][z]["state"]]["SelectedBlock"];
       if (selectedblock[0] == -1){
         vctx.drawImage(placeholderimg, 0, 0, 32, 32, 1 + x * 17, 1 + z * 17, 16, 16);
@@ -1111,6 +1120,7 @@ function getVisuals() {
         let blockcoords = selectedToCoords(selectedblock);
         vctx.drawImage(blocksimg, blockcoords[0], blockcoords[1], 32, 32, 1 + x * 17, 1 + z * 17, 16, 16);
       }
+      // Draw height shadows
       try {
         if (visualStatus[x][z]["y"] < visualStatus[x][z-1]["y"]){
           vctx.fillStyle = 'rgba(0,0,32,0.1)';
