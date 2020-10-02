@@ -63,6 +63,8 @@
     "SETTINGS-TT-GRIDOVERLAY": "Overlays a grid that shows 16x16 chunks and 1x1 splits",
     "SETTINGS-SPLITMATERIALS": "Only show max mats per split",
     "SETTINGS-TT-SPLITMATERIALS": "For material reuse with locked maps",
+    "SETTINGS-PREPROCESSING": "Image preprocessing",
+    "SETTINGS-PREPROCESSING-ENABLE": "Enable",
 
     "DOWNLOAD-TT-NBT": "Download the nbt",
     "DOWNLOAD-NBT": "DOWNLOAD",

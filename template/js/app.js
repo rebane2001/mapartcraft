@@ -231,6 +231,13 @@ function updateMap() {
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
+    //  apply preprocessing
+    if (document.getElementById("preprocessingenable").checked){
+      ctx.filter = `brightness(${document.getElementById("preprocessingbrightness").value}%) contrast(${document.getElementById("preprocessingcontrast").value}%) saturate(${document.getElementById("preprocessingsaturation").value}%)`;
+    } else {
+      ctx.filter = "none";
+    }
+
     //crop or scale image
     if (document.getElementById('cropimg').checked) {
       let cropdim = cropImg(img.width,img.height);
@@ -1434,6 +1441,16 @@ function updatePreviewScale(i) {
   gridoverlay.style.height = (ctx.canvas.height * previewScale / devicePixelRatio) + "px";
   gridoverlay.style.backgroundSize = (128 * previewScale / devicePixelRatio) + "px";
   gridoverlay.style.display = document.getElementById("gridoverlaytoggle").checked ? "block" : "none";
+}
+
+function updateProcessingTxt(eid){
+  document.getElementById(eid).value = document.getElementById(eid + "slider").value;
+  updateMap();
+}
+
+function updateProcessingSlider(eid){
+  document.getElementById(eid + "slider").value = document.getElementById(eid).value;
+  updateMap();
 }
 
 function loadImg(e) {

@@ -109,6 +109,35 @@
         <b data-tooltip title="%%SETTINGS-TT-BLOCKTOADD%%">%%SETTINGS-BLOCKTOADD%%: <input type="text" id="underblock" value="minecraft:stone"></b>
         <br>
       </span>
+      <details>
+        <summary>%%SETTINGS-PREPROCESSING%%</summary>
+        <main>
+          <b onclick="updateMap()">%%SETTINGS-PREPROCESSING-ENABLE%%: <input id="preprocessingenable" type="checkbox"></b><br>
+          <table>
+            <tr>
+              <b>
+                <th>Brightness:</th>
+                <th><input id="preprocessingbrightnessslider" type="range" min="0" max="200" value="100" onchange="updateProcessingTxt('preprocessingbrightness')"></th>
+                <th><input id="preprocessingbrightness" type="number" min="0" step="1" value="100" style="width: 3em;" onchange="updateProcessingSlider('preprocessingbrightness')"></th>
+              </b>
+            </tr>
+            <tr>
+              <b>
+                <th>Contrast:</th>
+                <th><input id="preprocessingcontrastslider" type="range" min="0" max="200" value="100" onchange="updateProcessingTxt('preprocessingcontrast')"></th>
+                <th><input id="preprocessingcontrast" type="number" min="0" step="1" value="100" style="width: 3em;" onchange="updateProcessingSlider('preprocessingcontrast')"></th>
+              </b>
+            </tr>
+            <tr>
+              <b>
+                <th>Saturation:</th>
+                <th><input id="preprocessingsaturationslider" type="range" min="0" max="200" value="100" onchange="updateProcessingTxt('preprocessingsaturation')"></th>
+                <th><input id="preprocessingsaturation" type="number" min="0" step="1" value="100" style="width: 3em;" onchange="updateProcessingSlider('preprocessingsaturation')"></th>
+              </b>
+            </tr>
+          </table>
+        </main>
+      </details>
       <br>
       <span id="downloadbtnsection">
         <span class="greenbtn" onclick="getNbt()" data-tooltip title="%%DOWNLOAD-TT-NBT%%" style="font-size:32px;height:50px">%%DOWNLOAD-NBT%%</span><br>
