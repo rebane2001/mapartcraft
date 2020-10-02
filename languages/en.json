@@ -65,6 +65,9 @@
     "SETTINGS-TT-SPLITMATERIALS": "For material reuse with locked maps",
     "SETTINGS-PREPROCESSING": "Image preprocessing",
     "SETTINGS-PREPROCESSING-ENABLE": "Enable",
+    "SETTINGS-PREPROCESSING-BRIGHTNESS": "Brightness",
+    "SETTINGS-PREPROCESSING-SATURATION": "Saturation",
+    "SETTINGS-PREPROCESSING-CONTRAST": "Contrast",
 
     "DOWNLOAD-TT-NBT": "Download the nbt",
     "DOWNLOAD-NBT": "DOWNLOAD",
