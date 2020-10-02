@@ -6,6 +6,8 @@
     "FAQ": "FAQ",
     "VIDEO_TUTORIAL": "Video tutorial",
 
+    "META-DESCRIPTION": "A Minecraft mapart schematic and map.dat generator",
+
     "DESCRIPTION1": "A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like ",
     "DESCRIPTION2": ", running in your browser",
     "DESCRIPTION3": "Inspired by ",
