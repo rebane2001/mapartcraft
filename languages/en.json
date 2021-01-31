@@ -79,6 +79,8 @@
     "DOWNLOAD-MAPDAT": "DOWNLOAD",
     "DOWNLOAD-TT-PDN": "Downloads color palette for use in Paint.net",
     "DOWNLOAD-PDN": "DOWNLOAD PDN PALETTE",
+    "DOWNLOAD-TT-VIEWONLINE": "View the schematic online without downloading",
+    "DOWNLOAD-VIEWONLINE": "VIEW ONLINE",
     "REFRESHMATERIALS-TT": "Refresh materials list",
     "REFRESHMATERIALS": "REFRESH MATERIALS",
     "DONATEBUTTON-TT": "View supporters and donate",

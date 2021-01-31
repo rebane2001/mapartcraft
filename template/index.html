@@ -46,7 +46,6 @@
         %%SETTINGS-MODE%%:
         <select id="mapmode" onchange="updateMode()">
           <option selected="selected">Schematic (nbt)</option>
-          <option disabled>%%SETTINGS-MODE-VISUAL-NA%%</option>
           <option>Datafile (map.dat)</option>
         </select>
       </b><br>
@@ -142,9 +141,9 @@
       </details>
       <br>
       <span id="downloadbtnsection">
+        <span class="greenbtn" onclick="getVisuals()" data-tooltip title="%%DOWNLOAD-TT-VIEWONLINE%%">%%DOWNLOAD-VIEWONLINE%%</span><br>
         <span class="greenbtn" onclick="getNbt()" data-tooltip title="%%DOWNLOAD-TT-NBT%%" style="font-size:32px;height:50px">%%DOWNLOAD-NBT%%</span><br>
         <span class="greenbtn" onclick="getNbtSplit()" data-tooltip title="%%DOWNLOAD-TT-NBTSPLIT%%">%%DOWNLOAD-NBTSPLIT%%</span><br>
-        <span class="greenbtn" onclick="getVisuals()" data-tooltip title="This feature is still work in progress, expect bugs and incomplete features">View online (prototype)</span><br>
       </span>
       <span id="downloadmapdatbtnsection" style="display: none">
         <span class="greenbtn" onclick="getMapDatSplit()" data-tooltip title="%%DOWNLOAD-TT-MAPDAT%%" style="font-size:32px;height:50px">%%DOWNLOAD-MAPDAT%%</span><br>

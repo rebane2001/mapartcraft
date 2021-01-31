@@ -154,14 +154,6 @@ function updateMode() {
       break;
     case 1:
       hideControl("downloadbtnsection");
-      hideControl("downloadmapdatbtnsection");
-      showControl("materialsbtnsection");
-      document.getElementById("materials").style = "float: left";
-      showControl("underblockssection");
-      hideControl("unobtainiablesection");
-      break;
-    case 2:
-      hideControl("downloadbtnsection");
       showControl("downloadmapdatbtnsection");
       hideControl("materialsbtnsection");
       document.getElementById("materials").style = "display: none";
@@ -201,7 +193,7 @@ function updateMap() {
         selectedcolors.push(window.blocklist[i][0][0]);
         selectedcolors.push(window.blocklist[i][0][2]);
       }
-      if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 2) {
+      if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 1) {
         selectedcolors.push(window.blocklist[i][0][3]);
       }
       selectedcolors.push(window.blocklist[i][0][1]);
@@ -258,7 +250,7 @@ function updateMap() {
       selectedcolors,
       document.getElementById('bettercolor').checked,
       mapsize,
-      (document.getElementById('trans').checked  && document.getElementById("mapmode").selectedIndex == 2)
+      (document.getElementById('trans').checked  && document.getElementById("mapmode").selectedIndex == 1)
       ]);
   }else if(mapstatus == 1){
     mapstatus++;
@@ -1520,7 +1512,7 @@ function getPdnPalette() {
     if (document.getElementById("staircasing").selectedIndex > 0) {
       selectedcolors.push(window.blocklist[i][0][2]);
     }
-    if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 2) {
+    if (document.getElementById('unobtainiable').checked && document.getElementById("mapmode").selectedIndex == 1) {
       selectedcolors.push(window.blocklist[i][0][3]);
     }
   }
