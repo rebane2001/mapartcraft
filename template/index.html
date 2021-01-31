@@ -33,23 +33,23 @@
         <span id="gridoverlay" style="display: none; background-image:url('%%ROOTPATH%%/img/gridoverlay.png');"></span>
         <canvas width="128" height="128" id="displaycanvas" onclick="chooseFile()" style="float: right; width: 256px; height: 256px;"></canvas><br>
       </div>
-      <small data-tooltip title="%%MAPPREVIEW-TT-BESTRES%%" id="mapres">128x128</small>
-      <small data-tooltip title="%%MAPPREVIEW-TT-DOESNTMATCH%%" id="mapreswarning" style="color:red;display: none">1920x1080</small>
-      <img class="sizebtn" src="%%ROOTPATH%%/img/plus.png" onclick="updatePreviewScale(1)" data-tooltip title="%%MAPPREVIEW-TT-PREVPLUS%%" />
-      <img class="sizebtn" src="%%ROOTPATH%%/img/minus.png" onclick="updatePreviewScale(-1)" data-tooltip title="%%MAPPREVIEW-TT-PREVMINUS%%" />
+      <small data-tooltip data-title="%%MAPPREVIEW-TT-BESTRES%%" id="mapres">128x128</small>
+      <small data-tooltip data-title="%%MAPPREVIEW-TT-DOESNTMATCH%%" id="mapreswarning" style="color:red;display: none">1920x1080</small>
+      <img class="sizebtn" src="%%ROOTPATH%%/img/plus.png" onclick="updatePreviewScale(1)" data-tooltip data-title="%%MAPPREVIEW-TT-PREVPLUS%%" />
+      <img class="sizebtn" src="%%ROOTPATH%%/img/minus.png" onclick="updatePreviewScale(-1)" data-tooltip data-title="%%MAPPREVIEW-TT-PREVMINUS%%" />
       <div id="progress"><span id="progresstext"></span><div id="progressdiv"></div></div>
     </div>
     <div id="settings" class="section" style="float: left">
       <h2>%%SETTINGSTITLE%%</h2>
       <br>
-      <b data-tooltip title="%%SETTINGS-TT-MODE%%">
+      <b data-tooltip data-title="%%SETTINGS-TT-MODE%%">
         %%SETTINGS-MODE%%:
         <select id="mapmode" onchange="updateMode()">
           <option selected="selected">Schematic (nbt)</option>
           <option>Datafile (map.dat)</option>
         </select>
       </b><br>
-      <b data-tooltip title="%%SETTINGS-TT-VERSION%%">
+      <b data-tooltip data-title="%%SETTINGS-TT-VERSION%%">
         %%SETTINGS-VERSION%%:
         <select id="version" onchange="updateVersion()">
           <option>1.12</option>
@@ -75,16 +75,16 @@
         </select>
       </b><br>
       <b>%%SETTINGS-MAPSIZE%%: </b><input id="mapsizex" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()">x<input id="mapsizey" type="number" min="1" step="1" value="1" style="width: 2em;" onchange="updateMap()"><br>
-      <b data-tooltip title="%%SETTINGS-TT-CROP%%" onclick="updateMap()">%%SETTINGS-CROP%%: <input id="cropimg" type="checkbox"></b><br>
-      <b data-tooltip title="%%SETTINGS-TT-GRIDOVERLAY%%" onclick="updatePreviewScale(0)">%%SETTINGS-GRIDOVERLAY%%: <input id="gridoverlaytoggle" type="checkbox"></b><br>
-      <b data-tooltip title="%%SETTINGS-TT-3D%%">%%SETTINGS-3D%%:<select id="staircasing" onchange="updateMap()">
+      <b data-tooltip data-title="%%SETTINGS-TT-CROP%%" onclick="updateMap()">%%SETTINGS-CROP%%: <input id="cropimg" type="checkbox"></b><br>
+      <b data-tooltip data-title="%%SETTINGS-TT-GRIDOVERLAY%%" onclick="updatePreviewScale(0)">%%SETTINGS-GRIDOVERLAY%%: <input id="gridoverlaytoggle" type="checkbox"></b><br>
+      <b data-tooltip data-title="%%SETTINGS-TT-3D%%">%%SETTINGS-3D%%:<select id="staircasing" onchange="updateMap()">
             <option>%%SETTINGS-3D-OFF%%</option>
             <option>%%SETTINGS-3D-CLASSIC%%</option>
             <option selected="selected">%%SETTINGS-3D-OPTIMIZED%%</option>
           </select></b><br>
-      <span id="unobtainiablesection" style="display: none"><b data-tooltip title="%%SETTINGS-TT-UNOBT%%" onclick="updateMap()">%%SETTINGS-UNOBT%%: <input id="unobtainiable" type="checkbox"></b><br><b data-tooltip title="%%SETTINGS-TT-TRANS%%" onclick="updateMap()">%%SETTINGS-TRANS%%: <input id="trans" type="checkbox" checked></b><br></span>
-      <b data-tooltip title="%%SETTINGS-TT-BETTERCOL%%" onclick="updateMap()">%%SETTINGS-BETTERCOL%%: <input id="bettercolor" type="checkbox" checked></b><br>
-      <b data-tooltip title="%%SETTINGS-TT-DITHER%%">
+      <span id="unobtainiablesection" style="display: none"><b data-tooltip data-title="%%SETTINGS-TT-UNOBT%%" onclick="updateMap()">%%SETTINGS-UNOBT%%: <input id="unobtainiable" type="checkbox"></b><br><b data-tooltip data-title="%%SETTINGS-TT-TRANS%%" onclick="updateMap()">%%SETTINGS-TRANS%%: <input id="trans" type="checkbox" checked></b><br></span>
+      <b data-tooltip data-title="%%SETTINGS-TT-BETTERCOL%%" onclick="updateMap()">%%SETTINGS-BETTERCOL%%: <input id="bettercolor" type="checkbox" checked></b><br>
+      <b data-tooltip data-title="%%SETTINGS-TT-DITHER%%">
         %%SETTINGS-DITHER%%:
         <select id="dither" onchange="updateMap()">
           <option>%%SETTINGS-DITHER-NONE%%</option>
@@ -107,7 +107,7 @@
           </select>
         </b>
         <br>
-        <b data-tooltip title="%%SETTINGS-TT-BLOCKTOADD%%">%%SETTINGS-BLOCKTOADD%%: <input type="text" id="underblock" value="minecraft:stone"></b>
+        <b data-tooltip data-title="%%SETTINGS-TT-BLOCKTOADD%%">%%SETTINGS-BLOCKTOADD%%: <input type="text" id="underblock" value="minecraft:stone"></b>
         <br>
       </span>
       <details>
@@ -141,15 +141,15 @@
       </details>
       <br>
       <span id="downloadbtnsection">
-        <span class="greenbtn" onclick="getVisuals()" data-tooltip title="%%DOWNLOAD-TT-VIEWONLINE%%">%%DOWNLOAD-VIEWONLINE%%</span><br>
-        <span class="greenbtn" onclick="getNbt()" data-tooltip title="%%DOWNLOAD-TT-NBT%%" style="font-size:32px;height:50px">%%DOWNLOAD-NBT%%</span><br>
-        <span class="greenbtn" onclick="getNbtSplit()" data-tooltip title="%%DOWNLOAD-TT-NBTSPLIT%%">%%DOWNLOAD-NBTSPLIT%%</span><br>
+        <span class="greenbtn" onclick="getVisuals()" data-tooltip data-title="%%DOWNLOAD-TT-VIEWONLINE%%">%%DOWNLOAD-VIEWONLINE%%</span><br>
+        <span class="greenbtn" onclick="getNbt()" data-tooltip data-title="%%DOWNLOAD-TT-NBT%%" style="font-size:32px;height:50px">%%DOWNLOAD-NBT%%</span><br>
+        <span class="greenbtn" onclick="getNbtSplit()" data-tooltip data-title="%%DOWNLOAD-TT-NBTSPLIT%%">%%DOWNLOAD-NBTSPLIT%%</span><br>
       </span>
       <span id="downloadmapdatbtnsection" style="display: none">
-        <span class="greenbtn" onclick="getMapDatSplit()" data-tooltip title="%%DOWNLOAD-TT-MAPDAT%%" style="font-size:32px;height:50px">%%DOWNLOAD-MAPDAT%%</span><br>
+        <span class="greenbtn" onclick="getMapDatSplit()" data-tooltip data-title="%%DOWNLOAD-TT-MAPDAT%%" style="font-size:32px;height:50px">%%DOWNLOAD-MAPDAT%%</span><br>
       </span>
-      <span class="greenbtn" onclick="getPdnPalette()" data-tooltip title="%%DOWNLOAD-TT-PDN%%">%%DOWNLOAD-PDN%%</span><br>
-      <a href="%%ROOTPATH%%/supporters" data-tooltip title="%%DONATEBUTTON-TT%%" style="text-decoration: none;">
+      <span class="greenbtn" onclick="getPdnPalette()" data-tooltip data-title="%%DOWNLOAD-TT-PDN%%">%%DOWNLOAD-PDN%%</span><br>
+      <a href="%%ROOTPATH%%/supporters" data-tooltip data-title="%%DONATEBUTTON-TT%%" style="text-decoration: none;">
         <span class="greenbtn">%%DONATEBUTTON%%</span><br>
       </a>
     </div>
@@ -157,8 +157,8 @@
     <div id="materials" class="section" style="float: left">
       <h2>%%MATERIALSTITLE%%</h2>
       <span id="materialsbtnsection">
-        <span class="greenbtn" style="width: 162px;height: 17px;" onclick="getMaterials()" data-tooltip title="%%REFRESHMATERIALS-TT%%">%%REFRESHMATERIALS%%</span><br>
-        <b data-tooltip title="%%SETTINGS-TT-SPLITMATERIALS%%" onclick="getMaterials()">%%SETTINGS-SPLITMATERIALS%%: <input id="splitmaterials" type="checkbox"></b><br>
+        <span class="greenbtn" style="width: 162px;height: 17px;" onclick="getMaterials()" data-tooltip data-title="%%REFRESHMATERIALS-TT%%">%%REFRESHMATERIALS%%</span><br>
+        <b data-tooltip data-title="%%SETTINGS-TT-SPLITMATERIALS%%" onclick="getMaterials()">%%SETTINGS-SPLITMATERIALS%%: <input id="splitmaterials" type="checkbox"></b><br>
       </span>
       <table id="materialtable">
         <tbody>

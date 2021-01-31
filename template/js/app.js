@@ -63,12 +63,12 @@ function genBlocklist(){
   let blockseletionhtml = "";
   window.blocklist.forEach(function(i) {
     blockid = 0;
-    blockseletionhtml += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="%%ROOTPATH%%/img/barrier.png" alt="%%NONE%%" data-tooltip title="%%NONE%%"></label>';
+    blockseletionhtml += '<br><div class="colorbox" colors="' + i[0].map(c => cssrgb(c)).join(";") + '"></div><label><input type="radio" name="color' + colorid + '" value="-1" onclick="updateMap()" checked><img src="%%ROOTPATH%%/img/barrier.png" alt="%%NONE%%" data-tooltip data-title="%%NONE%%"></label>';
     i[1].forEach(function(j) {
       let imgfile = j[4]
       if (j[4] == "")
         imgfile = j[0]
-      blockseletionhtml += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="%%ROOTPATH%%/img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></label>';
+      blockseletionhtml += '<label><input type="radio" name="color' + colorid + '" value="' + blockid + '" onclick="updateMap()"><img src="%%ROOTPATH%%/img/null.png" class="block block-' + imgfile + '" alt="' + j[2] + '" data-tooltip data-title="' + j[2] + '"></label>';
       blockid++;
     });
     colorid++;
@@ -712,7 +712,7 @@ function getMaterials() {
     if (j[4] == "")
       imgfile = j[0]
 
-    htmlString += '<tr><th><img src="%%ROOTPATH%%/img/' + ((imgfile == "placeholder") ? "placeholder.png" : ('null.png" class="block block-' + imgfile)) + '" alt="' + j[2] + '" data-tooltip title="' + j[2] + '"></th>';
+    htmlString += '<tr><th><img src="%%ROOTPATH%%/img/' + ((imgfile == "placeholder") ? "placeholder.png" : ('null.png" class="block block-' + imgfile)) + '" alt="' + j[2] + '" data-tooltip data-title="' + j[2] + '"></th>';
     htmlString += '<th>' + amount + '</th></tr>'
   });
 
@@ -1326,7 +1326,7 @@ function loadCookies(){
   if(document.getElementById("fauxpresets")){ //if loading cookie for the first time since refresh
     document.getElementById("fauxpresets").outerHTML = ""; //delete faux button
     document.getElementById("blockselectiontitle").outerHTML = ""; //sketchy workaround - really crappy
-    document.getElementById('blockselection').innerHTML = "<h2>%%BLOCKSELECTIONTITLE%%</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">%%PRESETS-DELETE%%</button><button type=\"button\" onClick=\"savePreset()\">%%PRESETS-SAVE%%</button><button type=\"button\" onClick=\"sharePreset()\" data-tooltip title=\"%%PRESETS-TT-SHARE%%\">%%PRESETS-SHARE%%</button><br>" + document.getElementById('blockselection').innerHTML;
+    document.getElementById('blockselection').innerHTML = "<h2>%%BLOCKSELECTIONTITLE%%</h2><select id=\"presets\" onchange=\"loadPreset()\"></select><button type=\"button\" onClick=\"deletePreset()\">%%PRESETS-DELETE%%</button><button type=\"button\" onClick=\"savePreset()\">%%PRESETS-SAVE%%</button><button type=\"button\" onClick=\"sharePreset()\" data-tooltip data-title=\"%%PRESETS-TT-SHARE%%\">%%PRESETS-SHARE%%</button><br>" + document.getElementById('blockselection').innerHTML;
   }
   document.getElementById("presets").innerHTML = "<option>%%PRESETS%%</option>";
   let presets = getPresets();
