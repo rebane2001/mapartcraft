@@ -280,6 +280,7 @@ worker.onmessage = function(e) {
   let dctx = displaycanvas.getContext('2d');
   displaycanvas.width = octx.canvas.width;
   displaycanvas.height = octx.canvas.height;
+  octx.clearRect(0, 0, octx.canvas.width, octx.canvas.height);
   octx.putImageData(imgData, 0, 0);
   dctx.putImageData(imgData, 0, 0);
   document.getElementById('mapres').innerHTML = octx.canvas.width + "x" + octx.canvas.height;
