@@ -1176,9 +1176,11 @@ function getVisuals() {
   vctx.fillStyle = "#FFF";
   vctx.textAlign = "right";
   vctx.textBaseline = "alphabetic";
-  for (let x = 0; x < width; x++) {
-    for (let z = 0; z < height; z++) {
-      vctx.fillText(visualStatus[x][z]["y"],x*17*2 + 35,z*17*2 + 33);
+  if (document.getElementById("staircasing").selectedIndex > 0){
+    for (let x = 0; x < width; x++) {
+      for (let z = 0; z < height; z++) {
+        vctx.fillText(visualStatus[x][z]["y"],x*17*2 + 35,z*17*2 + 33);
+      }
     }
   }
   mapstatus = 0;
