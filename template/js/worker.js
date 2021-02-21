@@ -129,30 +129,6 @@ onmessage = function(e) {
           imgData.data[i + 1] = newpixel[1];
           imgData.data[i + 2] = newpixel[2];
           break;
-        case 1: // floyd
-          oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
-          newpixel = find_closest(oldpixel);
-          quant_error = [oldpixel[0] - newpixel[0], oldpixel[1] - newpixel[1], oldpixel[2] - newpixel[2]];
-          imgData.data[i + 0] = newpixel[0];
-          imgData.data[i + 1] = newpixel[1];
-          imgData.data[i + 2] = newpixel[2];
-          try {
-            imgData.data[i + 4] += (quant_error[0] * 7 / 16);
-            imgData.data[i + 5] += (quant_error[1] * 7 / 16);
-            imgData.data[i + 6] += (quant_error[2] * 7 / 16);
-            imgData.data[i + canvasSize[0] * 4 - 4] += (quant_error[0] * 3 / 16);
-            imgData.data[i + canvasSize[0] * 4 - 3] += (quant_error[1] * 3 / 16);
-            imgData.data[i + canvasSize[0] * 4 - 2] += (quant_error[2] * 3 / 16);
-            imgData.data[i + canvasSize[0] * 4 + 0] += (quant_error[0] * 5 / 16);
-            imgData.data[i + canvasSize[0] * 4 + 1] += (quant_error[1] * 5 / 16);
-            imgData.data[i + canvasSize[0] * 4 + 2] += (quant_error[2] * 5 / 16);
-            imgData.data[i + canvasSize[0] * 4 + 4] += (quant_error[0] * 1 / 16);
-            imgData.data[i + canvasSize[0] * 4 + 5] += (quant_error[1] * 1 / 16);
-            imgData.data[i + canvasSize[0] * 4 + 6] += (quant_error[2] * 1 / 16);
-          } catch (e) {
-            console.error(e);
-          }
-          break;
         case 2: // Bayer 4x4
         case 3: // Bayer 2x2
         case 4: // Ordered 3x3
@@ -173,6 +149,111 @@ onmessage = function(e) {
           imgData.data[i + 1] = newpixel[1];
           imgData.data[i + 2] = newpixel[2];
           break;
+		  
+		//Error diffusion Algorithms
+		case 1: // Floyd
+		case 5: // Minimized average error, Jarvis, Judice, Ninke  
+		case 6: // Burkes dither
+		case 7: // Sierra-Lite
+		case 8: // Stucki
+		case 9: // Atkinson
+		  //Declare default matrix and divisor
+		  var matrix=[[0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0]];
+		  var divisor=1.0;
+		  
+		  switch (ditherIndex){ //Only to select correct Matrix, no fallthrough
+			  case 1: // Floyd
+				matrix=[[0,0,0,7.0,0],[0,3.0,5.0,1.0,0],[0,0,0,0,0]];
+				divisor=16.0;
+				break;
+			  case 5: // Minimized average error, Jarvis, Judice, Ninke
+				matrix=[[0,0,0,7.0,5.0],[3.0,5.0,7.0,5.0,3.0],[1.0,3.0,5.0,3.0,1.0]];
+				divisor=48.0;
+				break;
+			  case 6: // Burkes dither
+				matrix=[[0.0,0.0,0.0,8.0,4.0],[2.0,4.0,8.0,4.0,2.0],[0.0,0.0,0.0,0.0,0.0]];
+				divisor=32.0;
+				break;
+			  case 7: //Sierra-Lite
+			    matrix=[[0,0,0,2.0,0],[0,1.0,1.0,0,0],[0,0,0,0,0]];
+				divisor=4.0;
+				break;
+			  case 8: //Stucki
+			    matrix=[[0,0,0,8.0,4.0],[2.0,4.0,8.0,4.0,2.0],[1.0,2.0,4.0,2.0,1.0]];
+				divisor=42.0;
+				break;
+			  case 9: //Atkinson
+			    matrix=[[0,0,0,1.0,1.0],[0,1.0,1.0,1.0,0],[0,0,1.0,0,0]];
+				divisor=8.0;
+				break;
+		  }
+		  
+		  oldpixel = [imgData.data[i], imgData.data[i + 1], imgData.data[i + 2]];
+          newpixel = find_closest(oldpixel);
+          quant_error = [oldpixel[0] - newpixel[0], oldpixel[1] - newpixel[1], oldpixel[2] - newpixel[2]];
+          imgData.data[i + 0] = newpixel[0];
+          imgData.data[i + 1] = newpixel[1];
+          imgData.data[i + 2] = newpixel[2];
+		  a = matrix[0][3]/divisor; 
+          try {
+			
+			//matrix [0][0...2] should always be zero, and can thus be skipped
+			a = matrix[0][3]/divisor; 
+            imgData.data[i + 4] += (quant_error[0] * a); //1 right
+            imgData.data[i + 5] += (quant_error[1] * a);
+            imgData.data[i + 6] += (quant_error[2] * a);
+			a = matrix[0][4]/divisor;
+			imgData.data[i + 8] += (quant_error[0] * a); //2 right
+            imgData.data[i + 9] += (quant_error[1] * a);
+            imgData.data[i + 10] += (quant_error[2] * a);
+			
+			//First Row below
+			a = matrix[1][0]/divisor;
+			imgData.data[i + canvasSize[0] * 4 - 8] += (quant_error[0] * a); //1 down, 2 left
+            imgData.data[i + canvasSize[0] * 4 - 7] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 4 - 6] += (quant_error[2] * a);
+			a = matrix[1][1]/divisor;
+            imgData.data[i + canvasSize[0] * 4 - 4] += (quant_error[0] * a); //1 down, 1 left
+            imgData.data[i + canvasSize[0] * 4 - 3] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 4 - 2] += (quant_error[2] * a);
+			a = matrix[1][2]/divisor;
+            imgData.data[i + canvasSize[0] * 4 + 0] += (quant_error[0] * a);//1 down
+            imgData.data[i + canvasSize[0] * 4 + 1] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 4 + 2] += (quant_error[2] * a);
+			a = matrix[1][3]/divisor;
+            imgData.data[i + canvasSize[0] * 4 + 4] += (quant_error[0] * a);//1 down, 1 right 
+            imgData.data[i + canvasSize[0] * 4 + 5] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 4 + 6] += (quant_error[2] * a);
+			a = matrix[1][4]/divisor;
+			imgData.data[i + canvasSize[0] * 4 + 8] += (quant_error[0] * a);//1 down, 2 right 
+            imgData.data[i + canvasSize[0] * 4 + 9] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 4 + 10] += (quant_error[2] * a);
+			
+			//Second row below
+			a = matrix[2][0]/divisor;
+			imgData.data[i + canvasSize[0] * 8 - 8] += (quant_error[0] * a); //2 down, 2 left
+            imgData.data[i + canvasSize[0] * 8 - 7] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 8 - 6] += (quant_error[2] * a);
+			a = matrix[2][1]/divisor;
+            imgData.data[i + canvasSize[0] * 8 - 4] += (quant_error[0] * a); //2 down, 1 left
+            imgData.data[i + canvasSize[0] * 8 - 3] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 8 - 2] += (quant_error[2] * a);
+			a = matrix[2][2]/divisor;
+            imgData.data[i + canvasSize[0] * 8 + 0] += (quant_error[0] * a);//2 down
+            imgData.data[i + canvasSize[0] * 8 + 1] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 8 + 2] += (quant_error[2] * a);
+			a = matrix[2][3]/divisor;
+            imgData.data[i + canvasSize[0] * 8 + 4] += (quant_error[0] * a);//2 down, 1 right 
+            imgData.data[i + canvasSize[0] * 8 + 5] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 8 + 6] += (quant_error[2] * a);
+			a = matrix[2][4]/divisor;
+			imgData.data[i + canvasSize[0] * 8 + 8] += (quant_error[0] * a);//2 down, 2 right 
+            imgData.data[i + canvasSize[0] * 8 + 9] += (quant_error[1] * a);
+            imgData.data[i + canvasSize[0] * 8 + 10] += (quant_error[2] * a);
+          } catch (e) {
+            console.error(e);
+          }
+		  break;
       }
     }
   }
