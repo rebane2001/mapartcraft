@@ -194,62 +194,87 @@ onmessage = function(e) {
           imgData.data[i + 0] = newpixel[0];
           imgData.data[i + 1] = newpixel[1];
           imgData.data[i + 2] = newpixel[2];
-		  a = matrix[0][3]/divisor; 
           try {
 			
 			//matrix [0][0...2] should always be zero, and can thus be skipped
-			a = matrix[0][3]/divisor; 
-            imgData.data[i + 4] += (quant_error[0] * a); //1 right
-            imgData.data[i + 5] += (quant_error[1] * a);
-            imgData.data[i + 6] += (quant_error[2] * a);
-			a = matrix[0][4]/divisor;
-			imgData.data[i + 8] += (quant_error[0] * a); //2 right
-            imgData.data[i + 9] += (quant_error[1] * a);
-            imgData.data[i + 10] += (quant_error[2] * a);
 			
+			if(x+1<canvasSize[0]){ //Make sure to not carryover Error from one side to the other
+				a = matrix[0][3]/divisor; 
+				imgData.data[i + 4] += (quant_error[0] * a); //1 right
+				imgData.data[i + 5] += (quant_error[1] * a);
+				imgData.data[i + 6] += (quant_error[2] * a);
+				if(x+2<canvasSize[0]){ //Nested, because it only needds to be checked if the first is true
+					a = matrix[0][4]/divisor;
+					imgData.data[i + 8] += (quant_error[0] * a); //2 right
+					imgData.data[i + 9] += (quant_error[1] * a);
+					imgData.data[i + 10] += (quant_error[2] * a);
+				}
+			}
 			//First Row below
-			a = matrix[1][0]/divisor;
-			imgData.data[i + canvasSize[0] * 4 - 8] += (quant_error[0] * a); //1 down, 2 left
-            imgData.data[i + canvasSize[0] * 4 - 7] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 4 - 6] += (quant_error[2] * a);
-			a = matrix[1][1]/divisor;
-            imgData.data[i + canvasSize[0] * 4 - 4] += (quant_error[0] * a); //1 down, 1 left
-            imgData.data[i + canvasSize[0] * 4 - 3] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 4 - 2] += (quant_error[2] * a);
+			
+			if (x>0){ //Order reversed, to allow nesting of IF blocks
+				a = matrix[1][1]/divisor;
+				imgData.data[i + canvasSize[0] * 4 - 4] += (quant_error[0] * a); //1 down, 1 left
+				imgData.data[i + canvasSize[0] * 4 - 3] += (quant_error[1] * a);
+				imgData.data[i + canvasSize[0] * 4 - 2] += (quant_error[2] * a);
+				if (x>1){ //
+					a = matrix[1][0]/divisor;
+					imgData.data[i + canvasSize[0] * 4 - 8] += (quant_error[0] * a); //1 down, 2 left
+					imgData.data[i + canvasSize[0] * 4 - 7] += (quant_error[1] * a);
+					imgData.data[i + canvasSize[0] * 4 - 6] += (quant_error[2] * a);
+				}
+			}
+			
 			a = matrix[1][2]/divisor;
             imgData.data[i + canvasSize[0] * 4 + 0] += (quant_error[0] * a);//1 down
             imgData.data[i + canvasSize[0] * 4 + 1] += (quant_error[1] * a);
             imgData.data[i + canvasSize[0] * 4 + 2] += (quant_error[2] * a);
-			a = matrix[1][3]/divisor;
-            imgData.data[i + canvasSize[0] * 4 + 4] += (quant_error[0] * a);//1 down, 1 right 
-            imgData.data[i + canvasSize[0] * 4 + 5] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 4 + 6] += (quant_error[2] * a);
-			a = matrix[1][4]/divisor;
-			imgData.data[i + canvasSize[0] * 4 + 8] += (quant_error[0] * a);//1 down, 2 right 
-            imgData.data[i + canvasSize[0] * 4 + 9] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 4 + 10] += (quant_error[2] * a);
+			
+			if(x+1<canvasSize[0]){
+				a = matrix[1][3]/divisor;
+				imgData.data[i + canvasSize[0] * 4 + 4] += (quant_error[0] * a);//1 down, 1 right 
+				imgData.data[i + canvasSize[0] * 4 + 5] += (quant_error[1] * a);
+				imgData.data[i + canvasSize[0] * 4 + 6] += (quant_error[2] * a);
+				if(x+2<canvasSize[0]){
+					a = matrix[1][4]/divisor;
+					imgData.data[i + canvasSize[0] * 4 + 8] += (quant_error[0] * a);//1 down, 2 right 
+					imgData.data[i + canvasSize[0] * 4 + 9] += (quant_error[1] * a);
+					imgData.data[i + canvasSize[0] * 4 + 10] += (quant_error[2] * a);
+				}
+			}
 			
 			//Second row below
-			a = matrix[2][0]/divisor;
-			imgData.data[i + canvasSize[0] * 8 - 8] += (quant_error[0] * a); //2 down, 2 left
-            imgData.data[i + canvasSize[0] * 8 - 7] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 8 - 6] += (quant_error[2] * a);
-			a = matrix[2][1]/divisor;
-            imgData.data[i + canvasSize[0] * 8 - 4] += (quant_error[0] * a); //2 down, 1 left
-            imgData.data[i + canvasSize[0] * 8 - 3] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 8 - 2] += (quant_error[2] * a);
+			if(x>0){
+				a = matrix[2][1]/divisor;
+				imgData.data[i + canvasSize[0] * 8 - 4] += (quant_error[0] * a); //2 down, 1 left
+				imgData.data[i + canvasSize[0] * 8 - 3] += (quant_error[1] * a);
+				imgData.data[i + canvasSize[0] * 8 - 2] += (quant_error[2] * a);
+				if(x>1){
+					a = matrix[2][0]/divisor;
+					imgData.data[i + canvasSize[0] * 8 - 8] += (quant_error[0] * a); //2 down, 2 left
+					imgData.data[i + canvasSize[0] * 8 - 7] += (quant_error[1] * a);
+					imgData.data[i + canvasSize[0] * 8 - 6] += (quant_error[2] * a);
+				}
+			}
+			
 			a = matrix[2][2]/divisor;
             imgData.data[i + canvasSize[0] * 8 + 0] += (quant_error[0] * a);//2 down
             imgData.data[i + canvasSize[0] * 8 + 1] += (quant_error[1] * a);
             imgData.data[i + canvasSize[0] * 8 + 2] += (quant_error[2] * a);
-			a = matrix[2][3]/divisor;
-            imgData.data[i + canvasSize[0] * 8 + 4] += (quant_error[0] * a);//2 down, 1 right 
-            imgData.data[i + canvasSize[0] * 8 + 5] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 8 + 6] += (quant_error[2] * a);
-			a = matrix[2][4]/divisor;
-			imgData.data[i + canvasSize[0] * 8 + 8] += (quant_error[0] * a);//2 down, 2 right 
-            imgData.data[i + canvasSize[0] * 8 + 9] += (quant_error[1] * a);
-            imgData.data[i + canvasSize[0] * 8 + 10] += (quant_error[2] * a);
+			
+			if(x+1<canvasSize[0]){
+				a = matrix[2][3]/divisor;
+				imgData.data[i + canvasSize[0] * 8 + 4] += (quant_error[0] * a);//2 down, 1 right 
+				imgData.data[i + canvasSize[0] * 8 + 5] += (quant_error[1] * a);
+				imgData.data[i + canvasSize[0] * 8 + 6] += (quant_error[2] * a);
+				if(x+2<canvasSize[0]){
+					a = matrix[2][4]/divisor;
+					imgData.data[i + canvasSize[0] * 8 + 8] += (quant_error[0] * a);//2 down, 2 right 
+					imgData.data[i + canvasSize[0] * 8 + 9] += (quant_error[1] * a);
+					imgData.data[i + canvasSize[0] * 8 + 10] += (quant_error[2] * a);
+				}
+			}
+			
           } catch (e) {
             console.error(e);
           }
