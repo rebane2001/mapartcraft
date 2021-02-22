@@ -9,7 +9,11 @@ def generateTranslationHTML():
     for language in languages:
         with open(f"languages/{language}.json","r", encoding="UTF8") as f:
             langjson = json.load(f)
-            translationHTML += f"<a href=\"%%ROOTPATH%%/{'' if language == 'en' else language}\"><img src=\"%%ROOTPATH%%/img/flag/{language}.svg\" alt=\"{langjson['index.html']['TRANSLATIONNAME']}\" height=\"50\"></a>"
+            translationHTML += f"<a href=\"%%ROOTPATH%%/{'' if language == 'en' else language}\">"
+            translationHTML += f"<img src=\"%%ROOTPATH%%/img/flag/{language}.svg\" alt=\"{langjson['index.html']['TRANSLATIONNAME']}\" height=\"50\">"
+            if language == 'et':
+                translationHTML += "<img src=\"%%ROOTPATH%%/img/flag/et_pop.svg\" alt=\"Popstonia\" height=\"50\">"
+            translationHTML += f"</a>"
     return translationHTML
 
 with open("untranslated_strings.txt","w") as untranslated_strings:

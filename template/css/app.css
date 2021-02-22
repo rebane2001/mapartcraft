@@ -9,7 +9,7 @@
 div#preloads {
    position: absolute;
    overflow: hidden;
-   left: -9999px; 
+   left: -9999px;
    top: -9999px;
    height: 1px;
    width: 1px;
@@ -167,6 +167,18 @@ th:nth-child(1) {
     position:absolute;
     text-align: right;
     right:50px;
+}
+
+.languages a img[alt="Popstonia"] {
+    display: none;
+}
+
+.languages a img[alt="Estonian"]:hover {
+    display: none;
+}
+
+.languages a img[alt="Estonian"]:hover + img[alt="Popstonia"] {
+    display: initial;
 }
 
 /* The Modal (background) */
