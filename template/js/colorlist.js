@@ -1,4 +1,4 @@
-window.colorlist_base = 
+window.colorlist_base =
 [
   [
     [[89, 125, 39], [109, 153, 48], [127, 178, 56], [67, 94, 29]],
@@ -97,7 +97,7 @@ window.colorlist_base =
       ["stone", "'variant':'andesite'", "Andesite", false, "stone_andesite", 4, false],
       ["bedrock", "", "Bedrock", false, "", 5, false],
       ["log2", "'variant':'acacia','axis':'x'", "Acacia Log (horizontal)", false, "log_acacia", 6, true],
-      ["gravel", "", "Gravel", false, "", 7, false],
+      ["gravel", "", "Gravel", true, "", 7, false],
     ],
     9
   ],
