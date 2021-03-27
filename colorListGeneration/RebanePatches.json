@@ -1,0 +1,1620 @@
+{
+  "1.13": {
+    "patch": [
+      [
+        [0, 0],
+        ["grass_block", "", "Grass Block", false, "grass_side", 0, false]
+      ],
+      [
+        [0, 1],
+        ["slime_block", "", "Slime Block", true, "slime", 1, false]
+      ],
+      [
+        [1, 3],
+        [
+          "birch_log",
+          "'axis':'y'",
+          "Birch Log (vertical)",
+          false,
+          "log_birch_top",
+          2,
+          true
+        ]
+      ],
+      [
+        [1, 4],
+        ["birch_planks", "", "Birch Planks", false, "planks_birch", 3, true]
+      ],
+      [
+        [1, 5],
+        ["birch_slab", "", "Birch Slab", false, "slabs_birch", 4, true]
+      ],
+      [
+        [1, 7],
+        ["end_stone", "", "End Stone", false, "", 6, false]
+      ],
+      [
+        [1, 2],
+        [
+          "sandstone_slab",
+          "",
+          "Sandstone Slab",
+          false,
+          "sandstone_slab",
+          7,
+          false
+        ]
+      ],
+      [
+        [2, 0],
+        ["cobweb", "", "Cobweb", false, "web", 0, false]
+      ],
+      [
+        [3, 1],
+        ["redstone_block", "", "Block of Redstone", false, "", 1, false]
+      ],
+      [
+        [4, 1],
+        ["packed_ice", "", "Packed Ice", false, "ice_packed", 1, false]
+      ],
+      [
+        [5, 3],
+        [
+          "heavy_weighted_pressure_plate",
+          "",
+          "Heavy Weighted Pressure Plate",
+          true,
+          "",
+          2,
+          false
+        ]
+      ],
+      [
+        [6, 0],
+        [
+          "oak_leaves",
+          "'persistent':'true'",
+          "Leaves (Oak)",
+          false,
+          "leaves",
+          0,
+          true
+        ]
+      ],
+      [
+        [6, 1],
+        [
+          "spruce_leaves",
+          "'persistent':'true'",
+          "Leaves (Spruce)",
+          false,
+          "leaves",
+          1,
+          true
+        ]
+      ],
+      [
+        [6, 2],
+        [
+          "birch_leaves",
+          "'persistent':'true'",
+          "Leaves (Birch)",
+          false,
+          "leaves",
+          2,
+          true
+        ]
+      ],
+      [
+        [6, 3],
+        [
+          "jungle_leaves",
+          "'persistent':'true'",
+          "Leaves (Jungle)",
+          false,
+          "leaves",
+          3,
+          true
+        ]
+      ],
+      [
+        [6, 4],
+        [
+          "acacia_leaves",
+          "'persistent':'true'",
+          "Leaves (Acacia)",
+          false,
+          "leaves",
+          4,
+          true
+        ]
+      ],
+      [
+        [6, 5],
+        [
+          "dark_oak_leaves",
+          "'persistent':'true'",
+          "Leaves (Dark Oak)",
+          false,
+          "leaves",
+          5,
+          true
+        ]
+      ],
+      [
+        [7, 0],
+        ["clay", "", "Clay", false, "", 0, false]
+      ],
+      [
+        [8, 0],
+        [
+          "jungle_log",
+          "'axis':'y'",
+          "Jungle Log (vertical)",
+          false,
+          "log_jungle_top",
+          0,
+          true
+        ]
+      ],
+      [
+        [8, 1],
+        ["jungle_planks", "", "Jungle Planks", false, "planks_jungle", 1, true]
+      ],
+      [
+        [8, 2],
+        ["jungle_slab", "", "Jungle Slab", false, "slabs_jungle", 2, true]
+      ],
+      [
+        [8, 4],
+        ["coarse_dirt", "", "Coarse Dirt", false, "", 4, false]
+      ],
+      [
+        [8, 6],
+        ["granite", "", "Granite", false, "stone_granite", 6, false]
+      ],
+      [
+        [9, 2],
+        ["stone_slab", "", "Stone Slab", false, "", 2, false]
+      ],
+      [
+        [9, 3],
+        [
+          "cobblestone_slab",
+          "",
+          "Cobblestone Slab",
+          false,
+          "cobblestone_slab",
+          3,
+          false
+        ]
+      ],
+      [
+        [9, 4],
+        ["andesite", "", "Andesite", false, "stone_andesite", 4, false]
+      ],
+      [
+        [9, 6],
+        [
+          "acacia_log",
+          "'axis':'x'",
+          "Acacia Log (horizontal)",
+          false,
+          "log_acacia",
+          6,
+          true
+        ]
+      ],
+      [
+        [10, 0],
+        ["water", "", "Water (Unsupported!)", true, "water_bucket", 0, false]
+      ],
+      [
+        [11, 0],
+        [
+          "oak_log",
+          "'axis':'y'",
+          "Oak Log (vertical)",
+          false,
+          "log_oak_top",
+          0,
+          true
+        ]
+      ],
+      [
+        [11, 1],
+        ["oak_planks", "", "Oak Planks", false, "planks_oak", 1, true]
+      ],
+      [
+        [11, 2],
+        ["oak_slab", "", "Oak Slab", false, "slabs_oak", 2, true]
+      ],
+      [
+        [12, 0],
+        [
+          "birch_log",
+          "'axis':'x'",
+          "Birch Log (horizontal)",
+          false,
+          "log_birch",
+          0,
+          true
+        ]
+      ],
+      [
+        [12, 1],
+        ["diorite", "", "Diorite", false, "stone_diorite", 1, false]
+      ],
+      [
+        [12, 3],
+        ["quartz_slab", "", "Quartz Slab", false, "quartz_slab", 3, false]
+      ],
+      [
+        [12, 4],
+        ["sea_lantern", "", "Sea Lantern", false, "", 4, false]
+      ],
+      [
+        [13, 0],
+        ["white_wool", "", "White Wool", false, "wool_colored_white", 0, true]
+      ],
+      [
+        [13, 1],
+        [
+          "white_carpet",
+          "",
+          "White Carpet",
+          true,
+          "carpet_colored_white",
+          1,
+          true
+        ]
+      ],
+      [
+        [13, 2],
+        [
+          "white_stained_glass",
+          "",
+          "White Stained Glass",
+          false,
+          "glass_white",
+          2,
+          false
+        ]
+      ],
+      [
+        [13, 3],
+        [
+          "white_concrete",
+          "",
+          "White Concrete",
+          false,
+          "concrete_white",
+          3,
+          false
+        ]
+      ],
+      [
+        [13, 4],
+        [
+          "white_concrete_powder",
+          "",
+          "White Concrete Powder",
+          true,
+          "concrete_powder_white",
+          4,
+          false
+        ]
+      ],
+      [
+        [13, 6],
+        ["snow_block", "", "Snow Block", false, "snow", 6, false]
+      ],
+      [
+        [13, 7],
+        ["snow", "", "Snow Layer", true, "snow_layer", 7, false]
+      ],
+      [
+        [14, 0],
+        ["orange_wool", "", "Orange Wool", false, "wool_colored_orange", 0, true]
+      ],
+      [
+        [14, 1],
+        [
+          "orange_carpet",
+          "",
+          "Orange Carpet",
+          true,
+          "carpet_colored_orange",
+          1,
+          true
+        ]
+      ],
+      [
+        [14, 2],
+        [
+          "orange_stained_glass",
+          "",
+          "Orange Stained Glass",
+          false,
+          "glass_orange",
+          2,
+          false
+        ]
+      ],
+      [
+        [14, 3],
+        [
+          "orange_concrete",
+          "",
+          "Orange Concrete",
+          false,
+          "concrete_orange",
+          3,
+          false
+        ]
+      ],
+      [
+        [14, 4],
+        [
+          "orange_concrete_powder",
+          "",
+          "Orange Concrete Powder",
+          true,
+          "concrete_powder_orange",
+          4,
+          false
+        ]
+      ],
+      [
+        [14, 6],
+        [
+          "acacia_log",
+          "'axis':'y'",
+          "Acacia Log (vertical)",
+          false,
+          "log_acacia_top",
+          6,
+          true
+        ]
+      ],
+      [
+        [14, 7],
+        ["acacia_planks", "", "Acacia Planks", false, "planks_acacia", 7, true]
+      ],
+      [
+        [14, 8],
+        ["acacia_slab", "", "Acacia Slab", false, "slabs_acacia", 8, true]
+      ],
+      [
+        [14, 9],
+        ["red_sand", "", "Red Sand", true, "red_sand", 9, false]
+      ],
+      [
+        [14, 10],
+        [
+          "red_sandstone",
+          "",
+          "Red Sandstone",
+          false,
+          "red_sandstone_normal",
+          10,
+          false
+        ]
+      ],
+      [
+        [14, 11],
+        ["terracotta", "", "Terracotta", false, "hardened_clay", 11, false]
+      ],
+      [
+        [15, 0],
+        ["magenta_wool", "", "Magenta Wool", false, "wool_colored_magenta", 0, true]
+      ],
+      [
+        [15, 1],
+        [
+          "magenta_carpet",
+          "",
+          "Magenta Carpet",
+          true,
+          "carpet_colored_magenta",
+          1,
+          true
+        ]
+      ],
+      [
+        [15, 2],
+        [
+          "magenta_stained_glass",
+          "",
+          "Magenta Stained Glass",
+          false,
+          "glass_magenta",
+          2,
+          false
+        ]
+      ],
+      [
+        [15, 3],
+        [
+          "magenta_concrete",
+          "",
+          "Magenta Concrete",
+          false,
+          "concrete_magenta",
+          3,
+          false
+        ]
+      ],
+      [
+        [15, 4],
+        [
+          "magenta_concrete_powder",
+          "",
+          "Magenta Concrete Powder",
+          true,
+          "concrete_powder_magenta",
+          4,
+          false
+        ]
+      ],
+      [
+        [15, 7],
+        ["purpur_slab", "", "Purpur Slab", false, "", 7, false]
+      ],
+      [
+        [16, 0],
+        [
+          "light_blue_wool",
+          "",
+          "Light Blue Wool",
+          false,
+          "wool_colored_light_blue",
+          0,
+          true
+        ]
+      ],
+      [
+        [16, 1],
+        [
+          "light_blue_carpet",
+          "",
+          "Light Blue Carpet",
+          true,
+          "carpet_colored_light_blue",
+          1,
+          true
+        ]
+      ],
+      [
+        [16, 2],
+        [
+          "light_blue_stained_glass",
+          "",
+          "Light Blue Stained Glass",
+          false,
+          "glass_light_blue",
+          2,
+          false
+        ]
+      ],
+      [
+        [16, 3],
+        [
+          "light_blue_concrete",
+          "",
+          "Light Blue Concrete",
+          false,
+          "concrete_light_blue",
+          3,
+          false
+        ]
+      ],
+      [
+        [16, 4],
+        [
+          "light_blue_concrete_powder",
+          "",
+          "Light Blue Concrete Powder",
+          true,
+          "concrete_powder_light_blue",
+          4,
+          false
+        ]
+      ],
+      [
+        [16, 5],
+        [
+          "light_blue_glazed_terracotta",
+          "",
+          "Light Blue Glazed Terracotta",
+          false,
+          "glazed_terracotta_light_blue",
+          5,
+          false
+        ]
+      ],
+      [
+        [17, 0],
+        ["yellow_wool", "", "Yellow Wool", false, "wool_colored_yellow", 0, true]
+      ],
+      [
+        [17, 1],
+        [
+          "yellow_carpet",
+          "",
+          "Yellow Carpet",
+          true,
+          "carpet_colored_yellow",
+          1,
+          true
+        ]
+      ],
+      [
+        [17, 2],
+        [
+          "yellow_stained_glass",
+          "",
+          "Yellow Stained Glass",
+          false,
+          "glass_yellow",
+          2,
+          false
+        ]
+      ],
+      [
+        [17, 3],
+        [
+          "yellow_concrete",
+          "",
+          "Yellow Concrete",
+          false,
+          "concrete_yellow",
+          3,
+          false
+        ]
+      ],
+      [
+        [17, 4],
+        [
+          "yellow_concrete_powder",
+          "",
+          "Yellow Concrete Powder",
+          true,
+          "concrete_powder_yellow",
+          4,
+          false
+        ]
+      ],
+      [
+        [17, 7],
+        ["sponge", "", "Sponge (any)", false, "", 7, false]
+      ],
+      [
+        [18, 0],
+        ["lime_wool", "", "Lime Wool", false, "wool_colored_lime", 0, true]
+      ],
+      [
+        [18, 1],
+        ["lime_carpet", "", "Lime Carpet", true, "carpet_colored_lime", 1, true]
+      ],
+      [
+        [18, 2],
+        [
+          "lime_stained_glass",
+          "",
+          "Lime Stained Glass",
+          false,
+          "glass_lime",
+          2,
+          false
+        ]
+      ],
+      [
+        [18, 3],
+        ["lime_concrete", "", "Lime Concrete", false, "concrete_lime", 3, false]
+      ],
+      [
+        [18, 4],
+        [
+          "lime_concrete_powder",
+          "",
+          "Lime Concrete Powder",
+          true,
+          "concrete_powder_lime",
+          4,
+          false
+        ]
+      ],
+      [
+        [18, 6],
+        ["melon", "", "Melon", false, "melon_side", 6, false]
+      ],
+      [
+        [19, 0],
+        ["pink_wool", "", "Pink Wool", false, "wool_colored_pink", 0, true]
+      ],
+      [
+        [19, 1],
+        ["pink_carpet", "", "Pink Carpet", true, "carpet_colored_pink", 1, true]
+      ],
+      [
+        [19, 2],
+        [
+          "pink_stained_glass",
+          "",
+          "Pink Stained Glass",
+          false,
+          "glass_pink",
+          2,
+          false
+        ]
+      ],
+      [
+        [19, 3],
+        ["pink_concrete", "", "Pink Concrete", false, "concrete_pink", 3, false]
+      ],
+      [
+        [19, 4],
+        [
+          "pink_concrete_powder",
+          "",
+          "Pink Concrete Powder",
+          true,
+          "concrete_powder_pink",
+          4,
+          false
+        ]
+      ],
+      [
+        [19, 5],
+        [
+          "pink_glazed_terracotta",
+          "",
+          "Pink Glazed Terracotta",
+          false,
+          "glazed_terracotta_pink",
+          5,
+          false
+        ]
+      ],
+      [
+        [20, 0],
+        ["gray_wool", "", "Gray Wool", false, "wool_colored_gray", 0, true]
+      ],
+      [
+        [20, 1],
+        ["gray_carpet", "", "Gray Carpet", true, "carpet_colored_gray", 1, true]
+      ],
+      [
+        [20, 2],
+        [
+          "gray_stained_glass",
+          "",
+          "Gray Stained Glass",
+          false,
+          "glass_gray",
+          2,
+          false
+        ]
+      ],
+      [
+        [20, 3],
+        ["gray_concrete", "", "Gray Concrete", false, "concrete_gray", 3, false]
+      ],
+      [
+        [20, 4],
+        [
+          "gray_concrete_powder",
+          "",
+          "Gray Concrete Powder",
+          true,
+          "concrete_powder_gray",
+          4,
+          false
+        ]
+      ],
+      [
+        [20, 5],
+        [
+          "gray_glazed_terracotta",
+          "",
+          "Gray Glazed Terracotta",
+          false,
+          "glazed_terracotta_gray",
+          5,
+          false
+        ]
+      ],
+      [
+        [21, 0],
+        [
+          "light_gray_wool",
+          "",
+          "Light Gray Wool",
+          false,
+          "wool_colored_silver",
+          0,
+          true
+        ]
+      ],
+      [
+        [21, 1],
+        [
+          "light_gray_carpet",
+          "",
+          "Light Gray Carpet",
+          true,
+          "carpet_colored_silver",
+          1,
+          true
+        ]
+      ],
+      [
+        [21, 2],
+        [
+          "light_gray_stained_glass",
+          "",
+          "Light Gray Stained Glass",
+          false,
+          "glass_silver",
+          2,
+          false
+        ]
+      ],
+      [
+        [21, 3],
+        [
+          "light_gray_concrete",
+          "",
+          "Light Gray Concrete",
+          false,
+          "concrete_silver",
+          3,
+          false
+        ]
+      ],
+      [
+        [21, 4],
+        [
+          "light_gray_concrete_powder",
+          "",
+          "Light Gray Concrete Powder",
+          true,
+          "concrete_powder_silver",
+          4,
+          false
+        ]
+      ],
+      [
+        [21, 5],
+        [
+          "light_gray_glazed_terracotta",
+          "",
+          "Light Gray Glazed Terracotta",
+          false,
+          "glazed_terracotta_silver",
+          5,
+          false
+        ]
+      ],
+      [
+        [22, 0],
+        ["cyan_wool", "", "Cyan Wool", false, "wool_colored_cyan", 0, true]
+      ],
+      [
+        [22, 1],
+        ["cyan_carpet", "", "Cyan Carpet", true, "carpet_colored_cyan", 1, true]
+      ],
+      [
+        [22, 2],
+        [
+          "cyan_stained_glass",
+          "",
+          "Cyan Stained Glass",
+          false,
+          "glass_cyan",
+          2,
+          false
+        ]
+      ],
+      [
+        [22, 3],
+        ["cyan_concrete", "", "Cyan Concrete", false, "concrete_cyan", 3, false]
+      ],
+      [
+        [22, 4],
+        [
+          "cyan_concrete_powder",
+          "",
+          "Cyan Concrete Powder",
+          true,
+          "concrete_powder_cyan",
+          4,
+          false
+        ]
+      ],
+      [
+        [22, 6],
+        ["prismarine", "", "Prismarine", false, "", 6, false]
+      ],
+      [
+        [23, 0],
+        ["purple_wool", "", "Purple Wool", false, "wool_colored_purple", 0, true]
+      ],
+      [
+        [23, 1],
+        [
+          "purple_carpet",
+          "",
+          "Purple Carpet",
+          true,
+          "carpet_colored_purple",
+          1,
+          true
+        ]
+      ],
+      [
+        [23, 2],
+        [
+          "purple_stained_glass",
+          "",
+          "Purple Stained Glass",
+          false,
+          "glass_purple",
+          2,
+          false
+        ]
+      ],
+      [
+        [23, 3],
+        [
+          "purple_concrete",
+          "",
+          "Purple Concrete",
+          false,
+          "concrete_purple",
+          3,
+          false
+        ]
+      ],
+      [
+        [23, 4],
+        [
+          "purple_concrete_powder",
+          "",
+          "Purple Concrete Powder",
+          true,
+          "concrete_powder_purple",
+          4,
+          false
+        ]
+      ],
+      [
+        [23, 6],
+        ["mycelium", "", "Mycelium", false, "mycelium_side", 6, false]
+      ],
+      [
+        [24, 0],
+        ["blue_wool", "", "Blue Wool", false, "wool_colored_blue", 0, true]
+      ],
+      [
+        [24, 1],
+        ["blue_carpet", "", "Blue Carpet", true, "carpet_colored_blue", 1, true]
+      ],
+      [
+        [24, 2],
+        [
+          "blue_stained_glass",
+          "",
+          "Blue Stained Glass",
+          false,
+          "glass_blue",
+          2,
+          false
+        ]
+      ],
+      [
+        [24, 3],
+        ["blue_concrete", "", "Blue Concrete", false, "concrete_blue", 3, false]
+      ],
+      [
+        [24, 4],
+        [
+          "blue_concrete_powder",
+          "",
+          "Blue Concrete Powder",
+          true,
+          "concrete_powder_blue",
+          4,
+          false
+        ]
+      ],
+      [
+        [24, 5],
+        [
+          "blue_glazed_terracotta",
+          "",
+          "Blue Glazed Terracotta",
+          false,
+          "glazed_terracotta_blue",
+          5,
+          false
+        ]
+      ],
+      [
+        [25, 0],
+        ["brown_wool", "", "Brown Wool", false, "wool_colored_brown", 0, true]
+      ],
+      [
+        [25, 1],
+        [
+          "brown_carpet",
+          "",
+          "Brown Carpet",
+          true,
+          "carpet_colored_brown",
+          1,
+          true
+        ]
+      ],
+      [
+        [25, 2],
+        [
+          "brown_stained_glass",
+          "",
+          "Brown Stained Glass",
+          false,
+          "glass_brown",
+          2,
+          false
+        ]
+      ],
+      [
+        [25, 3],
+        [
+          "brown_concrete",
+          "",
+          "Brown Concrete",
+          false,
+          "concrete_brown",
+          3,
+          false
+        ]
+      ],
+      [
+        [25, 4],
+        [
+          "brown_concrete_powder",
+          "",
+          "Brown Concrete Powder",
+          true,
+          "concrete_powder_brown",
+          4,
+          false
+        ]
+      ],
+      [
+        [25, 6],
+        [
+          "dark_oak_log",
+          "'axis':'y'",
+          "Dark Oak Log (any direction)",
+          false,
+          "log_big_oak",
+          6,
+          true
+        ]
+      ],
+      [
+        [25, 7],
+        [
+          "dark_oak_planks",
+          "",
+          "Dark Oak Planks",
+          false,
+          "planks_big_oak",
+          7,
+          true
+        ]
+      ],
+      [
+        [25, 8],
+        ["dark_oak_slab", "", "Dark Oak Slab", false, "slabs_big_oak", 8, true]
+      ],
+      [
+        [25, 9],
+        [
+          "spruce_log",
+          "'axis':'x'",
+          "Spruce Log (horizontal)",
+          false,
+          "log_spruce",
+          9,
+          true
+        ]
+      ],
+      [
+        [25, 10],
+        ["soul_sand", "", "Soul Sand", false, "", 10, false]
+      ],
+      [
+        [26, 0],
+        ["green_wool", "", "Green Wool", false, "wool_colored_green", 0, true]
+      ],
+      [
+        [26, 1],
+        [
+          "green_carpet",
+          "",
+          "Green Carpet",
+          true,
+          "carpet_colored_green",
+          1,
+          true
+        ]
+      ],
+      [
+        [26, 2],
+        [
+          "green_stained_glass",
+          "",
+          "Green Stained Glass",
+          false,
+          "glass_green",
+          2,
+          false
+        ]
+      ],
+      [
+        [26, 3],
+        [
+          "green_concrete",
+          "",
+          "Green Concrete",
+          false,
+          "concrete_green",
+          3,
+          false
+        ]
+      ],
+      [
+        [26, 4],
+        [
+          "green_concrete_powder",
+          "",
+          "Green Concrete Powder",
+          true,
+          "concrete_powder_green",
+          4,
+          false
+        ]
+      ],
+      [
+        [26, 5],
+        [
+          "green_glazed_terracotta",
+          "",
+          "Green Glazed Terracotta",
+          false,
+          "glazed_terracotta_green",
+          5,
+          false
+        ]
+      ],
+      [
+        [27, 0],
+        ["red_wool", "", "Red Wool", false, "wool_colored_red", 0, true]
+      ],
+      [
+        [27, 1],
+        ["red_carpet", "", "Red Carpet", true, "carpet_colored_red", 1, true]
+      ],
+      [
+        [27, 2],
+        [
+          "red_stained_glass",
+          "",
+          "Red Stained Glass",
+          false,
+          "glass_red",
+          2,
+          false
+        ]
+      ],
+      [
+        [27, 3],
+        ["red_concrete", "", "Red Concrete", false, "concrete_red", 3, false]
+      ],
+      [
+        [27, 4],
+        [
+          "red_concrete_powder",
+          "",
+          "Red Concrete Powder",
+          true,
+          "concrete_powder_red",
+          4,
+          false
+        ]
+      ],
+      [
+        [27, 6],
+        ["bricks", "", "Bricks", false, "brick", 6, false]
+      ],
+      [
+        [27, 7],
+        ["nether_wart_block", "", "Nether Wart Block", false, "", 7, false]
+      ],
+      [
+        [28, 0],
+        ["black_wool", "", "Black Wool", false, "wool_colored_black", 0, true]
+      ],
+      [
+        [28, 1],
+        [
+          "black_carpet",
+          "",
+          "Black Carpet",
+          true,
+          "carpet_colored_black",
+          1,
+          true
+        ]
+      ],
+      [
+        [28, 2],
+        [
+          "black_stained_glass",
+          "",
+          "Black Stained Glass",
+          false,
+          "glass_black",
+          2,
+          false
+        ]
+      ],
+      [
+        [28, 3],
+        [
+          "black_concrete",
+          "",
+          "Black Concrete",
+          false,
+          "concrete_black",
+          3,
+          false
+        ]
+      ],
+      [
+        [28, 4],
+        [
+          "black_concrete_powder",
+          "",
+          "Black Concrete Powder",
+          true,
+          "concrete_powder_black",
+          4,
+          false
+        ]
+      ],
+      [
+        [28, 7],
+        ["obsidian", "", "Obsidian", false, "", 7, false]
+      ],
+      [
+        [29, 1],
+        [
+          "light_weighted_pressure_plate",
+          "",
+          "Light Weighted Pressure Plate",
+          true,
+          "",
+          1,
+          false
+        ]
+      ],
+      [
+        [30, 1],
+        [
+          "prismarine_bricks",
+          "",
+          "Prismarine Bricks",
+          false,
+          "prismarine_bricks",
+          1,
+          false
+        ]
+      ],
+      [
+        [30, 2],
+        ["dark_prismarine", "", "Dark Prismarine", false, "prismarine_dark", 2, false]
+      ],
+      [
+        [30, 3],
+        ["beacon", "", "Beacon", true, "", 3, false]
+      ],
+      [
+        [31, 0],
+        ["lapis_block", "", "Lapis Lazuli Block", false, "", 0, false]
+      ],
+      [
+        [32, 0],
+        ["emerald_block", "", "Block of Emerald", false, "", 0, false]
+      ],
+      [
+        [33, 0],
+        [
+          "spruce_log",
+          "'axis':'y'",
+          "Spruce Log (vertical)",
+          false,
+          "log_spruce_top",
+          0,
+          true
+        ]
+      ],
+      [
+        [33, 1],
+        ["spruce_planks", "", "Spruce Planks", false, "planks_spruce", 1, true]
+      ],
+      [
+        [33, 2],
+        ["spruce_slab", "", "Spruce Slab", false, "slabs_spruce", 2, true]
+      ],
+      [
+        [33, 3],
+        [
+          "oak_log",
+          "'axis':'x'",
+          "Oak Log (horizontal)",
+          false,
+          "log_oak",
+          3,
+          true
+        ]
+      ],
+      [
+        [33, 4],
+        [
+          "jungle_log",
+          "'axis':'x'",
+          "Jungle Log (horizontal)",
+          false,
+          "log_jungle",
+          4,
+          true
+        ]
+      ],
+      [
+        [33, 5],
+        ["podzol", "", "Podzol", false, "dirt_podzol_side", 5, false]
+      ],
+      [
+        [34, 1],
+        ["nether_bricks", "", "Nether Brick", false, "nether_brick", 1, false]
+      ],
+      [
+        [34, 2],
+        ["nether_brick_slab", "", "Nether Brick Slab", false, "", 2, false]
+      ],
+      [
+        [34, 3],
+        ["magma_block", "", "Magma Block", false, "magma", 3, true]
+      ],
+      [
+        [35, 0],
+        [
+          "white_terracotta",
+          "",
+          "White Terracotta",
+          false,
+          "hardened_clay_stained_white",
+          0,
+          false
+        ]
+      ],
+      [
+        [36, 0],
+        [
+          "orange_terracotta",
+          "",
+          "Orange Terracotta",
+          false,
+          "hardened_clay_stained_orange",
+          0,
+          false
+        ]
+      ],
+      [
+        [37, 0],
+        [
+          "magenta_terracotta",
+          "",
+          "Magenta Terracotta",
+          false,
+          "hardened_clay_stained_magenta",
+          0,
+          false
+        ]
+      ],
+      [
+        [38, 0],
+        [
+          "light_blue_terracotta",
+          "",
+          "Light Blue Terracotta",
+          false,
+          "hardened_clay_stained_light_blue",
+          0,
+          false
+        ]
+      ],
+      [
+        [39, 0],
+        [
+          "yellow_terracotta",
+          "",
+          "Yellow Terracotta",
+          false,
+          "hardened_clay_stained_yellow",
+          0,
+          false
+        ]
+      ],
+      [
+        [40, 0],
+        [
+          "lime_terracotta",
+          "",
+          "Lime Terracotta",
+          false,
+          "hardened_clay_stained_lime",
+          0,
+          false
+        ]
+      ],
+      [
+        [41, 0],
+        [
+          "pink_terracotta",
+          "",
+          "Pink Terracotta",
+          false,
+          "hardened_clay_stained_pink",
+          0,
+          false
+        ]
+      ],
+      [
+        [42, 0],
+        [
+          "gray_terracotta",
+          "",
+          "Gray Terracotta",
+          false,
+          "hardened_clay_stained_gray",
+          0,
+          false
+        ]
+      ],
+      [
+        [43, 0],
+        [
+          "light_gray_terracotta",
+          "",
+          "Light Gray Terracotta",
+          false,
+          "hardened_clay_stained_silver",
+          0,
+          false
+        ]
+      ],
+      [
+        [44, 0],
+        [
+          "cyan_terracotta",
+          "",
+          "Cyan Terracotta",
+          false,
+          "hardened_clay_stained_cyan",
+          0,
+          false
+        ]
+      ],
+      [
+        [45, 0],
+        [
+          "purple_terracotta",
+          "",
+          "Purple Terracotta",
+          false,
+          "hardened_clay_stained_purple",
+          0,
+          false
+        ]
+      ],
+      [
+        [46, 0],
+        [
+          "blue_terracotta",
+          "",
+          "Blue Terracotta",
+          false,
+          "hardened_clay_stained_blue",
+          0,
+          false
+        ]
+      ],
+      [
+        [47, 0],
+        [
+          "brown_terracotta",
+          "",
+          "Brown Terracotta",
+          false,
+          "hardened_clay_stained_brown",
+          0,
+          false
+        ]
+      ],
+      [
+        [48, 0],
+        [
+          "green_terracotta",
+          "",
+          "Green Terracotta",
+          false,
+          "hardened_clay_stained_green",
+          0,
+          false
+        ]
+      ],
+      [
+        [49, 0],
+        [
+          "red_terracotta",
+          "",
+          "Red Terracotta",
+          false,
+          "hardened_clay_stained_red",
+          0,
+          false
+        ]
+      ],
+      [
+        [50, 0],
+        [
+          "black_terracotta",
+          "",
+          "Black Terracotta",
+          false,
+          "hardened_clay_stained_black",
+          0,
+          false
+        ]
+      ]
+    ],
+    "add": [],
+    "remove": [[[5, 2], ["iron_bars"]]]
+  },
+  "1.16": {
+    "patch": [],
+    "add": [
+      [
+        [51, 0],
+        ["crimson_nylium", "", "Crimson Nylium", false, "", 0, false]
+      ],
+      [
+        [52, 0],
+        [
+          "crimson_stem",
+          "",
+          "Crimson Stem",
+          false,
+          "crimson_stem_top",
+          0,
+          false
+        ]
+      ],
+      [
+        [52, 1],
+        [
+          "stripped_crimson_stem",
+          "",
+          "Stripped Crimson Stem",
+          false,
+          "stripped_crimson_stem_top",
+          1,
+          false
+        ]
+      ],
+      [
+        [52, 2],
+        ["crimson_planks", "", "Crimson Planks", false, "", 2, false]
+      ],
+      [
+        [53, 0],
+        [
+          "crimson_hyphae",
+          "",
+          "Crimson Hyphae",
+          false,
+          "crimson_stem",
+          0,
+          false
+        ]
+      ],
+      [
+        [53, 1],
+        [
+          "stripped_crimson_hyphae",
+          "",
+          "Stripped Crimson Hyphae",
+          false,
+          "stripped_crimson_stem",
+          1,
+          false
+        ]
+      ],
+      [
+        [54, 0],
+        ["warped_nylium", "", "Warped Nylium", false, "", 0, false]
+      ],
+      [
+        [55, 0],
+        ["warped_stem", "", "Warped Stem", false, "warped_stem_top", 0, false]
+      ],
+      [
+        [55, 1],
+        [
+          "stripped_warped_stem",
+          "",
+          "Stripped Warped Stem",
+          false,
+          "stripped_warped_stem_top",
+          1,
+          false
+        ]
+      ],
+      [
+        [55, 2],
+        ["warped_planks", "", "Warped Planks", false, "", 2, false]
+      ],
+      [
+        [56, 0],
+        ["warped_hyphae", "", "Warped Hyphae", false, "warped_stem", 0, false]
+      ],
+      [
+        [56, 1],
+        [
+          "stripped_warped_hyphae",
+          "",
+          "Stripped Warped Hyphae",
+          false,
+          "stripped_warped_stem",
+          1,
+          false
+        ]
+      ],
+      [
+        [57, 0],
+        ["warped_wart_block", "", "Warped Wart Block", false, "", 0, false]
+      ]
+    ],
+    "remove": []
+  },
+  "1.16.2": {
+    "patch": [],
+    "add": [
+      [
+        [52, 3],
+        ["crimson_slab", "", "Crimson Slab", false, "", 3, false]
+      ],
+      [
+        [55, 3],
+        ["warped_slab", "", "Warped Slab", false, "", 3, false]
+      ]
+    ],
+    "remove": []
+  }
+}
