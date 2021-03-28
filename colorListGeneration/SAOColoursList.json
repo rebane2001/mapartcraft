@@ -211,16 +211,7 @@
             "11": {
                 "displayName": "End Stone",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "end_stone",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "12": {
-                "displayName": "End Stone",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -291,16 +282,7 @@
             "1": {
                 "displayName": "Block of Redstone",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "redstone_block",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "2": {
-                "displayName": "Block of Redstone",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -338,16 +320,7 @@
             "1": {
                 "displayName": "Packed Ice",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "packed_ice",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "2": {
-                "displayName": "Packed Ice",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -628,16 +601,7 @@
             "0": {
                 "displayName": "Clay",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "clay",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "1": {
-                "displayName": "Clay",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -996,16 +960,7 @@
             "0": {
                 "displayName": "Water (Unsupported!)",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "water",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": true,
-                "flammable": false
-            },
-            "1": {
-                "displayName": "Water (Unsupported!)",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -1223,16 +1178,7 @@
             "7": {
                 "displayName": "Sea Lantern",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "sea_lantern",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "8": {
-                "displayName": "Sea Lantern",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -2062,16 +2008,7 @@
             "10": {
                 "displayName": "Light Blue Glazed Terracotta",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "light_blue_glazed_terracotta",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "11": {
-                "displayName": "Light Blue Glazed Terracotta",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -2248,16 +2185,7 @@
             "12": {
                 "displayName": "Sponge (any)",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "sponge",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "13": {
-                "displayName": "Sponge (any)",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -2578,16 +2506,7 @@
             "10": {
                 "displayName": "Pink Glazed Terracotta",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "pink_glazed_terracotta",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "11": {
-                "displayName": "Pink Glazed Terracotta",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -2736,16 +2655,7 @@
             "10": {
                 "displayName": "Gray Glazed Terracotta",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "gray_glazed_terracotta",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "11": {
-                "displayName": "Gray Glazed Terracotta",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -2894,22 +2804,13 @@
             "10": {
                 "displayName": "Light Gray Glazed Terracotta",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "silver_glazed_terracotta",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "11": {
-                "displayName": "Light Gray Glazed Terracotta",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
                     "1.16.5"
                 ],
-                "NBTWorkerName": "light_gray_glazed_terracotta",
+                "NBTWorkerName": "silver_glazed_terracotta",
                 "NBTWorkerArgs": {},
                 "supportBlockMandatory": false,
                 "flammable": false
@@ -3066,16 +2967,7 @@
             "11": {
                 "displayName": "Prismarine",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "prismarine",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "12": {
-                "displayName": "Prismarine",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -3238,16 +3130,7 @@
             "11": {
                 "displayName": "Mycelium",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "mycelium",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "12": {
-                "displayName": "Mycelium",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -3396,16 +3279,7 @@
             "10": {
                 "displayName": "Blue Glazed Terracotta",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "blue_glazed_terracotta",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "11": {
-                "displayName": "Blue Glazed Terracotta",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -3674,16 +3548,7 @@
             "19": {
                 "displayName": "Soul Sand",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "soul_sand",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "20": {
-                "displayName": "Soul Sand",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -3832,16 +3697,7 @@
             "10": {
                 "displayName": "Green Glazed Terracotta",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "green_glazed_terracotta",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "11": {
-                "displayName": "Green Glazed Terracotta",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -4027,16 +3883,7 @@
             "13": {
                 "displayName": "Nether Wart Block",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "nether_wart_block",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "14": {
-                "displayName": "Nether Wart Block",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -4213,16 +4060,7 @@
             "12": {
                 "displayName": "Obsidian",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "obsidian",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "13": {
-                "displayName": "Obsidian",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -4357,16 +4195,7 @@
             "5": {
                 "displayName": "Beacon",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "beacon",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": true,
-                "flammable": false
-            },
-            "6": {
-                "displayName": "Beacon",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -4390,16 +4219,7 @@
             "0": {
                 "displayName": "Lapis Lazuli Block",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "lapis_block",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "1": {
-                "displayName": "Lapis Lazuli Block",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
@@ -4423,16 +4243,7 @@
             "0": {
                 "displayName": "Block of Emerald",
                 "validVersions": [
-                    "1.12.2"
-                ],
-                "NBTWorkerName": "emerald_block",
-                "NBTWorkerArgs": {},
-                "supportBlockMandatory": false,
-                "flammable": false
-            },
-            "1": {
-                "displayName": "Block of Emerald",
-                "validVersions": [
+                    "1.12.2",
                     "1.13.2",
                     "1.14.4",
                     "1.15.2",
