@@ -108,4 +108,47 @@ if __name__ == "__main__":
             "flammable": theBlock[6]
         }
 
+    # Now reshuffle
+
+    def reOrder(colourSetId, newOrder):
+        assert len(newOrder) == 1 + max(newOrder)
+        assert len(newOrder) == len(colours_new[str(colourSetId)]["blocks"].keys())
+        assert len(set(newOrder)) == len(newOrder)
+
+        colours_new[str(colourSetId)]["blocks"] = {str(index): colours_new[str(colourSetId)]["blocks"][str(key)] for (index, key) in enumerate(newOrder)}
+
+    reOrder(0, [0,2, 1,3])
+    reOrder(1, [0, 1, 2,12, 3,8, 4,9, 5,10, 6, 7,11]) # TODO prunebine 12
+    # TODO prunebine 3:2
+    # TODO prunebine 4:2
+    reOrder(6, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11])
+    # TODO prunbine 7
+    reOrder(8, [0,7,1,8,2,9,3,4,10,5,6,11])
+    reOrder(9, [0, 3,9, 1, 2,8, 4,10, 5, 6,11, 7])
+    # TODO prunebine 10
+    reOrder(11, [0,4, 1,5, 2,6, 3])
+    reOrder(12, [0,5, 1,6, 2, 3,7, 4,8]) # prunebine 7+8
+    reOrder(13, [0,8, 1,9, 2,10, 3,11, 4,12, 5, 6,13, 7,14])
+    reOrder(14, [0,12, 1,13, 2,14, 3,15, 4,16, 5, 6,17, 7,18, 8,19, 9,20, 10,21, 11,22])
+    reOrder(15, [0,8, 1,9, 2,10, 3,11, 4,12, 5, 6, 7,13])
+    reOrder(16, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11]) # prunebine 10+11
+    reOrder(17, [0,8, 1,9, 2,10, 3,11, 4,12, 5, 6, 7,13]) # prunebine 12+13
+    reOrder(18, [0,7, 1,8, 2,9, 3,10, 4,11, 5, 6,12])
+    reOrder(19, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11]) # prunebine 10+11
+    reOrder(20, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11]) # prunebine 10+11
+    reOrder(21, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11]) # prunebine 10+11
+    reOrder(22, [0,7, 1,8, 2,9, 3,10, 4,11, 5, 6,12]) #prunebine 11+12
+    reOrder(23, [0,7, 1,8, 2,9, 3,10, 4,11, 5, 6,12]) # prunebine 11+12
+    reOrder(24, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11]) #prunebine 10+11
+    reOrder(25, [0,11, 1,12, 2,13, 3,14, 4,15, 5, 6,16, 7,17, 8,18, 9,19, 10,20]) # prunebine 19+20
+    reOrder(26, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11]) #prunebine 10+11
+    reOrder(27, [0,8, 1,9, 2,10, 3,11, 4,12, 5, 6,13, 7,14]) #prunebine 13+14
+    reOrder(28, [0,8, 1,9, 2,10, 3,11, 4,12, 5, 6, 7,13])#prunebine 12+13
+
+    reOrder(30, [0, 1,4, 2,5, 3,6]) #prunebine 5+6
+    #31 prunebine 0+1
+    #32 prunebine 0+1
+    reOrder(33, [0,6, 1,7, 2,8, 3,9, 4,10, 5,11])
+    reOrder(34, [0, 1,4, 2,5, 3,6])
+
     saveJSON("./SAOColoursList.json", colours_new)
