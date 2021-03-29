@@ -1,0 +1,43 @@
+.blockSelection {
+  float: left;
+}
+
+.colourSet {
+  display: flex;
+  flex-direction: row;
+}
+
+.colourSetBox {
+  float: left;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  margin-bottom: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.blockImage {
+  width: 32px;
+  height: 32px;
+}
+
+/* IMAGE STYLES */
+[type="radio"] + img {
+  cursor: pointer;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  background-color: #222;
+  -webkit-filter: drop-shadow(0 0 0px #222);
+  transition: background-color 0.2s;
+}
+
+/* CHECKED STYLES */
+[type="radio"]:checked + img {
+  background-color: #658968;
+  -webkit-filter: drop-shadow(0 0 4px #658968);
+  z-index: 10;
+}

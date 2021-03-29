@@ -1,0 +1,5303 @@
+{
+    "0": {
+        "tones": {
+            "dark": "#597D27",
+            "normal": "#6D9930",
+            "light": "#7FB238",
+            "unobtainable": "#435E1D"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Grass Block",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "grass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Grass Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "grass_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Slime Block",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "slime",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Slime Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "slime_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "1": {
+        "tones": {
+            "dark": "#AEA473",
+            "normal": "#D5C98C",
+            "light": "#F7E9A3",
+            "unobtainable": "#827B56"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Sand",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "sand",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Sandstone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "sandstone",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Sandstone Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone_slab",
+                "NBTWorkerArgs": {
+                    "variant": "sandstone"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Sandstone Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "sandstone_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "4": {
+                "displayName": "Birch Log (vertical)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "axis": "y",
+                    "variant": "birch"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "5": {
+                "displayName": "Birch Log (vertical)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "birch_log",
+                "NBTWorkerArgs": {
+                    "axis": "y"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "6": {
+                "displayName": "Birch Planks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "planks",
+                "NBTWorkerArgs": {
+                    "variant": "birch"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "7": {
+                "displayName": "Birch Planks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "birch_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "8": {
+                "displayName": "Birch Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wooden_slab",
+                "NBTWorkerArgs": {
+                    "variant": "birch"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "9": {
+                "displayName": "Birch Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "birch_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "10": {
+                "displayName": "Glowstone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "glowstone",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "End Stone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "end_stone",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "2": {
+        "tones": {
+            "dark": "#8C8C8C",
+            "normal": "#ABABAB",
+            "light": "#C7C7C7",
+            "unobtainable": "#696969"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Cobweb",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "web",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Cobweb",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cobweb",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "3": {
+        "tones": {
+            "dark": "#B40000",
+            "normal": "#DC0000",
+            "light": "#FF0000",
+            "unobtainable": "#870000"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "TNT",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "tnt",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Block of Redstone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "redstone_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "4": {
+        "tones": {
+            "dark": "#7070B4",
+            "normal": "#8A8ADC",
+            "light": "#A0A0FF",
+            "unobtainable": "#545487"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Ice",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "ice",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Packed Ice",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "packed_ice",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "5": {
+        "tones": {
+            "dark": "#757575",
+            "normal": "#909090",
+            "light": "#A7A7A7",
+            "unobtainable": "#585858"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Block of Iron",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "iron_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Iron Trapdoor",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "iron_trapdoor",
+                "NBTWorkerArgs": {
+                    "half": "bottom"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Iron Bars",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "iron_bars",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Weighted Pressure Plate (Heavy)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "heavy_weighted_pressure_plate",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "4": {
+                "displayName": "Heavy Weighted Pressure Plate",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "heavy_weighted_pressure_plate",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "6": {
+        "tones": {
+            "dark": "#005700",
+            "normal": "#006A00",
+            "light": "#007C00",
+            "unobtainable": "#004100"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Leaves (Oak)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "leaves",
+                "NBTWorkerArgs": {
+                    "decayable": "false",
+                    "check_decay": "false",
+                    "variant": "oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Leaves (Oak)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "oak_leaves",
+                "NBTWorkerArgs": {
+                    "persistent": "true"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Leaves (Spruce)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "leaves",
+                "NBTWorkerArgs": {
+                    "decayable": "false",
+                    "check_decay": "false",
+                    "variant": "spruce"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Leaves (Spruce)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "spruce_leaves",
+                "NBTWorkerArgs": {
+                    "persistent": "true"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Leaves (Birch)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "leaves",
+                "NBTWorkerArgs": {
+                    "decayable": "false",
+                    "check_decay": "false",
+                    "variant": "birch"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "5": {
+                "displayName": "Leaves (Birch)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "birch_leaves",
+                "NBTWorkerArgs": {
+                    "persistent": "true"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "6": {
+                "displayName": "Leaves (Jungle)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "leaves",
+                "NBTWorkerArgs": {
+                    "decayable": "false",
+                    "check_decay": "false",
+                    "variant": "jungle"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "7": {
+                "displayName": "Leaves (Jungle)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "jungle_leaves",
+                "NBTWorkerArgs": {
+                    "persistent": "true"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "8": {
+                "displayName": "Leaves (Acacia)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "leaves2",
+                "NBTWorkerArgs": {
+                    "decayable": "false",
+                    "check_decay": "false",
+                    "variant": "acacia"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "9": {
+                "displayName": "Leaves (Acacia)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "acacia_leaves",
+                "NBTWorkerArgs": {
+                    "persistent": "true"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "10": {
+                "displayName": "Leaves (Dark Oak)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "leaves2",
+                "NBTWorkerArgs": {
+                    "decayable": "false",
+                    "check_decay": "false",
+                    "variant": "dark_oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "11": {
+                "displayName": "Leaves (Dark Oak)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "dark_oak_leaves",
+                "NBTWorkerArgs": {
+                    "persistent": "true"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            }
+        }
+    },
+    "7": {
+        "tones": {
+            "dark": "#737681",
+            "normal": "#8D909E",
+            "light": "#A4A8B8",
+            "unobtainable": "#565861"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Clay",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "clay",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "8": {
+        "tones": {
+            "dark": "#6A4C36",
+            "normal": "#825E42",
+            "light": "#976D4D",
+            "unobtainable": "#4F3928"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Jungle Log (vertical)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "axis": "y",
+                    "variant": "jungle"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Jungle Log (vertical)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "jungle_log",
+                "NBTWorkerArgs": {
+                    "axis": "y"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Jungle Planks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "planks",
+                "NBTWorkerArgs": {
+                    "variant": "jungle"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Jungle Planks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "jungle_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Jungle Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wooden_slab",
+                "NBTWorkerArgs": {
+                    "variant": "jungle"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "5": {
+                "displayName": "Jungle Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "jungle_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "6": {
+                "displayName": "Dirt",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "dirt",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Coarse Dirt",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "dirt",
+                "NBTWorkerArgs": {
+                    "variant": "coarse_dirt"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Coarse Dirt",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "coarse_dirt",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Jukebox",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "jukebox",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Granite",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone",
+                "NBTWorkerArgs": {
+                    "variant": "granite"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Granite",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "granite",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "9": {
+        "tones": {
+            "dark": "#4F4F4F",
+            "normal": "#606060",
+            "light": "#707070",
+            "unobtainable": "#3B3B3B"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Cobblestone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cobblestone",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Cobblestone Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone_slab",
+                "NBTWorkerArgs": {
+                    "variant": "cobblestone"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Cobblestone Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cobblestone_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Stone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "stone",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "4": {
+                "displayName": "Stone Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone_slab",
+                "NBTWorkerArgs": {
+                    "variant": "stone"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Stone Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "stone_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Andesite",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone",
+                "NBTWorkerArgs": {
+                    "variant": "andesite"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Andesite",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "andesite",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Bedrock",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "bedrock",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Acacia Log (horizontal)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log2",
+                "NBTWorkerArgs": {
+                    "variant": "acacia",
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "10": {
+                "displayName": "Acacia Log (horizontal)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "acacia_log",
+                "NBTWorkerArgs": {
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "11": {
+                "displayName": "Gravel",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gravel",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "10": {
+        "tones": {
+            "dark": "#2D2DB4",
+            "normal": "#3737DC",
+            "light": "#4040FF",
+            "unobtainable": "#212187"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Water (Unsupported!)",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "water",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "11": {
+        "tones": {
+            "dark": "#645432",
+            "normal": "#7B663E",
+            "light": "#8F7748",
+            "unobtainable": "#4B3F26"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Oak Log (vertical)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "axis": "y",
+                    "variant": "oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Oak Log (vertical)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "oak_log",
+                "NBTWorkerArgs": {
+                    "axis": "y"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Oak Planks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "planks",
+                "NBTWorkerArgs": {
+                    "variant": "oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Oak Planks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "oak_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Oak Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wooden_slab",
+                "NBTWorkerArgs": {
+                    "variant": "oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "5": {
+                "displayName": "Oak Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "oak_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "6": {
+                "displayName": "Crafting Table",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "crafting_table",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "12": {
+        "tones": {
+            "dark": "#B4B1AC",
+            "normal": "#DCD9D3",
+            "light": "#FFFCF5",
+            "unobtainable": "#878581"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Birch Log (horizontal)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "variant": "birch",
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Birch Log (horizontal)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "birch_log",
+                "NBTWorkerArgs": {
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Diorite",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone",
+                "NBTWorkerArgs": {
+                    "variant": "diorite"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Diorite",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "diorite",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "4": {
+                "displayName": "Quartz Block",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "quartz_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Quartz Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone_slab",
+                "NBTWorkerArgs": {
+                    "variant": "quartz"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Quartz Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "quartz_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Sea Lantern",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "sea_lantern",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "13": {
+        "tones": {
+            "dark": "#B4B4B4",
+            "normal": "#DCDCDC",
+            "light": "#FFFFFF",
+            "unobtainable": "#878787"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "White Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "white"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "White Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "White Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "white"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "White Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "White Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "white"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "White Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "White Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "white"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "White Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "White Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "white"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "White Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "White Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Snow Block",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "snow",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "12": {
+                "displayName": "Snow Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "snow_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "13": {
+                "displayName": "Snow Layer",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "snow_layer",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "14": {
+                "displayName": "Snow Layer",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "snow",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "14": {
+        "tones": {
+            "dark": "#985924",
+            "normal": "#BA6D2C",
+            "light": "#D87F33",
+            "unobtainable": "#72431B"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Orange Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "orange"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Orange Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Orange Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "orange"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Orange Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Orange Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "orange"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Orange Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Orange Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "orange"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Orange Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Orange Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "orange"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Orange Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Orange Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Acacia Log (vertical)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log2",
+                "NBTWorkerArgs": {
+                    "axis": "y",
+                    "variant": "acacia"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "12": {
+                "displayName": "Acacia Log (vertical)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "acacia_log",
+                "NBTWorkerArgs": {
+                    "axis": "y"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "13": {
+                "displayName": "Acacia Planks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "planks",
+                "NBTWorkerArgs": {
+                    "variant": "acacia"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "14": {
+                "displayName": "Acacia Planks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "acacia_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "15": {
+                "displayName": "Acacia Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wooden_slab",
+                "NBTWorkerArgs": {
+                    "variant": "acacia"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "16": {
+                "displayName": "Acacia Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "acacia_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "17": {
+                "displayName": "Red Sand",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "sand",
+                "NBTWorkerArgs": {
+                    "variant": "red_sand"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "18": {
+                "displayName": "Red Sand",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_sand",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "19": {
+                "displayName": "Red Sandstone",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "red_sandstone",
+                "NBTWorkerArgs": {
+                    "variant": "red_sandstone"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "20": {
+                "displayName": "Red Sandstone",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_sandstone",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "21": {
+                "displayName": "Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "hardened_clay",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "22": {
+                "displayName": "Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "15": {
+        "tones": {
+            "dark": "#7D3598",
+            "normal": "#9941BA",
+            "light": "#B24CD8",
+            "unobtainable": "#5E2872"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Magenta Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "magenta"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Magenta Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Magenta Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "magenta"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Magenta Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Magenta Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "magenta"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Magenta Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Magenta Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "magenta"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Magenta Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Magenta Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "magenta"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Magenta Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Magenta Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Purpur Block",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purpur_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "12": {
+                "displayName": "Purpur Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "purpur_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "13": {
+                "displayName": "Purpur Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purpur_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "16": {
+        "tones": {
+            "dark": "#486C98",
+            "normal": "#5884BA",
+            "light": "#6699D8",
+            "unobtainable": "#365172"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Light Blue Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "light_blue"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Light Blue Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Light Blue Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "light_blue"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Light Blue Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Light Blue Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "light_blue"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Light Blue Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Light Blue Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "light_blue"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Light Blue Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Light Blue Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "light_blue"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Light Blue Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Light Blue Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "17": {
+        "tones": {
+            "dark": "#A1A124",
+            "normal": "#C5C52C",
+            "light": "#E5E533",
+            "unobtainable": "#79791B"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Yellow Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "yellow"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Yellow Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Yellow Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "yellow"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Yellow Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Yellow Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "yellow"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Yellow Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Yellow Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "yellow"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Yellow Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Yellow Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "yellow"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Yellow Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Yellow Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Hay Bale",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "hay_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "12": {
+                "displayName": "Sponge (any)",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "sponge",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "18": {
+        "tones": {
+            "dark": "#599011",
+            "normal": "#6DB015",
+            "light": "#7FCC19",
+            "unobtainable": "#436C0D"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Lime Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "lime"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Lime Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Lime Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "lime"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Lime Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Lime Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "lime"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Lime Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Lime Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "lime"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Lime Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Lime Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "lime"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Lime Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Lime Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Melon",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "melon_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "12": {
+                "displayName": "Melon",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "melon",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "19": {
+        "tones": {
+            "dark": "#AA5974",
+            "normal": "#D06D8E",
+            "light": "#F27FA5",
+            "unobtainable": "#804357"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Pink Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "pink"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Pink Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Pink Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "pink"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Pink Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Pink Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "pink"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Pink Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Pink Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "pink"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Pink Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Pink Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "pink"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Pink Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Pink Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "20": {
+        "tones": {
+            "dark": "#353535",
+            "normal": "#414141",
+            "light": "#4C4C4C",
+            "unobtainable": "#282828"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Gray Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "gray"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Gray Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Gray Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "gray"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Gray Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Gray Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "gray"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Gray Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Gray Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "gray"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Gray Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Gray Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "gray"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Gray Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Gray Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "21": {
+        "tones": {
+            "dark": "#6C6C6C",
+            "normal": "#848484",
+            "light": "#999999",
+            "unobtainable": "#515151"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Light Gray Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "silver"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Light Gray Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_gray_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Light Gray Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "silver"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Light Gray Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_gray_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Light Gray Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "silver"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Light Gray Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_gray_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Light Gray Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "silver"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Light Gray Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_gray_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Light Gray Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "silver"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Light Gray Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_gray_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Light Gray Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "silver_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "22": {
+        "tones": {
+            "dark": "#35596C",
+            "normal": "#416D84",
+            "light": "#4C7F99",
+            "unobtainable": "#284351"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Cyan Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "cyan"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Cyan Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Cyan Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "cyan"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Cyan Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Cyan Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "cyan"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Cyan Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Cyan Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "cyan"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Cyan Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Cyan Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "cyan"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Cyan Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Cyan Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Prismarine",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "prismarine",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "23": {
+        "tones": {
+            "dark": "#592C7D",
+            "normal": "#6D3699",
+            "light": "#7F3FB2",
+            "unobtainable": "#43215E"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Purple Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "purple"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Purple Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Purple Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "purple"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Purple Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Purple Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "purple"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Purple Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Purple Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "purple"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Purple Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Purple Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "purple"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Purple Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Purple Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Mycelium",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "mycelium",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "24": {
+        "tones": {
+            "dark": "#24357D",
+            "normal": "#2C4199",
+            "light": "#334CB2",
+            "unobtainable": "#1B285E"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Blue Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "blue"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Blue Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Blue Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "blue"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Blue Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Blue Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "blue"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Blue Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Blue Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "blue"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Blue Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Blue Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "blue"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Blue Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Blue Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "25": {
+        "tones": {
+            "dark": "#483524",
+            "normal": "#58412C",
+            "light": "#664C33",
+            "unobtainable": "#36281B"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Brown Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "brown"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Brown Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Brown Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "brown"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Brown Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Brown Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "brown"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Brown Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Brown Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "brown"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Brown Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Brown Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "brown"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Brown Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Brown Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Dark Oak Log (any direction)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log2",
+                "NBTWorkerArgs": {
+                    "axis": "y",
+                    "variant": "dark_oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "12": {
+                "displayName": "Dark Oak Log (any direction)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "dark_oak_log",
+                "NBTWorkerArgs": {
+                    "axis": "y"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "13": {
+                "displayName": "Dark Oak Planks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "planks",
+                "NBTWorkerArgs": {
+                    "variant": "dark_oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "14": {
+                "displayName": "Dark Oak Planks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "dark_oak_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "15": {
+                "displayName": "Dark Oak Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wooden_slab",
+                "NBTWorkerArgs": {
+                    "variant": "dark_oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "16": {
+                "displayName": "Dark Oak Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "dark_oak_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "17": {
+                "displayName": "Spruce Log (horizontal)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "variant": "spruce",
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "18": {
+                "displayName": "Spruce Log (horizontal)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "spruce_log",
+                "NBTWorkerArgs": {
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "19": {
+                "displayName": "Soul Sand",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "soul_sand",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "26": {
+        "tones": {
+            "dark": "#485924",
+            "normal": "#586D2C",
+            "light": "#667F33",
+            "unobtainable": "#36431B"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Green Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "green"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Green Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Green Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "green"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Green Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Green Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "green"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Green Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Green Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "green"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Green Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Green Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "green"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Green Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Green Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "27": {
+        "tones": {
+            "dark": "#6C2424",
+            "normal": "#842C2C",
+            "light": "#993333",
+            "unobtainable": "#511B1B"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Red Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "red"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Red Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Red Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "red"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Red Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Red Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "red"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Red Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Red Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "red"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Red Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Red Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "red"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Red Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Red Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Bricks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "brick_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "12": {
+                "displayName": "Bricks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "bricks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "13": {
+                "displayName": "Nether Wart Block",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "nether_wart_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "28": {
+        "tones": {
+            "dark": "#111111",
+            "normal": "#151515",
+            "light": "#191919",
+            "unobtainable": "#0D0D0D"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Black Wool",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wool",
+                "NBTWorkerArgs": {
+                    "color": "black"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Black Wool",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_wool",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Black Carpet",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "carpet",
+                "NBTWorkerArgs": {
+                    "color": "black"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Black Carpet",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_carpet",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Black Stained Glass",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_glass",
+                "NBTWorkerArgs": {
+                    "color": "black"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Black Stained Glass",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_stained_glass",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "6": {
+                "displayName": "Black Concrete",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete",
+                "NBTWorkerArgs": {
+                    "color": "black"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "7": {
+                "displayName": "Black Concrete",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_concrete",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "8": {
+                "displayName": "Black Concrete Powder",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "concrete_powder",
+                "NBTWorkerArgs": {
+                    "color": "black"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "9": {
+                "displayName": "Black Concrete Powder",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_concrete_powder",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "10": {
+                "displayName": "Black Glazed Terracotta",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_glazed_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Block of Coal",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "coal_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "12": {
+                "displayName": "Obsidian",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "obsidian",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "29": {
+        "tones": {
+            "dark": "#B0A836",
+            "normal": "#D7CD42",
+            "light": "#FAEE4D",
+            "unobtainable": "#847E28"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Block of Gold",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gold_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Weighted Pressure Plate (Light)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "light_weighted_pressure_plate",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Light Weighted Pressure Plate",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_weighted_pressure_plate",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "30": {
+        "tones": {
+            "dark": "#409A96",
+            "normal": "#4FBCB7",
+            "light": "#5CDBD5",
+            "unobtainable": "#307370"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Block of Diamond",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "diamond_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Prismarine Bricks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "prismarine",
+                "NBTWorkerArgs": {
+                    "variant": "prismarine_bricks"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Prismarine Bricks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "prismarine_bricks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Dark Prismarine",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "prismarine",
+                "NBTWorkerArgs": {
+                    "variant": "dark_prismarine"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "4": {
+                "displayName": "Dark Prismarine",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "dark_prismarine",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Beacon",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "beacon",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": true,
+                "flammable": false
+            }
+        }
+    },
+    "31": {
+        "tones": {
+            "dark": "#345AB4",
+            "normal": "#3F6EDC",
+            "light": "#4A80FF",
+            "unobtainable": "#274387"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Lapis Lazuli Block",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lapis_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "32": {
+        "tones": {
+            "dark": "#009928",
+            "normal": "#00BB32",
+            "light": "#00D93A",
+            "unobtainable": "#00721E"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Block of Emerald",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "emerald_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "33": {
+        "tones": {
+            "dark": "#5B3C22",
+            "normal": "#6F4A2A",
+            "light": "#815631",
+            "unobtainable": "#442D19"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Spruce Log (vertical)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "axis": "y",
+                    "variant": "spruce"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Spruce Log (vertical)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "spruce_log",
+                "NBTWorkerArgs": {
+                    "axis": "y"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "2": {
+                "displayName": "Spruce Planks",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "planks",
+                "NBTWorkerArgs": {
+                    "variant": "spruce"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "3": {
+                "displayName": "Spruce Planks",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "spruce_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "4": {
+                "displayName": "Spruce Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "wooden_slab",
+                "NBTWorkerArgs": {
+                    "variant": "spruce"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "5": {
+                "displayName": "Spruce Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "spruce_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "6": {
+                "displayName": "Oak Log (horizontal)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "axis": "x",
+                    "variant": "oak"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "7": {
+                "displayName": "Oak Log (horizontal)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "oak_log",
+                "NBTWorkerArgs": {
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "8": {
+                "displayName": "Jungle Log (horizontal)",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "log",
+                "NBTWorkerArgs": {
+                    "axis": "x",
+                    "variant": "jungle"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "9": {
+                "displayName": "Jungle Log (horizontal)",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "jungle_log",
+                "NBTWorkerArgs": {
+                    "axis": "x"
+                },
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "10": {
+                "displayName": "Podzol",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "dirt",
+                "NBTWorkerArgs": {
+                    "variant": "podzol"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "11": {
+                "displayName": "Podzol",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "podzol",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "34": {
+        "tones": {
+            "dark": "#4F0100",
+            "normal": "#600100",
+            "light": "#700200",
+            "unobtainable": "#3B0100"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Netherrack",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "netherrack",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "1": {
+                "displayName": "Nether Brick",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "nether_brick",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Nether Brick",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "nether_bricks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Nether Brick Slab",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stone_slab",
+                "NBTWorkerArgs": {
+                    "variant": "nether_brick"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "4": {
+                "displayName": "Nether Brick Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "nether_brick_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "5": {
+                "displayName": "Magma Block",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "magma",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            },
+            "6": {
+                "displayName": "Magma Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magma_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": true
+            }
+        }
+    },
+    "35": {
+        "tones": {
+            "dark": "#937C71",
+            "normal": "#B4988A",
+            "light": "#D1B1A1",
+            "unobtainable": "#6E5D55"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "White Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "white"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "White Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "white_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "36": {
+        "tones": {
+            "dark": "#703919",
+            "normal": "#89461F",
+            "light": "#9F5224",
+            "unobtainable": "#542B13"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Orange Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "orange"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Orange Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "orange_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "37": {
+        "tones": {
+            "dark": "#693D4C",
+            "normal": "#804B5D",
+            "light": "#95576C",
+            "unobtainable": "#4E2E39"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Magenta Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "magenta"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Magenta Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "magenta_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "38": {
+        "tones": {
+            "dark": "#4F4C61",
+            "normal": "#605D77",
+            "light": "#706C8A",
+            "unobtainable": "#3B3949"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Light Blue Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "light_blue"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Light Blue Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_blue_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "39": {
+        "tones": {
+            "dark": "#835D19",
+            "normal": "#A0721F",
+            "light": "#BA8524",
+            "unobtainable": "#624613"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Yellow Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "yellow"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Yellow Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "yellow_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "40": {
+        "tones": {
+            "dark": "#485225",
+            "normal": "#58642D",
+            "light": "#677535",
+            "unobtainable": "#363D1C"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Lime Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "lime"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Lime Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "lime_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "41": {
+        "tones": {
+            "dark": "#703637",
+            "normal": "#8A4243",
+            "light": "#A04D4E",
+            "unobtainable": "#542829"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Pink Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "pink"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Pink Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "pink_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "42": {
+        "tones": {
+            "dark": "#281C18",
+            "normal": "#31231E",
+            "light": "#392923",
+            "unobtainable": "#1E1512"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Gray Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "gray"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Gray Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "gray_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "43": {
+        "tones": {
+            "dark": "#5F4B45",
+            "normal": "#745C54",
+            "light": "#876B62",
+            "unobtainable": "#473833"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Light Gray Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "silver"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Light Gray Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "light_gray_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "44": {
+        "tones": {
+            "dark": "#3D4040",
+            "normal": "#4B4F4F",
+            "light": "#575C5C",
+            "unobtainable": "#2E3030"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Cyan Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "cyan"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Cyan Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "cyan_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "45": {
+        "tones": {
+            "dark": "#56333E",
+            "normal": "#693E4B",
+            "light": "#7A4958",
+            "unobtainable": "#40262E"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Purple Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "purple"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Purple Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "purple_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "46": {
+        "tones": {
+            "dark": "#352B40",
+            "normal": "#41354F",
+            "light": "#4C3E5C",
+            "unobtainable": "#282030"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Blue Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "blue"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Blue Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "blue_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "47": {
+        "tones": {
+            "dark": "#352318",
+            "normal": "#412B1E",
+            "light": "#4C3223",
+            "unobtainable": "#281A12"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Brown Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "brown"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Brown Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "brown_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "48": {
+        "tones": {
+            "dark": "#35391D",
+            "normal": "#414624",
+            "light": "#4C522A",
+            "unobtainable": "#282B16"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Green Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "green"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Green Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "green_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "49": {
+        "tones": {
+            "dark": "#642A20",
+            "normal": "#7A3327",
+            "light": "#8E3C2E",
+            "unobtainable": "#4B1F18"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Red Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "red"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Red Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "red_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "50": {
+        "tones": {
+            "dark": "#1A0F0B",
+            "normal": "#1F120D",
+            "light": "#251610",
+            "unobtainable": "#130B08"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Black Terracotta",
+                "validVersions": [
+                    "1.12.2"
+                ],
+                "NBTWorkerName": "stained_hardened_clay",
+                "NBTWorkerArgs": {
+                    "color": "black"
+                },
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Black Terracotta",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "black_terracotta",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "51": {
+        "tones": {
+            "dark": "#852122",
+            "normal": "#A3292A",
+            "light": "#BD3031",
+            "unobtainable": "#641919"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Crimson Nylium",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "crimson_nylium",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "52": {
+        "tones": {
+            "dark": "#682C44",
+            "normal": "#7F3653",
+            "light": "#943F61",
+            "unobtainable": "#4E2133"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Crimson Stem",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "crimson_stem",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Stripped Crimson Stem",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "stripped_crimson_stem",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Crimson Planks",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "crimson_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Crimson Slab",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "crimson_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "53": {
+        "tones": {
+            "dark": "#401114",
+            "normal": "#4F1519",
+            "light": "#5C191D",
+            "unobtainable": "#300D0F"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Crimson Hyphae",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "crimson_hyphae",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Stripped Crimson Hyphae",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "stripped_crimson_hyphae",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "54": {
+        "tones": {
+            "dark": "#0F585E",
+            "normal": "#126C73",
+            "light": "#167E86",
+            "unobtainable": "#0B4246"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Warped Nylium",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "warped_nylium",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "55": {
+        "tones": {
+            "dark": "#286462",
+            "normal": "#327A78",
+            "light": "#3A8E8C",
+            "unobtainable": "#1E4B4A"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Warped Stem",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "warped_stem",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Stripped Warped Stem",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "stripped_warped_stem",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "2": {
+                "displayName": "Warped Planks",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "warped_planks",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "3": {
+                "displayName": "Warped Slab",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "warped_slab",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "56": {
+        "tones": {
+            "dark": "#3C1F2B",
+            "normal": "#4A2535",
+            "light": "#562C3E",
+            "unobtainable": "#2D1720"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Warped Hyphae",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "warped_hyphae",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            },
+            "1": {
+                "displayName": "Stripped Warped Hyphae",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "stripped_warped_hyphae",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    },
+    "57": {
+        "tones": {
+            "dark": "#0E7F5D",
+            "normal": "#119B72",
+            "light": "#14B485",
+            "unobtainable": "#0A5F46"
+        },
+        "blocks": {
+            "0": {
+                "displayName": "Warped Wart Block",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "NBTWorkerName": "warped_wart_block",
+                "NBTWorkerArgs": {},
+                "supportBlockMandatory": false,
+                "flammable": false
+            }
+        }
+    }
+}

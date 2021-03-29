@@ -1,0 +1,25 @@
+.languages {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.languages img {
+  cursor: pointer;
+  height: 50px;
+}
+
+.flag-et_pop {
+  display: none;
+}
+
+.flag-et:hover {
+  display: none;
+}
+
+.flag-et:hover + .flag-et_pop {
+  display: initial;
+}

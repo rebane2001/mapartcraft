@@ -1,0 +1,4 @@
+.contactInfoBlurred {
+    filter: blur(0.5em);
+    cursor: pointer;
+  }

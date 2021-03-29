@@ -1,0 +1,9 @@
+- Continue stripping master branch material into here
+- All main map rendering section
+- Version change coloursets reset
+- Preset saving
+- Locale fallback to EN
+- FAQ
+- Tooltip hover
+- Map signing possibly
+- Look at issues on Rebane repo
