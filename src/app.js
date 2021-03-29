@@ -2,12 +2,17 @@ import React, { Component } from "react";
 
 import CookieManager from "./cookieManager";
 
+import FAQ from "./components/faq";
 import Header from "./components/header";
 import Languages from "./components/languages";
 import MapartController from "./components/mapart/mapartController";
 
 class App extends Component {
-  state = { localeStrings: {}, localeLoaded: false };
+  state = {
+    localeStrings: {},
+    localeLoaded: false,
+    displayingFAQ: false,
+  };
 
   getLocaleString = (stringName) => {
     const { localeStrings } = this.state;
@@ -16,6 +21,14 @@ class App extends Component {
     } else {
       return "EN:"; //TODO fall back to EN
     }
+  };
+
+  showFAQ = () => {
+    this.setState({ displayingFAQ: true });
+  };
+
+  hideFAQ = () => {
+    this.setState({ displayingFAQ: false });
   };
 
   onFlagClick = (countryCode) => {
@@ -46,18 +59,27 @@ class App extends Component {
   }
 
   render() {
-    const { localeLoaded } = this.state;
-    return localeLoaded ? (
+    const { localeLoaded, displayingFAQ } = this.state;
+    return (
       <div className="App">
-        <Languages onFlagClick={this.onFlagClick}></Languages>
-        <Header getLocaleString={this.getLocaleString}></Header>
-        <MapartController
-          getLocaleString={this.getLocaleString}
-        ></MapartController>
-      </div>
-    ) : (
-      <div>
-        <h1>Loading locale... 🌐</h1>
+        {displayingFAQ ? (
+          <FAQ onCloseClick={this.hideFAQ} />
+        ) : (
+          <React.Fragment>
+            {localeLoaded ? (
+              <React.Fragment>
+                <Languages onFlagClick={this.onFlagClick} />
+                <Header
+                  getLocaleString={this.getLocaleString}
+                  onFAQClick={this.showFAQ}
+                />
+                <MapartController getLocaleString={this.getLocaleString} />
+              </React.Fragment>
+            ) : (
+              <h1>Loading locale... 🌐</h1>
+            )}
+          </React.Fragment>
+        )}
       </div>
     );
   }

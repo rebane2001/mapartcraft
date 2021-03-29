@@ -21,9 +21,9 @@ class Header extends Component {
       <div className="header">
         <h1>MapartCraft</h1>
         <h3>
-          <a href="faq.html" target="_blank" rel="noopener noreferrer">
+          <span className="FAQTextButton" onClick={this.props.onFAQClick}>
             {getLocaleString("FAQ")}
-          </a>
+          </span>
           <span> | </span>
           <a
             href="https://youtu.be/bJ-wX68WNHM"
