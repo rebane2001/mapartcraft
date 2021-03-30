@@ -22,10 +22,6 @@ class BlockSelection extends Component {
     }
   }
 
-  onChangeVersion = (e) => {
-    this.props.handleChangeVersion(e.target.value);
-  };
-
   onPresetChange = (e) => {
     console.log(e.target.value);
     this.setState({ selectedPresetName: e.target.value });
@@ -38,7 +34,13 @@ class BlockSelection extends Component {
   sharePreset = () => {};
 
   render() {
-    const { getLocaleString } = this.props;
+    const {
+      getLocaleString,
+      onChangeVersion,
+      onChangeColourSetBlock,
+      version,
+      selectedBlocks,
+    } = this.props;
     return (
       <div className="blockSelection section">
         <div className="blockSelectionHeader">
@@ -46,13 +48,13 @@ class BlockSelection extends Component {
             {getLocaleString("BLOCKSELECTIONTITLE")}
           </h2>
 
-          <b
-            data-tooltip
-            data-title={getLocaleString("SETTINGS-TT-VERSION")}
-          >
+          <b data-tooltip data-title={getLocaleString("SETTINGS-TT-VERSION")}>
             {getLocaleString("SETTINGS-VERSION") + ": "}
-            <select id="version" onChange={this.onChangeVersion}
-            defaultValue={this.props.version}>
+            <select
+              id="version"
+              onChange={onChangeVersion}
+              defaultValue={version}
+            >
               <option>1.12.2</option>
               <option>1.13.2</option>
               <option>1.14.4</option>
@@ -108,34 +110,31 @@ class BlockSelection extends Component {
                 }}
               ></div>
               <label>
-                <input
-                  type="radio"
-                  name={"colorSet" + colourSetId}
-                  value="-1"
-                  defaultChecked
-                ></input>
                 <img
                   src="./images/barrier.png"
                   alt={getLocaleString("NONE")}
+                  className={
+                    selectedBlocks[colourSetId] === "-1"
+                      ? "blockImage blockImage_selected"
+                      : "blockImage"
+                  }
                   data-tooltip
                   data-title={getLocaleString("NONE")}
+                  onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
                 ></img>
               </label>
               {Object.entries(colourSet["blocks"])
-                .filter(([, block]) =>
-                  block["validVersions"].includes(this.props.version)
-                )
+                .filter(([, block]) => block["validVersions"].includes(version))
                 .map(([blockId, block]) => (
                   <label key={blockId}>
-                    <input
-                      type="radio"
-                      name={"colorSet" + colourSetId}
-                      value={blockId}
-                    ></input>
                     <img
                       src="./images/null.png"
                       alt={block["displayName"]}
-                      className="blockImage"
+                      className={
+                        selectedBlocks[colourSetId] === blockId
+                          ? "blockImage blockImage_selected"
+                          : "blockImage"
+                      }
                       data-tooltip
                       data-title={block["displayName"]}
                       style={{
@@ -143,6 +142,9 @@ class BlockSelection extends Component {
                         backgroundPositionX: "-" + blockId + "00%",
                         backgroundPositionY: "-" + colourSetId + "00%",
                       }}
+                      onClick={() =>
+                        onChangeColourSetBlock(colourSetId, blockId)
+                      }
                     ></img>
                   </label>
                 ))}
