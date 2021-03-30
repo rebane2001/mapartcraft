@@ -40,6 +40,27 @@ class MapartController extends Component {
     });
   };
 
+  handleChangeColourSetBlocks = (setsAndBlocks) => {
+    const { version } = this.state;
+    let selectedBlocks = {};
+    Object.keys(coloursJSON).forEach((key) => (selectedBlocks[key] = "-1"));
+    setsAndBlocks.forEach((block) => {
+      const colourSetId = block[0].toString();
+      const blockId = block[1].toString();
+      if (
+        blockId !== "-1" &&
+        coloursJSON[colourSetId]["blocks"][blockId]["validVersions"].includes(
+          version
+        )
+      ) {
+        selectedBlocks[colourSetId] = blockId;
+      }
+    });
+    this.setState({
+      selectedBlocks,
+    });
+  };
+
   render() {
     const { getLocaleString } = this.props;
     const { version, selectedBlocks } = this.state;
@@ -49,6 +70,7 @@ class MapartController extends Component {
           getLocaleString={getLocaleString}
           onChangeVersion={this.handleChangeVersion}
           onChangeColourSetBlock={this.handleChangeColourSetBlock}
+          onChangeColourSetBlocks={this.handleChangeColourSetBlocks}
           version={version}
           selectedBlocks={selectedBlocks}
         ></BlockSelection>

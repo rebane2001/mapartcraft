@@ -9,29 +9,83 @@ import "./blockSelection.css";
 class BlockSelection extends Component {
   state = {
     customPresets: [],
-    selectedPresetName: null,
+    selectedPresetName: defaultPresets[0]["name"],
   };
 
   constructor(props) {
     super(props);
-    if (CookieManager.getCookie("presets") === "") {
-      CookieManager.setCookie("presets", "[]", 9000);
-    } else {
-      let customPresets = JSON.parse(CookieManager.getCookie("presets"));
-      this.state.customPresets = customPresets;
-    }
+    this.state.customPresets = JSON.parse(
+      CookieManager.touchCookie("customPresets", "[]")
+    );
   }
 
   onPresetChange = (e) => {
-    console.log(e.target.value);
-    this.setState({ selectedPresetName: e.target.value });
+    const { onChangeColourSetBlocks } = this.props;
+    const { customPresets } = this.state;
+    const presetName = e.target.value;
+
+    this.setState({ selectedPresetName: presetName });
+
+    const defaultPreset = defaultPresets.find(
+      (preset) => preset["name"] === presetName
+    );
+    if (defaultPreset !== undefined) {
+      onChangeColourSetBlocks(defaultPreset["blocks"]);
+      return;
+    }
+
+    const customPreset = customPresets.find(
+      (preset) => preset["name"] === presetName
+    );
+    if (customPreset !== undefined) {
+      onChangeColourSetBlocks(customPreset["blocks"]);
+      return;
+    }
   };
 
-  deletePreset = () => {};
+  deletePreset = () => {
+    const { customPresets, selectedPresetName } = this.state;
+    if (
+      !customPresets.find((preset) => preset["name"] === selectedPresetName)
+    ) {
+      // if a default preset selected then return
+      return;
+    }
 
-  savePreset = () => {};
+    const customPresets_new = customPresets.filter(
+      (preset) => preset["name"] !== selectedPresetName
+    );
+    this.setState({
+      customPresets: customPresets_new,
+      selectedPresetName: defaultPresets[0]["name"],
+    });
+    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new), 9000);
+  };
+
+  savePreset = () => {
+    const { getLocaleString, selectedBlocks } = this.props;
+    const { customPresets } = this.state;
+
+    let presetName = prompt(getLocaleString("PRESETS-ENTERNAME"), "");
+    if (presetName === null) {
+      return;
+    }
+
+    const otherPresets = customPresets.filter(
+      (preset) => preset["name"] !== presetName
+    );
+    let newPreset = { name: presetName, blocks: [] };
+    Object.keys(selectedBlocks).forEach((key) => {
+      newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
+    });
+    const customPresets_new = [...otherPresets, newPreset];
+    this.setState({ customPresets: customPresets_new });
+    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new), 9000);
+  };
 
   sharePreset = () => {};
+
+  importPreset = () => {};
 
   render() {
     const {
@@ -41,6 +95,7 @@ class BlockSelection extends Component {
       version,
       selectedBlocks,
     } = this.props;
+    const { customPresets } = this.state;
     return (
       <div className="blockSelection section">
         <div className="blockSelectionHeader">
@@ -68,13 +123,15 @@ class BlockSelection extends Component {
           <b>{getLocaleString("PRESETS") + ": "}</b>
           <select id="presets" onChange={this.onPresetChange}>
             {defaultPresets.map((preset) => (
-              <option key={preset["name"]}>
-                {getLocaleString(preset["name"])}
+              <option value={preset["name"]} key={preset["localeKey"]}>
+                {getLocaleString(preset["localeKey"])}
               </option>
             ))}
-            {/* {this.state.customPresets.map((preset) => (
-            <option>{preset}</option>
-          ))} */}
+            {customPresets.map((preset) => (
+              <option value={preset["name"]} key={preset["name"]}>
+                {preset["name"]}
+              </option>
+            ))}
           </select>
           <button type="button" onClick={this.deletePreset}>
             {getLocaleString("PRESETS-DELETE")}
