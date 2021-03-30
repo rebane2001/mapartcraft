@@ -16,7 +16,7 @@ class MapartController extends Component {
     );
     let defaultVersion;
     if (CookieManager.getCookie("defaultVersion") === "") {
-      CookieManager.setCookie("defaultVersion", "1.12.2", 9000);
+      CookieManager.setCookie("defaultVersion", "1.12.2");
       defaultVersion = "1.12.2";
     } else {
       defaultVersion = CookieManager.getCookie("defaultVersion");
@@ -28,7 +28,7 @@ class MapartController extends Component {
     const version = e.target.value;
     let selectedBlocks = {};
     Object.keys(coloursJSON).forEach((key) => (selectedBlocks[key] = "-1"));
-    CookieManager.setCookie("defaultVersion", version, 9000);
+    CookieManager.setCookie("defaultVersion", version);
     this.setState({ version, selectedBlocks });
   };
 

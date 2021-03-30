@@ -59,7 +59,7 @@ class BlockSelection extends Component {
       customPresets: customPresets_new,
       selectedPresetName: defaultPresets[0]["name"],
     });
-    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new), 9000);
+    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
   };
 
   savePreset = () => {
@@ -80,7 +80,7 @@ class BlockSelection extends Component {
     });
     const customPresets_new = [...otherPresets, newPreset];
     this.setState({ customPresets: customPresets_new });
-    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new), 9000);
+    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
   };
 
   sharePreset = () => {};

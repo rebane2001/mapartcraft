@@ -1,9 +1,9 @@
 class CookieManager {
   //Thx
   //https://www.w3schools.com/js/js_cookies.asp
-  static setCookie(cname, cvalue, exdays) {
+  static setCookie(cname, cvalue) {
     let d = new Date();
-    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    d.setTime(d.getTime() + 9000 * 24 * 60 * 60 * 1000);
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
@@ -30,7 +30,7 @@ class CookieManager {
     if (cookieValue !== "") {
       return cookieValue;
     } else {
-      this.setCookie(cname, defaultValue, 9000);
+      this.setCookie(cname, defaultValue);
       return defaultValue;
     }
   }

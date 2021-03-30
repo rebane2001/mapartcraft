@@ -32,7 +32,7 @@ class App extends Component {
   };
 
   onFlagClick = (countryCode) => {
-    CookieManager.setCookie("locale", countryCode, 9000);
+    CookieManager.setCookie("locale", countryCode);
     this.setState({ localeLoaded: false });
     fetch("./locale/" + countryCode + ".json")
       .then((response) => {
