@@ -17,4 +17,4 @@ A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane
 
 ## Running
 
-Build using `npm run build`, or run debug version with `npm start`
+Acquire packages with `npm install`. Build using `npm run build`, or run debug version with `npm start`

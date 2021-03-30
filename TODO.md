@@ -1,8 +1,7 @@
 - Continue stripping master branch material into here
 - All main map rendering section
-- Version change coloursets reset
-- Preset saving
 - Locale fallback to EN
 - Tooltip hover
-- Map signing possibly
+- Map signing
 - Look at issues on Rebane repo
+- Preset sharing
