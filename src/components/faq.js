@@ -206,8 +206,7 @@ class FAQ extends Component {
           You can use presets to save and load block configurations. Pick your
           blocks and click "Save" to save them as a preset, pick a preset to
           load it and click "Delete" to delete the loaded preset. It is also
-          possible to share a link for your preset with others. Presets are
-          Minecraft version specific.
+          possible to share a link for your preset with others.
         </p>
       </div>
     );

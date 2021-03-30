@@ -1,0 +1,15 @@
+// Presets are stored as a list of the following object
+{
+    "name": "My Preset", // Name to display the preset as
+    "blocks": [
+        [
+            11, // Colour set number as defined in example_SAOColoursList.jsonc
+            6 // Block number as defined in example_SAOColoursList.jsonc
+        ],
+        [
+            14, // Orangey
+            0 // Orange Wool
+        ]
+        // All non-specified colour sets will be reset to block number '-1' ie disabled
+    ]
+}

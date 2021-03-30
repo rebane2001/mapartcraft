@@ -111,10 +111,6 @@ if __name__ == "__main__":
     # Now reshuffle
 
     def reOrder(colourSetId, newOrder):
-        assert len(newOrder) == 1 + max(newOrder)
-        assert len(newOrder) == len(colours_new[str(colourSetId)]["blocks"].keys())
-        assert len(set(newOrder)) == len(newOrder)
-
         colours_new[str(colourSetId)]["blocks"] = {str(index): colours_new[str(colourSetId)]["blocks"][str(key)] for (index, key) in enumerate(newOrder)}
 
     reOrder(0, [0,2, 1,3])
@@ -174,5 +170,125 @@ if __name__ == "__main__":
     prunebine(30, [5,6])
     prunebine(31, [0,1])
     prunebine(32, [0,1])
+
+    for colset in colours_new:
+        for block in colours_new[colset]["blocks"].values():
+            block["NBTWorkerName1.12"] = block["NBTWorkerName"]
+            block["NBTWorkerArgs1.12"] = block["NBTWorkerArgs"]
+            block["NBTWorkerNameFlattening"] = block["NBTWorkerName"]
+            block["NBTWorkerArgsFlattening"] = block["NBTWorkerArgs"]
+            del block["NBTWorkerName"]
+            del block["NBTWorkerArgs"]
+
+    def flattenBine(colourSetId, toCombine):
+        mergeFrom = colours_new[str(colourSetId)]["blocks"][str(toCombine[1])]
+        mergeTo = colours_new[str(colourSetId)]["blocks"][str(toCombine[0])]
+        mergeTo["validVersions"] = mergeTo["validVersions"] + mergeFrom["validVersions"]
+        mergeTo["NBTWorkerNameFlattening"] = mergeFrom["NBTWorkerName1.12"]
+        mergeTo["NBTWorkerArgsFlattening"] = mergeFrom["NBTWorkerArgs1.12"]
+        del colours_new[str(colourSetId)]["blocks"][str(toCombine[1])]
+
+    flattenBine(0, [0,1])
+    flattenBine(0, [2,3])
+    flattenBine(1, [2,3])
+    flattenBine(1, [4,5])
+    flattenBine(1, [6,7])
+    flattenBine(1, [8,9])
+    flattenBine(2, [0,1])
+    flattenBine(5, [3,4])
+
+    flattenBine(6, [0,1])
+    flattenBine(6, [2,3])
+    flattenBine(6, [4,5])
+    flattenBine(6, [6,7])
+    flattenBine(6, [8,9])
+    flattenBine(6, [10,11])
+
+    flattenBine(8, [0,1])
+    flattenBine(8, [2,3])
+    flattenBine(8, [4,5])
+    flattenBine(8, [7,8])
+    flattenBine(8, [10,11])
+
+    flattenBine(9, [1,2])
+    flattenBine(9, [4,5])
+    flattenBine(9, [6,7])
+    flattenBine(9, [9,10])
+
+    flattenBine(11, [0,1])
+    flattenBine(11, [2,3])
+    flattenBine(11, [4,5])
+
+    flattenBine(12, [0,1])
+    flattenBine(12, [2,3])
+    flattenBine(12, [5,6])
+
+    for i in range(16):
+        flattenBine(13 + i, [0,1])
+        flattenBine(13 + i, [2,3])
+        flattenBine(13 + i, [4,5])
+        flattenBine(13 + i, [6,7])
+        flattenBine(13 + i, [8,9])
+
+    flattenBine(13, [11,12])
+    flattenBine(13, [13,14])
+
+    flattenBine(14, [11,12])
+    flattenBine(14, [13,14])
+    flattenBine(14, [15,16])
+    flattenBine(14, [17,18])
+    flattenBine(14, [19,20])
+    flattenBine(14, [21,22])
+
+    flattenBine(15, [12,13])
+
+    flattenBine(18, [11,12])
+
+    flattenBine(25, [11,12])
+    flattenBine(25, [13,14])
+    flattenBine(25, [15,16])
+    flattenBine(25, [17,18])
+
+    flattenBine(27, [11,12])
+
+    flattenBine(29, [1,2])
+
+    flattenBine(30, [1,2])
+    flattenBine(30, [3,4])
+
+    flattenBine(33, [0,1])
+    flattenBine(33, [2,3])
+    flattenBine(33, [4,5])
+    flattenBine(33, [6,7])
+    flattenBine(33, [8,9])
+    flattenBine(33, [10,11])
+
+    flattenBine(34, [1,2])
+    flattenBine(34, [3,4])
+    flattenBine(34, [5,6])
+
+    for i in range(16):
+        flattenBine(35 + i, [0,1])
+
+    #make blockIds 0-n
+    for i in range(58):
+        colours_new[str(i)]["blocks"] = {key: value for (key, value) in enumerate(colours_new[str(i)]["blocks"].values())}
+
+    for colourSetId, colourSet in colours_new.items():
+        for blockId, block in colourSet["blocks"].items():
+            if block["validVersions"] != [
+                "1.12.2",
+                "1.13.2",
+                "1.14.4",
+                "1.15.2",
+                "1.16.5"
+            ]:
+                # print(colourSetId, blockId)
+                if block["validVersions"] == ["1.12.2"]:
+                    del block["NBTWorkerNameFlattening"]
+                    del block["NBTWorkerArgsFlattening"]
+                if not "1.12.2" in block["validVersions"]:
+                    del block["NBTWorkerName1.12"]
+                    del block["NBTWorkerArgs1.12"]
 
     saveJSON("./SAOColoursList.json", colours_new)
