@@ -1,0 +1,15 @@
+.settingsDiv {
+  float: left;
+}
+
+.mapSizeInput {
+  width: 2em;
+}
+
+.preProcessingInputBox {
+  width: 3em;
+}
+
+.donateA {
+  text-decoration: none;
+}

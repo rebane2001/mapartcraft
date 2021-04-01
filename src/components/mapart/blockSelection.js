@@ -79,7 +79,10 @@ class BlockSelection extends Component {
       newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
     });
     const customPresets_new = [...otherPresets, newPreset];
-    this.setState({ customPresets: customPresets_new });
+    this.setState({
+      customPresets: customPresets_new,
+      selectedPresetName: presetName,
+    });
     CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
   };
 
@@ -90,12 +93,11 @@ class BlockSelection extends Component {
   render() {
     const {
       getLocaleString,
-      onChangeVersion,
       onChangeColourSetBlock,
-      version,
+      optionValue_version,
       selectedBlocks,
     } = this.props;
-    const { customPresets } = this.state;
+    const { customPresets, selectedPresetName } = this.state;
     return (
       <div className="blockSelection section">
         <div className="blockSelectionHeader">
@@ -103,25 +105,12 @@ class BlockSelection extends Component {
             {getLocaleString("BLOCKSELECTIONTITLE")}
           </h2>
 
-          <b data-tooltip data-title={getLocaleString("SETTINGS-TT-VERSION")}>
-            {getLocaleString("SETTINGS-VERSION") + ": "}
-            <select
-              id="version"
-              onChange={onChangeVersion}
-              defaultValue={version}
-            >
-              <option>1.12.2</option>
-              <option>1.13.2</option>
-              <option>1.14.4</option>
-              <option>1.15.2</option>
-              <option>1.16.5</option>
-            </select>
-          </b>
-
-          <br></br>
-
           <b>{getLocaleString("PRESETS") + ": "}</b>
-          <select id="presets" onChange={this.onPresetChange}>
+          <select
+            id="presets"
+            value={selectedPresetName}
+            onChange={this.onPresetChange}
+          >
             {defaultPresets.map((preset) => (
               <option value={preset["name"]} key={preset["localeKey"]}>
                 {getLocaleString(preset["localeKey"])}
@@ -181,7 +170,9 @@ class BlockSelection extends Component {
                 ></img>
               </label>
               {Object.entries(colourSet["blocks"])
-                .filter(([, block]) => block["validVersions"].includes(version))
+                .filter(([, block]) =>
+                  block["validVersions"].includes(optionValue_version)
+                )
                 .map(([blockId, block]) => (
                   <label key={blockId}>
                     <img

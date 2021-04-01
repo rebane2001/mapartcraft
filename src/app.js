@@ -6,6 +6,7 @@ import FAQ from "./components/faq";
 import Header from "./components/header";
 import Languages from "./components/languages";
 import MapartController from "./components/mapart/mapartController";
+import locale_en from "./en.json";
 
 class App extends Component {
   state = {
@@ -19,7 +20,7 @@ class App extends Component {
     if (stringName in localeStrings) {
       return localeStrings[stringName];
     } else {
-      return "EN:"; //TODO fall back to EN
+      return "EN:" + locale_en[stringName]; //TODO fall back to EN
     }
   };
 
