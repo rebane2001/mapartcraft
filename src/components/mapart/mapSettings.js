@@ -51,7 +51,8 @@ class MapSettings extends Component {
         <h2>{getLocaleString("SETTINGSTITLE")}</h2>
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-MODE")}>
-          {getLocaleString("SETTINGS-MODE")}:
+          {getLocaleString("SETTINGS-MODE")}
+          {": "}
           <select
             onChange={onOptionChange_modeNBTOrMapdat}
             value={optionValue_modeNBTOrMapdat}
@@ -62,20 +63,21 @@ class MapSettings extends Component {
         </b>
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-VERSION")}>
-            {getLocaleString("SETTINGS-VERSION") + ": "}
-          </b>
-          <select
-            value={optionValue_version}
-            onChange={onOptionChange_version}
-          >
-            <option>1.12.2</option>
-            <option>1.13.2</option>
-            <option>1.14.4</option>
-            <option>1.15.2</option>
-            <option>1.16.5</option>
-          </select>
-        <br/>
-        <b>{getLocaleString("SETTINGS-MAPSIZE")}: </b>
+          {getLocaleString("SETTINGS-VERSION")}
+          {": "}
+        </b>
+        <select value={optionValue_version} onChange={onOptionChange_version}>
+          <option>1.12.2</option>
+          <option>1.13.2</option>
+          <option>1.14.4</option>
+          <option>1.15.2</option>
+          <option>1.16.5</option>
+        </select>
+        <br />
+        <b>
+          {getLocaleString("SETTINGS-MAPSIZE")}
+          {": "}
+        </b>
         <input
           className="mapSizeInput"
           type="number"
@@ -95,7 +97,8 @@ class MapSettings extends Component {
         />
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-CROP")}>
-          {getLocaleString("SETTINGS-CROP")}:{" "}
+          {getLocaleString("SETTINGS-CROP")}
+          {": "}
         </b>
         <input
           type="checkbox"
@@ -104,7 +107,8 @@ class MapSettings extends Component {
         />
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-GRIDOVERLAY")}>
-          {getLocaleString("SETTINGS-GRIDOVERLAY")}:{" "}
+          {getLocaleString("SETTINGS-GRIDOVERLAY")}
+          {": "}
         </b>
         <input
           type="checkbox"
@@ -113,7 +117,8 @@ class MapSettings extends Component {
         />
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-3D")}>
-          {getLocaleString("SETTINGS-3D")}:
+          {getLocaleString("SETTINGS-3D")}
+          {": "}
         </b>
         <select
           onChange={onOptionChange_staircasing}
@@ -130,7 +135,10 @@ class MapSettings extends Component {
         <br />
         {optionValue_modeNBTOrMapdat === "NBT" ? (
           <span>
-            <b>{getLocaleString("SETTINGS-UNDERBLOCKS")}:</b>
+            <b>
+              {getLocaleString("SETTINGS-UNDERBLOCKS")}
+              {": "}
+            </b>
             <select
               value={optionValue_whereSupportBlocks}
               onChange={onOptionChange_WhereSupportBlocks}
@@ -156,7 +164,8 @@ class MapSettings extends Component {
               data-tooltip
               data-title={getLocaleString("SETTINGS-TT-BLOCKTOADD")}
             >
-              {getLocaleString("SETTINGS-BLOCKTOADD")}:{" "}
+              {getLocaleString("SETTINGS-BLOCKTOADD")}
+              {": "}
             </b>
             <input
               type="text"
@@ -168,19 +177,30 @@ class MapSettings extends Component {
         ) : (
           <span>
             <b data-tooltip data-title={getLocaleString("SETTINGS-TT-UNOBT")}>
-              {getLocaleString("SETTINGS-UNOBT")}:{" "}
+              {getLocaleString("SETTINGS-UNOBT")}
+              {": "}
             </b>
-            <input type="checkbox" checked={optionValue_unobtainable} onChange={onOptionChange_unobtainable} />
+            <input
+              type="checkbox"
+              checked={optionValue_unobtainable}
+              onChange={onOptionChange_unobtainable}
+            />
             <br />
             <b data-tooltip data-title={getLocaleString("SETTINGS-TT-TRANS")}>
-              {getLocaleString("SETTINGS-TRANS")}:{" "}
+              {getLocaleString("SETTINGS-TRANS")}
+              {": "}
             </b>
-            <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
+            <input
+              type="checkbox"
+              checked={optionValue_transparency}
+              onChange={onOptionChange_transparency}
+            />
             <br />
           </span>
         )}
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-BETTERCOL")}>
-          {getLocaleString("SETTINGS-BETTERCOL")}:{" "}
+          {getLocaleString("SETTINGS-BETTERCOL")}
+          {": "}
         </b>
         <input
           type="checkbox"
@@ -189,9 +209,13 @@ class MapSettings extends Component {
         />
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-DITHER")}>
-          {getLocaleString("SETTINGS-DITHER")}:
+          {getLocaleString("SETTINGS-DITHER")}
+          {": "}
         </b>
-        <select value={optionValue_dithering} onChange={onOptionChange_dithering}>
+        <select
+          value={optionValue_dithering}
+          onChange={onOptionChange_dithering}
+        >
           <option value="None">
             {getLocaleString("SETTINGS-DITHER-NONE")}
           </option>
@@ -208,7 +232,10 @@ class MapSettings extends Component {
         <br />
         <details>
           <summary>{getLocaleString("SETTINGS-PREPROCESSING")}</summary>
-          <b>{getLocaleString("SETTINGS-PREPROCESSING-ENABLE")}: </b>
+          <b>
+            {getLocaleString("SETTINGS-PREPROCESSING-ENABLE")}
+            {": "}
+          </b>
           <input
             type="checkbox"
             checked={optionValue_preprocessingEnabled}
@@ -219,7 +246,10 @@ class MapSettings extends Component {
             <tbody>
               <tr>
                 <th>
-                  <b>{getLocaleString("SETTINGS-PREPROCESSING-BRIGHTNESS")}:</b>
+                  <b>
+                    {getLocaleString("SETTINGS-PREPROCESSING-BRIGHTNESS")}
+                    {": "}
+                  </b>
                 </th>
                 <td>
                   <input
@@ -228,6 +258,7 @@ class MapSettings extends Component {
                     max="200"
                     value={preProcessingValue_brightness}
                     onChange={onOptionChange_PreProcessingBrightness}
+                    disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
                 <td>
@@ -238,12 +269,16 @@ class MapSettings extends Component {
                     step="1"
                     value={preProcessingValue_brightness}
                     onChange={onOptionChange_PreProcessingBrightness}
+                    disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
               </tr>
               <tr>
                 <th>
-                  <b>{getLocaleString("SETTINGS-PREPROCESSING-CONTRAST")}:</b>
+                  <b>
+                    {getLocaleString("SETTINGS-PREPROCESSING-CONTRAST")}
+                    {": "}
+                  </b>
                 </th>
                 <td>
                   <input
@@ -252,6 +287,7 @@ class MapSettings extends Component {
                     max="200"
                     value={preProcessingValue_contrast}
                     onChange={onOptionChange_PreProcessingContrast}
+                    disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
                 <td>
@@ -262,12 +298,16 @@ class MapSettings extends Component {
                     step="1"
                     value={preProcessingValue_contrast}
                     onChange={onOptionChange_PreProcessingContrast}
+                    disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
               </tr>
               <tr>
                 <th>
-                  <b>{getLocaleString("SETTINGS-PREPROCESSING-SATURATION")}:</b>
+                  <b>
+                    {getLocaleString("SETTINGS-PREPROCESSING-SATURATION")}
+                    {": "}
+                  </b>
                 </th>
                 <td>
                   <input
@@ -276,6 +316,7 @@ class MapSettings extends Component {
                     max="200"
                     value={preProcessingValue_saturation}
                     onChange={onOptionChange_PreProcessingSaturation}
+                    disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
                 <td>
@@ -286,6 +327,7 @@ class MapSettings extends Component {
                     step="1"
                     value={preProcessingValue_saturation}
                     onChange={onOptionChange_PreProcessingSaturation}
+                    disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
               </tr>
