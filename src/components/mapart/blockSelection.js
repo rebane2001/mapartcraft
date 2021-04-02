@@ -95,6 +95,9 @@ class BlockSelection extends Component {
       getLocaleString,
       onChangeColourSetBlock,
       optionValue_version,
+      optionValue_modeNBTOrMapdat,
+      optionValue_staircasing,
+      optionValue_unobtainable,
       selectedBlocks,
     } = this.props;
     const { customPresets, selectedPresetName } = this.state;
@@ -144,15 +147,32 @@ class BlockSelection extends Component {
                 className="colourSetBox"
                 style={{
                   background:
-                    "linear-gradient(" +
-                    colourSet["tones"]["dark"] +
-                    " 33%, " +
-                    colourSet["tones"]["normal"] +
-                    " 33%, " +
-                    colourSet["tones"]["normal"] +
-                    " 66%, " +
-                    colourSet["tones"]["light"] +
-                    " 66%)",
+                    optionValue_staircasing === "off"
+                      ? colourSet["tones"]["normal"]
+                      : optionValue_modeNBTOrMapdat === "NBT" ||
+                        !optionValue_unobtainable
+                      ? "linear-gradient(" +
+                        colourSet["tones"]["dark"] +
+                        " 33%, " +
+                        colourSet["tones"]["normal"] +
+                        " 33%, " +
+                        colourSet["tones"]["normal"] +
+                        " 66%, " +
+                        colourSet["tones"]["light"] +
+                        " 66%)"
+                      : "linear-gradient(" +
+                        colourSet["tones"]["unobtainable"] +
+                        " 25%, " +
+                        colourSet["tones"]["dark"] +
+                        " 25%, " +
+                        colourSet["tones"]["dark"] +
+                        " 50%, " +
+                        colourSet["tones"]["normal"] +
+                        " 50%, " +
+                        colourSet["tones"]["normal"] +
+                        " 75%, " +
+                        colourSet["tones"]["light"] +
+                        " 75%)",
                 }}
               ></div>
               <label>

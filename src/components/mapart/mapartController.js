@@ -218,6 +218,9 @@ class MapartController extends Component {
           onChangeColourSetBlock={this.handleChangeColourSetBlock}
           onChangeColourSetBlocks={this.handleChangeColourSetBlocks}
           optionValue_version={optionValue_version}
+          optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
+          optionValue_staircasing={optionValue_staircasing}
+          optionValue_unobtainable={optionValue_unobtainable}
           selectedBlocks={selectedBlocks}
         />
         <MapPreview
