@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import DitherMethods from "./Const_DitherMethods";
+
 import "./mapSettings.css";
 
 class MapSettings extends Component {
@@ -216,18 +218,16 @@ class MapSettings extends Component {
           value={optionValue_dithering}
           onChange={onOptionChange_dithering}
         >
-          <option value="None">
-            {getLocaleString("SETTINGS-DITHER-NONE")}
-          </option>
-          <option value="Floyd-Steinberg">Floyd-Steinberg</option>
-          <option value="Bayer (4x4)">Bayer (4x4)</option>
-          <option value="Bayer (2x2)">Bayer (2x2)</option>
-          <option value="Ordered (3x3)">Ordered (3x3)</option>
-          <option value="MinAvgErr">MinAvgErr</option>
-          <option value="Burkes">Burkes</option>
-          <option value="Sierra-Lite">Sierra-Lite</option>
-          <option value="Stucki">Stucki</option>
-          <option value="Atkinson">Atkinson</option>
+          {Object.keys(DitherMethods).map((ditherMethodKey) => (
+            <option
+              key={DitherMethods[ditherMethodKey]["uniqueId"]}
+              value={DitherMethods[ditherMethodKey]["uniqueId"]}
+            >
+              {"localeKey" in DitherMethods[ditherMethodKey]
+                ? getLocaleString(DitherMethods[ditherMethodKey]["localeKey"])
+                : DitherMethods[ditherMethodKey]["name"]}
+            </option>
+          ))}
         </select>
         <br />
         <details>

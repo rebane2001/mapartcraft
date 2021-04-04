@@ -5,6 +5,7 @@ import BlockSelection from "./blockSelection";
 import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
 import coloursJSON from "./SAOColoursList.json";
+import DitherMethods from "./Const_DitherMethods";
 
 import "./mapartController.css";
 
@@ -23,7 +24,7 @@ class MapartController extends Component {
     optionValue_unobtainable: true,
     optionValue_transparency: true,
     optionValue_betterColour: true,
-    optionValue_dithering: "Floyd-Steinberg",
+    optionValue_dithering: DitherMethods.FloydSteinberg.uniqueId,
     optionValue_preprocessingEnabled: false,
     preProcessingValue_brightness: 100,
     preProcessingValue_contrast: 100,
@@ -128,7 +129,7 @@ class MapartController extends Component {
   };
 
   onOptionChange_dithering = (e) => {
-    const ditheringValue = e.target.value;
+    const ditheringValue = parseInt(e.target.value);
     this.setState({ optionValue_dithering: ditheringValue });
   };
 
