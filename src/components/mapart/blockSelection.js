@@ -90,6 +90,11 @@ class BlockSelection extends Component {
 
   importPreset = () => {};
 
+  cssRGB(RGBArray) {
+    // RGB array to css compatible string
+    return "rgb(" + RGBArray.join(", ") + ")";
+  }
+
   render() {
     const {
       getLocaleString,
@@ -148,30 +153,30 @@ class BlockSelection extends Component {
                 style={{
                   background:
                     optionValue_staircasing === "off"
-                      ? colourSet["tones"]["normal"]
+                      ? this.cssRGB(colourSet["tonesRGB"]["normal"])
                       : optionValue_modeNBTOrMapdat === "NBT" ||
                         !optionValue_unobtainable
                       ? "linear-gradient(" +
-                        colourSet["tones"]["dark"] +
+                        this.cssRGB(colourSet["tonesRGB"]["dark"]) +
                         " 33%, " +
-                        colourSet["tones"]["normal"] +
+                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
                         " 33%, " +
-                        colourSet["tones"]["normal"] +
+                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
                         " 66%, " +
-                        colourSet["tones"]["light"] +
+                        this.cssRGB(colourSet["tonesRGB"]["light"]) +
                         " 66%)"
                       : "linear-gradient(" +
-                        colourSet["tones"]["unobtainable"] +
+                        this.cssRGB(colourSet["tonesRGB"]["unobtainable"]) +
                         " 25%, " +
-                        colourSet["tones"]["dark"] +
+                        this.cssRGB(colourSet["tonesRGB"]["dark"]) +
                         " 25%, " +
-                        colourSet["tones"]["dark"] +
+                        this.cssRGB(colourSet["tonesRGB"]["dark"]) +
                         " 50%, " +
-                        colourSet["tones"]["normal"] +
+                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
                         " 50%, " +
-                        colourSet["tones"]["normal"] +
+                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
                         " 75%, " +
-                        colourSet["tones"]["light"] +
+                        this.cssRGB(colourSet["tonesRGB"]["light"]) +
                         " 75%)",
                 }}
               ></div>

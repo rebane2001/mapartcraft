@@ -24,11 +24,11 @@ if __name__ == "__main__":
     colours_new = {}
     for colourSetNumber, colourSet in enumerate(colours_old):
         colours_new[str(colourSetNumber)] = {}
-        colours_new[str(colourSetNumber)]["tones"] = {
-            "dark": SAO_RGBToHex((colourSet[0][0][0],colourSet[0][0][1],colourSet[0][0][2])),
-            "normal": SAO_RGBToHex((colourSet[0][1][0],colourSet[0][1][1],colourSet[0][1][2])),
-            "light": SAO_RGBToHex((colourSet[0][2][0],colourSet[0][2][1],colourSet[0][2][2])),
-            "unobtainable": SAO_RGBToHex((colourSet[0][3][0],colourSet[0][3][1],colourSet[0][3][2]))
+        colours_new[str(colourSetNumber)]["tonesRGB"] = {
+            "dark": [colourSet[0][0][0],colourSet[0][0][1],colourSet[0][0][2]],
+            "normal": [colourSet[0][1][0],colourSet[0][1][1],colourSet[0][1][2]],
+            "light": [colourSet[0][2][0],colourSet[0][2][1],colourSet[0][2][2]],
+            "unobtainable": [colourSet[0][3][0],colourSet[0][3][1],colourSet[0][3][2]]
             }
         colours_new[str(colourSetNumber)]["blocks"] = {}
         for blockNumber, block in enumerate(colourSet[1]):

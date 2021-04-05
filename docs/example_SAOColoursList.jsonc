@@ -1,10 +1,26 @@
 {
     "0": { // colour Set Number: blocks that produce one set of colours. note this number is the same as the index of the key in the dictionary. used also to determine texture Y position
-        "tones": {
-            "dark": "#597D27"  , // dark Colour Hex
-            "normal": "#6D9930", // medium Colour Hex
-            "light": "#7FB238",  // light Colour Hex
-            "unobtainable": "#435E1D" // unobtainable Colour Hex: used for creative maps / .dat files only; cannot be obtained in survival
+        "tonesRGB": {
+            "dark": [ // dark Colour Hex
+                89,
+                125,
+                39
+            ],
+            "normal": [ // medium Colour Hex
+                109,
+                153,
+                48
+            ],
+            "light": [ // light Colour Hex
+                127,
+                178,
+                56
+            ],
+            "unobtainable": [ // unobtainable Colour Hex: used for creative maps / .dat files only; cannot be obtained in survival
+                67,
+                94,
+                29
+            ]
         },
         "blocks": {
             "0": { // block Number: number within the colour set. note this number is the same as the index of the key in the dictionary. used also to determine texture X position

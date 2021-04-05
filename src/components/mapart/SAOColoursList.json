@@ -1,10 +1,26 @@
 {
     "0": {
-        "tones": {
-            "dark": "#597D27",
-            "normal": "#6D9930",
-            "light": "#7FB238",
-            "unobtainable": "#435E1D"
+        "tonesRGB": {
+            "dark": [
+                89,
+                125,
+                39
+            ],
+            "normal": [
+                109,
+                153,
+                48
+            ],
+            "light": [
+                127,
+                178,
+                56
+            ],
+            "unobtainable": [
+                67,
+                94,
+                29
+            ]
         },
         "blocks": {
             "0": {
@@ -42,11 +58,27 @@
         }
     },
     "1": {
-        "tones": {
-            "dark": "#AEA473",
-            "normal": "#D5C98C",
-            "light": "#F7E9A3",
-            "unobtainable": "#827B56"
+        "tonesRGB": {
+            "dark": [
+                174,
+                164,
+                115
+            ],
+            "normal": [
+                213,
+                201,
+                140
+            ],
+            "light": [
+                247,
+                233,
+                163
+            ],
+            "unobtainable": [
+                130,
+                123,
+                86
+            ]
         },
         "blocks": {
             "0": {
@@ -191,11 +223,27 @@
         }
     },
     "2": {
-        "tones": {
-            "dark": "#8C8C8C",
-            "normal": "#ABABAB",
-            "light": "#C7C7C7",
-            "unobtainable": "#696969"
+        "tonesRGB": {
+            "dark": [
+                140,
+                140,
+                140
+            ],
+            "normal": [
+                171,
+                171,
+                171
+            ],
+            "light": [
+                199,
+                199,
+                199
+            ],
+            "unobtainable": [
+                105,
+                105,
+                105
+            ]
         },
         "blocks": {
             "0": {
@@ -217,11 +265,27 @@
         }
     },
     "3": {
-        "tones": {
-            "dark": "#B40000",
-            "normal": "#DC0000",
-            "light": "#FF0000",
-            "unobtainable": "#870000"
+        "tonesRGB": {
+            "dark": [
+                180,
+                0,
+                0
+            ],
+            "normal": [
+                220,
+                0,
+                0
+            ],
+            "light": [
+                255,
+                0,
+                0
+            ],
+            "unobtainable": [
+                135,
+                0,
+                0
+            ]
         },
         "blocks": {
             "0": {
@@ -259,11 +323,27 @@
         }
     },
     "4": {
-        "tones": {
-            "dark": "#7070B4",
-            "normal": "#8A8ADC",
-            "light": "#A0A0FF",
-            "unobtainable": "#545487"
+        "tonesRGB": {
+            "dark": [
+                112,
+                112,
+                180
+            ],
+            "normal": [
+                138,
+                138,
+                220
+            ],
+            "light": [
+                160,
+                160,
+                255
+            ],
+            "unobtainable": [
+                84,
+                84,
+                135
+            ]
         },
         "blocks": {
             "0": {
@@ -301,11 +381,27 @@
         }
     },
     "5": {
-        "tones": {
-            "dark": "#757575",
-            "normal": "#909090",
-            "light": "#A7A7A7",
-            "unobtainable": "#585858"
+        "tonesRGB": {
+            "dark": [
+                117,
+                117,
+                117
+            ],
+            "normal": [
+                144,
+                144,
+                144
+            ],
+            "light": [
+                167,
+                167,
+                167
+            ],
+            "unobtainable": [
+                88,
+                88,
+                88
+            ]
         },
         "blocks": {
             "0": {
@@ -373,11 +469,27 @@
         }
     },
     "6": {
-        "tones": {
-            "dark": "#005700",
-            "normal": "#006A00",
-            "light": "#007C00",
-            "unobtainable": "#004100"
+        "tonesRGB": {
+            "dark": [
+                0,
+                87,
+                0
+            ],
+            "normal": [
+                0,
+                106,
+                0
+            ],
+            "light": [
+                0,
+                124,
+                0
+            ],
+            "unobtainable": [
+                0,
+                65,
+                0
+            ]
         },
         "blocks": {
             "0": {
@@ -515,11 +627,27 @@
         }
     },
     "7": {
-        "tones": {
-            "dark": "#737681",
-            "normal": "#8D909E",
-            "light": "#A4A8B8",
-            "unobtainable": "#565861"
+        "tonesRGB": {
+            "dark": [
+                115,
+                118,
+                129
+            ],
+            "normal": [
+                141,
+                144,
+                158
+            ],
+            "light": [
+                164,
+                168,
+                184
+            ],
+            "unobtainable": [
+                86,
+                88,
+                97
+            ]
         },
         "blocks": {
             "0": {
@@ -541,11 +669,27 @@
         }
     },
     "8": {
-        "tones": {
-            "dark": "#6A4C36",
-            "normal": "#825E42",
-            "light": "#976D4D",
-            "unobtainable": "#4F3928"
+        "tonesRGB": {
+            "dark": [
+                106,
+                76,
+                54
+            ],
+            "normal": [
+                130,
+                94,
+                66
+            ],
+            "light": [
+                151,
+                109,
+                77
+            ],
+            "unobtainable": [
+                79,
+                57,
+                40
+            ]
         },
         "blocks": {
             "0": {
@@ -676,11 +820,27 @@
         }
     },
     "9": {
-        "tones": {
-            "dark": "#4F4F4F",
-            "normal": "#606060",
-            "light": "#707070",
-            "unobtainable": "#3B3B3B"
+        "tonesRGB": {
+            "dark": [
+                79,
+                79,
+                79
+            ],
+            "normal": [
+                96,
+                96,
+                96
+            ],
+            "light": [
+                112,
+                112,
+                112
+            ],
+            "unobtainable": [
+                59,
+                59,
+                59
+            ]
         },
         "blocks": {
             "0": {
@@ -825,11 +985,27 @@
         }
     },
     "10": {
-        "tones": {
-            "dark": "#2D2DB4",
-            "normal": "#3737DC",
-            "light": "#4040FF",
-            "unobtainable": "#212187"
+        "tonesRGB": {
+            "dark": [
+                45,
+                45,
+                180
+            ],
+            "normal": [
+                55,
+                55,
+                220
+            ],
+            "light": [
+                64,
+                64,
+                255
+            ],
+            "unobtainable": [
+                33,
+                33,
+                135
+            ]
         },
         "blocks": {
             "0": {
@@ -851,11 +1027,27 @@
         }
     },
     "11": {
-        "tones": {
-            "dark": "#645432",
-            "normal": "#7B663E",
-            "light": "#8F7748",
-            "unobtainable": "#4B3F26"
+        "tonesRGB": {
+            "dark": [
+                100,
+                84,
+                50
+            ],
+            "normal": [
+                123,
+                102,
+                62
+            ],
+            "light": [
+                143,
+                119,
+                72
+            ],
+            "unobtainable": [
+                75,
+                63,
+                38
+            ]
         },
         "blocks": {
             "0": {
@@ -934,11 +1126,27 @@
         }
     },
     "12": {
-        "tones": {
-            "dark": "#B4B1AC",
-            "normal": "#DCD9D3",
-            "light": "#FFFCF5",
-            "unobtainable": "#878581"
+        "tonesRGB": {
+            "dark": [
+                180,
+                177,
+                172
+            ],
+            "normal": [
+                220,
+                217,
+                211
+            ],
+            "light": [
+                255,
+                252,
+                245
+            ],
+            "unobtainable": [
+                135,
+                133,
+                129
+            ]
         },
         "blocks": {
             "0": {
@@ -1033,11 +1241,27 @@
         }
     },
     "13": {
-        "tones": {
-            "dark": "#B4B4B4",
-            "normal": "#DCDCDC",
-            "light": "#FFFFFF",
-            "unobtainable": "#878787"
+        "tonesRGB": {
+            "dark": [
+                180,
+                180,
+                180
+            ],
+            "normal": [
+                220,
+                220,
+                220
+            ],
+            "light": [
+                255,
+                255,
+                255
+            ],
+            "unobtainable": [
+                135,
+                135,
+                135
+            ]
         },
         "blocks": {
             "0": {
@@ -1181,11 +1405,27 @@
         }
     },
     "14": {
-        "tones": {
-            "dark": "#985924",
-            "normal": "#BA6D2C",
-            "light": "#D87F33",
-            "unobtainable": "#72431B"
+        "tonesRGB": {
+            "dark": [
+                152,
+                89,
+                36
+            ],
+            "normal": [
+                186,
+                109,
+                44
+            ],
+            "light": [
+                216,
+                127,
+                51
+            ],
+            "unobtainable": [
+                114,
+                67,
+                27
+            ]
         },
         "blocks": {
             "0": {
@@ -1406,11 +1646,27 @@
         }
     },
     "15": {
-        "tones": {
-            "dark": "#7D3598",
-            "normal": "#9941BA",
-            "light": "#B24CD8",
-            "unobtainable": "#5E2872"
+        "tonesRGB": {
+            "dark": [
+                125,
+                53,
+                152
+            ],
+            "normal": [
+                153,
+                65,
+                186
+            ],
+            "light": [
+                178,
+                76,
+                216
+            ],
+            "unobtainable": [
+                94,
+                40,
+                114
+            ]
         },
         "blocks": {
             "0": {
@@ -1554,11 +1810,27 @@
         }
     },
     "16": {
-        "tones": {
-            "dark": "#486C98",
-            "normal": "#5884BA",
-            "light": "#6699D8",
-            "unobtainable": "#365172"
+        "tonesRGB": {
+            "dark": [
+                72,
+                108,
+                152
+            ],
+            "normal": [
+                88,
+                132,
+                186
+            ],
+            "light": [
+                102,
+                153,
+                216
+            ],
+            "unobtainable": [
+                54,
+                81,
+                114
+            ]
         },
         "blocks": {
             "0": {
@@ -1670,11 +1942,27 @@
         }
     },
     "17": {
-        "tones": {
-            "dark": "#A1A124",
-            "normal": "#C5C52C",
-            "light": "#E5E533",
-            "unobtainable": "#79791B"
+        "tonesRGB": {
+            "dark": [
+                161,
+                161,
+                36
+            ],
+            "normal": [
+                197,
+                197,
+                44
+            ],
+            "light": [
+                229,
+                229,
+                51
+            ],
+            "unobtainable": [
+                121,
+                121,
+                27
+            ]
         },
         "blocks": {
             "0": {
@@ -1818,11 +2106,27 @@
         }
     },
     "18": {
-        "tones": {
-            "dark": "#599011",
-            "normal": "#6DB015",
-            "light": "#7FCC19",
-            "unobtainable": "#436C0D"
+        "tonesRGB": {
+            "dark": [
+                89,
+                144,
+                17
+            ],
+            "normal": [
+                109,
+                176,
+                21
+            ],
+            "light": [
+                127,
+                204,
+                25
+            ],
+            "unobtainable": [
+                67,
+                108,
+                13
+            ]
         },
         "blocks": {
             "0": {
@@ -1950,11 +2254,27 @@
         }
     },
     "19": {
-        "tones": {
-            "dark": "#AA5974",
-            "normal": "#D06D8E",
-            "light": "#F27FA5",
-            "unobtainable": "#804357"
+        "tonesRGB": {
+            "dark": [
+                170,
+                89,
+                116
+            ],
+            "normal": [
+                208,
+                109,
+                142
+            ],
+            "light": [
+                242,
+                127,
+                165
+            ],
+            "unobtainable": [
+                128,
+                67,
+                87
+            ]
         },
         "blocks": {
             "0": {
@@ -2066,11 +2386,27 @@
         }
     },
     "20": {
-        "tones": {
-            "dark": "#353535",
-            "normal": "#414141",
-            "light": "#4C4C4C",
-            "unobtainable": "#282828"
+        "tonesRGB": {
+            "dark": [
+                53,
+                53,
+                53
+            ],
+            "normal": [
+                65,
+                65,
+                65
+            ],
+            "light": [
+                76,
+                76,
+                76
+            ],
+            "unobtainable": [
+                40,
+                40,
+                40
+            ]
         },
         "blocks": {
             "0": {
@@ -2182,11 +2518,27 @@
         }
     },
     "21": {
-        "tones": {
-            "dark": "#6C6C6C",
-            "normal": "#848484",
-            "light": "#999999",
-            "unobtainable": "#515151"
+        "tonesRGB": {
+            "dark": [
+                108,
+                108,
+                108
+            ],
+            "normal": [
+                132,
+                132,
+                132
+            ],
+            "light": [
+                153,
+                153,
+                153
+            ],
+            "unobtainable": [
+                81,
+                81,
+                81
+            ]
         },
         "blocks": {
             "0": {
@@ -2298,11 +2650,27 @@
         }
     },
     "22": {
-        "tones": {
-            "dark": "#35596C",
-            "normal": "#416D84",
-            "light": "#4C7F99",
-            "unobtainable": "#284351"
+        "tonesRGB": {
+            "dark": [
+                53,
+                89,
+                108
+            ],
+            "normal": [
+                65,
+                109,
+                132
+            ],
+            "light": [
+                76,
+                127,
+                153
+            ],
+            "unobtainable": [
+                40,
+                67,
+                81
+            ]
         },
         "blocks": {
             "0": {
@@ -2430,11 +2798,27 @@
         }
     },
     "23": {
-        "tones": {
-            "dark": "#592C7D",
-            "normal": "#6D3699",
-            "light": "#7F3FB2",
-            "unobtainable": "#43215E"
+        "tonesRGB": {
+            "dark": [
+                89,
+                44,
+                125
+            ],
+            "normal": [
+                109,
+                54,
+                153
+            ],
+            "light": [
+                127,
+                63,
+                178
+            ],
+            "unobtainable": [
+                67,
+                33,
+                94
+            ]
         },
         "blocks": {
             "0": {
@@ -2562,11 +2946,27 @@
         }
     },
     "24": {
-        "tones": {
-            "dark": "#24357D",
-            "normal": "#2C4199",
-            "light": "#334CB2",
-            "unobtainable": "#1B285E"
+        "tonesRGB": {
+            "dark": [
+                36,
+                53,
+                125
+            ],
+            "normal": [
+                44,
+                65,
+                153
+            ],
+            "light": [
+                51,
+                76,
+                178
+            ],
+            "unobtainable": [
+                27,
+                40,
+                94
+            ]
         },
         "blocks": {
             "0": {
@@ -2678,11 +3078,27 @@
         }
     },
     "25": {
-        "tones": {
-            "dark": "#483524",
-            "normal": "#58412C",
-            "light": "#664C33",
-            "unobtainable": "#36281B"
+        "tonesRGB": {
+            "dark": [
+                72,
+                53,
+                36
+            ],
+            "normal": [
+                88,
+                65,
+                44
+            ],
+            "light": [
+                102,
+                76,
+                51
+            ],
+            "unobtainable": [
+                54,
+                40,
+                27
+            ]
         },
         "blocks": {
             "0": {
@@ -2888,11 +3304,27 @@
         }
     },
     "26": {
-        "tones": {
-            "dark": "#485924",
-            "normal": "#586D2C",
-            "light": "#667F33",
-            "unobtainable": "#36431B"
+        "tonesRGB": {
+            "dark": [
+                72,
+                89,
+                36
+            ],
+            "normal": [
+                88,
+                109,
+                44
+            ],
+            "light": [
+                102,
+                127,
+                51
+            ],
+            "unobtainable": [
+                54,
+                67,
+                27
+            ]
         },
         "blocks": {
             "0": {
@@ -3004,11 +3436,27 @@
         }
     },
     "27": {
-        "tones": {
-            "dark": "#6C2424",
-            "normal": "#842C2C",
-            "light": "#993333",
-            "unobtainable": "#511B1B"
+        "tonesRGB": {
+            "dark": [
+                108,
+                36,
+                36
+            ],
+            "normal": [
+                132,
+                44,
+                44
+            ],
+            "light": [
+                153,
+                51,
+                51
+            ],
+            "unobtainable": [
+                81,
+                27,
+                27
+            ]
         },
         "blocks": {
             "0": {
@@ -3152,11 +3600,27 @@
         }
     },
     "28": {
-        "tones": {
-            "dark": "#111111",
-            "normal": "#151515",
-            "light": "#191919",
-            "unobtainable": "#0D0D0D"
+        "tonesRGB": {
+            "dark": [
+                17,
+                17,
+                17
+            ],
+            "normal": [
+                21,
+                21,
+                21
+            ],
+            "light": [
+                25,
+                25,
+                25
+            ],
+            "unobtainable": [
+                13,
+                13,
+                13
+            ]
         },
         "blocks": {
             "0": {
@@ -3300,11 +3764,27 @@
         }
     },
     "29": {
-        "tones": {
-            "dark": "#B0A836",
-            "normal": "#D7CD42",
-            "light": "#FAEE4D",
-            "unobtainable": "#847E28"
+        "tonesRGB": {
+            "dark": [
+                176,
+                168,
+                54
+            ],
+            "normal": [
+                215,
+                205,
+                66
+            ],
+            "light": [
+                250,
+                238,
+                77
+            ],
+            "unobtainable": [
+                132,
+                126,
+                40
+            ]
         },
         "blocks": {
             "0": {
@@ -3342,11 +3822,27 @@
         }
     },
     "30": {
-        "tones": {
-            "dark": "#409A96",
-            "normal": "#4FBCB7",
-            "light": "#5CDBD5",
-            "unobtainable": "#307370"
+        "tonesRGB": {
+            "dark": [
+                64,
+                154,
+                150
+            ],
+            "normal": [
+                79,
+                188,
+                183
+            ],
+            "light": [
+                92,
+                219,
+                213
+            ],
+            "unobtainable": [
+                48,
+                115,
+                112
+            ]
         },
         "blocks": {
             "0": {
@@ -3420,11 +3916,27 @@
         }
     },
     "31": {
-        "tones": {
-            "dark": "#345AB4",
-            "normal": "#3F6EDC",
-            "light": "#4A80FF",
-            "unobtainable": "#274387"
+        "tonesRGB": {
+            "dark": [
+                52,
+                90,
+                180
+            ],
+            "normal": [
+                63,
+                110,
+                220
+            ],
+            "light": [
+                74,
+                128,
+                255
+            ],
+            "unobtainable": [
+                39,
+                67,
+                135
+            ]
         },
         "blocks": {
             "0": {
@@ -3446,11 +3958,27 @@
         }
     },
     "32": {
-        "tones": {
-            "dark": "#009928",
-            "normal": "#00BB32",
-            "light": "#00D93A",
-            "unobtainable": "#00721E"
+        "tonesRGB": {
+            "dark": [
+                0,
+                153,
+                40
+            ],
+            "normal": [
+                0,
+                187,
+                50
+            ],
+            "light": [
+                0,
+                217,
+                58
+            ],
+            "unobtainable": [
+                0,
+                114,
+                30
+            ]
         },
         "blocks": {
             "0": {
@@ -3472,11 +4000,27 @@
         }
     },
     "33": {
-        "tones": {
-            "dark": "#5B3C22",
-            "normal": "#6F4A2A",
-            "light": "#815631",
-            "unobtainable": "#442D19"
+        "tonesRGB": {
+            "dark": [
+                91,
+                60,
+                34
+            ],
+            "normal": [
+                111,
+                74,
+                42
+            ],
+            "light": [
+                129,
+                86,
+                49
+            ],
+            "unobtainable": [
+                68,
+                45,
+                25
+            ]
         },
         "blocks": {
             "0": {
@@ -3599,11 +4143,27 @@
         }
     },
     "34": {
-        "tones": {
-            "dark": "#4F0100",
-            "normal": "#600100",
-            "light": "#700200",
-            "unobtainable": "#3B0100"
+        "tonesRGB": {
+            "dark": [
+                79,
+                1,
+                0
+            ],
+            "normal": [
+                96,
+                1,
+                0
+            ],
+            "light": [
+                112,
+                2,
+                0
+            ],
+            "unobtainable": [
+                59,
+                1,
+                0
+            ]
         },
         "blocks": {
             "0": {
@@ -3675,11 +4235,27 @@
         }
     },
     "35": {
-        "tones": {
-            "dark": "#937C71",
-            "normal": "#B4988A",
-            "light": "#D1B1A1",
-            "unobtainable": "#6E5D55"
+        "tonesRGB": {
+            "dark": [
+                147,
+                124,
+                113
+            ],
+            "normal": [
+                180,
+                152,
+                138
+            ],
+            "light": [
+                209,
+                177,
+                161
+            ],
+            "unobtainable": [
+                110,
+                93,
+                85
+            ]
         },
         "blocks": {
             "0": {
@@ -3703,11 +4279,27 @@
         }
     },
     "36": {
-        "tones": {
-            "dark": "#703919",
-            "normal": "#89461F",
-            "light": "#9F5224",
-            "unobtainable": "#542B13"
+        "tonesRGB": {
+            "dark": [
+                112,
+                57,
+                25
+            ],
+            "normal": [
+                137,
+                70,
+                31
+            ],
+            "light": [
+                159,
+                82,
+                36
+            ],
+            "unobtainable": [
+                84,
+                43,
+                19
+            ]
         },
         "blocks": {
             "0": {
@@ -3731,11 +4323,27 @@
         }
     },
     "37": {
-        "tones": {
-            "dark": "#693D4C",
-            "normal": "#804B5D",
-            "light": "#95576C",
-            "unobtainable": "#4E2E39"
+        "tonesRGB": {
+            "dark": [
+                105,
+                61,
+                76
+            ],
+            "normal": [
+                128,
+                75,
+                93
+            ],
+            "light": [
+                149,
+                87,
+                108
+            ],
+            "unobtainable": [
+                78,
+                46,
+                57
+            ]
         },
         "blocks": {
             "0": {
@@ -3759,11 +4367,27 @@
         }
     },
     "38": {
-        "tones": {
-            "dark": "#4F4C61",
-            "normal": "#605D77",
-            "light": "#706C8A",
-            "unobtainable": "#3B3949"
+        "tonesRGB": {
+            "dark": [
+                79,
+                76,
+                97
+            ],
+            "normal": [
+                96,
+                93,
+                119
+            ],
+            "light": [
+                112,
+                108,
+                138
+            ],
+            "unobtainable": [
+                59,
+                57,
+                73
+            ]
         },
         "blocks": {
             "0": {
@@ -3787,11 +4411,27 @@
         }
     },
     "39": {
-        "tones": {
-            "dark": "#835D19",
-            "normal": "#A0721F",
-            "light": "#BA8524",
-            "unobtainable": "#624613"
+        "tonesRGB": {
+            "dark": [
+                131,
+                93,
+                25
+            ],
+            "normal": [
+                160,
+                114,
+                31
+            ],
+            "light": [
+                186,
+                133,
+                36
+            ],
+            "unobtainable": [
+                98,
+                70,
+                19
+            ]
         },
         "blocks": {
             "0": {
@@ -3815,11 +4455,27 @@
         }
     },
     "40": {
-        "tones": {
-            "dark": "#485225",
-            "normal": "#58642D",
-            "light": "#677535",
-            "unobtainable": "#363D1C"
+        "tonesRGB": {
+            "dark": [
+                72,
+                82,
+                37
+            ],
+            "normal": [
+                88,
+                100,
+                45
+            ],
+            "light": [
+                103,
+                117,
+                53
+            ],
+            "unobtainable": [
+                54,
+                61,
+                28
+            ]
         },
         "blocks": {
             "0": {
@@ -3843,11 +4499,27 @@
         }
     },
     "41": {
-        "tones": {
-            "dark": "#703637",
-            "normal": "#8A4243",
-            "light": "#A04D4E",
-            "unobtainable": "#542829"
+        "tonesRGB": {
+            "dark": [
+                112,
+                54,
+                55
+            ],
+            "normal": [
+                138,
+                66,
+                67
+            ],
+            "light": [
+                160,
+                77,
+                78
+            ],
+            "unobtainable": [
+                84,
+                40,
+                41
+            ]
         },
         "blocks": {
             "0": {
@@ -3871,11 +4543,27 @@
         }
     },
     "42": {
-        "tones": {
-            "dark": "#281C18",
-            "normal": "#31231E",
-            "light": "#392923",
-            "unobtainable": "#1E1512"
+        "tonesRGB": {
+            "dark": [
+                40,
+                28,
+                24
+            ],
+            "normal": [
+                49,
+                35,
+                30
+            ],
+            "light": [
+                57,
+                41,
+                35
+            ],
+            "unobtainable": [
+                30,
+                21,
+                18
+            ]
         },
         "blocks": {
             "0": {
@@ -3899,11 +4587,27 @@
         }
     },
     "43": {
-        "tones": {
-            "dark": "#5F4B45",
-            "normal": "#745C54",
-            "light": "#876B62",
-            "unobtainable": "#473833"
+        "tonesRGB": {
+            "dark": [
+                95,
+                75,
+                69
+            ],
+            "normal": [
+                116,
+                92,
+                84
+            ],
+            "light": [
+                135,
+                107,
+                98
+            ],
+            "unobtainable": [
+                71,
+                56,
+                51
+            ]
         },
         "blocks": {
             "0": {
@@ -3927,11 +4631,27 @@
         }
     },
     "44": {
-        "tones": {
-            "dark": "#3D4040",
-            "normal": "#4B4F4F",
-            "light": "#575C5C",
-            "unobtainable": "#2E3030"
+        "tonesRGB": {
+            "dark": [
+                61,
+                64,
+                64
+            ],
+            "normal": [
+                75,
+                79,
+                79
+            ],
+            "light": [
+                87,
+                92,
+                92
+            ],
+            "unobtainable": [
+                46,
+                48,
+                48
+            ]
         },
         "blocks": {
             "0": {
@@ -3955,11 +4675,27 @@
         }
     },
     "45": {
-        "tones": {
-            "dark": "#56333E",
-            "normal": "#693E4B",
-            "light": "#7A4958",
-            "unobtainable": "#40262E"
+        "tonesRGB": {
+            "dark": [
+                86,
+                51,
+                62
+            ],
+            "normal": [
+                105,
+                62,
+                75
+            ],
+            "light": [
+                122,
+                73,
+                88
+            ],
+            "unobtainable": [
+                64,
+                38,
+                46
+            ]
         },
         "blocks": {
             "0": {
@@ -3983,11 +4719,27 @@
         }
     },
     "46": {
-        "tones": {
-            "dark": "#352B40",
-            "normal": "#41354F",
-            "light": "#4C3E5C",
-            "unobtainable": "#282030"
+        "tonesRGB": {
+            "dark": [
+                53,
+                43,
+                64
+            ],
+            "normal": [
+                65,
+                53,
+                79
+            ],
+            "light": [
+                76,
+                62,
+                92
+            ],
+            "unobtainable": [
+                40,
+                32,
+                48
+            ]
         },
         "blocks": {
             "0": {
@@ -4011,11 +4763,27 @@
         }
     },
     "47": {
-        "tones": {
-            "dark": "#352318",
-            "normal": "#412B1E",
-            "light": "#4C3223",
-            "unobtainable": "#281A12"
+        "tonesRGB": {
+            "dark": [
+                53,
+                35,
+                24
+            ],
+            "normal": [
+                65,
+                43,
+                30
+            ],
+            "light": [
+                76,
+                50,
+                35
+            ],
+            "unobtainable": [
+                40,
+                26,
+                18
+            ]
         },
         "blocks": {
             "0": {
@@ -4039,11 +4807,27 @@
         }
     },
     "48": {
-        "tones": {
-            "dark": "#35391D",
-            "normal": "#414624",
-            "light": "#4C522A",
-            "unobtainable": "#282B16"
+        "tonesRGB": {
+            "dark": [
+                53,
+                57,
+                29
+            ],
+            "normal": [
+                65,
+                70,
+                36
+            ],
+            "light": [
+                76,
+                82,
+                42
+            ],
+            "unobtainable": [
+                40,
+                43,
+                22
+            ]
         },
         "blocks": {
             "0": {
@@ -4067,11 +4851,27 @@
         }
     },
     "49": {
-        "tones": {
-            "dark": "#642A20",
-            "normal": "#7A3327",
-            "light": "#8E3C2E",
-            "unobtainable": "#4B1F18"
+        "tonesRGB": {
+            "dark": [
+                100,
+                42,
+                32
+            ],
+            "normal": [
+                122,
+                51,
+                39
+            ],
+            "light": [
+                142,
+                60,
+                46
+            ],
+            "unobtainable": [
+                75,
+                31,
+                24
+            ]
         },
         "blocks": {
             "0": {
@@ -4095,11 +4895,27 @@
         }
     },
     "50": {
-        "tones": {
-            "dark": "#1A0F0B",
-            "normal": "#1F120D",
-            "light": "#251610",
-            "unobtainable": "#130B08"
+        "tonesRGB": {
+            "dark": [
+                26,
+                15,
+                11
+            ],
+            "normal": [
+                31,
+                18,
+                13
+            ],
+            "light": [
+                37,
+                22,
+                16
+            ],
+            "unobtainable": [
+                19,
+                11,
+                8
+            ]
         },
         "blocks": {
             "0": {
@@ -4123,11 +4939,27 @@
         }
     },
     "51": {
-        "tones": {
-            "dark": "#852122",
-            "normal": "#A3292A",
-            "light": "#BD3031",
-            "unobtainable": "#641919"
+        "tonesRGB": {
+            "dark": [
+                133,
+                33,
+                34
+            ],
+            "normal": [
+                163,
+                41,
+                42
+            ],
+            "light": [
+                189,
+                48,
+                49
+            ],
+            "unobtainable": [
+                100,
+                25,
+                25
+            ]
         },
         "blocks": {
             "0": {
@@ -4143,11 +4975,27 @@
         }
     },
     "52": {
-        "tones": {
-            "dark": "#682C44",
-            "normal": "#7F3653",
-            "light": "#943F61",
-            "unobtainable": "#4E2133"
+        "tonesRGB": {
+            "dark": [
+                104,
+                44,
+                68
+            ],
+            "normal": [
+                127,
+                54,
+                83
+            ],
+            "light": [
+                148,
+                63,
+                97
+            ],
+            "unobtainable": [
+                78,
+                33,
+                51
+            ]
         },
         "blocks": {
             "0": {
@@ -4193,11 +5041,27 @@
         }
     },
     "53": {
-        "tones": {
-            "dark": "#401114",
-            "normal": "#4F1519",
-            "light": "#5C191D",
-            "unobtainable": "#300D0F"
+        "tonesRGB": {
+            "dark": [
+                64,
+                17,
+                20
+            ],
+            "normal": [
+                79,
+                21,
+                25
+            ],
+            "light": [
+                92,
+                25,
+                29
+            ],
+            "unobtainable": [
+                48,
+                13,
+                15
+            ]
         },
         "blocks": {
             "0": {
@@ -4223,11 +5087,27 @@
         }
     },
     "54": {
-        "tones": {
-            "dark": "#0F585E",
-            "normal": "#126C73",
-            "light": "#167E86",
-            "unobtainable": "#0B4246"
+        "tonesRGB": {
+            "dark": [
+                15,
+                88,
+                94
+            ],
+            "normal": [
+                18,
+                108,
+                115
+            ],
+            "light": [
+                22,
+                126,
+                134
+            ],
+            "unobtainable": [
+                11,
+                66,
+                70
+            ]
         },
         "blocks": {
             "0": {
@@ -4243,11 +5123,27 @@
         }
     },
     "55": {
-        "tones": {
-            "dark": "#286462",
-            "normal": "#327A78",
-            "light": "#3A8E8C",
-            "unobtainable": "#1E4B4A"
+        "tonesRGB": {
+            "dark": [
+                40,
+                100,
+                98
+            ],
+            "normal": [
+                50,
+                122,
+                120
+            ],
+            "light": [
+                58,
+                142,
+                140
+            ],
+            "unobtainable": [
+                30,
+                75,
+                74
+            ]
         },
         "blocks": {
             "0": {
@@ -4293,11 +5189,27 @@
         }
     },
     "56": {
-        "tones": {
-            "dark": "#3C1F2B",
-            "normal": "#4A2535",
-            "light": "#562C3E",
-            "unobtainable": "#2D1720"
+        "tonesRGB": {
+            "dark": [
+                60,
+                31,
+                43
+            ],
+            "normal": [
+                74,
+                37,
+                53
+            ],
+            "light": [
+                86,
+                44,
+                62
+            ],
+            "unobtainable": [
+                45,
+                23,
+                32
+            ]
         },
         "blocks": {
             "0": {
@@ -4323,11 +5235,27 @@
         }
     },
     "57": {
-        "tones": {
-            "dark": "#0E7F5D",
-            "normal": "#119B72",
-            "light": "#14B485",
-            "unobtainable": "#0A5F46"
+        "tonesRGB": {
+            "dark": [
+                14,
+                127,
+                93
+            ],
+            "normal": [
+                17,
+                155,
+                114
+            ],
+            "light": [
+                20,
+                180,
+                133
+            ],
+            "unobtainable": [
+                10,
+                95,
+                70
+            ]
         },
         "blocks": {
             "0": {
