@@ -4,6 +4,7 @@ import CookieManager from "../../cookieManager";
 import BlockSelection from "./blockSelection";
 import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
+import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./SAOColoursList.json";
 import DitherMethods from "./Const_DitherMethods";
 
@@ -29,10 +30,15 @@ class MapartController extends Component {
     preProcessingValue_brightness: 100,
     preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
+    customPresets: [],
+    selectedPresetName: defaultPresets[0]["name"],
   };
 
   constructor(props) {
     super(props);
+    this.state.customPresets = JSON.parse(
+      CookieManager.touchCookie("customPresets", "[]")
+    );
     Object.keys(coloursJSON).forEach(
       (key) => (this.state.selectedBlocks[key] = "-1")
     );
@@ -190,6 +196,82 @@ class MapartController extends Component {
     //TODO
   };
 
+  handlePresetChange = (e) => {
+    const presetName = e.target.value;
+    const { customPresets } = this.state;
+
+    this.setState({ selectedPresetName: presetName });
+
+    const defaultPreset = defaultPresets.find(
+      (preset) => preset["name"] === presetName
+    );
+    if (defaultPreset !== undefined) {
+      this.handleChangeColourSetBlocks(defaultPreset["blocks"]);
+      return;
+    }
+
+    const customPreset = customPresets.find(
+      (preset) => preset["name"] === presetName
+    );
+    if (customPreset !== undefined) {
+      this.handleChangeColourSetBlocks(customPreset["blocks"]);
+      return;
+    }
+  };
+
+  handleDeletePreset = () => {
+    const { customPresets, selectedPresetName } = this.state;
+    if (
+      !customPresets.find((preset) => preset["name"] === selectedPresetName)
+    ) {
+      // if a default preset selected then do nothing and return
+      return;
+    }
+
+    const customPresets_new = customPresets.filter(
+      (preset) => preset["name"] !== selectedPresetName
+    );
+    this.setState({
+      customPresets: customPresets_new,
+      selectedPresetName: defaultPresets[0]["name"],
+    });
+    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
+  };
+
+  handleSavePreset = () => {
+    const { getLocaleString } = this.props;
+    const { customPresets, selectedBlocks } = this.state;
+
+    let presetName = prompt(getLocaleString("PRESETS-ENTERNAME"), "");
+    if (presetName === null) {
+      return;
+    }
+
+    const otherPresets = customPresets.filter(
+      (preset) => preset["name"] !== presetName
+    );
+    let newPreset = { name: presetName, blocks: [] };
+    Object.keys(selectedBlocks).forEach((key) => {
+      newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
+    });
+    const customPresets_new = [...otherPresets, newPreset];
+    this.setState({
+      customPresets: customPresets_new,
+      selectedPresetName: presetName,
+    });
+    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
+  };
+
+  handleSharePreset = (e) => {
+    console.log(e);
+    //TODO
+  };
+
+  handleImportPreset = (e) => {
+    console.log(e);
+    //TODO
+  };
+
   render() {
     const { getLocaleString } = this.props;
     const {
@@ -211,6 +293,8 @@ class MapartController extends Component {
       preProcessingValue_brightness,
       preProcessingValue_contrast,
       preProcessingValue_saturation,
+      customPresets,
+      selectedPresetName,
     } = this.state;
     return (
       <React.Fragment>
@@ -223,6 +307,13 @@ class MapartController extends Component {
           optionValue_staircasing={optionValue_staircasing}
           optionValue_unobtainable={optionValue_unobtainable}
           selectedBlocks={selectedBlocks}
+          customPresets={customPresets}
+          selectedPresetName={selectedPresetName}
+          onPresetChange={this.handlePresetChange}
+          onDeletePreset={this.handleDeletePreset}
+          onSavePreset={this.handleSavePreset}
+          onSharePreset={this.handleSharePreset}
+          onImportPreset={this.handleImportPreset}
         />
         <MapPreview
           getLocaleString={getLocaleString}

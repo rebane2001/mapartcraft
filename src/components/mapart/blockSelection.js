@@ -1,94 +1,11 @@
 import React, { Component } from "react";
 
-import CookieManager from "../../cookieManager";
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./SAOColoursList.json";
 
 import "./blockSelection.css";
 
 class BlockSelection extends Component {
-  state = {
-    customPresets: [],
-    selectedPresetName: defaultPresets[0]["name"],
-  };
-
-  constructor(props) {
-    super(props);
-    this.state.customPresets = JSON.parse(
-      CookieManager.touchCookie("customPresets", "[]")
-    );
-  }
-
-  onPresetChange = (e) => {
-    const { onChangeColourSetBlocks } = this.props;
-    const { customPresets } = this.state;
-    const presetName = e.target.value;
-
-    this.setState({ selectedPresetName: presetName });
-
-    const defaultPreset = defaultPresets.find(
-      (preset) => preset["name"] === presetName
-    );
-    if (defaultPreset !== undefined) {
-      onChangeColourSetBlocks(defaultPreset["blocks"]);
-      return;
-    }
-
-    const customPreset = customPresets.find(
-      (preset) => preset["name"] === presetName
-    );
-    if (customPreset !== undefined) {
-      onChangeColourSetBlocks(customPreset["blocks"]);
-      return;
-    }
-  };
-
-  deletePreset = () => {
-    const { customPresets, selectedPresetName } = this.state;
-    if (
-      !customPresets.find((preset) => preset["name"] === selectedPresetName)
-    ) {
-      // if a default preset selected then return
-      return;
-    }
-
-    const customPresets_new = customPresets.filter(
-      (preset) => preset["name"] !== selectedPresetName
-    );
-    this.setState({
-      customPresets: customPresets_new,
-      selectedPresetName: defaultPresets[0]["name"],
-    });
-    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
-  };
-
-  savePreset = () => {
-    const { getLocaleString, selectedBlocks } = this.props;
-    const { customPresets } = this.state;
-
-    let presetName = prompt(getLocaleString("PRESETS-ENTERNAME"), "");
-    if (presetName === null) {
-      return;
-    }
-
-    const otherPresets = customPresets.filter(
-      (preset) => preset["name"] !== presetName
-    );
-    let newPreset = { name: presetName, blocks: [] };
-    Object.keys(selectedBlocks).forEach((key) => {
-      newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
-    });
-    const customPresets_new = [...otherPresets, newPreset];
-    this.setState({
-      customPresets: customPresets_new,
-      selectedPresetName: presetName,
-    });
-    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
-  };
-
-  sharePreset = () => {};
-
-  importPreset = () => {};
 
   cssRGB(RGBArray) {
     // RGB array to css compatible string
@@ -104,8 +21,13 @@ class BlockSelection extends Component {
       optionValue_staircasing,
       optionValue_unobtainable,
       selectedBlocks,
+      customPresets,
+      selectedPresetName,
+      onPresetChange,
+      onDeletePreset,
+      onSavePreset,
+      onSharePreset,
     } = this.props;
-    const { customPresets, selectedPresetName } = this.state;
     return (
       <div className="blockSelection section">
         <div className="blockSelectionHeader">
@@ -117,7 +39,7 @@ class BlockSelection extends Component {
           <select
             id="presets"
             value={selectedPresetName}
-            onChange={this.onPresetChange}
+            onChange={onPresetChange}
           >
             {defaultPresets.map((preset) => (
               <option value={preset["name"]} key={preset["localeKey"]}>
@@ -130,15 +52,15 @@ class BlockSelection extends Component {
               </option>
             ))}
           </select>
-          <button type="button" onClick={this.deletePreset}>
+          <button type="button" onClick={onDeletePreset}>
             {getLocaleString("PRESETS-DELETE")}
           </button>
-          <button type="button" onClick={this.savePreset}>
+          <button type="button" onClick={onSavePreset}>
             {getLocaleString("PRESETS-SAVE")}
           </button>
           <button
             type="button"
-            onClick={this.sharePreset}
+            onClick={onSharePreset}
             data-tooltip
             data-title={getLocaleString("PRESETS-TT-SHARE")}
           >

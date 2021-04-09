@@ -6,3 +6,6 @@
 - Preset sharing
 - event handlers for downloading map and paint.net
 - main canvas elt, hooks?
+- add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
+- consider performance of keys, changing options affects map unnecessarily
+- async map updating and workers, how HARD is it to get this to work with react???
