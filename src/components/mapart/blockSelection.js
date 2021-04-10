@@ -6,7 +6,6 @@ import coloursJSON from "./SAOColoursList.json";
 import "./blockSelection.css";
 
 class BlockSelection extends Component {
-
   cssRGB(RGBArray) {
     // RGB array to css compatible string
     return "rgb(" + RGBArray.join(", ") + ")";
@@ -27,6 +26,8 @@ class BlockSelection extends Component {
       onDeletePreset,
       onSavePreset,
       onSharePreset,
+      // onImportPreset,
+      onGetPDNPaletteClicked,
     } = this.props;
     return (
       <div className="blockSelection section">
@@ -65,6 +66,14 @@ class BlockSelection extends Component {
             data-title={getLocaleString("PRESETS-TT-SHARE")}
           >
             {getLocaleString("PRESETS-SHARE")}
+          </button>
+          <button
+            type="button"
+            onClick={onGetPDNPaletteClicked}
+            data-tooltip
+            data-title={getLocaleString("DOWNLOAD-TT-PDN")}
+          >
+            {getLocaleString("DOWNLOAD-PDN")}
           </button>
         </div>
         <div className="blockSelectionBlocks">

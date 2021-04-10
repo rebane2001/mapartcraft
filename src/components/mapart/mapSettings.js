@@ -46,7 +46,6 @@ class MapSettings extends Component {
       onGetNBTClicked,
       onGetNBTSplitClicked,
       onGetMapdatSplitClicked,
-      onGetPDNPaletteClicked,
     } = this.props;
     return (
       <div className="section settingsDiv">
@@ -378,15 +377,6 @@ class MapSettings extends Component {
             </span>
           </span>
         )}
-        <br />
-        <span
-          className="greenButton"
-          onClick={onGetPDNPaletteClicked}
-          data-tooltip
-          data-title={getLocaleString("DOWNLOAD-TT-PDN")}
-        >
-          {getLocaleString("DOWNLOAD-PDN")}
-        </span>
         <br />
         <a
           className="donateA"

@@ -61,7 +61,7 @@
   "DOWNLOAD-TT-MAPDAT": "Enŝuti la map.dat-n dividitan laŭ 1x1 pecoj",
   "DOWNLOAD-MAPDAT": "ENŜUTI",
   "DOWNLOAD-TT-PDN": "Enŝuti la koloraron por uzi en Paint.net",
-  "DOWNLOAD-PDN": "ENŜUTI PDN KOLORARON",
+  "DOWNLOAD-PDN": "Enŝuti",
   "REFRESHMATERIALS-TT": "Ĝisdatigi materialan liston",
   "REFRESHMATERIALS": "ĜISDATIGI MATERIALOJN",
   "DONATEBUTTON-TT": "Montri subtenintojn kaj mondonaci",
@@ -73,7 +73,7 @@
   "LITEMATICAWARNING": "Atentu: Se vi uzas Litematica-n 1.15.2, bonvolu uzi la 1.15 version\\nLitematica ŝajnas iel havi cimon se vi elektas alian version",
   "EDGEWARNING": "Atentu: uzado de Microsoft Edge estas malsubtenata.\\nBonvolu uzi Chrome-n (prefere) aŭ Firefox-n por MapartCraft",
   "PDNWARNING1": "Averto, via koloraro enhavas ",
-  "PDNWARNING2": " colorojn, sed la plejgranda koloraro en Paint.net enhaveblas 96\\nIu koloroj estos maluzebla en Paint.net",
+  "PDNWARNING2": " colorojn, sed la plejgranda koloraro en Paint.net enhaveblas 96. Iu koloroj estos maluzebla en Paint.net",
 
   "HAVEYOUFAQ": "Ĉu vi legis la OD-n?",
   "HELPNOTE": "Atentu: Helpo estos provizita nur en la Angla",

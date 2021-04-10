@@ -61,7 +61,7 @@
   "DOWNLOAD-TT-MAPDAT": "Atsisiųskite map.dat padaliję į 1x1 dalis",
   "DOWNLOAD-MAPDAT": "PARSISIŲSTI",
   "DOWNLOAD-TT-PDN": "Atsisiunčiama spalvų paletė, naudojama Paint.net",
-  "DOWNLOAD-PDN": "PARSISIŲSTI PDN PALETE",
+  "DOWNLOAD-PDN": "Parsisiųsti",
   "REFRESHMATERIALS-TT": "Atnaujinti medžiagų sąrašą",
   "REFRESHMATERIALS": "ATNAUJINTI MEDŽIAGAS",
   "DONATEBUTTON-TT": "Peržiūrėkite rėmėjus ir aukokite",
@@ -72,7 +72,7 @@
 
   "EDGEWARNING": "Pastaba: nepalaikomas Microsoft Edge naudojimas. \\n Pagal „MapartCraft“ naudokite Chrome (pageidautina) arba Firefox.",
   "PDNWARNING1": "Įspėjimas: jūsų paletė turi ",
-  "PDNWARNING2": "spalvų, o maksimali „Paint.net“ yra 96 ​​\\n Kai kurios spalvos „Paint.net“ nebus prieinamos ",
+  "PDNWARNING2": "spalvų, o maksimali „Paint.net“ yra 96 ​​.  Kai kurios spalvos „Paint.net“ nebus prieinamos ",
 
   "HAVEYOUFAQ": "Ar tu perskaitei DKK?",
   "HELPNOTE": "Pastaba: pagalba bus teikiama tik anglų kalba",

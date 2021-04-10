@@ -61,7 +61,7 @@
   "DOWNLOAD-TT-MAPDAT": "下载map.dat分成1x1区块",
   "DOWNLOAD-MAPDAT": "下载",
   "DOWNLOAD-TT-PDN": "下载调色板以在Paint.net中使用",
-  "DOWNLOAD-PDN": "下载PDN调色板",
+  "DOWNLOAD-PDN": "下载",
   "REFRESHMATERIALS-TT": "刷新材料清单",
   "REFRESHMATERIALS": "刷新材料",
   "DONATEBUTTON-TT": "查看支持者并捐赠",
@@ -73,7 +73,7 @@
   "LITEMATICAWARNING": "注意：如果您使用的是Litematica 1.15.2，请使用1.15版本\\ n如果出于某种原因选择了其他版本，Litematica似乎会出错。",
   "EDGEWARNING": "注意：不支持使用Microsoft Edge。\\ n请为MapartCraft使用Chrome（首选）或Firefox",
   "PDNWARNING1": "警告，您的调色板有 ",
-  "PDNWARNING2": " 颜色，而Paint.net中的最大值为96 \\ n某些颜色在Paint.net中将不可用",
+  "PDNWARNING2": " 颜色，而Paint.net中的最大值为96. 某些颜色在Paint.net中将不可用",
 
   "HAVEYOUFAQ": "你读过FAQ了吗?",
   "HELPNOTE": "注意：帮助将仅以英语提供",

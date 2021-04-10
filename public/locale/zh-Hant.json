@@ -61,7 +61,7 @@
   "DOWNLOAD-TT-MAPDAT": "下載map.dat分成1x1區塊",
   "DOWNLOAD-MAPDAT": "下載",
   "DOWNLOAD-TT-PDN": "下載調色板以在Paint.net中使用",
-  "DOWNLOAD-PDN": "下載PDN調色板",
+  "DOWNLOAD-PDN": "下載",
   "REFRESHMATERIALS-TT": "刷新材料清單",
   "REFRESHMATERIALS": "刷新材料",
   "DONATEBUTTON-TT": "查看支持者並捐贈",
@@ -72,7 +72,7 @@
 
   "EDGEWARNING": "注意：不支持使用Microsoft Edge。\\ n請為MapartCraft使用Chrome（首選）或Firefox",
   "PDNWARNING1": "警告，您的調色板有 ",
-  "PDNWARNING2": " 顏色，而Paint.net中的最大值為96 \\ n某些顏色在Paint.net中將不可用",
+  "PDNWARNING2": " 顏色，而Paint.net中的最大值為96. 某些顏色在Paint.net中將不可用",
 
   "HAVEYOUFAQ": "你讀過FAQ了嗎?",
   "HELPNOTE": "注意：幫助將僅以英語提供",

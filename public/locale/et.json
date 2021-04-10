@@ -74,7 +74,7 @@
   "DOWNLOAD-TT-MAPDAT": "Lae alla map.dat lõhestatuna 1x1 kamakateks",
   "DOWNLOAD-MAPDAT": "LAE ALLA",
   "DOWNLOAD-TT-PDN": "Laeb värvipaleti alla Paint.net'is kasutamiseks",
-  "DOWNLOAD-PDN": "LAE ALLA PDN PALETT",
+  "DOWNLOAD-PDN": "Lae",
   "REFRESHMATERIALS-TT": "Värskenda materjalide listi",
   "REFRESHMATERIALS": "VÄRSKENDA MATERJALE",
   "DONATEBUTTON-TT": "Vaata toetajaid ja anneta",
@@ -85,7 +85,7 @@
 
   "EDGEWARNING": "Märkus: Microsoft Edge kasutamine ei ole toetatud.\\nPalun kasutage Chrome (soovitatud) või Tulirebane MapartCrafti jaoks",
   "PDNWARNING1": "Märkus, sinu palettis on ",
-  "PDNWARNING2": " värvi, aga Paint.net\\'i maksimum on 96\\nMõned värvid ei ole saadaval Paint.net\\'is",
+  "PDNWARNING2": " värvi, aga Paint.net\\'i maksimum on 96. Mõned värvid ei ole saadaval Paint.net\\'is",
 
   "HAVEYOUFAQ": "Kas sa oled lugenud KKK?",
   "HELPNOTE": "Märkus: Abi pakutakse vaid inglise ja eesti keeles",

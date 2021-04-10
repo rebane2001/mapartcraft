@@ -61,7 +61,7 @@
   "DOWNLOAD-TT-MAPDAT": "Télécharger le map.dat divisé en chunks de 1x1",
   "DOWNLOAD-MAPDAT": "TELECHARGER",
   "DOWNLOAD-TT-PDN": "Télécharger la palette de couleur à utiliser sur Paint.net",
-  "DOWNLOAD-PDN": "TELECHARGER LA PALETTE PND",
+  "DOWNLOAD-PDN": "Telecharger",
   "REFRESHMATERIALS-TT": "Actualiser la liste des matériaux",
   "REFRESHMATERIALS": "ACTUALISER LES MATÉRIAUX",
   "DONATEBUTTON-TT": "Voir les donateurs et soutenir",
@@ -72,7 +72,7 @@
 
   "EDGEWARNING": "Note: Microsoft Edge n’est pas compatible.\\nMerci d’utiliser Chrome (de préférence) ou Firefox pour utiliser MapartCraft",
   "PDNWARNING1": "Attention, votre palette a ",
-  "PDNWARNING2": " couleurs, alors que le maximum sur Paint.net est de 96\\nCertaines couleurs seront inaccessibles via Paint.net",
+  "PDNWARNING2": " couleurs, alors que le maximum sur Paint.net est de 96. Certaines couleurs seront inaccessibles via Paint.net",
 
   "HAVEYOUFAQ": "Avez-vous lu la FAQ?",
   "HELPNOTE": "Note: Toutes les questions et réponses seront et devront être en Anglais",
