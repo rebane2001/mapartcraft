@@ -10,8 +10,8 @@ import locale_en from "./en.json";
 
 class App extends Component {
   state = {
+    initialLocaleLoaded: false,
     localeStrings: {},
-    localeLoaded: false,
     displayingFAQ: false,
   };
 
@@ -20,7 +20,7 @@ class App extends Component {
     if (stringName in localeStrings) {
       return localeStrings[stringName];
     } else {
-      return "EN:" + locale_en[stringName]; //TODO fall back to EN
+      return "EN: " + locale_en[stringName];
     }
   };
 
@@ -32,10 +32,9 @@ class App extends Component {
     this.setState({ displayingFAQ: false });
   };
 
-  onFlagClick = (countryCode) => {
+  onFlagClick = async (countryCode) => {
     CookieManager.setCookie("locale", countryCode);
-    this.setState({ localeLoaded: false });
-    fetch("./locale/" + countryCode + ".json")
+    await fetch("./locale/" + countryCode + ".json")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -47,27 +46,28 @@ class App extends Component {
         }
       })
       .then((data) => {
-        this.setState({ localeStrings: data, localeLoaded: true });
+        this.setState({ localeStrings: data });
       })
       .catch((error) => {
         console.log("error", error);
       });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const localeCookieValue = CookieManager.touchCookie("locale", "en");
-    this.onFlagClick(localeCookieValue);
+    await this.onFlagClick(localeCookieValue);
+    this.setState({ initialLocaleLoaded: true });
   }
 
   render() {
-    const { localeLoaded, displayingFAQ } = this.state;
+    const { initialLocaleLoaded, displayingFAQ } = this.state;
     return (
       <div className="App">
         {displayingFAQ ? (
           <FAQ onCloseClick={this.hideFAQ} />
         ) : (
           <React.Fragment>
-            {localeLoaded ? (
+            {initialLocaleLoaded ? (
               <React.Fragment>
                 <Languages onFlagClick={this.onFlagClick} />
                 <Header
