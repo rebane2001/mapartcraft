@@ -23,3 +23,7 @@
 .flag-et:hover + .flag-et_pop {
   display: initial;
 }
+
+.imgLoadingGif {
+  position: absolute;
+}

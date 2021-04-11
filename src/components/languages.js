@@ -19,36 +19,45 @@ class Languages extends Component {
   ];
 
   render() {
+    const { onFlagClick, localeCodeLoading } = this.props;
     return (
       <div className="languages">
-        {this.languages.map((language) =>
-          language === "et" ? (
-            [
+        {this.languages.map((language) => (
+          <div className="language" key={language}>
+            {localeCodeLoading === language ? (
               <img
-                key={language}
+                key={language + "_loading"}
+                src="./images/loadingSpinner.gif"
+                alt="loading"
+                className="imgLoadingGif"
+              />
+            ) : null}
+            {language === "et" ? (
+              <React.Fragment>
+                <img
+                  src={"./images/flags/" + language + ".svg"}
+                  alt={language}
+                  className={"flag flag-" + language}
+                  onClick={() => onFlagClick(language)}
+                />
+                <img
+                  key="et_pop"
+                  src={"./images/flags/et_pop.svg"}
+                  alt="et_pop"
+                  className={"flag flag-et_pop"}
+                  onClick={() => onFlagClick("et")}
+                />
+              </React.Fragment>
+            ) : (
+              <img
                 src={"./images/flags/" + language + ".svg"}
                 alt={language}
                 className={"flag flag-" + language}
-                onClick={() => this.props.onFlagClick(language)}
-              ></img>,
-              <img
-                key="et_pop"
-                src={"./images/flags/et_pop.svg"}
-                alt="et_pop"
-                className={"flag flag-et_pop"}
-                onClick={() => this.props.onFlagClick("et")}
-              ></img>,
-            ]
-          ) : (
-            <img
-              key={language}
-              src={"./images/flags/" + language + ".svg"}
-              alt={language}
-              className={"flag flag-" + language}
-              onClick={() => this.props.onFlagClick(language)}
-            ></img>
-          )
-        )}
+                onClick={() => onFlagClick(language)}
+              />
+            )}
+          </div>
+        ))}
       </div>
     );
   }

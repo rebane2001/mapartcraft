@@ -391,7 +391,6 @@ class MapartController extends Component {
           onDeletePreset={this.handleDeletePreset}
           onSavePreset={this.handleSavePreset}
           onSharePreset={this.handleSharePreset}
-          onImportPreset={this.handleImportPreset}
           onGetPDNPaletteClicked={this.handleGetPDNPaletteClicked}
         />
         <MapPreview

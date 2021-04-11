@@ -26,7 +26,6 @@ class BlockSelection extends Component {
       onDeletePreset,
       onSavePreset,
       onSharePreset,
-      // onImportPreset,
       onGetPDNPaletteClicked,
     } = this.props;
     return (

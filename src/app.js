@@ -10,9 +10,9 @@ import locale_en from "./en.json";
 
 class App extends Component {
   state = {
-    initialLocaleLoaded: false,
-    localeStrings: {},
     displayingFAQ: false,
+    localeStrings: locale_en,
+    localeCodeLoading: null,
   };
 
   getLocaleString = (stringName) => {
@@ -32,9 +32,14 @@ class App extends Component {
     this.setState({ displayingFAQ: false });
   };
 
-  onFlagClick = async (countryCode) => {
-    CookieManager.setCookie("locale", countryCode);
-    await fetch("./locale/" + countryCode + ".json")
+  onFlagClick = (countryCode) => {
+    if (countryCode === "en") {
+      this.setState({ localeStrings: locale_en });
+      CookieManager.setCookie("locale", countryCode);
+      return;
+    }
+    this.setState({ localeCodeLoading: countryCode });
+    fetch("./locale/" + countryCode + ".json")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -46,39 +51,41 @@ class App extends Component {
         }
       })
       .then((data) => {
+        CookieManager.setCookie("locale", countryCode);
         this.setState({ localeStrings: data });
       })
       .catch((error) => {
         console.log("error", error);
+      })
+      .finally(() => {
+        this.setState({ localeCodeLoading: null });
       });
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const localeCookieValue = CookieManager.touchCookie("locale", "en");
-    await this.onFlagClick(localeCookieValue);
-    this.setState({ initialLocaleLoaded: true });
+    if (localeCookieValue !== "en") {
+      this.onFlagClick(localeCookieValue);
+    }
   }
 
   render() {
-    const { initialLocaleLoaded, displayingFAQ } = this.state;
+    const { displayingFAQ, localeCodeLoading } = this.state;
     return (
       <div className="App">
         {displayingFAQ ? (
           <FAQ onCloseClick={this.hideFAQ} />
         ) : (
           <React.Fragment>
-            {initialLocaleLoaded ? (
-              <React.Fragment>
-                <Languages onFlagClick={this.onFlagClick} />
-                <Header
-                  getLocaleString={this.getLocaleString}
-                  onFAQClick={this.showFAQ}
-                />
-                <MapartController getLocaleString={this.getLocaleString} />
-              </React.Fragment>
-            ) : (
-              <h1>Loading locale... 🌐</h1>
-            )}
+            <Languages
+              onFlagClick={this.onFlagClick}
+              localeCodeLoading={localeCodeLoading}
+            />
+            <Header
+              getLocaleString={this.getLocaleString}
+              onFAQClick={this.showFAQ}
+            />
+            <MapartController getLocaleString={this.getLocaleString} />
           </React.Fragment>
         )}
       </div>

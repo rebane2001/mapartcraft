@@ -9,3 +9,4 @@
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
 - consider performance of keys, changing options affects map unnecessarily
 - async map updating and workers, how HARD is it to get this to work with react???
+- corrupted preset show in locale
