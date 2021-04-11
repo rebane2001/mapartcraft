@@ -55,14 +55,14 @@ class MapSettings extends Component {
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-MODE")}>
           {getLocaleString("SETTINGS-MODE")}
           {": "}
-          <select
-            onChange={onOptionChange_modeNBTOrMapdat}
-            value={optionValue_modeNBTOrMapdat}
-          >
-            <option value="NBT">Schematic (NBT)</option>
-            <option value="Mapdat">Datafile (map.dat)</option>
-          </select>
         </b>
+        <select
+          onChange={onOptionChange_modeNBTOrMapdat}
+          value={optionValue_modeNBTOrMapdat}
+        >
+          <option value="NBT">Schematic (NBT)</option>
+          <option value="Mapdat">Datafile (map.dat)</option>
+        </select>
         <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-VERSION")}>
           {getLocaleString("SETTINGS-VERSION")}
@@ -70,7 +70,9 @@ class MapSettings extends Component {
         </b>
         <select value={optionValue_version} onChange={onOptionChange_version}>
           {supportedVersions.map((supportedVersion) => (
-            <option key={supportedVersion.MCVersion}>{supportedVersion.MCVersion}</option>
+            <option key={supportedVersion.MCVersion}>
+              {supportedVersion.MCVersion}
+            </option>
           ))}
         </select>
         <br />
@@ -160,10 +162,7 @@ class MapSettings extends Component {
               </option>
             </select>
             <br />
-            <b
-              data-tooltip
-              data-title={getLocaleString("SETTINGS-TT-BLOCKTOADD")}
-            >
+            <b>
               {getLocaleString("SETTINGS-BLOCKTOADD")}
               {": "}
             </b>

@@ -1,6 +1,5 @@
 - Continue stripping master branch material into here
 - All main map rendering section
-- Tooltip hover
 - Map signing
 - Look at issues on Rebane repo
 - event handlers for downloading map
@@ -9,3 +8,4 @@
 - consider performance of keys, changing options affects map unnecessarily
 - async map updating and workers, how HARD is it to get this to work with react???
 - corrupted preset show in locale
+- index.html meta
