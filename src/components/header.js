@@ -16,12 +16,13 @@ class Header extends Component {
   };
 
   render() {
-    const { getLocaleString } = this.props;
+    const { contactInfoClassname } = this.state;
+    const { getLocaleString, onFAQClick } = this.props;
     return (
       <div className="header">
         <h1>MapartCraft</h1>
         <h3>
-          <span className="FAQTextButton" onClick={this.props.onFAQClick}>
+          <span className="FAQTextButton" onClick={onFAQClick}>
             {getLocaleString("FAQ")}
           </span>
           <span> | </span>
@@ -72,14 +73,14 @@ class Header extends Component {
           <br></br>
           {getLocaleString("DESCRIPTION6")}
           <span
-            className={this.state.contactInfoClassname}
+            className={contactInfoClassname}
             onClick={this.onContactInfoClick}
           >
             (rebane2001#3716)
           </span>
           {getLocaleString("DESCRIPTION7")}
           <span
-            className={this.state.contactInfoClassname}
+            className={contactInfoClassname}
             onClick={this.onContactInfoClick}
           >
             (
@@ -103,9 +104,9 @@ class Header extends Component {
           <br></br>
           <b>
             {getLocaleString("FAQTEXT1")}
-            <a href="faq.html" target="_blank" rel="noopener noreferrer">
+            <span className="FAQTextButton" onClick={onFAQClick}>
               {getLocaleString("FAQ")}
-            </a>
+            </span>
             {getLocaleString("FAQTEXT2")}
           </b>
         </p>
