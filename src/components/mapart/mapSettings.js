@@ -8,6 +8,7 @@ class MapSettings extends Component {
   render() {
     const {
       getLocaleString,
+      supportedVersions,
       optionValue_version,
       onOptionChange_version,
       optionValue_mapSize_x,
@@ -68,11 +69,9 @@ class MapSettings extends Component {
           {": "}
         </b>
         <select value={optionValue_version} onChange={onOptionChange_version}>
-          <option>1.12.2</option>
-          <option>1.13.2</option>
-          <option>1.14.4</option>
-          <option>1.15.2</option>
-          <option>1.16.5</option>
+          {supportedVersions.map((supportedVersion) => (
+            <option key={supportedVersion.MCVersion}>{supportedVersion.MCVersion}</option>
+          ))}
         </select>
         <br />
         <b>

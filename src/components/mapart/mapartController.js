@@ -34,6 +34,14 @@ class MapartController extends Component {
     selectedPresetName: defaultPresets[0]["name"],
   };
 
+  supportedVersions = [
+    { MCVersion: "1.12.2", NBTVersion: 1343 },
+    { MCVersion: "1.13.2", NBTVersion: 1631 },
+    { MCVersion: "1.14.4", NBTVersion: 1976 },
+    { MCVersion: "1.15.2", NBTVersion: 2230 },
+    { MCVersion: "1.16.5", NBTVersion: 2586 },
+  ];
+
   constructor(props) {
     super(props);
     this.state.customPresets = JSON.parse(
@@ -44,7 +52,7 @@ class MapartController extends Component {
     );
     this.state.optionValue_version = CookieManager.touchCookie(
       "defaultVersion",
-      "1.12.2"
+      this.supportedVersions[0].MCVersion
     );
     const URLParams = new URL(window.location).searchParams;
     if (URLParams.has("preset")) {
@@ -412,6 +420,7 @@ class MapartController extends Component {
   };
 
   render() {
+    const { supportedVersions } = this;
     const { getLocaleString } = this.props;
     const {
       selectedBlocks,
@@ -463,6 +472,7 @@ class MapartController extends Component {
         />
         <MapSettings
           getLocaleString={getLocaleString}
+          supportedVersions={supportedVersions}
           optionValue_version={optionValue_version}
           onOptionChange_version={this.onOptionChange_version}
           optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
