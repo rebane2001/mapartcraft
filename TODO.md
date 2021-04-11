@@ -3,7 +3,6 @@
 - Tooltip hover
 - Map signing
 - Look at issues on Rebane repo
-- Preset sharing
 - event handlers for downloading map
 - main canvas elt, hooks?
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files

@@ -46,6 +46,15 @@ class MapartController extends Component {
       "defaultVersion",
       "1.12.2"
     );
+    const URLParams = new URL(window.location).searchParams;
+    if (URLParams.has("preset")) {
+      const decodedPresetBlocks = this.getBlocksFromImportPresetString(
+        URLParams.get("preset")
+      );
+      if (decodedPresetBlocks !== null) {
+        this.state.selectedBlocks = decodedPresetBlocks;
+      }
+    }
   }
 
   handleChangeColourSetBlock = (colourSetId, blockId) => {
@@ -222,16 +231,15 @@ class MapartController extends Component {
         });
       }
     });
-    if (numberOfColoursExported > 96) {
+    if (numberOfColoursExported === 0) {
+      alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
+      return;
+    } else if (numberOfColoursExported > 96) {
       alert(
         getLocaleString("PDNWARNING1") +
           numberOfColoursExported.toString() +
           getLocaleString("PDNWARNING2")
       );
-    }
-    if (numberOfColoursExported === 0) {
-      alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
-      return;
     }
     const downloadBlob = new Blob([paletteText], { type: "text/plain" });
     const downloadURL = window.URL.createObjectURL(downloadBlob);
@@ -321,6 +329,7 @@ class MapartController extends Component {
         presetQueryString += parseInt(key).toString(36);
         presetQueryString += parseInt(selectedBlocks[key])
           .toString(26)
+          .toUpperCase()
           .replace(/[0-9]/g, (match) => {
             return {
               0: "Q",
@@ -340,14 +349,66 @@ class MapartController extends Component {
     return "https://rebane2001.com/mapartcraft/?preset=" + presetQueryString;
   };
 
-  handleSharePreset = (e) => {
-    console.log(e);
-    //TODO
+  handleSharePreset = () => {
+    const { getLocaleString } = this.props;
+    const { selectedBlocks } = this.state;
+    if (
+      Object.keys(selectedBlocks).every(
+        (colourSetId) => selectedBlocks[colourSetId] === "-1"
+      )
+    ) {
+      alert(getLocaleString("SELECTBLOCKSWARNING-SHARE"));
+    } else {
+      prompt(getLocaleString("PRESETS-SHARELINK"), this.generatePresetURL());
+    }
   };
 
-  handleImportPreset = (e) => {
-    console.log(e);
-    //TODO
+  getBlocksFromImportPresetString = (encodedPreset) => {
+    const { getLocaleString } = this.props;
+    const { optionValue_version } = this.state;
+    if (encodedPreset === "dQw4w9WgXcQ") {
+      window.location.replace("https://www.youtube.com/watch?v=cZ5wOPinZd4");
+      return;
+    }
+    if (!/^[0-9a-zQ-ZA-P]*$/g.test(encodedPreset)) {
+      alert(getLocaleString("PRESETS-CORRUPTED"));
+      return null;
+    }
+    let selectedBlocks = { ...this.state.selectedBlocks };
+    let presetRegex = /([0-9a-z]+)(?=([Q-ZA-P]+))/g;
+    let match;
+    while ((match = presetRegex.exec(encodedPreset)) !== null) {
+      const encodedColourSetId = match[1];
+      const encodedBlockId = match[2];
+      const decodedColourSetId = parseInt(encodedColourSetId, 36).toString();
+      const decodedBlockId = parseInt(
+        encodedBlockId.replace(/[Q-Z]/g, (match) => {
+          return {
+            Q: "0",
+            R: "1",
+            S: "2",
+            T: "3",
+            U: "4",
+            V: "5",
+            W: "6",
+            X: "7",
+            Y: "8",
+            Z: "9",
+          }[match];
+        }),
+        26
+      ).toString();
+      if (
+        decodedColourSetId in selectedBlocks &&
+        decodedBlockId in coloursJSON[decodedColourSetId]["blocks"] &&
+        coloursJSON[decodedColourSetId]["blocks"][decodedBlockId][
+          "validVersions"
+        ].includes(optionValue_version)
+      ) {
+        selectedBlocks[decodedColourSetId] = decodedBlockId;
+      }
+    }
+    return selectedBlocks;
   };
 
   render() {
