@@ -30,6 +30,7 @@ class MapartController extends Component {
     preProcessingValue_brightness: 100,
     preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
+    uploadedImage: null,
     customPresets: [],
     selectedPresetName: defaultPresets[0]["name"],
   };
@@ -63,6 +64,31 @@ class MapartController extends Component {
         this.state.selectedBlocks = decodedPresetBlocks;
       }
     }
+  }
+
+  componentDidMount() {
+    this.loadUploadedImageFromURL("./images/upload.png");
+  }
+
+  onFileDialogEvent = (e) => {
+    const files = e.target.files;
+    if (!files.length) {
+      return;
+    } else {
+      const file = files[0];
+      const imgUrl = URL.createObjectURL(file);
+      this.loadUploadedImageFromURL(imgUrl);
+    }
+  };
+
+  loadUploadedImageFromURL(imageURL) {
+    const img = new Image();
+    img.onload = () => {
+      this.setState({
+        uploadedImage: img,
+      });
+    };
+    img.src = imageURL;
   }
 
   handleChangeColourSetBlock = (colourSetId, blockId) => {
@@ -441,6 +467,7 @@ class MapartController extends Component {
       preProcessingValue_brightness,
       preProcessingValue_contrast,
       preProcessingValue_saturation,
+      uploadedImage,
       customPresets,
       selectedPresetName,
     } = this.state;
@@ -465,10 +492,19 @@ class MapartController extends Component {
         />
         <MapPreview
           getLocaleString={getLocaleString}
+          selectedBlocks={selectedBlocks}
+          optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
           optionValue_mapSize_x={optionValue_mapSize_x}
           optionValue_mapSize_y={optionValue_mapSize_y}
           optionValue_cropImage={optionValue_cropImage}
           optionValue_showGridOverlay={optionValue_showGridOverlay}
+          optionValue_staircasing={optionValue_staircasing}
+          optionValue_unobtainable={optionValue_unobtainable}
+          optionValue_transparency={optionValue_transparency}
+          optionValue_betterColour={optionValue_betterColour}
+          optionValue_dithering={optionValue_dithering}
+          uploadedImage={uploadedImage}
+          onFileDialogEvent={this.onFileDialogEvent}
         />
         <MapSettings
           getLocaleString={getLocaleString}

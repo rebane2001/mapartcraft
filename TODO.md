@@ -1,11 +1,9 @@
 - Continue stripping master branch material into here
-- All main map rendering section
 - Map signing
 - Look at issues on Rebane repo
 - event handlers for downloading map
-- main canvas elt, hooks?
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
-- consider performance of keys, changing options affects map unnecessarily
-- async map updating and workers, how HARD is it to get this to work with react???
+- map updating via workers, how HARD is it to get this to work with react???
 - corrupted preset show in locale
 - index.html meta
+- Preprocessing
