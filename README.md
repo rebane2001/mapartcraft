@@ -11,6 +11,8 @@ A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane
 - Trim supported versions down: eg drop 1.12, 1.12.1 in favour of just 1.12.2...
 - Tweaked locale JSONs to not contain duplicate values
 - Added 4th colour to colour boxes in block selection pane when mapdat option and unobtainable box selected
+- Original map preview had to finish its current rendering before re-rendering if an option changed mid render; now the map rendering worker is immediately terminated and relaunched if an option changes mid render to save time
+- Remove 'seconds remaining' from progress bar as it is inaccurate, and unnecessary with percentage shown also
 
 ## Requirements
 

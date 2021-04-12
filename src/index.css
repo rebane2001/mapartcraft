@@ -110,3 +110,7 @@ th:nth-child(1) {
   left: 70px;
   font-size: 26px;
 }
+
+.displayNone {
+  display: none;
+}

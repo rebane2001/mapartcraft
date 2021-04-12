@@ -3,7 +3,6 @@
 - Look at issues on Rebane repo
 - event handlers for downloading map
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
-- map updating via workers, how HARD is it to get this to work with react???
 - corrupted preset show in locale
 - index.html meta
 - Preprocessing

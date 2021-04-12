@@ -41,7 +41,6 @@
 
 .progress {
   background-color: black;
-  display: none;
 }
 
 .progressText {
@@ -53,11 +52,3 @@
   background-color: #688e6b;
   height: 24px;
 }
-
-/* #displaycanvasdiv
-#displayCanvas
-#imgupload
-#gridOverlay
-progress
-progresstext
-progressdiv */
