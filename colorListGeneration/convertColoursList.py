@@ -19,7 +19,7 @@ def saveJSON(filename, JSONToSave):
 def SAO_RGBToHex(colorRGB):
     return ("#%02x%02x%02x" % colorRGB).upper()
 
-if __name__ == "__main__":
+def convertMain():
     colours_old = loadJSON("./RebaneColoursList.json")
     colours_new = {}
     for colourSetNumber, colourSet in enumerate(colours_old):
@@ -292,3 +292,6 @@ if __name__ == "__main__":
                     del block["NBTWorkerArgs1.12"]
 
     saveJSON("./SAOColoursList.json", colours_new)
+
+if __name__ == "__main__":
+    convertMain()
