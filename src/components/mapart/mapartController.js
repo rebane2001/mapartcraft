@@ -503,6 +503,10 @@ class MapartController extends Component {
           optionValue_transparency={optionValue_transparency}
           optionValue_betterColour={optionValue_betterColour}
           optionValue_dithering={optionValue_dithering}
+          optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
+          preProcessingValue_brightness={preProcessingValue_brightness}
+          preProcessingValue_contrast={preProcessingValue_contrast}
+          preProcessingValue_saturation={preProcessingValue_saturation}
           uploadedImage={uploadedImage}
           onFileDialogEvent={this.onFileDialogEvent}
         />

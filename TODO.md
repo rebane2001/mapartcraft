@@ -5,4 +5,3 @@
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
 - corrupted preset show in locale
 - index.html meta
-- Preprocessing

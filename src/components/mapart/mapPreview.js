@@ -30,6 +30,14 @@ class MapPreview extends Component {
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
       prevProps.optionValue_cropImage === newProps.optionValue_cropImage,
+      prevProps.optionValue_preprocessingEnabled ===
+        newProps.optionValue_preprocessingEnabled,
+      prevProps.preProcessingValue_brightness ===
+        newProps.preProcessingValue_brightness,
+      prevProps.preProcessingValue_contrast ===
+        newProps.preProcessingValue_contrast,
+      prevProps.preProcessingValue_saturation ===
+        newProps.preProcessingValue_saturation,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -55,6 +63,14 @@ class MapPreview extends Component {
       prevProps.optionValue_transparency === newProps.optionValue_transparency,
       prevProps.optionValue_betterColour === newProps.optionValue_betterColour,
       prevProps.optionValue_dithering === newProps.optionValue_dithering,
+      prevProps.optionValue_preprocessingEnabled ===
+        newProps.optionValue_preprocessingEnabled,
+      prevProps.preProcessingValue_brightness ===
+        newProps.preProcessingValue_brightness,
+      prevProps.preProcessingValue_contrast ===
+        newProps.preProcessingValue_contrast,
+      prevProps.preProcessingValue_saturation ===
+        newProps.preProcessingValue_saturation,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -90,7 +106,13 @@ class MapPreview extends Component {
   }
 
   updateCanvas_source() {
-    const { uploadedImage } = this.props;
+    const {
+      optionValue_preprocessingEnabled,
+      preProcessingValue_brightness,
+      preProcessingValue_contrast,
+      preProcessingValue_saturation,
+      uploadedImage,
+    } = this.props;
     const {
       optionValue_mapSize_x,
       optionValue_mapSize_y,
@@ -98,12 +120,17 @@ class MapPreview extends Component {
     } = this.props;
     const { canvasRef_source } = this;
     const ctx_source = canvasRef_source.current.getContext("2d");
-    // ctx_source.clearRect(
-    //   0,
-    //   0,
-    //   ctx_source.canvas.width,
-    //   ctx_source.canvas.height
-    // );
+    ctx_source.clearRect(
+      0,
+      0,
+      ctx_source.canvas.width,
+      ctx_source.canvas.height
+    );
+    if (optionValue_preprocessingEnabled) {
+      ctx_source.filter = `brightness(${preProcessingValue_brightness}%) contrast(${preProcessingValue_contrast}%) saturate(${preProcessingValue_saturation}%)`;
+    } else {
+      ctx_source.filter = "none";
+    }
     if (optionValue_cropImage) {
       const img_width = uploadedImage.width;
       const img_height = uploadedImage.height;
