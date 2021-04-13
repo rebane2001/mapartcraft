@@ -118,5 +118,7 @@
 
   "MATERIALS-BLOCK": "Block",
   "MATERIALS-AMOUNT": "Amount",
-  "MATERIALS-PLACEHOLDERBLOCK": "Placeholder Block"
+  "MATERIALS-PLACEHOLDERBLOCK": "Placeholder Block",
+
+  "COOKIES-DISCLOSURE": "This website uses cookies!"
 }

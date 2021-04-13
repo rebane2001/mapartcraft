@@ -8,12 +8,31 @@ import Languages from "./components/languages";
 import MapartController from "./components/mapart/mapartController";
 import locale_en from "./en.json";
 
+import "./app.css";
+
 class App extends Component {
   state = {
     displayingFAQ: false,
+    displayingCookiesWarning: true,
+    displayingEdgeWarning: false,
     localeStrings: locale_en,
     localeCodeLoading: null,
   };
+
+  constructor(props) {
+    super(props);
+
+    //show warning when using Edge
+    if (
+      !(/*@cc_on!@*/ (false || !!document["documentMode"])) &&
+      !!window["StyleMedia"]
+    ) {
+      this.state.displayingEdgeWarning = true;
+    }
+
+    this.state.displayingCookiesWarning =
+      CookieManager.touchCookie("cookiesAccepted", false) === "false";
+  }
 
   getLocaleString = (stringName) => {
     const { localeStrings } = this.state;
@@ -62,6 +81,15 @@ class App extends Component {
       });
   };
 
+  onEdgeWarningButtonClick = () => {
+    this.setState({ displayingEdgeWarning: false });
+  };
+
+  onCookiesWarningButtonClick = () => {
+    CookieManager.setCookie("cookiesAccepted", true);
+    this.setState({ displayingCookiesWarning: false });
+  };
+
   componentDidMount() {
     const localeCookieValue = CookieManager.touchCookie("locale", "en");
     if (localeCookieValue !== "en") {
@@ -70,7 +98,12 @@ class App extends Component {
   }
 
   render() {
-    const { displayingFAQ, localeCodeLoading } = this.state;
+    const {
+      displayingFAQ,
+      displayingCookiesWarning,
+      displayingEdgeWarning,
+      localeCodeLoading,
+    } = this.state;
     return (
       <div className="App">
         {displayingFAQ ? (
@@ -86,6 +119,29 @@ class App extends Component {
               onFAQClick={this.showFAQ}
             />
             <MapartController getLocaleString={this.getLocaleString} />
+            <div className="fixedMessages">
+              {displayingEdgeWarning ? (
+                <div className="fixedMessage">
+                  <p>
+                    {this.getLocaleString("EDGEWARNING").replace("\\n", "\n")}
+                  </p>
+                  <button type="button" onClick={this.onEdgeWarningButtonClick}>
+                    ✔️
+                  </button>
+                </div>
+              ) : null}
+              {displayingCookiesWarning ? (
+                <div className="fixedMessage">
+                  <p>{this.getLocaleString("COOKIES-DISCLOSURE") + " 🍪"}</p>
+                  <button
+                    type="button"
+                    onClick={this.onCookiesWarningButtonClick}
+                  >
+                    ✔️
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </React.Fragment>
         )}
       </div>
