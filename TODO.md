@@ -6,4 +6,3 @@
 - corrupted preset show in locale
 - index.html meta
 - modify tooltip code to re-init when version changes
-- restructure colours JSON / do colourSet 9

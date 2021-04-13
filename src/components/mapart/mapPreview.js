@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 
-import coloursJSON from "./SAOColoursList.json";
+import coloursJSON from "./coloursJSON.json";
 import DitherMethods from "./Const_DitherMethods";
 
 import "./mapPreview.css";

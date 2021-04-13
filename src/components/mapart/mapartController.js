@@ -5,7 +5,7 @@ import BlockSelection from "./blockSelection";
 import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
 import defaultPresets from "./defaultPresets.json";
-import coloursJSON from "./SAOColoursList.json";
+import coloursJSON from "./coloursJSON.json";
 import DitherMethods from "./Const_DitherMethods";
 
 import "./mapartController.css";

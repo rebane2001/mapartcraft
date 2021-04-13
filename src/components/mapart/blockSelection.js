@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import defaultPresets from "./defaultPresets.json";
-import coloursJSON from "./SAOColoursList.json";
+import coloursJSON from "./coloursJSON.json";
 
 import "./blockSelection.css";
 

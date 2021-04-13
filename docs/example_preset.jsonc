@@ -3,8 +3,8 @@
     "name": "My Preset", // Name to display the preset as
     "blocks": [
         [
-            11, // Colour set number as defined in example_SAOColoursList.jsonc
-            6 // Block number as defined in example_SAOColoursList.jsonc
+            11, // Colour set number as defined in example_coloursJSON.jsonc
+            6 // Block number as defined in example_coloursJSON.jsonc
         ],
         [
             14, // Orangey
