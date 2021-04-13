@@ -219,6 +219,50 @@
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "end_stone",
                 "NBTWorkerArgsFlattening": {}
+            },
+            "8": {
+                "displayName": "End Stone Bricks",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "end_bricks",
+                "NBTWorkerArgs1.12": {},
+                "NBTWorkerNameFlattening": "end_stone_bricks",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "9": {
+                "displayName": "End Stone Brick Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "end_stone_brick_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "10": {
+                "displayName": "Bone Block",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "bone_block",
+                "NBTWorkerArgs1.12": {},
+                "NBTWorkerNameFlattening": "bone_block",
+                "NBTWorkerArgsFlattening": {}
             }
         }
     },
@@ -260,6 +304,19 @@
                 "NBTWorkerName1.12": "web",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "cobweb",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "1": {
+                "displayName": "Mushroom Stem",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "mushroom_stem",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -376,6 +433,19 @@
                 "NBTWorkerName1.12": "packed_ice",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "packed_ice",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "2": {
+                "displayName": "Blue Ice",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "blue_ice",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -816,6 +886,18 @@
                 },
                 "NBTWorkerNameFlattening": "granite",
                 "NBTWorkerArgsFlattening": {}
+            },
+            "7": {
+                "displayName": "Granite Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "granite_slab",
+                "NBTWorkerArgsFlattening": {}
             }
         }
     },
@@ -980,6 +1062,94 @@
                 "NBTWorkerName1.12": "gravel",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "gravel",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "8": {
+                "displayName": "Stone Bricks",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "stonebrick",
+                "NBTWorkerArgs1.12": {
+                    "variant": "stonebrick"
+                },
+                "NBTWorkerNameFlattening": "stone_bricks",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "9": {
+                "displayName": "Stone Brick Slab",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "stone_slab",
+                "NBTWorkerArgs1.12": {
+                    "variant": "stonebrick"
+                },
+                "NBTWorkerNameFlattening": "stone_brick_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "10": {
+                "displayName": "Mossy Cobblestone",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "mossy_cobblestone",
+                "NBTWorkerArgs1.12": {},
+                "NBTWorkerNameFlattening": "mossy_cobblestone",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "11": {
+                "displayName": "Mossy Cobblestone Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "mossy_cobblestone_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "12": {
+                "displayName": "Andesite Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "andesite_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "13": {
+                "displayName": "Stone Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "stone_slab",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -1189,6 +1359,18 @@
                 "NBTWorkerArgsFlattening": {}
             },
             "2": {
+                "displayName": "Diorite Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "diorite_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "3": {
                 "displayName": "Quartz Block",
                 "validVersions": [
                     "1.12.2",
@@ -1204,7 +1386,7 @@
                 "NBTWorkerNameFlattening": "quartz_block",
                 "NBTWorkerArgsFlattening": {}
             },
-            "3": {
+            "4": {
                 "displayName": "Quartz Slab",
                 "validVersions": [
                     "1.12.2",
@@ -1222,7 +1404,7 @@
                 "NBTWorkerNameFlattening": "quartz_slab",
                 "NBTWorkerArgsFlattening": {}
             },
-            "4": {
+            "5": {
                 "displayName": "Sea Lantern",
                 "validVersions": [
                     "1.12.2",
@@ -1628,6 +1810,24 @@
                 "NBTWorkerArgsFlattening": {}
             },
             "11": {
+                "displayName": "Red Sandstone Slab",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "stone_slab2",
+                "NBTWorkerArgs1.12": {
+                    "variant": "red_sandstone"
+                },
+                "NBTWorkerNameFlattening": "red_sandstone_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "12": {
                 "displayName": "Terracotta",
                 "validVersions": [
                     "1.12.2",
@@ -1641,6 +1841,28 @@
                 "NBTWorkerName1.12": "hardened_clay",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "terracotta",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "13": {
+                "displayName": "Honey Block",
+                "validVersions": [
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "honey_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "14": {
+                "displayName": "Honeycomb Block",
+                "validVersions": [
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "honeycomb_block",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -2514,6 +2736,71 @@
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "gray_glazed_terracotta",
                 "NBTWorkerArgsFlattening": {}
+            },
+            "6": {
+                "displayName": "Dead Tube Coral Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dead_tube_coral_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "7": {
+                "displayName": "Dead Brain Coral Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dead_brain_coral_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "8": {
+                "displayName": "Dead Bubble Coral Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dead_bubble_coral_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "9": {
+                "displayName": "Dead Fire Coral Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dead_fire_coral_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "10": {
+                "displayName": "Dead Horn Coral Block",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dead_horn_coral_block",
+                "NBTWorkerArgsFlattening": {}
             }
         }
     },
@@ -2793,6 +3080,19 @@
                 "NBTWorkerName1.12": "prismarine",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "prismarine",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "7": {
+                "displayName": "Prismarine Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "prismarine_slab",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -3229,24 +3529,6 @@
                 }
             },
             "7": {
-                "displayName": "Dark Oak Planks",
-                "validVersions": [
-                    "1.12.2",
-                    "1.13.2",
-                    "1.14.4",
-                    "1.15.2",
-                    "1.16.5"
-                ],
-                "supportBlockMandatory": false,
-                "flammable": true,
-                "NBTWorkerName1.12": "planks",
-                "NBTWorkerArgs1.12": {
-                    "variant": "dark_oak"
-                },
-                "NBTWorkerNameFlattening": "dark_oak_planks",
-                "NBTWorkerArgsFlattening": {}
-            },
-            "8": {
                 "displayName": "Dark Oak Slab",
                 "validVersions": [
                     "1.12.2",
@@ -3262,6 +3544,24 @@
                     "variant": "dark_oak"
                 },
                 "NBTWorkerNameFlattening": "dark_oak_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "8": {
+                "displayName": "Dark Oak Planks",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "NBTWorkerName1.12": "planks",
+                "NBTWorkerArgs1.12": {
+                    "variant": "dark_oak"
+                },
+                "NBTWorkerNameFlattening": "dark_oak_planks",
                 "NBTWorkerArgsFlattening": {}
             },
             "9": {
@@ -3299,6 +3599,26 @@
                 "NBTWorkerName1.12": "soul_sand",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "soul_sand",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "11": {
+                "displayName": "Soul Soil",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "soul_soil",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "12": {
+                "displayName": "Dried Kelp Block",
+                "validVersions": [
+                    "1.13.2"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dried_kelp_block",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -3431,6 +3751,18 @@
                 "NBTWorkerName1.12": "green_glazed_terracotta",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "green_glazed_terracotta",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "6": {
+                "displayName": "Dried Kelp Block",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "NBTWorkerNameFlattening": "dried_kelp_block",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -3582,6 +3914,24 @@
                 "NBTWorkerArgsFlattening": {}
             },
             "7": {
+                "displayName": "Bricks Slab",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "stone_slab",
+                "NBTWorkerArgs1.12": {
+                    "variant": "brick"
+                },
+                "NBTWorkerNameFlattening": "brick_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "8": {
                 "displayName": "Nether Wart Block",
                 "validVersions": [
                     "1.12.2",
@@ -3595,6 +3945,16 @@
                 "NBTWorkerName1.12": "nether_wart_block",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "nether_wart_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "9": {
+                "displayName": "Shroomlight",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "shroomlight",
                 "NBTWorkerArgsFlattening": {}
             }
         }
@@ -3760,6 +4120,46 @@
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "obsidian",
                 "NBTWorkerArgsFlattening": {}
+            },
+            "8": {
+                "displayName": "Crying Obsidian",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "crying_obsidian",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "9": {
+                "displayName": "Blackstone",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "blackstone",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "10": {
+                "displayName": "Blackstone Slab",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "blackstone_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "11": {
+                "displayName": "Block Of Netherite",
+                "validVersions": [
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "netherite_block",
+                "NBTWorkerArgsFlattening": {}
             }
         }
     },
@@ -3880,6 +4280,19 @@
                 "NBTWorkerArgsFlattening": {}
             },
             "2": {
+                "displayName": "Prismarine Brick Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "prismarine_brick_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "3": {
                 "displayName": "Dark Prismarine",
                 "validVersions": [
                     "1.12.2",
@@ -3897,7 +4310,20 @@
                 "NBTWorkerNameFlattening": "dark_prismarine",
                 "NBTWorkerArgsFlattening": {}
             },
-            "3": {
+            "4": {
+                "displayName": "Dark Prismarine Slab",
+                "validVersions": [
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "dark_prismarine_slab",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "5": {
                 "displayName": "Beacon",
                 "validVersions": [
                     "1.12.2",
@@ -4230,6 +4656,34 @@
                 "NBTWorkerName1.12": "magma",
                 "NBTWorkerArgs1.12": {},
                 "NBTWorkerNameFlattening": "magma_block",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "4": {
+                "displayName": "Red Nether Bricks",
+                "validVersions": [
+                    "1.12.2",
+                    "1.13.2",
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerName1.12": "red_nether_brick",
+                "NBTWorkerArgs1.12": {},
+                "NBTWorkerNameFlattening": "red_nether_bricks",
+                "NBTWorkerArgsFlattening": {}
+            },
+            "5": {
+                "displayName": "Red Nether Brick Slab",
+                "validVersions": [
+                    "1.14.4",
+                    "1.15.2",
+                    "1.16.5"
+                ],
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "NBTWorkerNameFlattening": "red_nether_brick_slab",
                 "NBTWorkerArgsFlattening": {}
             }
         }
