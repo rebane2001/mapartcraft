@@ -126,7 +126,7 @@ class BlockSelection extends Component {
               </label>
               {Object.entries(colourSet["blocks"])
                 .filter(([, block]) =>
-                  block["validVersions"].includes(optionValue_version)
+                  Object.keys(block["validVersions"]).includes(optionValue_version)
                 )
                 .map(([blockId, block]) => (
                   <label key={blockId}>

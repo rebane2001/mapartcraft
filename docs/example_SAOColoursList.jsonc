@@ -1,59 +1,63 @@
 {
-    "0": { // colour Set Number: blocks that produce one set of colours. note this number is the same as the index of the key in the dictionary. used also to determine texture Y position
-        "tonesRGB": {
-            "dark": [ // dark Colour Hex
+    "0": { // each set of blocks that produce a certain colour are grouped into a 'colour set'. We keep this as a dictionary instead of a list so it is easier to see the colourSetId at a glance
+        "tonesRGB": { // colours in RGB form
+            "dark": [ // for staircasing
                 89,
                 125,
                 39
             ],
-            "normal": [ // medium Colour Hex
+            "normal": [ // for flat maps
                 109,
                 153,
                 48
             ],
-            "light": [ // light Colour Hex
+            "light": [ // for staircasing
                 127,
                 178,
                 56
             ],
-            "unobtainable": [ // unobtainable Colour Hex: used for creative maps / .dat files only; cannot be obtained in survival
+            "unobtainable": [ // for mapdat files; unobtainable in survival
                 67,
                 94,
                 29
             ]
         },
         "blocks": {
-            "0": { // block Number: number within the colour set. note this number is the same as the index of the key in the dictionary. used also to determine texture X position
+            "0": { // block number within a colour set
                 "displayName": "Grass Block", // Human readable name, used when hovering over block
-                "validVersions": [ // List of versions this block is used in. This also determines which NBTWorkerName and arguments to use; NBT formats change from 1.12 to 1.13+. (see iron bars and 1.16 blocks also)
-                    "1.12.2",
-                    "1.13.2",
-                    "1.14.4",
-                    "1.15.2",
-                    "1.16.5"
-                ],
-                "supportBlockMandatory": false, // whether the block necessarily needs a block under it, eg carpet. used specifically if "Add blocks under" is "important blocks"
-                "flammable": false, //currently unused. may be used in future in an option for whether to place glass over the block in the .schematic to avoid lightning fires
-                "NBTWorkerName1.12": "grass", // name used to build the NBT file for 1.12
-                "NBTWorkerArgs1.12": {}, // arguments used to build the NBT file for 1.12
-                "NBTWorkerNameFlattening": "grass_block", // name used to build the NBT file for 1.13+
-                "NBTWorkerArgsFlattening": {} // arguments used to build the NBT file for 1.13+
+                "validVersions": { // list of versions this block is used in as this colour
+                    "1.12.2": { // if this is a dictionary then it contains info for the NBT worker
+                        "NBTName": "grass",
+                        "NBTArgs": {}
+                    },
+                    "1.13.2": {
+                        "NBTName": "grass_block",
+                        "NBTArgs": {}
+                    },
+                    "1.14.4": "&1.13.2", // to avoid duplicates, when NBT info is kept the same across versions we reference previous valid versions with "&${version}"
+                    "1.15.2": "&1.13.2",
+                    "1.16.5": "&1.13.2"
+                },
+                "supportBlockMandatory": false, // whether the block necessarily needs a block under it, eg carpet or sand. used specifically if "Add blocks under" is "important blocks"
+                "flammable": false //currently unused. may be used in future in an option for whether to place glass over the block in the .schematic to avoid lightning fires
             },
             "1": {
                 "displayName": "Slime Block",
-                "validVersions": [
-                    "1.12.2",
-                    "1.13.2",
-                    "1.14.4",
-                    "1.15.2",
-                    "1.16.5"
-                ],
+                "validVersions": {
+                    "1.12.2": {
+                        "NBTName": "slime",
+                        "NBTArgs": {}
+                    },
+                    "1.13.2": {
+                        "NBTName": "slime_block",
+                        "NBTArgs": {}
+                    },
+                    "1.14.4": "&1.13.2",
+                    "1.15.2": "&1.13.2",
+                    "1.16.5": "&1.13.2"
+                },
                 "supportBlockMandatory": true,
-                "flammable": false,
-                "NBTWorkerName1.12": "slime",
-                "NBTWorkerArgs1.12": {},
-                "NBTWorkerNameFlattening": "slime_block",
-                "NBTWorkerArgsFlattening": {}
+                "flammable": false
             }
         }
     }
