@@ -202,13 +202,13 @@ class MapPreview extends Component {
     const t0 = performance.now();
     this.mapCanvasWorker = new Worker("./js/mapCanvasWorker.js");
     this.mapCanvasWorker.onmessage = (e) => {
-      if (e.data.head === "PIXELS") {
+      if (e.data.head === "PIXELS_AND_MATERIALS") {
         const t1 = performance.now();
         console.log(
           "Calculated map preview data in " + (t1 - t0).toString() + "ms"
         );
         const ctx_display = canvasRef_display.current.getContext("2d");
-        ctx_display.putImageData(e.data.body, 0, 0);
+        ctx_display.putImageData(e.data.body.pixels, 0, 0);
         this.setState({ workerProgress: 1 });
       } else if (e.data.head === "PROGRESS_REPORT") {
         this.setState({ workerProgress: e.data.body });
