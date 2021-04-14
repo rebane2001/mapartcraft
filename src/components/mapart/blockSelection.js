@@ -116,8 +116,8 @@ class BlockSelection extends Component {
                   alt={getLocaleString("NONE")}
                   className={
                     selectedBlocks[colourSetId] === "-1"
-                      ? "blockImage blockImage_selected"
-                      : "blockImage"
+                      ? "cursorPointer blockImage blockImage_selected"
+                      : "cursorPointer blockImage"
                   }
                   data-tooltip
                   data-title={getLocaleString("NONE")}
@@ -135,8 +135,8 @@ class BlockSelection extends Component {
                       alt={block["displayName"]}
                       className={
                         selectedBlocks[colourSetId] === blockId
-                          ? "blockImage blockImage_selected"
-                          : "blockImage"
+                          ? "cursorPointer blockImage blockImage_selected"
+                          : "cursorPointer blockImage"
                       }
                       data-tooltip
                       data-title={block["displayName"]}

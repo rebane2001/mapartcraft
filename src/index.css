@@ -41,6 +41,10 @@ a:visited {
   height: 0;
 }
 
+.cursorPointer {
+  cursor: pointer;
+}
+
 #tooltip {
   font-family: "kenpixel_mini_square";
   position: absolute;
