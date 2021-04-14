@@ -108,9 +108,9 @@ class MapartController extends Component {
       const blockId = block[1].toString();
       if (
         blockId !== "-1" &&
-        Object.keys(coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]).includes(
-          optionValue_version
-        )
+        Object.keys(
+          coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]
+        ).includes(optionValue_version)
       ) {
         selectedBlocks[colourSetId] = blockId;
       }
@@ -435,9 +435,11 @@ class MapartController extends Component {
       if (
         decodedColourSetId in selectedBlocks &&
         decodedBlockId in coloursJSON[decodedColourSetId]["blocks"] &&
-        Object.keys(coloursJSON[decodedColourSetId]["blocks"][decodedBlockId][
-          "validVersions"
-        ]).includes(optionValue_version)
+        Object.keys(
+          coloursJSON[decodedColourSetId]["blocks"][decodedBlockId][
+            "validVersions"
+          ]
+        ).includes(optionValue_version)
       ) {
         selectedBlocks[decodedColourSetId] = decodedBlockId;
       }

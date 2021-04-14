@@ -14,7 +14,6 @@ var optionValue_dithering;
 var colourSetsToUse = []; // colourSetIds and shades to use in map
 var colourCache = new Map(); // cache for reusing colours in identical pixels
 var labCache = new Map();
-var returnCanvasImageDataArray;
 
 // rgb2lab conversion based on the one from redstonehelper's program
 function rgb2lab(rgb) {
@@ -166,6 +165,10 @@ function getColourSetsToUse() {
 }
 
 function getMapartImageData() {
+  if (colourSetsToUse.length === 0) {
+    return;
+  }
+
   const multimapWidth = optionValue_mapSize_x * 128;
   let ditherMatrix;
   let divisor;
@@ -201,13 +204,13 @@ function getMapartImageData() {
       optionValue_transparency &&
       canvasImageData.data[indexA] < 128
     ) {
-      returnCanvasImageDataArray[indexR] = 0;
-      returnCanvasImageDataArray[indexG] = 0;
-      returnCanvasImageDataArray[indexB] = 0;
-      returnCanvasImageDataArray[indexA] = 0;
+      canvasImageData.data[indexR] = 0;
+      canvasImageData.data[indexG] = 0;
+      canvasImageData.data[indexB] = 0;
+      canvasImageData.data[indexA] = 0;
       continue;
     } else {
-      returnCanvasImageDataArray[indexA] = 255; // full opacity
+      canvasImageData.data[indexA] = 255; // full opacity
     }
 
     const multimap_x = (i / 4) % multimapWidth;
@@ -229,9 +232,9 @@ function getMapartImageData() {
       // I have tested a refactor that only checks once however the time difference is negligible and code quality deteriorates
       case DitherMethods.None.uniqueId:
         let closestPixel = findClosestColourSetsRGBTo(oldPixel);
-        returnCanvasImageDataArray[indexR] = closestPixel[0];
-        returnCanvasImageDataArray[indexG] = closestPixel[1];
-        returnCanvasImageDataArray[indexB] = closestPixel[2];
+        canvasImageData.data[indexR] = closestPixel[0];
+        canvasImageData.data[indexG] = closestPixel[1];
+        canvasImageData.data[indexB] = closestPixel[2];
         break;
       case DitherMethods.Bayer44.uniqueId:
       case DitherMethods.Bayer22.uniqueId:
@@ -249,9 +252,9 @@ function getMapartImageData() {
         } else {
           newPixel = newPixels[2];
         }
-        returnCanvasImageDataArray[indexR] = newPixel[0];
-        returnCanvasImageDataArray[indexG] = newPixel[1];
-        returnCanvasImageDataArray[indexB] = newPixel[2];
+        canvasImageData.data[indexR] = newPixel[0];
+        canvasImageData.data[indexG] = newPixel[1];
+        canvasImageData.data[indexB] = newPixel[2];
         break;
       //Error diffusion algorithms
       case DitherMethods.FloydSteinberg.uniqueId:
@@ -260,30 +263,29 @@ function getMapartImageData() {
       case DitherMethods.SierraLite.uniqueId:
       case DitherMethods.Stucki.uniqueId:
       case DitherMethods.Atkinson.uniqueId:
-        returnCanvasImageDataArray = canvasImageData.data;
         newPixel = findClosestColourSetsRGBTo(oldPixel);
         const quant_error = [
           oldPixel[0] - newPixel[0],
           oldPixel[1] - newPixel[1],
           oldPixel[2] - newPixel[2],
         ];
-        returnCanvasImageDataArray[indexR] = newPixel[0];
-        returnCanvasImageDataArray[indexG] = newPixel[1];
-        returnCanvasImageDataArray[indexB] = newPixel[2];
+        canvasImageData.data[indexR] = newPixel[0];
+        canvasImageData.data[indexG] = newPixel[1];
+        canvasImageData.data[indexB] = newPixel[2];
 
         try {
           // ditherMatrix [0][0...2] should always be zero, and can thus be skipped
           if (multimap_x + 1 < multimapWidth) {
             // Make sure to not carry over error from one side to the other
             const weight = ditherMatrix[0][3] / divisor; // 1 right
-            returnCanvasImageDataArray[i + 4] += quant_error[0] * weight;
-            returnCanvasImageDataArray[i + 5] += quant_error[1] * weight;
-            returnCanvasImageDataArray[i + 6] += quant_error[2] * weight;
+            canvasImageData.data[i + 4] += quant_error[0] * weight;
+            canvasImageData.data[i + 5] += quant_error[1] * weight;
+            canvasImageData.data[i + 6] += quant_error[2] * weight;
             if (multimap_x + 2 < multimapWidth) {
               const weight = ditherMatrix[0][4] / divisor; // 2 right
-              returnCanvasImageDataArray[i + 8] += quant_error[0] * weight;
-              returnCanvasImageDataArray[i + 9] += quant_error[1] * weight;
-              returnCanvasImageDataArray[i + 10] += quant_error[2] * weight;
+              canvasImageData.data[i + 8] += quant_error[0] * weight;
+              canvasImageData.data[i + 9] += quant_error[1] * weight;
+              canvasImageData.data[i + 10] += quant_error[2] * weight;
             }
           }
 
@@ -291,44 +293,44 @@ function getMapartImageData() {
           if (multimap_x > 0) {
             // Order reversed, to allow nesting of 'if' blocks
             const weight = ditherMatrix[1][1] / divisor; // 1 down, 1 left
-            returnCanvasImageDataArray[i + multimapWidth * 4 - 4] +=
+            canvasImageData.data[i + multimapWidth * 4 - 4] +=
               quant_error[0] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 4 - 3] +=
+            canvasImageData.data[i + multimapWidth * 4 - 3] +=
               quant_error[1] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 4 - 2] +=
+            canvasImageData.data[i + multimapWidth * 4 - 2] +=
               quant_error[2] * weight;
             if (multimap_x > 1) {
               const weight = ditherMatrix[1][0] / divisor; // 1 down, 2 left
-              returnCanvasImageDataArray[i + multimapWidth * 4 - 8] +=
+              canvasImageData.data[i + multimapWidth * 4 - 8] +=
                 quant_error[0] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 4 - 7] +=
+              canvasImageData.data[i + multimapWidth * 4 - 7] +=
                 quant_error[1] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 4 - 6] +=
+              canvasImageData.data[i + multimapWidth * 4 - 6] +=
                 quant_error[2] * weight;
             }
           }
           let weight = ditherMatrix[1][2] / divisor; // 1 down
-          returnCanvasImageDataArray[i + multimapWidth * 4 + 0] +=
+          canvasImageData.data[i + multimapWidth * 4 + 0] +=
             quant_error[0] * weight;
-          returnCanvasImageDataArray[i + multimapWidth * 4 + 1] +=
+          canvasImageData.data[i + multimapWidth * 4 + 1] +=
             quant_error[1] * weight;
-          returnCanvasImageDataArray[i + multimapWidth * 4 + 2] +=
+          canvasImageData.data[i + multimapWidth * 4 + 2] +=
             quant_error[2] * weight;
           if (multimap_x + 1 < multimapWidth) {
             const weight = ditherMatrix[1][3] / divisor; // 1 down, 1 right
-            returnCanvasImageDataArray[i + multimapWidth * 4 + 4] +=
+            canvasImageData.data[i + multimapWidth * 4 + 4] +=
               quant_error[0] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 4 + 5] +=
+            canvasImageData.data[i + multimapWidth * 4 + 5] +=
               quant_error[1] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 4 + 6] +=
+            canvasImageData.data[i + multimapWidth * 4 + 6] +=
               quant_error[2] * weight;
             if (multimap_x + 2 < multimapWidth) {
               const weight = ditherMatrix[1][4] / divisor; // 1 down, 2 right
-              returnCanvasImageDataArray[i + multimapWidth * 4 + 8] +=
+              canvasImageData.data[i + multimapWidth * 4 + 8] +=
                 quant_error[0] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 4 + 9] +=
+              canvasImageData.data[i + multimapWidth * 4 + 9] +=
                 quant_error[1] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 4 + 10] +=
+              canvasImageData.data[i + multimapWidth * 4 + 10] +=
                 quant_error[2] * weight;
             }
           }
@@ -336,44 +338,44 @@ function getMapartImageData() {
           // Second row below
           if (multimap_x > 0) {
             const weight = ditherMatrix[2][1] / divisor; // 2 down, 1 left
-            returnCanvasImageDataArray[i + multimapWidth * 8 - 4] +=
+            canvasImageData.data[i + multimapWidth * 8 - 4] +=
               quant_error[0] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 8 - 3] +=
+            canvasImageData.data[i + multimapWidth * 8 - 3] +=
               quant_error[1] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 8 - 2] +=
+            canvasImageData.data[i + multimapWidth * 8 - 2] +=
               quant_error[2] * weight;
             if (multimap_x > 1) {
               const weight = ditherMatrix[2][0] / divisor; // 2 down, 2 left
-              returnCanvasImageDataArray[i + multimapWidth * 8 - 8] +=
+              canvasImageData.data[i + multimapWidth * 8 - 8] +=
                 quant_error[0] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 8 - 7] +=
+              canvasImageData.data[i + multimapWidth * 8 - 7] +=
                 quant_error[1] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 8 - 6] +=
+              canvasImageData.data[i + multimapWidth * 8 - 6] +=
                 quant_error[2] * weight;
             }
           }
           weight = ditherMatrix[2][2] / divisor; // 2 down
-          returnCanvasImageDataArray[i + multimapWidth * 8 + 0] +=
+          canvasImageData.data[i + multimapWidth * 8 + 0] +=
             quant_error[0] * weight;
-          returnCanvasImageDataArray[i + multimapWidth * 8 + 1] +=
+          canvasImageData.data[i + multimapWidth * 8 + 1] +=
             quant_error[1] * weight;
-          returnCanvasImageDataArray[i + multimapWidth * 8 + 2] +=
+          canvasImageData.data[i + multimapWidth * 8 + 2] +=
             quant_error[2] * weight;
           if (multimap_x + 1 < multimapWidth) {
             const weight = ditherMatrix[2][3] / divisor; // 2 down, 1 right
-            returnCanvasImageDataArray[i + multimapWidth * 8 + 4] +=
+            canvasImageData.data[i + multimapWidth * 8 + 4] +=
               quant_error[0] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 8 + 5] +=
+            canvasImageData.data[i + multimapWidth * 8 + 5] +=
               quant_error[1] * weight;
-            returnCanvasImageDataArray[i + multimapWidth * 8 + 6] +=
+            canvasImageData.data[i + multimapWidth * 8 + 6] +=
               quant_error[2] * weight;
             if (multimap_x + 2 < multimapWidth) {
               const weight = ditherMatrix[2][4] / divisor; // 2 down, 2 right
-              returnCanvasImageDataArray[i + multimapWidth * 8 + 8] +=
+              canvasImageData.data[i + multimapWidth * 8 + 8] +=
                 quant_error[0] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 8 + 9] +=
+              canvasImageData.data[i + multimapWidth * 8 + 9] +=
                 quant_error[1] * weight;
-              returnCanvasImageDataArray[i + multimapWidth * 8 + 10] +=
+              canvasImageData.data[i + multimapWidth * 8 + 10] +=
                 quant_error[2] * weight;
             }
           }
@@ -386,7 +388,6 @@ function getMapartImageData() {
         break;
     }
   }
-  return new ImageData(returnCanvasImageDataArray, multimapWidth);
 }
 
 onmessage = (e) => {
@@ -403,16 +404,7 @@ onmessage = (e) => {
   optionValue_betterColour = e.data.body.optionValue_betterColour;
   optionValue_dithering = e.data.body.optionValue_dithering;
 
-  returnCanvasImageDataArray = new Uint8ClampedArray(
-    128 * 128 * 4 * optionValue_mapSize_x * optionValue_mapSize_y
-  );
-
   getColourSetsToUse();
-  let responseBody;
-  if (colourSetsToUse.length !== 0) {
-    responseBody = getMapartImageData();
-  } else {
-    responseBody = canvasImageData;
-  }
-  postMessage({ head: "PIXELS", body: responseBody });
+  getMapartImageData();
+  postMessage({ head: "PIXELS_AND_MATERIALS", body: {pixels: canvasImageData} });
 };
