@@ -1,7 +1,3 @@
-.blockSelection {
-  float: left;
-}
-
 .colourSet {
   display: flex;
   flex-direction: row;

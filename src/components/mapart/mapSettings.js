@@ -51,7 +51,6 @@ class MapSettings extends Component {
     return (
       <div className="section settingsDiv">
         <h2>{getLocaleString("SETTINGSTITLE")}</h2>
-        <br />
         <b data-tooltip data-title={getLocaleString("SETTINGS-TT-MODE")}>
           {getLocaleString("SETTINGS-MODE")}
           {": "}

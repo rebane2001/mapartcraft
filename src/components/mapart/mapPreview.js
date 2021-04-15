@@ -270,7 +270,7 @@ class MapPreview extends Component {
     } = this.props;
     const { mapPreviewSizeScale, workerProgress } = this.state;
     return (
-      <div className="section mapImage">
+      <div className="section mapPreviewDiv">
         <h2>{getLocaleString("MAPPREVIEWTITLE")}</h2>
         <input
           type="file"
@@ -278,7 +278,6 @@ class MapPreview extends Component {
           ref={this.fileInputRef}
           onChange={onFileDialogEvent}
         />
-        <br />
         <div>
           <span
             className="gridOverlay"
@@ -315,7 +314,6 @@ class MapPreview extends Component {
             height={128 * optionValue_mapSize_y}
             ref={this.canvasRef_source}
           ></canvas>
-          <br />
         </div>
         <small
           data-tooltip

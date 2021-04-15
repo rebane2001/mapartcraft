@@ -1,3 +1,10 @@
+.titleAndLanguages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .fixedMessages {
     position: fixed;
     bottom: 0.1em;

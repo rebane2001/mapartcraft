@@ -29,7 +29,7 @@ class BlockSelection extends Component {
       onGetPDNPaletteClicked,
     } = this.props;
     return (
-      <div className="blockSelection section">
+      <div className="section blockSelectionDiv">
         <div className="blockSelectionHeader">
           <h2 id="blockselectiontitle">
             {getLocaleString("BLOCKSELECTIONTITLE")}

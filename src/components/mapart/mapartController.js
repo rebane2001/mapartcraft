@@ -492,7 +492,7 @@ class MapartController extends Component {
       currentMaterialsData,
     } = this.state;
     return (
-      <React.Fragment>
+      <div className="mapartController">
         <BlockSelection
           getLocaleString={getLocaleString}
           onChangeColourSetBlock={this.handleChangeColourSetBlock}
@@ -509,6 +509,7 @@ class MapartController extends Component {
           onSharePreset={this.handleSharePreset}
           onGetPDNPaletteClicked={this.handleGetPDNPaletteClicked}
         />
+        <div className="sectionsPreviewSettingsMaterials">
         <MapPreview
           getLocaleString={getLocaleString}
           selectedBlocks={selectedBlocks}
@@ -587,7 +588,8 @@ class MapartController extends Component {
           getLocaleString={getLocaleString}
           currentMaterialsData={currentMaterialsData}
         />
-      </React.Fragment>
+        </div>
+      </div>
     );
   }
 }

@@ -20,7 +20,6 @@ class Header extends Component {
     const { getLocaleString, onFAQClick } = this.props;
     return (
       <div className="header">
-        <h1>MapartCraft</h1>
         <h3>
           <span className="FAQTextButton" onClick={onFAQClick}>
             {getLocaleString("FAQ")}

@@ -30,3 +30,20 @@
   -webkit-filter: drop-shadow(0 0 4px #658968) !important;
   z-index: 10;
 }
+
+.mapartController,
+.sectionsPreviewSettingsMaterials {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sectionsPreviewSettingsMaterials {
+  flex: 1;
+}
+
+.section {
+  padding: 0.3em;
+}

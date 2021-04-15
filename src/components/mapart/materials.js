@@ -70,7 +70,7 @@ class Materials extends Component {
     const nonZeroMaterials = this.getMaterialsCount_nonZeroMaterials();
     const supportBlockCount = this.getMaterialsCount_supportBlock();
     return (
-      <div className="section materials">
+      <div className="section materialsDiv">
         <h2>{getLocaleString("MATERIALSTITLE")}</h2>
         <b
           data-tooltip

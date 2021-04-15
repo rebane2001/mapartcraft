@@ -110,10 +110,13 @@ class App extends Component {
           <FAQ onCloseClick={this.hideFAQ} />
         ) : (
           <React.Fragment>
-            <Languages
-              onFlagClick={this.onFlagClick}
-              localeCodeLoading={localeCodeLoading}
-            />
+            <div className="titleAndLanguages">
+              <h1>MapartCraft</h1>
+              <Languages
+                onFlagClick={this.onFlagClick}
+                localeCodeLoading={localeCodeLoading}
+              />
+            </div>
             <Header
               getLocaleString={this.getLocaleString}
               onFAQClick={this.showFAQ}
