@@ -254,6 +254,10 @@ class MapPreview extends Component {
     });
   };
 
+  componentWillUnmount() {
+    this.mapCanvasWorker.terminate();
+  };
+
   render() {
     const {
       getLocaleString,
