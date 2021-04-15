@@ -129,10 +129,21 @@ class MapartController extends Component {
 
   onOptionChange_version = (e) => {
     const version = e.target.value;
-    let selectedBlocks = {};
-    Object.keys(coloursJSON).forEach((key) => (selectedBlocks[key] = "-1"));
     CookieManager.setCookie("defaultVersion", version);
-    this.setState({ optionValue_version: version, selectedBlocks });
+    this.setState((currentState) => {
+      let selectedBlocks = { ...currentState.selectedBlocks };
+      Object.keys(coloursJSON).forEach((key) => {
+        if (
+          selectedBlocks[key] !== "-1" &&
+          !Object.keys(
+            coloursJSON[key]["blocks"][selectedBlocks[key]]["validVersions"]
+          ).includes(version)
+        ) {
+          selectedBlocks[key] = "-1";
+        }
+      });
+      return { optionValue_version: version, selectedBlocks };
+    });
   };
 
   onOptionChange_mapSize_x = (e) => {
@@ -485,7 +496,6 @@ class MapartController extends Component {
         <BlockSelection
           getLocaleString={getLocaleString}
           onChangeColourSetBlock={this.handleChangeColourSetBlock}
-          onChangeColourSetBlocks={this.handleChangeColourSetBlocks}
           optionValue_version={optionValue_version}
           optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
           optionValue_staircasing={optionValue_staircasing}
