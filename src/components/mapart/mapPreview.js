@@ -59,6 +59,7 @@ class MapPreview extends Component {
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
       prevProps.optionValue_cropImage === newProps.optionValue_cropImage,
       prevProps.optionValue_staircasing === newProps.optionValue_staircasing,
+      prevProps.optionValue_whereSupportBlocks === newProps.optionValue_whereSupportBlocks,
       prevProps.optionValue_unobtainable === newProps.optionValue_unobtainable,
       prevProps.optionValue_transparency === newProps.optionValue_transparency,
       prevProps.optionValue_betterColour === newProps.optionValue_betterColour,
@@ -187,10 +188,12 @@ class MapPreview extends Component {
       optionValue_mapSize_x,
       optionValue_mapSize_y,
       optionValue_staircasing,
+      optionValue_whereSupportBlocks,
       optionValue_unobtainable,
       optionValue_transparency,
       optionValue_betterColour,
       optionValue_dithering,
+      onGetMapMaterials,
     } = this.props;
     const ctx_source = canvasRef_source.current.getContext("2d");
     const canvasImageData = ctx_source.getImageData(
@@ -202,7 +205,7 @@ class MapPreview extends Component {
     const t0 = performance.now();
     this.mapCanvasWorker = new Worker("./js/mapCanvasWorker.js");
     this.mapCanvasWorker.onmessage = (e) => {
-      if (e.data.head === "PIXELS_AND_MATERIALS") {
+      if (e.data.head === "PIXELS_MATERIALS_CURRENTSELECTEDBLOCKS") {
         const t1 = performance.now();
         console.log(
           "Calculated map preview data in " + (t1 - t0).toString() + "ms"
@@ -210,6 +213,11 @@ class MapPreview extends Component {
         const ctx_display = canvasRef_display.current.getContext("2d");
         ctx_display.putImageData(e.data.body.pixels, 0, 0);
         this.setState({ workerProgress: 1 });
+        onGetMapMaterials({
+          materials: e.data.body.materials,
+          supportBlockCount: e.data.body.supportBlockCount,
+          currentSelectedBlocks: e.data.body.currentSelectedBlocks,
+        });
       } else if (e.data.head === "PROGRESS_REPORT") {
         this.setState({ workerProgress: e.data.body });
       }
@@ -225,6 +233,7 @@ class MapPreview extends Component {
         optionValue_mapSize_x: optionValue_mapSize_x,
         optionValue_mapSize_y: optionValue_mapSize_y,
         optionValue_staircasing: optionValue_staircasing,
+        optionValue_whereSupportBlocks: optionValue_whereSupportBlocks,
         optionValue_unobtainable: optionValue_unobtainable,
         optionValue_transparency: optionValue_transparency,
         optionValue_betterColour: optionValue_betterColour,

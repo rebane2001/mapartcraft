@@ -6,6 +6,7 @@ var optionValue_modeNBTOrMapdat;
 var optionValue_mapSize_x;
 var optionValue_mapSize_y;
 var optionValue_staircasing;
+var optionValue_whereSupportBlocks;
 var optionValue_unobtainable;
 var optionValue_transparency;
 var optionValue_betterColour;
@@ -14,6 +15,9 @@ var optionValue_dithering;
 var colourSetsToUse = []; // colourSetIds and shades to use in map
 var colourCache = new Map(); // cache for reusing colours in identical pixels
 var labCache = new Map();
+
+var materials = [];
+var supportBlockCount = []; // TODO make sure to account for noobline
 
 // rgb2lab conversion based on the one from redstonehelper's program
 function rgb2lab(rgb) {
@@ -57,63 +61,82 @@ function squaredEuclideanMetricColours(pixel1, pixel2) {
   return r * r + g * g + b * b; // actually L*a*b* if optionValue_betterColour but metric is calculated the same
 }
 
-function findClosestColourSetsRGBTo(pixel) {
-  let RGBBinary = (pixel[0] << 16) + (pixel[1] << 8) + pixel[2]; // injective mapping RGB to concatenated binaries
+function findClosestColourSetIdAndToneAndRGBTo(pixelRGB) {
+  let RGBBinary = (pixelRGB[0] << 16) + (pixelRGB[1] << 8) + pixelRGB[2]; // injective mapping RGB to concatenated binaries
   if (colourCache.has(RGBBinary)) {
     return colourCache.get(RGBBinary);
   } else {
     let shortestDistance = 9999999;
-    let newPixel = pixel;
+    let closestPixel;
 
     colourSetsToUse.forEach((colourSet) => {
       Object.keys(colourSet.tonesRGB).forEach((toneKey) => {
         const toneRGB = colourSet.tonesRGB[toneKey];
-        let squareDistance = squaredEuclideanMetricColours(toneRGB, pixel);
+        let squareDistance = squaredEuclideanMetricColours(toneRGB, pixelRGB);
         if (squareDistance < shortestDistance) {
           shortestDistance = squareDistance;
-          newPixel = toneRGB;
+          closestPixel = {
+            colourSetId: colourSet.colourSetId,
+            tone: toneKey,
+          };
         }
       });
     });
-    colourCache.set(RGBBinary, newPixel);
-    return newPixel;
+    colourCache.set(RGBBinary, closestPixel);
+    return closestPixel;
   }
 }
 
-function findClosest2ColourSetsRGBTo(pixel) {
-  let RGBBinary = (pixel[0] << 16) + (pixel[1] << 8) + pixel[2];
+function findClosest2ColourSetIdAndToneAndRGBTo(pixelRGB) {
+  let RGBBinary = (pixelRGB[0] << 16) + (pixelRGB[1] << 8) + pixelRGB[2];
   if (colourCache.has(RGBBinary)) {
     return colourCache.get(RGBBinary);
   } else {
     let shortestDistance1 = 9999999;
     let shortestDistance2 = 9999999;
-    let newPixel1 = pixel; // best colour
-    let newPixel2 = pixel; // second best colour
+    let closestPixel1 = { colourSetId: null, tone: null }; // best colour
+    let closestPixel2 = { colourSetId: null, tone: null }; // second best colour
 
     colourSetsToUse.forEach((colourSet) => {
       Object.keys(colourSet.tonesRGB).forEach((toneKey) => {
         const toneRGB = colourSet.tonesRGB[toneKey];
-        let squareDistance = squaredEuclideanMetricColours(toneRGB, pixel);
+        let squareDistance = squaredEuclideanMetricColours(toneRGB, pixelRGB);
         if (squareDistance < shortestDistance1) {
           shortestDistance1 = squareDistance;
-          newPixel1 = toneRGB;
+          closestPixel1 = {
+            colourSetId: colourSet.colourSetId,
+            tone: toneKey,
+          };
         }
-        if (squareDistance < shortestDistance2 && newPixel1 !== toneRGB) {
+        if (
+          squareDistance < shortestDistance2 &&
+          colourSetIdAndToneToRGB(
+            closestPixel1.colourSetId,
+            closestPixel1.tone
+          ) !== toneRGB
+        ) {
           shortestDistance2 = squareDistance;
-          newPixel2 = toneRGB;
+          closestPixel2 = {
+            colourSetId: colourSet.colourSetId,
+            tone: toneKey,
+          };
         }
       });
     });
     if (
-      squaredEuclideanMetricColours(newPixel1, newPixel2) <= shortestDistance2
+      shortestDistance2 !== 9999999 && // to make sure closestPixel2.colourSetId/tone is not null
+      squaredEuclideanMetricColours(
+        colourSetIdAndToneToRGB(closestPixel1.colourSetId, closestPixel1.tone),
+        colourSetIdAndToneToRGB(closestPixel2.colourSetId, closestPixel2.tone)
+      ) <= shortestDistance2
     ) {
-      newPixel2 = newPixel1; // if newPixel1 is a better fit to newPixel2 than newPixel2 is to the actual pixel
+      closestPixel2 = closestPixel1; // if closestPixel1 is a better fit to closestPixel2 than closestPixel2 is to the actual pixel
     }
     let newPixels = [
       shortestDistance1,
       shortestDistance2,
-      newPixel1,
-      newPixel2,
+      closestPixel1,
+      closestPixel2,
     ];
     colourCache.set(RGBBinary, newPixels);
     return newPixels;
@@ -164,7 +187,31 @@ function getColourSetsToUse() {
   }
 }
 
-function getMapartImageData() {
+function colourSetIdAndToneToRGB(colourSetId, tone) {
+  return coloursJSON[colourSetId]["tonesRGB"][tone];
+}
+
+function getMapartImageDataAndMaterials() {
+  for (let y = 0; y < optionValue_mapSize_y; y++) {
+    let materialsRowToAdd = [];
+    let supportBlockRowToAdd = [];
+    for (let x = 0; x < optionValue_mapSize_x; x++) {
+      let materialsEntryToAdd = {
+        whichMap_x: x,
+        whichMap_y: y,
+        materialsCounts: {},
+      };
+      colourSetsToUse.forEach((colourSet) => {
+        materialsEntryToAdd.materialsCounts[colourSet.colourSetId] = 0;
+      });
+      let supportBlockEntryToAdd = 0; // NB noobline counted in materials.js
+      materialsRowToAdd.push(materialsEntryToAdd);
+      supportBlockRowToAdd.push(supportBlockEntryToAdd);
+    }
+    materials.push(materialsRowToAdd);
+    supportBlockCount.push(supportBlockRowToAdd);
+  }
+
   if (colourSetsToUse.length === 0) {
     return;
   }
@@ -215,6 +262,8 @@ function getMapartImageData() {
 
     const multimap_x = (i / 4) % multimapWidth;
     const multimap_y = (i / 4 - multimap_x) / multimapWidth;
+    const whichMap_x = Math.floor(multimap_x / 128);
+    const whichMap_y = Math.floor(multimap_y / 128);
     if (multimap_x === 0) {
       postMessage({
         head: "PROGRESS_REPORT",
@@ -226,20 +275,27 @@ function getMapartImageData() {
       canvasImageData.data[indexG],
       canvasImageData.data[indexB],
     ];
-    let newPixel;
+    let closestColourSetIdAndTone;
     switch (chosenDitherMethod.uniqueId) {
       // Switch statement that checks the dither method every pixel;
       // I have tested a refactor that only checks once however the time difference is negligible and code quality deteriorates
-      case DitherMethods.None.uniqueId:
-        let closestPixel = findClosestColourSetsRGBTo(oldPixel);
-        canvasImageData.data[indexR] = closestPixel[0];
-        canvasImageData.data[indexG] = closestPixel[1];
-        canvasImageData.data[indexB] = closestPixel[2];
+      case DitherMethods.None.uniqueId: {
+        closestColourSetIdAndTone = findClosestColourSetIdAndToneAndRGBTo(
+          oldPixel
+        );
+        const closestColour = colourSetIdAndToneToRGB(
+          closestColourSetIdAndTone.colourSetId,
+          closestColourSetIdAndTone.tone
+        );
+        canvasImageData.data[indexR] = closestColour[0];
+        canvasImageData.data[indexG] = closestColour[1];
+        canvasImageData.data[indexB] = closestColour[2];
         break;
+      }
       case DitherMethods.Bayer44.uniqueId:
       case DitherMethods.Bayer22.uniqueId:
-      case DitherMethods.Ordered33.uniqueId:
-        const newPixels = findClosest2ColourSetsRGBTo(oldPixel);
+      case DitherMethods.Ordered33.uniqueId: {
+        const newPixels = findClosest2ColourSetIdAndToneAndRGBTo(oldPixel);
         // newPixels = [shortestDistance1, shortestDistance2, newPixel1, newPixel2]
         if (
           (newPixels[0] * (ditherMatrix[0].length * ditherMatrix.length + 1)) /
@@ -248,30 +304,41 @@ function getMapartImageData() {
             multimap_y % ditherMatrix.length
           ]
         ) {
-          newPixel = newPixels[3];
+          closestColourSetIdAndTone = newPixels[3];
         } else {
-          newPixel = newPixels[2];
+          closestColourSetIdAndTone = newPixels[2];
         }
-        canvasImageData.data[indexR] = newPixel[0];
-        canvasImageData.data[indexG] = newPixel[1];
-        canvasImageData.data[indexB] = newPixel[2];
+        const closestColour = colourSetIdAndToneToRGB(
+          closestColourSetIdAndTone.colourSetId,
+          closestColourSetIdAndTone.tone
+        );
+        canvasImageData.data[indexR] = closestColour[0];
+        canvasImageData.data[indexG] = closestColour[1];
+        canvasImageData.data[indexB] = closestColour[2];
         break;
+      }
       //Error diffusion algorithms
       case DitherMethods.FloydSteinberg.uniqueId:
       case DitherMethods.MinAvgErr.uniqueId:
       case DitherMethods.Burkes.uniqueId:
       case DitherMethods.SierraLite.uniqueId:
       case DitherMethods.Stucki.uniqueId:
-      case DitherMethods.Atkinson.uniqueId:
-        newPixel = findClosestColourSetsRGBTo(oldPixel);
+      case DitherMethods.Atkinson.uniqueId: {
+        closestColourSetIdAndTone = findClosestColourSetIdAndToneAndRGBTo(
+          oldPixel
+        );
+        const closestColour = colourSetIdAndToneToRGB(
+          closestColourSetIdAndTone.colourSetId,
+          closestColourSetIdAndTone.tone
+        );
+        canvasImageData.data[indexR] = closestColour[0];
+        canvasImageData.data[indexG] = closestColour[1];
+        canvasImageData.data[indexB] = closestColour[2];
         const quant_error = [
-          oldPixel[0] - newPixel[0],
-          oldPixel[1] - newPixel[1],
-          oldPixel[2] - newPixel[2],
+          oldPixel[0] - closestColour[0],
+          oldPixel[1] - closestColour[1],
+          oldPixel[2] - closestColour[2],
         ];
-        canvasImageData.data[indexR] = newPixel[0];
-        canvasImageData.data[indexG] = newPixel[1];
-        canvasImageData.data[indexB] = newPixel[2];
 
         try {
           // ditherMatrix [0][0...2] should always be zero, and can thus be skipped
@@ -380,10 +447,35 @@ function getMapartImageData() {
             }
           }
         } catch (e) {
-          console.log(e);
-          // Chrome doesn't seem to mind assigning values to undefined pixels via +=, catch is here 1) for other browsers, and 2) something to do with clamped arrays or debugging???
+          console.log(e); // ???
         }
         break;
+      }
+      default:
+        break;
+    }
+    materials[whichMap_y][whichMap_x].materialsCounts[
+      closestColourSetIdAndTone.colourSetId
+    ] += 1;
+    switch (optionValue_whereSupportBlocks) {
+      case "Important":
+        if (
+          coloursJSON[closestColourSetIdAndTone.colourSetId]["blocks"][
+            selectedBlocks[closestColourSetIdAndTone.colourSetId]
+          ]["supportBlockMandatory"]
+        ) {
+          supportBlockCount[whichMap_y][whichMap_x] += 1;
+        }
+        break;
+      case "All":
+        supportBlockCount[whichMap_y][whichMap_x] += 1;
+        break;
+      case "AllDoubleOptimized": // TODO
+        break;
+      case "AllDouble":
+        supportBlockCount[whichMap_y][whichMap_x] += 2;
+        break;
+      case "None":
       default:
         break;
     }
@@ -399,12 +491,21 @@ onmessage = (e) => {
   optionValue_mapSize_x = e.data.body.optionValue_mapSize_x;
   optionValue_mapSize_y = e.data.body.optionValue_mapSize_y;
   optionValue_staircasing = e.data.body.optionValue_staircasing;
+  optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
   optionValue_unobtainable = e.data.body.optionValue_unobtainable;
   optionValue_transparency = e.data.body.optionValue_transparency;
   optionValue_betterColour = e.data.body.optionValue_betterColour;
   optionValue_dithering = e.data.body.optionValue_dithering;
 
   getColourSetsToUse();
-  getMapartImageData();
-  postMessage({ head: "PIXELS_AND_MATERIALS", body: {pixels: canvasImageData} });
+  getMapartImageDataAndMaterials();
+  postMessage({
+    head: "PIXELS_MATERIALS_CURRENTSELECTEDBLOCKS",
+    body: {
+      pixels: canvasImageData,
+      materials: materials,
+      supportBlockCount: supportBlockCount,
+      currentSelectedBlocks: selectedBlocks,
+    },
+  });
 };

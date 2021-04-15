@@ -4,6 +4,7 @@ import CookieManager from "../../cookieManager";
 import BlockSelection from "./blockSelection";
 import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
+import Materials from "./materials";
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
 import DitherMethods from "./Const_DitherMethods";
@@ -33,6 +34,7 @@ class MapartController extends Component {
     uploadedImage: null,
     customPresets: [],
     selectedPresetName: defaultPresets[0]["name"],
+    currentMaterialsData: null,
   };
 
   supportedVersions = [
@@ -447,6 +449,10 @@ class MapartController extends Component {
     return selectedBlocks;
   };
 
+  handleSetMapMaterials = (currentMaterialsData) => {
+    this.setState({ currentMaterialsData });
+  };
+
   render() {
     const { supportedVersions } = this;
     const { getLocaleString } = this.props;
@@ -472,6 +478,7 @@ class MapartController extends Component {
       uploadedImage,
       customPresets,
       selectedPresetName,
+      currentMaterialsData,
     } = this.state;
     return (
       <React.Fragment>
@@ -501,6 +508,7 @@ class MapartController extends Component {
           optionValue_cropImage={optionValue_cropImage}
           optionValue_showGridOverlay={optionValue_showGridOverlay}
           optionValue_staircasing={optionValue_staircasing}
+          optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
           optionValue_unobtainable={optionValue_unobtainable}
           optionValue_transparency={optionValue_transparency}
           optionValue_betterColour={optionValue_betterColour}
@@ -511,6 +519,7 @@ class MapartController extends Component {
           preProcessingValue_saturation={preProcessingValue_saturation}
           uploadedImage={uploadedImage}
           onFileDialogEvent={this.onFileDialogEvent}
+          onGetMapMaterials={this.handleSetMapMaterials}
         />
         <MapSettings
           getLocaleString={getLocaleString}
@@ -563,6 +572,10 @@ class MapartController extends Component {
           onGetNBTClicked={this.onGetNBTClicked}
           onGetNBTSplitClicked={this.onGetNBTSplitClicked}
           onGetMapdatSplitClicked={this.onGetMapdatSplitClicked}
+        />
+        <Materials
+          getLocaleString={getLocaleString}
+          currentMaterialsData={currentMaterialsData}
         />
       </React.Fragment>
     );
