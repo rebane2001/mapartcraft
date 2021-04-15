@@ -4,6 +4,5 @@
 - event handlers for downloading map
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
 - corrupted preset show in locale
-- index.html meta
 - modify tooltip code to re-init when version changes
 - legacy preset keys to not break presets / only store non -1 / remove default presets ie move to default value for touch
