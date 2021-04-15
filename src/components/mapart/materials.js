@@ -64,9 +64,6 @@ class Materials extends Component {
   render() {
     const { getLocaleString, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
-    if (currentMaterialsData === null) {
-      return null;
-    }
     const nonZeroMaterials = this.getMaterialsCount_nonZeroMaterials();
     const supportBlockCount = this.getMaterialsCount_supportBlock();
     return (
@@ -91,21 +88,23 @@ class Materials extends Component {
               <th>{getLocaleString("MATERIALS-BLOCK")}</th>
               <th>{getLocaleString("MATERIALS-AMOUNT")}</th>
             </tr>
-            <tr>
-              <th>
-                <img
-                  src="./images/null.png"
-                  alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
-                  className={"blockImage"}
-                  data-tooltip
-                  data-title={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
-                  style={{
-                    backgroundImage: 'url("./images/placeholder.png")',
-                  }}
-                ></img>
-              </th>
-              <th>{supportBlockCount}</th>
-            </tr>
+            {supportBlockCount !== 0 ? (
+              <tr>
+                <th>
+                  <img
+                    src="./images/null.png"
+                    alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
+                    className={"blockImage"}
+                    data-tooltip
+                    data-title={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
+                    style={{
+                      backgroundImage: 'url("./images/placeholder.png")',
+                    }}
+                  ></img>
+                </th>
+                <th>{supportBlockCount}</th>
+              </tr>
+            ) : null}
             {Object.entries(nonZeroMaterials).map(
               ([colourSetId, materialCount]) =>
                 currentMaterialsData.currentSelectedBlocks[colourSetId] !==

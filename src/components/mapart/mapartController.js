@@ -34,7 +34,11 @@ class MapartController extends Component {
     uploadedImage: null,
     customPresets: [],
     selectedPresetName: defaultPresets[0]["name"],
-    currentMaterialsData: null,
+    currentMaterialsData: {
+      materials: [[]],
+      supportBlockCount: [[]],
+      currentSelectedBlocks: {},
+    },
   };
 
   supportedVersions = [
