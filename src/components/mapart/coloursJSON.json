@@ -541,6 +541,21 @@
                 },
                 "supportBlockMandatory": true,
                 "flammable": false
+            },
+            "4": {
+                "displayName": "Brewing Stand",
+                "validVersions": {
+                    "1.12.2": {
+                        "NBTName": "brewing_stand",
+                        "NBTArgs": {}
+                    },
+                    "1.13.2": "&1.12.2",
+                    "1.14.4": "&1.12.2",
+                    "1.15.2": "&1.12.2",
+                    "1.16.5": "&1.12.2"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false
             }
         }
     },
