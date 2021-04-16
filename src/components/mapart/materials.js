@@ -13,7 +13,7 @@ class Materials extends Component {
     }));
   };
 
-  getMaterialsCount_nonZeroMaterials() {
+  getMaterialsCount_nonZeroMaterialsItems() {
     const { currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
     const materialsCountDict = {};
@@ -40,7 +40,13 @@ class Materials extends Component {
     const nonZeroMaterials = Object.fromEntries(
       Object.entries(materialsCountDict).filter(([_, value]) => value !== 0)
     );
-    return nonZeroMaterials;
+    let nonZeroMaterialsItems = Object.keys(nonZeroMaterials).map((key) => {
+      return [key, nonZeroMaterials[key]];
+    });
+    nonZeroMaterialsItems.sort((first, second) => {
+      return second[1] - first[1];
+    });
+    return nonZeroMaterialsItems;
   }
 
   getMaterialsCount_supportBlock() {
@@ -61,10 +67,28 @@ class Materials extends Component {
     return supportBlockCount;
   }
 
+  formatMaterialCount = (count) => {
+    const numberOfStacks = Math.floor(count / 64);
+    const remainder = count % 64;
+    const numberOfShulkers = count / 1728; // to 2dp
+    let returnString = count.toString();
+    if (numberOfStacks !== 0) {
+      returnString += " (" + numberOfStacks.toString() + "x64";
+      if (remainder !== 0) {
+        returnString += " + " + remainder.toString();
+      }
+      if (numberOfShulkers >= 1) {
+        returnString += ", " + numberOfShulkers.toFixed(2) + " SB";
+      }
+      returnString += ")";
+    }
+    return returnString;
+  };
+
   render() {
     const { getLocaleString, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
-    const nonZeroMaterials = this.getMaterialsCount_nonZeroMaterials();
+    const nonZeroMaterialsItems = this.getMaterialsCount_nonZeroMaterialsItems();
     const supportBlockCount = this.getMaterialsCount_supportBlock();
     return (
       <div className="section materialsDiv">
@@ -102,12 +126,11 @@ class Materials extends Component {
                     }}
                   ></img>
                 </th>
-                <th>{supportBlockCount}</th>
+                <th>{this.formatMaterialCount(supportBlockCount)}</th>
               </tr>
             ) : null}
-            {Object.entries(nonZeroMaterials).map(
-              ([colourSetId, materialCount]) =>
-                currentMaterialsData.currentSelectedBlocks[colourSetId] !==
+            {nonZeroMaterialsItems.map(([colourSetId, materialCount]) =>
+              currentMaterialsData.currentSelectedBlocks[colourSetId] !==
                 "-1" ? (
                   <tr key={colourSetId}>
                     <th>
@@ -141,7 +164,7 @@ class Materials extends Component {
                         }}
                       ></img>
                     </th>
-                    <th>{materialCount}</th>
+                    <th>{this.formatMaterialCount(materialCount)}</th>
                   </tr>
                 ) : null
             )}
