@@ -2,6 +2,7 @@ import React, { Component, createRef } from "react";
 
 import coloursJSON from "./coloursJSON.json";
 import DitherMethods from "./Const_DitherMethods";
+import Tooltip from "../tooltip";
 
 import "./mapPreview.css";
 
@@ -59,7 +60,8 @@ class MapPreview extends Component {
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
       prevProps.optionValue_cropImage === newProps.optionValue_cropImage,
       prevProps.optionValue_staircasing === newProps.optionValue_staircasing,
-      prevProps.optionValue_whereSupportBlocks === newProps.optionValue_whereSupportBlocks,
+      prevProps.optionValue_whereSupportBlocks ===
+        newProps.optionValue_whereSupportBlocks,
       prevProps.optionValue_unobtainable === newProps.optionValue_unobtainable,
       prevProps.optionValue_transparency === newProps.optionValue_transparency,
       prevProps.optionValue_betterColour === newProps.optionValue_betterColour,
@@ -256,7 +258,7 @@ class MapPreview extends Component {
 
   componentWillUnmount() {
     this.mapCanvasWorker.terminate();
-  };
+  }
 
   render() {
     const {
@@ -315,50 +317,55 @@ class MapPreview extends Component {
             ref={this.canvasRef_source}
           ></canvas>
         </div>
-        <small
-          data-tooltip
-          data-title={getLocaleString("MAPPREVIEW-TT-BESTRES")}
-        >
-          {(128 * optionValue_mapSize_x).toString() +
-            "x" +
-            (128 * optionValue_mapSize_y).toString()}
-        </small>{" "}
-        <small
-          data-tooltip
-          data-title={getLocaleString("MAPPREVIEW-TT-DOESNTMATCH")}
-          className="mapResWarning"
-          style={{
-            display:
-              uploadedImage === null ||
-              uploadedImage.height * optionValue_mapSize_x ===
-                uploadedImage.width * optionValue_mapSize_y
-                ? "none"
-                : "inline",
-            color: optionValue_cropImage ? "orange" : "red",
-          }}
-        >
-          {uploadedImage === null
-            ? null
-            : uploadedImage.width.toString() +
-              "x" +
-              uploadedImage.height.toString()}
-        </small>
-        <img
-          alt="+"
-          className="sizeButton"
-          src="./images/plus.png"
-          onClick={this.increasePreviewScale}
-          data-tooltip
-          data-title={getLocaleString("MAPPREVIEW-TT-PREVPLUS")}
-        />
-        <img
-          alt="-"
-          className="sizeButton"
-          src="./images/minus.png"
-          onClick={this.decreasePreviewScale}
-          data-tooltip
-          data-title={getLocaleString("MAPPREVIEW-TT-PREVMINUS")}
-        />
+        <div className="mapResolutionAndZoom">
+          <div>
+            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-BESTRES")}>
+              <small>
+                {(128 * optionValue_mapSize_x).toString() +
+                  "x" +
+                  (128 * optionValue_mapSize_y).toString()}
+              </small>
+            </Tooltip>{" "}
+            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-DOESNTMATCH")}>
+              <small
+                className="mapResWarning"
+                style={{
+                  display:
+                    uploadedImage === null ||
+                    uploadedImage.height * optionValue_mapSize_x ===
+                      uploadedImage.width * optionValue_mapSize_y
+                      ? "none"
+                      : "inline",
+                  color: optionValue_cropImage ? "orange" : "red",
+                }}
+              >
+                {uploadedImage === null
+                  ? null
+                  : uploadedImage.width.toString() +
+                    "x" +
+                    uploadedImage.height.toString()}
+              </small>
+            </Tooltip>
+          </div>
+          <div>
+            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-PREVPLUS")}>
+              <img
+                alt="+"
+                className="sizeButton"
+                src="./images/plus.png"
+                onClick={this.increasePreviewScale}
+              />
+            </Tooltip>
+            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-PREVMINUS")}>
+              <img
+                alt="-"
+                className="sizeButton"
+                src="./images/minus.png"
+                onClick={this.decreasePreviewScale}
+              />
+            </Tooltip>
+          </div>
+        </div>
         <div
           className="progress"
           style={{

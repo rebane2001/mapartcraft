@@ -27,11 +27,16 @@
   subpixel-antialias: none;
 }
 
+.mapResolutionAndZoom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .sizeButton {
   margin-top: 2px;
   margin-left: 2px;
   cursor: pointer;
-  float: right;
 }
 
 .progress {

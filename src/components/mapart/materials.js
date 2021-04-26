@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import coloursJSON from "./coloursJSON.json";
+import Tooltip from "../tooltip";
 
 import "./materials.css";
 
@@ -93,13 +94,12 @@ class Materials extends Component {
     return (
       <div className="section materialsDiv">
         <h2>{getLocaleString("MATERIALSTITLE")}</h2>
-        <b
-          data-tooltip
-          data-title={getLocaleString("SETTINGS-TT-SPLITMATERIALS")}
-        >
-          {getLocaleString("SETTINGS-SPLITMATERIALS")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-SPLITMATERIALS")}>
+          <b>
+            {getLocaleString("SETTINGS-SPLITMATERIALS")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <input
           type="checkbox"
           checked={onlyMaxPerSplit}
@@ -115,25 +115,36 @@ class Materials extends Component {
             {supportBlockCount !== 0 ? (
               <tr>
                 <th>
-                  <img
-                    src="./images/null.png"
-                    alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
-                    className={"blockImage"}
-                    data-tooltip
-                    data-title={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
-                    style={{
-                      backgroundImage: 'url("./images/placeholder.png")',
-                    }}
-                  ></img>
+                  <Tooltip
+                    tooltipText={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
+                  >
+                    <img
+                      src="./images/null.png"
+                      alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
+                      className={"blockImage"}
+                      style={{
+                        backgroundImage: 'url("./images/placeholder.png")',
+                      }}
+                    />
+                  </Tooltip>
                 </th>
                 <th>{this.formatMaterialCount(supportBlockCount)}</th>
               </tr>
             ) : null}
             {nonZeroMaterialsItems.map(([colourSetId, materialCount]) =>
               currentMaterialsData.currentSelectedBlocks[colourSetId] !==
-                "-1" ? (
-                  <tr key={colourSetId}>
-                    <th>
+              "-1" ? (
+                <tr key={colourSetId}>
+                  <th>
+                    <Tooltip
+                      tooltipText={
+                        coloursJSON[colourSetId]["blocks"][
+                          currentMaterialsData.currentSelectedBlocks[
+                            colourSetId
+                          ]
+                        ]["displayName"]
+                      }
+                    >
                       <img
                         src="./images/null.png"
                         alt={
@@ -144,14 +155,6 @@ class Materials extends Component {
                           ]["displayName"]
                         }
                         className={"blockImage"}
-                        data-tooltip
-                        data-title={
-                          coloursJSON[colourSetId]["blocks"][
-                            currentMaterialsData.currentSelectedBlocks[
-                              colourSetId
-                            ]
-                          ]["displayName"]
-                        }
                         style={{
                           backgroundImage: 'url("./images/textures.png")',
                           backgroundPositionX:
@@ -162,11 +165,12 @@ class Materials extends Component {
                             "00%",
                           backgroundPositionY: "-" + colourSetId + "00%",
                         }}
-                      ></img>
-                    </th>
-                    <th>{this.formatMaterialCount(materialCount)}</th>
-                  </tr>
-                ) : null
+                      />
+                    </Tooltip>
+                  </th>
+                  <th>{this.formatMaterialCount(materialCount)}</th>
+                </tr>
+              ) : null
             )}
           </tbody>
         </table>

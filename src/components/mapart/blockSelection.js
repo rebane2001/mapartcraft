@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
+import Tooltip from "../tooltip";
 
 import "./blockSelection.css";
 
@@ -58,22 +59,16 @@ class BlockSelection extends Component {
           <button type="button" onClick={onSavePreset}>
             {getLocaleString("PRESETS-SAVE")}
           </button>
-          <button
-            type="button"
-            onClick={onSharePreset}
-            data-tooltip
-            data-title={getLocaleString("PRESETS-TT-SHARE")}
-          >
-            {getLocaleString("PRESETS-SHARE")}
-          </button>
-          <button
-            type="button"
-            onClick={onGetPDNPaletteClicked}
-            data-tooltip
-            data-title={getLocaleString("DOWNLOAD-TT-PDN")}
-          >
-            {getLocaleString("DOWNLOAD-PDN")}
-          </button>
+          <Tooltip tooltipText={getLocaleString("PRESETS-TT-SHARE")}>
+            <button type="button" onClick={onSharePreset}>
+              {getLocaleString("PRESETS-SHARE")}
+            </button>
+          </Tooltip>
+          <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-PDN")}>
+            <button type="button" onClick={onGetPDNPaletteClicked}>
+              {getLocaleString("DOWNLOAD-PDN")}
+            </button>
+          </Tooltip>
         </div>
         <div className="blockSelectionBlocks">
           {Object.entries(coloursJSON).map(([colourSetId, colourSet]) => (
@@ -111,44 +106,46 @@ class BlockSelection extends Component {
                 }}
               ></div>
               <label>
-                <img
-                  src="./images/barrier.png"
-                  alt={getLocaleString("NONE")}
-                  className={
-                    selectedBlocks[colourSetId] === "-1"
-                      ? "cursorPointer blockImage blockImage_selected"
-                      : "cursorPointer blockImage"
-                  }
-                  data-tooltip
-                  data-title={getLocaleString("NONE")}
-                  onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
-                ></img>
+                <Tooltip tooltipText={getLocaleString("NONE")}>
+                  <img
+                    src="./images/barrier.png"
+                    alt={getLocaleString("NONE")}
+                    className={
+                      selectedBlocks[colourSetId] === "-1"
+                        ? "cursorPointer blockImage blockImage_selected"
+                        : "cursorPointer blockImage"
+                    }
+                    onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
+                  />
+                </Tooltip>
               </label>
               {Object.entries(colourSet["blocks"])
                 .filter(([, block]) =>
-                  Object.keys(block["validVersions"]).includes(optionValue_version)
+                  Object.keys(block["validVersions"]).includes(
+                    optionValue_version
+                  )
                 )
                 .map(([blockId, block]) => (
                   <label key={blockId}>
-                    <img
-                      src="./images/null.png"
-                      alt={block["displayName"]}
-                      className={
-                        selectedBlocks[colourSetId] === blockId
-                          ? "cursorPointer blockImage blockImage_selected"
-                          : "cursorPointer blockImage"
-                      }
-                      data-tooltip
-                      data-title={block["displayName"]}
-                      style={{
-                        backgroundImage: 'url("./images/textures.png")',
-                        backgroundPositionX: "-" + blockId + "00%",
-                        backgroundPositionY: "-" + colourSetId + "00%",
-                      }}
-                      onClick={() =>
-                        onChangeColourSetBlock(colourSetId, blockId)
-                      }
-                    ></img>
+                    <Tooltip tooltipText={block["displayName"]}>
+                      <img
+                        src="./images/null.png"
+                        alt={block["displayName"]}
+                        className={
+                          selectedBlocks[colourSetId] === blockId
+                            ? "cursorPointer blockImage blockImage_selected"
+                            : "cursorPointer blockImage"
+                        }
+                        style={{
+                          backgroundImage: 'url("./images/textures.png")',
+                          backgroundPositionX: "-" + blockId + "00%",
+                          backgroundPositionY: "-" + colourSetId + "00%",
+                        }}
+                        onClick={() =>
+                          onChangeColourSetBlock(colourSetId, blockId)
+                        }
+                      />
+                    </Tooltip>
                   </label>
                 ))}
             </div>

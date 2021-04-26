@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import DitherMethods from "./Const_DitherMethods";
+import Tooltip from "../tooltip";
 
 import "./mapSettings.css";
 
@@ -51,10 +52,12 @@ class MapSettings extends Component {
     return (
       <div className="section settingsDiv">
         <h2>{getLocaleString("SETTINGSTITLE")}</h2>
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-MODE")}>
-          {getLocaleString("SETTINGS-MODE")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-MODE")}>
+          <b>
+            {getLocaleString("SETTINGS-MODE")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <select
           onChange={onOptionChange_modeNBTOrMapdat}
           value={optionValue_modeNBTOrMapdat}
@@ -63,10 +66,12 @@ class MapSettings extends Component {
           <option value="Mapdat">Datafile (map.dat)</option>
         </select>
         <br />
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-VERSION")}>
-          {getLocaleString("SETTINGS-VERSION")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-VERSION")}>
+          <b>
+            {getLocaleString("SETTINGS-VERSION")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <select value={optionValue_version} onChange={onOptionChange_version}>
           {supportedVersions.map((supportedVersion) => (
             <option key={supportedVersion.MCVersion}>
@@ -97,30 +102,36 @@ class MapSettings extends Component {
           onChange={onOptionChange_mapSize_y}
         />
         <br />
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-CROP")}>
-          {getLocaleString("SETTINGS-CROP")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-CROP")}>
+          <b>
+            {getLocaleString("SETTINGS-CROP")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <input
           type="checkbox"
           checked={optionValue_cropImage}
           onChange={onOptionChange_cropImage}
         />
         <br />
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-GRIDOVERLAY")}>
-          {getLocaleString("SETTINGS-GRIDOVERLAY")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-GRIDOVERLAY")}>
+          <b>
+            {getLocaleString("SETTINGS-GRIDOVERLAY")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <input
           type="checkbox"
           checked={optionValue_showGridOverlay}
           onChange={onOptionChange_showGridOverlay}
         />
         <br />
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-3D")}>
-          {getLocaleString("SETTINGS-3D")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-3D")}>
+          <b>
+            {getLocaleString("SETTINGS-3D")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <select
           onChange={onOptionChange_staircasing}
           value={optionValue_staircasing}
@@ -174,20 +185,24 @@ class MapSettings extends Component {
           </span>
         ) : (
           <span>
-            <b data-tooltip data-title={getLocaleString("SETTINGS-TT-UNOBT")}>
-              {getLocaleString("SETTINGS-UNOBT")}
-              {": "}
-            </b>
+            <Tooltip tooltipText={getLocaleString("SETTINGS-TT-UNOBT")}>
+              <b>
+                {getLocaleString("SETTINGS-UNOBT")}
+                {":"}
+              </b>
+            </Tooltip>{" "}
             <input
               type="checkbox"
               checked={optionValue_unobtainable}
               onChange={onOptionChange_unobtainable}
             />
             <br />
-            <b data-tooltip data-title={getLocaleString("SETTINGS-TT-TRANS")}>
-              {getLocaleString("SETTINGS-TRANS")}
-              {": "}
-            </b>
+            <Tooltip tooltipText={getLocaleString("SETTINGS-TT-TRANS")}>
+              <b>
+                {getLocaleString("SETTINGS-TRANS")}
+                {":"}
+              </b>
+            </Tooltip>{" "}
             <input
               type="checkbox"
               checked={optionValue_transparency}
@@ -196,20 +211,24 @@ class MapSettings extends Component {
             <br />
           </span>
         )}
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-BETTERCOL")}>
-          {getLocaleString("SETTINGS-BETTERCOL")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-BETTERCOL")}>
+          <b>
+            {getLocaleString("SETTINGS-BETTERCOL")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <input
           type="checkbox"
           checked={optionValue_betterColour}
           onChange={onOptionChange_BetterColour}
         />
         <br />
-        <b data-tooltip data-title={getLocaleString("SETTINGS-TT-DITHER")}>
-          {getLocaleString("SETTINGS-DITHER")}
-          {": "}
-        </b>
+        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-DITHER")}>
+          <b>
+            {getLocaleString("SETTINGS-DITHER")}
+            {":"}
+          </b>
+        </Tooltip>{" "}
         <select
           value={optionValue_dithering}
           onChange={onOptionChange_dithering}
@@ -333,57 +352,50 @@ class MapSettings extends Component {
         <br />
         {optionValue_modeNBTOrMapdat === "NBT" ? (
           <span>
-            <span
-              className="greenButton"
-              onClick={onViewOnlineClicked}
-              data-tooltip
-              data-title={getLocaleString("DOWNLOAD-TT-VIEWONLINE")}
-            >
-              {getLocaleString("DOWNLOAD-VIEWONLINE")}
-            </span>
+            <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-VIEWONLINE")}>
+              <span className="greenButton" onClick={onViewOnlineClicked}>
+                {getLocaleString("DOWNLOAD-VIEWONLINE")}
+              </span>
+            </Tooltip>
             <br />
-            <span
-              className="greenButton"
-              onClick={onGetNBTClicked}
-              data-tooltip
-              data-title={getLocaleString("DOWNLOAD-TT-NBT")}
-              style={{ fontSize: "24px", height: "50px" }}
-            >
-              {getLocaleString("DOWNLOAD-NBT")}
-            </span>
+            <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-NBT")}>
+              <span
+                className="greenButton"
+                onClick={onGetNBTClicked}
+                style={{ fontSize: "24px", height: "50px" }}
+              >
+                {getLocaleString("DOWNLOAD-NBT")}
+              </span>
+            </Tooltip>
             <br />
-            <span
-              className="greenButton"
-              onClick={onGetNBTSplitClicked}
-              data-tooltip
-              data-title={getLocaleString("DOWNLOAD-TT-NBTSPLIT")}
-            >
-              {getLocaleString("DOWNLOAD-NBTSPLIT")}
-            </span>
+            <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-NBTSPLIT")}>
+              <span className="greenButton" onClick={onGetNBTSplitClicked}>
+                {getLocaleString("DOWNLOAD-NBTSPLIT")}
+              </span>
+            </Tooltip>
           </span>
         ) : (
           <span>
-            <span
-              className="greenButton"
-              onClick={onGetMapdatSplitClicked}
-              data-tooltip
-              data-title={getLocaleString("DOWNLOAD-TT-MAPDAT")}
-              style={{ fontSize: "24px", height: "50px" }}
-            >
-              {getLocaleString("DOWNLOAD-MAPDAT")}
-            </span>
+            <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-MAPDAT")}>
+              <span
+                className="greenButton"
+                onClick={onGetMapdatSplitClicked}
+                style={{ fontSize: "24px", height: "50px" }}
+              >
+                {getLocaleString("DOWNLOAD-MAPDAT")}
+              </span>
+            </Tooltip>
           </span>
         )}
         <br />
-        <a
-          className="donateA"
-          href="./supporters"
-          data-tooltip
-          data-title={getLocaleString("DONATEBUTTON-TT")}
-        >
-          <span className="greenButton">{getLocaleString("DONATEBUTTON")}</span>
-          <br />
-        </a>
+        <Tooltip tooltipText={getLocaleString("DONATEBUTTON-TT")}>
+          <a className="donateA" href="./supporters">
+            <span className="greenButton">
+              {getLocaleString("DONATEBUTTON")}
+            </span>
+            <br />
+          </a>
+        </Tooltip>
       </div>
     );
   }

@@ -45,18 +45,6 @@ a:visited {
   cursor: pointer;
 }
 
-#tooltip {
-  font-family: "kenpixel_mini_square";
-  position: absolute;
-  background: var(--rebaneGreen);
-  color: #ffffff;
-  padding: 0 7px 2px 7px;
-}
-
-th:nth-child(1) {
-  padding-right: 0.2em;
-}
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
