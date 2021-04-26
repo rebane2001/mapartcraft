@@ -14,6 +14,7 @@ class App extends Component {
   state = {
     displayingFAQ: false,
     displayingCookiesWarning: true,
+    displayingCorruptedPresetWarning: false,
     displayingEdgeWarning: false,
     localeStrings: locale_en,
     localeCodeLoading: null,
@@ -85,9 +86,17 @@ class App extends Component {
     this.setState({ displayingEdgeWarning: false });
   };
 
+  onCorruptedPresetWarningButtonClick = () => {
+    this.setState({ displayingCorruptedPresetWarning: false });
+  };
+
   onCookiesWarningButtonClick = () => {
     CookieManager.setCookie("cookiesAccepted", true);
     this.setState({ displayingCookiesWarning: false });
+  };
+
+  showCorruptedPresetWarning = () => {
+    this.setState({ displayingCorruptedPresetWarning: true });
   };
 
   componentDidMount() {
@@ -101,6 +110,7 @@ class App extends Component {
     const {
       displayingFAQ,
       displayingCookiesWarning,
+      displayingCorruptedPresetWarning,
       displayingEdgeWarning,
       localeCodeLoading,
     } = this.state;
@@ -121,7 +131,10 @@ class App extends Component {
               getLocaleString={this.getLocaleString}
               onFAQClick={this.showFAQ}
             />
-            <MapartController getLocaleString={this.getLocaleString} />
+            <MapartController
+              getLocaleString={this.getLocaleString}
+              onCorruptedPreset={this.showCorruptedPresetWarning}
+            />
             <div className="fixedMessages">
               {displayingEdgeWarning ? (
                 <div className="fixedMessage">
@@ -130,6 +143,17 @@ class App extends Component {
                   </p>
                   <button type="button" onClick={this.onEdgeWarningButtonClick}>
                     ✔️
+                  </button>
+                </div>
+              ) : null}
+              {displayingCorruptedPresetWarning ? (
+                <div className="fixedMessage">
+                  <p>{this.getLocaleString("PRESETS-CORRUPTED")}</p>
+                  <button
+                    type="button"
+                    onClick={this.onCorruptedPresetWarningButtonClick}
+                  >
+                    ❗
                   </button>
                 </div>
               ) : null}

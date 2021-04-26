@@ -3,5 +3,4 @@
 - Look at issues on Rebane repo
 - event handlers for downloading map
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
-- corrupted preset show in locale
 - legacy preset keys to not break presets / only store non -1 / remove default presets ie move to default value for touch

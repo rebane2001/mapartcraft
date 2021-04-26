@@ -415,14 +415,14 @@ class MapartController extends Component {
   };
 
   getBlocksFromImportPresetString = (encodedPreset) => {
-    const { getLocaleString } = this.props;
+    const { onCorruptedPreset } = this.props;
     const { optionValue_version } = this.state;
     if (encodedPreset === "dQw4w9WgXcQ") {
       window.location.replace("https://www.youtube.com/watch?v=cZ5wOPinZd4");
       return;
     }
     if (!/^[0-9a-zQ-ZA-P]*$/g.test(encodedPreset)) {
-      alert(getLocaleString("PRESETS-CORRUPTED"));
+      onCorruptedPreset();
       return null;
     }
     let selectedBlocks = { ...this.state.selectedBlocks };
