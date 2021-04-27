@@ -3,4 +3,5 @@
 - Look at issues on Rebane repo
 - event handlers for downloading map
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
-- legacy preset keys to not break presets / only store non -1 / remove default presets ie move to default value for touch
+- presets: only store non -1 / remove default presets ie move to default value for touch
+- look at window.mapdat order in rebane: non trivial for mapdat assembly
