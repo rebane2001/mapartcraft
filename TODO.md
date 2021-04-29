@@ -5,3 +5,4 @@
 - add in drop and drag onto canvas, paste onto canvas: drop=e.dataTransfer.files, e.clipboardData.files
 - presets: only store non -1 / remove default presets ie move to default value for touch
 - look at window.mapdat order in rebane: non trivial for mapdat assembly
+- use React Router Dom for FAQ and locale?
