@@ -4,7 +4,6 @@ A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane
 
 ## Changes
 
-- Store locale as a cookie instead of a separate page for each language
 - Remove the need for `render_html.py`: `npm run build` creates the final product
 - Remove the need for `ImageMagick` / `create_img.bat`
 - Remove the need for `create_css.py`: all textures are in one png that correspond in x and y with `coloursJSON.json`
@@ -13,7 +12,7 @@ A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane
 - Added 4th colour to colour boxes in block selection pane when mapdat option and unobtainable box selected
 - Original map preview had to finish its current rendering before re-rendering if an option changed mid render; now the map rendering worker is immediately terminated and relaunched if an option changes mid render to save time
 - Remove 'seconds remaining' from progress bar as it is inaccurate, and unnecessary with percentage shown also
-- Materials now auto-update
+- Materials count now auto-updates
 
 ## Requirements
 

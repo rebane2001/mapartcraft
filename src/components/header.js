@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./header.css";
 
@@ -17,13 +18,19 @@ class Header extends Component {
 
   render() {
     const { contactInfoClassname } = this.state;
-    const { getLocaleString, onFAQClick } = this.props;
+    const { getLocaleString } = this.props;
     return (
       <div className="header">
         <h3>
-          <span className="FAQTextButton" onClick={onFAQClick}>
-            {getLocaleString("FAQ")}
-          </span>
+          <Link
+            to={`/${
+              ![undefined, "en"].includes(this.props.countryCode)
+                ? this.props.countryCode + "/"
+                : ""
+            }faq`}
+          >
+            <span className="FAQTextButton">{getLocaleString("FAQ")}</span>
+          </Link>
           <span> | </span>
           <a
             href="https://youtu.be/bJ-wX68WNHM"
@@ -103,9 +110,15 @@ class Header extends Component {
           <br></br>
           <b>
             {getLocaleString("FAQTEXT1")}
-            <span className="FAQTextButton" onClick={onFAQClick}>
-              {getLocaleString("FAQ")}
-            </span>
+            <Link
+              to={`/${
+                ![undefined, "en"].includes(this.props.countryCode)
+                  ? this.props.countryCode + "/"
+                  : ""
+              }faq`}
+            >
+              <span className="FAQTextButton">{getLocaleString("FAQ")}</span>
+            </Link>
             {getLocaleString("FAQTEXT2")}
           </b>
         </p>

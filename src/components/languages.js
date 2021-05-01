@@ -19,7 +19,7 @@ class Languages extends Component {
   ];
 
   render() {
-    const { onFlagClick, localeCodeLoading } = this.props;
+    const { localeCodeLoading } = this.props;
     return (
       <div className="languages">
         {this.languages.map((language) => (
@@ -34,27 +34,28 @@ class Languages extends Component {
             ) : null}
             {language === "et" ? (
               <React.Fragment>
+                <a href={`/${language}`}>
                 <img
                   src={"./images/flags/" + language + ".svg"}
                   alt={language}
                   className={"flag flag-" + language}
-                  onClick={() => onFlagClick(language)}
                 />
                 <img
                   key="et_pop"
                   src={"./images/flags/et_pop.svg"}
                   alt="et_pop"
                   className={"flag flag-et_pop"}
-                  onClick={() => onFlagClick("et")}
                 />
+                </a>
               </React.Fragment>
             ) : (
+              <a href={`/${language === "en" ? "" : language}`}>
               <img
                 src={"./images/flags/" + language + ".svg"}
                 alt={language}
                 className={"flag flag-" + language}
-                onClick={() => onFlagClick(language)}
               />
+              </a>
             )}
           </div>
         ))}

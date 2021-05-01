@@ -1,0 +1,28 @@
+.titleAndLanguages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.fixedMessages {
+    position: fixed;
+    bottom: 0.1em;
+    right: 0.1em;
+    max-width: 20em;
+}
+
+.fixedMessage {
+    margin: 0.1em;
+    padding: 0.3em;
+    border: 0.1em solid var(--rebaneGreen);
+    background-color: #333;
+}
+
+.fixedMessage p {
+    margin: 0;
+}
+
+.fixedMessage button {
+    width: 100%;
+}
