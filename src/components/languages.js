@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "./languages.css";
 
@@ -34,7 +35,7 @@ class Languages extends Component {
             ) : null}
             {language === "et" ? (
               <React.Fragment>
-                <a href={`/${language}`}>
+                <Link to={`/${language}`}>
                 <img
                   src={"./images/flags/" + language + ".svg"}
                   alt={language}
@@ -46,16 +47,16 @@ class Languages extends Component {
                   alt="et_pop"
                   className={"flag flag-et_pop"}
                 />
-                </a>
+                </Link>
               </React.Fragment>
             ) : (
-              <a href={`/${language === "en" ? "" : language}`}>
+              <Link to={`/${language === "en" ? "" : language}`}>
               <img
                 src={"./images/flags/" + language + ".svg"}
                 alt={language}
                 className={"flag flag-" + language}
               />
-              </a>
+              </Link>
             )}
           </div>
         ))}

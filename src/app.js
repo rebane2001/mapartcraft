@@ -9,7 +9,7 @@ import "./app.css";
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename="/mapartcraft">
         <div className="App">
           <Switch>
             <Route path="/:countryCode?/faq" component={FAQ} />

@@ -21,3 +21,13 @@ A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane
 ## Running
 
 Acquire packages with `npm install`. Build using `npm run build`, or run debug version with `npm start`
+
+## Building / Hosting
+
+`build.sh` is a bash script that will build the app, and copy a `.htaccess` file to the build folder if Apache is detected on the system
+
+The default build settings assume the site is being hosted at https://YOUR_SITE_HERE.com/mapartcraft. To change the folder from which the site is hosted modify the following:
+
+- `homepage` in `package.json`
+- `basename` in the Router in `src/app.js`
+- The `RewriteRule` in `buildSources/apache/.htaccess` if using Apache
