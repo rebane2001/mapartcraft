@@ -7,7 +7,9 @@ import MapSettings from "./mapSettings";
 import Materials from "./materials";
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
-import DitherMethods from "./Const_DitherMethods";
+import DitherMethods from "./ditherMethods.json";
+
+import IMG_Upload from "../../images/upload.png";
 
 import "./mapartController.css";
 
@@ -71,7 +73,7 @@ class MapartController extends Component {
   }
 
   componentDidMount() {
-    this.loadUploadedImageFromURL("./images/upload.png");
+    this.loadUploadedImageFromURL(IMG_Upload);
   }
 
   onFileDialogEvent = (e) => {

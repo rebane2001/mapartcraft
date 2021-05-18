@@ -5,7 +5,8 @@ import Languages from "./languages";
 import MapartController from "./mapart/mapartController";
 
 import CookieManager from "../cookieManager";
-import locale_en from "./en.json";
+
+import Locale from "../locale/locale";
 
 import "./root.css";
 
@@ -14,8 +15,6 @@ class Root extends Component {
     displayingCookiesWarning: true,
     displayingCorruptedPresetWarning: false,
     displayingEdgeWarning: false,
-    localeStrings: locale_en,
-    localeCodeLoading: null,
   };
 
   constructor(props) {
@@ -34,11 +33,13 @@ class Root extends Component {
   }
 
   getLocaleString = (stringName) => {
-    const { localeStrings } = this.state;
-    if (stringName in localeStrings) {
-      return localeStrings[stringName];
+    const countryCode = this.props.match.params.countryCode;
+    if (countryCode in Locale && stringName in Locale[countryCode].strings) {
+      return Locale[countryCode].strings[stringName];
+    } else if (countryCode === undefined) {
+      return Locale.en.strings[stringName];
     } else {
-      return "EN: " + locale_en[stringName];
+      return "EN: " + Locale.en.strings[stringName];
     }
   };
 
@@ -59,56 +60,17 @@ class Root extends Component {
     this.setState({ displayingCorruptedPresetWarning: true });
   };
 
-  fetchAndSetLocaleIfExists(countryCode) {
-    if (![undefined, "en"].includes(countryCode)) {
-      this.setState({ localeCodeLoading: countryCode });
-      fetch("./locale/" + countryCode + ".json")
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-        })
-        .then((data) => {
-          this.setState({ localeStrings: data });
-        })
-        .catch((error) => {
-          console.log("error", error);
-        })
-        .finally(() => {
-          this.setState({ localeCodeLoading: null });
-        });
-    } else {
-      this.setState({
-        localeStrings: locale_en,
-      });
-    }
-  }
-
-  componentDidMount() {
-    const countryCode = this.props.match.params.countryCode;
-    this.fetchAndSetLocaleIfExists(countryCode);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.match.params.countryCode !== this.props.match.params.countryCode
-    ) {
-      this.fetchAndSetLocaleIfExists(this.props.match.params.countryCode);
-    }
-  }
-
   render() {
     const {
       displayingCookiesWarning,
       displayingCorruptedPresetWarning,
       displayingEdgeWarning,
-      localeCodeLoading,
     } = this.state;
     return (
       <React.Fragment>
         <div className="titleAndLanguages">
           <h1>MapartCraft</h1>
-          <Languages localeCodeLoading={localeCodeLoading} />
+          <Languages />
         </div>
         <Header
           getLocaleString={this.getLocaleString}

@@ -4,6 +4,10 @@ import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 
+import IMG_Barrier from "../../images/barrier.png";
+import IMG_Null from "../../images/null.png";
+import IMG_Textures from "../../images/textures.png";
+
 import "./blockSelection.css";
 
 class BlockSelection extends Component {
@@ -108,7 +112,7 @@ class BlockSelection extends Component {
               <label>
                 <Tooltip tooltipText={getLocaleString("NONE")}>
                   <img
-                    src="./images/barrier.png"
+                    src={IMG_Barrier}
                     alt={getLocaleString("NONE")}
                     className={
                       selectedBlocks[colourSetId] === "-1"
@@ -129,7 +133,7 @@ class BlockSelection extends Component {
                   <label key={blockId}>
                     <Tooltip tooltipText={block["displayName"]}>
                       <img
-                        src="./images/null.png"
+                        src={IMG_Null}
                         alt={block["displayName"]}
                         className={
                           selectedBlocks[colourSetId] === blockId
@@ -137,7 +141,7 @@ class BlockSelection extends Component {
                             : "cursorPointer blockImage"
                         }
                         style={{
-                          backgroundImage: 'url("./images/textures.png")',
+                          backgroundImage: `url(${IMG_Textures})`,
                           backgroundPositionX: "-" + blockId + "00%",
                           backgroundPositionY: "-" + colourSetId + "00%",
                         }}

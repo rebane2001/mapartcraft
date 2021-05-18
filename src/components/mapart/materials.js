@@ -3,6 +3,10 @@ import React, { Component } from "react";
 import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 
+import IMG_Null from "../../images/null.png";
+import IMG_Textures from "../../images/textures.png";
+import IMG_Placeholder from "../../images/placeholder.png";
+
 import "./materials.css";
 
 class Materials extends Component {
@@ -119,11 +123,11 @@ class Materials extends Component {
                     tooltipText={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
                   >
                     <img
-                      src="./images/null.png"
+                      src={IMG_Null}
                       alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
                       className={"blockImage"}
                       style={{
-                        backgroundImage: 'url("./images/placeholder.png")',
+                        backgroundImage: `url(${IMG_Placeholder})`,
                       }}
                     />
                   </Tooltip>
@@ -146,7 +150,7 @@ class Materials extends Component {
                       }
                     >
                       <img
-                        src="./images/null.png"
+                        src={IMG_Null}
                         alt={
                           coloursJSON[colourSetId]["blocks"][
                             currentMaterialsData.currentSelectedBlocks[
@@ -156,7 +160,7 @@ class Materials extends Component {
                         }
                         className={"blockImage"}
                         style={{
-                          backgroundImage: 'url("./images/textures.png")',
+                          backgroundImage: `url(${IMG_Textures})`,
                           backgroundPositionX:
                             "-" +
                             currentMaterialsData.currentSelectedBlocks[

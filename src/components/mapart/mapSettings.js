@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import DitherMethods from "./Const_DitherMethods";
+import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
 
 import "./mapSettings.css";

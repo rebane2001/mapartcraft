@@ -9,15 +9,15 @@
   height: 50px;
 }
 
-.flag-et_pop {
+.flag_et_pop {
   display: none;
 }
 
-.flag-et:hover {
+.flag_et:hover {
   display: none;
 }
 
-.flag-et:hover + .flag-et_pop {
+.flag_et:hover + .flag_et_pop {
   display: initial;
 }
 

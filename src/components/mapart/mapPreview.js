@@ -1,8 +1,13 @@
 import React, { Component, createRef } from "react";
 
 import coloursJSON from "./coloursJSON.json";
-import DitherMethods from "./Const_DitherMethods";
+import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
+import MapCanvasWorker from "./mapCanvasWorker.jsworker"; // FINALLY got this to work; .js gets imported as code, anything else as URL
+
+import IMG_Plus from "../../images/plus.png";
+import IMG_Minus from "../../images/minus.png";
+import IMG_GridOverlay from "../../images/gridOverlay.png";
 
 import "./mapPreview.css";
 
@@ -12,7 +17,7 @@ class MapPreview extends Component {
     workerProgress: 0,
   };
 
-  mapCanvasWorker = new Worker("./js/mapCanvasWorker.js");
+  mapCanvasWorker = new Worker(MapCanvasWorker);
 
   constructor(props) {
     super(props);
@@ -205,7 +210,7 @@ class MapPreview extends Component {
       ctx_source.canvas.height
     );
     const t0 = performance.now();
-    this.mapCanvasWorker = new Worker("./js/mapCanvasWorker.js");
+    this.mapCanvasWorker = new Worker(MapCanvasWorker);
     this.mapCanvasWorker.onmessage = (e) => {
       if (e.data.head === "PIXELS_MATERIALS_CURRENTSELECTEDBLOCKS") {
         const t1 = performance.now();
@@ -284,7 +289,7 @@ class MapPreview extends Component {
           <span
             className="gridOverlay"
             style={{
-              backgroundImage: 'url("./images/gridOverlay.png")',
+              backgroundImage: `url(${IMG_GridOverlay})`,
               display: optionValue_showGridOverlay ? "block" : "none",
               width:
                 (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() +
@@ -352,7 +357,7 @@ class MapPreview extends Component {
               <img
                 alt="+"
                 className="sizeButton"
-                src="./images/plus.png"
+                src={IMG_Plus}
                 onClick={this.increasePreviewScale}
               />
             </Tooltip>
@@ -360,7 +365,7 @@ class MapPreview extends Component {
               <img
                 alt="-"
                 className="sizeButton"
-                src="./images/minus.png"
+                src={IMG_Minus}
                 onClick={this.decreasePreviewScale}
               />
             </Tooltip>
