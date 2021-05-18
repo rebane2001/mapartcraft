@@ -13,7 +13,7 @@ import "./mapPreview.css";
 
 class MapPreview extends Component {
   state = {
-    mapPreviewSizeScale: 2.4,
+    mapPreviewSizeScale: 2,
     workerProgress: 0,
   };
 
