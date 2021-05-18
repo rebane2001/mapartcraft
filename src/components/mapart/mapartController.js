@@ -72,8 +72,47 @@ class MapartController extends Component {
     }
   }
 
+  eventListener_dragover = (e) => {
+    // this has to be here for drop event to work
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  eventListener_drop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const files = e.dataTransfer.files;
+    if (files.length) {
+      const file = files[0];
+      const imgUrl = URL.createObjectURL(file);
+      this.loadUploadedImageFromURL(imgUrl);
+    }
+  };
+
+  eventListener_paste = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const files = e.clipboardData.files;
+    if (files.length) {
+      const file = files[0];
+      const imgUrl = URL.createObjectURL(file);
+      this.loadUploadedImageFromURL(imgUrl);
+    }
+  };
+
   componentDidMount() {
     this.loadUploadedImageFromURL(IMG_Upload);
+
+    document.addEventListener("dragover", this.eventListener_dragover);
+    document.addEventListener("drop", this.eventListener_drop);
+
+    document.addEventListener("paste", this.eventListener_paste);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("dragover", this.eventListener_dragover);
+    document.removeEventListener("drop", this.eventListener_drop);
+    document.removeEventListener("paste", this.eventListener_paste);
   }
 
   onFileDialogEvent = (e) => {
@@ -211,8 +250,8 @@ class MapartController extends Component {
 
   onOptionChange_PreProcessingEnabled = () => {
     this.setState({
-      optionValue_preprocessingEnabled: !this.state
-        .optionValue_preprocessingEnabled,
+      optionValue_preprocessingEnabled:
+        !this.state.optionValue_preprocessingEnabled,
     });
   };
 

@@ -26,11 +26,6 @@ class MapPreview extends Component {
     this.fileInputRef = createRef();
   }
 
-  // document.getElementById('displaycanvas').addEventListener('drop', loadImg);
-  // document.getElementById('imgupload').addEventListener('change', loadImg);
-  // document.addEventListener('paste', loadImg);
-  // let files = (e.type == 'change') ? e.target.files : ((e.type == 'drop') ? e.dataTransfer.files : e.clipboardData.files);
-
   shouldCanvasUpdate_source(prevProps, newProps, prevState, newState) {
     const propChanges = [
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
