@@ -69,7 +69,7 @@ class Root extends Component {
     return (
       <React.Fragment>
         <div className="titleAndLanguages">
-          <h1>MapartCraft</h1>
+          <h1 style={{ color: "red" }}>MapartCraft WIP</h1>
           <Languages />
         </div>
         <Header

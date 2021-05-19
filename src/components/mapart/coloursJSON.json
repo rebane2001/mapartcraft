@@ -4598,6 +4598,18 @@
                 "presetIndex": 10
             },
             "11": {
+                "displayName": "Basalt",
+                "validVersions": {
+                    "1.16.5": {
+                        "NBTName": "basalt",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 12
+            },
+            "12": {
                 "displayName": "Block Of Netherite",
                 "validVersions": {
                     "1.16.5": {

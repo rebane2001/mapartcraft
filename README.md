@@ -2,6 +2,8 @@
 
 A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane2001/mapartcraft)
 
+Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapartcraft/)
+
 ## Changes
 
 - Remove the need for `render_html.py`: `npm run build` creates the final product
