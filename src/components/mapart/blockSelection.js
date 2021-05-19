@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 
@@ -25,7 +24,7 @@ class BlockSelection extends Component {
       optionValue_staircasing,
       optionValue_unobtainable,
       selectedBlocks,
-      customPresets,
+      presets,
       selectedPresetName,
       onPresetChange,
       onDeletePreset,
@@ -46,14 +45,14 @@ class BlockSelection extends Component {
             value={selectedPresetName}
             onChange={onPresetChange}
           >
-            {defaultPresets.map((preset) => (
-              <option value={preset["name"]} key={preset["localeKey"]}>
-                {getLocaleString(preset["localeKey"])}
-              </option>
-            ))}
-            {customPresets.map((preset) => (
+            <option value="None">
+              {getLocaleString("PRESETS-PRESET-NONE")}
+            </option>
+            {presets.map((preset) => (
               <option value={preset["name"]} key={preset["name"]}>
-                {preset["name"]}
+                {"localeKey" in preset
+                  ? getLocaleString(preset["localeKey"])
+                  : preset["name"]}
               </option>
             ))}
           </select>

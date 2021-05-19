@@ -34,8 +34,8 @@ class MapartController extends Component {
     preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
     uploadedImage: null,
-    customPresets: [],
-    selectedPresetName: defaultPresets[0]["name"],
+    presets: [],
+    selectedPresetName: "None",
     currentMaterialsData: {
       materials: [[]],
       supportBlockCount: [[]],
@@ -53,8 +53,8 @@ class MapartController extends Component {
 
   constructor(props) {
     super(props);
-    this.state.customPresets = JSON.parse(
-      CookieManager.touchCookie("customPresets", "[]")
+    this.state.presets = JSON.parse(
+      CookieManager.touchCookie("presets", JSON.stringify(defaultPresets))
     );
     Object.keys(coloursJSON).forEach(
       (key) => (this.state.selectedBlocks[key] = "-1")
@@ -152,7 +152,8 @@ class MapartController extends Component {
       const colourSetId = block[0].toString();
       const blockId = block[1].toString();
       if (
-        blockId !== "-1" &&
+        colourSetId in coloursJSON &&
+        blockId in coloursJSON[colourSetId]["blocks"] &&
         Object.keys(
           coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]
         ).includes(optionValue_version)
@@ -345,68 +346,62 @@ class MapartController extends Component {
 
   handlePresetChange = (e) => {
     const presetName = e.target.value;
-    const { customPresets } = this.state;
+    const { presets } = this.state;
 
     this.setState({ selectedPresetName: presetName });
 
-    const defaultPreset = defaultPresets.find(
-      (preset) => preset["name"] === presetName
-    );
-    if (defaultPreset !== undefined) {
-      this.handleChangeColourSetBlocks(defaultPreset["blocks"]);
-      return;
-    }
-
-    const customPreset = customPresets.find(
-      (preset) => preset["name"] === presetName
-    );
-    if (customPreset !== undefined) {
-      this.handleChangeColourSetBlocks(customPreset["blocks"]);
-      return;
+    if (presetName === "None") {
+      this.handleChangeColourSetBlocks([]);
+    } else {
+      const selectedPreset = presets.find(
+        (preset) => preset["name"] === presetName
+      );
+      if (selectedPreset !== undefined) {
+        this.handleChangeColourSetBlocks(selectedPreset["blocks"]);
+      }
     }
   };
 
   handleDeletePreset = () => {
-    const { customPresets, selectedPresetName } = this.state;
-    if (
-      !customPresets.find((preset) => preset["name"] === selectedPresetName)
-    ) {
-      // if a default preset selected then do nothing and return
-      return;
-    }
+    const { presets, selectedPresetName } = this.state;
 
-    const customPresets_new = customPresets.filter(
+    const presets_new = presets.filter(
       (preset) => preset["name"] !== selectedPresetName
     );
     this.setState({
-      customPresets: customPresets_new,
-      selectedPresetName: defaultPresets[0]["name"],
+      presets: presets_new,
+      selectedPresetName: "None",
     });
-    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
+    CookieManager.setCookie("presets", JSON.stringify(presets_new));
   };
 
   handleSavePreset = () => {
     const { getLocaleString } = this.props;
-    const { customPresets, selectedBlocks } = this.state;
+    const { presets, selectedBlocks } = this.state;
 
-    let presetName = prompt(getLocaleString("PRESETS-ENTERNAME"), "");
-    if (presetName === null) {
+    let presetToSave_name = prompt(getLocaleString("PRESETS-ENTERNAME"), "");
+    if (presetToSave_name === null) {
       return;
     }
 
-    const otherPresets = customPresets.filter(
-      (preset) => preset["name"] !== presetName
+    const otherPresets = presets.filter(
+      (preset) => preset["name"] !== presetToSave_name
     );
-    let newPreset = { name: presetName, blocks: [] };
+    let newPreset = { name: presetToSave_name, blocks: [] };
     Object.keys(selectedBlocks).forEach((key) => {
-      newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
+      if (selectedBlocks[key] !== "-1") {
+        newPreset["blocks"].push([
+          parseInt(key),
+          parseInt(selectedBlocks[key]),
+        ]);
+      }
     });
-    const customPresets_new = [...otherPresets, newPreset];
+    const presets_new = [...otherPresets, newPreset];
     this.setState({
-      customPresets: customPresets_new,
-      selectedPresetName: presetName,
+      presets: presets_new,
+      selectedPresetName: presetToSave_name,
     });
-    CookieManager.setCookie("customPresets", JSON.stringify(customPresets_new));
+    CookieManager.setCookie("presets", JSON.stringify(presets_new));
   };
 
   presetToURL = () => {
@@ -542,7 +537,7 @@ class MapartController extends Component {
       preProcessingValue_contrast,
       preProcessingValue_saturation,
       uploadedImage,
-      customPresets,
+      presets,
       selectedPresetName,
       currentMaterialsData,
     } = this.state;
@@ -556,7 +551,7 @@ class MapartController extends Component {
           optionValue_staircasing={optionValue_staircasing}
           optionValue_unobtainable={optionValue_unobtainable}
           selectedBlocks={selectedBlocks}
-          customPresets={customPresets}
+          presets={presets}
           selectedPresetName={selectedPresetName}
           onPresetChange={this.handlePresetChange}
           onDeletePreset={this.handleDeletePreset}

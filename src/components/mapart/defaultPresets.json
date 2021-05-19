@@ -1,5 +1,4 @@
 [
-  { "name": "None", "localeKey": "PRESETS-PRESET-NONE", "blocks": [] },
   {
     "name": "Everything",
     "localeKey": "PRESETS-PRESET-EVERYTHING",
