@@ -4,15 +4,12 @@ import Header from "./header";
 import Languages from "./languages";
 import MapartController from "./mapart/mapartController";
 
-import CookieManager from "../cookieManager";
-
 import Locale from "../locale/locale";
 
 import "./root.css";
 
 class Root extends Component {
   state = {
-    displayingCookiesWarning: true,
     displayingCorruptedPresetWarning: false,
     displayingEdgeWarning: false,
   };
@@ -27,9 +24,6 @@ class Root extends Component {
     ) {
       this.state.displayingEdgeWarning = true;
     }
-
-    this.state.displayingCookiesWarning =
-      CookieManager.touchCookie("cookiesAccepted", false) === "false";
   }
 
   getLocaleString = (stringName) => {
@@ -51,18 +45,12 @@ class Root extends Component {
     this.setState({ displayingCorruptedPresetWarning: false });
   };
 
-  onCookiesWarningButtonClick = () => {
-    CookieManager.setCookie("cookiesAccepted", true);
-    this.setState({ displayingCookiesWarning: false });
-  };
-
   showCorruptedPresetWarning = () => {
     this.setState({ displayingCorruptedPresetWarning: true });
   };
 
   render() {
     const {
-      displayingCookiesWarning,
       displayingCorruptedPresetWarning,
       displayingEdgeWarning,
     } = this.state;
@@ -97,14 +85,6 @@ class Root extends Component {
                 onClick={this.onCorruptedPresetWarningButtonClick}
               >
                 ❗
-              </button>
-            </div>
-          ) : null}
-          {displayingCookiesWarning ? (
-            <div className="fixedMessage">
-              <p>{this.getLocaleString("COOKIES-DISCLOSURE") + " 🍪"}</p>
-              <button type="button" onClick={this.onCookiesWarningButtonClick}>
-                ✔️
               </button>
             </div>
           ) : null}
