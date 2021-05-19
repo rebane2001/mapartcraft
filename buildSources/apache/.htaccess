@@ -1,6 +1,9 @@
 RewriteEngine On
 
+ExpiresDefault "access plus 1 day"
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^.*$ https://%{HTTP_HOST}/mapartcraft/index.html [P]
+
