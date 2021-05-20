@@ -210,7 +210,7 @@ class MapPreview extends Component {
       if (e.data.head === "PIXELS_MATERIALS_CURRENTSELECTEDBLOCKS") {
         const t1 = performance.now();
         console.log(
-          "Calculated map preview data in " + (t1 - t0).toString() + "ms"
+          `Calculated map preview data in ${(t1 - t0).toString()}ms`
         );
         const ctx_display = canvasRef_display.current.getContext("2d");
         ctx_display.putImageData(e.data.body.pixels, 0, 0);

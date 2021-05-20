@@ -33,3 +33,7 @@ The default build settings assume the site is being hosted at https://YOUR_SITE_
 - `homepage` in `package.json`
 - `basename` in the Router in `src/app.js`
 - The `RewriteRule` in `buildSources/apache/.htaccess` if using Apache
+
+## Additional Credits
+
+- Thanks to [sjmulder](https://github.com/sjmulder) for the [NBT library](https://github.com/sjmulder/nbt-js); a good starting point
