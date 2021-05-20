@@ -1,5 +1,6 @@
 RewriteEngine On
 
+ExpiresActive on
 ExpiresDefault "access plus 1 day"
 
 RewriteCond %{REQUEST_FILENAME} !-f
