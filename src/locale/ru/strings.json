@@ -49,6 +49,7 @@
   "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Без блоков",
   "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Важные блоки",
   "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Все блоки",
+  "SETTINGS-UNDERBLOCKS-ALLBLOCKSOPT": "Все блоки (оптимизировано)",
   "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Все двойные (оптимизировано)",
   "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Все двойные",
   "SETTINGS-TT-BLOCKTOADD": "Связано с предыдущей функцией",

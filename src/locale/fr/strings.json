@@ -49,6 +49,7 @@
   "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Aucun blocs",
   "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Les blocs important",
   "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Tous les blocs",
+  "SETTINGS-UNDERBLOCKS-ALLBLOCKSOPT": "Tous les blocs (optimisé)",
   "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Tout en double (optimisé)",
   "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Tout en double",
   "SETTINGS-TT-BLOCKTOADD": "En rapport avec l'option précédente",

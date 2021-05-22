@@ -161,14 +161,11 @@ class MapSettings extends Component {
               <option value="Important">
                 {getLocaleString("SETTINGS-UNDERBLOCKS-IMPBLOCKS")}
               </option>
-              <option value="All">
-                {getLocaleString("SETTINGS-UNDERBLOCKS-ALLBLOCKS")}
+              <option value="AllOptimized">
+                {getLocaleString("SETTINGS-UNDERBLOCKS-ALLBLOCKSOPT")}
               </option>
               <option value="AllDoubleOptimized">
                 {getLocaleString("SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT")}
-              </option>
-              <option value="AllDouble">
-                {getLocaleString("SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS")}
               </option>
             </select>
             <br />

@@ -53,6 +53,7 @@
   "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Ära lisa",
   "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Tähtsad plokid",
   "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Kõik plokid",
+  "SETTINGS-UNDERBLOCKS-ALLBLOCKSOPT": "Kõik plokid (optimiseeritud)",
   "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Kõik topelt (optimiseeritud)",
   "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Kõik topelt",
   "SETTINGS-TT-BLOCKTOADD": "Seotud eelneva valikuga",
