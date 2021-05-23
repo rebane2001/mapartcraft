@@ -3,7 +3,7 @@ import React, { Component, createRef } from "react";
 import coloursJSON from "./coloursJSON.json";
 import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
-import MapCanvasWorker from "./mapCanvasWorker.jsworker"; // FINALLY got this to work; .js gets imported as code, anything else as URL
+import MapCanvasWorker from "./workers/mapCanvas.jsworker"; // FINALLY got this to work; .js gets imported as code, anything else as URL
 
 import IMG_Plus from "../../images/plus.png";
 import IMG_Minus from "../../images/minus.png";
