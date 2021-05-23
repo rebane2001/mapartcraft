@@ -21,10 +21,7 @@ class Tooltip extends Component {
     };
     return (
       <div className="tooltipContainer">
-        <div
-          onMouseOver={this.handleMouseOver}
-          onMouseOut={this.handleMouseOut}
-        >
+        <div onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
           {this.props.children}
         </div>
         <div>

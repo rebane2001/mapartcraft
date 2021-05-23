@@ -14,26 +14,13 @@ class Languages extends Component {
             {language === "et" ? (
               <React.Fragment>
                 <Link to={`/${language}`}>
-                  <img
-                    src={Locale[language].flag}
-                    alt={language}
-                    className={`flag flag_${language}`}
-                  />
-                  <img
-                    key="et_pop"
-                    src={Locale[language].flag_special}
-                    alt="et_pop"
-                    className={"flag flag_et_pop"}
-                  />
+                  <img src={Locale[language].flag} alt={language} className={`flag flag_${language}`} />
+                  <img key="et_pop" src={Locale[language].flag_special} alt="et_pop" className={"flag flag_et_pop"} />
                 </Link>
               </React.Fragment>
             ) : (
               <Link to={`/${language === "en" ? "" : language}`}>
-                <img
-                  src={Locale[language].flag}
-                  alt={language}
-                  className={`flag flag_${language}`}
-                />
+                <img src={Locale[language].flag} alt={language} className={`flag flag_${language}`} />
               </Link>
             )}
           </div>

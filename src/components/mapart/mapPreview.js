@@ -31,14 +31,10 @@ class MapPreview extends Component {
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
       prevProps.optionValue_cropImage === newProps.optionValue_cropImage,
-      prevProps.optionValue_preprocessingEnabled ===
-        newProps.optionValue_preprocessingEnabled,
-      prevProps.preProcessingValue_brightness ===
-        newProps.preProcessingValue_brightness,
-      prevProps.preProcessingValue_contrast ===
-        newProps.preProcessingValue_contrast,
-      prevProps.preProcessingValue_saturation ===
-        newProps.preProcessingValue_saturation,
+      prevProps.optionValue_preprocessingEnabled === newProps.optionValue_preprocessingEnabled,
+      prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
+      prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
+      prevProps.preProcessingValue_saturation === newProps.preProcessingValue_saturation,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -54,26 +50,20 @@ class MapPreview extends Component {
     // ugly but useful method to determine whether map canvas contents should be redrawn on component update
     const propChanges = [
       prevProps.selectedBlocks === newProps.selectedBlocks,
-      prevProps.optionValue_modeNBTOrMapdat ===
-        newProps.optionValue_modeNBTOrMapdat,
+      prevProps.optionValue_modeNBTOrMapdat === newProps.optionValue_modeNBTOrMapdat,
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
       prevProps.optionValue_cropImage === newProps.optionValue_cropImage,
       prevProps.optionValue_staircasing === newProps.optionValue_staircasing,
-      prevProps.optionValue_whereSupportBlocks ===
-        newProps.optionValue_whereSupportBlocks,
+      prevProps.optionValue_whereSupportBlocks === newProps.optionValue_whereSupportBlocks,
       prevProps.optionValue_unobtainable === newProps.optionValue_unobtainable,
       prevProps.optionValue_transparency === newProps.optionValue_transparency,
       prevProps.optionValue_betterColour === newProps.optionValue_betterColour,
       prevProps.optionValue_dithering === newProps.optionValue_dithering,
-      prevProps.optionValue_preprocessingEnabled ===
-        newProps.optionValue_preprocessingEnabled,
-      prevProps.preProcessingValue_brightness ===
-        newProps.preProcessingValue_brightness,
-      prevProps.preProcessingValue_contrast ===
-        newProps.preProcessingValue_contrast,
-      prevProps.preProcessingValue_saturation ===
-        newProps.preProcessingValue_saturation,
+      prevProps.optionValue_preprocessingEnabled === newProps.optionValue_preprocessingEnabled,
+      prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
+      prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
+      prevProps.preProcessingValue_saturation === newProps.preProcessingValue_saturation,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -86,49 +76,21 @@ class MapPreview extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      this.shouldCanvasUpdate_source(
-        prevProps,
-        this.props,
-        prevState,
-        this.state
-      )
-    ) {
+    if (this.shouldCanvasUpdate_source(prevProps, this.props, prevState, this.state)) {
       this.updateCanvas_source(); // draw uploaded image on source canvas
     }
-    if (
-      this.shouldCanvasUpdate_display(
-        prevProps,
-        this.props,
-        prevState,
-        this.state
-      )
-    ) {
+    if (this.shouldCanvasUpdate_display(prevProps, this.props, prevState, this.state)) {
       this.updateCanvas_display(); // draw pixelart of image on display canvas
     }
   }
 
   updateCanvas_source() {
-    const {
-      optionValue_preprocessingEnabled,
-      preProcessingValue_brightness,
-      preProcessingValue_contrast,
-      preProcessingValue_saturation,
-      uploadedImage,
-    } = this.props;
-    const {
-      optionValue_mapSize_x,
-      optionValue_mapSize_y,
-      optionValue_cropImage,
-    } = this.props;
+    const { optionValue_preprocessingEnabled, preProcessingValue_brightness, preProcessingValue_contrast, preProcessingValue_saturation, uploadedImage } =
+      this.props;
+    const { optionValue_mapSize_x, optionValue_mapSize_y, optionValue_cropImage } = this.props;
     const { canvasRef_source } = this;
     const ctx_source = canvasRef_source.current.getContext("2d");
-    ctx_source.clearRect(
-      0,
-      0,
-      ctx_source.canvas.width,
-      ctx_source.canvas.height
-    );
+    ctx_source.clearRect(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
     if (optionValue_preprocessingEnabled) {
       ctx_source.filter = `brightness(${preProcessingValue_brightness}%) contrast(${preProcessingValue_contrast}%) saturate(${preProcessingValue_saturation}%)`;
     } else {
@@ -141,43 +103,20 @@ class MapPreview extends Component {
       let samplingHeight;
       let xOffset;
       let yOffset;
-      if (
-        img_width * optionValue_mapSize_y >
-        img_height * optionValue_mapSize_x
-      ) {
-        samplingWidth = Math.floor(
-          (img_height * optionValue_mapSize_x) / optionValue_mapSize_y
-        );
+      if (img_width * optionValue_mapSize_y > img_height * optionValue_mapSize_x) {
+        samplingWidth = Math.floor((img_height * optionValue_mapSize_x) / optionValue_mapSize_y);
         samplingHeight = img_height;
         xOffset = Math.floor((img_width - samplingWidth) / 2);
         yOffset = 0;
       } else {
         samplingWidth = img_width;
-        samplingHeight = Math.floor(
-          (img_width * optionValue_mapSize_y) / optionValue_mapSize_x
-        );
+        samplingHeight = Math.floor((img_width * optionValue_mapSize_y) / optionValue_mapSize_x);
         xOffset = 0;
         yOffset = Math.floor((img_height - samplingHeight) / 2);
       }
-      ctx_source.drawImage(
-        uploadedImage,
-        xOffset,
-        yOffset,
-        samplingWidth,
-        samplingHeight,
-        0,
-        0,
-        ctx_source.canvas.width,
-        ctx_source.canvas.height
-      );
+      ctx_source.drawImage(uploadedImage, xOffset, yOffset, samplingWidth, samplingHeight, 0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
     } else {
-      ctx_source.drawImage(
-        uploadedImage,
-        0,
-        0,
-        ctx_source.canvas.width,
-        ctx_source.canvas.height
-      );
+      ctx_source.drawImage(uploadedImage, 0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
     }
   }
 
@@ -199,20 +138,13 @@ class MapPreview extends Component {
       onGetMapMaterials,
     } = this.props;
     const ctx_source = canvasRef_source.current.getContext("2d");
-    const canvasImageData = ctx_source.getImageData(
-      0,
-      0,
-      ctx_source.canvas.width,
-      ctx_source.canvas.height
-    );
+    const canvasImageData = ctx_source.getImageData(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
     const t0 = performance.now();
     this.mapCanvasWorker = new Worker(MapCanvasWorker);
     this.mapCanvasWorker.onmessage = (e) => {
       if (e.data.head === "PIXELS_MATERIALS_CURRENTSELECTEDBLOCKS") {
         const t1 = performance.now();
-        console.log(
-          `Calculated map preview data in ${(t1 - t0).toString()}ms`
-        );
+        console.log(`Calculated map preview data in ${(t1 - t0).toString()}ms`);
         const ctx_display = canvasRef_display.current.getContext("2d");
         ctx_display.putImageData(e.data.body.pixels, 0, 0);
         this.setState({ workerProgress: 1 });
@@ -279,24 +211,15 @@ class MapPreview extends Component {
     return (
       <div className="section mapPreviewDiv">
         <h2>{getLocaleString("MAPPREVIEWTITLE")}</h2>
-        <input
-          type="file"
-          className="imgUpload"
-          ref={this.fileInputRef}
-          onChange={onFileDialogEvent}
-        />
+        <input type="file" className="imgUpload" ref={this.fileInputRef} onChange={onFileDialogEvent} />
         <div>
           <span
             className="gridOverlay"
             style={{
               backgroundImage: `url(${IMG_GridOverlay})`,
               display: optionValue_showGridOverlay ? "block" : "none",
-              width:
-                (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() +
-                "px",
-              height:
-                (mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString() +
-                "px",
+              width: (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() + "px",
+              height: (mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString() + "px",
               backgroundSize: (mapPreviewSizeScale * 128).toString() + "px",
             }}
           />
@@ -306,68 +229,37 @@ class MapPreview extends Component {
             height={128 * optionValue_mapSize_y}
             ref={this.canvasRef_display}
             style={{
-              width:
-                (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() +
-                "px",
-              height:
-                (mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString() +
-                "px",
+              width: (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() + "px",
+              height: (mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString() + "px",
             }}
             onClick={() => this.fileInputRef.current.click()}
           />
-          <canvas
-            className="displayNone"
-            width={128 * optionValue_mapSize_x}
-            height={128 * optionValue_mapSize_y}
-            ref={this.canvasRef_source}
-          ></canvas>
+          <canvas className="displayNone" width={128 * optionValue_mapSize_x} height={128 * optionValue_mapSize_y} ref={this.canvasRef_source}></canvas>
         </div>
         <div className="mapResolutionAndZoom">
           <div>
             <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-BESTRES")}>
-              <small>
-                {(128 * optionValue_mapSize_x).toString() +
-                  "x" +
-                  (128 * optionValue_mapSize_y).toString()}
-              </small>
+              <small>{(128 * optionValue_mapSize_x).toString() + "x" + (128 * optionValue_mapSize_y).toString()}</small>
             </Tooltip>{" "}
             <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-DOESNTMATCH")}>
               <small
                 className="mapResWarning"
                 style={{
                   display:
-                    uploadedImage === null ||
-                    uploadedImage.height * optionValue_mapSize_x ===
-                      uploadedImage.width * optionValue_mapSize_y
-                      ? "none"
-                      : "inline",
+                    uploadedImage === null || uploadedImage.height * optionValue_mapSize_x === uploadedImage.width * optionValue_mapSize_y ? "none" : "inline",
                   color: optionValue_cropImage ? "orange" : "red",
                 }}
               >
-                {uploadedImage === null
-                  ? null
-                  : uploadedImage.width.toString() +
-                    "x" +
-                    uploadedImage.height.toString()}
+                {uploadedImage === null ? null : uploadedImage.width.toString() + "x" + uploadedImage.height.toString()}
               </small>
             </Tooltip>
           </div>
           <div>
             <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-PREVPLUS")}>
-              <img
-                alt="+"
-                className="sizeButton"
-                src={IMG_Plus}
-                onClick={this.increasePreviewScale}
-              />
+              <img alt="+" className="sizeButton" src={IMG_Plus} onClick={this.increasePreviewScale} />
             </Tooltip>
             <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-PREVMINUS")}>
-              <img
-                alt="-"
-                className="sizeButton"
-                src={IMG_Minus}
-                onClick={this.decreasePreviewScale}
-              />
+              <img alt="-" className="sizeButton" src={IMG_Minus} onClick={this.decreasePreviewScale} />
             </Tooltip>
           </div>
         </div>
@@ -377,9 +269,7 @@ class MapPreview extends Component {
             display: [0, 1].includes(workerProgress) ? "none" : "block",
           }}
         >
-          <span className="progressText">
-            {`${Math.floor(workerProgress * 100)}%`}
-          </span>
+          <span className="progressText">{`${Math.floor(workerProgress * 100)}%`}</span>
           <div
             className="progressDiv"
             style={{

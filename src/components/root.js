@@ -18,10 +18,7 @@ class Root extends Component {
     super(props);
 
     //show warning when using Edge
-    if (
-      !(/*@cc_on!@*/ (false || !!document["documentMode"])) &&
-      !!window["StyleMedia"]
-    ) {
+    if (!(/*@cc_on!@*/ (false || !!document["documentMode"])) && !!window["StyleMedia"]) {
       this.state.displayingEdgeWarning = true;
     }
   }
@@ -50,24 +47,15 @@ class Root extends Component {
   };
 
   render() {
-    const {
-      displayingCorruptedPresetWarning,
-      displayingEdgeWarning,
-    } = this.state;
+    const { displayingCorruptedPresetWarning, displayingEdgeWarning } = this.state;
     return (
       <React.Fragment>
         <div className="titleAndLanguages">
           <h1 style={{ color: "red" }}>MapartCraft WIP</h1>
           <Languages />
         </div>
-        <Header
-          getLocaleString={this.getLocaleString}
-          countryCode={this.props.match.params.countryCode}
-        />
-        <MapartController
-          getLocaleString={this.getLocaleString}
-          onCorruptedPreset={this.showCorruptedPresetWarning}
-        />
+        <Header getLocaleString={this.getLocaleString} countryCode={this.props.match.params.countryCode} />
+        <MapartController getLocaleString={this.getLocaleString} onCorruptedPreset={this.showCorruptedPresetWarning} />
         <div className="fixedMessages">
           {displayingEdgeWarning ? (
             <div className="fixedMessage">
@@ -80,10 +68,7 @@ class Root extends Component {
           {displayingCorruptedPresetWarning ? (
             <div className="fixedMessage">
               <p>{this.getLocaleString("PRESETS-CORRUPTED")}</p>
-              <button
-                type="button"
-                onClick={this.onCorruptedPresetWarningButtonClick}
-              >
+              <button type="button" onClick={this.onCorruptedPresetWarningButtonClick}>
                 ❗
               </button>
             </div>

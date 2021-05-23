@@ -27,24 +27,16 @@ class Materials extends Component {
     });
     currentMaterialsData.materials.forEach((row) => {
       row.forEach((mapMaterialsEntry) => {
-        Object.keys(mapMaterialsEntry.materialsCounts).forEach(
-          (materialColourSetId) => {
-            if (onlyMaxPerSplit) {
-              materialsCountDict[materialColourSetId] = Math.max(
-                materialsCountDict[materialColourSetId],
-                mapMaterialsEntry.materialsCounts[materialColourSetId]
-              );
-            } else {
-              materialsCountDict[materialColourSetId] +=
-                mapMaterialsEntry.materialsCounts[materialColourSetId];
-            }
+        Object.keys(mapMaterialsEntry.materialsCounts).forEach((materialColourSetId) => {
+          if (onlyMaxPerSplit) {
+            materialsCountDict[materialColourSetId] = Math.max(materialsCountDict[materialColourSetId], mapMaterialsEntry.materialsCounts[materialColourSetId]);
+          } else {
+            materialsCountDict[materialColourSetId] += mapMaterialsEntry.materialsCounts[materialColourSetId];
           }
-        );
+        });
       });
     });
-    const nonZeroMaterials = Object.fromEntries(
-      Object.entries(materialsCountDict).filter(([_, value]) => value !== 0)
-    );
+    const nonZeroMaterials = Object.fromEntries(Object.entries(materialsCountDict).filter(([_, value]) => value !== 0));
     let nonZeroMaterialsItems = Object.keys(nonZeroMaterials).map((key) => {
       return [key, nonZeroMaterials[key]];
     });
@@ -104,11 +96,7 @@ class Materials extends Component {
             {":"}
           </b>
         </Tooltip>{" "}
-        <input
-          type="checkbox"
-          checked={onlyMaxPerSplit}
-          onChange={this.onOnlyMaxPerSplitChange}
-        />
+        <input type="checkbox" checked={onlyMaxPerSplit} onChange={this.onOnlyMaxPerSplitChange} />
         <br />
         <table id="materialtable">
           <tbody>
@@ -119,9 +107,7 @@ class Materials extends Component {
             {supportBlockCount !== 0 ? (
               <tr>
                 <th>
-                  <Tooltip
-                    tooltipText={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
-                  >
+                  <Tooltip tooltipText={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}>
                     <img
                       src={IMG_Null}
                       alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
@@ -136,37 +122,17 @@ class Materials extends Component {
               </tr>
             ) : null}
             {nonZeroMaterialsItems.map(([colourSetId, materialCount]) =>
-              currentMaterialsData.currentSelectedBlocks[colourSetId] !==
-              "-1" ? (
+              currentMaterialsData.currentSelectedBlocks[colourSetId] !== "-1" ? (
                 <tr key={colourSetId}>
                   <th>
-                    <Tooltip
-                      tooltipText={
-                        coloursJSON[colourSetId]["blocks"][
-                          currentMaterialsData.currentSelectedBlocks[
-                            colourSetId
-                          ]
-                        ]["displayName"]
-                      }
-                    >
+                    <Tooltip tooltipText={coloursJSON[colourSetId]["blocks"][currentMaterialsData.currentSelectedBlocks[colourSetId]]["displayName"]}>
                       <img
                         src={IMG_Null}
-                        alt={
-                          coloursJSON[colourSetId]["blocks"][
-                            currentMaterialsData.currentSelectedBlocks[
-                              colourSetId
-                            ]
-                          ]["displayName"]
-                        }
+                        alt={coloursJSON[colourSetId]["blocks"][currentMaterialsData.currentSelectedBlocks[colourSetId]]["displayName"]}
                         className={"blockImage"}
                         style={{
                           backgroundImage: `url(${IMG_Textures})`,
-                          backgroundPositionX:
-                            "-" +
-                            currentMaterialsData.currentSelectedBlocks[
-                              colourSetId
-                            ] +
-                            "00%",
+                          backgroundPositionX: "-" + currentMaterialsData.currentSelectedBlocks[colourSetId] + "00%",
                           backgroundPositionY: "-" + colourSetId + "00%",
                         }}
                       />

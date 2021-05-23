@@ -35,24 +35,14 @@ class BlockSelection extends Component {
     return (
       <div className="section blockSelectionDiv">
         <div className="blockSelectionHeader">
-          <h2 id="blockselectiontitle">
-            {getLocaleString("BLOCKSELECTIONTITLE")}
-          </h2>
+          <h2 id="blockselectiontitle">{getLocaleString("BLOCKSELECTIONTITLE")}</h2>
 
           <b>{getLocaleString("PRESETS") + ": "}</b>
-          <select
-            id="presets"
-            value={selectedPresetName}
-            onChange={onPresetChange}
-          >
-            <option value="None">
-              {getLocaleString("PRESETS-PRESET-NONE")}
-            </option>
+          <select id="presets" value={selectedPresetName} onChange={onPresetChange}>
+            <option value="None">{getLocaleString("PRESETS-PRESET-NONE")}</option>
             {presets.map((preset) => (
               <option value={preset["name"]} key={preset["name"]}>
-                {"localeKey" in preset
-                  ? getLocaleString(preset["localeKey"])
-                  : preset["name"]}
+                {"localeKey" in preset ? getLocaleString(preset["localeKey"]) : preset["name"]}
               </option>
             ))}
           </select>
@@ -82,8 +72,7 @@ class BlockSelection extends Component {
                   background:
                     optionValue_staircasing === "off"
                       ? this.cssRGB(colourSet["tonesRGB"]["normal"])
-                      : optionValue_modeNBTOrMapdat === "NBT" ||
-                        !optionValue_unobtainable
+                      : optionValue_modeNBTOrMapdat === "NBT" || !optionValue_unobtainable
                       ? "linear-gradient(" +
                         this.cssRGB(colourSet["tonesRGB"]["dark"]) +
                         " 33%, " +
@@ -113,40 +102,26 @@ class BlockSelection extends Component {
                   <img
                     src={IMG_Barrier}
                     alt={getLocaleString("NONE")}
-                    className={
-                      selectedBlocks[colourSetId] === "-1"
-                        ? "cursorPointer blockImage blockImage_selected"
-                        : "cursorPointer blockImage"
-                    }
+                    className={selectedBlocks[colourSetId] === "-1" ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
                     onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
                   />
                 </Tooltip>
               </label>
               {Object.entries(colourSet["blocks"])
-                .filter(([, block]) =>
-                  Object.keys(block["validVersions"]).includes(
-                    optionValue_version
-                  )
-                )
+                .filter(([, block]) => Object.keys(block["validVersions"]).includes(optionValue_version))
                 .map(([blockId, block]) => (
                   <label key={blockId}>
                     <Tooltip tooltipText={block["displayName"]}>
                       <img
                         src={IMG_Null}
                         alt={block["displayName"]}
-                        className={
-                          selectedBlocks[colourSetId] === blockId
-                            ? "cursorPointer blockImage blockImage_selected"
-                            : "cursorPointer blockImage"
-                        }
+                        className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
                         style={{
                           backgroundImage: `url(${IMG_Textures})`,
                           backgroundPositionX: "-" + blockId + "00%",
                           backgroundPositionY: "-" + colourSetId + "00%",
                         }}
-                        onClick={() =>
-                          onChangeColourSetBlock(colourSetId, blockId)
-                        }
+                        onClick={() => onChangeColourSetBlock(colourSetId, blockId)}
                       />
                     </Tooltip>
                   </label>

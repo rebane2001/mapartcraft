@@ -61,16 +61,9 @@ class MapartController extends Component {
 
   constructor(props) {
     super(props);
-    this.state.presets = JSON.parse(
-      CookieManager.touchCookie("presets", JSON.stringify(defaultPresets))
-    );
-    Object.keys(coloursJSON).forEach(
-      (key) => (this.state.selectedBlocks[key] = "-1")
-    );
-    this.state.optionValue_version = CookieManager.touchCookie(
-      "defaultVersion",
-      this.supportedVersions[0].MCVersion
-    );
+    this.state.presets = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(defaultPresets)));
+    Object.keys(coloursJSON).forEach((key) => (this.state.selectedBlocks[key] = "-1"));
+    this.state.optionValue_version = CookieManager.touchCookie("defaultVersion", this.supportedVersions[0].MCVersion);
     const URLParams = new URL(window.location).searchParams;
     if (URLParams.has("preset")) {
       const decodedPresetBlocks = this.URLToPreset(URLParams.get("preset"));
@@ -163,9 +156,7 @@ class MapartController extends Component {
       if (
         colourSetId in coloursJSON &&
         blockId in coloursJSON[colourSetId]["blocks"] &&
-        Object.keys(
-          coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]
-        ).includes(optionValue_version)
+        Object.keys(coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]).includes(optionValue_version)
       ) {
         selectedBlocks[colourSetId] = blockId;
       }
@@ -186,12 +177,7 @@ class MapartController extends Component {
     this.setState((currentState) => {
       let selectedBlocks = { ...currentState.selectedBlocks };
       Object.keys(coloursJSON).forEach((key) => {
-        if (
-          selectedBlocks[key] !== "-1" &&
-          !Object.keys(
-            coloursJSON[key]["blocks"][selectedBlocks[key]]["validVersions"]
-          ).includes(version)
-        ) {
+        if (selectedBlocks[key] !== "-1" && !Object.keys(coloursJSON[key]["blocks"][selectedBlocks[key]]["validVersions"]).includes(version)) {
           selectedBlocks[key] = "-1";
         }
       });
@@ -260,8 +246,7 @@ class MapartController extends Component {
 
   onOptionChange_PreProcessingEnabled = () => {
     this.setState({
-      optionValue_preprocessingEnabled:
-        !this.state.optionValue_preprocessingEnabled,
+      optionValue_preprocessingEnabled: !this.state.optionValue_preprocessingEnabled,
     });
   };
 
@@ -301,11 +286,7 @@ class MapartController extends Component {
   onGetNBTClicked = () => {
     const { optionValue_supportBlock, currentMaterialsData } = this.state;
     const { getLocaleString } = this.props;
-    if (
-      Object.entries(currentMaterialsData.currentSelectedBlocks).every(
-        (elt) => elt[1] === "-1"
-      )
-    ) {
+    if (Object.entries(currentMaterialsData.currentSelectedBlocks).every((elt) => elt[1] === "-1")) {
       alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
       return;
     }
@@ -317,11 +298,7 @@ class MapartController extends Component {
         const t1 = performance.now();
         console.log(`Created NBT in ${(t1 - t0).toString()}ms`);
         const { NBT_Array, whichMap_x, whichMap_y } = e.data.body;
-        this.downloadBlobFile(
-          gzip(NBT_Array),
-          "application/x-minecraft-level",
-          `mapart_${whichMap_x}_${whichMap_y}.nbt`
-        );
+        this.downloadBlobFile(gzip(NBT_Array), "application/x-minecraft-level", `mapart_${whichMap_x}_${whichMap_y}.nbt`);
       } else if (e.data.head === "PROGRESS_REPORT") {
         // this.setState({ workerProgress: e.data.body });
       }
@@ -332,8 +309,7 @@ class MapartController extends Component {
         coloursJSON: coloursJSON,
         supportedVersions: this.supportedVersions,
         optionValue_version: currentMaterialsData.optionValue_version,
-        optionValue_whereSupportBlocks:
-          currentMaterialsData.optionValue_whereSupportBlocks,
+        optionValue_whereSupportBlocks: currentMaterialsData.optionValue_whereSupportBlocks,
         optionValue_supportBlock: optionValue_supportBlock,
         materials: currentMaterialsData.materials,
         coloursLayout: currentMaterialsData.coloursLayout,
@@ -362,10 +338,7 @@ class MapartController extends Component {
       (optionValue_staircasing === "off" ? "disabled" : "enabled") +
       "\n";
     let numberOfColoursExported = 0;
-    const toneKeysToExport =
-      optionValue_staircasing === "off"
-        ? ["normal"]
-        : ["dark", "normal", "light"];
+    const toneKeysToExport = optionValue_staircasing === "off" ? ["normal"] : ["dark", "normal", "light"];
     // NB: unobtainable never included since palette is mainly for survival? TODO: ask others for consensus
     Object.keys(selectedBlocks).forEach((key) => {
       if (selectedBlocks[key] !== "-1") {
@@ -374,10 +347,7 @@ class MapartController extends Component {
           numberOfColoursExported += 1;
           paletteText += "FF";
           for (let i = 0; i < 3; i++) {
-            paletteText += Number(colours[toneKeyToExport][i])
-              .toString(16)
-              .padStart(2, "0")
-              .toUpperCase();
+            paletteText += Number(colours[toneKeyToExport][i]).toString(16).padStart(2, "0").toUpperCase();
           }
           paletteText += "\n";
         });
@@ -387,11 +357,7 @@ class MapartController extends Component {
       alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
       return;
     } else if (numberOfColoursExported > 96) {
-      alert(
-        getLocaleString("PDNWARNING1") +
-          numberOfColoursExported.toString() +
-          getLocaleString("PDNWARNING2")
-      );
+      alert(getLocaleString("PDNWARNING1") + numberOfColoursExported.toString() + getLocaleString("PDNWARNING2"));
     }
     this.downloadBlobFile(paletteText, "text/plain", "MapartcraftPalette.txt");
   };
@@ -405,9 +371,7 @@ class MapartController extends Component {
     if (presetName === "None") {
       this.handleChangeColourSetBlocks([]);
     } else {
-      const selectedPreset = presets.find(
-        (preset) => preset["name"] === presetName
-      );
+      const selectedPreset = presets.find((preset) => preset["name"] === presetName);
       if (selectedPreset !== undefined) {
         this.handleChangeColourSetBlocks(selectedPreset["blocks"]);
       }
@@ -417,9 +381,7 @@ class MapartController extends Component {
   handleDeletePreset = () => {
     const { presets, selectedPresetName } = this.state;
 
-    const presets_new = presets.filter(
-      (preset) => preset["name"] !== selectedPresetName
-    );
+    const presets_new = presets.filter((preset) => preset["name"] !== selectedPresetName);
     this.setState({
       presets: presets_new,
       selectedPresetName: "None",
@@ -436,16 +398,11 @@ class MapartController extends Component {
       return;
     }
 
-    const otherPresets = presets.filter(
-      (preset) => preset["name"] !== presetToSave_name
-    );
+    const otherPresets = presets.filter((preset) => preset["name"] !== presetToSave_name);
     let newPreset = { name: presetToSave_name, blocks: [] };
     Object.keys(selectedBlocks).forEach((key) => {
       if (selectedBlocks[key] !== "-1") {
-        newPreset["blocks"].push([
-          parseInt(key),
-          parseInt(selectedBlocks[key]),
-        ]);
+        newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
       }
     });
     const presets_new = [...otherPresets, newPreset];
@@ -464,9 +421,7 @@ class MapartController extends Component {
     Object.keys(selectedBlocks).forEach((key) => {
       if (selectedBlocks[key] !== "-1") {
         presetQueryString += parseInt(key).toString(36);
-        presetQueryString += coloursJSON[key]["blocks"][selectedBlocks[key]][
-          "presetIndex"
-        ]
+        presetQueryString += coloursJSON[key]["blocks"][selectedBlocks[key]]["presetIndex"]
           .toString(26)
           .toUpperCase()
           .replace(/[0-9]/g, (match) => {
@@ -491,11 +446,7 @@ class MapartController extends Component {
   handleSharePreset = () => {
     const { getLocaleString } = this.props;
     const { selectedBlocks } = this.state;
-    if (
-      Object.keys(selectedBlocks).every(
-        (colourSetId) => selectedBlocks[colourSetId] === "-1"
-      )
-    ) {
+    if (Object.keys(selectedBlocks).every((colourSetId) => selectedBlocks[colourSetId] === "-1")) {
       alert(getLocaleString("SELECTBLOCKSWARNING-SHARE"));
     } else {
       prompt(getLocaleString("PRESETS-SHARELINK"), this.presetToURL());
@@ -542,20 +493,12 @@ class MapartController extends Component {
       if (!(decodedColourSetId in coloursJSON)) {
         continue;
       }
-      const decodedBlock = Object.entries(
-        coloursJSON[decodedColourSetId]["blocks"]
-      ).find((elt) => elt[1]["presetIndex"] === decodedPresetIndex);
+      const decodedBlock = Object.entries(coloursJSON[decodedColourSetId]["blocks"]).find((elt) => elt[1]["presetIndex"] === decodedPresetIndex);
       if (decodedBlock === undefined) {
         continue;
       }
       const decodedBlockId = decodedBlock[0].toString();
-      if (
-        Object.keys(
-          coloursJSON[decodedColourSetId]["blocks"][decodedBlockId][
-            "validVersions"
-          ]
-        ).includes(optionValue_version)
-      ) {
+      if (Object.keys(coloursJSON[decodedColourSetId]["blocks"][decodedBlockId]["validVersions"]).includes(optionValue_version)) {
         selectedBlocks[decodedColourSetId] = decodedBlockId;
       }
     }
@@ -653,9 +596,7 @@ class MapartController extends Component {
             optionValue_staircasing={optionValue_staircasing}
             onOptionChange_staircasing={this.onOptionChange_staircasing}
             optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
-            onOptionChange_WhereSupportBlocks={
-              this.onOptionChange_WhereSupportBlocks
-            }
+            onOptionChange_WhereSupportBlocks={this.onOptionChange_WhereSupportBlocks}
             optionValue_supportBlock={optionValue_supportBlock}
             onOptionChange_SupportBlock={this.onOptionChange_SupportBlock}
             optionValue_unobtainable={optionValue_unobtainable}
@@ -667,30 +608,19 @@ class MapartController extends Component {
             optionValue_dithering={optionValue_dithering}
             onOptionChange_dithering={this.onOptionChange_dithering}
             optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
-            onOptionChange_PreProcessingEnabled={
-              this.onOptionChange_PreProcessingEnabled
-            }
+            onOptionChange_PreProcessingEnabled={this.onOptionChange_PreProcessingEnabled}
             preProcessingValue_brightness={preProcessingValue_brightness}
-            onOptionChange_PreProcessingBrightness={
-              this.onOptionChange_PreProcessingBrightness
-            }
+            onOptionChange_PreProcessingBrightness={this.onOptionChange_PreProcessingBrightness}
             preProcessingValue_contrast={preProcessingValue_contrast}
-            onOptionChange_PreProcessingContrast={
-              this.onOptionChange_PreProcessingContrast
-            }
+            onOptionChange_PreProcessingContrast={this.onOptionChange_PreProcessingContrast}
             preProcessingValue_saturation={preProcessingValue_saturation}
-            onOptionChange_PreProcessingSaturation={
-              this.onOptionChange_PreProcessingSaturation
-            }
+            onOptionChange_PreProcessingSaturation={this.onOptionChange_PreProcessingSaturation}
             onViewOnlineClicked={this.onViewOnlineClicked}
             onGetNBTClicked={this.onGetNBTClicked}
             onGetNBTSplitClicked={this.onGetNBTSplitClicked}
             onGetMapdatSplitClicked={this.onGetMapdatSplitClicked}
           />
-          <Materials
-            getLocaleString={getLocaleString}
-            currentMaterialsData={currentMaterialsData}
-          />
+          <Materials getLocaleString={getLocaleString} currentMaterialsData={currentMaterialsData} />
         </div>
       </div>
     );
