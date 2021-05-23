@@ -58,7 +58,12 @@ class MapartController extends Component {
     super(props);
     this.state.presets = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(defaultPresets)));
     Object.keys(coloursJSON).forEach((key) => (this.state.selectedBlocks[key] = "-1"));
-    this.state.optionValue_version = CookieManager.touchCookie("defaultVersion", this.supportedVersions[0].MCVersion);
+    const cookieMCVersion = CookieManager.touchCookie("mcversion", this.supportedVersions[0].MCVersion);
+    if (this.supportedVersions.find((supportedVersion) => supportedVersion.MCVersion === cookieMCVersion)) {
+      this.state.optionValue_version = cookieMCVersion;
+    } else {
+      this.state.optionValue_version = this.supportedVersions[0].MCVersion;
+    }
     const URLParams = new URL(window.location).searchParams;
     if (URLParams.has("preset")) {
       const decodedPresetBlocks = this.URLToPreset(URLParams.get("preset"));
@@ -167,7 +172,7 @@ class MapartController extends Component {
 
   onOptionChange_version = (e) => {
     const version = e.target.value;
-    CookieManager.setCookie("defaultVersion", version);
+    CookieManager.setCookie("mcversion", version);
     this.setState((currentState) => {
       let selectedBlocks = { ...currentState.selectedBlocks };
       Object.keys(coloursJSON).forEach((key) => {
