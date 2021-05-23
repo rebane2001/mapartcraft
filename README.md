@@ -15,6 +15,7 @@ Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapart
 - Original map preview had to finish its current rendering before re-rendering if an option changed mid render; now the map rendering worker is immediately terminated and relaunched if an option changes mid render to save time
 - Remove 'seconds remaining' from progress bar as it is inaccurate, and unnecessary with percentage shown also
 - Materials count now auto-updates
+- Support-block single mode is now optimised
 
 ## Requirements
 

@@ -1,0 +1,581 @@
+// begin variables passed in onmessage
+var coloursJSON;
+var supportedVersions;
+var optionValue_version;
+var optionValue_whereSupportBlocks;
+var optionValue_supportBlock;
+var materials; // used for constructing a palette, not the counts
+var coloursLayout;
+var currentSelectedBlocks;
+var splitMaps;
+// end onmessage variables
+
+/*
+  A mapping from type names to NBT type numbers.
+  This is NOT just an enum, these values have to stay as they are
+  https://minecraft.fandom.com/wiki/NBT_format#TAG_definition
+*/
+const TagTypes = {
+  end: 0,
+  byte: 1,
+  short: 2,
+  int: 3,
+  long: 4,
+  float: 5,
+  double: 6,
+  byteArray: 7,
+  string: 8,
+  list: 9,
+  compound: 10,
+  intArray: 11,
+  longArray: 12,
+};
+
+class NBTWriter {
+  constructor() {
+    if (typeof ArrayBuffer === "undefined") {
+      throw new Error("Missing required type ArrayBuffer");
+    }
+    if (typeof DataView === "undefined") {
+      throw new Error("Missing required type DataView");
+    }
+    if (typeof Uint8Array === "undefined") {
+      throw new Error("Missing required type Uint8Array");
+    }
+    /* Will be auto-resized (x2) on write if necessary. */
+    this.buffer = new ArrayBuffer(1024);
+
+    /* These are recreated when the buffer is */
+    this.dataView = new DataView(this.buffer);
+    this.arrayView = new Uint8Array(this.buffer);
+    this.offset = 0;
+  }
+
+  encodeUTF8(str) {
+    let array = [],
+      i,
+      c;
+    for (i = 0; i < str.length; i++) {
+      c = str.charCodeAt(i);
+      if (c < 0x80) {
+        array.push(c);
+      } else if (c < 0x800) {
+        array.push(0xc0 | (c >> 6));
+        array.push(0x80 | (c & 0x3f));
+      } else if (c < 0x10000) {
+        array.push(0xe0 | (c >> 12));
+        array.push(0x80 | ((c >> 6) & 0x3f));
+        array.push(0x80 | (c & 0x3f));
+      } else {
+        array.push(0xf0 | ((c >> 18) & 0x07));
+        array.push(0x80 | ((c >> 12) & 0x3f));
+        array.push(0x80 | ((c >> 6) & 0x3f));
+        array.push(0x80 | (c & 0x3f));
+      }
+    }
+    return array;
+  }
+
+  accommodate(size) {
+    // Ensures that the buffer is large enough to write `size` bytes at the current `this.offset`.
+    let requiredLength = this.offset + size;
+    if (this.buffer.byteLength >= requiredLength) {
+      return;
+    }
+
+    let newLength = this.buffer.byteLength;
+    while (newLength < requiredLength) {
+      newLength *= 2;
+    }
+    let newBuffer = new ArrayBuffer(newLength);
+    let newArrayView = new Uint8Array(newBuffer);
+    newArrayView.set(this.arrayView);
+
+    // If there's a gap between the end of the old buffer
+    // and the start of the new one, we need to zero it out
+    if (this.offset > this.buffer.byteLength) {
+      newArrayView.fill(0, this.buffer.byteLength, this.offset);
+    }
+
+    this.buffer = newBuffer;
+    this.dataView = new DataView(newBuffer);
+    this.arrayView = newArrayView;
+  }
+
+  write(dataType, size, value) {
+    this.accommodate(size);
+    this.dataView["set" + dataType](this.offset, value);
+    this.offset += size;
+  }
+
+  writeByType(dataType, value) {
+    switch (dataType) {
+      case TagTypes.end: {
+        this.writeByType(TagTypes.byte, 0);
+        break;
+      }
+      case TagTypes.byte: {
+        this.write("Int8", 1, value);
+        break;
+      }
+      case TagTypes.short: {
+        this.write("Int16", 2, value);
+        break;
+      }
+      case TagTypes.int: {
+        this.write("Int32", 4, value);
+        break;
+      }
+      case TagTypes.long: {
+        // NB: special: JS doesn't support native 64 bit ints; pass an array of two 32 bit ints to this case
+        this.write("Int32", 4, value[0]);
+        this.write("Int32", 4, value[1]);
+        break;
+      }
+      case TagTypes.float: {
+        this.write("Float32", 4, value);
+        break;
+      }
+      case TagTypes.double: {
+        this.write("Float64", 8, value);
+        break;
+      }
+      case TagTypes.byteArray: {
+        this.writeByType(TagTypes.int, value.length);
+        this.accommodate(value.length);
+        this.arrayView.set(value, this.offset);
+        this.offset += value.length;
+        break;
+      }
+      case TagTypes.string: {
+        let bytes = this.encodeUTF8(value);
+        this.writeByType(TagTypes.short, bytes.length);
+        this.accommodate(bytes.length);
+        this.arrayView.set(bytes, this.offset);
+        this.offset += bytes.length;
+        break;
+      }
+      case TagTypes.list: {
+        // Pass a dicitonary {"type": TagTypes.blah, "value": [] }
+        this.writeByType(TagTypes.byte, value.type);
+        this.writeByType(TagTypes.int, value.value.length);
+        for (let i = 0; i < value.value.length; i++) {
+          this.writeByType(value.type, value.value[i]);
+        }
+        break;
+      }
+      case TagTypes.compound: {
+        // This is the rich tagtype we will interact with a lot
+        // Pass a dictionary {"type": TagTypes.blah, "value": ... }
+        // {
+        //   author: { type: TagTypes.string, value: "Steve" },
+        //   stuff: {
+        //       type: TagTypes.compound,
+        //       value: {
+        //         foo: { type: int, value: 42 },
+        //         bar: { type: string, value: 'Hi!' }
+        //       }
+        //   }
+        // }
+        Object.keys(value).forEach((key) => {
+          this.writeByType(TagTypes.byte, value[key].type);
+          this.writeByType(TagTypes.string, key);
+          this.writeByType(value[key].type, value[key].value); // this is where the nice recursion happens
+        });
+        this.writeByType(TagTypes.end, 0);
+        break;
+      }
+      case TagTypes.intArray: {
+        this.writeByType(TagTypes.int, value.length);
+        for (let i = 0; i < value.length; i++) {
+          this.writeByType(TagTypes.int, value[i]);
+          // https://lkml.org/lkml/2012/7/6/495
+        }
+        break;
+      }
+      case TagTypes.longArray: {
+        this.writeByType(TagTypes.int, value.length);
+        for (let i = 0; i < value.length; i++) {
+          this.writeByType(TagTypes.long, value[i]);
+          // NB this is an array of longs given as specified in case:long
+        }
+        break;
+      }
+      case "UBYTE": {
+        // unsure why this is here, seems unused; nbt raw bytes (TagTypes.byte) are signed
+        this.write("Uint8", 1, value);
+        break;
+      }
+      default: {
+        throw new Error(`Unknown data type ${dataType} for value ${value}`);
+      }
+    }
+  }
+
+  writeTopLevelCompound(value) {
+    // For writing a top level JSON object as a compound tag.
+    // This is of the form {"name": "blah", "value": {...}}
+    // This is not just this.writeByType(TagTypes.compound, value); we add the appropriate compound prefix etc
+    this.writeByType(TagTypes.byte, TagTypes.compound);
+    this.writeByType(TagTypes.string, value.name);
+    this.writeByType(TagTypes.compound, value.value);
+  }
+
+  getData() {
+    /*
+      Returns the writen data as a slice from the internal buffer, cutting off any padding at the end.
+    */
+    this.accommodate(0); /* make sure the offset is inside the buffer */
+    return this.buffer.slice(0, this.offset);
+  }
+}
+
+class MapNBT {
+  constructor(mapColoursLayout, mapMaterialsCounts) {
+    this.mapColoursLayout = mapColoursLayout;
+    this.mapMaterialsCounts = mapMaterialsCounts;
+    this.NBT_json = {
+      name: "",
+      value: {
+        blocks: {
+          type: TagTypes.list,
+          value: {
+            type: TagTypes.compound,
+            value: [],
+          },
+        },
+        entities: {
+          type: TagTypes.list,
+          value: {
+            type: TagTypes.compound,
+            value: [],
+          },
+        },
+        palette: {
+          type: TagTypes.list,
+          value: {
+            type: TagTypes.compound,
+            value: [],
+          },
+        },
+        size: {
+          type: TagTypes.list,
+          value: {
+            type: TagTypes.int,
+            value: [], // X, Y, Z
+          },
+        },
+        author: {
+          type: TagTypes.string,
+          value: "rebane2001.com/mapartcraft",
+        },
+        DataVersion: {
+          type: TagTypes.int,
+          value: null,
+        },
+      },
+    };
+    this.physicalLayout = [];
+    this.palette_colourSetId_paletteId = {}; // map coloursJSON colourSetIds to index of corresponding block in palette list
+    this.palette_paletteId_colourSetId = []; // map paletteIds (index of an item in this list) to colourSetIds
+    this.columnHeightsCache = []; // appended to in getPhysicalLayout_individualColumn, used in setNBT_json_size
+  }
+
+  constructPaletteLookups() {
+    // filter $materials to colourSetIds with non-zero materials count
+    const nonZeroMaterials = Object.fromEntries(Object.entries(this.mapMaterialsCounts.materialsCounts).filter(([_, value]) => value !== 0));
+    // now construct palette lookups for non-zero colourSetIds
+    Object.keys(nonZeroMaterials).forEach((colourSetId) => {
+      this.palette_colourSetId_paletteId[colourSetId] = this.palette_paletteId_colourSetId.length;
+      this.palette_paletteId_colourSetId.push(colourSetId);
+    });
+    // finally add noobline/scaffold material at the end, special key
+    this.palette_colourSetId_paletteId["NOOBLINE_SCAFFOLD"] = this.palette_paletteId_colourSetId.length;
+    this.palette_paletteId_colourSetId.push("NOOBLINE_SCAFFOLD");
+  }
+
+  setNBT_json_palette() {
+    this.palette_paletteId_colourSetId.forEach((colourSetId) => {
+      let paletteItemToPush = {};
+      if (colourSetId === "NOOBLINE_SCAFFOLD") {
+        paletteItemToPush.Name = {
+          type: TagTypes.string,
+          value: optionValue_supportBlock,
+        };
+        // we expect the support block to be something non-exotic with no properties eg netherrack
+      } else {
+        let blockNBTData = coloursJSON[colourSetId].blocks[currentSelectedBlocks[colourSetId]].validVersions[optionValue_version];
+        if (typeof blockNBTData === "string") {
+          // this is of the form eg "&1.12.2"
+          blockNBTData = coloursJSON[colourSetId].blocks[currentSelectedBlocks[colourSetId]].validVersions[blockNBTData.slice(1)];
+        }
+        paletteItemToPush.Name = {
+          type: TagTypes.string,
+          value: `minecraft:${blockNBTData.NBTName}`,
+        };
+        if (Object.keys(blockNBTData.NBTArgs).length !== 0) {
+          paletteItemToPush.Properties = { type: TagTypes.compound, value: {} };
+          Object.keys(blockNBTData.NBTArgs).forEach((NBTArg_key) => {
+            paletteItemToPush.Properties.value[NBTArg_key] = {
+              type: TagTypes.string,
+              value: blockNBTData.NBTArgs[NBTArg_key],
+            };
+          });
+        }
+      }
+      this.NBT_json.value.palette.value.value.push(paletteItemToPush);
+    });
+  }
+
+  setNBT_json_DataVersion() {
+    this.NBT_json.value.DataVersion.value = supportedVersions.find((version) => version.MCVersion === optionValue_version).NBTVersion;
+  }
+
+  returnPhysicalBlock(x, y, z, colourSetId) {
+    return {
+      pos: { type: TagTypes.list, value: { type: TagTypes.int, value: [x, y, z] } },
+      state: { type: TagTypes.int, value: this.palette_colourSetId_paletteId[colourSetId] },
+    };
+  }
+
+  getPhysicalLayout() {
+    for (let columnNumber = 0; columnNumber < this.mapColoursLayout.length; columnNumber++) {
+      this.getPhysicalLayout_individualColumn(columnNumber);
+    }
+  }
+
+  getPhysicalLayout_individualColumn(columnNumber) {
+    let physicalColumn = [];
+    let currentHeight = 0;
+    const mapColoursLayoutColumn = this.mapColoursLayout[columnNumber];
+    // initialise with noobline
+    // we treat the first (noobline) and last block of a column specially; the latter since we look ahead in our for loop normally
+    physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, 0, "NOOBLINE_SCAFFOLD"));
+    switch (optionValue_whereSupportBlocks) {
+      case "None":
+      case "Important": {
+        break;
+      }
+      case "AllOptimized": {
+        if (mapColoursLayoutColumn[0].tone === "dark") {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 0, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      case "AllDoubleOptimized": {
+        physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 0, "NOOBLINE_SCAFFOLD"));
+        if (mapColoursLayoutColumn[0].tone === "dark") {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 0, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      default: {
+        throw new Error("Unknown support-blocks option");
+      }
+    }
+    for (let rowNumber = 0; rowNumber < mapColoursLayoutColumn.length - 1; rowNumber++) {
+      const coloursBlock = mapColoursLayoutColumn[rowNumber];
+      const nextColoursBlock = mapColoursLayoutColumn[rowNumber + 1];
+      switch (coloursBlock.tone) {
+        case "dark": {
+          currentHeight -= 1;
+          break;
+        }
+        case "normal": {
+          break;
+        }
+        case "light": {
+          currentHeight += 1;
+          break;
+        }
+        default: {
+          throw new Error("Unknown tone type");
+        }
+      }
+      physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, rowNumber + 1, coloursBlock.colourSetId));
+      switch (optionValue_whereSupportBlocks) {
+        case "None": {
+          break;
+        }
+        case "Important": {
+          if (coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory) {
+            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          }
+          break;
+        }
+        case "AllOptimized": {
+          if (
+            coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
+            coloursBlock.tone === "light" ||
+            nextColoursBlock.tone === "dark"
+          ) {
+            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          }
+          break;
+        }
+        case "AllDoubleOptimized": {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          if (
+            coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
+            coloursBlock.tone === "light" ||
+            nextColoursBlock.tone === "dark"
+          ) {
+            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          }
+          break;
+        }
+        default: {
+          throw new Error("Unknown support-blocks option");
+        }
+      }
+    }
+    // final block in column special case: no lookahead to next block
+    const finalRowNumber = mapColoursLayoutColumn.length - 1;
+    const finalColoursBlock = mapColoursLayoutColumn[finalRowNumber];
+    switch (finalColoursBlock.tone) {
+      case "dark": {
+        currentHeight -= 1;
+        break;
+      }
+      case "normal": {
+        break;
+      }
+      case "light": {
+        currentHeight += 1;
+        break;
+      }
+      default: {
+        throw new Error("Unknown tone type");
+      }
+    }
+    physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, finalRowNumber + 1, finalColoursBlock.colourSetId));
+    switch (optionValue_whereSupportBlocks) {
+      case "None": {
+        break;
+      }
+      case "Important": {
+        if (coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      case "AllOptimized": {
+        if (
+          coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory ||
+          finalColoursBlock.tone === "light" // note no lookahead || case here
+        ) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      case "AllDoubleOptimized": {
+        physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
+        if (
+          coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory ||
+          finalColoursBlock.tone === "light"
+        ) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      default: {
+        throw new Error("Unknown support-blocks option");
+      }
+    }
+    // we now make sure the column's global minimum is at y=0; doing this for every column gives the map a common base
+    const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
+    physicalColumn.forEach((block) => {
+      block.pos.value.value[1] -= columnMinimumY;
+    });
+    this.NBT_json.value.blocks.value.value = this.NBT_json.value.blocks.value.value.concat(physicalColumn);
+    this.columnHeightsCache.push(physicalColumn.reduce((a, b) => (a.pos.value.value[1] > b.pos.value.value[1] ? a : b)).pos.value.value[1]);
+  }
+
+  setNBT_json_blocks() {
+    this.getPhysicalLayout();
+  }
+
+  setNBT_json_size() {
+    this.NBT_json.value.size.value.value = [
+      this.mapColoursLayout.length,
+      this.columnHeightsCache.reduce((a, b) => (a > b ? a : b)) + 1,
+      this.mapColoursLayout[0].length + 1,
+    ];
+  }
+
+  getNBT() {
+    this.constructPaletteLookups();
+    this.setNBT_json_palette();
+    this.setNBT_json_DataVersion();
+    this.setNBT_json_blocks();
+    this.setNBT_json_size();
+
+    // console.log(NBT_json);
+
+    let nbtWriter = new NBTWriter();
+    nbtWriter.writeTopLevelCompound(this.NBT_json);
+    return nbtWriter.getData();
+  }
+}
+
+function mergeMaps() {
+  coloursLayout.forEach((rowOfMaps) => {
+    for (let whichMap_x = 1; whichMap_x < rowOfMaps.length; whichMap_x++) {
+      rowOfMaps[0] = rowOfMaps[0].concat(rowOfMaps[whichMap_x]); // merge along x-axis
+    }
+  });
+  for (let i = 0; i < coloursLayout[0][0].length; i++) {
+    // for each column in resulting map
+    for (let j = 1; j < coloursLayout.length; j++) {
+      // for each column needing to be merged into resulting map
+      coloursLayout[0][0][i] = coloursLayout[0][0][i].concat(coloursLayout[j][0][i]);
+    }
+  }
+  coloursLayout = [[coloursLayout[0][0]]];
+  // Merge materials counts for lookup
+  let materials_new = { materialsCounts: {} };
+  Object.keys(coloursJSON).forEach((colourSetId) => {
+    materials_new.materialsCounts[colourSetId] = 0;
+  });
+  materials.forEach((materials_row) => {
+    materials_row.forEach((materials_entry) => {
+      Object.keys(materials_entry.materialsCounts).forEach((colourSetId) => {
+        materials_new.materialsCounts[colourSetId] += materials_entry.materialsCounts[colourSetId];
+      });
+    });
+  });
+  materials = [[materials_new]];
+}
+
+onmessage = (e) => {
+  if (e.data.head === "CREATE_NBT") {
+    coloursJSON = e.data.body.coloursJSON;
+    supportedVersions = e.data.body.supportedVersions;
+    optionValue_version = e.data.body.optionValue_version;
+    optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
+    optionValue_supportBlock = e.data.body.optionValue_supportBlock;
+    materials = e.data.body.materials;
+    coloursLayout = e.data.body.coloursLayout;
+    currentSelectedBlocks = e.data.body.currentSelectedBlocks;
+    splitMaps = false; // TODO depends on which option clicked
+
+    if (!splitMaps) {
+      mergeMaps();
+    }
+
+    for (let whichMap_y = 0; whichMap_y < coloursLayout.length; whichMap_y++) {
+      for (let whichMap_x = 0; whichMap_x < coloursLayout[0].length; whichMap_x++) {
+        const mapNBT = new MapNBT(coloursLayout[whichMap_y][whichMap_x], materials[whichMap_y][whichMap_x]);
+        const NBT_Array = mapNBT.getNBT();
+        postMessage({
+          head: "NBT_ARRAY",
+          body: {
+            whichMap_x: whichMap_x,
+            whichMap_y: whichMap_y,
+            NBT_Array: NBT_Array,
+          },
+        });
+      }
+    }
+  }
+};

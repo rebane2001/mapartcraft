@@ -2,6 +2,7 @@ var coloursJSON;
 var DitherMethods;
 var canvasImageData;
 var selectedBlocks;
+var optionValue_version;
 var optionValue_modeNBTOrMapdat;
 var optionValue_mapSize_x;
 var optionValue_mapSize_y;
@@ -18,6 +19,14 @@ var labCache = new Map();
 
 var materials = [];
 var supportBlockCount = []; // TODO make sure to account for noobline
+var coloursLayout = [];
+
+/*
+  We're keeping coloursLayout as minimal as possible since computation for NBT generation is done in separate worker only if the user actually wants to download the map generated
+  Each of materials, supportBlockCount, coloursLayout are matrices with each entry corresponding to a 128*128 map, accessible by eg coloursLayout[z][x]
+
+  coloursLayout[z][x] is a list of 128 entries, each of which corresponds to a column (z-axis stripe) of the map; this entry is a list of 128 entries, each of which corresponds to a pixel / block; hence we can access blocks by coloursLayout[z][x][x_col][z_map]. Each block is a dictionary with keys 'colourSetId' and 'tone'. Note that z and z_map start from the top of the map(s).
+*/
 
 // rgb2lab conversion based on the one from redstonehelper's program
 function rgb2lab(rgb) {
@@ -195,6 +204,7 @@ function getMapartImageDataAndMaterials() {
   for (let y = 0; y < optionValue_mapSize_y; y++) {
     let materialsRowToAdd = [];
     let supportBlockRowToAdd = [];
+    let coloursLayoutRowToAdd = [];
     for (let x = 0; x < optionValue_mapSize_x; x++) {
       let materialsEntryToAdd = {
         whichMap_x: x,
@@ -204,12 +214,21 @@ function getMapartImageDataAndMaterials() {
       colourSetsToUse.forEach((colourSet) => {
         materialsEntryToAdd.materialsCounts[colourSet.colourSetId] = 0;
       });
+
       let supportBlockEntryToAdd = 0; // NB noobline counted in materials.js
+
+      let coloursLayoutEntryToAdd = [];
+      for (let column = 0; column < 128; column++) {
+        coloursLayoutEntryToAdd.push([]);
+      }
+
       materialsRowToAdd.push(materialsEntryToAdd);
       supportBlockRowToAdd.push(supportBlockEntryToAdd);
+      coloursLayoutRowToAdd.push(coloursLayoutEntryToAdd);
     }
     materials.push(materialsRowToAdd);
     supportBlockCount.push(supportBlockRowToAdd);
+    coloursLayout.push(coloursLayoutRowToAdd);
   }
 
   if (colourSetsToUse.length === 0) {
@@ -264,6 +283,7 @@ function getMapartImageDataAndMaterials() {
     const multimap_y = (i / 4 - multimap_x) / multimapWidth;
     const whichMap_x = Math.floor(multimap_x / 128);
     const whichMap_y = Math.floor(multimap_y / 128);
+    const individualMap_x = multimap_x % 128;
     if (multimap_x === 0) {
       postMessage({
         head: "PROGRESS_REPORT",
@@ -457,6 +477,10 @@ function getMapartImageDataAndMaterials() {
     materials[whichMap_y][whichMap_x].materialsCounts[
       closestColourSetIdAndTone.colourSetId
     ] += 1;
+    coloursLayout[whichMap_y][whichMap_x][individualMap_x].push({
+      colourSetId: closestColourSetIdAndTone.colourSetId,
+      tone: closestColourSetIdAndTone.tone,
+    });
     switch (optionValue_whereSupportBlocks) {
       case "Important":
         if (
@@ -467,12 +491,10 @@ function getMapartImageDataAndMaterials() {
           supportBlockCount[whichMap_y][whichMap_x] += 1;
         }
         break;
-      case "All":
+      case "AllOptimized":
         supportBlockCount[whichMap_y][whichMap_x] += 1;
         break;
-      case "AllDoubleOptimized": // TODO
-        break;
-      case "AllDouble":
+      case "AllDoubleOptimized": // TODO actual accurate count
         supportBlockCount[whichMap_y][whichMap_x] += 2;
         break;
       case "None":
@@ -487,6 +509,7 @@ onmessage = (e) => {
   DitherMethods = e.data.body.DitherMethods;
   canvasImageData = e.data.body.canvasImageData;
   selectedBlocks = e.data.body.selectedBlocks;
+  optionValue_version = e.data.body.optionValue_version;
   optionValue_modeNBTOrMapdat = e.data.body.optionValue_modeNBTOrMapdat;
   optionValue_mapSize_x = e.data.body.optionValue_mapSize_x;
   optionValue_mapSize_y = e.data.body.optionValue_mapSize_y;
@@ -505,7 +528,10 @@ onmessage = (e) => {
       pixels: canvasImageData,
       materials: materials,
       supportBlockCount: supportBlockCount,
+      coloursLayout: coloursLayout,
       currentSelectedBlocks: selectedBlocks,
+      optionValue_version: optionValue_version,
+      optionValue_whereSupportBlocks: optionValue_whereSupportBlocks,
     },
   });
 };

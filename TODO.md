@@ -7,3 +7,5 @@
 - check noobline counted into materials count
 - hall of fame
 - in future add edit mode for nbts for colour replacements etc: issue #124
+- mapCanvasWorker.jsworker accurate support block count
+- progressreport for NBT download; maybe refactor from controller
