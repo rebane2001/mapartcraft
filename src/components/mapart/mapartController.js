@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { gzip } from "pako";
 
 import CookieManager from "../../cookieManager";
 import BlockSelection from "./blockSelection";
@@ -9,8 +8,6 @@ import Materials from "./materials";
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
 import DitherMethods from "./ditherMethods.json";
-
-import NBTWorker from "./workers/nbt.jsworker";
 
 import IMG_Upload from "../../images/upload.png";
 
@@ -48,8 +45,6 @@ class MapartController extends Component {
       optionValue_whereSupportBlocks: null,
     },
   };
-
-  nbtWorker = new Worker(NBTWorker);
 
   supportedVersions = [
     { MCVersion: "1.12.2", NBTVersion: 1343 },
@@ -111,7 +106,6 @@ class MapartController extends Component {
   }
 
   componentWillUnmount() {
-    this.nbtWorker.terminate();
     document.removeEventListener("dragover", this.eventListener_dragover);
     document.removeEventListener("drop", this.eventListener_drop);
     document.removeEventListener("paste", this.eventListener_paste);
@@ -282,51 +276,6 @@ class MapartController extends Component {
     window.URL.revokeObjectURL(downloadURL);
     document.body.removeChild(downloadElt);
   }
-
-  onGetNBTClicked = () => {
-    const { optionValue_supportBlock, currentMaterialsData } = this.state;
-    const { getLocaleString } = this.props;
-    if (Object.entries(currentMaterialsData.currentSelectedBlocks).every((elt) => elt[1] === "-1")) {
-      alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
-      return;
-    }
-    this.nbtWorker.terminate();
-    const t0 = performance.now();
-    this.nbtWorker = new Worker(NBTWorker);
-    this.nbtWorker.onmessage = (e) => {
-      if (e.data.head === "NBT_ARRAY") {
-        const t1 = performance.now();
-        console.log(`Created NBT in ${(t1 - t0).toString()}ms`);
-        const { NBT_Array, whichMap_x, whichMap_y } = e.data.body;
-        this.downloadBlobFile(gzip(NBT_Array), "application/x-minecraft-level", `mapart_${whichMap_x}_${whichMap_y}.nbt`);
-      } else if (e.data.head === "PROGRESS_REPORT") {
-        // this.setState({ workerProgress: e.data.body });
-      }
-    };
-    this.nbtWorker.postMessage({
-      head: "CREATE_NBT",
-      body: {
-        coloursJSON: coloursJSON,
-        supportedVersions: this.supportedVersions,
-        optionValue_version: currentMaterialsData.optionValue_version,
-        optionValue_whereSupportBlocks: currentMaterialsData.optionValue_whereSupportBlocks,
-        optionValue_supportBlock: optionValue_supportBlock,
-        materials: currentMaterialsData.materials,
-        coloursLayout: currentMaterialsData.coloursLayout,
-        currentSelectedBlocks: currentMaterialsData.currentSelectedBlocks,
-      },
-    });
-  };
-
-  onGetNBTSplitClicked = (e) => {
-    console.log(e);
-    //TODO
-  };
-
-  onGetMapdatSplitClicked = (e) => {
-    console.log(e);
-    //TODO
-  };
 
   handleGetPDNPaletteClicked = () => {
     const { getLocaleString } = this.props;
@@ -615,10 +564,9 @@ class MapartController extends Component {
             onOptionChange_PreProcessingContrast={this.onOptionChange_PreProcessingContrast}
             preProcessingValue_saturation={preProcessingValue_saturation}
             onOptionChange_PreProcessingSaturation={this.onOptionChange_PreProcessingSaturation}
+            currentMaterialsData={currentMaterialsData}
+            downloadBlobFile={this.downloadBlobFile}
             onViewOnlineClicked={this.onViewOnlineClicked}
-            onGetNBTClicked={this.onGetNBTClicked}
-            onGetNBTSplitClicked={this.onGetNBTSplitClicked}
-            onGetMapdatSplitClicked={this.onGetMapdatSplitClicked}
           />
           <Materials getLocaleString={getLocaleString} currentMaterialsData={currentMaterialsData} />
         </div>

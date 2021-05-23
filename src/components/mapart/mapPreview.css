@@ -1,3 +1,49 @@
+.greenButton_old {
+  font-family: "kenpixel_mini_square";
+  background: #688e6b;
+  color: #333333;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 5px 5px 0;
+  cursor: pointer;
+  width: 250px;
+  height: 29px;
+  font-size: 100%;
+}
+
+.greenButton {
+  font-family: "kenpixel_mini_square";
+  color: #333333;
+  cursor: pointer;
+  position: relative;
+  width: 250px;
+
+  height: 29px;
+}
+
+.greenButton_text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+
+  line-height: 29px;
+}
+
+.greenButton_progressDiv {
+  background-color: #688e6b;
+  height: 100%;
+}
+
+.greenButton_large {
+  height: 50px !important;
+}
+.greenButton_large_text {
+  line-height: 50px !important;
+  font-size: 26px !important;
+}
+
 .imgUpload {
   display: none;
 }

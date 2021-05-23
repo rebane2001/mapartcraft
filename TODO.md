@@ -1,11 +1,9 @@
 - Continue stripping master branch material into here
-- Map signing
 - Look at issues on Rebane repo
-- event handlers for downloading map
+- mapdat download
 - look at window.mapdat order in rebane: non trivial for mapdat assembly
-- dismissable messages, improve jargon in `src/components/root` component
 - check noobline counted into materials count
 - hall of fame
 - in future add edit mode for nbts for colour replacements etc: issue #124
 - mapCanvasWorker.jsworker accurate support block count
-- progressreport for NBT download; maybe refactor from controller
+- "optimised" staircase

@@ -10,6 +10,8 @@ var currentSelectedBlocks;
 var splitMaps;
 // end onmessage variables
 
+var progressReportHead;
+
 /*
   A mapping from type names to NBT type numbers.
   This is NOT just an enum, these values have to stay as they are
@@ -341,6 +343,10 @@ class MapNBT {
   getPhysicalLayout() {
     for (let columnNumber = 0; columnNumber < this.mapColoursLayout.length; columnNumber++) {
       this.getPhysicalLayout_individualColumn(columnNumber);
+      postMessage({
+        head: progressReportHead,
+        body: (columnNumber + 1) / this.mapColoursLayout.length,
+      });
     }
   }
 
@@ -557,9 +563,12 @@ onmessage = (e) => {
     materials = e.data.body.materials;
     coloursLayout = e.data.body.coloursLayout;
     currentSelectedBlocks = e.data.body.currentSelectedBlocks;
-    splitMaps = false; // TODO depends on which option clicked
+    splitMaps = e.data.body.splitMaps;
 
-    if (!splitMaps) {
+    if (splitMaps) {
+      progressReportHead = "PROGRESS_REPORT_NBT_SPLIT";
+    } else {
+      progressReportHead = "PROGRESS_REPORT_NBT_JOINED";
       mergeMaps();
     }
 

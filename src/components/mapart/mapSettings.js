@@ -1,12 +1,80 @@
 import React, { Component } from "react";
+import { gzip } from "pako";
 
 import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
+import coloursJSON from "./coloursJSON.json";
+
+import NBTWorker from "./workers/nbt.jsworker";
 
 import "./mapSettings.css";
 
 class MapSettings extends Component {
+  state = { buttonWidth_NBT_Joined: 1, buttonWidth_NBT_Split: 1, buttonWidth_Mapdat_Split: 1 };
+
+  nbtWorker = new Worker(NBTWorker);
+
+  resetButtonWidths() {
+    this.setState({ buttonWidth_NBT_Joined: 1, buttonWidth_NBT_Split: 1, buttonWidth_Mapdat_Split: 1 });
+  }
+
+  getNBT_base = (splitMaps) => {
+    const { getLocaleString, supportedVersions, optionValue_supportBlock, currentMaterialsData, downloadBlobFile } = this.props;
+    if (Object.entries(currentMaterialsData.currentSelectedBlocks).every((elt) => elt[1] === "-1")) {
+      alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
+      return;
+    }
+    this.nbtWorker.terminate();
+    this.resetButtonWidths();
+    const t0 = performance.now();
+    this.nbtWorker = new Worker(NBTWorker);
+    this.nbtWorker.onmessage = (e) => {
+      if (e.data.head === "NBT_ARRAY") {
+        const t1 = performance.now();
+        console.log(`Created NBT by ${(t1 - t0).toString()}ms`);
+        const { NBT_Array, whichMap_x, whichMap_y } = e.data.body;
+        downloadBlobFile(gzip(NBT_Array), "application/x-minecraft-level", splitMaps ? `mapart_${whichMap_x}_${whichMap_y}.nbt` : "mapart.nbt");
+      } else if (e.data.head === "PROGRESS_REPORT_NBT_JOINED") {
+        this.setState({ buttonWidth_NBT_Joined: e.data.body });
+      } else if (e.data.head === "PROGRESS_REPORT_NBT_SPLIT") {
+        this.setState({ buttonWidth_NBT_Split: e.data.body });
+      }
+    };
+    this.nbtWorker.postMessage({
+      head: "CREATE_NBT",
+      body: {
+        coloursJSON: coloursJSON,
+        supportedVersions: supportedVersions,
+        optionValue_version: currentMaterialsData.optionValue_version,
+        optionValue_whereSupportBlocks: currentMaterialsData.optionValue_whereSupportBlocks,
+        optionValue_supportBlock: optionValue_supportBlock,
+        materials: currentMaterialsData.materials,
+        coloursLayout: currentMaterialsData.coloursLayout,
+        currentSelectedBlocks: currentMaterialsData.currentSelectedBlocks,
+        splitMaps: splitMaps,
+      },
+    });
+  };
+
+  onGetNBTClicked = () => {
+    this.getNBT_base(false);
+  };
+
+  onGetNBTSplitClicked = () => {
+    this.getNBT_base(true);
+  };
+
+  onGetMapdatSplitClicked = (e) => {
+    console.log(e);
+    //TODO
+  };
+
+  componentWillUnmount() {
+    this.nbtWorker.terminate();
+  }
+
   render() {
+    const { buttonWidth_NBT_Joined, buttonWidth_NBT_Split, buttonWidth_Mapdat_Split } = this.state;
     const {
       getLocaleString,
       supportedVersions,
@@ -45,9 +113,6 @@ class MapSettings extends Component {
       preProcessingValue_saturation,
       onOptionChange_PreProcessingSaturation,
       onViewOnlineClicked,
-      onGetNBTClicked,
-      onGetNBTSplitClicked,
-      onGetMapdatSplitClicked,
     } = this.props;
     return (
       <div className="section settingsDiv">
@@ -279,36 +344,54 @@ class MapSettings extends Component {
         {optionValue_modeNBTOrMapdat === "NBT" ? (
           <span>
             <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-VIEWONLINE")}>
-              <span className="greenButton" onClick={onViewOnlineClicked}>
+              <span className="greenButton_old" onClick={onViewOnlineClicked}>
                 {getLocaleString("DOWNLOAD-VIEWONLINE")}
               </span>
             </Tooltip>
             <br />
             <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-NBT")}>
-              <span className="greenButton" onClick={onGetNBTClicked} style={{ fontSize: "24px", height: "50px" }}>
-                {getLocaleString("DOWNLOAD-NBT")}
-              </span>
+              <div className="greenButton greenButton_large" style={{ display: "block" }} onClick={this.onGetNBTClicked}>
+                <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD-NBT")}</span>
+                <div
+                  className="greenButton_progressDiv"
+                  style={{
+                    width: `${Math.floor(buttonWidth_NBT_Joined * 100)}%`,
+                  }}
+                />
+              </div>
             </Tooltip>
             <br />
             <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-NBTSPLIT")}>
-              <span className="greenButton" onClick={onGetNBTSplitClicked}>
-                {getLocaleString("DOWNLOAD-NBTSPLIT")}
-              </span>
+              <div className="greenButton" style={{ display: "block" }} onClick={this.onGetNBTSplitClicked}>
+                <span className="greenButton_text">{getLocaleString("DOWNLOAD-NBTSPLIT")}</span>
+                <div
+                  className="greenButton_progressDiv"
+                  style={{
+                    width: `${Math.floor(buttonWidth_NBT_Split * 100)}%`,
+                  }}
+                />
+              </div>
             </Tooltip>
           </span>
         ) : (
           <span>
             <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-MAPDAT")}>
-              <span className="greenButton" onClick={onGetMapdatSplitClicked} style={{ fontSize: "24px", height: "50px" }}>
-                {getLocaleString("DOWNLOAD-MAPDAT")}
-              </span>
+              <div className="greenButton greenButton_large" style={{ display: "block" }} onClick={this.onGetMapdatSplitClicked}>
+                <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD-MAPDAT")}</span>
+                <div
+                  className="greenButton_progressDiv"
+                  style={{
+                    width: `${Math.floor(buttonWidth_Mapdat_Split * 100)}%`,
+                  }}
+                />
+              </div>
             </Tooltip>
           </span>
         )}
         <br />
         <Tooltip tooltipText={getLocaleString("DONATEBUTTON-TT")}>
           <a className="donateA" href="./supporters">
-            <span className="greenButton">{getLocaleString("DONATEBUTTON")}</span>
+            <span className="greenButton_old">{getLocaleString("DONATEBUTTON")}</span>
             <br />
           </a>
         </Tooltip>

@@ -1,18 +1,3 @@
-.greenButton {
-  font-family: "kenpixel_mini_square";
-  background: #688e6b;
-  color: #333333;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0 5px 5px 0;
-  cursor: pointer;
-  width: 250px;
-  height: 29px;
-  font-size: 100%;
-}
-
 .blockImage {
   width: 32px;
   height: 32px;
