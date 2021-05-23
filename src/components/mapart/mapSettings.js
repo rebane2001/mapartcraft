@@ -19,7 +19,7 @@ class MapSettings extends Component {
   }
 
   getNBT_base = (splitMaps) => {
-    const { getLocaleString, supportedVersions, optionValue_supportBlock, currentMaterialsData, downloadBlobFile } = this.props;
+    const { getLocaleString, supportedVersions, optionValue_staircasing, optionValue_supportBlock, currentMaterialsData, downloadBlobFile } = this.props;
     if (Object.entries(currentMaterialsData.currentSelectedBlocks).every((elt) => elt[1] === "-1")) {
       alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
       return;
@@ -46,6 +46,7 @@ class MapSettings extends Component {
         coloursJSON: coloursJSON,
         supportedVersions: supportedVersions,
         optionValue_version: currentMaterialsData.optionValue_version,
+        optionValue_staircasing: optionValue_staircasing,
         optionValue_whereSupportBlocks: currentMaterialsData.optionValue_whereSupportBlocks,
         optionValue_supportBlock: optionValue_supportBlock,
         materials: currentMaterialsData.materials,

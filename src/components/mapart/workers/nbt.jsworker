@@ -2,6 +2,7 @@
 var coloursJSON;
 var supportedVersions;
 var optionValue_version;
+var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
 var optionValue_supportBlock;
 var materials; // used for constructing a palette, not the counts
@@ -352,7 +353,30 @@ class MapNBT {
 
   getPhysicalLayout_individualColumn(columnNumber) {
     let physicalColumn = [];
-    let currentHeight = 0;
+    let currentHeight;
+    if (optionValue_staircasing === "off") {
+      // start at y = 0 or 1 or 2 for flat maps depending on optionValue_whereSupportBlocks since we don't normalise the columns to a common base later
+      switch (optionValue_whereSupportBlocks) {
+        case "None": {
+          currentHeight = 0;
+          break;
+        }
+        case "Important":
+        case "AllOptimized": {
+          currentHeight = 1;
+          break;
+        }
+        case "AllDoubleOptimized": {
+          currentHeight = 2;
+          break;
+        }
+        default: {
+          throw new Error("Unknown support-blocks option");
+        }
+      }
+    } else {
+      currentHeight = 0;
+    }
     const mapColoursLayoutColumn = this.mapColoursLayout[columnNumber];
     // initialise with noobline
     // we treat the first (noobline) and last block of a column specially; the latter since we look ahead in our for loop normally
@@ -488,11 +512,14 @@ class MapNBT {
         throw new Error("Unknown support-blocks option");
       }
     }
-    // we now make sure the column's global minimum is at y=0; doing this for every column gives the map a common base
-    const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
-    physicalColumn.forEach((block) => {
-      block.pos.value.value[1] -= columnMinimumY;
-    });
+    // we now make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
+    // Don't do this for flat maps
+    if (optionValue_staircasing !== "off") {
+      const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
+      physicalColumn.forEach((block) => {
+        block.pos.value.value[1] -= columnMinimumY;
+      });
+    }
     this.NBT_json.value.blocks.value.value = this.NBT_json.value.blocks.value.value.concat(physicalColumn);
     this.columnHeightsCache.push(physicalColumn.reduce((a, b) => (a.pos.value.value[1] > b.pos.value.value[1] ? a : b)).pos.value.value[1]);
   }
@@ -558,6 +585,7 @@ onmessage = (e) => {
     coloursJSON = e.data.body.coloursJSON;
     supportedVersions = e.data.body.supportedVersions;
     optionValue_version = e.data.body.optionValue_version;
+    optionValue_staircasing = e.data.body.optionValue_staircasing;
     optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
     optionValue_supportBlock = e.data.body.optionValue_supportBlock;
     materials = e.data.body.materials;
