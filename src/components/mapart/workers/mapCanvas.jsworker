@@ -186,13 +186,9 @@ function getMapartImageDataAndMaterials() {
     let supportBlockRowToAdd = [];
     let coloursLayoutRowToAdd = [];
     for (let x = 0; x < optionValue_mapSize_x; x++) {
-      let materialsEntryToAdd = {
-        whichMap_x: x,
-        whichMap_y: y,
-        materialsCounts: {},
-      };
+      let materialsEntryToAdd = {};
       colourSetsToUse.forEach((colourSet) => {
-        materialsEntryToAdd.materialsCounts[colourSet.colourSetId] = 0;
+        materialsEntryToAdd[colourSet.colourSetId] = 0;
       });
 
       let supportBlockEntryToAdd = 0; // NB noobline counted in materials.js
@@ -391,7 +387,7 @@ function getMapartImageDataAndMaterials() {
       default:
         break;
     }
-    materials[whichMap_y][whichMap_x].materialsCounts[closestColourSetIdAndTone.colourSetId] += 1;
+    materials[whichMap_y][whichMap_x][closestColourSetIdAndTone.colourSetId] += 1;
     coloursLayout[whichMap_y][whichMap_x][individualMap_x].push({
       colourSetId: closestColourSetIdAndTone.colourSetId,
       tone: closestColourSetIdAndTone.tone,

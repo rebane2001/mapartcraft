@@ -283,7 +283,7 @@ class MapNBT {
 
   constructPaletteLookups() {
     // filter $materials to colourSetIds with non-zero materials count
-    const nonZeroMaterials = Object.fromEntries(Object.entries(this.mapMaterialsCounts.materialsCounts).filter(([_, value]) => value !== 0));
+    const nonZeroMaterials = Object.fromEntries(Object.entries(this.mapMaterialsCounts).filter(([_, value]) => value !== 0));
     // now construct palette lookups for non-zero colourSetIds
     Object.keys(nonZeroMaterials).forEach((colourSetId) => {
       this.palette_colourSetId_paletteId[colourSetId] = this.palette_paletteId_colourSetId.length;
@@ -533,14 +533,14 @@ function mergeMaps() {
   }
   coloursLayout = [[coloursLayout[0][0]]];
   // Merge materials counts for lookup
-  let materials_new = { materialsCounts: {} };
+  let materials_new = {};
   Object.keys(coloursJSON).forEach((colourSetId) => {
-    materials_new.materialsCounts[colourSetId] = 0;
+    materials_new[colourSetId] = 0;
   });
   materials.forEach((materials_row) => {
     materials_row.forEach((materials_entry) => {
-      Object.keys(materials_entry.materialsCounts).forEach((colourSetId) => {
-        materials_new.materialsCounts[colourSetId] += materials_entry.materialsCounts[colourSetId];
+      Object.keys(materials_entry).forEach((colourSetId) => {
+        materials_new[colourSetId] += materials_entry[colourSetId];
       });
     });
   });

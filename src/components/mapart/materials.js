@@ -27,11 +27,11 @@ class Materials extends Component {
     });
     currentMaterialsData.materials.forEach((row) => {
       row.forEach((mapMaterialsEntry) => {
-        Object.keys(mapMaterialsEntry.materialsCounts).forEach((materialColourSetId) => {
+        Object.keys(mapMaterialsEntry).forEach((materialColourSetId) => {
           if (onlyMaxPerSplit) {
-            materialsCountDict[materialColourSetId] = Math.max(materialsCountDict[materialColourSetId], mapMaterialsEntry.materialsCounts[materialColourSetId]);
+            materialsCountDict[materialColourSetId] = Math.max(materialsCountDict[materialColourSetId], mapMaterialsEntry[materialColourSetId]);
           } else {
-            materialsCountDict[materialColourSetId] += mapMaterialsEntry.materialsCounts[materialColourSetId];
+            materialsCountDict[materialColourSetId] += mapMaterialsEntry[materialColourSetId];
           }
         });
       });
