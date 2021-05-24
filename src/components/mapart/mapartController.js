@@ -24,7 +24,7 @@ class MapartController extends Component {
     optionValue_showGridOverlay: false,
     optionValue_staircasing: "optimized",
     optionValue_whereSupportBlocks: "Important",
-    optionValue_supportBlock: "minecraft:netherrack",
+    optionValue_supportBlock: "minecraft:cobblestone",
     optionValue_unobtainable: true,
     optionValue_transparency: true,
     optionValue_betterColour: true,
