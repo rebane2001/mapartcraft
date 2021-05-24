@@ -7,3 +7,4 @@
 - in future add edit mode for nbts for colour replacements etc: issue #124
 - mapCanvasWorker.jsworker accurate support block count
 - "optimised" staircase
+- CLI

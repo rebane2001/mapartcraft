@@ -61,7 +61,8 @@
                 "flammable": false,
                 "presetIndex": 1
             }
-        }
+        },
+        "mapdatId": 1
     },
     "1": {
         "tonesRGB": {
@@ -287,7 +288,8 @@
                 "flammable": false,
                 "presetIndex": 10
             }
-        }
+        },
+        "mapdatId": 2
     },
     "2": {
         "tonesRGB": {
@@ -347,7 +349,8 @@
                 "flammable": false,
                 "presetIndex": 1
             }
-        }
+        },
+        "mapdatId": 3
     },
     "3": {
         "tonesRGB": {
@@ -405,7 +408,8 @@
                 "flammable": false,
                 "presetIndex": 1
             }
-        }
+        },
+        "mapdatId": 4
     },
     "4": {
         "tonesRGB": {
@@ -478,7 +482,8 @@
                 "flammable": false,
                 "presetIndex": 2
             }
-        }
+        },
+        "mapdatId": 5
     },
     "5": {
         "tonesRGB": {
@@ -582,7 +587,8 @@
                 "flammable": false,
                 "presetIndex": 4
             }
-        }
+        },
+        "mapdatId": 6
     },
     "6": {
         "tonesRGB": {
@@ -758,7 +764,8 @@
                 "flammable": true,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 7
     },
     "7": {
         "tonesRGB": {
@@ -800,7 +807,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 9
     },
     "8": {
         "tonesRGB": {
@@ -980,7 +988,8 @@
                 "flammable": false,
                 "presetIndex": 7
             }
-        }
+        },
+        "mapdatId": 10
     },
     "9": {
         "tonesRGB": {
@@ -1260,7 +1269,8 @@
                 "flammable": false,
                 "presetIndex": 7
             }
-        }
+        },
+        "mapdatId": 11
     },
     "10": {
         "tonesRGB": {
@@ -1302,7 +1312,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 12
     },
     "11": {
         "tonesRGB": {
@@ -1410,7 +1421,8 @@
                 "flammable": false,
                 "presetIndex": 3
             }
-        }
+        },
+        "mapdatId": 13
     },
     "12": {
         "tonesRGB": {
@@ -1548,7 +1560,8 @@
                 "flammable": false,
                 "presetIndex": 4
             }
-        }
+        },
+        "mapdatId": 14
     },
     "13": {
         "tonesRGB": {
@@ -1733,7 +1746,8 @@
                 "flammable": false,
                 "presetIndex": 7
             }
-        }
+        },
+        "mapdatId": 8
     },
     "14": {
         "tonesRGB": {
@@ -2054,7 +2068,8 @@
                 "flammable": false,
                 "presetIndex": 14
             }
-        }
+        },
+        "mapdatId": 15
     },
     "15": {
         "tonesRGB": {
@@ -2233,7 +2248,8 @@
                 "flammable": false,
                 "presetIndex": 7
             }
-        }
+        },
+        "mapdatId": 16
     },
     "16": {
         "tonesRGB": {
@@ -2380,7 +2396,8 @@
                 "flammable": false,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 17
     },
     "17": {
         "tonesRGB": {
@@ -2559,7 +2576,8 @@
                 "flammable": false,
                 "presetIndex": 7
             }
-        }
+        },
+        "mapdatId": 18
     },
     "18": {
         "tonesRGB": {
@@ -2725,7 +2743,8 @@
                 "flammable": false,
                 "presetIndex": 6
             }
-        }
+        },
+        "mapdatId": 19
     },
     "19": {
         "tonesRGB": {
@@ -2872,7 +2891,8 @@
                 "flammable": false,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 20
     },
     "20": {
         "tonesRGB": {
@@ -3094,7 +3114,8 @@
                 "flammable": false,
                 "presetIndex": 10
             }
-        }
+        },
+        "mapdatId": 21
     },
     "21": {
         "tonesRGB": {
@@ -3241,7 +3262,8 @@
                 "flammable": false,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 22
     },
     "22": {
         "tonesRGB": {
@@ -3419,7 +3441,8 @@
                 "flammable": false,
                 "presetIndex": 7
             }
-        }
+        },
+        "mapdatId": 23
     },
     "23": {
         "tonesRGB": {
@@ -3582,7 +3605,8 @@
                 "flammable": false,
                 "presetIndex": 6
             }
-        }
+        },
+        "mapdatId": 24
     },
     "24": {
         "tonesRGB": {
@@ -3729,7 +3753,8 @@
                 "flammable": false,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 25
     },
     "25": {
         "tonesRGB": {
@@ -4006,7 +4031,8 @@
                 "flammable": false,
                 "presetIndex": 12
             }
-        }
+        },
+        "mapdatId": 26
     },
     "26": {
         "tonesRGB": {
@@ -4167,7 +4193,8 @@
                 "flammable": true,
                 "presetIndex": 6
             }
-        }
+        },
+        "mapdatId": 27
     },
     "27": {
         "tonesRGB": {
@@ -4382,7 +4409,8 @@
                 "flammable": false,
                 "presetIndex": 9
             }
-        }
+        },
+        "mapdatId": 28
     },
     "28": {
         "tonesRGB": {
@@ -4621,7 +4649,8 @@
                 "flammable": false,
                 "presetIndex": 11
             }
-        }
+        },
+        "mapdatId": 29
     },
     "29": {
         "tonesRGB": {
@@ -4679,7 +4708,8 @@
                 "flammable": false,
                 "presetIndex": 1
             }
-        }
+        },
+        "mapdatId": 30
     },
     "30": {
         "tonesRGB": {
@@ -4809,7 +4839,8 @@
                 "flammable": false,
                 "presetIndex": 3
             }
-        }
+        },
+        "mapdatId": 31
     },
     "31": {
         "tonesRGB": {
@@ -4851,7 +4882,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 32
     },
     "32": {
         "tonesRGB": {
@@ -4893,7 +4925,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 33
     },
     "33": {
         "tonesRGB": {
@@ -5054,7 +5087,8 @@
                 "flammable": false,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 34
     },
     "34": {
         "tonesRGB": {
@@ -5188,7 +5222,8 @@
                 "flammable": false,
                 "presetIndex": 5
             }
-        }
+        },
+        "mapdatId": 35
     },
     "35": {
         "tonesRGB": {
@@ -5235,7 +5270,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 36
     },
     "36": {
         "tonesRGB": {
@@ -5282,7 +5318,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 37
     },
     "37": {
         "tonesRGB": {
@@ -5329,7 +5366,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 38
     },
     "38": {
         "tonesRGB": {
@@ -5376,7 +5414,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 39
     },
     "39": {
         "tonesRGB": {
@@ -5423,7 +5462,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 40
     },
     "40": {
         "tonesRGB": {
@@ -5470,7 +5510,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 41
     },
     "41": {
         "tonesRGB": {
@@ -5517,7 +5558,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 42
     },
     "42": {
         "tonesRGB": {
@@ -5564,7 +5606,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 43
     },
     "43": {
         "tonesRGB": {
@@ -5611,7 +5654,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 44
     },
     "44": {
         "tonesRGB": {
@@ -5658,7 +5702,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 45
     },
     "45": {
         "tonesRGB": {
@@ -5705,7 +5750,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 46
     },
     "46": {
         "tonesRGB": {
@@ -5752,7 +5798,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 47
     },
     "47": {
         "tonesRGB": {
@@ -5799,7 +5846,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 48
     },
     "48": {
         "tonesRGB": {
@@ -5846,7 +5894,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 49
     },
     "49": {
         "tonesRGB": {
@@ -5893,7 +5942,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 50
     },
     "50": {
         "tonesRGB": {
@@ -5940,7 +5990,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 51
     },
     "51": {
         "tonesRGB": {
@@ -5978,7 +6029,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 52
     },
     "52": {
         "tonesRGB": {
@@ -6052,7 +6104,8 @@
                 "flammable": false,
                 "presetIndex": 3
             }
-        }
+        },
+        "mapdatId": 53
     },
     "53": {
         "tonesRGB": {
@@ -6102,7 +6155,8 @@
                 "flammable": false,
                 "presetIndex": 1
             }
-        }
+        },
+        "mapdatId": 54
     },
     "54": {
         "tonesRGB": {
@@ -6140,7 +6194,8 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 55
     },
     "55": {
         "tonesRGB": {
@@ -6214,7 +6269,8 @@
                 "flammable": false,
                 "presetIndex": 3
             }
-        }
+        },
+        "mapdatId": 56
     },
     "56": {
         "tonesRGB": {
@@ -6264,7 +6320,8 @@
                 "flammable": false,
                 "presetIndex": 1
             }
-        }
+        },
+        "mapdatId": 57
     },
     "57": {
         "tonesRGB": {
@@ -6302,6 +6359,7 @@
                 "flammable": false,
                 "presetIndex": 0
             }
-        }
+        },
+        "mapdatId": 58
     }
 }
