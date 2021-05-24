@@ -577,7 +577,7 @@ class MapartController extends Component {
             downloadBlobFile={this.downloadBlobFile}
             onViewOnlineClicked={this.onViewOnlineClicked}
           />
-          <Materials getLocaleString={getLocaleString} currentMaterialsData={currentMaterialsData} />
+          {optionValue_modeNBTOrMapdat === "NBT" ? <Materials getLocaleString={getLocaleString} currentMaterialsData={currentMaterialsData} /> : null}
         </div>
       </div>
     );

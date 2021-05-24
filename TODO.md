@@ -6,6 +6,5 @@
 - mapCanvasWorker.jsworker accurate support block count
 - "optimised" staircase
 - mapdat transparency; slider
-- mapdat mode: don't show materials
 - CLI
 - Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`
