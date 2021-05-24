@@ -149,9 +149,7 @@ class MapPreview extends Component {
         ctx_display.putImageData(e.data.body.pixels, 0, 0);
         this.setState({ workerProgress: 1 });
         onGetMapMaterials({
-          materials: e.data.body.materials,
-          supportBlockCount: e.data.body.supportBlockCount,
-          coloursLayout: e.data.body.coloursLayout,
+          maps: e.data.body.maps,
           currentSelectedBlocks: e.data.body.currentSelectedBlocks,
         });
       } else if (e.data.head === "PROGRESS_REPORT") {

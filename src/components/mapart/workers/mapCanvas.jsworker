@@ -16,9 +16,7 @@ var colourSetsToUse = []; // colourSetIds and shades to use in map
 var colourCache = new Map(); // cache for reusing colours in identical pixels
 var labCache = new Map();
 
-var materials = [];
-var supportBlockCount = []; // TODO make sure to account for noobline
-var coloursLayout = [];
+var maps = [];
 
 /*
   We're keeping coloursLayout as minimal as possible since computation for NBT generation is done in separate worker only if the user actually wants to download the map generated
@@ -181,29 +179,18 @@ function colourSetIdAndToneToRGB(colourSetId, tone) {
 
 function getMapartImageDataAndMaterials() {
   for (let y = 0; y < optionValue_mapSize_y; y++) {
-    let materialsRowToAdd = [];
-    let supportBlockRowToAdd = [];
-    let coloursLayoutRowToAdd = [];
+    let mapsRowToAdd = [];
     for (let x = 0; x < optionValue_mapSize_x; x++) {
-      let materialsEntryToAdd = {};
+      let mapEntryToAdd = { materials: {}, supportBlockCount: 0, coloursLayout: [] };
       colourSetsToUse.forEach((colourSet) => {
-        materialsEntryToAdd[colourSet.colourSetId] = 0;
+        mapEntryToAdd.materials[colourSet.colourSetId] = 0;
       });
-
-      let supportBlockEntryToAdd = 0; // NB noobline counted in materials.js
-
-      let coloursLayoutEntryToAdd = [];
       for (let column = 0; column < 128; column++) {
-        coloursLayoutEntryToAdd.push([]);
+        mapEntryToAdd.coloursLayout.push([]);
       }
-
-      materialsRowToAdd.push(materialsEntryToAdd);
-      supportBlockRowToAdd.push(supportBlockEntryToAdd);
-      coloursLayoutRowToAdd.push(coloursLayoutEntryToAdd);
+      mapsRowToAdd.push(mapEntryToAdd);
     }
-    materials.push(materialsRowToAdd);
-    supportBlockCount.push(supportBlockRowToAdd);
-    coloursLayout.push(coloursLayoutRowToAdd);
+    maps.push(mapsRowToAdd);
   }
 
   if (colourSetsToUse.length === 0) {
@@ -386,22 +373,22 @@ function getMapartImageDataAndMaterials() {
       default:
         break;
     }
-    materials[whichMap_y][whichMap_x][closestColourSetIdAndTone.colourSetId] += 1;
-    coloursLayout[whichMap_y][whichMap_x][individualMap_x].push({
+    maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
+    maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x].push({
       colourSetId: closestColourSetIdAndTone.colourSetId,
       tone: closestColourSetIdAndTone.tone,
     });
     switch (optionValue_whereSupportBlocks) {
       case "Important":
         if (coloursJSON[closestColourSetIdAndTone.colourSetId]["blocks"][selectedBlocks[closestColourSetIdAndTone.colourSetId]]["supportBlockMandatory"]) {
-          supportBlockCount[whichMap_y][whichMap_x] += 1;
+          maps[whichMap_y][whichMap_x].supportBlockCount += 1;
         }
         break;
       case "AllOptimized":
-        supportBlockCount[whichMap_y][whichMap_x] += 1;
+        maps[whichMap_y][whichMap_x].supportBlockCount += 1;
         break;
       case "AllDoubleOptimized": // TODO actual accurate count
-        supportBlockCount[whichMap_y][whichMap_x] += 2;
+        maps[whichMap_y][whichMap_x].supportBlockCount += 2;
         break;
       case "None":
       default:
@@ -431,9 +418,10 @@ onmessage = (e) => {
     head: "PIXELS_MATERIALS_CURRENTSELECTEDBLOCKS",
     body: {
       pixels: canvasImageData,
-      materials: materials,
-      supportBlockCount: supportBlockCount,
-      coloursLayout: coloursLayout,
+      // materials: materials,
+      // supportBlockCount: supportBlockCount,
+      // coloursLayout: coloursLayout,
+      maps: maps,
       currentSelectedBlocks: selectedBlocks,
     },
   });

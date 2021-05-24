@@ -25,8 +25,9 @@ class Materials extends Component {
     Object.keys(coloursJSON).forEach((colourSetId) => {
       materialsCountDict[colourSetId] = 0;
     });
-    currentMaterialsData.materials.forEach((row) => {
-      row.forEach((mapMaterialsEntry) => {
+    currentMaterialsData.maps.forEach((row) => {
+      row.forEach((map) => {
+        const mapMaterialsEntry = map.materials;
         Object.keys(mapMaterialsEntry).forEach((materialColourSetId) => {
           if (onlyMaxPerSplit) {
             materialsCountDict[materialColourSetId] = Math.max(materialsCountDict[materialColourSetId], mapMaterialsEntry[materialColourSetId]);
@@ -51,8 +52,9 @@ class Materials extends Component {
     const { onlyMaxPerSplit } = this.state;
     // 128 per map however if map is not built as split then only top 128 needed
     let supportBlockCount = 0;
-    currentMaterialsData.supportBlockCount.forEach((row) => {
-      row.forEach((count) => {
+    currentMaterialsData.maps.forEach((row) => {
+      row.forEach((map) => {
+        const count = map.supportBlockCount;
         if (onlyMaxPerSplit) {
           supportBlockCount = Math.max(supportBlockCount, count);
         } else {

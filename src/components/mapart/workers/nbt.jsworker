@@ -5,8 +5,7 @@ var optionValue_version;
 var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
 var optionValue_supportBlock;
-var materials; // used for constructing a palette, not the counts
-var coloursLayout;
+var maps;
 var currentSelectedBlocks;
 var splitMaps;
 // end onmessage variables
@@ -234,9 +233,9 @@ class NBTWriter {
 }
 
 class MapNBT {
-  constructor(mapColoursLayout, mapMaterialsCounts) {
-    this.mapColoursLayout = mapColoursLayout;
-    this.mapMaterialsCounts = mapMaterialsCounts;
+  constructor(map) {
+    this.mapColoursLayout = map.coloursLayout;
+    this.mapMaterialsCounts = map.materials;
     this.NBT_json = {
       name: "",
       value: {
@@ -552,32 +551,32 @@ class MapNBT {
 }
 
 function mergeMaps() {
-  coloursLayout.forEach((rowOfMaps) => {
+  maps.forEach((rowOfMaps) => {
     for (let whichMap_x = 1; whichMap_x < rowOfMaps.length; whichMap_x++) {
-      rowOfMaps[0] = rowOfMaps[0].concat(rowOfMaps[whichMap_x]); // merge along x-axis
+      rowOfMaps[0].coloursLayout = rowOfMaps[0].coloursLayout.concat(rowOfMaps[whichMap_x].coloursLayout); // merge along x-axis
     }
   });
-  for (let i = 0; i < coloursLayout[0][0].length; i++) {
+  for (let i = 0; i < maps[0][0].coloursLayout.length; i++) {
     // for each column in resulting map
-    for (let j = 1; j < coloursLayout.length; j++) {
+    for (let j = 1; j < maps.length; j++) {
       // for each column needing to be merged into resulting map
-      coloursLayout[0][0][i] = coloursLayout[0][0][i].concat(coloursLayout[j][0][i]);
+      maps[0][0].coloursLayout[i] = maps[0][0].coloursLayout[i].concat(maps[j][0].coloursLayout[i]);
     }
   }
-  coloursLayout = [[coloursLayout[0][0]]];
   // Merge materials counts for lookup
   let materials_new = {};
   Object.keys(coloursJSON).forEach((colourSetId) => {
     materials_new[colourSetId] = 0;
   });
-  materials.forEach((materials_row) => {
-    materials_row.forEach((materials_entry) => {
-      Object.keys(materials_entry).forEach((colourSetId) => {
-        materials_new[colourSetId] += materials_entry[colourSetId];
+  maps.forEach((rowOfMaps) => {
+    rowOfMaps.forEach((map) => {
+      Object.keys(map.materials).forEach((colourSetId) => {
+        materials_new[colourSetId] += map.materials[colourSetId];
       });
     });
   });
-  materials = [[materials_new]];
+  maps[0][0].materials = materials_new;
+  maps = [[maps[0][0]]];
 }
 
 onmessage = (e) => {
@@ -588,8 +587,7 @@ onmessage = (e) => {
     optionValue_staircasing = e.data.body.optionValue_staircasing;
     optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
     optionValue_supportBlock = e.data.body.optionValue_supportBlock;
-    materials = e.data.body.materials;
-    coloursLayout = e.data.body.coloursLayout;
+    maps = e.data.body.maps;
     currentSelectedBlocks = e.data.body.currentSelectedBlocks;
     splitMaps = e.data.body.splitMaps;
 
@@ -600,9 +598,9 @@ onmessage = (e) => {
       mergeMaps();
     }
 
-    for (let whichMap_y = 0; whichMap_y < coloursLayout.length; whichMap_y++) {
-      for (let whichMap_x = 0; whichMap_x < coloursLayout[0].length; whichMap_x++) {
-        const mapNBT = new MapNBT(coloursLayout[whichMap_y][whichMap_x], materials[whichMap_y][whichMap_x]);
+    for (let whichMap_y = 0; whichMap_y < maps.length; whichMap_y++) {
+      for (let whichMap_x = 0; whichMap_x < maps[0].length; whichMap_x++) {
+        const mapNBT = new MapNBT(maps[whichMap_y][whichMap_x]);
         const NBT_Array = mapNBT.getNBT();
         postMessage({
           head: "NBT_ARRAY",

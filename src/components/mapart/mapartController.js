@@ -37,9 +37,7 @@ class MapartController extends Component {
     presets: [],
     selectedPresetName: "None",
     currentMaterialsData: {
-      materials: [[]],
-      supportBlockCount: [[]], // TODO combine these three matrices
-      coloursLayout: [[]],
+      maps: [[]], // entries are dictionaries with keys "materials", "supportBlockCount", "coloursLayout"
       currentSelectedBlocks: {}, // we keep this soley for materials.js
     },
     mapPreviewWorker_inProgress: false,
