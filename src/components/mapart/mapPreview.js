@@ -136,6 +136,7 @@ class MapPreview extends Component {
       optionValue_betterColour,
       optionValue_dithering,
       onGetMapMaterials,
+      onMapPreviewWorker_begin,
     } = this.props;
     const ctx_source = canvasRef_source.current.getContext("2d");
     const canvasImageData = ctx_source.getImageData(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
@@ -160,6 +161,7 @@ class MapPreview extends Component {
         this.setState({ workerProgress: e.data.body });
       }
     };
+    onMapPreviewWorker_begin();
     this.mapCanvasWorker.postMessage({
       head: "PIXELS",
       body: {

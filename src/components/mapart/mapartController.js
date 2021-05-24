@@ -38,12 +38,13 @@ class MapartController extends Component {
     selectedPresetName: "None",
     currentMaterialsData: {
       materials: [[]],
-      supportBlockCount: [[]],
+      supportBlockCount: [[]], // TODO combine these three matrices
       coloursLayout: [[]],
-      currentSelectedBlocks: {},
-      optionValue_version: null,
-      optionValue_whereSupportBlocks: null,
+      currentSelectedBlocks: {}, // TODO this locking seems unnecessary now that downloads are only executed as callbacks to complete map renders
+      optionValue_version: null, // ditto
+      optionValue_whereSupportBlocks: null, // ditto
     },
+    mapPreviewWorker_inProgress: false,
   };
 
   supportedVersions = [
@@ -459,8 +460,12 @@ class MapartController extends Component {
     return selectedBlocks;
   };
 
+  onMapPreviewWorker_begin = () => {
+    this.setState({ mapPreviewWorker_inProgress: true });
+  };
+
   handleSetMapMaterials = (currentMaterialsData) => {
-    this.setState({ currentMaterialsData });
+    this.setState({ currentMaterialsData: currentMaterialsData, mapPreviewWorker_inProgress: false });
   };
 
   render() {
@@ -489,6 +494,7 @@ class MapartController extends Component {
       presets,
       selectedPresetName,
       currentMaterialsData,
+      mapPreviewWorker_inProgress,
     } = this.state;
     return (
       <div className="mapartController">
@@ -531,6 +537,7 @@ class MapartController extends Component {
             uploadedImage={uploadedImage}
             onFileDialogEvent={this.onFileDialogEvent}
             onGetMapMaterials={this.handleSetMapMaterials}
+            onMapPreviewWorker_begin={this.onMapPreviewWorker_begin}
           />
           <MapSettings
             getLocaleString={getLocaleString}
@@ -570,6 +577,7 @@ class MapartController extends Component {
             preProcessingValue_saturation={preProcessingValue_saturation}
             onOptionChange_PreProcessingSaturation={this.onOptionChange_PreProcessingSaturation}
             currentMaterialsData={currentMaterialsData}
+            mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
             downloadBlobFile={this.downloadBlobFile}
             onViewOnlineClicked={this.onViewOnlineClicked}
           />

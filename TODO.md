@@ -8,3 +8,4 @@
 - mapCanvasWorker.jsworker accurate support block count
 - "optimised" staircase
 - CLI
+- Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`

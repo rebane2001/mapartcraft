@@ -10,7 +10,12 @@ import NBTWorker from "./workers/nbt.jsworker";
 import "./mapSettings.css";
 
 class MapSettings extends Component {
-  state = { buttonWidth_NBT_Joined: 1, buttonWidth_NBT_Split: 1, buttonWidth_Mapdat_Split: 1 };
+  state = {
+    buttonWidth_NBT_Joined: 1,
+    buttonWidth_NBT_Split: 1,
+    buttonWidth_Mapdat_Split: 1,
+    mapPreviewWorker_onFinishCallback: null,
+  };
 
   nbtWorker = new Worker(NBTWorker);
 
@@ -19,7 +24,19 @@ class MapSettings extends Component {
   }
 
   getNBT_base = (splitMaps) => {
-    const { getLocaleString, supportedVersions, optionValue_staircasing, optionValue_supportBlock, currentMaterialsData, downloadBlobFile } = this.props;
+    const {
+      getLocaleString,
+      supportedVersions,
+      optionValue_staircasing,
+      optionValue_supportBlock,
+      currentMaterialsData,
+      downloadBlobFile,
+      mapPreviewWorker_inProgress,
+    } = this.props;
+    if (mapPreviewWorker_inProgress) {
+      this.setState({ mapPreviewWorker_onFinishCallback: () => this.getNBT_base(splitMaps) });
+      return;
+    }
     if (Object.entries(currentMaterialsData.currentSelectedBlocks).every((elt) => elt[1] === "-1")) {
       alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
       return;
@@ -69,6 +86,14 @@ class MapSettings extends Component {
     console.log(e);
     //TODO
   };
+
+  componentDidUpdate() {
+    const { mapPreviewWorker_inProgress } = this.props;
+    if (!mapPreviewWorker_inProgress && this.state.mapPreviewWorker_onFinishCallback !== null) {
+      this.state.mapPreviewWorker_onFinishCallback();
+      this.setState({ mapPreviewWorker_onFinishCallback: null });
+    }
+  }
 
   componentWillUnmount() {
     this.nbtWorker.terminate();
