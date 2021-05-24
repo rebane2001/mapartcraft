@@ -137,7 +137,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 7
             },
@@ -203,7 +203,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 4
             },
@@ -268,7 +268,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 9
             },
@@ -330,7 +330,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 0
             },
@@ -896,7 +896,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 2
             },
@@ -984,7 +984,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 7
             }
@@ -1048,7 +1048,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 3
             },
@@ -1078,7 +1078,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 9
             },
@@ -1108,7 +1108,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 2
             },
@@ -1132,7 +1132,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 10
             },
@@ -1174,7 +1174,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 12
             },
@@ -1209,7 +1209,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 13
             },
@@ -1401,7 +1401,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 2
             },
@@ -1503,7 +1503,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 5
             },
@@ -1540,7 +1540,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 3
             },
@@ -1956,7 +1956,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 8
             },
@@ -2019,7 +2019,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 12
             },
@@ -2244,7 +2244,7 @@
                     "1.15.2": "&1.12.2",
                     "1.16.5": "&1.12.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 7
             }
@@ -3437,7 +3437,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 7
             }
@@ -3942,7 +3942,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 8
             },
@@ -4377,7 +4377,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 8
             },
@@ -4621,7 +4621,7 @@
                         "NBTArgs": {}
                     }
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 10
             },
@@ -4783,7 +4783,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 4
             },
@@ -4819,7 +4819,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 5
             },
@@ -5014,7 +5014,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 2
             },
@@ -5166,7 +5166,7 @@
                     "1.15.2": "&1.13.2",
                     "1.16.5": "&1.13.2"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 2
             },
@@ -5218,7 +5218,7 @@
                     "1.15.2": "&1.14.4",
                     "1.16.5": "&1.14.4"
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 5
             }
@@ -6100,7 +6100,7 @@
                         "NBTArgs": {}
                     }
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 3
             }
@@ -6265,7 +6265,7 @@
                         "NBTArgs": {}
                     }
                 },
-                "supportBlockMandatory": false,
+                "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 3
             }
