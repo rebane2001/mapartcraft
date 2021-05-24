@@ -40,9 +40,7 @@ class MapartController extends Component {
       materials: [[]],
       supportBlockCount: [[]], // TODO combine these three matrices
       coloursLayout: [[]],
-      currentSelectedBlocks: {}, // TODO this locking seems unnecessary now that downloads are only executed as callbacks to complete map renders
-      optionValue_version: null, // ditto
-      optionValue_whereSupportBlocks: null, // ditto
+      currentSelectedBlocks: {}, // we keep this soley for materials.js
     },
     mapPreviewWorker_inProgress: false,
   };

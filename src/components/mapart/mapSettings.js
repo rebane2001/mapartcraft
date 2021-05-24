@@ -27,7 +27,9 @@ class MapSettings extends Component {
     const {
       getLocaleString,
       supportedVersions,
+      optionValue_version,
       optionValue_staircasing,
+      optionValue_whereSupportBlocks,
       optionValue_supportBlock,
       currentMaterialsData,
       downloadBlobFile,
@@ -62,9 +64,9 @@ class MapSettings extends Component {
       body: {
         coloursJSON: coloursJSON,
         supportedVersions: supportedVersions,
-        optionValue_version: currentMaterialsData.optionValue_version,
+        optionValue_version: optionValue_version,
         optionValue_staircasing: optionValue_staircasing,
-        optionValue_whereSupportBlocks: currentMaterialsData.optionValue_whereSupportBlocks,
+        optionValue_whereSupportBlocks: optionValue_whereSupportBlocks,
         optionValue_supportBlock: optionValue_supportBlock,
         materials: currentMaterialsData.materials,
         coloursLayout: currentMaterialsData.coloursLayout,

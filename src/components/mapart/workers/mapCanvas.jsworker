@@ -2,7 +2,6 @@ var coloursJSON;
 var DitherMethods;
 var canvasImageData;
 var selectedBlocks;
-var optionValue_version;
 var optionValue_modeNBTOrMapdat;
 var optionValue_mapSize_x;
 var optionValue_mapSize_y;
@@ -416,7 +415,6 @@ onmessage = (e) => {
   DitherMethods = e.data.body.DitherMethods;
   canvasImageData = e.data.body.canvasImageData;
   selectedBlocks = e.data.body.selectedBlocks;
-  optionValue_version = e.data.body.optionValue_version;
   optionValue_modeNBTOrMapdat = e.data.body.optionValue_modeNBTOrMapdat;
   optionValue_mapSize_x = e.data.body.optionValue_mapSize_x;
   optionValue_mapSize_y = e.data.body.optionValue_mapSize_y;
@@ -437,8 +435,6 @@ onmessage = (e) => {
       supportBlockCount: supportBlockCount,
       coloursLayout: coloursLayout,
       currentSelectedBlocks: selectedBlocks,
-      optionValue_version: optionValue_version,
-      optionValue_whereSupportBlocks: optionValue_whereSupportBlocks,
     },
   });
 };

@@ -125,7 +125,6 @@ class MapPreview extends Component {
     const { canvasRef_source, canvasRef_display } = this;
     const {
       selectedBlocks,
-      optionValue_version,
       optionValue_modeNBTOrMapdat,
       optionValue_mapSize_x,
       optionValue_mapSize_y,
@@ -154,8 +153,6 @@ class MapPreview extends Component {
           supportBlockCount: e.data.body.supportBlockCount,
           coloursLayout: e.data.body.coloursLayout,
           currentSelectedBlocks: e.data.body.currentSelectedBlocks,
-          optionValue_version: e.data.body.optionValue_version,
-          optionValue_whereSupportBlocks: e.data.body.optionValue_whereSupportBlocks,
         });
       } else if (e.data.head === "PROGRESS_REPORT") {
         this.setState({ workerProgress: e.data.body });
@@ -169,7 +166,6 @@ class MapPreview extends Component {
         DitherMethods: DitherMethods,
         canvasImageData: canvasImageData,
         selectedBlocks: selectedBlocks,
-        optionValue_version: optionValue_version,
         optionValue_modeNBTOrMapdat: optionValue_modeNBTOrMapdat,
         optionValue_mapSize_x: optionValue_mapSize_x,
         optionValue_mapSize_y: optionValue_mapSize_y,
