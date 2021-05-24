@@ -1,11 +1,11 @@
 - Continue stripping master branch material into here
 - Look at issues on Rebane repo
-- mapdat download
-- look at window.mapdat order in rebane: non trivial for mapdat assembly
 - check noobline counted into materials count
 - hall of fame
 - in future add edit mode for nbts for colour replacements etc: issue #124
 - mapCanvasWorker.jsworker accurate support block count
 - "optimised" staircase
+- mapdat transparency; slider
+- mapdat mode: don't show materials
 - CLI
 - Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`

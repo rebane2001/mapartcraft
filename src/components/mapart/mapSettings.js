@@ -23,7 +23,7 @@ class MapSettings extends Component {
     this.setState({ buttonWidth_NBT_Joined: 1, buttonWidth_NBT_Split: 1, buttonWidth_Mapdat_Split: 1 });
   }
 
-  getNBT_base = (splitMaps) => {
+  getNBT_base = (workerHeader) => {
     const {
       getLocaleString,
       supportedVersions,
@@ -36,7 +36,7 @@ class MapSettings extends Component {
       mapPreviewWorker_inProgress,
     } = this.props;
     if (mapPreviewWorker_inProgress) {
-      this.setState({ mapPreviewWorker_onFinishCallback: () => this.getNBT_base(splitMaps) });
+      this.setState({ mapPreviewWorker_onFinishCallback: () => this.getNBT_base(workerHeader) });
       return;
     }
     if (Object.entries(currentMaterialsData.currentSelectedBlocks).every((elt) => elt[1] === "-1")) {
@@ -48,19 +48,44 @@ class MapSettings extends Component {
     const t0 = performance.now();
     this.nbtWorker = new Worker(NBTWorker);
     this.nbtWorker.onmessage = (e) => {
-      if (e.data.head === "NBT_ARRAY") {
-        const t1 = performance.now();
-        console.log(`Created NBT by ${(t1 - t0).toString()}ms`);
-        const { NBT_Array, whichMap_x, whichMap_y } = e.data.body;
-        downloadBlobFile(gzip(NBT_Array), "application/x-minecraft-level", splitMaps ? `mapart_${whichMap_x}_${whichMap_y}.nbt` : "mapart.nbt");
-      } else if (e.data.head === "PROGRESS_REPORT_NBT_JOINED") {
-        this.setState({ buttonWidth_NBT_Joined: e.data.body });
-      } else if (e.data.head === "PROGRESS_REPORT_NBT_SPLIT") {
-        this.setState({ buttonWidth_NBT_Split: e.data.body });
+      switch (e.data.head) {
+        case "PROGRESS_REPORT_NBT_JOINED": {
+          this.setState({ buttonWidth_NBT_Joined: e.data.body });
+          break;
+        }
+        case "PROGRESS_REPORT_NBT_SPLIT": {
+          this.setState({ buttonWidth_NBT_Split: e.data.body });
+          break;
+        }
+        case "PROGRESS_REPORT_MAPDAT_SPLIT": {
+          this.setState({ buttonWidth_Mapdat_Split: e.data.body });
+          break;
+        }
+        case "NBT_ARRAY": {
+          const t1 = performance.now();
+          console.log(`Created NBT by ${(t1 - t0).toString()}ms`);
+          const { NBT_Array, whichMap_x, whichMap_y } = e.data.body;
+          downloadBlobFile(
+            gzip(NBT_Array),
+            "application/x-minecraft-level",
+            workerHeader === "CREATE_NBT_SPLIT" ? `mapart_${whichMap_x}_${whichMap_y}.nbt` : "mapart.nbt"
+          );
+          break;
+        }
+        case "MAPDAT_BYTES": {
+          const t1 = performance.now();
+          console.log(`Created Mapdat by ${(t1 - t0).toString()}ms`);
+          const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
+          downloadBlobFile(gzip(Mapdat_Bytes), "application/x-minecraft-map", `mapdat_${whichMap_x}_${whichMap_y}.dat`);
+          break;
+        }
+        default: {
+          throw new Error("Unknown worker response header");
+        }
       }
     };
     this.nbtWorker.postMessage({
-      head: "CREATE_NBT",
+      head: workerHeader,
       body: {
         coloursJSON: coloursJSON,
         supportedVersions: supportedVersions,
@@ -70,26 +95,28 @@ class MapSettings extends Component {
         optionValue_supportBlock: optionValue_supportBlock,
         maps: currentMaterialsData.maps,
         currentSelectedBlocks: currentMaterialsData.currentSelectedBlocks,
-        splitMaps: splitMaps,
       },
     });
   };
 
   onGetNBTClicked = () => {
-    this.getNBT_base(false);
+    this.getNBT_base("CREATE_NBT_JOINED");
   };
 
   onGetNBTSplitClicked = () => {
-    this.getNBT_base(true);
+    this.getNBT_base("CREATE_NBT_SPLIT");
   };
 
-  onGetMapdatSplitClicked = (e) => {
-    console.log(e);
-    //TODO
+  onGetMapdatSplitClicked = () => {
+    this.getNBT_base("CREATE_MAPDAT_SPLIT");
   };
 
-  componentDidUpdate() {
-    const { mapPreviewWorker_inProgress } = this.props;
+  componentDidUpdate(prevProps) {
+    const { optionValue_modeNBTOrMapdat, mapPreviewWorker_inProgress } = this.props;
+    if (prevProps.optionValue_modeNBTOrMapdat !== optionValue_modeNBTOrMapdat) {
+      // reset callback if changing mode from NBT to mapdat while rendering after download button clicked (very niche but a bug squashed nontheless)
+      this.setState({ mapPreviewWorker_onFinishCallback: null });
+    }
     if (!mapPreviewWorker_inProgress && this.state.mapPreviewWorker_onFinishCallback !== null) {
       this.state.mapPreviewWorker_onFinishCallback();
       this.setState({ mapPreviewWorker_onFinishCallback: null });
