@@ -33,6 +33,8 @@ class MapartController extends Component {
     preProcessingValue_brightness: 100,
     preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
+    preProcessingValue_backgroundColour: "#151515",
+    preProcessingValue_backgroundColourFlat: false,
     uploadedImage: null,
     presets: [],
     selectedPresetName: "None",
@@ -261,6 +263,17 @@ class MapartController extends Component {
     this.setState({ preProcessingValue_saturation: newValue });
   };
 
+  onOptionChange_PreProcessingBackgroundColour = (e) => {
+    const newValue = e.target.value;
+    this.setState({ preProcessingValue_backgroundColour: newValue });
+  };
+
+  onOptionChange_PreProcessingBackgroundColourFlat = () => {
+    this.setState({
+      preProcessingValue_backgroundColourFlat: !this.state.preProcessingValue_backgroundColourFlat,
+    });
+  };
+
   onViewOnlineClicked = (e) => {
     console.log(e);
     //TODO
@@ -486,6 +499,8 @@ class MapartController extends Component {
       preProcessingValue_brightness,
       preProcessingValue_contrast,
       preProcessingValue_saturation,
+      preProcessingValue_backgroundColour,
+      preProcessingValue_backgroundColourFlat,
       uploadedImage,
       presets,
       selectedPresetName,
@@ -530,6 +545,8 @@ class MapartController extends Component {
             preProcessingValue_brightness={preProcessingValue_brightness}
             preProcessingValue_contrast={preProcessingValue_contrast}
             preProcessingValue_saturation={preProcessingValue_saturation}
+            preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
+            preProcessingValue_backgroundColourFlat={preProcessingValue_backgroundColourFlat}
             uploadedImage={uploadedImage}
             onFileDialogEvent={this.onFileDialogEvent}
             onGetMapMaterials={this.handleSetMapMaterials}
@@ -572,6 +589,10 @@ class MapartController extends Component {
             onOptionChange_PreProcessingContrast={this.onOptionChange_PreProcessingContrast}
             preProcessingValue_saturation={preProcessingValue_saturation}
             onOptionChange_PreProcessingSaturation={this.onOptionChange_PreProcessingSaturation}
+            preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
+            onOptionChange_PreProcessingBackgroundColour={this.onOptionChange_PreProcessingBackgroundColour}
+            preProcessingValue_backgroundColourFlat={preProcessingValue_backgroundColourFlat}
+            onOptionChange_PreProcessingBackgroundColourFlat={this.onOptionChange_PreProcessingBackgroundColourFlat}
             currentMaterialsData={currentMaterialsData}
             mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
             downloadBlobFile={this.downloadBlobFile}

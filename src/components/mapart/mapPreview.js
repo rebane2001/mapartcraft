@@ -35,6 +35,8 @@ class MapPreview extends Component {
       prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
       prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
       prevProps.preProcessingValue_saturation === newProps.preProcessingValue_saturation,
+      prevProps.preProcessingValue_backgroundColour === newProps.preProcessingValue_backgroundColour,
+      prevProps.preProcessingValue_backgroundColourFlat === newProps.preProcessingValue_backgroundColourFlat,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -64,6 +66,8 @@ class MapPreview extends Component {
       prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
       prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
       prevProps.preProcessingValue_saturation === newProps.preProcessingValue_saturation,
+      prevProps.preProcessingValue_backgroundColour === newProps.preProcessingValue_backgroundColour,
+      prevProps.preProcessingValue_backgroundColourFlat === newProps.preProcessingValue_backgroundColourFlat,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -84,18 +88,61 @@ class MapPreview extends Component {
     }
   }
 
+  closestFlatColourTo(colourHex) {
+    const rgbGroups_input = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colourHex);
+    const colourRGB_input = [parseInt(rgbGroups_input[1], 16), parseInt(rgbGroups_input[2], 16), parseInt(rgbGroups_input[3], 16)];
+    let smallestDistance = 9999999;
+    let colourRGB_return = null;
+    Object.entries(coloursJSON).forEach(([_, colourSet]) => {
+      const colourRGB_colourSet = colourSet.tonesRGB.normal;
+      const colourDistance =
+        Math.pow(colourRGB_input[0] - colourRGB_colourSet[0], 2) +
+        Math.pow(colourRGB_input[1] - colourRGB_colourSet[1], 2) +
+        Math.pow(colourRGB_input[2] - colourRGB_colourSet[2], 2);
+      if (colourDistance < smallestDistance) {
+        smallestDistance = colourDistance;
+        colourRGB_return = colourRGB_colourSet;
+      }
+    });
+    const colourHex_return = `#${colourRGB_return[0].toString(16).padStart(2, "0")}${colourRGB_return[1].toString(16).padStart(2, "0")}${colourRGB_return[2]
+      .toString(16)
+      .padStart(2, "0")}`;
+    return colourHex_return;
+  }
+
   updateCanvas_source() {
-    const { optionValue_preprocessingEnabled, preProcessingValue_brightness, preProcessingValue_contrast, preProcessingValue_saturation, uploadedImage } =
-      this.props;
+    const {
+      optionValue_preprocessingEnabled,
+      preProcessingValue_brightness,
+      preProcessingValue_contrast,
+      preProcessingValue_saturation,
+      preProcessingValue_backgroundColour,
+      preProcessingValue_backgroundColourFlat,
+      uploadedImage,
+    } = this.props;
     const { optionValue_mapSize_x, optionValue_mapSize_y, optionValue_cropImage } = this.props;
     const { canvasRef_source } = this;
     const ctx_source = canvasRef_source.current.getContext("2d");
     ctx_source.clearRect(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
+
     if (optionValue_preprocessingEnabled) {
+      if (/^#?[a-f\d]{6}$/i.test(preProcessingValue_backgroundColour)) {
+        let backgroundColour;
+        if (preProcessingValue_backgroundColourFlat) {
+          backgroundColour = this.closestFlatColourTo(preProcessingValue_backgroundColour);
+        } else {
+          backgroundColour = preProcessingValue_backgroundColour;
+        }
+        ctx_source.filter = "none"; // this needs to be present to stop filters affecting background colour
+        ctx_source.rect(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
+        ctx_source.fillStyle = backgroundColour;
+        ctx_source.fill();
+      }
       ctx_source.filter = `brightness(${preProcessingValue_brightness}%) contrast(${preProcessingValue_contrast}%) saturate(${preProcessingValue_saturation}%)`;
     } else {
       ctx_source.filter = "none";
     }
+
     if (optionValue_cropImage) {
       const img_width = uploadedImage.width;
       const img_height = uploadedImage.height;

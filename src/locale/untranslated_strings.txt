@@ -1,3 +1,5 @@
+// File is out of date; I may need to update this at some point
+
 Untranslated strings for German:
 META-DESCRIPTION
 SETTINGS-TT-TRANS

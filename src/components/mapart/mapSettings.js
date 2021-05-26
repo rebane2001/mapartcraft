@@ -166,6 +166,10 @@ class MapSettings extends Component {
       onOptionChange_PreProcessingContrast,
       preProcessingValue_saturation,
       onOptionChange_PreProcessingSaturation,
+      preProcessingValue_backgroundColour,
+      onOptionChange_PreProcessingBackgroundColour,
+      preProcessingValue_backgroundColourFlat,
+      onOptionChange_PreProcessingBackgroundColourFlat,
       onViewOnlineClicked,
     } = this.props;
     return (
@@ -387,6 +391,40 @@ class MapSettings extends Component {
                     step="1"
                     value={preProcessingValue_saturation}
                     onChange={onOptionChange_PreProcessingSaturation}
+                    disabled={!optionValue_preprocessingEnabled}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <Tooltip tooltipText={getLocaleString("SETTINGS-TT-PREPROCESSING-BACKGROUNDCOLOUR")}>
+                    <b>
+                      {getLocaleString("SETTINGS-PREPROCESSING-BACKGROUNDCOLOUR")}
+                      {":"}
+                    </b>
+                  </Tooltip>{" "}
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={preProcessingValue_backgroundColour}
+                    onChange={onOptionChange_PreProcessingBackgroundColour}
+                    disabled={!optionValue_preprocessingEnabled}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <b>
+                    {getLocaleString("SETTINGS-PREPROCESSING-BACKGROUNDCOLOUR-FLAT")}
+                    {": "}
+                  </b>
+                </th>
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={preProcessingValue_backgroundColourFlat}
+                    onChange={onOptionChange_PreProcessingBackgroundColourFlat}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
