@@ -44,6 +44,7 @@
   "SETTINGS-UNOBT": "Unobtainiable colors",
   "SETTINGS-TT-TRANS": "Enables transparency for map.dat",
   "SETTINGS-TRANS": "Transparency",
+  "SETTINGS-TRANSTOLERANCE": "Tolerance",
   "SETTINGS-TT-BETTERCOL": "Gives you better color accuracy",
   "SETTINGS-BETTERCOL": "Better color",
   "SETTINGS-TT-DITHER": "Adds seemingly random pixels for the illusion of more colors",

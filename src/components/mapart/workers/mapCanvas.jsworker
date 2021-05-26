@@ -9,6 +9,7 @@ var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
 var optionValue_unobtainable;
 var optionValue_transparency;
+var optionValue_transparencyTolerance;
 var optionValue_betterColour;
 var optionValue_dithering;
 
@@ -222,15 +223,6 @@ function getMapartImageDataAndMaterials() {
     const indexG = i + 1;
     const indexB = i + 2;
     const indexA = i + 3;
-    if (optionValue_modeNBTOrMapdat === "Mapdat" && optionValue_transparency && canvasImageData.data[indexA] < 128) {
-      canvasImageData.data[indexR] = 0;
-      canvasImageData.data[indexG] = 0;
-      canvasImageData.data[indexB] = 0;
-      canvasImageData.data[indexA] = 0;
-      continue;
-    } else {
-      canvasImageData.data[indexA] = 255; // full opacity
-    }
 
     const multimap_x = (i / 4) % multimapWidth;
     const multimap_y = (i / 4 - multimap_x) / multimapWidth;
@@ -243,8 +235,20 @@ function getMapartImageDataAndMaterials() {
         body: multimap_y / (128 * optionValue_mapSize_y),
       });
     }
-    const oldPixel = [canvasImageData.data[indexR], canvasImageData.data[indexG], canvasImageData.data[indexB]];
+
     let closestColourSetIdAndTone;
+    if (optionValue_modeNBTOrMapdat === "Mapdat" && optionValue_transparency && canvasImageData.data[indexA] < optionValue_transparencyTolerance) {
+      canvasImageData.data[indexR] = 0;
+      canvasImageData.data[indexG] = 0;
+      canvasImageData.data[indexB] = 0;
+      canvasImageData.data[indexA] = 0;
+      closestColourSetIdAndTone = { // special colourSetId "-1" does not appear in coloursJSON
+        colourSetId: "-1",
+        tone: "normal",
+      };
+    } else {
+      canvasImageData.data[indexA] = 255; // full opacity
+    const oldPixel = [canvasImageData.data[indexR], canvasImageData.data[indexG], canvasImageData.data[indexB]];
     switch (chosenDitherMethod.uniqueId) {
       // Switch statement that checks the dither method every pixel;
       // I have tested a refactor that only checks once however the time difference is negligible and code quality deteriorates
@@ -373,11 +377,6 @@ function getMapartImageDataAndMaterials() {
       default:
         break;
     }
-    maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
-    maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x].push({
-      colourSetId: closestColourSetIdAndTone.colourSetId,
-      tone: closestColourSetIdAndTone.tone,
-    });
     switch (optionValue_whereSupportBlocks) {
       case "Important":
         if (coloursJSON[closestColourSetIdAndTone.colourSetId]["blocks"][selectedBlocks[closestColourSetIdAndTone.colourSetId]]["supportBlockMandatory"]) {
@@ -394,6 +393,12 @@ function getMapartImageDataAndMaterials() {
       default:
         break;
     }
+    maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
+    }
+    maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x].push({
+      colourSetId: closestColourSetIdAndTone.colourSetId,
+      tone: closestColourSetIdAndTone.tone,
+    });
   }
 }
 
@@ -409,6 +414,7 @@ onmessage = (e) => {
   optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
   optionValue_unobtainable = e.data.body.optionValue_unobtainable;
   optionValue_transparency = e.data.body.optionValue_transparency;
+  optionValue_transparencyTolerance = e.data.body.optionValue_transparencyTolerance;
   optionValue_betterColour = e.data.body.optionValue_betterColour;
   optionValue_dithering = e.data.body.optionValue_dithering;
 

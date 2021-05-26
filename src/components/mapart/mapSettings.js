@@ -154,6 +154,8 @@ class MapSettings extends Component {
       onOptionChange_unobtainable,
       optionValue_transparency,
       onOptionChange_transparency,
+      optionValue_transparencyTolerance,
+      onOptionChange_transparencyTolerance,
       optionValue_betterColour,
       onOptionChange_BetterColour,
       optionValue_dithering,
@@ -271,6 +273,29 @@ class MapSettings extends Component {
               </b>
             </Tooltip>{" "}
             <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
+            <br />
+            <b>
+              {getLocaleString("SETTINGS-TRANSTOLERANCE")}
+              {": "}
+            </b>
+            <input
+              type="range"
+              min="0"
+              max="256"
+              value={optionValue_transparencyTolerance}
+              onChange={onOptionChange_transparencyTolerance}
+              disabled={!optionValue_transparency}
+            />
+            <input
+              className="preProcessingInputBox"
+              type="number"
+              min="0"
+              max="256"
+              step="1"
+              value={optionValue_transparencyTolerance}
+              onChange={onOptionChange_transparencyTolerance}
+              disabled={!optionValue_transparency}
+            />
             <br />
           </span>
         )}

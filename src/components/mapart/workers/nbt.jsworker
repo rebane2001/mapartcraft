@@ -586,6 +586,9 @@ class Map_Mapdat {
         const pixel = this.coloursLayout[x][z];
         const arrayOffset = z * 128 + x;
         let mapdatId; // coloursJSON contains the base mapdatId that is multiplied by 4 and added to by one of 0,1,2,3
+        if (pixel.colourSetId === "-1") { // special colourSetId for transparent maps
+          mapdatId = 1;
+        } else {
         switch (pixel.tone) {
           case "dark": {
             mapdatId = 4 * coloursJSON[pixel.colourSetId].mapdatId;
@@ -606,6 +609,7 @@ class Map_Mapdat {
           default: {
             throw new Error("Unknown colour tone");
           }
+        }
         }
         this.NBT_json.value.data.value.colors.value[arrayOffset] = mapdatId;
       }

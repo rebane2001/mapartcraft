@@ -27,6 +27,7 @@ class MapartController extends Component {
     optionValue_supportBlock: "minecraft:cobblestone",
     optionValue_unobtainable: true,
     optionValue_transparency: true,
+    optionValue_transparencyTolerance: 128,
     optionValue_betterColour: true,
     optionValue_dithering: DitherMethods.FloydSteinberg.uniqueId,
     optionValue_preprocessingEnabled: false,
@@ -218,6 +219,13 @@ class MapartController extends Component {
   onOptionChange_transparency = () => {
     this.setState({
       optionValue_transparency: !this.state.optionValue_transparency,
+    });
+  };
+
+  onOptionChange_transparencyTolerance = (e) => {
+    const transparencyTolerance = parseInt(e.target.value);
+    this.setState({
+      optionValue_transparencyTolerance: transparencyTolerance,
     });
   };
 
@@ -493,6 +501,7 @@ class MapartController extends Component {
       optionValue_supportBlock,
       optionValue_unobtainable,
       optionValue_transparency,
+      optionValue_transparencyTolerance,
       optionValue_betterColour,
       optionValue_dithering,
       optionValue_preprocessingEnabled,
@@ -539,6 +548,7 @@ class MapartController extends Component {
             optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
             optionValue_unobtainable={optionValue_unobtainable}
             optionValue_transparency={optionValue_transparency}
+            optionValue_transparencyTolerance={optionValue_transparencyTolerance}
             optionValue_betterColour={optionValue_betterColour}
             optionValue_dithering={optionValue_dithering}
             optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
@@ -577,6 +587,8 @@ class MapartController extends Component {
             onOptionChange_unobtainable={this.onOptionChange_unobtainable}
             optionValue_transparency={optionValue_transparency}
             onOptionChange_transparency={this.onOptionChange_transparency}
+            optionValue_transparencyTolerance={optionValue_transparencyTolerance}
+            onOptionChange_transparencyTolerance={this.onOptionChange_transparencyTolerance}
             optionValue_betterColour={optionValue_betterColour}
             onOptionChange_BetterColour={this.onOptionChange_BetterColour}
             optionValue_dithering={optionValue_dithering}
