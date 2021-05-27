@@ -5,6 +5,6 @@
 - in future add edit mode for nbts for colour replacements etc: issue #124
 - mapCanvasWorker.jsworker accurate support block count
 - "optimised" staircase
-- mapdat transparency; slider
 - CLI
 - Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`
+- review locale jsons and `EN:` prefix

@@ -24,7 +24,7 @@ class MapartController extends Component {
     optionValue_showGridOverlay: false,
     optionValue_staircasing: "optimized",
     optionValue_whereSupportBlocks: "Important",
-    optionValue_supportBlock: "minecraft:cobblestone",
+    optionValue_supportBlock: "cobblestone",
     optionValue_unobtainable: true,
     optionValue_transparency: true,
     optionValue_transparencyTolerance: 128,
@@ -610,7 +610,14 @@ class MapartController extends Component {
             downloadBlobFile={this.downloadBlobFile}
             onViewOnlineClicked={this.onViewOnlineClicked}
           />
-          {optionValue_modeNBTOrMapdat === "NBT" ? <Materials getLocaleString={getLocaleString} currentMaterialsData={currentMaterialsData} /> : null}
+          {optionValue_modeNBTOrMapdat === "NBT" ? (
+            <Materials
+              getLocaleString={getLocaleString}
+              optionValue_version={optionValue_version}
+              optionValue_supportBlock={optionValue_supportBlock}
+              currentMaterialsData={currentMaterialsData}
+            />
+          ) : null}
         </div>
       </div>
     );

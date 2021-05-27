@@ -14,6 +14,7 @@ class Materials extends Component {
 
   onOnlyMaxPerSplitChange = () => {
     this.setState((currentState) => ({
+      // nb this method of passing currentState instead of using this.state... is prefered; TODO neaten up controller uses
       onlyMaxPerSplit: !currentState.onlyMaxPerSplit,
     }));
   };
@@ -69,7 +70,7 @@ class Materials extends Component {
   formatMaterialCount = (count) => {
     const numberOfStacks = Math.floor(count / 64);
     const remainder = count % 64;
-    const numberOfShulkers = count / 1728; // to 2dp
+    const numberOfShulkers = count / 1728;
     let returnString = count.toString();
     if (numberOfStacks !== 0) {
       returnString += " (" + numberOfStacks.toString() + "x64";
@@ -84,11 +85,35 @@ class Materials extends Component {
     return returnString;
   };
 
+  colourSetIdAndBlockIdFromNBTName(blockName) {
+    const { optionValue_version } = this.props;
+    for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
+      for (const [blockId, block] of Object.entries(colourSet.blocks)) {
+        if (!(optionValue_version in block.validVersions)) {
+          continue;
+        }
+        let blockNBTData = block.validVersions[optionValue_version];
+        if (typeof blockNBTData === "string") {
+          // this is of the form eg "&1.12.2"
+          blockNBTData = block.validVersions[blockNBTData.slice(1)];
+        }
+        if (
+          Object.keys(blockNBTData.NBTArgs).length === 0 && // no exotic blocks for noobline
+          blockName.toLowerCase() === blockNBTData.NBTName.toLowerCase()
+        ) {
+          return { colourSetId, blockId };
+        }
+      }
+    }
+    return null; // if block not found
+  }
+
   render() {
-    const { getLocaleString, currentMaterialsData } = this.props;
+    const { getLocaleString, optionValue_supportBlock, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
     const nonZeroMaterialsItems = this.getMaterialsCount_nonZeroMaterialsItems();
     const supportBlockCount = this.getMaterialsCount_supportBlock();
+    const supportBlockIds = this.colourSetIdAndBlockIdFromNBTName(optionValue_supportBlock);
     return (
       <div className="section materialsDiv">
         <h2>{getLocaleString("MATERIALSTITLE")}</h2>
@@ -114,9 +139,17 @@ class Materials extends Component {
                       src={IMG_Null}
                       alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
                       className={"blockImage"}
-                      style={{
-                        backgroundImage: `url(${IMG_Placeholder})`,
-                      }}
+                      style={
+                        supportBlockIds === null
+                          ? {
+                              backgroundImage: `url(${IMG_Placeholder})`,
+                            }
+                          : {
+                              backgroundImage: `url(${IMG_Textures})`,
+                              backgroundPositionX: `-${supportBlockIds.blockId}00%`,
+                              backgroundPositionY: `-${supportBlockIds.colourSetId}00%`,
+                            }
+                      }
                     />
                   </Tooltip>
                 </th>

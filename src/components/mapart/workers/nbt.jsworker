@@ -301,7 +301,7 @@ class Map_NBT {
       if (colourSetId === "NOOBLINE_SCAFFOLD") {
         paletteItemToPush.Name = {
           type: TagTypes.string,
-          value: optionValue_supportBlock,
+          value: `minecraft:${optionValue_supportBlock.toLowerCase()}`,
         };
         // we expect the support block to be something non-exotic with no properties eg netherrack
       } else {
