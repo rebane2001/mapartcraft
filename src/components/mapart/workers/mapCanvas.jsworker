@@ -392,149 +392,149 @@ function getMapartImageDataAndMaterials() {
 
       // support-block count: mapdat can skip this
       if (optionValue_modeNBTOrMapdat === "NBT") {
-      switch (optionValue_whereSupportBlocks) {
-        case "None": {
-          break;
-        }
-        case "Important": {
-          if (coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory) {
-            maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+        switch (optionValue_whereSupportBlocks) {
+          case "None": {
+            break;
           }
-          break;
-        }
-        case "AllOptimized": {
-          // for AllOptimized and AllDoubleOptimized we need to know the block south's y-position / does it need support to be able to determine
-          // whether a block needs support underneath; hence we do add support blocks '1-cycle behind' in the for-loop
-          switch (individualMap_y) {
-            case 0: {
-              // we now know about the first block in the column which allows us to determine noobline support blocks
-              if (
-                // first under-support block
-                closestColourSetIdAndTone.tone === "dark" ||
-                (closestColourSetIdAndTone.tone === "normal" &&
-                  coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory)
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              if (
-                // second under-support block
-                closestColourSetIdAndTone.tone === "dark" &&
-                coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              break;
+          case "Important": {
+            if (coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory) {
+              maps[whichMap_y][whichMap_x].supportBlockCount += 1;
             }
-            case 1: {
-              // first block in column; special since noobline to the North
-              const coloursBlock0 = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][0];
-              if (
-                // first under-support block
-                coloursBlock0.tone === "light" ||
-                closestColourSetIdAndTone.tone === "dark" ||
-                (closestColourSetIdAndTone.tone === "normal" &&
-                  coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory) ||
-                coloursJSON[coloursBlock0.colourSetId].blocks[selectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              if (
-                // second under-support block
-                closestColourSetIdAndTone.tone === "dark" &&
-                coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              break;
-            }
-            case 127: {
-              // falls through
-              // special case 127 also accounts for final block in column since we are 1-cycle behind in out for-loop; no lookahead.
-              // falls through to default case to also account for block 126 as expected too
-              const penultimateColoursBlock = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][126];
-              if (
-                // first under-support block
-                closestColourSetIdAndTone.tone === "light" ||
-                coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory ||
-                (closestColourSetIdAndTone.tone === "normal" &&
-                  coloursJSON[penultimateColoursBlock.colourSetId].blocks[selectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory)
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              if (
-                // second under-support block
-                closestColourSetIdAndTone.tone === "light" &&
-                coloursJSON[penultimateColoursBlock.colourSetId].blocks[selectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-            }
-            // eslint-disable-next-line no-fallthrough
-            default: {
-              // average block in column
-              const coloursBlock_north = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][individualMap_y - 2];
-              const coloursBlock = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][individualMap_y - 1];
-              const coloursBlock_south = closestColourSetIdAndTone;
-              if (
-                // first under-support block
-                coloursBlock.tone === "light" ||
-                coloursBlock_south.tone === "dark" ||
-                (coloursBlock_south.tone === "normal" &&
-                  coloursJSON[coloursBlock_south.colourSetId].blocks[selectedBlocks[coloursBlock_south.colourSetId]].supportBlockMandatory) ||
-                coloursJSON[coloursBlock.colourSetId].blocks[selectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
-                (coloursBlock.tone === "normal" &&
-                  coloursJSON[coloursBlock_north.colourSetId].blocks[selectedBlocks[coloursBlock_north.colourSetId]].supportBlockMandatory)
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              if (
-                // second under-support block
-                (coloursBlock_south.tone === "dark" &&
-                  coloursJSON[coloursBlock_south.colourSetId].blocks[selectedBlocks[coloursBlock_south.colourSetId]].supportBlockMandatory) ||
-                (coloursBlock.tone === "light" &&
-                  coloursJSON[coloursBlock_north.colourSetId].blocks[selectedBlocks[coloursBlock_north.colourSetId]].supportBlockMandatory)
-              ) {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              break;
-            }
+            break;
           }
-          break;
-        }
-        case "AllDoubleOptimized": {
-          switch (individualMap_y) {
-            case 0: {
-              // noobline
-              maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              if (closestColourSetIdAndTone.tone === "dark") {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+          case "AllOptimized": {
+            // for AllOptimized and AllDoubleOptimized we need to know the block south's y-position / does it need support to be able to determine
+            // whether a block needs support underneath; hence we do add support blocks '1-cycle behind' in the for-loop
+            switch (individualMap_y) {
+              case 0: {
+                // we now know about the first block in the column which allows us to determine noobline support blocks
+                if (
+                  // first under-support block
+                  closestColourSetIdAndTone.tone === "dark" ||
+                  (closestColourSetIdAndTone.tone === "normal" &&
+                    coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory)
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                if (
+                  // second under-support block
+                  closestColourSetIdAndTone.tone === "dark" &&
+                  coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                break;
               }
-              break;
-            }
-            case 127: {
-              // falls through
-              maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              if (closestColourSetIdAndTone.tone === "light") {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+              case 1: {
+                // first block in column; special since noobline to the North
+                const coloursBlock0 = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][0];
+                if (
+                  // first under-support block
+                  coloursBlock0.tone === "light" ||
+                  closestColourSetIdAndTone.tone === "dark" ||
+                  (closestColourSetIdAndTone.tone === "normal" &&
+                    coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory) ||
+                  coloursJSON[coloursBlock0.colourSetId].blocks[selectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                if (
+                  // second under-support block
+                  closestColourSetIdAndTone.tone === "dark" &&
+                  coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                break;
+              }
+              case 127: {
+                // falls through
+                // special case 127 also accounts for final block in column since we are 1-cycle behind in out for-loop; no lookahead.
+                // falls through to default case to also account for block 126 as expected too
+                const penultimateColoursBlock = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][126];
+                if (
+                  // first under-support block
+                  closestColourSetIdAndTone.tone === "light" ||
+                  coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory ||
+                  (closestColourSetIdAndTone.tone === "normal" &&
+                    coloursJSON[penultimateColoursBlock.colourSetId].blocks[selectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory)
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                if (
+                  // second under-support block
+                  closestColourSetIdAndTone.tone === "light" &&
+                  coloursJSON[penultimateColoursBlock.colourSetId].blocks[selectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+              }
+              // eslint-disable-next-line no-fallthrough
+              default: {
+                // average block in column
+                const coloursBlock_north = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][individualMap_y - 2];
+                const coloursBlock = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][individualMap_y - 1];
+                const coloursBlock_south = closestColourSetIdAndTone;
+                if (
+                  // first under-support block
+                  coloursBlock.tone === "light" ||
+                  coloursBlock_south.tone === "dark" ||
+                  (coloursBlock_south.tone === "normal" &&
+                    coloursJSON[coloursBlock_south.colourSetId].blocks[selectedBlocks[coloursBlock_south.colourSetId]].supportBlockMandatory) ||
+                  coloursJSON[coloursBlock.colourSetId].blocks[selectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
+                  (coloursBlock.tone === "normal" &&
+                    coloursJSON[coloursBlock_north.colourSetId].blocks[selectedBlocks[coloursBlock_north.colourSetId]].supportBlockMandatory)
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                if (
+                  // second under-support block
+                  (coloursBlock_south.tone === "dark" &&
+                    coloursJSON[coloursBlock_south.colourSetId].blocks[selectedBlocks[coloursBlock_south.colourSetId]].supportBlockMandatory) ||
+                  (coloursBlock.tone === "light" &&
+                    coloursJSON[coloursBlock_north.colourSetId].blocks[selectedBlocks[coloursBlock_north.colourSetId]].supportBlockMandatory)
+                ) {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                break;
               }
             }
-            // eslint-disable-next-line no-fallthrough
-            default: {
-              maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              const coloursBlock_north = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][individualMap_y - 1];
-              if (coloursBlock_north.tone === "light" || closestColourSetIdAndTone.tone === "dark") {
-                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
-              }
-              break;
-            }
+            break;
           }
-          break;
+          case "AllDoubleOptimized": {
+            switch (individualMap_y) {
+              case 0: {
+                // noobline
+                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                if (closestColourSetIdAndTone.tone === "dark") {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                break;
+              }
+              case 127: {
+                // falls through
+                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                if (closestColourSetIdAndTone.tone === "light") {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+              }
+              // eslint-disable-next-line no-fallthrough
+              default: {
+                maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                const coloursBlock_north = maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x][individualMap_y - 1];
+                if (coloursBlock_north.tone === "light" || closestColourSetIdAndTone.tone === "dark") {
+                  maps[whichMap_y][whichMap_x].supportBlockCount += 1;
+                }
+                break;
+              }
+            }
+            break;
+          }
+          default: {
+            break;
+          }
         }
-        default: {
-          break;
-        }
-      }
-      maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
+        maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
       }
     }
     maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x].push({
