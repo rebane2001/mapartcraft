@@ -37,6 +37,7 @@ class MapartController extends Component {
     preProcessingValue_backgroundColour: "#151515",
     preProcessingValue_backgroundColourFlat: false,
     uploadedImage: null,
+    uploadedImage_baseFilename: null,
     presets: [],
     selectedPresetName: "None",
     currentMaterialsData: {
@@ -86,7 +87,7 @@ class MapartController extends Component {
     if (files.length) {
       const file = files[0];
       const imgUrl = URL.createObjectURL(file);
-      this.loadUploadedImageFromURL(imgUrl);
+      this.loadUploadedImageFromURL(imgUrl, "mapart");
     }
   };
 
@@ -97,12 +98,12 @@ class MapartController extends Component {
     if (files.length) {
       const file = files[0];
       const imgUrl = URL.createObjectURL(file);
-      this.loadUploadedImageFromURL(imgUrl);
+      this.loadUploadedImageFromURL(imgUrl, "mapart");
     }
   };
 
   componentDidMount() {
-    this.loadUploadedImageFromURL(IMG_Upload);
+    this.loadUploadedImageFromURL(IMG_Upload, "mapart");
 
     document.addEventListener("dragover", this.eventListener_dragover);
     document.addEventListener("drop", this.eventListener_drop);
@@ -123,15 +124,16 @@ class MapartController extends Component {
     } else {
       const file = files[0];
       const imgUrl = URL.createObjectURL(file);
-      this.loadUploadedImageFromURL(imgUrl);
+      this.loadUploadedImageFromURL(imgUrl, file.name.replace(/\.[^/.]+$/, ""));
     }
   };
 
-  loadUploadedImageFromURL(imageURL) {
+  loadUploadedImageFromURL(imageURL, baseFilename) {
     const img = new Image();
     img.onload = () => {
       this.setState({
         uploadedImage: img,
+        uploadedImage_baseFilename: baseFilename,
       });
     };
     img.src = imageURL;
@@ -511,6 +513,7 @@ class MapartController extends Component {
       preProcessingValue_backgroundColour,
       preProcessingValue_backgroundColourFlat,
       uploadedImage,
+      uploadedImage_baseFilename,
       presets,
       selectedPresetName,
       currentMaterialsData,
@@ -605,6 +608,7 @@ class MapartController extends Component {
             onOptionChange_PreProcessingBackgroundColour={this.onOptionChange_PreProcessingBackgroundColour}
             preProcessingValue_backgroundColourFlat={preProcessingValue_backgroundColourFlat}
             onOptionChange_PreProcessingBackgroundColourFlat={this.onOptionChange_PreProcessingBackgroundColourFlat}
+            uploadedImage_baseFilename={uploadedImage_baseFilename}
             currentMaterialsData={currentMaterialsData}
             mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
             downloadBlobFile={this.downloadBlobFile}

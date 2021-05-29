@@ -31,6 +31,7 @@ class MapSettings extends Component {
       optionValue_staircasing,
       optionValue_whereSupportBlocks,
       optionValue_supportBlock,
+      uploadedImage_baseFilename,
       currentMaterialsData,
       downloadBlobFile,
       mapPreviewWorker_inProgress,
@@ -68,7 +69,7 @@ class MapSettings extends Component {
           downloadBlobFile(
             gzip(NBT_Array),
             "application/x-minecraft-level",
-            workerHeader === "CREATE_NBT_SPLIT" ? `mapart_${whichMap_x}_${whichMap_y}.nbt` : "mapart.nbt"
+            workerHeader === "CREATE_NBT_SPLIT" ? `${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.nbt` : `${uploadedImage_baseFilename}.nbt`
           );
           break;
         }
@@ -76,7 +77,7 @@ class MapSettings extends Component {
           const t1 = performance.now();
           console.log(`Created Mapdat by ${(t1 - t0).toString()}ms`);
           const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
-          downloadBlobFile(gzip(Mapdat_Bytes), "application/x-minecraft-map", `mapdat_${whichMap_x}_${whichMap_y}.dat`);
+          downloadBlobFile(gzip(Mapdat_Bytes), "application/x-minecraft-map", `${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.dat`);
           break;
         }
         default: {
