@@ -200,11 +200,13 @@ function getMapartImageDataAndMaterials() {
     return;
   }
 
-  maps.forEach((row) =>
-    row.forEach((map) => {
-      map.supportBlockCount = 128; // initialise with noobline count
-    })
-  );
+  if (optionValue_modeNBTOrMapdat === "NBT") {
+    maps.forEach((row) =>
+      row.forEach((map) => {
+        map.supportBlockCount = 128; // initialise with noobline count
+      })
+    );
+  }
 
   const multimapWidth = optionValue_mapSize_x * 128;
   let ditherMatrix;
@@ -387,6 +389,9 @@ function getMapartImageDataAndMaterials() {
         default:
           break;
       }
+
+      // support-block count: mapdat can skip this
+      if (optionValue_modeNBTOrMapdat === "NBT") {
       switch (optionValue_whereSupportBlocks) {
         case "None": {
           break;
@@ -530,6 +535,7 @@ function getMapartImageDataAndMaterials() {
         }
       }
       maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
+      }
     }
     maps[whichMap_y][whichMap_x].coloursLayout[individualMap_x].push({
       colourSetId: closestColourSetIdAndTone.colourSetId,
