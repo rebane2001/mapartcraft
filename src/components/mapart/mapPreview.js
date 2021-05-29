@@ -35,8 +35,8 @@ class MapPreview extends Component {
       prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
       prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
       prevProps.preProcessingValue_saturation === newProps.preProcessingValue_saturation,
+      prevProps.preProcessingValue_backgroundColourSelect === newProps.preProcessingValue_backgroundColourSelect,
       prevProps.preProcessingValue_backgroundColour === newProps.preProcessingValue_backgroundColour,
-      prevProps.preProcessingValue_backgroundColourFlat === newProps.preProcessingValue_backgroundColourFlat,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -67,8 +67,8 @@ class MapPreview extends Component {
       prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
       prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
       prevProps.preProcessingValue_saturation === newProps.preProcessingValue_saturation,
+      prevProps.preProcessingValue_backgroundColourSelect === newProps.preProcessingValue_backgroundColourSelect,
       prevProps.preProcessingValue_backgroundColour === newProps.preProcessingValue_backgroundColour,
-      prevProps.preProcessingValue_backgroundColourFlat === newProps.preProcessingValue_backgroundColourFlat,
       prevProps.uploadedImage === newProps.uploadedImage,
     ];
     return (
@@ -117,8 +117,8 @@ class MapPreview extends Component {
       preProcessingValue_brightness,
       preProcessingValue_contrast,
       preProcessingValue_saturation,
+      preProcessingValue_backgroundColourSelect,
       preProcessingValue_backgroundColour,
-      preProcessingValue_backgroundColourFlat,
       uploadedImage,
     } = this.props;
     const { optionValue_mapSize_x, optionValue_mapSize_y, optionValue_cropImage } = this.props;
@@ -127,9 +127,9 @@ class MapPreview extends Component {
     ctx_source.clearRect(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
 
     if (optionValue_preprocessingEnabled) {
-      if (/^#?[a-f\d]{6}$/i.test(preProcessingValue_backgroundColour)) {
+      if (preProcessingValue_backgroundColourSelect !== "Off" && /^#?[a-f\d]{6}$/i.test(preProcessingValue_backgroundColour)) {
         let backgroundColour;
-        if (preProcessingValue_backgroundColourFlat) {
+        if (preProcessingValue_backgroundColourSelect === "On_Flat") {
           backgroundColour = this.closestFlatColourTo(preProcessingValue_backgroundColour);
         } else {
           backgroundColour = preProcessingValue_backgroundColour;

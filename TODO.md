@@ -6,6 +6,5 @@
 - CLI
 - staircase mode documentation
 - Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`
-- review locale jsons and `EN:` prefix
-- make background optional when preprocessing enabled to not interfere with mapdat transparency if wanted; change to `select` input
+- review locale jsons and `EN:` prefix, also strings such as preprocessing background "Off" etc can be obtained from existing locale strings
 - refactor double switch statements in `nbt.jsworker`?

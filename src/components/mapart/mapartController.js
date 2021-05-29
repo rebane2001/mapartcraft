@@ -34,8 +34,8 @@ class MapartController extends Component {
     preProcessingValue_brightness: 100,
     preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
+    preProcessingValue_backgroundColourSelect: "Off",
     preProcessingValue_backgroundColour: "#151515",
-    preProcessingValue_backgroundColourFlat: false,
     uploadedImage: null,
     uploadedImage_baseFilename: null,
     presets: [],
@@ -273,15 +273,14 @@ class MapartController extends Component {
     this.setState({ preProcessingValue_saturation: newValue });
   };
 
+  onOptionChange_PreProcessingBackgroundColourSelect = (e) => {
+    const newValue = e.target.value;
+    this.setState({ preProcessingValue_backgroundColourSelect: newValue });
+  };
+
   onOptionChange_PreProcessingBackgroundColour = (e) => {
     const newValue = e.target.value;
     this.setState({ preProcessingValue_backgroundColour: newValue });
-  };
-
-  onOptionChange_PreProcessingBackgroundColourFlat = () => {
-    this.setState({
-      preProcessingValue_backgroundColourFlat: !this.state.preProcessingValue_backgroundColourFlat,
-    });
   };
 
   onViewOnlineClicked = (e) => {
@@ -510,8 +509,8 @@ class MapartController extends Component {
       preProcessingValue_brightness,
       preProcessingValue_contrast,
       preProcessingValue_saturation,
+      preProcessingValue_backgroundColourSelect,
       preProcessingValue_backgroundColour,
-      preProcessingValue_backgroundColourFlat,
       uploadedImage,
       uploadedImage_baseFilename,
       presets,
@@ -558,8 +557,8 @@ class MapartController extends Component {
             preProcessingValue_brightness={preProcessingValue_brightness}
             preProcessingValue_contrast={preProcessingValue_contrast}
             preProcessingValue_saturation={preProcessingValue_saturation}
+            preProcessingValue_backgroundColourSelect={preProcessingValue_backgroundColourSelect}
             preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
-            preProcessingValue_backgroundColourFlat={preProcessingValue_backgroundColourFlat}
             uploadedImage={uploadedImage}
             onFileDialogEvent={this.onFileDialogEvent}
             onGetMapMaterials={this.handleSetMapMaterials}
@@ -604,10 +603,10 @@ class MapartController extends Component {
             onOptionChange_PreProcessingContrast={this.onOptionChange_PreProcessingContrast}
             preProcessingValue_saturation={preProcessingValue_saturation}
             onOptionChange_PreProcessingSaturation={this.onOptionChange_PreProcessingSaturation}
+            preProcessingValue_backgroundColourSelect={preProcessingValue_backgroundColourSelect}
+            onOptionChange_PreProcessingBackgroundColourSelect={this.onOptionChange_PreProcessingBackgroundColourSelect}
             preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
             onOptionChange_PreProcessingBackgroundColour={this.onOptionChange_PreProcessingBackgroundColour}
-            preProcessingValue_backgroundColourFlat={preProcessingValue_backgroundColourFlat}
-            onOptionChange_PreProcessingBackgroundColourFlat={this.onOptionChange_PreProcessingBackgroundColourFlat}
             uploadedImage_baseFilename={uploadedImage_baseFilename}
             currentMaterialsData={currentMaterialsData}
             mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
