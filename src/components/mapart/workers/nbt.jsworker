@@ -376,23 +376,41 @@ class Map_NBT {
       currentHeight = 0;
     }
     const mapColoursLayoutColumn = this.mapColoursLayout[columnNumber];
-    // initialise with noobline
-    // we treat the first (noobline) and last block of a column specially; the latter since we look ahead in our for loop normally
+    // we treat the noobline, first, and last blocks of a column specially since we look ahead and behind a block normally to determine whether it needs support blocks underneath
+
+    const coloursBlock0 = mapColoursLayoutColumn[0];
+    const coloursBlock1 = mapColoursLayoutColumn[1];
+
+    // noobline
     physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, 0, "NOOBLINE_SCAFFOLD"));
     switch (optionValue_whereSupportBlocks) {
-      case "None":
+      case "None": {
+        break;
+      }
       case "Important": {
         break;
       }
       case "AllOptimized": {
-        if (mapColoursLayoutColumn[0].tone === "dark") {
+        if (
+          // first under-support block
+          coloursBlock0.tone === "dark" ||
+          (coloursBlock0.tone === "normal" &&
+            coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory)
+        ) {
           physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 0, "NOOBLINE_SCAFFOLD"));
+        }
+        if (
+          // second under-support block
+          coloursBlock0.tone === "dark" &&
+          coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory
+        ) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 0, "NOOBLINE_SCAFFOLD"));
         }
         break;
       }
       case "AllDoubleOptimized": {
         physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 0, "NOOBLINE_SCAFFOLD"));
-        if (mapColoursLayoutColumn[0].tone === "dark") {
+        if (coloursBlock0.tone === "dark") {
           physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 0, "NOOBLINE_SCAFFOLD"));
         }
         break;
@@ -401,7 +419,70 @@ class Map_NBT {
         throw new Error("Unknown support-blocks option");
       }
     }
-    for (let rowNumber = 0; rowNumber < mapColoursLayoutColumn.length - 1; rowNumber++) {
+
+    // first block in column
+    switch (coloursBlock0.tone) {
+      case "dark": {
+        currentHeight -= 1;
+        break;
+      }
+      case "normal": {
+        break;
+      }
+      case "light": {
+        currentHeight += 1;
+        break;
+      }
+      default: {
+        throw new Error("Unknown tone type");
+      }
+    }
+    physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, 1, coloursBlock0.colourSetId));
+    switch (optionValue_whereSupportBlocks) {
+      case "None": {
+        break;
+      }
+      case "Important": {
+        if (coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 1, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      case "AllOptimized": {
+        if (
+          // first under-support block
+          coloursBlock0.tone === "light" ||
+          coloursBlock1.tone === "dark" ||
+          (coloursBlock1.tone === "normal" &&
+            coloursJSON[coloursBlock1.colourSetId].blocks[currentSelectedBlocks[coloursBlock1.colourSetId]].supportBlockMandatory) ||
+          coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory
+        ) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 1, "NOOBLINE_SCAFFOLD"));
+        }
+        if (
+          // second under-support block
+          coloursBlock1.tone === "dark" &&
+          coloursJSON[coloursBlock1.colourSetId].blocks[currentSelectedBlocks[coloursBlock1.colourSetId]].supportBlockMandatory
+        ) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 1, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      case "AllDoubleOptimized": {
+        physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 1, "NOOBLINE_SCAFFOLD"));
+        if (coloursBlock0.tone === "light" || coloursBlock1.tone === "dark") {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 1, "NOOBLINE_SCAFFOLD"));
+        }
+        break;
+      }
+      default: {
+        throw new Error("Unknown support-blocks option");
+      }
+    }
+
+    // normal blocks with lookahead + lookbehind access
+    for (let rowNumber = 1; rowNumber < mapColoursLayoutColumn.length - 1; rowNumber++) {
+      const previousColoursBlock = mapColoursLayoutColumn[rowNumber - 1];
       const coloursBlock = mapColoursLayoutColumn[rowNumber];
       const nextColoursBlock = mapColoursLayoutColumn[rowNumber + 1];
       switch (coloursBlock.tone) {
@@ -433,21 +514,31 @@ class Map_NBT {
         }
         case "AllOptimized": {
           if (
-            coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
+            // first under-support block
             coloursBlock.tone === "light" ||
-            nextColoursBlock.tone === "dark"
+            nextColoursBlock.tone === "dark" ||
+            (nextColoursBlock.tone === "normal" &&
+              coloursJSON[nextColoursBlock.colourSetId].blocks[currentSelectedBlocks[nextColoursBlock.colourSetId]].supportBlockMandatory) ||
+            coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
+            (coloursBlock.tone === "normal" &&
+              coloursJSON[previousColoursBlock.colourSetId].blocks[currentSelectedBlocks[previousColoursBlock.colourSetId]].supportBlockMandatory)
           ) {
             physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          }
+          if (
+            // second under-support block
+            (nextColoursBlock.tone === "dark" &&
+              coloursJSON[nextColoursBlock.colourSetId].blocks[currentSelectedBlocks[nextColoursBlock.colourSetId]].supportBlockMandatory) ||
+            (coloursBlock.tone === "light" &&
+              coloursJSON[previousColoursBlock.colourSetId].blocks[currentSelectedBlocks[previousColoursBlock.colourSetId]].supportBlockMandatory)
+          ) {
+            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
           }
           break;
         }
         case "AllDoubleOptimized": {
           physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
-          if (
-            coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
-            coloursBlock.tone === "light" ||
-            nextColoursBlock.tone === "dark"
-          ) {
+          if (coloursBlock.tone === "light" || nextColoursBlock.tone === "dark") {
             physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
           }
           break;
@@ -457,8 +548,10 @@ class Map_NBT {
         }
       }
     }
+
     // final block in column special case: no lookahead to next block
     const finalRowNumber = mapColoursLayoutColumn.length - 1;
+    const penultimateColoursBlock = mapColoursLayoutColumn[finalRowNumber - 1];
     const finalColoursBlock = mapColoursLayoutColumn[finalRowNumber];
     switch (finalColoursBlock.tone) {
       case "dark": {
@@ -489,19 +582,26 @@ class Map_NBT {
       }
       case "AllOptimized": {
         if (
+          // first under-support block
+          finalColoursBlock.tone === "light" ||
           coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory ||
-          finalColoursBlock.tone === "light" // note no lookahead || case here
+          (finalColoursBlock.tone === "normal" &&
+            coloursJSON[penultimateColoursBlock.colourSetId].blocks[currentSelectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory)
         ) {
           physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
+        }
+        if (
+          // second under-support block
+          finalColoursBlock.tone === "light" &&
+          coloursJSON[penultimateColoursBlock.colourSetId].blocks[currentSelectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory
+        ) {
+          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
         }
         break;
       }
       case "AllDoubleOptimized": {
         physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
-        if (
-          coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory ||
-          finalColoursBlock.tone === "light"
-        ) {
+        if (finalColoursBlock.tone === "light") {
           physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
         }
         break;
@@ -510,6 +610,7 @@ class Map_NBT {
         throw new Error("Unknown support-blocks option");
       }
     }
+
     // we now make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
     // Don't do this for flat maps
     if (optionValue_staircasing !== "off") {
@@ -631,6 +732,7 @@ class Map_Mapdat {
 }
 
 function mergeMaps() {
+  // for when we want one big NBT instead of split 1x1s
   maps.forEach((rowOfMaps) => {
     for (let whichMap_x = 1; whichMap_x < rowOfMaps.length; whichMap_x++) {
       rowOfMaps[0].coloursLayout = rowOfMaps[0].coloursLayout.concat(rowOfMaps[whichMap_x].coloursLayout); // merge along x-axis

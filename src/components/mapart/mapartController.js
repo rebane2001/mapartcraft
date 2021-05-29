@@ -23,7 +23,7 @@ class MapartController extends Component {
     optionValue_cropImage: true,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: "optimized",
-    optionValue_whereSupportBlocks: "Important",
+    optionValue_whereSupportBlocks: "AllOptimized",
     optionValue_supportBlock: "cobblestone",
     optionValue_unobtainable: true,
     optionValue_transparency: true,

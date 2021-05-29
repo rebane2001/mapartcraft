@@ -1,10 +1,12 @@
 - Continue stripping master branch material into here
 - Look at issues on Rebane repo
-- check noobline counted into materials count
 - hall of fame
 - in future add edit mode for nbts for colour replacements etc: issue #124
-- mapCanvasWorker.jsworker accurate support block count
-- "optimised" staircase
+- "optimised" (valley) staircase
 - CLI
+- staircase mode documentation
+- Add filename ala YQE commit `05a63331bf46eb35583982c05ad65f7131cd8318`
 - Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`
 - review locale jsons and `EN:` prefix
+- make background optional when preprocessing enabled to not interfere with mapdat transparency if wanted; change to `select` input
+- refactor double switch statements in `nbt.jsworker`?
