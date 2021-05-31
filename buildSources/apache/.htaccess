@@ -1,5 +1,7 @@
 RewriteEngine On
 
+AddType application/javascript .jsworker
+
 ExpiresActive on
 ExpiresDefault "access plus 1 day"
 
