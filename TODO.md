@@ -8,3 +8,4 @@
 - Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`
 - review locale jsons and `EN:` prefix, also strings such as preprocessing background "Off" etc can be obtained from existing locale strings
 - refactor double switch statements in `nbt.jsworker`?
+- linear / none interpolation option for small uploads if easy

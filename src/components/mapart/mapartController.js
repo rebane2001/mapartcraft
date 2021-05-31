@@ -187,12 +187,18 @@ class MapartController extends Component {
   };
 
   onOptionChange_mapSize_x = (e) => {
-    const x = parseInt(e.target.value);
+    let x = parseInt(e.target.value);
+    if (isNaN(x)) {
+      x = 1;
+    }
     this.setState({ optionValue_mapSize_x: x });
   };
 
   onOptionChange_mapSize_y = (e) => {
-    const y = parseInt(e.target.value);
+    let y = parseInt(e.target.value);
+    if (isNaN(y)) {
+      y = 1;
+    }
     this.setState({ optionValue_mapSize_y: y });
   };
 
