@@ -51,7 +51,6 @@ class Materials extends Component {
   getMaterialsCount_supportBlock() {
     const { currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
-    // 128 per map however if map is not built as split then only top 128 needed
     let supportBlockCount = 0;
     currentMaterialsData.maps.forEach((row) => {
       row.forEach((map) => {
@@ -61,7 +60,6 @@ class Materials extends Component {
         } else {
           supportBlockCount += count;
         }
-        // TODO ADD NOOBLINE, whether double or single etc needs option
       });
     });
     return supportBlockCount;

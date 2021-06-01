@@ -124,6 +124,10 @@ class MapPreview extends Component {
     const { optionValue_mapSize_x, optionValue_mapSize_y, optionValue_cropImage } = this.props;
     const { canvasRef_source } = this;
     const ctx_source = canvasRef_source.current.getContext("2d");
+    ctx_source.imageSmoothingEnabled = true;   // These two options keep the map preview consistent on Chrome(ium). Otherwise the first render after changing
+    ctx_source.imageSmoothingQuality = "high"; // map x or z size is pixelated to a noticeably lower quality. This is not a solution to the cause but a
+                                               // workaround the effect (I do not know exactly why this happens: maybe it is to do with
+                                               // anti-fingerprinting). Firefox is unaffected by any of this.
     ctx_source.clearRect(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
 
     if (optionValue_preprocessingEnabled) {
@@ -311,9 +315,14 @@ class MapPreview extends Component {
         </div>
         <div
           className="progress"
-          style={{
-            display: [0, 1].includes(workerProgress) ? "none" : "block",
-          }}
+          style={
+            [0, 1].includes(workerProgress)
+              ? {
+                  display: "unset",
+                  visibility: "hidden",
+                }
+              : { display: "block" }
+          }
         >
           <span className="progressText">{`${Math.floor(workerProgress * 100)}%`}</span>
           <div
