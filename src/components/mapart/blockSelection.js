@@ -12,7 +12,7 @@ import "./blockSelection.css";
 class BlockSelection extends Component {
   cssRGB(RGBArray) {
     // RGB array to css compatible string
-    return "rgb(" + RGBArray.join(", ") + ")";
+    return `rgb(${RGBArray.join(", ")})`;
   }
 
   render() {
@@ -36,8 +36,10 @@ class BlockSelection extends Component {
       <div className="section blockSelectionDiv">
         <div className="blockSelectionHeader">
           <h2 id="blockselectiontitle">{getLocaleString("BLOCKSELECTIONTITLE")}</h2>
-
-          <b>{getLocaleString("PRESETS") + ": "}</b>
+          <b>
+            {getLocaleString("PRESETS")}
+            {":"}
+          </b>{" "}
           <select id="presets" value={selectedPresetName} onChange={onPresetChange}>
             <option value="None">{getLocaleString("PRESETS-PRESET-NONE")}</option>
             {presets.map((preset) => (
@@ -73,28 +75,14 @@ class BlockSelection extends Component {
                     optionValue_staircasing === "off"
                       ? this.cssRGB(colourSet["tonesRGB"]["normal"])
                       : optionValue_modeNBTOrMapdat === "NBT" || !optionValue_unobtainable
-                      ? "linear-gradient(" +
-                        this.cssRGB(colourSet["tonesRGB"]["dark"]) +
-                        " 33%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
-                        " 33%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
-                        " 66%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["light"]) +
-                        " 66%)"
-                      : "linear-gradient(" +
-                        this.cssRGB(colourSet["tonesRGB"]["unobtainable"]) +
-                        " 25%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["dark"]) +
-                        " 25%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["dark"]) +
-                        " 50%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
-                        " 50%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["normal"]) +
-                        " 75%, " +
-                        this.cssRGB(colourSet["tonesRGB"]["light"]) +
-                        " 75%)",
+                      ? `linear-gradient(${this.cssRGB(colourSet["tonesRGB"]["dark"])} 33%, ${this.cssRGB(colourSet["tonesRGB"]["normal"])} 33%, ${this.cssRGB(
+                          colourSet["tonesRGB"]["normal"]
+                        )} 66%, ${this.cssRGB(colourSet["tonesRGB"]["light"])} 66%)`
+                      : `linear-gradient(${this.cssRGB(colourSet["tonesRGB"]["unobtainable"])} 25%, ${this.cssRGB(
+                          colourSet["tonesRGB"]["dark"]
+                        )} 25%, ${this.cssRGB(colourSet["tonesRGB"]["dark"])} 50%, ${this.cssRGB(colourSet["tonesRGB"]["normal"])} 50%, ${this.cssRGB(
+                          colourSet["tonesRGB"]["normal"]
+                        )} 75%, ${this.cssRGB(colourSet["tonesRGB"]["light"])} 75%)`,
                 }}
               ></div>
               <label>
@@ -118,8 +106,8 @@ class BlockSelection extends Component {
                         className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
                         style={{
                           backgroundImage: `url(${IMG_Textures})`,
-                          backgroundPositionX: "-" + blockId + "00%",
-                          backgroundPositionY: "-" + colourSetId + "00%",
+                          backgroundPositionX: `-${blockId}00%`,
+                          backgroundPositionY: `-${colourSetId}00%`,
                         }}
                         onClick={() => onChangeColourSetBlock(colourSetId, blockId)}
                       />

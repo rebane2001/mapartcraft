@@ -69,18 +69,13 @@ class Materials extends Component {
     const numberOfStacks = Math.floor(count / 64);
     const remainder = count % 64;
     const numberOfShulkers = count / 1728;
-    let returnString = count.toString();
-    if (numberOfStacks !== 0) {
-      returnString += " (" + numberOfStacks.toString() + "x64";
-      if (remainder !== 0) {
-        returnString += " + " + remainder.toString();
-      }
-      if (numberOfShulkers >= 1) {
-        returnString += ", " + numberOfShulkers.toFixed(2) + " SB";
-      }
-      returnString += ")";
-    }
-    return returnString;
+    return `${count.toString()}${
+      numberOfStacks !== 0
+        ? ` (${numberOfStacks.toString()}x64${remainder !== 0 ? ` + ${remainder.toString()}` : ""}${
+            numberOfShulkers >= 1 ? `, ${numberOfShulkers.toFixed(2)} SB` : ""
+          })`
+        : ""
+    }`;
   };
 
   colourSetIdAndBlockIdFromNBTName(blockName) {
@@ -165,8 +160,8 @@ class Materials extends Component {
                         className={"blockImage"}
                         style={{
                           backgroundImage: `url(${IMG_Textures})`,
-                          backgroundPositionX: "-" + currentMaterialsData.currentSelectedBlocks[colourSetId] + "00%",
-                          backgroundPositionY: "-" + colourSetId + "00%",
+                          backgroundPositionX: `-${currentMaterialsData.currentSelectedBlocks[colourSetId]}00%`,
+                          backgroundPositionY: `-${colourSetId}00%`,
                         }}
                       />
                     </Tooltip>

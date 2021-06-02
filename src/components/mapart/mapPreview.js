@@ -268,9 +268,9 @@ class MapPreview extends Component {
             style={{
               backgroundImage: `url(${IMG_GridOverlay})`,
               display: optionValue_showGridOverlay ? "block" : "none",
-              width: (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() + "px",
-              height: (mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString() + "px",
-              backgroundSize: (mapPreviewSizeScale * 128).toString() + "px",
+              width: `${(mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString()}px`,
+              height: `${(mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString()}px`,
+              backgroundSize: `${(mapPreviewSizeScale * 128).toString()}px`,
             }}
           />
           <canvas
@@ -279,8 +279,8 @@ class MapPreview extends Component {
             height={128 * optionValue_mapSize_y}
             ref={this.canvasRef_display}
             style={{
-              width: (mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString() + "px",
-              height: (mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString() + "px",
+              width: `${(mapPreviewSizeScale * 128 * optionValue_mapSize_x).toString()}px`,
+              height: `${(mapPreviewSizeScale * 128 * optionValue_mapSize_y).toString()}px`,
             }}
             onClick={() => this.fileInputRef.current.click()}
           />
@@ -289,7 +289,7 @@ class MapPreview extends Component {
         <div className="mapResolutionAndZoom">
           <div>
             <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-BESTRES")}>
-              <small>{(128 * optionValue_mapSize_x).toString() + "x" + (128 * optionValue_mapSize_y).toString()}</small>
+              <small>{`${(128 * optionValue_mapSize_x).toString()}x${(128 * optionValue_mapSize_y).toString()}`}</small>
             </Tooltip>{" "}
             <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-DOESNTMATCH")}>
               <small
@@ -300,7 +300,7 @@ class MapPreview extends Component {
                   color: optionValue_cropImage ? "orange" : "red",
                 }}
               >
-                {uploadedImage === null ? null : uploadedImage.width.toString() + "x" + uploadedImage.height.toString()}
+                {uploadedImage === null ? null : `${uploadedImage.width.toString()}x${uploadedImage.height.toString()}`}
               </small>
             </Tooltip>
           </div>

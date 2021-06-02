@@ -30,7 +30,7 @@ class Root extends Component {
     } else if (countryCode === undefined) {
       return Locale.en.strings[stringName];
     } else {
-      return "EN: " + Locale.en.strings[stringName];
+      return `EN: ${Locale.en.strings[stringName]}`;
     }
   };
 
