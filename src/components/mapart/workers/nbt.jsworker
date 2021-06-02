@@ -375,117 +375,17 @@ class Map_NBT {
     } else {
       currentHeight = 0;
     }
+
     const mapColoursLayoutColumn = this.mapColoursLayout[columnNumber];
-    // we treat the noobline, first, and last blocks of a column specially since we look ahead and behind a block normally to determine whether it needs support blocks underneath
 
-    const coloursBlock0 = mapColoursLayoutColumn[0];
-    const coloursBlock1 = mapColoursLayoutColumn[1];
-
-    // noobline
+    // initialize noobline
     physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, 0, "NOOBLINE_SCAFFOLD"));
-    switch (optionValue_whereSupportBlocks) {
-      case "None": {
-        break;
-      }
-      case "Important": {
-        break;
-      }
-      case "AllOptimized": {
-        if (
-          // first under-support block
-          coloursBlock0.tone === "dark" ||
-          (coloursBlock0.tone === "normal" &&
-            coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory)
-        ) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 0, "NOOBLINE_SCAFFOLD"));
-        }
-        if (
-          // second under-support block
-          coloursBlock0.tone === "dark" &&
-          coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory
-        ) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 0, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      case "AllDoubleOptimized": {
-        physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 0, "NOOBLINE_SCAFFOLD"));
-        if (coloursBlock0.tone === "dark") {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 0, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      default: {
-        throw new Error("Unknown support-blocks option");
-      }
-    }
 
-    // first block in column
-    switch (coloursBlock0.tone) {
-      case "dark": {
-        currentHeight -= 1;
-        break;
-      }
-      case "normal": {
-        break;
-      }
-      case "light": {
-        currentHeight += 1;
-        break;
-      }
-      default: {
-        throw new Error("Unknown tone type");
-      }
-    }
-    physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, 1, coloursBlock0.colourSetId));
-    switch (optionValue_whereSupportBlocks) {
-      case "None": {
-        break;
-      }
-      case "Important": {
-        if (coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 1, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      case "AllOptimized": {
-        if (
-          // first under-support block
-          coloursBlock0.tone === "light" ||
-          coloursBlock1.tone === "dark" ||
-          (coloursBlock1.tone === "normal" &&
-            coloursJSON[coloursBlock1.colourSetId].blocks[currentSelectedBlocks[coloursBlock1.colourSetId]].supportBlockMandatory) ||
-          coloursJSON[coloursBlock0.colourSetId].blocks[currentSelectedBlocks[coloursBlock0.colourSetId]].supportBlockMandatory
-        ) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 1, "NOOBLINE_SCAFFOLD"));
-        }
-        if (
-          // second under-support block
-          coloursBlock1.tone === "dark" &&
-          coloursJSON[coloursBlock1.colourSetId].blocks[currentSelectedBlocks[coloursBlock1.colourSetId]].supportBlockMandatory
-        ) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 1, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      case "AllDoubleOptimized": {
-        physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, 1, "NOOBLINE_SCAFFOLD"));
-        if (coloursBlock0.tone === "light" || coloursBlock1.tone === "dark") {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, 1, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      default: {
-        throw new Error("Unknown support-blocks option");
-      }
-    }
+    for (let rowNumber = 0; rowNumber < mapColoursLayoutColumn.length; rowNumber++) {
+      const coloursLayoutBlock = mapColoursLayoutColumn[rowNumber];
 
-    // normal blocks with lookahead + lookbehind access
-    for (let rowNumber = 1; rowNumber < mapColoursLayoutColumn.length - 1; rowNumber++) {
-      const previousColoursBlock = mapColoursLayoutColumn[rowNumber - 1];
-      const coloursBlock = mapColoursLayoutColumn[rowNumber];
-      const nextColoursBlock = mapColoursLayoutColumn[rowNumber + 1];
-      switch (coloursBlock.tone) {
+      const previousHeight = currentHeight;
+      switch (coloursLayoutBlock.tone) {
         case "dark": {
           currentHeight -= 1;
           break;
@@ -501,113 +401,143 @@ class Map_NBT {
           throw new Error("Unknown tone type");
         }
       }
-      physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, rowNumber + 1, coloursBlock.colourSetId));
+
+      physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, rowNumber + 1, coloursLayoutBlock.colourSetId));
+      // the + 1 is because the noobline offsets everything South one block
+
       switch (optionValue_whereSupportBlocks) {
         case "None": {
           break;
         }
         case "Important": {
-          if (coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory) {
+          if (coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) {
             physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
           }
           break;
         }
         case "AllOptimized": {
-          if (
-            // first under-support block
-            coloursBlock.tone === "light" ||
-            nextColoursBlock.tone === "dark" ||
-            (nextColoursBlock.tone === "normal" &&
-              coloursJSON[nextColoursBlock.colourSetId].blocks[currentSelectedBlocks[nextColoursBlock.colourSetId]].supportBlockMandatory) ||
-            coloursJSON[coloursBlock.colourSetId].blocks[currentSelectedBlocks[coloursBlock.colourSetId]].supportBlockMandatory ||
-            (coloursBlock.tone === "normal" &&
-              coloursJSON[previousColoursBlock.colourSetId].blocks[currentSelectedBlocks[previousColoursBlock.colourSetId]].supportBlockMandatory)
-          ) {
-            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
-          }
-          if (
-            // second under-support block
-            (nextColoursBlock.tone === "dark" &&
-              coloursJSON[nextColoursBlock.colourSetId].blocks[currentSelectedBlocks[nextColoursBlock.colourSetId]].supportBlockMandatory) ||
-            (coloursBlock.tone === "light" &&
-              coloursJSON[previousColoursBlock.colourSetId].blocks[currentSelectedBlocks[previousColoursBlock.colourSetId]].supportBlockMandatory)
-          ) {
-            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          switch (rowNumber) {
+            case 0: {
+              if (
+                coloursLayoutBlock.tone === "dark" ||
+                (coloursLayoutBlock.tone === "normal" &&
+                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory)
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              if (
+                coloursLayoutBlock.tone === "dark" &&
+                coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory
+              ) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+            case 1: {
+              const coloursLayoutBlock_0 = mapColoursLayoutColumn[rowNumber - 1];
+              if (
+                coloursLayoutBlock_0.tone === "light" ||
+                coloursLayoutBlock.tone === "dark" ||
+                coloursJSON[coloursLayoutBlock_0.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_0.colourSetId]].supportBlockMandatory ||
+                (coloursLayoutBlock.tone === "normal" &&
+                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory)
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              if (
+                coloursLayoutBlock.tone === "dark" &&
+                coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory
+              ) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+            case mapColoursLayoutColumn.length - 1: {
+              // falls through
+              const coloursLayoutBlock_north = mapColoursLayoutColumn[rowNumber - 1];
+              if (
+                coloursLayoutBlock.tone === "light" ||
+                coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory ||
+                (coloursLayoutBlock.tone === "normal" &&
+                  coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory)
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              }
+              if (
+                coloursLayoutBlock.tone === "light" &&
+                coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory
+              ) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              }
+            }
+            // eslint-disable-next-line no-fallthrough
+            default: {
+              const coloursLayoutBlock_north = mapColoursLayoutColumn[rowNumber - 2];
+              const coloursLayoutBlock_inQuestion = mapColoursLayoutColumn[rowNumber - 1];
+              if (
+                coloursLayoutBlock_inQuestion.tone === "light" ||
+                coloursLayoutBlock.tone === "dark" ||
+                coloursJSON[coloursLayoutBlock_inQuestion.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_inQuestion.colourSetId]]
+                  .supportBlockMandatory ||
+                (coloursLayoutBlock.tone === "normal" &&
+                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) ||
+                (coloursLayoutBlock_inQuestion.tone === "normal" &&
+                  coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory)
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              if (
+                (coloursLayoutBlock.tone === "dark" &&
+                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) ||
+                (coloursLayoutBlock_inQuestion.tone === "light" &&
+                  coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory)
+              ) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
           }
           break;
         }
         case "AllDoubleOptimized": {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
-          if (coloursBlock.tone === "light" || nextColoursBlock.tone === "dark") {
-            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          switch (rowNumber) {
+            case 0: {
+              physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              if (coloursLayoutBlock.tone === "dark") {
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+            case mapColoursLayoutColumn.length - 1: {
+              physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              if (coloursLayoutBlock.tone === "light") {
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              }
+              // falls through
+            }
+            // eslint-disable-next-line no-fallthrough
+            default: {
+              physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              const coloursLayoutBlock_inQuestion = mapColoursLayoutColumn[rowNumber - 1];
+              if (coloursLayoutBlock_inQuestion.tone === "light" || coloursLayoutBlock.tone === "dark") {
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
           }
           break;
         }
         default: {
           throw new Error("Unknown support-blocks option");
         }
-      }
-    }
-
-    // final block in column special case: no lookahead to next block
-    const finalRowNumber = mapColoursLayoutColumn.length - 1;
-    const penultimateColoursBlock = mapColoursLayoutColumn[finalRowNumber - 1];
-    const finalColoursBlock = mapColoursLayoutColumn[finalRowNumber];
-    switch (finalColoursBlock.tone) {
-      case "dark": {
-        currentHeight -= 1;
-        break;
-      }
-      case "normal": {
-        break;
-      }
-      case "light": {
-        currentHeight += 1;
-        break;
-      }
-      default: {
-        throw new Error("Unknown tone type");
-      }
-    }
-    physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, finalRowNumber + 1, finalColoursBlock.colourSetId));
-    switch (optionValue_whereSupportBlocks) {
-      case "None": {
-        break;
-      }
-      case "Important": {
-        if (coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      case "AllOptimized": {
-        if (
-          // first under-support block
-          finalColoursBlock.tone === "light" ||
-          coloursJSON[finalColoursBlock.colourSetId].blocks[currentSelectedBlocks[finalColoursBlock.colourSetId]].supportBlockMandatory ||
-          (finalColoursBlock.tone === "normal" &&
-            coloursJSON[penultimateColoursBlock.colourSetId].blocks[currentSelectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory)
-        ) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
-        }
-        if (
-          // second under-support block
-          finalColoursBlock.tone === "light" &&
-          coloursJSON[penultimateColoursBlock.colourSetId].blocks[currentSelectedBlocks[penultimateColoursBlock.colourSetId]].supportBlockMandatory
-        ) {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      case "AllDoubleOptimized": {
-        physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
-        if (finalColoursBlock.tone === "light") {
-          physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, finalRowNumber + 1, "NOOBLINE_SCAFFOLD"));
-        }
-        break;
-      }
-      default: {
-        throw new Error("Unknown support-blocks option");
       }
     }
 
