@@ -9,13 +9,19 @@ Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapart
 - Remove the need for `render_html.py`: `npm run build` creates the final product
 - Remove the need for `ImageMagick` / `create_img.bat`
 - Remove the need for `create_css.py`: all textures are in one png that correspond in x and y with `coloursJSON.json`
+- All locales for the website are managed via React Router instead of building separate pages; a .htaccess template is provided for Apache
 - Trim supported versions down: eg drop 1.12, 1.12.1 in favour of just 1.12.2...
 - Tweaked locale JSONs to not contain duplicate values
 - Added 4th colour to colour boxes in block selection pane when mapdat option and unobtainable box selected
 - Original map preview had to finish its current rendering before re-rendering if an option changed mid render; now the map rendering worker is immediately terminated and relaunched if an option changes mid render to save time
-- Remove 'seconds remaining' from progress bar as it is inaccurate, and unnecessary with percentage shown also
+- Remove 'seconds remaining' from progress bar as it was inaccurate, and unnecessary with percentage shown also
 - Materials count now auto-updates
 - Support-block single mode is now optimised
+- Add tolerance slider for transparency in Mapdats
+- Preprocessing background colour options
+- Materials 'placeholder block' now dynamically updates its image
+- Add nice predictive text to 'block to add' option
+- Creation of NBTs and Mapdats is now non-blocking (done on a separate thread)
 
 ## Requirements
 

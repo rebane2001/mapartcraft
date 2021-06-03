@@ -253,9 +253,8 @@ class MapartController extends Component {
     this.setState({ optionValue_whereSupportBlocks: newValue });
   };
 
-  onOptionChange_SupportBlock = (e) => {
-    const newValue = e.target.value;
-    this.setState({ optionValue_supportBlock: newValue });
+  setOption_SupportBlock = (text) => {
+    this.setState({ optionValue_supportBlock: text });
   };
 
   onOptionChange_PreProcessingEnabled = () => {
@@ -318,7 +317,6 @@ class MapartController extends Component {
       "\n";
     let numberOfColoursExported = 0;
     const toneKeysToExport = optionValue_staircasing === "off" ? ["normal"] : ["dark", "normal", "light"];
-    // NB: unobtainable never included since palette is mainly for survival? TODO: ask others for consensus
     Object.keys(selectedBlocks).forEach((key) => {
       if (selectedBlocks[key] !== "-1") {
         let colours = coloursJSON[key]["tonesRGB"];
@@ -590,7 +588,7 @@ class MapartController extends Component {
             optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
             onOptionChange_WhereSupportBlocks={this.onOptionChange_WhereSupportBlocks}
             optionValue_supportBlock={optionValue_supportBlock}
-            onOptionChange_SupportBlock={this.onOptionChange_SupportBlock}
+            setOption_SupportBlock={this.setOption_SupportBlock}
             optionValue_unobtainable={optionValue_unobtainable}
             onOptionChange_unobtainable={this.onOptionChange_unobtainable}
             optionValue_transparency={optionValue_transparency}

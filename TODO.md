@@ -1,11 +1,23 @@
-- Continue stripping master branch material into here
+# Rebane Master Branch
+
+- Valley 3D mode
+- View online
+
+# Yes
+
 - Look at issues on Rebane repo
-- hall of fame
-- in future add edit mode for nbts for colour replacements etc: issue #124
-- "optimised" (valley) staircase
+- Optimise renders; orange wool -> orange concrete doesn't need another render; just make sure to update `currentSelectedBlocks` in `currentMaterialsData` in controller
+- Review locale jsons and `EN:` prefix, also strings such as preprocessing background "Off" etc can be obtained from existing locale strings
+- 'Edit' mode for colour replacements etc: issue #124
 - CLI
-- Optimise renders; orange wool -> orange concrete doesn't need another render if selectedcolours is no longer locked in `currentMaterialsData` in `mapartController.js`
-- review locale jsons and `EN:` prefix, also strings such as preprocessing background "Off" etc can be obtained from existing locale strings
-- linear / none interpolation option for small uploads if easy
-- flammable parameter glass layer?
-- 2.5D maps (fox)
+
+# Maybe
+- Add unobtainable colours to PDN palette if mapdat mode and unobtainable selected
+- Flammable parameter glass layer
+- 2.5D maps (jkascpkmc's Fox for inspo)
+- Linear / none interpolation option for small uploads if easy
+- Hall of fame
+
+# Code Refactoring
+
+- Object.keys -> Object.entries when appropriate

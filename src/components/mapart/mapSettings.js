@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { gzip } from "pako";
 
+import AutoCompleteInputBlockToAdd from "./autoCompleteInputBlockToAdd/autoCompleteInputBlockToAdd";
+
 import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
 import coloursJSON from "./coloursJSON.json";
@@ -150,7 +152,7 @@ class MapSettings extends Component {
       optionValue_whereSupportBlocks,
       onOptionChange_WhereSupportBlocks,
       optionValue_supportBlock,
-      onOptionChange_SupportBlock,
+      setOption_SupportBlock,
       optionValue_unobtainable,
       onOptionChange_unobtainable,
       optionValue_transparency,
@@ -254,7 +256,7 @@ class MapSettings extends Component {
               {getLocaleString("SETTINGS-BLOCKTOADD")}
               {": "}
             </b>
-            <input type="text" value={optionValue_supportBlock} onChange={onOptionChange_SupportBlock} />
+            <AutoCompleteInputBlockToAdd value={optionValue_supportBlock} setValue={setOption_SupportBlock} optionValue_version={optionValue_version} />
             <br />
           </span>
         ) : (
