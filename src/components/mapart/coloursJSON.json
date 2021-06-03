@@ -3253,10 +3253,13 @@
                         "NBTName": "silver_glazed_terracotta",
                         "NBTArgs": {}
                     },
-                    "1.13.2": "&1.12.2",
-                    "1.14.4": "&1.12.2",
-                    "1.15.2": "&1.12.2",
-                    "1.16.5": "&1.12.2"
+                    "1.13.2": {
+                        "NBTName": "light_gray_glazed_terracotta",
+                        "NBTArgs": {}
+                    },
+                    "1.14.4": "&1.13.2",
+                    "1.15.2": "&1.13.2",
+                    "1.16.5": "&1.13.2"
                 },
                 "supportBlockMandatory": false,
                 "flammable": false,
