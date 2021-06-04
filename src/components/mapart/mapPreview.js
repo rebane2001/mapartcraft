@@ -260,7 +260,7 @@ class MapPreview extends Component {
     const { mapPreviewSizeScale, workerProgress } = this.state;
     return (
       <div className="section mapPreviewDiv">
-        <h2>{getLocaleString("MAPPREVIEWTITLE")}</h2>
+        <h2>{getLocaleString("MAP-PREVIEW/TITLE")}</h2>
         <input type="file" className="imgUpload" ref={this.fileInputRef} onChange={onFileDialogEvent} />
         <div>
           <span
@@ -288,10 +288,10 @@ class MapPreview extends Component {
         </div>
         <div className="mapResolutionAndZoom">
           <div>
-            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-BESTRES")}>
+            <Tooltip tooltipText={getLocaleString("MAP-PREVIEW/BEST-RESOLUTION-TT")}>
               <small>{`${(128 * optionValue_mapSize_x).toString()}x${(128 * optionValue_mapSize_y).toString()}`}</small>
             </Tooltip>{" "}
-            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-DOESNTMATCH")}>
+            <Tooltip tooltipText={getLocaleString("MAP-PREVIEW/ASPECT-RATIO-MISMATCH-TT")}>
               <small
                 className="mapResWarning"
                 style={{
@@ -305,10 +305,10 @@ class MapPreview extends Component {
             </Tooltip>
           </div>
           <div>
-            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-PREVPLUS")}>
+            <Tooltip tooltipText={getLocaleString("MAP-PREVIEW/SCALE-PLUS-TT")}>
               <img alt="+" className="sizeButton" src={IMG_Plus} onClick={this.increasePreviewScale} />
             </Tooltip>
-            <Tooltip tooltipText={getLocaleString("MAPPREVIEW-TT-PREVMINUS")}>
+            <Tooltip tooltipText={getLocaleString("MAP-PREVIEW/SCALE-MINUS-TT")}>
               <img alt="-" className="sizeButton" src={IMG_Minus} onClick={this.decreasePreviewScale} />
             </Tooltip>
           </div>

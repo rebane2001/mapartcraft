@@ -1,7 +1,7 @@
 // Presets are stored as a list of the following object
 {
     "name": "My Preset", // Name to display the preset as
-    "localeKey": "PRESETS-PRESET-BLAH", // localeKey only appears in default presets, and it is a neat way solution to localisation of default presets;
+    "localeKey": "BLOCK-SELECTION/PRESETS/BLAH", // localeKey only appears in default presets, and it is a neat way solution to localisation of default presets;
                                         // the controller will try to read for 'localeKey' first, else will default to 'name'
     "blocks": [
         [

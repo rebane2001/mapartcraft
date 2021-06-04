@@ -110,12 +110,12 @@
       "SATURATION": "Saturación",
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Materiales",
     "BLOCK": "Bloque",
     "AMOUNT": "Cantidad",
-    "PLACEHOLDER-BLOCK": "Bloque de muestra",
+    "PLACEHOLDER-BLOCK-TT": "Bloque de muestra",
     "SHOW-PER-SPLIT": "El máximo de materiales por sección",
     "SHOW-PER-SPLIT-TT": "Para reutilizar materiales con mapas bloqueados",
     "REFRESH-MATERIALS": "REFRESCA",

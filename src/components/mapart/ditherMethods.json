@@ -2,7 +2,7 @@
   "None": {
     "uniqueId": 0,
     "name": "None",
-    "localeKey": "SETTINGS-DITHER-NONE"
+    "localeKey": "MAP-SETTINGS/DITHERING/NONE"
   },
   "FloydSteinberg": {
     "uniqueId": 1,

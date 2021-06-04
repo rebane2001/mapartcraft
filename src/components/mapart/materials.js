@@ -109,10 +109,10 @@ class Materials extends Component {
     const supportBlockIds = this.colourSetIdAndBlockIdFromNBTName(optionValue_supportBlock);
     return (
       <div className="section materialsDiv">
-        <h2>{getLocaleString("MATERIALSTITLE")}</h2>
-        <Tooltip tooltipText={getLocaleString("SETTINGS-TT-SPLITMATERIALS")}>
+        <h2>{getLocaleString("MATERIALS/TITLE")}</h2>
+        <Tooltip tooltipText={getLocaleString("MATERIALS/SHOW-PER-SPLIT-TT")}>
           <b>
-            {getLocaleString("SETTINGS-SPLITMATERIALS")}
+            {getLocaleString("MATERIALS/SHOW-PER-SPLIT")}
             {":"}
           </b>
         </Tooltip>{" "}
@@ -121,16 +121,16 @@ class Materials extends Component {
         <table id="materialtable">
           <tbody>
             <tr>
-              <th>{getLocaleString("MATERIALS-BLOCK")}</th>
-              <th>{getLocaleString("MATERIALS-AMOUNT")}</th>
+              <th>{getLocaleString("MATERIALS/BLOCK")}</th>
+              <th>{getLocaleString("MATERIALS/AMOUNT")}</th>
             </tr>
             {supportBlockCount !== 0 ? (
               <tr>
                 <th>
-                  <Tooltip tooltipText={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}>
+                  <Tooltip tooltipText={getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}>
                     <img
                       src={IMG_Null}
-                      alt={getLocaleString("MATERIALS-PLACEHOLDERBLOCK")}
+                      alt={getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}
                       className={"blockImage"}
                       style={
                         supportBlockIds === null

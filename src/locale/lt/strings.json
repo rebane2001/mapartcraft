@@ -110,12 +110,12 @@
       "SATURATION": null,
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Medžiagos",
     "BLOCK": "Blokai",
     "AMOUNT": "Kiekis",
-    "PLACEHOLDER-BLOCK": "Vietos rezervavimo blokas",
+    "PLACEHOLDER-BLOCK-TT": "Vietos rezervavimo blokas",
     "SHOW-PER-SPLIT": null,
     "SHOW-PER-SPLIT-TT": null,
     "REFRESH-MATERIALS": "ATNAUJINTI MEDŽIAGAS",

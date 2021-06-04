@@ -23,14 +23,25 @@ class Root extends Component {
     }
   }
 
-  getLocaleString = (stringName) => {
-    const countryCode = this.props.match.params.countryCode;
-    if (countryCode in Locale && stringName in Locale[countryCode].strings) {
-      return Locale[countryCode].strings[stringName];
-    } else if (countryCode === undefined) {
-      return Locale.en.strings[stringName];
+  getLocaleString = (stringName, languageCodeOverride) => {
+    // languageCodeOverride only used inside this method for falling back to en
+    const countryCode = languageCodeOverride !== undefined ? languageCodeOverride : this.props.match.params.countryCode;
+    if (countryCode in Locale) {
+      let stringSegments = stringName.split("/");
+      const stringLast = stringSegments.pop();
+      let folder = Locale[countryCode].strings;
+      for (const stringSegment of stringSegments) {
+        folder = folder[stringSegment];
+      }
+      if (folder[stringLast] === null) {
+        // this could get stuck in an endless loop if the string does not exist in en;
+        // en must always exist
+        return this.getLocaleString(stringName, "en");
+      } else {
+        return folder[stringLast];
+      }
     } else {
-      return `EN: ${Locale.en.strings[stringName]}`;
+      return this.getLocaleString(stringName, "en");
     }
   };
 
@@ -59,7 +70,7 @@ class Root extends Component {
         <div className="fixedMessages">
           {displayingEdgeWarning ? (
             <div className="fixedMessage">
-              <p>{this.getLocaleString("EDGEWARNING").replace("\\n", "\n")}</p>
+              <p>{this.getLocaleString("EDGE-WARNING").replace("\\n", "\n")}</p>
               <button type="button" onClick={this.onEdgeWarningButtonClick}>
                 ✔️
               </button>
@@ -67,7 +78,7 @@ class Root extends Component {
           ) : null}
           {displayingCorruptedPresetWarning ? (
             <div className="fixedMessage">
-              <p>{this.getLocaleString("PRESETS-CORRUPTED")}</p>
+              <p>{this.getLocaleString("BLOCK-SELECTION/PRESETS/IMPORT-ERROR-CORRUPTED")}</p>
               <button type="button" onClick={this.onCorruptedPresetWarningButtonClick}>
                 ❗
               </button>

@@ -110,12 +110,12 @@
       "SATURATION": null,
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Материалы",
     "BLOCK": "Блок",
     "AMOUNT": "Количество",
-    "PLACEHOLDER-BLOCK": "Заменяющий блок",
+    "PLACEHOLDER-BLOCK-TT": "Заменяющий блок",
     "SHOW-PER-SPLIT": null,
     "SHOW-PER-SPLIT-TT": null,
     "REFRESH-MATERIALS": "ОБНОВИТЬ МАТЕРИАЛЫ",

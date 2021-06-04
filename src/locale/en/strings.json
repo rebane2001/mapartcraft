@@ -16,13 +16,13 @@
   },
   "DESCRIPTION": {
     "1": "A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like ",
-    "2": ", running in your browser",
+    "2": ", running in your browser.",
     "3": "Inspired by ",
     "4": "Redstonehelper's map art program",
-    "5": ", with the goal to add much-requested features and removing the need to download a program",
+    "5": ", with the goal to add much-requested features and removing the need to download a program.",
     "6": "Feel free to message me on Discord ",
     "7": " or Reddit ",
-    "8": ", feature requests and bug reports go on "
+    "8": ". Feature requests and bug reports go on "
   },
   "BLOCK-SELECTION": {
     "TITLE": "Block selection",
@@ -35,12 +35,12 @@
       "SHARE": "Share",
       "SHARE-TT": "Shares the blocks you have currently selected as a link",
       "SHARE-WARNING-NONE-SELECTED": "Select blocks before sharing them!",
-      "SHARE-LINK": "Share this link to share your currently selected blocks",
+      "SHARE-LINK": "Copy this link to share your currently selected blocks",
       "DOWNLOAD": "Download",
-      "DOWNLOAD-TT": "Downloads color palette for use in Paint.net",
+      "DOWNLOAD-TT": "Downloads color palette for use in Paint.NET",
       "DOWNLOAD-WARNING-NONE-SELECTED": "Select blocks before downloading palette!",
       "DOWNLOAD-WARNING-MAX-COLOURS-1": "Warning, your palette has ",
-      "DOWNLOAD-WARNING-MAX-COLOURS-2": " colors, while the maximum in Paint.net is 96. Some colors will be unavailable in Paint.net",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " colors, while the maximum in Paint.NET is 96. Some colors will be unavailable in Paint.NET",
       "IMPORT-ERROR-CORRUPTED": "Preset link is corrupted!",
       "NONE": "None",
       "EVERYTHING": "Everything",
@@ -110,12 +110,12 @@
       "SATURATION": "Saturation",
       "BACKGROUND": {
         "TITLE": "Background",
+        "TITLE-TT": "For transparent backgrounds",
         "OFF": "Off",
         "DITHERED": "On (dithered)",
         "FLAT": "On (flat)"
       },
-      "BACKGROUND-COLOUR": "Background color",
-      "BACKGROUND-COLOUR-TT": "For transparent backgrounds"
+      "BACKGROUND-COLOUR": "Background color"
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Materials",
     "BLOCK": "Block",
     "AMOUNT": "Amount",
-    "PLACEHOLDER-BLOCK": "Placeholder Block",
+    "PLACEHOLDER-BLOCK-TT": "Placeholder Block",
     "SHOW-PER-SPLIT": "Only show max mats per split",
     "SHOW-PER-SPLIT-TT": "For material reuse with locked maps",
     "REFRESH-MATERIALS": "REFRESH MATERIALS",

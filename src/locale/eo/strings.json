@@ -110,12 +110,12 @@
       "SATURATION": null,
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Materialoj",
     "BLOCK": "Bloko",
     "AMOUNT": "Kvanto",
-    "PLACEHOLDER-BLOCK": "Anstataŭbloko",
+    "PLACEHOLDER-BLOCK-TT": "Anstataŭbloko",
     "SHOW-PER-SPLIT": null,
     "SHOW-PER-SPLIT-TT": null,
     "REFRESH-MATERIALS": "ĜISDATIGI MATERIALOJN",

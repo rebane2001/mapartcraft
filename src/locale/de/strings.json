@@ -110,12 +110,12 @@
       "SATURATION": null,
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Materialien",
     "BLOCK": "Block",
     "AMOUNT": "Anzahl",
-    "PLACEHOLDER-BLOCK": "Platzhalter-Block",
+    "PLACEHOLDER-BLOCK-TT": "Platzhalter-Block",
     "SHOW-PER-SPLIT": null,
     "SHOW-PER-SPLIT-TT": null,
     "REFRESH-MATERIALS": "MATERIALIEN AKTUALISIEREN",

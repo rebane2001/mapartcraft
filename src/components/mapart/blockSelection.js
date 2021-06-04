@@ -35,13 +35,13 @@ class BlockSelection extends Component {
     return (
       <div className="section blockSelectionDiv">
         <div className="blockSelectionHeader">
-          <h2 id="blockselectiontitle">{getLocaleString("BLOCKSELECTIONTITLE")}</h2>
+          <h2 id="blockselectiontitle">{getLocaleString("BLOCK-SELECTION/TITLE")}</h2>
           <b>
-            {getLocaleString("PRESETS")}
+            {getLocaleString("BLOCK-SELECTION/PRESETS/TITLE")}
             {":"}
           </b>{" "}
           <select id="presets" value={selectedPresetName} onChange={onPresetChange}>
-            <option value="None">{getLocaleString("PRESETS-PRESET-NONE")}</option>
+            <option value="None">{getLocaleString("BLOCK-SELECTION/PRESETS/NONE")}</option>
             {presets.map((preset) => (
               <option value={preset["name"]} key={preset["name"]}>
                 {"localeKey" in preset ? getLocaleString(preset["localeKey"]) : preset["name"]}
@@ -49,19 +49,19 @@ class BlockSelection extends Component {
             ))}
           </select>
           <button type="button" onClick={onDeletePreset}>
-            {getLocaleString("PRESETS-DELETE")}
+            {getLocaleString("BLOCK-SELECTION/PRESETS/DELETE")}
           </button>
           <button type="button" onClick={onSavePreset}>
-            {getLocaleString("PRESETS-SAVE")}
+            {getLocaleString("BLOCK-SELECTION/PRESETS/SAVE")}
           </button>
-          <Tooltip tooltipText={getLocaleString("PRESETS-TT-SHARE")}>
+          <Tooltip tooltipText={getLocaleString("BLOCK-SELECTION/PRESETS/SHARE-TT")}>
             <button type="button" onClick={onSharePreset}>
-              {getLocaleString("PRESETS-SHARE")}
+              {getLocaleString("BLOCK-SELECTION/PRESETS/SHARE")}
             </button>
           </Tooltip>
-          <Tooltip tooltipText={getLocaleString("DOWNLOAD-TT-PDN")}>
+          <Tooltip tooltipText={getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-TT")}>
             <button type="button" onClick={onGetPDNPaletteClicked}>
-              {getLocaleString("DOWNLOAD-PDN")}
+              {getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD")}
             </button>
           </Tooltip>
         </div>

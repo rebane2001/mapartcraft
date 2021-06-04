@@ -110,12 +110,12 @@
       "SATURATION": null,
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Materias",
     "BLOCK": "Bloco",
     "AMOUNT": "Quantidade",
-    "PLACEHOLDER-BLOCK": "Bloco de Supporte",
+    "PLACEHOLDER-BLOCK-TT": "Bloco de Supporte",
     "SHOW-PER-SPLIT": null,
     "SHOW-PER-SPLIT-TT": null,
     "REFRESH-MATERIALS": "REFRESCAR MATERIAIS",

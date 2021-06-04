@@ -331,10 +331,10 @@ class MapartController extends Component {
       }
     });
     if (numberOfColoursExported === 0) {
-      alert(getLocaleString("SELECTBLOCKSWARNING-DOWNLOAD"));
+      alert(getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-NONE-SELECTED"));
       return;
     } else if (numberOfColoursExported > 96) {
-      alert(getLocaleString("PDNWARNING1") + numberOfColoursExported.toString() + getLocaleString("PDNWARNING2"));
+      alert(getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-MAX-COLOURS-1") + numberOfColoursExported.toString() + getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-MAX-COLOURS-2"));
     }
     this.downloadBlobFile(paletteText, "text/plain", "MapartcraftPalette.txt");
   };
@@ -370,7 +370,7 @@ class MapartController extends Component {
     const { getLocaleString } = this.props;
     const { presets, selectedBlocks } = this.state;
 
-    let presetToSave_name = prompt(getLocaleString("PRESETS-ENTERNAME"), "");
+    let presetToSave_name = prompt(getLocaleString("BLOCK-SELECTION/PRESETS/SAVE-PROMPT-ENTER-NAME"), "");
     if (presetToSave_name === null) {
       return;
     }
@@ -424,9 +424,9 @@ class MapartController extends Component {
     const { getLocaleString } = this.props;
     const { selectedBlocks } = this.state;
     if (Object.keys(selectedBlocks).every((colourSetId) => selectedBlocks[colourSetId] === "-1")) {
-      alert(getLocaleString("SELECTBLOCKSWARNING-SHARE"));
+      alert(getLocaleString("BLOCK-SELECTION/PRESETS/SHARE-WARNING-NONE-SELECTED"));
     } else {
-      prompt(getLocaleString("PRESETS-SHARELINK"), this.presetToURL());
+      prompt(getLocaleString("BLOCK-SELECTION/PRESETS/SHARE-LINK"), this.presetToURL());
     }
   };
 

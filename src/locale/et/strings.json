@@ -110,12 +110,12 @@
       "SATURATION": "Küllastus",
       "BACKGROUND": {
         "TITLE": null,
+        "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
         "FLAT": null
       },
-      "BACKGROUND-COLOUR": null,
-      "BACKGROUND-COLOUR-TT": null
+      "BACKGROUND-COLOUR": null
     }
   },
   "DOWNLOAD": {
@@ -135,7 +135,7 @@
     "TITLE": "Materjalid",
     "BLOCK": "Plokk",
     "AMOUNT": "Kogus",
-    "PLACEHOLDER-BLOCK": "Kohatäite Plokk",
+    "PLACEHOLDER-BLOCK-TT": "Kohatäite Plokk",
     "SHOW-PER-SPLIT": "Näita maksimaalseid materjale ühe lõhestuse kohta",
     "SHOW-PER-SPLIT-TT": "Materjalide taaskasutamiseks lukustatud kaartidega",
     "REFRESH-MATERIALS": "VÄRSKENDA MATERJALE",
