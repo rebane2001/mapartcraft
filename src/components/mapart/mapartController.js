@@ -264,17 +264,26 @@ class MapartController extends Component {
   };
 
   onOptionChange_PreProcessingBrightness = (e) => {
-    const newValue = parseInt(e.target.value);
+    let newValue = parseInt(e.target.value);
+    if (isNaN(newValue)) {
+      newValue = 0;
+    }
     this.setState({ preProcessingValue_brightness: newValue });
   };
 
   onOptionChange_PreProcessingContrast = (e) => {
-    const newValue = parseInt(e.target.value);
+    let newValue = parseInt(e.target.value);
+    if (isNaN(newValue)) {
+      newValue = 0;
+    }
     this.setState({ preProcessingValue_contrast: newValue });
   };
 
   onOptionChange_PreProcessingSaturation = (e) => {
-    const newValue = parseInt(e.target.value);
+    let newValue = parseInt(e.target.value);
+    if (isNaN(newValue)) {
+      newValue = 0;
+    }
     this.setState({ preProcessingValue_saturation: newValue });
   };
 
@@ -334,7 +343,11 @@ class MapartController extends Component {
       alert(getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-NONE-SELECTED"));
       return;
     } else if (numberOfColoursExported > 96) {
-      alert(getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-MAX-COLOURS-1") + numberOfColoursExported.toString() + getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-MAX-COLOURS-2"));
+      alert(
+        `${getLocaleString("BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-MAX-COLOURS-1")}${numberOfColoursExported.toString()}${getLocaleString(
+          "BLOCK-SELECTION/PRESETS/DOWNLOAD-WARNING-MAX-COLOURS-2"
+        )}`
+      );
     }
     this.downloadBlobFile(paletteText, "text/plain", "MapartcraftPalette.txt");
   };
