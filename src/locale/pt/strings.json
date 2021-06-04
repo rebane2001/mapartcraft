@@ -1,106 +1,161 @@
 {
-  "TRANSLATIONCREDITS": "Traduzido por: Brochacho6",
-  "TRANSLATIONNAME": "Portuguese",
-
-  "FAQ": "FAQ",
-  "VIDEO_TUTORIAL": "Video tutorial",
-
-  "DESCRIPTION1": "Um gerador de schematics de mapart e ficheiros map.dat para minecraft, feito para ser factível para ambos admins de servidores ou jogadores de modo sobrevivência em servidores como ",
-  "DESCRIPTION2": ", executado no seu Navegador",
-  "DESCRIPTION3": "Inspirado pelo ",
-  "DESCRIPTION4": "programa de map art de Redstonehelper",
-  "DESCRIPTION5": ", com o objetivo de adicionar recursos muito pedidos e remover a necessidade de descarregar o programa",
-  "DESCRIPTION6": "Sinta-se livre para me enviar uma mensagem no Discord ",
-  "DESCRIPTION7": " ou Reddit ",
-  "DESCRIPTION8": ", solicitações de recursos e relatórios de bugs vão no ",
-
-  "FAQTEXT1": "Por Favor verifique o ",
-  "FAQTEXT2": " antes de fazer perguntas em qualquer lado",
-
-  "MAPPREVIEWTITLE": "Pré-Visualização do mapa",
-  "MAPPREVIEW-TT-BESTRES": "Uma imagem fonte com esta resolução funcionará melhor",
-  "MAPPREVIEW-TT-DOESNTMATCH": "A imagem não corresponde à proporção do mapa",
-  "MAPPREVIEW-TT-PREVPLUS": "Tornar a pré-visualização maior",
-  "MAPPREVIEW-TT-PREVMINUS": "Tornar a pré-visualização menor",
-
-  "SETTINGSTITLE": "Defenições",
-  "SETTINGS-TT-MODE": "Selecione o modo em que deseja operar",
-  "SETTINGS-MODE": "Modo",
-  "SETTINGS-MODE-VISUAL": "Visual",
-  "SETTINGS-MODE-VISUAL-NA": "Visual (não disponível)",
-  "SETTINGS-TT-VERSION": "Selecione a versão mais próxima do que está a utilizar",
-  "SETTINGS-VERSION": "Versão",
-  "SETTINGS-MAPSIZE": "Tamanho do mapa",
-  "SETTINGS-TT-CROP": "Cortar a sua imagem em vez de esticá-la",
-  "SETTINGS-CROP": "Cortar",
-  "SETTINGS-TT-3D": "Tornar o mapa 3D. Mais difícil de construit mais terá 3 vezes mais cor!",
-  "SETTINGS-3D": "Escadeado",
-  "SETTINGS-3D-OFF": "Desligado (2D)",
-  "SETTINGS-3D-OPTIMIZED": "Ligado (optimizado)",
-  "SETTINGS-3D-CLASSIC": "Ligado (classico)",
-  "SETTINGS-TT-UNOBT": "Possibilita que ficheiros map.dat tenham cores inatingível em schematics",
-  "SETTINGS-UNOBT": "Cores inatingíveis",
-  "SETTINGS-TT-BETTERCOL": "Dá-lhe uma melhor precisão de cor",
-  "SETTINGS-BETTERCOL": "Cor melhor",
-  "SETTINGS-TT-DITHER": "Adiciona pixeis aleatórios para dar uma preceção de mais cor",
-  "SETTINGS-DITHER": "Dithering",
-  "SETTINGS-DITHER-NONE": "Nenhuma",
-  "SETTINGS-UNDERBLOCKS": "Adicionar blocos debaixo",
-  "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Sem blocos",
-  "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Blocos debaixo",
-  "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Todos os blocos",
-  "SETTINGS-UNDERBLOCKS-ALLBLOCKSOPT": "Todos os blocos (otimizado)",
-  "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Tudo em Dobro (otimizado)",
-  "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Tudo em Dobro",
-  "SETTINGS-TT-BLOCKTOADD": "Relacionado à opção anterior",
-  "SETTINGS-BLOCKTOADD": "Bloco a adicionar",
-
-  "DOWNLOAD-TT-NBT": "Descarregar o ficheiro nbt",
-  "DOWNLOAD-NBT": "DESCARREGAR",
-  "DOWNLOAD-TT-NBTSPLIT": "Descarregar o nbt dividido em chunks 1x1",
-  "DOWNLOAD-NBTSPLIT": "Descarregar como 1x1 dividido",
-  "DOWNLOAD-TT-MAPDAT": "Descarregar o map.dat dividido em chunks 1x1",
-  "DOWNLOAD-MAPDAT": "DESCARREGAR",
-  "DOWNLOAD-TT-PDN": "Descarregar a palete para uso no Paint.net",
-  "DOWNLOAD-PDN": "Descarregar",
-  "REFRESHMATERIALS-TT": "Refrescar a lista de materiais",
-  "REFRESHMATERIALS": "REFRESCAR MATERIAIS",
-  "DONATEBUTTON-TT": "Ver apoiadores ou doar",
-  "DONATEBUTTON": "AJUDA-ME A PASSAR A FILA À FRENTE",
-
-  "MATERIALSTITLE": "Materias",
+  "TRANSLATION": {
+    "NAME": "Portuguese",
+    "CREDITS": "Traduzido por: Brochacho6"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "Por Favor verifique o ",
+    "PLEASE-READ-2": " antes de fazer perguntas em qualquer lado",
+    "HAVE-YOU-READ": "Ja leste o FAQ",
+    "HELP-IN-ENGLISH": "Note: Ajuda será apenas feita em inglês",
+    "VIDEO-TUTORIAL": "Video tutorial"
+  },
+  "DESCRIPTION": {
+    "1": "Um gerador de schematics de mapart e ficheiros map.dat para minecraft, feito para ser factível para ambos admins de servidores ou jogadores de modo sobrevivência em servidores como ",
+    "2": ", executado no seu Navegador",
+    "3": "Inspirado pelo ",
+    "4": "programa de map art de Redstonehelper",
+    "5": ", com o objetivo de adicionar recursos muito pedidos e remover a necessidade de descarregar o programa",
+    "6": "Sinta-se livre para me enviar uma mensagem no Discord ",
+    "7": " ou Reddit ",
+    "8": ", solicitações de recursos e relatórios de bugs vão no "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Seleção de blocos",
+    "PRESETS": {
+      "TITLE": "Predefenições",
+      "DELETE": "Apagar",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Salvar",
+      "SAVE-PROMPT-ENTER-NAME": "Digite um nome para sua predefinição:",
+      "SHARE": "Partilhar",
+      "SHARE-TT": "Partilha os blocos que você tem atualmente selecionados como um link",
+      "SHARE-WARNING-NONE-SELECTED": "Selecione blocos anted de partilhá-los",
+      "SHARE-LINK": "Partilhe este link para partilhar os blocos atualmente selecionados",
+      "DOWNLOAD": "Descarregar",
+      "DOWNLOAD-TT": "Descarregar a palete para uso no Paint.net",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Selecione blocos antes de descarregar palete",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Aviso, a sua palete tem ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " cores, enquanto o máximo no Paint.net é 96. Algumas cores não estão disponiveis no Paint.net",
+      "IMPORT-ERROR-CORRUPTED": "Link da predefinição está corrupto!",
+      "NONE": "Nada",
+      "EVERYTHING": "Tudo",
+      "CARPETS": "Carpete",
+      "GREYSCALE": null
+    }
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Pré-Visualização do mapa",
+    "BEST-RESOLUTION-TT": "Uma imagem fonte com esta resolução funcionará melhor",
+    "ASPECT-RATIO-MISMATCH-TT": "A imagem não corresponde à proporção do mapa",
+    "SCALE-MINUS-TT": "Tornar a pré-visualização menor",
+    "SCALE-PLUS-TT": "Tornar a pré-visualização maior"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Defenições",
+    "MODE": "Modo",
+    "MODE-TT": "Selecione o modo em que deseja operar",
+    "MODE-VISUAL": "Visual",
+    "MODE-VISUAL-NA": "Visual (não disponível)",
+    "VERSION": "Versão",
+    "VERSION-TT": "Selecione a versão mais próxima do que está a utilizar",
+    "MAP-SIZE": "Tamanho do mapa",
+    "CROP": "Cortar",
+    "CROP-TT": "Cortar a sua imagem em vez de esticá-la",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "Escadeado",
+      "TITLE-TT": "Tornar o mapa 3D. Mais difícil de construit mais terá 3 vezes mais cor!",
+      "OFF": "Desligado (2D)",
+      "CLASSIC": "Ligado (classico)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Adicionar blocos debaixo",
+        "NONE": "Sem blocos",
+        "IMPORTANT": "Blocos debaixo",
+        "ALL": "Todos os blocos",
+        "ALL-OPTIMIZED": "Todos os blocos (otimizado)",
+        "ALL-DOUBLE": "Tudo em Dobro",
+        "ALL-DOUBLE-OPTIMIZED": "Tudo em Dobro (otimizado)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Bloco a adicionar",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Relacionado à opção anterior"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Cores inatingíveis",
+      "UNOBTAINABLE-COLOURS-TT": "Possibilita que ficheiros map.dat tenham cores inatingível em schematics",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Cor melhor",
+    "BETTER-COLOUR-TT": "Dá-lhe uma melhor precisão de cor",
+    "DITHERING": {
+      "TITLE": "Dithering",
+      "TITLE-TT": "Adiciona pixeis aleatórios para dar uma preceção de mais cor",
+      "NONE": "Nenhuma"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null,
+      "BACKGROUND-COLOUR-TT": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Selecione blocos antes de descarregar!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "DESCARREGAR",
+      "DOWNLOAD-TT": "Descarregar o ficheiro nbt",
+      "DOWNLOAD-SPLIT": "Descarregar como 1x1 dividido",
+      "DOWNLOAD-SPLIT-TT": "Descarregar o nbt dividido em chunks 1x1"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "DESCARREGAR",
+      "DOWNLOAD-TT": "Descarregar o map.dat dividido em chunks 1x1"
+    }
+  },
+  "MATERIALS": {
+    "TITLE": "Materias",
+    "BLOCK": "Bloco",
+    "AMOUNT": "Quantidade",
+    "PLACEHOLDER-BLOCK": "Bloco de Supporte",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "REFRESCAR MATERIAIS",
+    "REFRESH-MATERIALS-TT": "Refrescar a lista de materiais"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null
+  },
+  "DONATE": {
+    "TITLE": "AJUDA-ME A PASSAR A FILA À FRENTE",
+    "TITLE-TT": "Ver apoiadores ou doar"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Note: Microsoft Edge não é suportado\\nPor Favor utilize Chrome (preferido) ou Firefox para MapartCraft",
   "NONE": "Nada",
-
-  "EDGEWARNING": "Note: Microsoft Edge não é suportado\\nPor Favor utilize Chrome (preferido) ou Firefox para MapartCraft",
-  "PDNWARNING1": "Aviso, a sua palete tem ",
-  "PDNWARNING2": " cores, enquanto o máximo no Paint.net é 96. Algumas cores não estão disponiveis no Paint.net",
-
-  "HAVEYOUFAQ": "Ja leste o FAQ",
-  "HELPNOTE": "Note: Ajuda será apenas feita em inglês",
-
-  "TIMEREMAINING-SECOND": "segundo",
-  "TIMEREMAINING-SECONDS": "segundos",
-  "TIMEREMAINING": "faltando",
-
-  "SELECTBLOCKSWARNING-DOWNLOAD": "Selecione blocos antes de descarregar!",
-  "SELECTBLOCKSWARNING-SHARE": "Selecione blocos anted de partilhá-los",
-  "SELECTBLOCKSWARNING-PALETTE": "Selecione blocos antes de descarregar palete",
-
-  "BLOCKSELECTIONTITLE": "Seleção de blocos",
-
-  "PRESETS-ENTERNAME": "Digite um nome para sua predefinição:",
-  "PRESETS-CORRUPTED": "Link da predefinição está corrupto!",
-  "PRESETS-SHARELINK": "Partilhe este link para partilhar os blocos atualmente selecionados",
-  "PRESETS-DELETE": "Apagar",
-  "PRESETS-SAVE": "Salvar",
-  "PRESETS-SHARE": "Partilhar",
-  "PRESETS-TT-SHARE": "Partilha os blocos que você tem atualmente selecionados como um link",
-  "PRESETS-PRESET-NONE": "Nada",
-  "PRESETS-PRESET-EVERYTHING": "Tudo",
-  "PRESETS-PRESET-CARPETS": "Carpete",
-  "PRESETS": "Predefenições",
-
-  "MATERIALS-BLOCK": "Bloco",
-  "MATERIALS-AMOUNT": "Quantidade",
-  "MATERIALS-PLACEHOLDERBLOCK": "Bloco de Supporte"
+  "UNUSED": {
+    "SECOND": "segundo",
+    "SECONDS": "segundos",
+    "REMAINING": "faltando",
+    "SETTINGS-3D-OPTIMIZED": "Ligado (optimizado)"
+  }
 }

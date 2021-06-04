@@ -1,106 +1,161 @@
 {
-  "TRANSLATIONCREDITS": "Übersetzung: Prismary, Number1Princess",
-  "TRANSLATIONNAME": "German",
-
-  "FAQ": "FAQ",
-  "VIDEO_TUTORIAL": "Erklärvideo",
-
-  "DESCRIPTION1": "Ein Generator zum Erstellen von Minecraft Mapart im Schematic und map.dat Format für sowohl Server-Admins, als auch Surival-Spieler auf Servern wie ",
-  "DESCRIPTION2": ", innerhalb Deines Browsers",
-  "DESCRIPTION3": "Inspiriert durch ",
-  "DESCRIPTION4": "Redstonehelpers Mapart-Programm",
-  "DESCRIPTION5": ", mit dem Ziel verschiedenste gewünschte Funktionen zu implementieren und das Programm online verfügbar zu machen.",
-  "DESCRIPTION6": "Bei Rückfragen kannst Du mich auf Discord ",
-  "DESCRIPTION7": " oder Reddit ",
-  "DESCRIPTION8": " erreichen. Bug-Reports und Featurewünsche können auf GitHub eingereicht werden: ",
-
-  "FAQTEXT1": "Bitte lies das ",
-  "FAQTEXT2": " bevor Du mich kontaktierst!",
-
-  "MAPPREVIEWTITLE": "Map-Vorschau",
-  "MAPPREVIEW-TT-BESTRES": "Ein Bild mit dieser Auflösung wird am besten funktionieren",
-  "MAPPREVIEW-TT-DOESNTMATCH": "Das Bild stimmt nicht mit dem Seitenverhältnis der Map überein",
-  "MAPPREVIEW-TT-PREVPLUS": "Vorschau vergrößern",
-  "MAPPREVIEW-TT-PREVMINUS": "Vorschau verkleinern",
-
-  "SETTINGSTITLE": "Einstellungen",
-  "SETTINGS-TT-MODE": "Bitte wähle ein Dateiformat",
-  "SETTINGS-MODE": "Format",
-  "SETTINGS-MODE-VISUAL": "Visuell",
-  "SETTINGS-MODE-VISUAL-NA": "Visuell (nicht verfügbar)",
-  "SETTINGS-TT-VERSION": "Wähle die nächstgelegene Version zu der aus, auf welcher Du spielst.",
-  "SETTINGS-VERSION": "Version",
-  "SETTINGS-MAPSIZE": "Maße",
-  "SETTINGS-TT-CROP": "Schneidet das Bild zurecht, statt es zu verzerren",
-  "SETTINGS-CROP": "Zuschneiden",
-  "SETTINGS-TT-3D": "Exportiert eine treppenartige, dreidimensionale Struktur. Schwieriger zu bauen, ermöglicht jedoch das Dreifache an Farben!",
-  "SETTINGS-3D": "Staircasing",
-  "SETTINGS-3D-OFF": "Aus (2D)",
-  "SETTINGS-3D-OPTIMIZED": "An (optimiert)",
-  "SETTINGS-3D-CLASSIC": "An (klassisch)",
-  "SETTINGS-TT-UNOBT": "Aktiviert map.dat exklusive Farben, die in Schematics nicht verfügbar sind",
-  "SETTINGS-UNOBT": "Nicht erhältliche Farben",
-  "SETTINGS-TT-BETTERCOL": "Aktiviert eine optimierte Farbgenauigkeit",
-  "SETTINGS-BETTERCOL": "Verbesserte Farben",
-  "SETTINGS-TT-DITHER": "Schafft die Illusion von mehr Farben durch das Hinzufügen scheinbar zufälliger Pixel",
-  "SETTINGS-DITHER": "Dithering",
-  "SETTINGS-DITHER-NONE": "Aus",
-  "SETTINGS-UNDERBLOCKS": "Platziere Blöcke unter",
-  "SETTINGS-UNDERBLOCKS-NOBLOCKS": "Keine Blöcke",
-  "SETTINGS-UNDERBLOCKS-IMPBLOCKS": "Wichtige Blöcke",
-  "SETTINGS-UNDERBLOCKS-ALLBLOCKS": "Alle Blöcke",
-  "SETTINGS-UNDERBLOCKS-ALLBLOCKSOPT": "Alle Blöcke (optimiert)",
-  "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKSOPT": "Alle Blöcke, doppelt (optimiert)",
-  "SETTINGS-UNDERBLOCKS-DOUBLEBLOCKS": "Alle Blöcke, doppelt",
-  "SETTINGS-TT-BLOCKTOADD": "Siehe vorherige Option",
-  "SETTINGS-BLOCKTOADD": "Platzierter Block",
-
-  "DOWNLOAD-TT-NBT": "Die nbt-Datei herunterladen",
-  "DOWNLOAD-NBT": "DOWNLOAD",
-  "DOWNLOAD-TT-NBTSPLIT": "Die nbt-Datei getrennt in 1x1 Teile herunterladen",
-  "DOWNLOAD-NBTSPLIT": "DOWNLOAD ALS 1x1 TEILE",
-  "DOWNLOAD-TT-MAPDAT": "Die map.dat-Datei getrennt in 1x1 Teile herunterladen",
-  "DOWNLOAD-MAPDAT": "DOWNLOAD",
-  "DOWNLOAD-TT-PDN": "Die Farbpalette für die Nutzung in paint.net herunterladen",
-  "DOWNLOAD-PDN": "Download",
-  "REFRESHMATERIALS-TT": "Materialliste aktualisieren",
-  "REFRESHMATERIALS": "MATERIALIEN AKTUALISIEREN",
-  "DONATEBUTTON-TT": "Spendenlink und Liste aller Unterstützer",
-  "DONATEBUTTON": "KLEINE SPENDE BITTE",
-
-  "MATERIALSTITLE": "Materialien",
+  "TRANSLATION": {
+    "NAME": "German",
+    "CREDITS": "Übersetzung: Prismary, Number1Princess"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "Bitte lies das ",
+    "PLEASE-READ-2": " bevor Du mich kontaktierst!",
+    "HAVE-YOU-READ": "Hast Du das FAQ gelesen?",
+    "HELP-IN-ENGLISH": "Hinweis: Hilfe kann ausschließlich auf Englisch bereitgestellt werden",
+    "VIDEO-TUTORIAL": "Erklärvideo"
+  },
+  "DESCRIPTION": {
+    "1": "Ein Generator zum Erstellen von Minecraft Mapart im Schematic und map.dat Format für sowohl Server-Admins, als auch Surival-Spieler auf Servern wie ",
+    "2": ", innerhalb Deines Browsers",
+    "3": "Inspiriert durch ",
+    "4": "Redstonehelpers Mapart-Programm",
+    "5": ", mit dem Ziel verschiedenste gewünschte Funktionen zu implementieren und das Programm online verfügbar zu machen.",
+    "6": "Bei Rückfragen kannst Du mich auf Discord ",
+    "7": " oder Reddit ",
+    "8": " erreichen. Bug-Reports und Featurewünsche können auf GitHub eingereicht werden: "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Blockauswahl",
+    "PRESETS": {
+      "TITLE": "Vorlagen",
+      "DELETE": "Entfernen",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Speichern",
+      "SAVE-PROMPT-ENTER-NAME": "Gib einen Namen für Deine Vorlage ein:",
+      "SHARE": "Teilen",
+      "SHARE-TT": "Stellt die aktuelle Auswahl an Blöcken als Link bereit",
+      "SHARE-WARNING-NONE-SELECTED": "Wähle vor dem Teilen Blöcke aus!",
+      "SHARE-LINK": "Teile diesen Link, um deine aktuelle Auswahl an Blöcken zu teilen",
+      "DOWNLOAD": "Download",
+      "DOWNLOAD-TT": "Die Farbpalette für die Nutzung in paint.net herunterladen",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Wähle vor dem Herunterladen der Palette Blöcke aus!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Achtung, Deine Palette hat ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " Farben, während das Maximum in paint.net bei 96 liegt. Einige Farben werden in paint.net nicht verfügbar sein",
+      "IMPORT-ERROR-CORRUPTED": "Der Link zur Vorlage ist beschädigt!",
+      "NONE": "Nichts",
+      "EVERYTHING": "Alles",
+      "CARPETS": "Teppiche",
+      "GREYSCALE": null
+    }
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Map-Vorschau",
+    "BEST-RESOLUTION-TT": "Ein Bild mit dieser Auflösung wird am besten funktionieren",
+    "ASPECT-RATIO-MISMATCH-TT": "Das Bild stimmt nicht mit dem Seitenverhältnis der Map überein",
+    "SCALE-MINUS-TT": "Vorschau verkleinern",
+    "SCALE-PLUS-TT": "Vorschau vergrößern"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Einstellungen",
+    "MODE": "Format",
+    "MODE-TT": "Bitte wähle ein Dateiformat",
+    "MODE-VISUAL": "Visuell",
+    "MODE-VISUAL-NA": "Visuell (nicht verfügbar)",
+    "VERSION": "Version",
+    "VERSION-TT": "Wähle die nächstgelegene Version zu der aus, auf welcher Du spielst.",
+    "MAP-SIZE": "Maße",
+    "CROP": "Zuschneiden",
+    "CROP-TT": "Schneidet das Bild zurecht, statt es zu verzerren",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "Staircasing",
+      "TITLE-TT": "Exportiert eine treppenartige, dreidimensionale Struktur. Schwieriger zu bauen, ermöglicht jedoch das Dreifache an Farben!",
+      "OFF": "Aus (2D)",
+      "CLASSIC": "An (klassisch)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Platziere Blöcke unter",
+        "NONE": "Keine Blöcke",
+        "IMPORTANT": "Wichtige Blöcke",
+        "ALL": "Alle Blöcke",
+        "ALL-OPTIMIZED": "Alle Blöcke (optimiert)",
+        "ALL-DOUBLE": "Alle Blöcke, doppelt",
+        "ALL-DOUBLE-OPTIMIZED": "Alle Blöcke, doppelt (optimiert)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Platzierter Block",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Siehe vorherige Option"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Nicht erhältliche Farben",
+      "UNOBTAINABLE-COLOURS-TT": "Aktiviert map.dat exklusive Farben, die in Schematics nicht verfügbar sind",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Verbesserte Farben",
+    "BETTER-COLOUR-TT": "Aktiviert eine optimierte Farbgenauigkeit",
+    "DITHERING": {
+      "TITLE": "Dithering",
+      "TITLE-TT": "Schafft die Illusion von mehr Farben durch das Hinzufügen scheinbar zufälliger Pixel",
+      "NONE": "Aus"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null,
+      "BACKGROUND-COLOUR-TT": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Wähle vor dem Herunterladen Blöcke aus!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD",
+      "DOWNLOAD-TT": "Die nbt-Datei herunterladen",
+      "DOWNLOAD-SPLIT": "DOWNLOAD ALS 1x1 TEILE",
+      "DOWNLOAD-SPLIT-TT": "Die nbt-Datei getrennt in 1x1 Teile herunterladen"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD",
+      "DOWNLOAD-TT": "Die map.dat-Datei getrennt in 1x1 Teile herunterladen"
+    }
+  },
+  "MATERIALS": {
+    "TITLE": "Materialien",
+    "BLOCK": "Block",
+    "AMOUNT": "Anzahl",
+    "PLACEHOLDER-BLOCK": "Platzhalter-Block",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "MATERIALIEN AKTUALISIEREN",
+    "REFRESH-MATERIALS-TT": "Materialliste aktualisieren"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null
+  },
+  "DONATE": {
+    "TITLE": "KLEINE SPENDE BITTE",
+    "TITLE-TT": "Spendenlink und Liste aller Unterstützer"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Hinweis: Microsoft Edge wird nicht unterstützt.\\nBitte verwende Google Chrome (bevorzugt) oder Mozilla Firefox für MapartCraft",
   "NONE": "None",
-
-  "EDGEWARNING": "Hinweis: Microsoft Edge wird nicht unterstützt.\\nBitte verwende Google Chrome (bevorzugt) oder Mozilla Firefox für MapartCraft",
-  "PDNWARNING1": "Achtung, Deine Palette hat ",
-  "PDNWARNING2": " Farben, während das Maximum in paint.net bei 96 liegt. Einige Farben werden in paint.net nicht verfügbar sein",
-
-  "HAVEYOUFAQ": "Hast Du das FAQ gelesen?",
-  "HELPNOTE": "Hinweis: Hilfe kann ausschließlich auf Englisch bereitgestellt werden",
-
-  "TIMEREMAINING-SECOND": "Sekunde",
-  "TIMEREMAINING-SECONDS": "Sekunden",
-  "TIMEREMAINING": "verbleibend",
-
-  "SELECTBLOCKSWARNING-DOWNLOAD": "Wähle vor dem Herunterladen Blöcke aus!",
-  "SELECTBLOCKSWARNING-SHARE": "Wähle vor dem Teilen Blöcke aus!",
-  "SELECTBLOCKSWARNING-PALETTE": "Wähle vor dem Herunterladen der Palette Blöcke aus!",
-
-  "BLOCKSELECTIONTITLE": "Blockauswahl",
-
-  "PRESETS-ENTERNAME": "Gib einen Namen für Deine Vorlage ein:",
-  "PRESETS-CORRUPTED": "Der Link zur Vorlage ist beschädigt!",
-  "PRESETS-SHARELINK": "Teile diesen Link, um deine aktuelle Auswahl an Blöcken zu teilen",
-  "PRESETS-DELETE": "Entfernen",
-  "PRESETS-SAVE": "Speichern",
-  "PRESETS-SHARE": "Teilen",
-  "PRESETS-TT-SHARE": "Stellt die aktuelle Auswahl an Blöcken als Link bereit",
-  "PRESETS-PRESET-NONE": "Nichts",
-  "PRESETS-PRESET-EVERYTHING": "Alles",
-  "PRESETS-PRESET-CARPETS": "Teppiche",
-  "PRESETS": "Vorlagen",
-
-  "MATERIALS-BLOCK": "Block",
-  "MATERIALS-AMOUNT": "Anzahl",
-  "MATERIALS-PLACEHOLDERBLOCK": "Platzhalter-Block"
+  "UNUSED": {
+    "SECOND": "Sekunde",
+    "SECONDS": "Sekunden",
+    "REMAINING": "verbleibend",
+    "SETTINGS-3D-OPTIMIZED": "An (optimiert)"
+  }
 }
