@@ -12,7 +12,6 @@
 - CLI
 
 # Maybe
-- Add unobtainable colours to PDN palette if mapdat mode and unobtainable selected
 - Flammable parameter glass layer
 - 2.5D maps (jkascpkmc's Fox for inspo)
 - Linear / none interpolation option for small uploads if easy

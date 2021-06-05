@@ -6,12 +6,21 @@ Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapart
 
 ## Changes
 
+### Building
+
 - Remove the need for `render_html.py`: `npm run build` creates the final product
 - Remove the need for `ImageMagick` / `create_img.bat`
 - Remove the need for `create_css.py`: all textures are in one png that correspond in x and y with `coloursJSON.json`
+
+### Internal
+
+- Split the monolithic main js file into multiple smaller components
 - All locales for the website are managed via React Router instead of building separate pages; a .htaccess template is provided for Apache
+- Rearranged locale JSONs
+
+### For Users
+
 - Trim supported versions down: eg drop 1.12, 1.12.1 in favour of just 1.12.2...
-- Tweaked locale JSONs to not contain duplicate values
 - Added 4th colour to colour boxes in block selection pane when mapdat option and unobtainable box selected
 - Original map preview had to finish its current rendering before re-rendering if an option changed mid render; now the map rendering worker is immediately terminated and relaunched if an option changes mid render to save time
 - Remove 'seconds remaining' from progress bar as it was inaccurate, and unnecessary with percentage shown also
@@ -40,7 +49,3 @@ The default build settings assume the site is being hosted at https://YOUR_SITE_
 - `homepage` in `package.json`
 - `basename` in the Router in `src/app.js`
 - The `RewriteRule` in `buildSources/apache/.htaccess` if using Apache
-
-## Additional Credits
-
-- Thanks to [sjmulder](https://github.com/sjmulder) for the [NBT library](https://github.com/sjmulder/nbt-js); a good starting point
