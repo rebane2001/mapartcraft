@@ -1,9 +1,13 @@
 import React, { Component, createRef } from "react";
 
 import coloursJSON from "./coloursJSON.json";
-import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
 import MapCanvasWorker from "./workers/mapCanvas.jsworker"; // FINALLY got this to work; .js gets imported as code, anything else as URL
+
+import DitherMethods from "./json/ditherMethods.json";
+import MapModes from "./json/mapModes.json";
+import StaircaseModes from "./json/staircaseModes.json";
+import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
 import IMG_Plus from "../../images/plus.png";
 import IMG_Minus from "../../images/minus.png";
@@ -214,6 +218,9 @@ class MapPreview extends Component {
       head: "PIXELS",
       body: {
         coloursJSON: coloursJSON,
+        MapModes: MapModes,
+        StaircaseModes: StaircaseModes,
+        WhereSupportBlocksModes: WhereSupportBlocksModes,
         DitherMethods: DitherMethods,
         canvasImageData: canvasImageData,
         selectedBlocks: selectedBlocks,

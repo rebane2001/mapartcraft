@@ -7,7 +7,12 @@ import MapSettings from "./mapSettings";
 import Materials from "./materials";
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
-import DitherMethods from "./ditherMethods.json";
+
+import DitherMethods from "./json/ditherMethods.json";
+import MapModes from "./json/mapModes.json";
+import StaircaseModes from "./json/staircaseModes.json";
+import SupportedVersions from "./json/supportedVersions.json";
+import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
 import IMG_Upload from "../../images/upload.png";
 
@@ -16,14 +21,14 @@ import "./mapartController.css";
 class MapartController extends Component {
   state = {
     selectedBlocks: {},
-    optionValue_version: null,
-    optionValue_modeNBTOrMapdat: "NBT",
+    optionValue_version: Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1], // default to the latest version supported
+    optionValue_modeNBTOrMapdat: MapModes.SCHEMATIC_NBT.uniqueId,
     optionValue_mapSize_x: 1,
     optionValue_mapSize_y: 1,
     optionValue_cropImage: true,
     optionValue_showGridOverlay: false,
-    optionValue_staircasing: "optimized",
-    optionValue_whereSupportBlocks: "AllOptimized",
+    optionValue_staircasing: StaircaseModes.CLASSIC.uniqueId,
+    optionValue_whereSupportBlocks: WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId,
     optionValue_supportBlock: "cobblestone",
     optionValue_unobtainable: true,
     optionValue_transparency: true,
@@ -47,24 +52,17 @@ class MapartController extends Component {
     mapPreviewWorker_inProgress: false,
   };
 
-  supportedVersions = [
-    { MCVersion: "1.12.2", NBTVersion: 1343 },
-    { MCVersion: "1.13.2", NBTVersion: 1631 },
-    { MCVersion: "1.14.4", NBTVersion: 1976 },
-    { MCVersion: "1.15.2", NBTVersion: 2230 },
-    { MCVersion: "1.16.5", NBTVersion: 2586 },
-  ];
-
   constructor(props) {
     super(props);
     this.state.presets = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(defaultPresets)));
     Object.keys(coloursJSON).forEach((key) => (this.state.selectedBlocks[key] = "-1"));
-    const cookieMCVersion = CookieManager.touchCookie("mcversion", this.supportedVersions[0].MCVersion);
-    if (this.supportedVersions.find((supportedVersion) => supportedVersion.MCVersion === cookieMCVersion)) {
-      this.state.optionValue_version = cookieMCVersion;
-    } else {
-      this.state.optionValue_version = this.supportedVersions[0].MCVersion;
+
+    const cookieMCVersion = CookieManager.touchCookie("mcversion", Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1].MCVersion);
+    const supportedVersionFound = Object.values(SupportedVersions).find((supportedVersion) => supportedVersion.MCVersion === cookieMCVersion);
+    if (supportedVersionFound !== undefined) {
+      this.state.optionValue_version = supportedVersionFound;
     }
+
     const URLParams = new URL(window.location).searchParams;
     if (URLParams.has("preset")) {
       const decodedPresetBlocks = this.URLToPreset(URLParams.get("preset"));
@@ -157,7 +155,7 @@ class MapartController extends Component {
       if (
         colourSetId in coloursJSON &&
         blockId in coloursJSON[colourSetId]["blocks"] &&
-        Object.keys(coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]).includes(optionValue_version)
+        Object.keys(coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]).includes(optionValue_version.MCVersion)
       ) {
         selectedBlocks[colourSetId] = blockId;
       }
@@ -168,21 +166,22 @@ class MapartController extends Component {
   };
 
   onOptionChange_modeNBTOrMapdat = (e) => {
-    const mode = e.target.value;
+    const mode = parseInt(e.target.value);
     this.setState({ optionValue_modeNBTOrMapdat: mode });
   };
 
   onOptionChange_version = (e) => {
-    const version = e.target.value;
-    CookieManager.setCookie("mcversion", version);
+    const mcVersion = e.target.value;
+    CookieManager.setCookie("mcversion", mcVersion);
+    const supportedVersionFound = Object.values(SupportedVersions).find((supportedVersion) => supportedVersion.MCVersion === mcVersion)
     this.setState((currentState) => {
       let selectedBlocks = { ...currentState.selectedBlocks };
       Object.keys(coloursJSON).forEach((key) => {
-        if (selectedBlocks[key] !== "-1" && !Object.keys(coloursJSON[key]["blocks"][selectedBlocks[key]]["validVersions"]).includes(version)) {
+        if (selectedBlocks[key] !== "-1" && !Object.keys(coloursJSON[key]["blocks"][selectedBlocks[key]]["validVersions"]).includes(mcVersion)) {
           selectedBlocks[key] = "-1";
         }
       });
-      return { optionValue_version: version, selectedBlocks };
+      return { optionValue_version: supportedVersionFound, selectedBlocks };
     });
   };
 
@@ -214,7 +213,7 @@ class MapartController extends Component {
   };
 
   onOptionChange_staircasing = (e) => {
-    const staircasingValue = e.target.value;
+    const staircasingValue = parseInt(e.target.value);
     this.setState({ optionValue_staircasing: staircasingValue });
   };
 
@@ -249,7 +248,7 @@ class MapartController extends Component {
   };
 
   onOptionChange_WhereSupportBlocks = (e) => {
-    const newValue = e.target.value;
+    const newValue = parseInt(e.target.value);
     this.setState({ optionValue_whereSupportBlocks: newValue });
   };
 
@@ -322,14 +321,16 @@ class MapartController extends Component {
       "; paint.net Palette File\n; Generated by MapartCraft\n; Link to preset: " +
       this.presetToURL() +
       "\n; staircasing: " +
-      (optionValue_staircasing !== "off" ? "enabled" : "disabled") +
+      (optionValue_staircasing !== StaircaseModes.OFF.uniqueId ? "enabled" : "disabled") +
       "\n; unobtainable colours: " +
-      (optionValue_staircasing !== "off" && optionValue_modeNBTOrMapdat === "Mapdat" && optionValue_unobtainable ? "enabled" : "disabled") +
+      (optionValue_staircasing !== StaircaseModes.OFF.uniqueId && optionValue_modeNBTOrMapdat === MapModes.MAPDAT.uniqueId && optionValue_unobtainable
+        ? "enabled"
+        : "disabled") +
       "\n";
     let numberOfColoursExported = 0;
     let toneKeysToExport;
-    if (optionValue_staircasing !== "off") {
-      if (optionValue_modeNBTOrMapdat === "Mapdat" && optionValue_unobtainable) {
+    if (optionValue_staircasing !== StaircaseModes.OFF.uniqueId) {
+      if (optionValue_modeNBTOrMapdat === MapModes.MAPDAT.uniqueId && optionValue_unobtainable) {
         toneKeysToExport = ["dark", "normal", "light", "unobtainable"];
       } else {
         toneKeysToExport = ["dark", "normal", "light"];
@@ -499,7 +500,7 @@ class MapartController extends Component {
         continue;
       }
       const decodedBlockId = decodedBlock[0].toString();
-      if (Object.keys(coloursJSON[decodedColourSetId]["blocks"][decodedBlockId]["validVersions"]).includes(optionValue_version)) {
+      if (Object.keys(coloursJSON[decodedColourSetId]["blocks"][decodedBlockId]["validVersions"]).includes(optionValue_version.MCVersion)) {
         selectedBlocks[decodedColourSetId] = decodedBlockId;
       }
     }
@@ -515,7 +516,6 @@ class MapartController extends Component {
   };
 
   render() {
-    const { supportedVersions } = this;
     const { getLocaleString } = this.props;
     const {
       selectedBlocks,
@@ -594,7 +594,6 @@ class MapartController extends Component {
           />
           <MapSettings
             getLocaleString={getLocaleString}
-            supportedVersions={supportedVersions}
             optionValue_version={optionValue_version}
             onOptionChange_version={this.onOptionChange_version}
             optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
@@ -641,7 +640,7 @@ class MapartController extends Component {
             downloadBlobFile={this.downloadBlobFile}
             onViewOnlineClicked={this.onViewOnlineClicked}
           />
-          {optionValue_modeNBTOrMapdat === "NBT" ? (
+          {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
             <Materials
               getLocaleString={getLocaleString}
               optionValue_version={optionValue_version}

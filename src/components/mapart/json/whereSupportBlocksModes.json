@@ -1,0 +1,18 @@
+{
+  "NONE": {
+    "uniqueId": 0,
+    "localeKey": "MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/NONE"
+  },
+  "IMPORTANT": {
+    "uniqueId": 1,
+    "localeKey": "MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/IMPORTANT"
+  },
+  "ALL_OPTIMIZED": {
+    "uniqueId": 2,
+    "localeKey": "MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/ALL-OPTIMIZED"
+  },
+  "ALL_DOUBLE_OPTIMIZED": {
+    "uniqueId": 3,
+    "localeKey": "MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/ALL-DOUBLE-OPTIMIZED"
+  }
+}

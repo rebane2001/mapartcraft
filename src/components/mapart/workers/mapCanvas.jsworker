@@ -1,4 +1,7 @@
 var coloursJSON;
+var MapModes;
+var StaircaseModes;
+var WhereSupportBlocksModes;
 var DitherMethods;
 var canvasImageData;
 var selectedBlocks;
@@ -144,7 +147,7 @@ function getColourSetsToUse() {
   });
 
   // now get appropriate shades
-  if (optionValue_staircasing === "off") {
+  if (optionValue_staircasing === StaircaseModes.OFF.uniqueId) {
     colourSetIdsToUse.forEach((colourSetId) => {
       colourSetsToUse.push({
         colourSetId: colourSetId,
@@ -153,7 +156,7 @@ function getColourSetsToUse() {
         },
       });
     });
-  } else if (optionValue_modeNBTOrMapdat === "NBT" || !optionValue_unobtainable) {
+  } else if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId || !optionValue_unobtainable) {
     colourSetIdsToUse.forEach((colourSetId) => {
       colourSetsToUse.push({
         colourSetId: colourSetId,
@@ -200,7 +203,7 @@ function getMapartImageDataAndMaterials() {
     return;
   }
 
-  if (optionValue_modeNBTOrMapdat === "NBT") {
+  if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
     maps.forEach((row) =>
       row.forEach((map) => {
         map.supportBlockCount = 128; // initialise with noobline count
@@ -248,7 +251,7 @@ function getMapartImageDataAndMaterials() {
     }
 
     let closestColourSetIdAndTone;
-    if (optionValue_modeNBTOrMapdat === "Mapdat" && optionValue_transparency && canvasImageData.data[indexA] < optionValue_transparencyTolerance) {
+    if (optionValue_modeNBTOrMapdat === MapModes.MAPDAT.uniqueId && optionValue_transparency && canvasImageData.data[indexA] < optionValue_transparencyTolerance) {
       canvasImageData.data[indexR] = 0;
       canvasImageData.data[indexG] = 0;
       canvasImageData.data[indexB] = 0;
@@ -391,18 +394,18 @@ function getMapartImageDataAndMaterials() {
       }
 
       // support-block count: mapdat can skip this
-      if (optionValue_modeNBTOrMapdat === "NBT") {
+      if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
         switch (optionValue_whereSupportBlocks) {
-          case "None": {
+          case WhereSupportBlocksModes.NONE.uniqueId: {
             break;
           }
-          case "Important": {
+          case WhereSupportBlocksModes.IMPORTANT.uniqueId: {
             if (coloursJSON[closestColourSetIdAndTone.colourSetId].blocks[selectedBlocks[closestColourSetIdAndTone.colourSetId]].supportBlockMandatory) {
               maps[whichMap_y][whichMap_x].supportBlockCount += 1;
             }
             break;
           }
-          case "AllOptimized": {
+          case WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId: {
             // for AllOptimized and AllDoubleOptimized we need to know the block south's y-position / does it need support to be able to determine
             // whether a block needs support underneath; hence we do add support blocks '1-cycle behind' in the for-loop
             switch (individualMap_y) {
@@ -501,7 +504,7 @@ function getMapartImageDataAndMaterials() {
             }
             break;
           }
-          case "AllDoubleOptimized": {
+          case WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId: {
             switch (individualMap_y) {
               case 0: {
                 // noobline
@@ -546,6 +549,9 @@ function getMapartImageDataAndMaterials() {
 
 onmessage = (e) => {
   coloursJSON = e.data.body.coloursJSON;
+  MapModes = e.data.body.MapModes;
+  StaircaseModes = e.data.body.StaircaseModes;
+  WhereSupportBlocksModes = e.data.body.WhereSupportBlocksModes;
   DitherMethods = e.data.body.DitherMethods;
   canvasImageData = e.data.body.canvasImageData;
   selectedBlocks = e.data.body.selectedBlocks;

@@ -3,9 +3,14 @@ import { gzip } from "pako";
 
 import AutoCompleteInputBlockToAdd from "./autoCompleteInputBlockToAdd/autoCompleteInputBlockToAdd";
 
-import DitherMethods from "./ditherMethods.json";
 import Tooltip from "../tooltip";
 import coloursJSON from "./coloursJSON.json";
+
+import DitherMethods from "./json/ditherMethods.json";
+import MapModes from "./json/mapModes.json";
+import StaircaseModes from "./json/staircaseModes.json";
+import SupportedVersions from "./json/supportedVersions.json";
+import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
 import NBTWorker from "./workers/nbt.jsworker";
 
@@ -28,7 +33,6 @@ class MapSettings extends Component {
   getNBT_base = (workerHeader) => {
     const {
       getLocaleString,
-      supportedVersions,
       optionValue_version,
       optionValue_staircasing,
       optionValue_whereSupportBlocks,
@@ -91,7 +95,8 @@ class MapSettings extends Component {
       head: workerHeader,
       body: {
         coloursJSON: coloursJSON,
-        supportedVersions: supportedVersions,
+        StaircaseModes: StaircaseModes,
+        WhereSupportBlocksModes: WhereSupportBlocksModes,
         optionValue_version: optionValue_version,
         optionValue_staircasing: optionValue_staircasing,
         optionValue_whereSupportBlocks: optionValue_whereSupportBlocks,
@@ -134,7 +139,6 @@ class MapSettings extends Component {
     const { buttonWidth_NBT_Joined, buttonWidth_NBT_Split, buttonWidth_Mapdat_Split } = this.state;
     const {
       getLocaleString,
-      supportedVersions,
       optionValue_version,
       onOptionChange_version,
       optionValue_mapSize_x,
@@ -187,8 +191,11 @@ class MapSettings extends Component {
           </b>
         </Tooltip>{" "}
         <select onChange={onOptionChange_modeNBTOrMapdat} value={optionValue_modeNBTOrMapdat}>
-          <option value="NBT">Schematic (NBT)</option>
-          <option value="Mapdat">Datafile (map.dat)</option>
+          {Object.values(MapModes).map((mapMode) => (
+            <option key={mapMode.uniqueId} value={mapMode.uniqueId}>
+              {mapMode.name}
+            </option>
+          ))}
         </select>
         <br />
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/VERSION-TT")}>
@@ -197,9 +204,9 @@ class MapSettings extends Component {
             {":"}
           </b>
         </Tooltip>{" "}
-        <select value={optionValue_version} onChange={onOptionChange_version}>
-          {supportedVersions.map((supportedVersion) => (
-            <option key={supportedVersion.MCVersion}>{supportedVersion.MCVersion}</option>
+        <select value={optionValue_version.MCVersion} onChange={onOptionChange_version}>
+          {Object.values(SupportedVersions).map((supportedVersion) => (
+            <option key={supportedVersion.MCVersion} value={supportedVersion.MCVersion}>{supportedVersion.MCVersion}</option>
           ))}
         </select>
         <br />
@@ -234,22 +241,25 @@ class MapSettings extends Component {
           </b>
         </Tooltip>{" "}
         <select onChange={onOptionChange_staircasing} value={optionValue_staircasing}>
-          <option value="off">{getLocaleString("MAP-SETTINGS/3D/OFF")}</option>
-          <option value="classic">{getLocaleString("MAP-SETTINGS/3D/CLASSIC")}</option>
-          <option value="optimized">{getLocaleString("MAP-SETTINGS/3D/VALLEY")}</option>
+          {Object.values(StaircaseModes).map((staircaseMode) => (
+            <option key={staircaseMode.uniqueId} value={staircaseMode.uniqueId}>
+              {getLocaleString(staircaseMode.localeKey)}
+            </option>
+          ))}
         </select>
         <br />
-        {optionValue_modeNBTOrMapdat === "NBT" ? (
+        {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
           <span>
             <b>
               {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/TITLE")}
               {": "}
             </b>
             <select value={optionValue_whereSupportBlocks} onChange={onOptionChange_WhereSupportBlocks}>
-              <option value="None">{getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/NONE")}</option>
-              <option value="Important">{getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/IMPORTANT")}</option>
-              <option value="AllOptimized">{getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/ALL-OPTIMIZED")}</option>
-              <option value="AllDoubleOptimized">{getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/ALL-DOUBLE-OPTIMIZED")}</option>
+              {Object.values(WhereSupportBlocksModes).map((whereSupportBlocksMode) => (
+                <option key={whereSupportBlocksMode.uniqueId} value={whereSupportBlocksMode.uniqueId}>
+                  {getLocaleString(whereSupportBlocksMode.localeKey)}
+                </option>
+              ))}
             </select>
             <br />
             <b>
@@ -464,7 +474,7 @@ class MapSettings extends Component {
           </table>
         </details>
         <br />
-        {optionValue_modeNBTOrMapdat === "NBT" ? (
+        {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
           <span>
             <Tooltip tooltipText={getLocaleString("VIEW-ONLINE/TITLE-TT")}>
               <span className="greenButton_old" onClick={onViewOnlineClicked}>

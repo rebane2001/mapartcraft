@@ -27,10 +27,10 @@ class AutoCompleteInputBlockToAdd extends Component {
 
     for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
       for (const [blockId, block] of Object.entries(colourSet.blocks)) {
-        if (!(optionValue_version in block.validVersions)) {
+        if (!(optionValue_version.MCVersion in block.validVersions)) {
           continue;
         }
-        let blockNBTData = block.validVersions[optionValue_version];
+        let blockNBTData = block.validVersions[optionValue_version.MCVersion];
         if (typeof blockNBTData === "string") {
           // this is of the form eg "&1.12.2"
           blockNBTData = block.validVersions[blockNBTData.slice(1)];

@@ -1,6 +1,7 @@
 // begin variables passed in onmessage
 var coloursJSON;
-var supportedVersions;
+var StaircaseModes;
+var WhereSupportBlocksModes;
 var optionValue_version;
 var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
@@ -305,7 +306,7 @@ class Map_NBT {
         };
         // we expect the support block to be something non-exotic with no properties eg netherrack
       } else {
-        let blockNBTData = coloursJSON[colourSetId].blocks[currentSelectedBlocks[colourSetId]].validVersions[optionValue_version];
+        let blockNBTData = coloursJSON[colourSetId].blocks[currentSelectedBlocks[colourSetId]].validVersions[optionValue_version.MCVersion];
         if (typeof blockNBTData === "string") {
           // this is of the form eg "&1.12.2"
           blockNBTData = coloursJSON[colourSetId].blocks[currentSelectedBlocks[colourSetId]].validVersions[blockNBTData.slice(1)];
@@ -329,7 +330,7 @@ class Map_NBT {
   }
 
   setNBT_json_DataVersion() {
-    this.NBT_json.value.DataVersion.value = supportedVersions.find((version) => version.MCVersion === optionValue_version).NBTVersion;
+    this.NBT_json.value.DataVersion.value = optionValue_version.NBTVersion;
   }
 
   returnPhysicalBlock(x, y, z, colourSetId) {
@@ -352,19 +353,19 @@ class Map_NBT {
   getPhysicalLayout_individualColumn(columnNumber) {
     let physicalColumn = [];
     let currentHeight;
-    if (optionValue_staircasing === "off") {
+    if (optionValue_staircasing === StaircaseModes.OFF.uniqueId) {
       // start at y = 0 or 1 or 2 for flat maps depending on optionValue_whereSupportBlocks since we don't normalise the columns to a common base later
       switch (optionValue_whereSupportBlocks) {
-        case "None": {
+        case WhereSupportBlocksModes.NONE.uniqueId: {
           currentHeight = 0;
           break;
         }
-        case "Important":
-        case "AllOptimized": {
+        case WhereSupportBlocksModes.IMPORTANT.uniqueId:
+        case WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId: {
           currentHeight = 1;
           break;
         }
-        case "AllDoubleOptimized": {
+        case WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId: {
           currentHeight = 2;
           break;
         }
@@ -406,16 +407,16 @@ class Map_NBT {
       // the + 1 is because the noobline offsets everything South one block
 
       switch (optionValue_whereSupportBlocks) {
-        case "None": {
+        case WhereSupportBlocksModes.NONE.uniqueId: {
           break;
         }
-        case "Important": {
+        case WhereSupportBlocksModes.IMPORTANT.uniqueId: {
           if (coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) {
             physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
           }
           break;
         }
-        case "AllOptimized": {
+        case WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId: {
           switch (rowNumber) {
             case 0: {
               if (
@@ -507,7 +508,7 @@ class Map_NBT {
           }
           break;
         }
-        case "AllDoubleOptimized": {
+        case WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId: {
           switch (rowNumber) {
             case 0: {
               physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
@@ -543,7 +544,7 @@ class Map_NBT {
 
     // we now make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
     // Don't do this for flat maps
-    if (optionValue_staircasing !== "off") {
+    if (optionValue_staircasing !== StaircaseModes.OFF.uniqueId) {
       const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
       physicalColumn.forEach((block) => {
         block.pos.value.value[1] -= columnMinimumY;
@@ -584,7 +585,7 @@ class Map_Mapdat {
   constructor(map) {
     this.coloursLayout = map.coloursLayout;
 
-    const dataVersion = supportedVersions.find((version) => version.MCVersion === optionValue_version).NBTVersion;
+    const dataVersion = optionValue_version.NBTVersion;
 
     this.NBT_json = {
       name: "",
@@ -693,7 +694,8 @@ function mergeMaps() {
 
 onmessage = (e) => {
   coloursJSON = e.data.body.coloursJSON;
-  supportedVersions = e.data.body.supportedVersions;
+  StaircaseModes = e.data.body.StaircaseModes;
+  WhereSupportBlocksModes = e.data.body.WhereSupportBlocksModes;
   optionValue_version = e.data.body.optionValue_version;
   optionValue_staircasing = e.data.body.optionValue_staircasing;
   optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;

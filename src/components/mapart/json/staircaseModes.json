@@ -1,0 +1,14 @@
+{
+  "OFF": {
+    "uniqueId": 0,
+    "localeKey": "MAP-SETTINGS/3D/OFF"
+  },
+  "CLASSIC": {
+    "uniqueId": 1,
+    "localeKey": "MAP-SETTINGS/3D/CLASSIC"
+  },
+  "VALLEY": {
+    "uniqueId": 2,
+    "localeKey": "MAP-SETTINGS/3D/VALLEY"
+  }
+}

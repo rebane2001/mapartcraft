@@ -1,0 +1,10 @@
+{
+  "SCHEMATIC_NBT": {
+    "uniqueId": 0,
+    "name": "Schematic (NBT)"
+  },
+  "MAPDAT": {
+    "uniqueId": 1,
+    "name": "Datafile (map.dat)"
+  }
+}

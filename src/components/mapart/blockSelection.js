@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 
+import MapModes from "./json/mapModes.json";
+import StaircaseModes from "./json/staircaseModes.json";
+
 import IMG_Barrier from "../../images/barrier.png";
 import IMG_Null from "../../images/null.png";
 import IMG_Textures from "../../images/textures.png";
@@ -72,9 +75,9 @@ class BlockSelection extends Component {
                 className="colourSetBox"
                 style={{
                   background:
-                    optionValue_staircasing === "off"
+                    optionValue_staircasing === StaircaseModes.OFF.uniqueId
                       ? this.cssRGB(colourSet["tonesRGB"]["normal"])
-                      : optionValue_modeNBTOrMapdat === "NBT" || !optionValue_unobtainable
+                      : optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId || !optionValue_unobtainable
                       ? `linear-gradient(${this.cssRGB(colourSet["tonesRGB"]["dark"])} 33%, ${this.cssRGB(colourSet["tonesRGB"]["normal"])} 33%, ${this.cssRGB(
                           colourSet["tonesRGB"]["normal"]
                         )} 66%, ${this.cssRGB(colourSet["tonesRGB"]["light"])} 66%)`
@@ -96,7 +99,7 @@ class BlockSelection extends Component {
                 </Tooltip>
               </label>
               {Object.entries(colourSet["blocks"])
-                .filter(([, block]) => Object.keys(block["validVersions"]).includes(optionValue_version))
+                .filter(([, block]) => Object.keys(block["validVersions"]).includes(optionValue_version.MCVersion))
                 .map(([blockId, block]) => (
                   <label key={blockId}>
                     <Tooltip tooltipText={block["displayName"]}>
