@@ -181,9 +181,8 @@ class MapSettings extends Component {
       onOptionChange_PreProcessingBackgroundColour,
       onViewOnlineClicked,
     } = this.props;
-    return (
-      <div className="section settingsDiv">
-        <h2>{getLocaleString("MAP-SETTINGS/TITLE")}</h2>
+    const setting_mode = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MODE-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/MODE")}
@@ -198,6 +197,10 @@ class MapSettings extends Component {
           ))}
         </select>
         <br />
+      </React.Fragment>
+    );
+    const setting_version = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/VERSION-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/VERSION")}
@@ -206,18 +209,28 @@ class MapSettings extends Component {
         </Tooltip>{" "}
         <select value={optionValue_version.MCVersion} onChange={onOptionChange_version}>
           {Object.values(SupportedVersions).map((supportedVersion) => (
-            <option key={supportedVersion.MCVersion} value={supportedVersion.MCVersion}>{supportedVersion.MCVersion}</option>
+            <option key={supportedVersion.MCVersion} value={supportedVersion.MCVersion}>
+              {supportedVersion.MCVersion}
+            </option>
           ))}
         </select>
         <br />
+      </React.Fragment>
+    );
+    const setting_mapSize = (
+      <React.Fragment>
         <b>
           {getLocaleString("MAP-SETTINGS/MAP-SIZE")}
-          {": "}
-        </b>
+          {":"}
+        </b>{" "}
         <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_x} onChange={onOptionChange_mapSize_x} />
         x
         <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_y} onChange={onOptionChange_mapSize_y} />
         <br />
+      </React.Fragment>
+    );
+    const setting_crop = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/CROP-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/CROP")}
@@ -226,6 +239,10 @@ class MapSettings extends Component {
         </Tooltip>{" "}
         <input type="checkbox" checked={optionValue_cropImage} onChange={onOptionChange_cropImage} />
         <br />
+      </React.Fragment>
+    );
+    const setting_grid = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/GRID-OVERLAY-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/GRID-OVERLAY")}
@@ -234,6 +251,10 @@ class MapSettings extends Component {
         </Tooltip>{" "}
         <input type="checkbox" checked={optionValue_showGridOverlay} onChange={onOptionChange_showGridOverlay} />
         <br />
+      </React.Fragment>
+    );
+    const setting_staircasing = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/3D/TITLE-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/3D/TITLE")}
@@ -248,70 +269,79 @@ class MapSettings extends Component {
           ))}
         </select>
         <br />
-        {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
-          <span>
+      </React.Fragment>
+    );
+    let settings_mapModeConditional;
+    if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
+      settings_mapModeConditional = (
+        <React.Fragment>
+          <b>
+            {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/TITLE")}
+            {":"}
+          </b>{" "}
+          <select value={optionValue_whereSupportBlocks} onChange={onOptionChange_WhereSupportBlocks}>
+            {Object.values(WhereSupportBlocksModes).map((whereSupportBlocksMode) => (
+              <option key={whereSupportBlocksMode.uniqueId} value={whereSupportBlocksMode.uniqueId}>
+                {getLocaleString(whereSupportBlocksMode.localeKey)}
+              </option>
+            ))}
+          </select>
+          <br />
+          <b>
+            {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/SUPPORT-BLOCK-TO-ADD")}
+            {":"}
+          </b>{" "}
+          <AutoCompleteInputBlockToAdd value={optionValue_supportBlock} setValue={setOption_SupportBlock} optionValue_version={optionValue_version} />
+          <br />
+        </React.Fragment>
+      );
+    } else {
+      settings_mapModeConditional = (
+        <React.Fragment>
+          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS-TT")}>
             <b>
-              {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/TITLE")}
-              {": "}
+              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS")}
+              {":"}
             </b>
-            <select value={optionValue_whereSupportBlocks} onChange={onOptionChange_WhereSupportBlocks}>
-              {Object.values(WhereSupportBlocksModes).map((whereSupportBlocksMode) => (
-                <option key={whereSupportBlocksMode.uniqueId} value={whereSupportBlocksMode.uniqueId}>
-                  {getLocaleString(whereSupportBlocksMode.localeKey)}
-                </option>
-              ))}
-            </select>
-            <br />
+          </Tooltip>{" "}
+          <input type="checkbox" checked={optionValue_unobtainable} onChange={onOptionChange_unobtainable} />
+          <br />
+          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TT")}>
             <b>
-              {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/SUPPORT-BLOCK-TO-ADD")}
-              {": "}
+              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY")}
+              {":"}
             </b>
-            <AutoCompleteInputBlockToAdd value={optionValue_supportBlock} setValue={setOption_SupportBlock} optionValue_version={optionValue_version} />
-            <br />
-          </span>
-        ) : (
-          <span>
-            <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS-TT")}>
-              <b>
-                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS")}
-                {":"}
-              </b>
-            </Tooltip>{" "}
-            <input type="checkbox" checked={optionValue_unobtainable} onChange={onOptionChange_unobtainable} />
-            <br />
-            <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TT")}>
-              <b>
-                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY")}
-                {":"}
-              </b>
-            </Tooltip>{" "}
-            <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
-            <br />
-            <b>
-              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TOLERANCE")}
-              {": "}
-            </b>
-            <input
-              type="range"
-              min="0"
-              max="256"
-              value={optionValue_transparencyTolerance}
-              onChange={onOptionChange_transparencyTolerance}
-              disabled={!optionValue_transparency}
-            />
-            <input
-              className="preProcessingInputBox"
-              type="number"
-              min="0"
-              max="256"
-              step="1"
-              value={optionValue_transparencyTolerance}
-              onChange={onOptionChange_transparencyTolerance}
-              disabled={!optionValue_transparency}
-            />
-            <br />
-          </span>
-        )}
+          </Tooltip>{" "}
+          <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
+          <br />
+          <b>
+            {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TOLERANCE")}
+            {":"}
+          </b>{" "}
+          <input
+            type="range"
+            min="0"
+            max="256"
+            value={optionValue_transparencyTolerance}
+            onChange={onOptionChange_transparencyTolerance}
+            disabled={!optionValue_transparency}
+          />
+          <input
+            className="preProcessingInputBox"
+            type="number"
+            min="0"
+            max="256"
+            step="1"
+            value={optionValue_transparencyTolerance}
+            onChange={onOptionChange_transparencyTolerance}
+            disabled={!optionValue_transparency}
+          />
+          <br />
+        </React.Fragment>
+      );
+    }
+    const setting_betterColour = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/BETTER-COLOUR-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/BETTER-COLOUR")}
@@ -320,6 +350,10 @@ class MapSettings extends Component {
         </Tooltip>{" "}
         <input type="checkbox" checked={optionValue_betterColour} onChange={onOptionChange_BetterColour} />
         <br />
+      </React.Fragment>
+    );
+    const setting_dithering = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/DITHERING/TITLE-TT")}>
           <b>
             {getLocaleString("MAP-SETTINGS/DITHERING/TITLE")}
@@ -336,12 +370,16 @@ class MapSettings extends Component {
           ))}
         </select>
         <br />
+      </React.Fragment>
+    );
+    const preprocessing = (
+      <React.Fragment>
         <details>
           <summary>{getLocaleString("MAP-SETTINGS/PREPROCESSING/TITLE")}</summary>
           <b>
             {getLocaleString("MAP-SETTINGS/PREPROCESSING/ENABLE")}
-            {": "}
-          </b>
+            {":"}
+          </b>{" "}
           <input type="checkbox" checked={optionValue_preprocessingEnabled} onChange={onOptionChange_PreProcessingEnabled} />
           <br />
           <table>
@@ -350,8 +388,8 @@ class MapSettings extends Component {
                 <th>
                   <b>
                     {getLocaleString("MAP-SETTINGS/PREPROCESSING/BRIGHTNESS")}
-                    {": "}
-                  </b>
+                    {":"}
+                  </b>{" "}
                 </th>
                 <td>
                   <input
@@ -379,8 +417,8 @@ class MapSettings extends Component {
                 <th>
                   <b>
                     {getLocaleString("MAP-SETTINGS/PREPROCESSING/CONTRAST")}
-                    {": "}
-                  </b>
+                    {":"}
+                  </b>{" "}
                 </th>
                 <td>
                   <input
@@ -408,8 +446,8 @@ class MapSettings extends Component {
                 <th>
                   <b>
                     {getLocaleString("MAP-SETTINGS/PREPROCESSING/SATURATION")}
-                    {": "}
-                  </b>
+                    {":"}
+                  </b>{" "}
                 </th>
                 <td>
                   <input
@@ -458,8 +496,8 @@ class MapSettings extends Component {
                 <th>
                   <b>
                     {getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND-COLOUR")}
-                    {": "}
-                  </b>
+                    {":"}
+                  </b>{" "}
                 </th>
                 <td>
                   <input
@@ -474,62 +512,90 @@ class MapSettings extends Component {
           </table>
         </details>
         <br />
-        {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
-          <span>
-            <Tooltip tooltipText={getLocaleString("VIEW-ONLINE/TITLE-TT")}>
-              <span className="greenButton_old" onClick={onViewOnlineClicked}>
-                {getLocaleString("VIEW-ONLINE/TITLE")}
-              </span>
-            </Tooltip>
-            <br />
-            <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-TT")}>
-              <div className="greenButton greenButton_large" style={{ display: "block" }} onClick={this.onGetNBTClicked}>
-                <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
-                <div
-                  className="greenButton_progressDiv"
-                  style={{
-                    width: `${Math.floor(buttonWidth_NBT_Joined * 100)}%`,
-                  }}
-                />
-              </div>
-            </Tooltip>
-            <br />
-            <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT-TT")}>
-              <div className="greenButton" style={{ display: "block" }} onClick={this.onGetNBTSplitClicked}>
-                <span className="greenButton_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")}</span>
-                <div
-                  className="greenButton_progressDiv"
-                  style={{
-                    width: `${Math.floor(buttonWidth_NBT_Split * 100)}%`,
-                  }}
-                />
-              </div>
-            </Tooltip>
-          </span>
-        ) : (
-          <span>
-            <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
-              <div className="greenButton greenButton_large" style={{ display: "block" }} onClick={this.onGetMapdatSplitClicked}>
-                <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")}</span>
-                <div
-                  className="greenButton_progressDiv"
-                  style={{
-                    width: `${Math.floor(buttonWidth_Mapdat_Split * 100)}%`,
-                  }}
-                />
-              </div>
-            </Tooltip>
-          </span>
-        )}
-        <br />
+      </React.Fragment>
+    );
+    let buttons_mapModeConditional;
+    if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
+      buttons_mapModeConditional = (
+        <React.Fragment>
+          <Tooltip tooltipText={getLocaleString("VIEW-ONLINE/TITLE-TT")}>
+            <span className="greenButton_old" onClick={onViewOnlineClicked}>
+              {getLocaleString("VIEW-ONLINE/TITLE")}
+            </span>
+          </Tooltip>
+          <br />
+          <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-TT")}>
+            <div className="greenButton greenButton_large" style={{ display: "block" }} onClick={this.onGetNBTClicked}>
+              <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
+              <div
+                className="greenButton_progressDiv"
+                style={{
+                  width: `${Math.floor(buttonWidth_NBT_Joined * 100)}%`,
+                }}
+              />
+            </div>
+          </Tooltip>
+          <br />
+          <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT-TT")}>
+            <div className="greenButton" style={{ display: "block" }} onClick={this.onGetNBTSplitClicked}>
+              <span className="greenButton_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")}</span>
+              <div
+                className="greenButton_progressDiv"
+                style={{
+                  width: `${Math.floor(buttonWidth_NBT_Split * 100)}%`,
+                }}
+              />
+            </div>
+          </Tooltip>
+          <br />
+        </React.Fragment>
+      );
+    } else {
+      buttons_mapModeConditional = (
+        <React.Fragment>
+          <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
+            <div className="greenButton greenButton_large" style={{ display: "block" }} onClick={this.onGetMapdatSplitClicked}>
+              <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")}</span>
+              <div
+                className="greenButton_progressDiv"
+                style={{
+                  width: `${Math.floor(buttonWidth_Mapdat_Split * 100)}%`,
+                }}
+              />
+            </div>
+          </Tooltip>
+          <br />
+        </React.Fragment>
+      );
+    }
+    const button_donate = (
+      <React.Fragment>
         <Tooltip tooltipText={getLocaleString("DONATE/TITLE-TT")}>
           <a className="donateA" href="./supporters">
             <span className="greenButton_old">{getLocaleString("DONATE/TITLE")}</span>
-            <br />
           </a>
         </Tooltip>
+        <br />
+      </React.Fragment>
+    );
+    const settingsDiv = (
+      <div className="section settingsDiv">
+        <h2>{getLocaleString("MAP-SETTINGS/TITLE")}</h2>
+        {setting_mode}
+        {setting_version}
+        {setting_mapSize}
+        {setting_crop}
+        {setting_grid}
+        {setting_staircasing}
+        {settings_mapModeConditional}
+        {setting_betterColour}
+        {setting_dithering}
+        {preprocessing}
+        {buttons_mapModeConditional}
+        {button_donate}
       </div>
     );
+    return settingsDiv;
   }
 }
 

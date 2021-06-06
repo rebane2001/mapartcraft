@@ -87,7 +87,7 @@ class BlockSelection extends Component {
                           colourSet["tonesRGB"]["normal"]
                         )} 75%, ${this.cssRGB(colourSet["tonesRGB"]["light"])} 75%)`,
                 }}
-              ></div>
+              />
               <label>
                 <Tooltip tooltipText={getLocaleString("NONE")}>
                   <img
@@ -98,25 +98,27 @@ class BlockSelection extends Component {
                   />
                 </Tooltip>
               </label>
-              {Object.entries(colourSet["blocks"])
-                .filter(([, block]) => Object.keys(block["validVersions"]).includes(optionValue_version.MCVersion))
-                .map(([blockId, block]) => (
-                  <label key={blockId}>
-                    <Tooltip tooltipText={block["displayName"]}>
-                      <img
-                        src={IMG_Null}
-                        alt={block["displayName"]}
-                        className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
-                        style={{
-                          backgroundImage: `url(${IMG_Textures})`,
-                          backgroundPositionX: `-${blockId}00%`,
-                          backgroundPositionY: `-${colourSetId}00%`,
-                        }}
-                        onClick={() => onChangeColourSetBlock(colourSetId, blockId)}
-                      />
-                    </Tooltip>
-                  </label>
-                ))}
+              <div className={"colourSetBlocks"}>
+                {Object.entries(colourSet["blocks"])
+                  .filter(([, block]) => Object.keys(block["validVersions"]).includes(optionValue_version.MCVersion))
+                  .map(([blockId, block]) => (
+                    <label key={blockId}>
+                      <Tooltip tooltipText={block["displayName"]}>
+                        <img
+                          src={IMG_Null}
+                          alt={block["displayName"]}
+                          className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
+                          style={{
+                            backgroundImage: `url(${IMG_Textures})`,
+                            backgroundPositionX: `-${blockId}00%`,
+                            backgroundPositionY: `-${colourSetId}00%`,
+                          }}
+                          onClick={() => onChangeColourSetBlock(colourSetId, blockId)}
+                        />
+                      </Tooltip>
+                    </label>
+                  ))}
+              </div>
             </div>
           ))}
         </div>
