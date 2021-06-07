@@ -6,6 +6,7 @@ import AutoCompleteInputBlockToAdd from "./autoCompleteInputBlockToAdd/autoCompl
 import Tooltip from "../tooltip";
 import coloursJSON from "./coloursJSON.json";
 
+import BackgroundColourModes from "./json/backgroundColourModes.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -141,10 +142,10 @@ class MapSettings extends Component {
       getLocaleString,
       optionValue_version,
       onOptionChange_version,
-      optionValue_mapSize_x,
-      onOptionChange_mapSize_x,
-      optionValue_mapSize_y,
-      onOptionChange_mapSize_y,
+      optionValue_mapSize_x_buffer,
+      onOptionChange_mapSize_x_buffer,
+      optionValue_mapSize_y_buffer,
+      onOptionChange_mapSize_y_buffer,
       optionValue_modeNBTOrMapdat,
       onOptionChange_modeNBTOrMapdat,
       optionValue_cropImage,
@@ -169,12 +170,12 @@ class MapSettings extends Component {
       onOptionChange_dithering,
       optionValue_preprocessingEnabled,
       onOptionChange_PreProcessingEnabled,
-      preProcessingValue_brightness,
-      onOptionChange_PreProcessingBrightness,
-      preProcessingValue_contrast,
-      onOptionChange_PreProcessingContrast,
-      preProcessingValue_saturation,
-      onOptionChange_PreProcessingSaturation,
+      preProcessingValue_brightness_buffer,
+      onOptionChange_PreProcessingBrightness_buffer,
+      preProcessingValue_contrast_buffer,
+      onOptionChange_PreProcessingContrast_buffer,
+      preProcessingValue_saturation_buffer,
+      onOptionChange_PreProcessingSaturation_buffer,
       preProcessingValue_backgroundColourSelect,
       onOptionChange_PreProcessingBackgroundColourSelect,
       preProcessingValue_backgroundColour,
@@ -223,9 +224,9 @@ class MapSettings extends Component {
           {getLocaleString("MAP-SETTINGS/MAP-SIZE")}
           {":"}
         </b>{" "}
-        <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_x} onChange={onOptionChange_mapSize_x} />
+        <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_x_buffer} onChange={onOptionChange_mapSize_x_buffer} />
         x
-        <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_y} onChange={onOptionChange_mapSize_y} />
+        <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_y_buffer} onChange={onOptionChange_mapSize_y_buffer} />
         <br />
       </React.Fragment>
     );
@@ -396,8 +397,8 @@ class MapSettings extends Component {
                     type="range"
                     min="0"
                     max="200"
-                    value={preProcessingValue_brightness}
-                    onChange={onOptionChange_PreProcessingBrightness}
+                    value={preProcessingValue_brightness_buffer}
+                    onChange={onOptionChange_PreProcessingBrightness_buffer}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
@@ -407,8 +408,8 @@ class MapSettings extends Component {
                     type="number"
                     min="0"
                     step="1"
-                    value={preProcessingValue_brightness}
-                    onChange={onOptionChange_PreProcessingBrightness}
+                    value={preProcessingValue_brightness_buffer}
+                    onChange={onOptionChange_PreProcessingBrightness_buffer}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
@@ -425,8 +426,8 @@ class MapSettings extends Component {
                     type="range"
                     min="0"
                     max="200"
-                    value={preProcessingValue_contrast}
-                    onChange={onOptionChange_PreProcessingContrast}
+                    value={preProcessingValue_contrast_buffer}
+                    onChange={onOptionChange_PreProcessingContrast_buffer}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
@@ -436,8 +437,8 @@ class MapSettings extends Component {
                     type="number"
                     min="0"
                     step="1"
-                    value={preProcessingValue_contrast}
-                    onChange={onOptionChange_PreProcessingContrast}
+                    value={preProcessingValue_contrast_buffer}
+                    onChange={onOptionChange_PreProcessingContrast_buffer}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
@@ -454,8 +455,8 @@ class MapSettings extends Component {
                     type="range"
                     min="0"
                     max="200"
-                    value={preProcessingValue_saturation}
-                    onChange={onOptionChange_PreProcessingSaturation}
+                    value={preProcessingValue_saturation_buffer}
+                    onChange={onOptionChange_PreProcessingSaturation_buffer}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
@@ -465,8 +466,8 @@ class MapSettings extends Component {
                     type="number"
                     min="0"
                     step="1"
-                    value={preProcessingValue_saturation}
-                    onChange={onOptionChange_PreProcessingSaturation}
+                    value={preProcessingValue_saturation_buffer}
+                    onChange={onOptionChange_PreProcessingSaturation_buffer}
                     disabled={!optionValue_preprocessingEnabled}
                   />
                 </td>
@@ -486,9 +487,11 @@ class MapSettings extends Component {
                     value={preProcessingValue_backgroundColourSelect}
                     disabled={!optionValue_preprocessingEnabled}
                   >
-                    <option value="Off">{getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/OFF")}</option>
-                    <option value="On">{getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/DITHERED")}</option>
-                    <option value="On_Flat">{getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/FLAT")}</option>
+                    {Object.values(BackgroundColourModes).map((backgroundColourMode) => (
+                      <option key={backgroundColourMode.uniqueId} value={backgroundColourMode.uniqueId}>
+                        {getLocaleString(backgroundColourMode.localeKey)}
+                      </option>
+                    ))}
                   </select>
                 </td>
               </tr>
@@ -504,7 +507,7 @@ class MapSettings extends Component {
                     type="color"
                     value={preProcessingValue_backgroundColour}
                     onChange={onOptionChange_PreProcessingBackgroundColour}
-                    disabled={!optionValue_preprocessingEnabled || preProcessingValue_backgroundColourSelect === "Off"}
+                    disabled={!optionValue_preprocessingEnabled || preProcessingValue_backgroundColourSelect === BackgroundColourModes.OFF.uniqueId}
                   />
                 </td>
               </tr>

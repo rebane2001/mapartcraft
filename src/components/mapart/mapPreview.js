@@ -4,6 +4,7 @@ import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 import MapCanvasWorker from "./workers/mapCanvas.jsworker"; // FINALLY got this to work; .js gets imported as code, anything else as URL
 
+import BackgroundColourModes from "./json/backgroundColourModes.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -32,6 +33,7 @@ class MapPreview extends Component {
 
   shouldCanvasUpdate_source(prevProps, newProps, prevState, newState) {
     const propChanges = [
+      prevProps.selectedBlocks === newProps.selectedBlocks,
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
       prevProps.optionValue_cropImage === newProps.optionValue_cropImage,
@@ -94,11 +96,15 @@ class MapPreview extends Component {
   }
 
   closestFlatColourTo(colourHex) {
+    const { selectedBlocks } = this.props;
     const rgbGroups_input = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colourHex);
     const colourRGB_input = [parseInt(rgbGroups_input[1], 16), parseInt(rgbGroups_input[2], 16), parseInt(rgbGroups_input[3], 16)];
     let smallestDistance = 9999999;
     let colourRGB_return = null;
-    Object.entries(coloursJSON).forEach(([_, colourSet]) => {
+    for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
+      if (selectedBlocks[colourSetId] === "-1") {
+        continue;
+      }
       const colourRGB_colourSet = colourSet.tonesRGB.normal;
       const colourDistance =
         Math.pow(colourRGB_input[0] - colourRGB_colourSet[0], 2) +
@@ -108,7 +114,7 @@ class MapPreview extends Component {
         smallestDistance = colourDistance;
         colourRGB_return = colourRGB_colourSet;
       }
-    });
+    }
     const colourHex_return = `#${colourRGB_return[0].toString(16).padStart(2, "0")}${colourRGB_return[1].toString(16).padStart(2, "0")}${colourRGB_return[2]
       .toString(16)
       .padStart(2, "0")}`;
@@ -117,6 +123,7 @@ class MapPreview extends Component {
 
   updateCanvas_source() {
     const {
+      selectedBlocks,
       optionValue_preprocessingEnabled,
       preProcessingValue_brightness,
       preProcessingValue_contrast,
@@ -135,9 +142,9 @@ class MapPreview extends Component {
     ctx_source.clearRect(0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
 
     if (optionValue_preprocessingEnabled) {
-      if (preProcessingValue_backgroundColourSelect !== "Off" && /^#?[a-f\d]{6}$/i.test(preProcessingValue_backgroundColour)) {
+      if (preProcessingValue_backgroundColourSelect !== BackgroundColourModes.OFF.uniqueId && /^#?[a-f\d]{6}$/i.test(preProcessingValue_backgroundColour)) {
         let backgroundColour;
-        if (preProcessingValue_backgroundColourSelect === "On_Flat") {
+        if (preProcessingValue_backgroundColourSelect === BackgroundColourModes.FLAT.uniqueId && !Object.values(selectedBlocks).every((selectedBlockId) => selectedBlockId === "-1")) {
           backgroundColour = this.closestFlatColourTo(preProcessingValue_backgroundColour);
         } else {
           backgroundColour = preProcessingValue_backgroundColour;

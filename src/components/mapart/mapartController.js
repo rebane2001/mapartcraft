@@ -8,6 +8,7 @@ import Materials from "./materials";
 import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
 
+import BackgroundColourModes from "./json/backgroundColourModes.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -24,7 +25,9 @@ class MapartController extends Component {
     optionValue_version: Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1], // default to the latest version supported
     optionValue_modeNBTOrMapdat: MapModes.SCHEMATIC_NBT.uniqueId,
     optionValue_mapSize_x: 1,
+    optionValue_mapSize_x_buffer: "1",
     optionValue_mapSize_y: 1,
+    optionValue_mapSize_y_buffer: "1",
     optionValue_cropImage: true,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: StaircaseModes.CLASSIC.uniqueId,
@@ -37,9 +40,12 @@ class MapartController extends Component {
     optionValue_dithering: DitherMethods.FloydSteinberg.uniqueId,
     optionValue_preprocessingEnabled: false,
     preProcessingValue_brightness: 100,
+    preProcessingValue_brightness_buffer: "100",
     preProcessingValue_contrast: 100,
+    preProcessingValue_contrast_buffer: "100",
     preProcessingValue_saturation: 100,
-    preProcessingValue_backgroundColourSelect: "Off",
+    preProcessingValue_saturation_buffer: "100",
+    preProcessingValue_backgroundColourSelect: BackgroundColourModes.OFF.uniqueId,
     preProcessingValue_backgroundColour: "#151515",
     uploadedImage: null,
     uploadedImage_baseFilename: null,
@@ -173,7 +179,7 @@ class MapartController extends Component {
   onOptionChange_version = (e) => {
     const mcVersion = e.target.value;
     CookieManager.setCookie("mcversion", mcVersion);
-    const supportedVersionFound = Object.values(SupportedVersions).find((supportedVersion) => supportedVersion.MCVersion === mcVersion)
+    const supportedVersionFound = Object.values(SupportedVersions).find((supportedVersion) => supportedVersion.MCVersion === mcVersion);
     this.setState((currentState) => {
       let selectedBlocks = { ...currentState.selectedBlocks };
       Object.keys(coloursJSON).forEach((key) => {
@@ -185,20 +191,34 @@ class MapartController extends Component {
     });
   };
 
-  onOptionChange_mapSize_x = (e) => {
-    let x = parseInt(e.target.value);
-    if (isNaN(x)) {
-      x = 1;
+  onOptionChange_mapSize_x_buffer = (e) => {
+    const x_buffer = e.target.value;
+    const x = parseInt(x_buffer);
+    if (!isNaN(x) && x > 0) {
+      this.setState({
+        optionValue_mapSize_x_buffer: x_buffer,
+        optionValue_mapSize_x: x,
+      });
+    } else {
+      this.setState({
+        optionValue_mapSize_x_buffer: x_buffer,
+      });
     }
-    this.setState({ optionValue_mapSize_x: x });
   };
 
-  onOptionChange_mapSize_y = (e) => {
-    let y = parseInt(e.target.value);
-    if (isNaN(y)) {
-      y = 1;
+  onOptionChange_mapSize_y_buffer = (e) => {
+    const y_buffer = e.target.value;
+    const y = parseInt(y_buffer);
+    if (!isNaN(y) && y > 0) {
+      this.setState({
+        optionValue_mapSize_y_buffer: y_buffer,
+        optionValue_mapSize_y: y,
+      });
+    } else {
+      this.setState({
+        optionValue_mapSize_y_buffer: y_buffer,
+      });
     }
-    this.setState({ optionValue_mapSize_y: y });
   };
 
   onOptionChange_cropImage = () => {
@@ -262,32 +282,53 @@ class MapartController extends Component {
     });
   };
 
-  onOptionChange_PreProcessingBrightness = (e) => {
-    let newValue = parseInt(e.target.value);
-    if (isNaN(newValue)) {
-      newValue = 0;
+  onOptionChange_PreProcessingBrightness_buffer = (e) => {
+    const newValue_buffer = e.target.value;
+    const newValue = parseInt(newValue_buffer);
+    if (!isNaN(newValue)) {
+      this.setState({
+        preProcessingValue_brightness_buffer: newValue_buffer,
+        preProcessingValue_brightness: newValue,
+      });
+    } else {
+      this.setState({
+        preProcessingValue_brightness_buffer: newValue_buffer,
+      });
     }
-    this.setState({ preProcessingValue_brightness: newValue });
   };
 
-  onOptionChange_PreProcessingContrast = (e) => {
-    let newValue = parseInt(e.target.value);
-    if (isNaN(newValue)) {
-      newValue = 0;
+  onOptionChange_PreProcessingContrast_buffer = (e) => {
+    const newValue_buffer = e.target.value;
+    const newValue = parseInt(newValue_buffer);
+    if (!isNaN(newValue)) {
+      this.setState({
+        preProcessingValue_contrast_buffer: newValue_buffer,
+        preProcessingValue_contrast: newValue,
+      });
+    } else {
+      this.setState({
+        preProcessingValue_contrast_buffer: newValue_buffer,
+      });
     }
-    this.setState({ preProcessingValue_contrast: newValue });
   };
 
-  onOptionChange_PreProcessingSaturation = (e) => {
-    let newValue = parseInt(e.target.value);
-    if (isNaN(newValue)) {
-      newValue = 0;
+  onOptionChange_PreProcessingSaturation_buffer = (e) => {
+    const newValue_buffer = e.target.value;
+    const newValue = parseInt(newValue_buffer);
+    if (!isNaN(newValue)) {
+      this.setState({
+        preProcessingValue_saturation_buffer: newValue_buffer,
+        preProcessingValue_saturation: newValue,
+      });
+    } else {
+      this.setState({
+        preProcessingValue_saturation_buffer: newValue_buffer,
+      });
     }
-    this.setState({ preProcessingValue_saturation: newValue });
   };
 
   onOptionChange_PreProcessingBackgroundColourSelect = (e) => {
-    const newValue = e.target.value;
+    const newValue = parseInt(e.target.value);
     this.setState({ preProcessingValue_backgroundColourSelect: newValue });
   };
 
@@ -522,7 +563,9 @@ class MapartController extends Component {
       optionValue_version,
       optionValue_modeNBTOrMapdat,
       optionValue_mapSize_x,
+      optionValue_mapSize_x_buffer,
       optionValue_mapSize_y,
+      optionValue_mapSize_y_buffer,
       optionValue_cropImage,
       optionValue_showGridOverlay,
       optionValue_staircasing,
@@ -535,8 +578,11 @@ class MapartController extends Component {
       optionValue_dithering,
       optionValue_preprocessingEnabled,
       preProcessingValue_brightness,
+      preProcessingValue_brightness_buffer,
       preProcessingValue_contrast,
+      preProcessingValue_contrast_buffer,
       preProcessingValue_saturation,
+      preProcessingValue_saturation_buffer,
       preProcessingValue_backgroundColourSelect,
       preProcessingValue_backgroundColour,
       uploadedImage,
@@ -598,10 +644,10 @@ class MapartController extends Component {
             onOptionChange_version={this.onOptionChange_version}
             optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
             onOptionChange_modeNBTOrMapdat={this.onOptionChange_modeNBTOrMapdat}
-            optionValue_mapSize_x={optionValue_mapSize_x}
-            onOptionChange_mapSize_x={this.onOptionChange_mapSize_x}
-            optionValue_mapSize_y={optionValue_mapSize_y}
-            onOptionChange_mapSize_y={this.onOptionChange_mapSize_y}
+            optionValue_mapSize_x_buffer={optionValue_mapSize_x_buffer}
+            onOptionChange_mapSize_x_buffer={this.onOptionChange_mapSize_x_buffer}
+            optionValue_mapSize_y_buffer={optionValue_mapSize_y_buffer}
+            onOptionChange_mapSize_y_buffer={this.onOptionChange_mapSize_y_buffer}
             optionValue_cropImage={optionValue_cropImage}
             onOptionChange_cropImage={this.onOptionChange_cropImage}
             optionValue_showGridOverlay={optionValue_showGridOverlay}
@@ -624,12 +670,12 @@ class MapartController extends Component {
             onOptionChange_dithering={this.onOptionChange_dithering}
             optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
             onOptionChange_PreProcessingEnabled={this.onOptionChange_PreProcessingEnabled}
-            preProcessingValue_brightness={preProcessingValue_brightness}
-            onOptionChange_PreProcessingBrightness={this.onOptionChange_PreProcessingBrightness}
-            preProcessingValue_contrast={preProcessingValue_contrast}
-            onOptionChange_PreProcessingContrast={this.onOptionChange_PreProcessingContrast}
-            preProcessingValue_saturation={preProcessingValue_saturation}
-            onOptionChange_PreProcessingSaturation={this.onOptionChange_PreProcessingSaturation}
+            preProcessingValue_brightness_buffer={preProcessingValue_brightness_buffer}
+            onOptionChange_PreProcessingBrightness_buffer={this.onOptionChange_PreProcessingBrightness_buffer}
+            preProcessingValue_contrast_buffer={preProcessingValue_contrast_buffer}
+            onOptionChange_PreProcessingContrast_buffer={this.onOptionChange_PreProcessingContrast_buffer}
+            preProcessingValue_saturation_buffer={preProcessingValue_saturation_buffer}
+            onOptionChange_PreProcessingSaturation_buffer={this.onOptionChange_PreProcessingSaturation_buffer}
             preProcessingValue_backgroundColourSelect={preProcessingValue_backgroundColourSelect}
             onOptionChange_PreProcessingBackgroundColourSelect={this.onOptionChange_PreProcessingBackgroundColourSelect}
             preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
