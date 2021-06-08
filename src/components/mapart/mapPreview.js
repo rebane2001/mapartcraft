@@ -213,6 +213,7 @@ class MapPreview extends Component {
         ctx_display.putImageData(e.data.body.pixels, 0, 0);
         this.setState({ workerProgress: 1 });
         onGetMapMaterials({
+          pixelsData: e.data.body.pixels.data,
           maps: e.data.body.maps,
           currentSelectedBlocks: e.data.body.currentSelectedBlocks,
         });

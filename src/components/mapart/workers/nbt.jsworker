@@ -6,9 +6,12 @@ var optionValue_version;
 var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
 var optionValue_supportBlock;
+var pixelsData;
 var maps;
 var currentSelectedBlocks;
 // end onmessage variables
+
+var exactColourCache = new Map(); // for mapping RGB that exactly matches in coloursJSON to colourSetId and tone
 
 var progressReportHead;
 
@@ -411,7 +414,7 @@ class Map_NBT {
           break;
         }
         case WhereSupportBlocksModes.IMPORTANT.uniqueId: {
-          if (coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) {
+          if (isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) {
             physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
           }
           break;
@@ -421,16 +424,12 @@ class Map_NBT {
             case 0: {
               if (
                 coloursLayoutBlock.tone === "dark" ||
-                (coloursLayoutBlock.tone === "normal" &&
-                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory)
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock))
               ) {
                 // first under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
               }
-              if (
-                coloursLayoutBlock.tone === "dark" &&
-                coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory
-              ) {
+              if (coloursLayoutBlock.tone === "dark" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) {
                 // second under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
               }
@@ -441,17 +440,13 @@ class Map_NBT {
               if (
                 coloursLayoutBlock_0.tone === "light" ||
                 coloursLayoutBlock.tone === "dark" ||
-                coloursJSON[coloursLayoutBlock_0.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_0.colourSetId]].supportBlockMandatory ||
-                (coloursLayoutBlock.tone === "normal" &&
-                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory)
+                isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_0) ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock))
               ) {
                 // first under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
               }
-              if (
-                coloursLayoutBlock.tone === "dark" &&
-                coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory
-              ) {
+              if (coloursLayoutBlock.tone === "dark" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) {
                 // second under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
               }
@@ -462,17 +457,13 @@ class Map_NBT {
               const coloursLayoutBlock_north = mapColoursLayoutColumn[rowNumber - 1];
               if (
                 coloursLayoutBlock.tone === "light" ||
-                coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory ||
-                (coloursLayoutBlock.tone === "normal" &&
-                  coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory)
+                isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock) ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north))
               ) {
                 // first under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
               }
-              if (
-                coloursLayoutBlock.tone === "light" &&
-                coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory
-              ) {
+              if (coloursLayoutBlock.tone === "light" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north)) {
                 // second under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
               }
@@ -484,21 +475,16 @@ class Map_NBT {
               if (
                 coloursLayoutBlock_inQuestion.tone === "light" ||
                 coloursLayoutBlock.tone === "dark" ||
-                coloursJSON[coloursLayoutBlock_inQuestion.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_inQuestion.colourSetId]]
-                  .supportBlockMandatory ||
-                (coloursLayoutBlock.tone === "normal" &&
-                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) ||
-                (coloursLayoutBlock_inQuestion.tone === "normal" &&
-                  coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory)
+                isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_inQuestion) ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) ||
+                (coloursLayoutBlock_inQuestion.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north))
               ) {
                 // first under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
               }
               if (
-                (coloursLayoutBlock.tone === "dark" &&
-                  coloursJSON[coloursLayoutBlock.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock.colourSetId]].supportBlockMandatory) ||
-                (coloursLayoutBlock_inQuestion.tone === "light" &&
-                  coloursJSON[coloursLayoutBlock_north.colourSetId].blocks[currentSelectedBlocks[coloursLayoutBlock_north.colourSetId]].supportBlockMandatory)
+                (coloursLayoutBlock.tone === "dark" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) ||
+                (coloursLayoutBlock_inQuestion.tone === "light" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north))
               ) {
                 // second under-support block
                 physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
@@ -662,6 +648,36 @@ class Map_Mapdat {
   }
 }
 
+function setupExactColourCache() {
+  // we do not care what staircasing option is selected etc as this does not matter
+  // this is for exactly matching colours, whose values are never repeated in coloursJSON
+  // also RGB could be easily changed to RGBA if Mojang ever added absolute black #000000 and we need to distinguish it from transparent
+  // setupExactColourCache also exists in mapCanvas.jsworker but without the "-1" colourSet for transparent
+  for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
+    for (const [toneKey, toneRGB] of Object.entries(colourSet.tonesRGB)) {
+      const RGBBinary = (toneRGB[0] << 16) + (toneRGB[1] << 8) + toneRGB[2];
+      exactColourCache.set(RGBBinary, {
+        colourSetId: colourSetId,
+        tone: toneKey,
+      });
+    }
+  }
+  exactColourCache.set(0, {
+    // special transparent for mapdat
+    colourSetId: "-1",
+    tone: "normal",
+  });
+}
+
+function exactRGBToColourSetIdAndTone(pixelRGB) {
+  const RGBBinary = (pixelRGB[0] << 16) + (pixelRGB[1] << 8) + pixelRGB[2];
+  return exactColourCache.get(RGBBinary);
+}
+
+function isSupportBlockMandatoryForColourSetIdAndTone(colourSetIdAndTone) {
+  return coloursJSON[colourSetIdAndTone.colourSetId].blocks[currentSelectedBlocks[colourSetIdAndTone.colourSetId]].supportBlockMandatory;
+}
+
 function mergeMaps() {
   // for when we want one big NBT instead of split 1x1s
   maps.forEach((rowOfMaps) => {
@@ -692,6 +708,30 @@ function mergeMaps() {
   maps = [[maps[0][0]]];
 }
 
+function setupColoursLayoutsFromPixelsData() {
+  const mapSize_x = maps[0].length;
+  const mapSize_z = maps.length;
+  for (let whichMap_z = 0; whichMap_z < mapSize_z; whichMap_z++) {
+    for (let whichMap_x = 0; whichMap_x < mapSize_x; whichMap_x++) {
+      let coloursLayout = [];
+      for (let columnNumber = 0; columnNumber < 128; columnNumber++) {
+        let coloursLayout_columnToPush = [];
+        for (let rowNumber = 0; rowNumber < 128; rowNumber++) {
+          const pixelsData_offset = 4 * (128 * mapSize_x * (128 * whichMap_z + rowNumber) + 128 * whichMap_x + columnNumber);
+          const colourSetIdAndTone = exactRGBToColourSetIdAndTone([
+            pixelsData[pixelsData_offset],
+            pixelsData[pixelsData_offset + 1],
+            pixelsData[pixelsData_offset + 2],
+          ]);
+          coloursLayout_columnToPush.push(colourSetIdAndTone);
+        }
+        coloursLayout.push(coloursLayout_columnToPush);
+      }
+      maps[whichMap_z][whichMap_x].coloursLayout = coloursLayout;
+    }
+  }
+}
+
 onmessage = (e) => {
   coloursJSON = e.data.body.coloursJSON;
   StaircaseModes = e.data.body.StaircaseModes;
@@ -700,10 +740,14 @@ onmessage = (e) => {
   optionValue_staircasing = e.data.body.optionValue_staircasing;
   optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
   optionValue_supportBlock = e.data.body.optionValue_supportBlock;
+  pixelsData = e.data.body.pixelsData;
   maps = e.data.body.maps;
   currentSelectedBlocks = e.data.body.currentSelectedBlocks;
 
   const headerMessage = e.data.head;
+
+  setupExactColourCache();
+  setupColoursLayoutsFromPixelsData();
 
   switch (headerMessage) {
     case "CREATE_NBT_JOINED": {

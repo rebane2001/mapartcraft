@@ -102,6 +102,7 @@ class MapSettings extends Component {
         optionValue_staircasing: optionValue_staircasing,
         optionValue_whereSupportBlocks: optionValue_whereSupportBlocks,
         optionValue_supportBlock: optionValue_supportBlock,
+        pixelsData: currentMaterialsData.pixelsData,
         maps: currentMaterialsData.maps,
         currentSelectedBlocks: currentMaterialsData.currentSelectedBlocks,
       },

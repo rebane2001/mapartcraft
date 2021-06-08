@@ -52,7 +52,8 @@ class MapartController extends Component {
     presets: [],
     selectedPresetName: "None",
     currentMaterialsData: {
-      maps: [[]], // entries are dictionaries with keys "materials", "supportBlockCount", "coloursLayout"
+      pixelsData: null,
+      maps: [[]], // entries are dictionaries with keys "materials", "supportBlockCount"
       currentSelectedBlocks: {}, // we keep this soley for materials.js
     },
     mapPreviewWorker_inProgress: false,
