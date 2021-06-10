@@ -1895,6 +1895,22 @@
                 "presetIndex": 5
             },
             "6": {
+                "displayName": "Pumpkin",
+                "validVersions": {
+                    "1.12.2": {
+                        "NBTName": "pumpkin",
+                        "NBTArgs": {}
+                    },
+                    "1.13.2": "&1.12.2",
+                    "1.14.4": "&1.12.2",
+                    "1.15.2": "&1.12.2",
+                    "1.16.5": "&1.12.2"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 15
+            },
+            "7": {
                 "displayName": "Acacia Log (vertical)",
                 "validVersions": {
                     "1.12.2": {
@@ -1918,7 +1934,7 @@
                 "flammable": true,
                 "presetIndex": 6
             },
-            "7": {
+            "8": {
                 "displayName": "Acacia Planks",
                 "validVersions": {
                     "1.12.2": {
@@ -1939,7 +1955,7 @@
                 "flammable": true,
                 "presetIndex": 7
             },
-            "8": {
+            "9": {
                 "displayName": "Acacia Slab",
                 "validVersions": {
                     "1.12.2": {
@@ -1960,7 +1976,7 @@
                 "flammable": true,
                 "presetIndex": 8
             },
-            "9": {
+            "10": {
                 "displayName": "Red Sand",
                 "validVersions": {
                     "1.12.2": {
@@ -1981,7 +1997,7 @@
                 "flammable": false,
                 "presetIndex": 9
             },
-            "10": {
+            "11": {
                 "displayName": "Red Sandstone",
                 "validVersions": {
                     "1.12.2": {
@@ -2002,7 +2018,7 @@
                 "flammable": false,
                 "presetIndex": 10
             },
-            "11": {
+            "12": {
                 "displayName": "Red Sandstone Slab",
                 "validVersions": {
                     "1.12.2": {
@@ -2023,7 +2039,7 @@
                 "flammable": false,
                 "presetIndex": 12
             },
-            "12": {
+            "13": {
                 "displayName": "Terracotta",
                 "validVersions": {
                     "1.12.2": {
@@ -2042,7 +2058,7 @@
                 "flammable": false,
                 "presetIndex": 11
             },
-            "13": {
+            "14": {
                 "displayName": "Honey Block",
                 "validVersions": {
                     "1.15.2": {
@@ -2055,7 +2071,7 @@
                 "flammable": false,
                 "presetIndex": 13
             },
-            "14": {
+            "15": {
                 "displayName": "Honeycomb Block",
                 "validVersions": {
                     "1.15.2": {

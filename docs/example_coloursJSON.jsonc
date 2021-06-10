@@ -42,8 +42,11 @@
                 },
                 "supportBlockMandatory": false, // whether the block necessarily needs a support block under it, eg for carpet or sand.
                                                 // see supportBlocks.md for more info
-                "flammable": false // currently unused. may be used in future in an option for whether to
+                "flammable": false, // currently unused. may be used in future in an option for whether to
                                    // place glass over the block in the .schematic to avoid lightning fires
+                "presetIndex": 0 // blockId is used soley to choose the order in which blocks are displayed in blockSelection, and is the same as the block's
+                                 // horizontal index in textures.png. presetIndex is used to generate and import from preset URLs; this stays constant for
+                                 // a block for forwards compatibility and allows blockIds / textures.png to change arbitrarily without breaking presets
             },
             "1": {
                 "displayName": "Slime Block",
@@ -61,7 +64,8 @@
                     "1.16.5": "&1.13.2"
                 },
                 "supportBlockMandatory": true,
-                "flammable": false
+                "flammable": false,
+                "presetIndex": 1
             }
         }
     }
