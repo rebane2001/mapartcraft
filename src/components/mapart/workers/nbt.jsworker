@@ -528,9 +528,71 @@ class Map_NBT {
       }
     }
 
-    // we now make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
-    // Don't do this for flat maps
-    if (optionValue_staircasing !== StaircaseModes.OFF.uniqueId) {
+    if (optionValue_staircasing === StaircaseModes.VALLEY.uniqueId) {
+      // sort in terms of z and y first, necessary for determining when a plateau has finished
+      physicalColumn.sort((elt1, elt2) => {
+        if (elt1.pos.value.value[2] < elt2.pos.value.value[2]) {
+          return -1;
+        } else if (elt1.pos.value.value[2] > elt2.pos.value.value[2]) {
+          return 1;
+        } else {
+          if (elt1.pos.value.value[1] > elt2.pos.value.value[1]) {
+            return -1;
+          } else {
+            return 1;
+          }
+        }
+      });
+      let plateaus = [{ startIndex: 0, endIndex: 0 }];
+      // initial 0 width plateau useful just so we don't have a special case for the first proper plateau later
+      let ascending = false; // weakly ascending
+      let currentPlateauStartIndex = null;
+      let visibleBlocksHeight = physicalColumn[0].pos.value.value[1]; // initialise to noobline height
+      // visible blocks are blocks at the top height in a x-z column, the actual map blocks that give the colours
+
+      for (let i = 0; i < physicalColumn.length; i++) {
+        const physicalBlock = physicalColumn[i];
+        if (this.palette_paletteId_colourSetId[physicalBlock.state.value] === "NOOBLINE_SCAFFOLD") {
+          continue;
+        }
+        if (ascending && physicalBlock.pos.value.value[1] < visibleBlocksHeight) {
+          // dark after ascent; plateau found
+          ascending = false;
+          plateaus.push({
+            startIndex: currentPlateauStartIndex,
+            endIndex: i,
+          });
+        } else if (physicalBlock.pos.value.value[1] > visibleBlocksHeight) {
+          // light
+          ascending = true;
+          currentPlateauStartIndex = i;
+        }
+        visibleBlocksHeight = physicalBlock.pos.value.value[1];
+      }
+
+      plateaus.push({ startIndex: physicalColumn.length, endIndex: physicalColumn.length });
+
+      let nonPlateauPulldownHeights = [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
+      while (plateaus.length !== 1) {
+        let pullDownHeight = Number.MAX_SAFE_INTEGER;
+        for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
+          pullDownHeight = Math.min(physicalColumn[i].pos.value.value[1], pullDownHeight);
+        }
+        for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
+          physicalColumn[i].pos.value.value[1] -= pullDownHeight;
+        }
+        nonPlateauPulldownHeights[1] = pullDownHeight;
+        const plateauPulldownHeight = Math.min(...nonPlateauPulldownHeights);
+        // we pull down a plateau by the minimum of the two values the surrounding non-plateaus were pulled down by
+        for (let i = plateaus[0].startIndex; i < plateaus[0].endIndex; i++) {
+          physicalColumn[i].pos.value.value[1] -= plateauPulldownHeight;
+        }
+        plateaus.shift();
+        nonPlateauPulldownHeights[0] = nonPlateauPulldownHeights[1];
+      }
+    } else if (optionValue_staircasing === StaircaseModes.CLASSIC.uniqueId) {
+      // make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
+      // Don't do this for flat maps
       const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
       physicalColumn.forEach((block) => {
         block.pos.value.value[1] -= columnMinimumY;
