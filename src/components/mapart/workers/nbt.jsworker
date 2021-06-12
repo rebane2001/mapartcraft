@@ -62,7 +62,10 @@ class NBTWriter {
       c;
     for (i = 0; i < str.length; i++) {
       c = str.charCodeAt(i);
-      if (c < 0x80) {
+      if (c === 0x0) {
+        array.push(0xc0);
+        array.push(0x80);
+      } else if (c < 0x80) {
         array.push(c);
       } else if (c < 0x800) {
         array.push(0xc0 | (c >> 6));
@@ -72,6 +75,7 @@ class NBTWriter {
         array.push(0x80 | ((c >> 6) & 0x3f));
         array.push(0x80 | (c & 0x3f));
       } else {
+        // unsure if this is accurate, however we never need such exotic unicode characters
         array.push(0xf0 | ((c >> 18) & 0x07));
         array.push(0x80 | ((c >> 12) & 0x3f));
         array.push(0x80 | ((c >> 6) & 0x3f));

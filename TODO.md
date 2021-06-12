@@ -4,7 +4,8 @@
 
 # Yes
 
-- Pumpkins
+- Warning for non-forwards compatible blocks eg iron bars, 1.13 brown kelp
+- Move coloursJSON to JSONs folder also add head
 - 1.17 Blocks
 - Look at issues on Rebane repo
 - Optimise renders; orange wool -> orange concrete doesn't need another render; just make sure to update `currentSelectedBlocks` in `currentMaterialsData` in controller and check if rerender necessary eg support block count update
