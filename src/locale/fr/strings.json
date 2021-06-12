@@ -129,7 +129,8 @@
     "MAPDAT-SPECIFIC": {
       "DOWNLOAD": "TELECHARGER",
       "DOWNLOAD-TT": "Télécharger le map.dat divisé en chunks de 1x1"
-    }
+    },
+    "ZIPPING": null
   },
   "MATERIALS": {
     "TITLE": "Matériaux",

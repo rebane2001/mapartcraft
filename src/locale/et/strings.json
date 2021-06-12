@@ -129,7 +129,8 @@
     "MAPDAT-SPECIFIC": {
       "DOWNLOAD": "LAE ALLA",
       "DOWNLOAD-TT": "Lae alla map.dat lõhestatuna 1x1 kamakateks"
-    }
+    },
+    "ZIPPING": null
   },
   "MATERIALS": {
     "TITLE": "Materjalid",

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import CookieManager from "../../cookieManager";
 import BlockSelection from "./blockSelection";
+import GreenButtons from "./greenButtons";
 import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
 import Materials from "./materials";
@@ -639,54 +640,80 @@ class MapartController extends Component {
             onGetMapMaterials={this.handleSetMapMaterials}
             onMapPreviewWorker_begin={this.onMapPreviewWorker_begin}
           />
-          <MapSettings
-            getLocaleString={getLocaleString}
-            optionValue_version={optionValue_version}
-            onOptionChange_version={this.onOptionChange_version}
-            optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
-            onOptionChange_modeNBTOrMapdat={this.onOptionChange_modeNBTOrMapdat}
-            optionValue_mapSize_x_buffer={optionValue_mapSize_x_buffer}
-            onOptionChange_mapSize_x_buffer={this.onOptionChange_mapSize_x_buffer}
-            optionValue_mapSize_y_buffer={optionValue_mapSize_y_buffer}
-            onOptionChange_mapSize_y_buffer={this.onOptionChange_mapSize_y_buffer}
-            optionValue_cropImage={optionValue_cropImage}
-            onOptionChange_cropImage={this.onOptionChange_cropImage}
-            optionValue_showGridOverlay={optionValue_showGridOverlay}
-            onOptionChange_showGridOverlay={this.onOptionChange_showGridOverlay}
-            optionValue_staircasing={optionValue_staircasing}
-            onOptionChange_staircasing={this.onOptionChange_staircasing}
-            optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
-            onOptionChange_WhereSupportBlocks={this.onOptionChange_WhereSupportBlocks}
-            optionValue_supportBlock={optionValue_supportBlock}
-            setOption_SupportBlock={this.setOption_SupportBlock}
-            optionValue_unobtainable={optionValue_unobtainable}
-            onOptionChange_unobtainable={this.onOptionChange_unobtainable}
-            optionValue_transparency={optionValue_transparency}
-            onOptionChange_transparency={this.onOptionChange_transparency}
-            optionValue_transparencyTolerance={optionValue_transparencyTolerance}
-            onOptionChange_transparencyTolerance={this.onOptionChange_transparencyTolerance}
-            optionValue_betterColour={optionValue_betterColour}
-            onOptionChange_BetterColour={this.onOptionChange_BetterColour}
-            optionValue_dithering={optionValue_dithering}
-            onOptionChange_dithering={this.onOptionChange_dithering}
-            optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
-            onOptionChange_PreProcessingEnabled={this.onOptionChange_PreProcessingEnabled}
-            preProcessingValue_brightness_buffer={preProcessingValue_brightness_buffer}
-            onOptionChange_PreProcessingBrightness_buffer={this.onOptionChange_PreProcessingBrightness_buffer}
-            preProcessingValue_contrast_buffer={preProcessingValue_contrast_buffer}
-            onOptionChange_PreProcessingContrast_buffer={this.onOptionChange_PreProcessingContrast_buffer}
-            preProcessingValue_saturation_buffer={preProcessingValue_saturation_buffer}
-            onOptionChange_PreProcessingSaturation_buffer={this.onOptionChange_PreProcessingSaturation_buffer}
-            preProcessingValue_backgroundColourSelect={preProcessingValue_backgroundColourSelect}
-            onOptionChange_PreProcessingBackgroundColourSelect={this.onOptionChange_PreProcessingBackgroundColourSelect}
-            preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
-            onOptionChange_PreProcessingBackgroundColour={this.onOptionChange_PreProcessingBackgroundColour}
-            uploadedImage_baseFilename={uploadedImage_baseFilename}
-            currentMaterialsData={currentMaterialsData}
-            mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
-            downloadBlobFile={this.downloadBlobFile}
-            onViewOnlineClicked={this.onViewOnlineClicked}
-          />
+          <div style={{ display: "block" }}>
+            <MapSettings
+              getLocaleString={getLocaleString}
+              optionValue_version={optionValue_version}
+              onOptionChange_version={this.onOptionChange_version}
+              optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
+              onOptionChange_modeNBTOrMapdat={this.onOptionChange_modeNBTOrMapdat}
+              optionValue_mapSize_x_buffer={optionValue_mapSize_x_buffer}
+              onOptionChange_mapSize_x_buffer={this.onOptionChange_mapSize_x_buffer}
+              optionValue_mapSize_y_buffer={optionValue_mapSize_y_buffer}
+              onOptionChange_mapSize_y_buffer={this.onOptionChange_mapSize_y_buffer}
+              optionValue_cropImage={optionValue_cropImage}
+              onOptionChange_cropImage={this.onOptionChange_cropImage}
+              optionValue_showGridOverlay={optionValue_showGridOverlay}
+              onOptionChange_showGridOverlay={this.onOptionChange_showGridOverlay}
+              optionValue_staircasing={optionValue_staircasing}
+              onOptionChange_staircasing={this.onOptionChange_staircasing}
+              optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
+              onOptionChange_WhereSupportBlocks={this.onOptionChange_WhereSupportBlocks}
+              optionValue_supportBlock={optionValue_supportBlock}
+              setOption_SupportBlock={this.setOption_SupportBlock}
+              optionValue_unobtainable={optionValue_unobtainable}
+              onOptionChange_unobtainable={this.onOptionChange_unobtainable}
+              optionValue_transparency={optionValue_transparency}
+              onOptionChange_transparency={this.onOptionChange_transparency}
+              optionValue_transparencyTolerance={optionValue_transparencyTolerance}
+              onOptionChange_transparencyTolerance={this.onOptionChange_transparencyTolerance}
+              optionValue_betterColour={optionValue_betterColour}
+              onOptionChange_BetterColour={this.onOptionChange_BetterColour}
+              optionValue_dithering={optionValue_dithering}
+              onOptionChange_dithering={this.onOptionChange_dithering}
+              optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
+              onOptionChange_PreProcessingEnabled={this.onOptionChange_PreProcessingEnabled}
+              preProcessingValue_brightness_buffer={preProcessingValue_brightness_buffer}
+              onOptionChange_PreProcessingBrightness_buffer={this.onOptionChange_PreProcessingBrightness_buffer}
+              preProcessingValue_contrast_buffer={preProcessingValue_contrast_buffer}
+              onOptionChange_PreProcessingContrast_buffer={this.onOptionChange_PreProcessingContrast_buffer}
+              preProcessingValue_saturation_buffer={preProcessingValue_saturation_buffer}
+              onOptionChange_PreProcessingSaturation_buffer={this.onOptionChange_PreProcessingSaturation_buffer}
+              preProcessingValue_backgroundColourSelect={preProcessingValue_backgroundColourSelect}
+              onOptionChange_PreProcessingBackgroundColourSelect={this.onOptionChange_PreProcessingBackgroundColourSelect}
+              preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
+              onOptionChange_PreProcessingBackgroundColour={this.onOptionChange_PreProcessingBackgroundColour}
+            />
+            <GreenButtons
+              getLocaleString={getLocaleString}
+              selectedBlocks={selectedBlocks}
+              optionValue_version={optionValue_version}
+              optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
+              optionValue_mapSize_x={optionValue_mapSize_x}
+              optionValue_mapSize_y={optionValue_mapSize_y}
+              optionValue_cropImage={optionValue_cropImage}
+              optionValue_staircasing={optionValue_staircasing}
+              optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
+              optionValue_supportBlock={optionValue_supportBlock}
+              optionValue_unobtainable={optionValue_unobtainable}
+              optionValue_transparency={optionValue_transparency}
+              optionValue_transparencyTolerance={optionValue_transparencyTolerance}
+              optionValue_betterColour={optionValue_betterColour}
+              optionValue_dithering={optionValue_dithering}
+              optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}
+              preProcessingValue_brightness={preProcessingValue_brightness}
+              preProcessingValue_contrast={preProcessingValue_contrast}
+              preProcessingValue_saturation={preProcessingValue_saturation}
+              preProcessingValue_backgroundColourSelect={preProcessingValue_backgroundColourSelect}
+              preProcessingValue_backgroundColour={preProcessingValue_backgroundColour}
+              uploadedImage={uploadedImage}
+              uploadedImage_baseFilename={uploadedImage_baseFilename}
+              currentMaterialsData={currentMaterialsData}
+              mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
+              downloadBlobFile={this.downloadBlobFile}
+              onViewOnlineClicked={this.onViewOnlineClicked}
+            />
+          </div>
           {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
             <Materials
               getLocaleString={getLocaleString}

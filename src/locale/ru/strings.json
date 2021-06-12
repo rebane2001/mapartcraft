@@ -129,7 +129,8 @@
     "MAPDAT-SPECIFIC": {
       "DOWNLOAD": "ЗАГРУЗИТЬ",
       "DOWNLOAD-TT": "Загрузить map.dat разделённую почанково"
-    }
+    },
+    "ZIPPING": null
   },
   "MATERIALS": {
     "TITLE": "Материалы",

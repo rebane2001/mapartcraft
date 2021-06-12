@@ -129,7 +129,8 @@
     "MAPDAT-SPECIFIC": {
       "DOWNLOAD": "PARSISIŲSTI",
       "DOWNLOAD-TT": "Atsisiųskite map.dat padaliję į 1x1 dalis"
-    }
+    },
+    "ZIPPING": null
   },
   "MATERIALS": {
     "TITLE": "Medžiagos",

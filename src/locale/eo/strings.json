@@ -129,7 +129,8 @@
     "MAPDAT-SPECIFIC": {
       "DOWNLOAD": "ENŜUTI",
       "DOWNLOAD-TT": "Enŝuti la map.dat-n dividitan laŭ 1x1 pecoj"
-    }
+    },
+    "ZIPPING": null
   },
   "MATERIALS": {
     "TITLE": "Materialoj",

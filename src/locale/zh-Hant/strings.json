@@ -129,7 +129,8 @@
     "MAPDAT-SPECIFIC": {
       "DOWNLOAD": "下載",
       "DOWNLOAD-TT": "下載map.dat分成1x1區塊"
-    }
+    },
+    "ZIPPING": null
   },
   "MATERIALS": {
     "TITLE": "材料",
