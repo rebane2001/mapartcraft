@@ -5,10 +5,10 @@ import BlockSelection from "./blockSelection";
 import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
 import Materials from "./materials";
-import defaultPresets from "./defaultPresets.json";
 import coloursJSON from "./coloursJSON.json";
 
 import BackgroundColourModes from "./json/backgroundColourModes.json";
+import DefaultPresets from "./json/defaultPresets.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -61,7 +61,7 @@ class MapartController extends Component {
 
   constructor(props) {
     super(props);
-    this.state.presets = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(defaultPresets)));
+    this.state.presets = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(DefaultPresets)));
     Object.keys(coloursJSON).forEach((key) => (this.state.selectedBlocks[key] = "-1"));
 
     const cookieMCVersion = CookieManager.touchCookie("mcversion", Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1].MCVersion);

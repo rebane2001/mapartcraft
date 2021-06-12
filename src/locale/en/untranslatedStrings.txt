@@ -1,5 +1,0 @@
-Untranslated strings for en
----
----
-
-en should not have any untranslated strings as it is the fallback
