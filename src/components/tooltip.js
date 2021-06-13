@@ -16,19 +16,20 @@ class Tooltip extends Component {
   };
 
   render() {
-    const tooltipStyle = {
-      display: this.state.hovering ? "unset" : "none",
-    };
+    const tooltipStyle = this.props.textStyleOverrides !== undefined
+      ? {
+          display: this.state.hovering ? "unset" : "none",
+          ...this.props.textStyleOverrides,
+        }
+      : { display: this.state.hovering ? "unset" : "none" };
     return (
       <div className="tooltipContainer">
         <div onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
           {this.props.children}
         </div>
-        <div>
-          <p className="tooltipText" style={tooltipStyle}>
-            {this.props.tooltipText}
-          </p>
-        </div>
+        <p className="tooltipText" style={tooltipStyle}>
+          {this.props.tooltipText}
+        </p>
       </div>
     );
   }

@@ -6,6 +6,26 @@ Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapart
 
 ## Changes
 
+### Closes issues
+
+- #165
+- #162
+- #161
+- #159
+- #154
+- #141
+- #136
+- #135
+- #123
+- #116
+- #111
+- #106
+- #60?
+- #55
+- #39
+- #31: maybe no hard limit
+- #30
+
 ### Building
 
 - Remove the need for `render_html.py`: `npm run build` creates the final product

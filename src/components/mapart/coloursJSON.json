@@ -4037,18 +4037,6 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 11
-            },
-            "12": {
-                "displayName": "Dried Kelp Block",
-                "validVersions": {
-                    "1.13.2": {
-                        "NBTName": "dried_kelp_block",
-                        "NBTArgs": {}
-                    }
-                },
-                "supportBlockMandatory": false,
-                "flammable": false,
-                "presetIndex": 12
             }
         },
         "mapdatId": 26
