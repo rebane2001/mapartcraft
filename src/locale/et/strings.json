@@ -46,7 +46,8 @@
       "EVERYTHING": "Kõik",
       "CARPETS": "Vaibad",
       "GREYSCALE": "Mustvalge"
-    }
+    },
+    "UNSUPPORTED-PAST": null
   },
   "MAP-PREVIEW": {
     "TITLE": "Kaardi eelvaade",

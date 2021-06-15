@@ -117,7 +117,7 @@ class BlockSelection extends Component {
                           }}
                         >
                           <Tooltip
-                            tooltipText={`Unsuppoted in ${Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1].MCVersion}`}
+                            tooltipText={`${getLocaleString("BLOCK-SELECTION/UNSUPPORTED-PAST")} ${Object.keys(block.validVersions)[Object.keys(block.validVersions).length - 1]}`}
                             textStyleOverrides={{
                               whiteSpace: "nowrap",
                               backgroundColor: "red",

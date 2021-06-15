@@ -36,10 +36,10 @@ def touchLocaleString(languageCode, force, path, enOrNull = None):
 
     localeFolder = localeJSON
     for pathSectionIndex, pathSection in enumerate(pathSections[:-1]):
-        if force or not pathSection in localeFolder:
-            localeFolder[pathSection] = {}
+        if type(localeFolder[pathSection]) == dict:
             localeFolder = localeFolder[pathSection]
-        elif type(localeFolder[pathSection]) == dict:
+        elif force or not pathSection in localeFolder:
+            localeFolder[pathSection] = {}
             localeFolder = localeFolder[pathSection]
         elif localeFolder[pathSection] is None:
             print("{}: Refusing to override None entry {} with subfolder".format(languageCode, "/".join(pathSections[:pathSectionIndex + 1])))

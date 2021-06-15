@@ -46,7 +46,8 @@
       "EVERYTHING": "Viskas",
       "CARPETS": "Kilimėliai",
       "GREYSCALE": null
-    }
+    },
+    "UNSUPPORTED-PAST": null
   },
   "MAP-PREVIEW": {
     "TITLE": "Žemėlapio peržiūra",

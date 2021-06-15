@@ -46,7 +46,8 @@
       "EVERYTHING": "全部东西",
       "CARPETS": "地毯",
       "GREYSCALE": null
-    }
+    },
+    "UNSUPPORTED-PAST": null
   },
   "MAP-PREVIEW": {
     "TITLE": "地图预览",

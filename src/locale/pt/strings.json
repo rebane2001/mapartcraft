@@ -46,7 +46,8 @@
       "EVERYTHING": "Tudo",
       "CARPETS": "Carpete",
       "GREYSCALE": null
-    }
+    },
+    "UNSUPPORTED-PAST": null
   },
   "MAP-PREVIEW": {
     "TITLE": "Pré-Visualização do mapa",

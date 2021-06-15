@@ -46,7 +46,8 @@
       "EVERYTHING": "Everything",
       "CARPETS": "Carpets",
       "GREYSCALE": "Greyscale"
-    }
+    },
+    "UNSUPPORTED-PAST": "Unsupported past"
   },
   "MAP-PREVIEW": {
     "TITLE": "Map preview",

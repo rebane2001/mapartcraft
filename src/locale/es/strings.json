@@ -46,7 +46,8 @@
       "EVERYTHING": "Todo",
       "CARPETS": "Alfombras",
       "GREYSCALE": "Grises"
-    }
+    },
+    "UNSUPPORTED-PAST": null
   },
   "MAP-PREVIEW": {
     "TITLE": "Vista previa del Mapa",

@@ -46,7 +46,8 @@
       "EVERYTHING": "Все",
       "CARPETS": "Коврики",
       "GREYSCALE": null
-    }
+    },
+    "UNSUPPORTED-PAST": null
   },
   "MAP-PREVIEW": {
     "TITLE": "Предпросмотр",
