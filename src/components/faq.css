@@ -1,14 +1,8 @@
-.closeTextButton {
-    color: var(--rebaneGreen);
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-.h2_FAQ {
-    margin-block: 0.5em !important;
-    text-decoration: underline;
+.FAQ h2 {
+  margin-block: 0.5em !important;
+  text-decoration: underline;
 }
 
-.p_FAQ {
+.FAQ p {
   margin-top: 0.1em;
 }
