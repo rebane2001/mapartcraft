@@ -7,7 +7,6 @@ import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
 
-import IMG_Barrier from "../../images/barrier.png";
 import IMG_Null from "../../images/null.png";
 import IMG_Textures from "../../images/textures.png";
 
@@ -93,9 +92,14 @@ class BlockSelection extends Component {
             <label>
               <Tooltip tooltipText={getLocaleString("NONE")}>
                 <img
-                  src={IMG_Barrier}
+                  src={IMG_Null}
                   alt={getLocaleString("NONE")}
                   className={selectedBlocks[colourSetId] === "-1" ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
+                  style={{
+                    backgroundImage: `url(${IMG_Textures})`,
+                    backgroundPositionX: "-100%",
+                    backgroundPositionY: "-6400%",
+                  }}
                   onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
                 />
               </Tooltip>

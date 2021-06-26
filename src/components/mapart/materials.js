@@ -5,7 +5,6 @@ import Tooltip from "../tooltip";
 
 import IMG_Null from "../../images/null.png";
 import IMG_Textures from "../../images/textures.png";
-import IMG_Placeholder from "../../images/placeholder.png";
 
 import "./materials.css";
 
@@ -135,7 +134,9 @@ class Materials extends Component {
                       style={
                         supportBlockIds === null
                           ? {
-                              backgroundImage: `url(${IMG_Placeholder})`,
+                              backgroundImage: `url(${IMG_Textures})`,
+                              backgroundPositionX: "-200%",
+                              backgroundPositionY: "-6400%",
                             }
                           : {
                               backgroundImage: `url(${IMG_Textures})`,
