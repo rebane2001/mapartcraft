@@ -7,3 +7,5 @@ The 65th row at the bottom contains extra textures, currently:
 - Reserved blank / transparent
 - Barrier
 - Placeholder block (for unknown support block)
+- Plus for preview size
+- Minus for preview size

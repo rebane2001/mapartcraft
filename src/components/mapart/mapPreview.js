@@ -10,8 +10,8 @@ import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
 import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
-import IMG_Plus from "../../images/plus.png";
-import IMG_Minus from "../../images/minus.png";
+import IMG_Null from "../../images/null.png";
+import IMG_Textures from "../../images/textures.png";
 import IMG_GridOverlay from "../../images/gridOverlay.png";
 
 import "./mapPreview.css";
@@ -321,10 +321,30 @@ class MapPreview extends Component {
           </div>
           <div>
             <Tooltip tooltipText={getLocaleString("MAP-PREVIEW/SCALE-PLUS-TT")}>
-              <img alt="+" className="sizeButton" src={IMG_Plus} onClick={this.increasePreviewScale} />
+              <img
+                alt="+"
+                className="sizeButton"
+                src={IMG_Null}
+                style={{
+                  backgroundImage: `url(${IMG_Textures})`,
+                  backgroundPositionX: "-96px",
+                  backgroundPositionY: "-2048px",
+                }}
+                onClick={this.increasePreviewScale}
+              />
             </Tooltip>
             <Tooltip tooltipText={getLocaleString("MAP-PREVIEW/SCALE-MINUS-TT")}>
-              <img alt="-" className="sizeButton" src={IMG_Minus} onClick={this.decreasePreviewScale} />
+              <img
+                alt="-"
+                className="sizeButton"
+                src={IMG_Null}
+                style={{
+                  backgroundImage: `url(${IMG_Textures})`,
+                  backgroundPositionX: "-128px",
+                  backgroundPositionY: "-2048px",
+                }}
+                onClick={this.decreasePreviewScale}
+              />
             </Tooltip>
           </div>
         </div>

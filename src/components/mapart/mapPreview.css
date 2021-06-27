@@ -36,6 +36,8 @@
 .sizeButton {
   margin-top: 2px;
   margin-left: 2px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
 }
 
