@@ -177,7 +177,7 @@ class BlockWorld {
       case " ":
         this.controls.moveUp(1);
         break;
-      case "Control":
+      case "c":
         this.camera.fov = 25;
         this.camera.updateProjectionMatrix();
         break;
@@ -189,7 +189,7 @@ class BlockWorld {
   handleKeyUp = (e) => {
     e.preventDefault();
     switch (e.key) {
-      case "Control":
+      case "c":
         this.camera.fov = 75;
         this.camera.updateProjectionMatrix();
         break;
@@ -685,7 +685,7 @@ class ViewOnline extends Component {
           bottom: 0,
         }}
       >
-        <h3 style={{ margin: 0 }}>{`${getLocaleString("VIEW-ONLINE/CONTROLS")}: W A S D E SPACE CTRL`}</h3>
+        <h3 style={{ margin: 0 }}>{`${getLocaleString("VIEW-ONLINE/CONTROLS")}: W A S D E SPACE C`}</h3>
         <h3 style={{ margin: 0 }}>{`ESC ESC ${getLocaleString("VIEW-ONLINE/TO-EXIT")}`}</h3>
       </div>
     );
