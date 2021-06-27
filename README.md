@@ -1,72 +1,32 @@
-# MapartCraft React (WIP)
+# MapartCraft
 
-A React JS refactor fork of Rebane2001's [MapartCraft](https://github.com/rebane2001/mapartcraft)
+A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like 2b2t, running in your browser
 
-Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapartcraft/)
+# Requirements
 
-## Changes
+MapartCraft is written in ReactJS; running and building requires NPM / Node. Extra scripts in `tools` are written in Python3
 
-### Closes issues
+# Building
 
-- #165
-- #162
-- #161
-- #159
-- #154
-- #141
-- #136
-- #135
-- #123
-- #116
-- #111
-- #106
-- #60?
-- #55
-- #39
-- #31: maybe no hard limit
-- #30
+1. Acquire packages with `npm install`
+2. Build using `npm run build`, or run a debug version with `npm run start`
+3. Alternatively use the shell script `build.sh` for deployment on Linux. This will also copy a `.htaccess` file to the build folder for use with Apache
 
-### Building
-
-- Remove the need for `render_html.py`: `npm run build` creates the final product
-- Remove the need for `ImageMagick` / `create_img.bat`
-- Remove the need for `create_css.py`: all textures are in one png that correspond in x and y with `coloursJSON.json`
-
-### Internal
-
-- Split the monolithic main js file into multiple smaller components
-- All locales for the website are managed via React Router instead of building separate pages; a .htaccess template is provided for Apache
-- Rearranged locale JSONs
-
-### For Users
-
-- Trim supported versions down: eg drop 1.12, 1.12.1 in favour of just 1.12.2...
-- Added 4th colour to colour boxes in block selection pane when mapdat option and unobtainable box selected
-- Original map preview had to finish its current rendering before re-rendering if an option changed mid render; now the map rendering worker is immediately terminated and relaunched if an option changes mid render to save time
-- Remove 'seconds remaining' from progress bar as it was inaccurate, and unnecessary with percentage shown also
-- Materials count now auto-updates
-- Support-block single mode is now optimised
-- Add tolerance slider for transparency in Mapdats
-- Preprocessing background colour options
-- Materials 'placeholder block' now dynamically updates its image
-- Add nice predictive text to 'block to add' option
-- Creation of NBTs and Mapdats is now non-blocking (done on a separate thread except zipping)
-- Improved view online
-
-## Requirements
-
-- Node JS
-
-## Running
-
-Acquire packages with `npm install`. Build using `npm run build`, or run debug version with `npm run start`
-
-## Building / Hosting
-
-`build.sh` is a shell script that will build the app, and copy a `.htaccess` file to the build folder if Apache is detected on the system
-
-The default build settings assume the site is being hosted at https://YOUR_SITE_HERE.com/mapartcraft. To change the folder from which the site is hosted modify the following:
+The default build settings assume the app is being hosted at https://YOUR-SITE-HERE.com/mapartcraft. To change the folder from which the site is hosted modify the following:
 
 - `homepage` in `package.json`
 - `basename` in the Router in `src/app.js`
 - The `RewriteRule` in `buildSources/apache/.htaccess` if using Apache
+
+# Usage
+
+Visit [MapartCraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](https://rebane2001.com) or use a mirror on [web.archive.org](https://web.archive.org/web/*/https://rebane2001.com/mapartcraft). However, it is recommended to use the [rebane2001.com](https://rebane2001.com/mapartcraft) site as it is always up to date with new features and bugfixes.
+
+# Credits/Thanks
+
+- Minecraft for the block textures
+- [KenPixel Mini Square](https://opengameart.org/content/kenney-fonts) font by [Kenney](https://www.kenney.nl/)
+- [pako](https://www.npmjs.com/package/pako)'s zipping library
+- Translation credits can be seen on the translated pages
+- [SelfAdjointOperator](https://github.com/SelfAdjointOperator) for some extra features
+- Code contributors can be seen on the [contributions page](https://github.com/rebane2001/mapartcraft/graphs/contributors)
