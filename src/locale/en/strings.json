@@ -145,7 +145,11 @@
   },
   "VIEW-ONLINE": {
     "TITLE": "VIEW ONLINE",
-    "TITLE-TT": "View the schematic online without downloading"
+    "TITLE-TT": "View the schematic online without downloading",
+    "TOO-BIG-FOR-SINGLE": "Too big for single schematic; download 1x1 split",
+    "CONTROLS": "Controls",
+    "TO-EXIT": "To exit",
+    "SIZE": "Size"
   },
   "DONATE": {
     "TITLE": "HELP ME SKIP THE QUEUE",

@@ -1,4 +1,5 @@
 .greenButton {
+  display: block;
   font-family: "kenpixel_mini_square";
   color: #333333;
   cursor: pointer;

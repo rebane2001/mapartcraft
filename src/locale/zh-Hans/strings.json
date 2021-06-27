@@ -145,7 +145,11 @@
   },
   "VIEW-ONLINE": {
     "TITLE": null,
-    "TITLE-TT": null
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "地图尺寸"
   },
   "DONATE": {
     "TITLE": "帮助我跳过队列",

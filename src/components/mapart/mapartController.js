@@ -7,6 +7,7 @@ import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
 import Materials from "./materials";
 import coloursJSON from "./coloursJSON.json";
+import ViewOnline from "./viewOnline3D/viewOnline";
 
 import BackgroundColourModes from "./json/backgroundColourModes.json";
 import DefaultPresets from "./json/defaultPresets.json";
@@ -58,6 +59,7 @@ class MapartController extends Component {
       currentSelectedBlocks: {}, // we keep this soley for materials.js
     },
     mapPreviewWorker_inProgress: false,
+    viewOnline_NBT: null,
   };
 
   constructor(props) {
@@ -339,9 +341,8 @@ class MapartController extends Component {
     this.setState({ preProcessingValue_backgroundColour: newValue });
   };
 
-  onViewOnlineClicked = (e) => {
-    console.log(e);
-    //TODO
+  onGetViewOnlineNBT = (viewOnline_NBT) => {
+    this.setState({ viewOnline_NBT });
   };
 
   downloadBlobFile(data, mimeType, filename) {
@@ -593,6 +594,7 @@ class MapartController extends Component {
       selectedPresetName,
       currentMaterialsData,
       mapPreviewWorker_inProgress,
+      viewOnline_NBT,
     } = this.state;
     return (
       <div className="mapartController">
@@ -711,7 +713,7 @@ class MapartController extends Component {
               currentMaterialsData={currentMaterialsData}
               mapPreviewWorker_inProgress={mapPreviewWorker_inProgress}
               downloadBlobFile={this.downloadBlobFile}
-              onViewOnlineClicked={this.onViewOnlineClicked}
+              onGetViewOnlineNBT={this.onGetViewOnlineNBT}
             />
           </div>
           {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
@@ -723,6 +725,14 @@ class MapartController extends Component {
             />
           ) : null}
         </div>
+        {viewOnline_NBT !== null && (
+          <ViewOnline
+            getLocaleString={getLocaleString}
+            optionValue_version={optionValue_version}
+            viewOnline_NBT={viewOnline_NBT}
+            onGetViewOnlineNBT={this.onGetViewOnlineNBT}
+          />
+        )}
       </div>
     );
   }

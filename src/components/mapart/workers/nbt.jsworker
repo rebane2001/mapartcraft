@@ -113,7 +113,7 @@ class NBTWriter {
 
   write(dataType, size, value) {
     this.accommodate(size);
-    this.dataView["set" + dataType](this.offset, value);
+    this.dataView[`set${dataType}`](this.offset, value);
     this.offset += size;
   }
 
@@ -815,26 +815,14 @@ onmessage = (e) => {
   setupExactColourCache();
   setupColoursLayoutsFromPixelsData();
 
-  switch (headerMessage) {
-    case "CREATE_NBT_JOINED": {
-      progressReportHead = "PROGRESS_REPORT_NBT_JOINED";
-      mergeMaps();
-      break;
-    }
-    case "CREATE_NBT_SPLIT": {
-      progressReportHead = "PROGRESS_REPORT_NBT_SPLIT";
-      break;
-    }
-    case "CREATE_MAPDAT_SPLIT": {
-      progressReportHead = "PROGRESS_REPORT_MAPDAT_SPLIT";
-      break;
-    }
-    default: {
-      throw new Error("Unknown header message");
-    }
+  if (["CREATE_NBT_JOINED_FOR_VIEW_ONLINE", "CREATE_NBT_JOINED"].includes(headerMessage)) {
+    mergeMaps();
   }
 
+  progressReportHead = `PROGRESS_REPORT_${headerMessage}`;
+
   switch (headerMessage) {
+    case "CREATE_NBT_JOINED_FOR_VIEW_ONLINE":
     case "CREATE_NBT_JOINED":
     case "CREATE_NBT_SPLIT": {
       for (let whichMap_y = 0; whichMap_y < maps.length; whichMap_y++) {
@@ -842,7 +830,7 @@ onmessage = (e) => {
           const map_NBT = new Map_NBT(maps[whichMap_y][whichMap_x]);
           const NBT_Array = map_NBT.getNBT();
           postMessage({
-            head: "NBT_ARRAY",
+            head: headerMessage === "CREATE_NBT_JOINED_FOR_VIEW_ONLINE" ? "NBT_FOR_VIEW_ONLINE" : "NBT_ARRAY",
             body: {
               whichMap_x: whichMap_x,
               whichMap_y: whichMap_y,

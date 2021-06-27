@@ -145,7 +145,11 @@
   },
   "VIEW-ONLINE": {
     "TITLE": null,
-    "TITLE-TT": null
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Amplekso"
   },
   "DONATE": {
     "TITLE": "HELPU MIN PASI LA VICON",

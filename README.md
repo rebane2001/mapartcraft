@@ -51,6 +51,7 @@ Current WIP versions hosted [here](https://area51.selfadjointoperator.com/mapart
 - Materials 'placeholder block' now dynamically updates its image
 - Add nice predictive text to 'block to add' option
 - Creation of NBTs and Mapdats is now non-blocking (done on a separate thread except zipping)
+- Improved view online
 
 ## Requirements
 
