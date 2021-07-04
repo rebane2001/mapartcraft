@@ -32,7 +32,7 @@ class MapartController extends Component {
     optionValue_mapSize_y_buffer: "1",
     optionValue_cropImage: true,
     optionValue_showGridOverlay: false,
-    optionValue_staircasing: StaircaseModes.CLASSIC.uniqueId,
+    optionValue_staircasing: StaircaseModes.VALLEY.uniqueId,
     optionValue_whereSupportBlocks: WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId,
     optionValue_supportBlock: "cobblestone",
     optionValue_unobtainable: true,
