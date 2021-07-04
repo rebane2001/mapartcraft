@@ -159,17 +159,21 @@ class MapartController extends Component {
     const { optionValue_version } = this.state;
     let selectedBlocks = {};
     Object.keys(coloursJSON).forEach((key) => (selectedBlocks[key] = "-1"));
-    setsAndBlocks.forEach((block) => {
-      const colourSetId = block[0].toString();
-      const blockId = block[1].toString();
-      if (
-        colourSetId in coloursJSON &&
-        blockId in coloursJSON[colourSetId]["blocks"] &&
-        Object.keys(coloursJSON[colourSetId]["blocks"][blockId]["validVersions"]).includes(optionValue_version.MCVersion)
-      ) {
+    for (const [int_colourSetId, presetIndex] of setsAndBlocks) {
+      // we store presetIndex in the cookie, not blockId
+      const colourSetId = int_colourSetId.toString();
+      if (!(colourSetId in coloursJSON)) {
+        continue;
+      }
+      const blockIdAndBlock = Object.entries(coloursJSON[colourSetId].blocks).find(([, block]) => block.presetIndex === presetIndex);
+      if (blockIdAndBlock === undefined) {
+        continue;
+      }
+      const blockId = blockIdAndBlock[0];
+      if (Object.keys(coloursJSON[colourSetId].blocks[blockId].validVersions).includes(optionValue_version.MCVersion)) {
         selectedBlocks[colourSetId] = blockId;
       }
-    });
+    }
     this.setState({
       selectedBlocks,
     });
@@ -448,7 +452,7 @@ class MapartController extends Component {
     let newPreset = { name: presetToSave_name, blocks: [] };
     Object.keys(selectedBlocks).forEach((key) => {
       if (selectedBlocks[key] !== "-1") {
-        newPreset["blocks"].push([parseInt(key), parseInt(selectedBlocks[key])]);
+        newPreset["blocks"].push([parseInt(key), parseInt(coloursJSON[key].blocks[selectedBlocks[key]].presetIndex)]);
       }
     });
     const presets_new = [...otherPresets, newPreset];
