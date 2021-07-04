@@ -1,0 +1,30 @@
+.greenButton {
+  display: block;
+  font-family: "kenpixel_mini_square";
+  color: #333333;
+  cursor: pointer;
+  position: relative;
+  width: 250px;
+  height: 29px;
+}
+
+.greenButton_text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+
+  line-height: 29px;
+}
+
+.greenButton_progressDiv {
+  background-color: #688e6b;
+  height: 100%;
+}
+
+.greenButton_large {
+  height: 50px !important;
+}
+.greenButton_large_text {
+  line-height: 50px !important;
+  font-size: 26px !important;
+}

@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "Russian",
+    "CREDITS": "Перевод: Cublay; Редактирование: Ajno"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "Пожалуйста, прочитайте ",
+    "PLEASE-READ-2": " перед тем, как задавать вопросы где-либо!",
+    "HAVE-YOU-READ": "Вы прочитали FAQ?",
+    "HELP-IN-ENGLISH": "Примечание: Помощь предоставляется только на английском",
+    "VIDEO-TUTORIAL": "Видео-гайд"
+  },
+  "DESCRIPTION": {
+    "1": "Генератор файлов schematic и map.dat для создания пиксель-артов на картах, созданный для использования как админами серверов, так и игроками в выживании на серверах наподобие ",
+    "2": ", запускаемый прямо в браузере",
+    "3": "Вдохновлён ",
+    "4": "программой Redstonehelper's map art",
+    "5": " с добавлением нужных функций и возможности использования без установки программы",
+    "6": "Вы можете свободно писать мне в Discord ",
+    "7": " или Reddit ",
+    "8": ", предложения о добавлении новых функций и сообщения об ошибках отправляйте в "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Выбор блоков",
+    "PRESETS": {
+      "TITLE": "Шаблоны",
+      "DELETE": "Удалить",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Сохранить",
+      "SAVE-PROMPT-ENTER-NAME": "Введите название:",
+      "SHARE": "Поделиться",
+      "SHARE-TT": "Поделиться выбранными блоками ссылкой",
+      "SHARE-WARNING-NONE-SELECTED": "Выберите блоки перед тем, как ими делиться!",
+      "SHARE-LINK": "Поделитесь этой ссылкой, чтобы поделиться выбранными вами блоками",
+      "DOWNLOAD": "Загрузить",
+      "DOWNLOAD-TT": "Загрузить цветовую палитру для использования в Paint.net",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Выберите блоки перед загрузкой палитры!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Внимание, в вашей палитре ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " цветов, максимум для Paint.net составляет 96. Некоторые цвета будут недоступны в Paint.net",
+      "IMPORT-ERROR-CORRUPTED": "Ссылка повреждена!",
+      "NONE": "Нет",
+      "EVERYTHING": "Все",
+      "CARPETS": "Коврики",
+      "GREYSCALE": null
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Предпросмотр",
+    "BEST-RESOLUTION-TT": "Изображение такого разрешения будет выглядеть лучше всего",
+    "ASPECT-RATIO-MISMATCH-TT": "Изображение не соответствует соотношению сторон карты",
+    "SCALE-MINUS-TT": "Уменьшить мини-карту",
+    "SCALE-PLUS-TT": "Увеличить мини-карту"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Настройки",
+    "MODE": "Режим",
+    "MODE-TT": "Выберите режим для работы",
+    "MODE-VISUAL": "Визуальный",
+    "MODE-VISUAL-NA": "Визуальный (не доступен)",
+    "VERSION": "Версия игры",
+    "VERSION-TT": "Выберите ближайшую к используемой версию",
+    "MAP-SIZE": "Размер карты",
+    "CROP": "Обрезка",
+    "CROP-TT": "Обрезает, а не растягивает ваше изображение",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "Ступеньчатость",
+      "TITLE-TT": "Конструировать 3D карту. Строить тяжелее, но цветов в три раза больше!",
+      "OFF": "Выкл. (2D)",
+      "CLASSIC": "Вкл. (классическая)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Добавить блоки снизу",
+        "NONE": "Без блоков",
+        "IMPORTANT": "Важные блоки",
+        "ALL": "Все блоки",
+        "ALL-OPTIMIZED": "Все блоки (оптимизировано)",
+        "ALL-DOUBLE": "Все двойные",
+        "ALL-DOUBLE-OPTIMIZED": "Все двойные (оптимизировано)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Добавление блоков",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Связано с предыдущей функцией"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Недоступные цвета",
+      "UNOBTAINABLE-COLOURS-TT": "Включает цвета map.dat, недоступные в schematic-файлах",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Улучшенный цвет",
+    "BETTER-COLOUR-TT": "Более точное отображение цвета",
+    "DITHERING": {
+      "TITLE": "Смешение",
+      "TITLE-TT": "Добавляет случайные пиксели для иллюзии большего количества цветов",
+      "NONE": "Без смешения"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Выберите блоки перед загрузкой!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "ЗАГРУЗИТЬ",
+      "DOWNLOAD-TT": "Загрузить nbt",
+      "DOWNLOAD-SPLIT": "ЗАГРУЗИТЬ УЧАСТОК 1х1",
+      "DOWNLOAD-SPLIT-TT": "Загрузить nbt, разделённый почанково"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "ЗАГРУЗИТЬ",
+      "DOWNLOAD-TT": "Загрузить map.dat разделённую почанково"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Материалы",
+    "BLOCK": "Блок",
+    "AMOUNT": "Количество",
+    "PLACEHOLDER-BLOCK-TT": "Заменяющий блок",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "ОБНОВИТЬ МАТЕРИАЛЫ",
+    "REFRESH-MATERIALS-TT": "Обновить список материалов"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Размер"
+  },
+  "DONATE": {
+    "TITLE": "ПОМОЩЬ ПРОЕКТУ",
+    "TITLE-TT": "Показать спонсоров и пожертвовать деньги"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Примечание: Microsoft Edge не поддерживается.\\nПожалуйста, используйте Chrome (предпочтительно) или Firefox ",
+  "NONE": "Нет",
+  "UNUSED": {
+    "SECOND": "сек.",
+    "SECONDS": "сек.",
+    "REMAINING": "осталось",
+    "SETTINGS-3D-OPTIMIZED": "Вкл. (оптимизирована)"
+  }
+}

@@ -1,0 +1,72 @@
+{
+    "0": { // each set of blocks that produce a certain colour are grouped into a 'colour set', often refered to by 'colourSet'.
+           // We keep this as a dictionary instead of a list so it is easier to see the 'colourSetId' key at a glance
+        "tonesRGB": { // colours in RGB form
+            "dark": [ // for staircasing
+                89,
+                125,
+                39
+            ],
+            "normal": [ // for flat maps
+                109,
+                153,
+                48
+            ],
+            "light": [ // for staircasing
+                127,
+                178,
+                56
+            ],
+            "unobtainable": [ // for mapdat files; unobtainable in survival
+                67,
+                94,
+                29
+            ]
+        },
+        "blocks": {
+            "0": { // block number within a colour set, often refered to by 'blockId'
+                "displayName": "Grass Block", // Human readable name, used when hovering over block
+                "validVersions": { // list of versions this block is used in as this colour
+                    "1.12.2": { // if this is a dictionary then it contains info for the NBT worker
+                        "NBTName": "grass",
+                        "NBTArgs": {}
+                    },
+                    "1.13.2": {
+                        "NBTName": "grass_block",
+                        "NBTArgs": {}
+                    },
+                    "1.14.4": "&1.13.2", // to avoid duplicates, when NBT info is kept the same across versions we reference
+                                         // previous valid versions with "&${version}"
+                    "1.15.2": "&1.13.2",
+                    "1.16.5": "&1.13.2"
+                },
+                "supportBlockMandatory": false, // whether the block necessarily needs a support block under it, eg for carpet or sand.
+                                                // see supportBlocks.md for more info
+                "flammable": false, // currently unused. may be used in future in an option for whether to
+                                   // place glass over the block in the .schematic to avoid lightning fires
+                "presetIndex": 0 // blockId is used soley to choose the order in which blocks are displayed in blockSelection, and is the same as the block's
+                                 // horizontal index in textures.png. presetIndex is used to generate and import from preset URLs; this stays constant for
+                                 // a block for forwards compatibility and allows blockIds / textures.png to change arbitrarily without breaking presets
+            },
+            "1": {
+                "displayName": "Slime Block",
+                "validVersions": {
+                    "1.12.2": {
+                        "NBTName": "slime",
+                        "NBTArgs": {}
+                    },
+                    "1.13.2": {
+                        "NBTName": "slime_block",
+                        "NBTArgs": {}
+                    },
+                    "1.14.4": "&1.13.2",
+                    "1.15.2": "&1.13.2",
+                    "1.16.5": "&1.13.2"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 1
+            }
+        }
+    }
+}

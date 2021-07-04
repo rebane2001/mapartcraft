@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "German",
+    "CREDITS": "Übersetzung: Prismary, Number1Princess"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "Bitte lies das ",
+    "PLEASE-READ-2": " bevor Du mich kontaktierst!",
+    "HAVE-YOU-READ": "Hast Du das FAQ gelesen?",
+    "HELP-IN-ENGLISH": "Hinweis: Hilfe kann ausschließlich auf Englisch bereitgestellt werden",
+    "VIDEO-TUTORIAL": "Erklärvideo"
+  },
+  "DESCRIPTION": {
+    "1": "Ein Generator zum Erstellen von Minecraft Mapart im Schematic und map.dat Format für sowohl Server-Admins, als auch Surival-Spieler auf Servern wie ",
+    "2": ", innerhalb Deines Browsers",
+    "3": "Inspiriert durch ",
+    "4": "Redstonehelpers Mapart-Programm",
+    "5": ", mit dem Ziel verschiedenste gewünschte Funktionen zu implementieren und das Programm online verfügbar zu machen.",
+    "6": "Bei Rückfragen kannst Du mich auf Discord ",
+    "7": " oder Reddit ",
+    "8": " erreichen. Bug-Reports und Featurewünsche können auf GitHub eingereicht werden: "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Blockauswahl",
+    "PRESETS": {
+      "TITLE": "Vorlagen",
+      "DELETE": "Entfernen",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Speichern",
+      "SAVE-PROMPT-ENTER-NAME": "Gib einen Namen für Deine Vorlage ein:",
+      "SHARE": "Teilen",
+      "SHARE-TT": "Stellt die aktuelle Auswahl an Blöcken als Link bereit",
+      "SHARE-WARNING-NONE-SELECTED": "Wähle vor dem Teilen Blöcke aus!",
+      "SHARE-LINK": "Teile diesen Link, um deine aktuelle Auswahl an Blöcken zu teilen",
+      "DOWNLOAD": "Download",
+      "DOWNLOAD-TT": "Die Farbpalette für die Nutzung in paint.net herunterladen",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Wähle vor dem Herunterladen der Palette Blöcke aus!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Achtung, Deine Palette hat ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " Farben, während das Maximum in paint.net bei 96 liegt. Einige Farben werden in paint.net nicht verfügbar sein",
+      "IMPORT-ERROR-CORRUPTED": "Der Link zur Vorlage ist beschädigt!",
+      "NONE": "Nichts",
+      "EVERYTHING": "Alles",
+      "CARPETS": "Teppiche",
+      "GREYSCALE": null
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Map-Vorschau",
+    "BEST-RESOLUTION-TT": "Ein Bild mit dieser Auflösung wird am besten funktionieren",
+    "ASPECT-RATIO-MISMATCH-TT": "Das Bild stimmt nicht mit dem Seitenverhältnis der Map überein",
+    "SCALE-MINUS-TT": "Vorschau verkleinern",
+    "SCALE-PLUS-TT": "Vorschau vergrößern"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Einstellungen",
+    "MODE": "Format",
+    "MODE-TT": "Bitte wähle ein Dateiformat",
+    "MODE-VISUAL": "Visuell",
+    "MODE-VISUAL-NA": "Visuell (nicht verfügbar)",
+    "VERSION": "Version",
+    "VERSION-TT": "Wähle die nächstgelegene Version zu der aus, auf welcher Du spielst.",
+    "MAP-SIZE": "Maße",
+    "CROP": "Zuschneiden",
+    "CROP-TT": "Schneidet das Bild zurecht, statt es zu verzerren",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "Staircasing",
+      "TITLE-TT": "Exportiert eine treppenartige, dreidimensionale Struktur. Schwieriger zu bauen, ermöglicht jedoch das Dreifache an Farben!",
+      "OFF": "Aus (2D)",
+      "CLASSIC": "An (klassisch)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Platziere Blöcke unter",
+        "NONE": "Keine Blöcke",
+        "IMPORTANT": "Wichtige Blöcke",
+        "ALL": "Alle Blöcke",
+        "ALL-OPTIMIZED": "Alle Blöcke (optimiert)",
+        "ALL-DOUBLE": "Alle Blöcke, doppelt",
+        "ALL-DOUBLE-OPTIMIZED": "Alle Blöcke, doppelt (optimiert)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Platzierter Block",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Siehe vorherige Option"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Nicht erhältliche Farben",
+      "UNOBTAINABLE-COLOURS-TT": "Aktiviert map.dat exklusive Farben, die in Schematics nicht verfügbar sind",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Verbesserte Farben",
+    "BETTER-COLOUR-TT": "Aktiviert eine optimierte Farbgenauigkeit",
+    "DITHERING": {
+      "TITLE": "Dithering",
+      "TITLE-TT": "Schafft die Illusion von mehr Farben durch das Hinzufügen scheinbar zufälliger Pixel",
+      "NONE": "Aus"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Wähle vor dem Herunterladen Blöcke aus!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD",
+      "DOWNLOAD-TT": "Die nbt-Datei herunterladen",
+      "DOWNLOAD-SPLIT": "DOWNLOAD ALS 1x1 TEILE",
+      "DOWNLOAD-SPLIT-TT": "Die nbt-Datei getrennt in 1x1 Teile herunterladen"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD",
+      "DOWNLOAD-TT": "Die map.dat-Datei getrennt in 1x1 Teile herunterladen"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Materialien",
+    "BLOCK": "Block",
+    "AMOUNT": "Anzahl",
+    "PLACEHOLDER-BLOCK-TT": "Platzhalter-Block",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "MATERIALIEN AKTUALISIEREN",
+    "REFRESH-MATERIALS-TT": "Materialliste aktualisieren"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Maße"
+  },
+  "DONATE": {
+    "TITLE": "KLEINE SPENDE BITTE",
+    "TITLE-TT": "Spendenlink und Liste aller Unterstützer"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Hinweis: Microsoft Edge wird nicht unterstützt.\\nBitte verwende Google Chrome (bevorzugt) oder Mozilla Firefox für MapartCraft",
+  "NONE": "None",
+  "UNUSED": {
+    "SECOND": "Sekunde",
+    "SECONDS": "Sekunden",
+    "REMAINING": "verbleibend",
+    "SETTINGS-3D-OPTIMIZED": "An (optimiert)"
+  }
+}

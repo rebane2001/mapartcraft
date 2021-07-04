@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "Latvian",
+    "CREDITS": "Translecija nuo: NebulaViper"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "DKK",
+    "PLEASE-READ-1": "Prašau peržiūrėti ",
+    "PLEASE-READ-2": " prieš klausdami klausimus visur!",
+    "HAVE-YOU-READ": "Ar tu perskaitei DKK?",
+    "HELP-IN-ENGLISH": "Pastaba: pagalba bus teikiama tik anglų kalba",
+    "VIDEO-TUTORIAL": "Vaizdo pamoka"
+  },
+  "DESCRIPTION": {
+    "1": "Minecraft žemėlapių meno schematica ir map.dat generatorius, skirtas būti tikėtinas ir serverių adminams ir survivalo žaidėjams ant serverių kaip ",
+    "2": ", naudojamas jūsų internetinėje naršyklėje",
+    "3": "Inspiruotas nuo ",
+    "4": "Redstonehelper'io žemėlapių meno programos",
+    "5": ", Tikslu, kad pridėtų daug paprašytų bruožų ir pašalinti nora siūstis kitas programas",
+    "6": "Galit laisvai su manim susisiekti ant Discord ",
+    "7": " arba Reddit ",
+    "8": ", bruožų norai ir pranešimai apie klaidas tęsiami "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Blokų pasirinktis",
+    "PRESETS": {
+      "TITLE": "Išankstiniai nustatymai",
+      "DELETE": "Ištrinti",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Išsaugoti",
+      "SAVE-PROMPT-ENTER-NAME": "Įveskite savo išankstinio nustatymo pavadinimą:",
+      "SHARE": "Bendrinti",
+      "SHARE-TT": "Bendrina blokus, kuriuos šiuo metu pasirinkote kaip nuoroda",
+      "SHARE-WARNING-NONE-SELECTED": "Prieš pradedant dalintis, pasirinkite blokus!",
+      "SHARE-LINK": "Jei norite bendrinti šiuo metu pasirinktus blokus, bendrinkite šia nuorodą",
+      "DOWNLOAD": "Parsisiųsti",
+      "DOWNLOAD-TT": "Atsisiunčiama spalvų paletė, naudojama Paint.net",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Prieš atsiųsdami paletę, pasirinkite blokus!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Įspėjimas: jūsų paletė turi ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": "spalvų, o maksimali „Paint.net“ yra 96 ​​.  Kai kurios spalvos „Paint.net“ nebus prieinamos ",
+      "IMPORT-ERROR-CORRUPTED": "Iš anksto nustatyta nuorodo sugadinta!",
+      "NONE": "Niekas",
+      "EVERYTHING": "Viskas",
+      "CARPETS": "Kilimėliai",
+      "GREYSCALE": null
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Žemėlapio peržiūra",
+    "BEST-RESOLUTION-TT": "Šaltinio vaiždas su šia raiška veiks geriausiai",
+    "ASPECT-RATIO-MISMATCH-TT": "Vaizdas neatitinka žemėlapio kraštinių santykio",
+    "SCALE-MINUS-TT": "Padaryti peržiūra mažesne",
+    "SCALE-PLUS-TT": "Padaryti peržiūra didesne"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Nustatymai",
+    "MODE": "Rėžimas",
+    "MODE-TT": "Pasirinkti rėžima kuriame norite dirbti",
+    "MODE-VISUAL": "Vaizdas",
+    "MODE-VISUAL-NA": "Vaizdas (Nepasiekemas)",
+    "VERSION": "Versija",
+    "VERSION-TT": "Pasirinkite versiją, kuri yra arčiausiai jūsų naudojama",
+    "MAP-SIZE": "Žemėlapio dydis",
+    "CROP": "Apkarpyti",
+    "CROP-TT": "Apkarpo vaizda vietoj išlankso",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "Laiptiniuoti",
+      "TITLE-TT": "Padaro žemėlapį 3D. Sunkiau statyti, bet 3 kartus daugiau spalvų!",
+      "OFF": "Išjungta (2D)",
+      "CLASSIC": "Įjungta (clasikinė)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Pridėti blokus po",
+        "NONE": "Jokių blockų",
+        "IMPORTANT": "Svarbi blokai",
+        "ALL": "Visi blokai",
+        "ALL-OPTIMIZED": "Visi blokai (optimazuota)",
+        "ALL-DOUBLE": "Visi dvigubai",
+        "ALL-DOUBLE-OPTIMIZED": "Visi dvigubai (optimazuota)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Bloka pridėti",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Susijęs su ankstesne pasirinktimi"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Nepasiekiamos spalvos",
+      "UNOBTAINABLE-COLOURS-TT": "Įjungia map.dat spalvas neprieinamas schemose",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Geresnės spalvos",
+    "BETTER-COLOUR-TT": "Suteikia geresnį spalvų tikslumą",
+    "DITHERING": {
+      "TITLE": "Ditheriuoti",
+      "TITLE-TT": "Prideda iš pažiūros atsitiktinių taškų, kad iliustruotų daugiau spalvų",
+      "NONE": "Nė vienas"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Prieš atsiųsdami pasirinkite blokus!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "PARSISIŲSTI",
+      "DOWNLOAD-TT": "Parsisiųsti nbt",
+      "DOWNLOAD-SPLIT": "ATSISIŲSTI 1x1 PER PUSE",
+      "DOWNLOAD-SPLIT-TT": "Atsisiųskite nbt padalijimą į 1x1 dalis"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "PARSISIŲSTI",
+      "DOWNLOAD-TT": "Atsisiųskite map.dat padaliję į 1x1 dalis"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Medžiagos",
+    "BLOCK": "Blokai",
+    "AMOUNT": "Kiekis",
+    "PLACEHOLDER-BLOCK-TT": "Vietos rezervavimo blokas",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "ATNAUJINTI MEDŽIAGAS",
+    "REFRESH-MATERIALS-TT": "Atnaujinti medžiagų sąrašą"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Dydis"
+  },
+  "DONATE": {
+    "TITLE": "PADĖKITE MAN PRALEISTI EILĘ",
+    "TITLE-TT": "Peržiūrėkite rėmėjus ir aukokite"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Pastaba: nepalaikomas Microsoft Edge naudojimas. \\n Pagal „MapartCraft“ naudokite Chrome (pageidautina) arba Firefox.",
+  "NONE": "Niekas",
+  "UNUSED": {
+    "SECOND": "sekundė",
+    "SECONDS": "sekundės",
+    "REMAINING": "likę",
+    "SETTINGS-3D-OPTIMIZED": "Įjungta (optimizuota)"
+  }
+}

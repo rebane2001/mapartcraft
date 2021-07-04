@@ -1,0 +1,14 @@
+{
+  "OFF": {
+    "uniqueId": 0,
+    "localeKey": "MAP-SETTINGS/PREPROCESSING/BACKGROUND/OFF"
+  },
+  "DITHERED": {
+    "uniqueId": 1,
+    "localeKey": "MAP-SETTINGS/PREPROCESSING/BACKGROUND/DITHERED"
+  },
+  "FLAT": {
+    "uniqueId": 2,
+    "localeKey": "MAP-SETTINGS/PREPROCESSING/BACKGROUND/FLAT"
+  }
+}

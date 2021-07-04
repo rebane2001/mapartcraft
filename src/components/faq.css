@@ -1,0 +1,8 @@
+.FAQ h2 {
+  margin-block: 0.5em !important;
+  text-decoration: underline;
+}
+
+.FAQ p {
+  margin-top: 0.1em;
+}

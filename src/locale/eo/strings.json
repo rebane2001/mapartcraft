@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "Esperanto",
+    "CREDITS": "Traduko de: Ajno"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "OD",
+    "PLEASE-READ-1": "Bonvolu vidi la ",
+    "PLEASE-READ-2": "-n antaŭ ol demandi iun ie!",
+    "HAVE-YOU-READ": "Ĉu vi legis la OD-n?",
+    "HELP-IN-ENGLISH": "Atentu: Helpo estos provizita nur en la Angla",
+    "VIDEO-TUTORIAL": "Videa instrukcio"
+  },
+  "DESCRIPTION": {
+    "1": "Minecraft maparta generilo de schematic kaj map.dat, kreita por esti realigita por kaj servilaj administrantoj kaj travivaj ludantoj ĉe serviloj kiel ",
+    "2": ", laborebla ĉe via retumilo",
+    "3": "Inspirita de ",
+    "4": "Redstonehelper's map art programo",
+    "5": ", kun la celo por aldoni ofte petatajn apartaĵojn kaj forigi la neceson por enŝuti programon",
+    "6": "Vi povas libere mesaĝi al mi per Discord ",
+    "7": " aŭ Reddit ",
+    "8": ", apartaĵajn petojn kaj cimraportojn sendu al "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Blokelektejo",
+    "PRESETS": {
+      "TITLE": "Ŝablonoj",
+      "DELETE": "Forigi",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Konservi",
+      "SAVE-PROMPT-ENTER-NAME": "Entajpu la nomon por la ŝablono:",
+      "SHARE": "Dividi",
+      "SHARE-TT": "Tio divideblas la nunelektitajn blokojn per ligilo",
+      "SHARE-WARNING-NONE-SELECTED": "Elektu blokojn antaŭ ol dividi ilin!",
+      "SHARE-LINK": "Dividu ĉi tiun ligilon por dividi viajn nunelektitajn blokojn",
+      "DOWNLOAD": "Enŝuti",
+      "DOWNLOAD-TT": "Enŝuti la koloraron por uzi en Paint.net",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Elektu blokojn antaŭ ol enŝuti koloraron!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Averto, via koloraro enhavas ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " colorojn, sed la plejgranda koloraro en Paint.net enhaveblas 96. Iu koloroj estos maluzebla en Paint.net",
+      "IMPORT-ERROR-CORRUPTED": "Ŝablonligilo estas rompiĝinta!",
+      "NONE": "Nenio",
+      "EVERYTHING": "Ĉio",
+      "CARPETS": "Tapiŝoj",
+      "GREYSCALE": null
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Mapa antaŭvido",
+    "BEST-RESOLUTION-TT": "Origina bildo kun ĉi tia amplekso laboros la plej bone",
+    "ASPECT-RATIO-MISMATCH-TT": "Bildo ne sekvas la flankproporcion de mapo",
+    "SCALE-MINUS-TT": "Malpligrandigi la antaŭvidon",
+    "SCALE-PLUS-TT": "Pligrandigi la antaŭvidon"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Agordoj",
+    "MODE": "Reĝimo",
+    "MODE-TT": "Elektu la reĝimon, en kiu vi volus operacii",
+    "MODE-VISUAL": "Vida",
+    "MODE-VISUAL-NA": "Vida (ne uzebla)",
+    "VERSION": "Versio",
+    "VERSION-TT": "Elektu la version la plej proksiman al versio, ĉe kiu vi ludas",
+    "MAP-SIZE": "Mapa amplekso",
+    "CROP": "Ĉirkaŭtranĉi",
+    "CROP-TT": "Ĉirkaŭtranĉi vian bildon anstataŭ plilarĝigi ĝin",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "Ŝtupigado",
+      "TITLE-TT": "Tio igas la mapon 3D. Estas pli malfacile por konstrui sed triobligas la kvanton de eblaj koloroj!",
+      "OFF": "Malŝaltita (2D)",
+      "CLASSIC": "Ŝaltita (klasika)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Aldoni subblokojn",
+        "NONE": "Sen blokoj",
+        "IMPORTANT": "Uzendaj blokoj",
+        "ALL": "Ĉiuj blokoj",
+        "ALL-OPTIMIZED": "Ĉiuj blokoj (optimumigita)",
+        "ALL-DOUBLE": "Ĉiuj duope",
+        "ALL-DOUBLE-OPTIMIZED": "Ĉiuj duope (optimumigita)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Bloko por aldoni",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Rilatas al la antaŭa opcio"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Malakireblaj koloroj",
+      "UNOBTAINABLE-COLOURS-TT": "Tio ŝaltas kolorojn de map.dat malakireblajn en schematic-j",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Pli bona koloro",
+    "BETTER-COLOUR-TT": "Tio igas pli bonan kolorakuratecon",
+    "DITHERING": {
+      "TITLE": "Konfuzado",
+      "TITLE-TT": "Tio aldonas ŝajne hazardajn rastrumerojn por iluzio de pli multe da koloroj",
+      "NONE": "Nula"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Elektu blokojn antaŭ enŝutado!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "ENŜUTI",
+      "DOWNLOAD-TT": "Enŝuti la nbt-n",
+      "DOWNLOAD-SPLIT": "ENŜUTI KIEL 1x1 DIVIDAĴOJ",
+      "DOWNLOAD-SPLIT-TT": "Enŝuti la nbt-n dividitan laŭ 1x1 pecoj"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "ENŜUTI",
+      "DOWNLOAD-TT": "Enŝuti la map.dat-n dividitan laŭ 1x1 pecoj"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Materialoj",
+    "BLOCK": "Bloko",
+    "AMOUNT": "Kvanto",
+    "PLACEHOLDER-BLOCK-TT": "Anstataŭbloko",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "ĜISDATIGI MATERIALOJN",
+    "REFRESH-MATERIALS-TT": "Ĝisdatigi materialan liston"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Amplekso"
+  },
+  "DONATE": {
+    "TITLE": "HELPU MIN PASI LA VICON",
+    "TITLE-TT": "Montri subtenintojn kaj mondonaci"
+  },
+  "LITEMATICA-WARNING": "Atentu: Se vi uzas Litematica-n 1.15.2, bonvolu uzi la 1.15 version\\nLitematica ŝajnas iel havi cimon se vi elektas alian version",
+  "EDGE-WARNING": "Atentu: uzado de Microsoft Edge estas malsubtenata.\\nBonvolu uzi Chrome-n (prefere) aŭ Firefox-n por MapartCraft",
+  "NONE": "Nula",
+  "UNUSED": {
+    "SECOND": "sekundo",
+    "SECONDS": "sekundoj",
+    "REMAINING": "restas",
+    "SETTINGS-3D-OPTIMIZED": "Ŝaltita (optimumigita)"
+  }
+}

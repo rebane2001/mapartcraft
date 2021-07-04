@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "English",
+    "CREDITS": ""
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": "A Minecraft mapart schematic and map.dat generator"
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "Please check the ",
+    "PLEASE-READ-2": " before asking any questions anywhere!",
+    "HAVE-YOU-READ": "Have you read the FAQ?",
+    "HELP-IN-ENGLISH": "Note: Help will only be provided in English",
+    "VIDEO-TUTORIAL": "Video tutorial"
+  },
+  "DESCRIPTION": {
+    "1": "A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like ",
+    "2": ", running in your browser.",
+    "3": "Inspired by ",
+    "4": "Redstonehelper's map art program",
+    "5": ", with the goal to add much-requested features and removing the need to download a program.",
+    "6": "Feel free to message me on Discord ",
+    "7": " or Reddit ",
+    "8": ". Feature requests and bug reports go on "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Block selection",
+    "PRESETS": {
+      "TITLE": "Presets",
+      "DELETE": "Delete",
+      "DELETE-ERROR-DEFAULT": "This is a default preset and can't be edited/deleted.",
+      "SAVE": "Save",
+      "SAVE-PROMPT-ENTER-NAME": "Enter a name for your preset:",
+      "SHARE": "Share",
+      "SHARE-TT": "Shares the blocks you have currently selected as a link",
+      "SHARE-WARNING-NONE-SELECTED": "Select blocks before sharing them!",
+      "SHARE-LINK": "Copy this link to share your currently selected blocks",
+      "DOWNLOAD": "Download",
+      "DOWNLOAD-TT": "Downloads color palette for use in Paint.NET",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Select blocks before downloading palette!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Warning, your palette has ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " colors, while the maximum in Paint.NET is 96. Some colors will be unavailable in Paint.NET",
+      "IMPORT-ERROR-CORRUPTED": "Preset link is corrupted!",
+      "NONE": "None",
+      "EVERYTHING": "Everything",
+      "CARPETS": "Carpets",
+      "GREYSCALE": "Greyscale"
+    },
+    "UNSUPPORTED-PAST": "Unsupported past"
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Map preview",
+    "BEST-RESOLUTION-TT": "A source image with this resolution will work the best",
+    "ASPECT-RATIO-MISMATCH-TT": "Image doesn't match map's aspect ratio",
+    "SCALE-MINUS-TT": "Make preview smaller",
+    "SCALE-PLUS-TT": "Make preview bigger"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Settings",
+    "MODE": "Mode",
+    "MODE-TT": "Select the mode you'd like to operate in",
+    "MODE-VISUAL": "Visual",
+    "MODE-VISUAL-NA": "Visual (not available)",
+    "VERSION": "Version",
+    "VERSION-TT": "Select the version closest to what you're running",
+    "MAP-SIZE": "Map size",
+    "CROP": "Crop",
+    "CROP-TT": "Crops your image instead of stretching it out",
+    "GRID-OVERLAY": "Grid",
+    "GRID-OVERLAY-TT": "Overlays a grid that shows 16x16 chunks and 1x1 splits",
+    "3D": {
+      "TITLE": "Staircasing",
+      "TITLE-TT": "Makes the map 3D. Harder to build, but 3 times the colors!",
+      "OFF": "Off (2D)",
+      "CLASSIC": "On (Classic)",
+      "VALLEY": "On (Valley)"
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Add blocks under",
+        "NONE": "No blocks",
+        "IMPORTANT": "Important blocks",
+        "ALL": "All blocks",
+        "ALL-OPTIMIZED": "All blocks (optimized)",
+        "ALL-DOUBLE": "All double",
+        "ALL-DOUBLE-OPTIMIZED": "All double (optimized)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Block to add",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Related to previous option"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Unobtainiable colors",
+      "UNOBTAINABLE-COLOURS-TT": "Enables map.dat colors unobtainiable in schematics",
+      "TRANSPARENCY": "Transparency",
+      "TRANSPARENCY-TT": "Enables transparency for map.dat",
+      "TRANSPARENCY-TOLERANCE": "Tolerance"
+    },
+    "BETTER-COLOUR": "Better color",
+    "BETTER-COLOUR-TT": "Gives you better color accuracy",
+    "DITHERING": {
+      "TITLE": "Dithering",
+      "TITLE-TT": "Adds seemingly random pixels for the illusion of more colors",
+      "NONE": "None"
+    },
+    "PREPROCESSING": {
+      "TITLE": "Image preprocessing",
+      "ENABLE": "Enable",
+      "BRIGHTNESS": "Brightness",
+      "CONTRAST": "Contrast",
+      "SATURATION": "Saturation",
+      "BACKGROUND": {
+        "TITLE": "Background",
+        "TITLE-TT": "For transparent backgrounds",
+        "OFF": "Off",
+        "DITHERED": "On (dithered)",
+        "FLAT": "On (flat)"
+      },
+      "BACKGROUND-COLOUR": "Background color"
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Select blocks before downloading!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD NBT",
+      "DOWNLOAD-TT": "Download the nbt",
+      "DOWNLOAD-SPLIT": "DOWNLOAD AS 1x1 SPLIT",
+      "DOWNLOAD-SPLIT-TT": "Download the nbt split into 1x1 chunks"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD MAPDAT",
+      "DOWNLOAD-TT": "Download the map.dat split into 1x1 chunks"
+    },
+    "ZIPPING": "Zipping"
+  },
+  "MATERIALS": {
+    "TITLE": "Materials",
+    "BLOCK": "Block",
+    "AMOUNT": "Amount",
+    "PLACEHOLDER-BLOCK-TT": "Placeholder Block",
+    "SHOW-PER-SPLIT": "Only show max mats per split",
+    "SHOW-PER-SPLIT-TT": "For material reuse with locked maps",
+    "REFRESH-MATERIALS": "REFRESH MATERIALS",
+    "REFRESH-MATERIALS-TT": "Refresh materials list"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": "VIEW ONLINE",
+    "TITLE-TT": "View the schematic online without downloading",
+    "TOO-BIG-FOR-SINGLE": "Too big for single schematic; download 1x1 split",
+    "CONTROLS": "Controls",
+    "TO-EXIT": "To exit",
+    "SIZE": "Size"
+  },
+  "DONATE": {
+    "TITLE": "HELP ME SKIP THE QUEUE",
+    "TITLE-TT": "View supporters and donate"
+  },
+  "LITEMATICA-WARNING": "Warning, Litematica does not support 1.15.2 very well; recommended action is to update to 1.16.5",
+  "EDGE-WARNING": "Note: using Microsoft Edge is unsupported.\\nPlease use Chrome (preferred) or Firefox for MapartCraft",
+  "NONE": "None",
+  "UNUSED": {
+    "SECOND": "second",
+    "SECONDS": "seconds",
+    "REMAINING": "remaining",
+    "SETTINGS-3D-OPTIMIZED": "On (optimized)"
+  }
+}

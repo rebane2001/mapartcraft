@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "Chinese (Simplified)",
+    "CREDITS": "OSC311"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "请先检查",
+    "PLEASE-READ-2": "在任何地方问任何问题之前!",
+    "HAVE-YOU-READ": "你读过FAQ了吗?",
+    "HELP-IN-ENGLISH": "注意：帮助将仅以英语提供",
+    "VIDEO-TUTORIAL": "影片教学"
+  },
+  "DESCRIPTION": {
+    "1": "一个Minecraft地图艺术schematic档和map.dat档生成器, 服务器管理员和服务器上的生存玩家都可使用例如",
+    "2": ", 并在您的浏览器中运行",
+    "3": "启发来自",
+    "4": "Redstonehelper地图艺术程式",
+    "5": ", 其目标是添加需求量大的功能并消除下载程式的需要",
+    "6": "随时在Discord ",
+    "7": " 或Reddit上向我发送消息 ",
+    "8": ", 功能请求和错误报告可发布于"
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "方块选择",
+    "PRESETS": {
+      "TITLE": "预设值",
+      "DELETE": "删除",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "保存",
+      "SAVE-PROMPT-ENTER-NAME": "输入预设的名称：",
+      "SHARE": "分享",
+      "SHARE-TT": "以连结分享您当前选择的方块",
+      "SHARE-WARNING-NONE-SELECTED": "分享之前要选择方块！",
+      "SHARE-LINK": "分享此链接以分享您当前选择的方块",
+      "DOWNLOAD": "下载",
+      "DOWNLOAD-TT": "下载调色板以在Paint.net中使用",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "在下载调色板之前要选择方块！",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "警告，您的调色板有 ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " 颜色，而Paint.net中的最大值为96. 某些颜色在Paint.net中将不可用",
+      "IMPORT-ERROR-CORRUPTED": "预设链接已损坏！",
+      "NONE": "没有",
+      "EVERYTHING": "全部东西",
+      "CARPETS": "地毯",
+      "GREYSCALE": null
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "地图预览",
+    "BEST-RESOLUTION-TT": "具有此分辨率的源图像效果最佳",
+    "ASPECT-RATIO-MISMATCH-TT": "图片与地图的长宽比例不符",
+    "SCALE-MINUS-TT": "缩小预览",
+    "SCALE-PLUS-TT": "放大预览"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "设定",
+    "MODE": "模式",
+    "MODE-TT": "选择您要使用的模式",
+    "MODE-VISUAL": "视觉效果",
+    "MODE-VISUAL-NA": "视觉效果（不可用）",
+    "VERSION": "版本",
+    "VERSION-TT": "选择最接近您正在运行的版本",
+    "MAP-SIZE": "地图尺寸",
+    "CROP": "裁剪",
+    "CROP-TT": "裁剪图像而不是将其拉伸",
+    "GRID-OVERLAY": null,
+    "GRID-OVERLAY-TT": null,
+    "3D": {
+      "TITLE": "梯式",
+      "TITLE-TT": "将地图制作为3D。 很难制造，但是表现出3倍的颜色！",
+      "OFF": "关（2D）",
+      "CLASSIC": "开（原版）",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "在下面添加方块",
+        "NONE": "没有方块",
+        "IMPORTANT": "重要方块",
+        "ALL": "全部方块",
+        "ALL-OPTIMIZED": "全部方块 (优化)",
+        "ALL-DOUBLE": "全部双层",
+        "ALL-DOUBLE-OPTIMIZED": "全部双层 (优化)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "要添加的方块",
+      "SUPPORT-BLOCK-TO-ADD-TT": "与上一个选项相关"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "无法获得的颜色",
+      "UNOBTAINABLE-COLOURS-TT": "启用schematic中无法获得的map.dat档颜色",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "更好的色彩",
+    "BETTER-COLOUR-TT": "为您提供更好的色彩准确性",
+    "DITHERING": {
+      "TITLE": "抖动像素化",
+      "TITLE-TT": "添加看似随机的像素以产生更多颜色的错觉",
+      "NONE": "没有"
+    },
+    "PREPROCESSING": {
+      "TITLE": null,
+      "ENABLE": null,
+      "BRIGHTNESS": null,
+      "CONTRAST": null,
+      "SATURATION": null,
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "下载之前要选择方块！",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "下载",
+      "DOWNLOAD-TT": "下载nbt档",
+      "DOWNLOAD-SPLIT": "以1x1分割下载",
+      "DOWNLOAD-SPLIT-TT": "下载将nbt分成1x1区块"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "下载",
+      "DOWNLOAD-TT": "下载map.dat分成1x1区块"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "材料",
+    "BLOCK": "方块",
+    "AMOUNT": "合计",
+    "PLACEHOLDER-BLOCK-TT": "占位符方块",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "刷新材料",
+    "REFRESH-MATERIALS-TT": "刷新材料清单"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "地图尺寸"
+  },
+  "DONATE": {
+    "TITLE": "帮助我跳过队列",
+    "TITLE-TT": "查看支持者并捐赠"
+  },
+  "LITEMATICA-WARNING": "注意：如果您使用的是Litematica 1.15.2，请使用1.15版本\\ n如果出于某种原因选择了其他版本，Litematica似乎会出错。",
+  "EDGE-WARNING": "注意：不支持使用Microsoft Edge。\\ n请为MapartCraft使用Chrome（首选）或Firefox",
+  "NONE": "没有",
+  "UNUSED": {
+    "SECOND": "秒",
+    "SECONDS": "秒",
+    "REMAINING": "剩余",
+    "SETTINGS-3D-OPTIMIZED": "开（优化版）"
+  }
+}

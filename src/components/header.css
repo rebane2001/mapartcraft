@@ -1,0 +1,10 @@
+.contactInfoBlurred {
+  filter: blur(0.5em);
+  cursor: pointer;
+}
+
+.FAQTextButton {
+  color: var(--rebaneGreen);
+  cursor: pointer;
+  text-decoration: underline;
+}

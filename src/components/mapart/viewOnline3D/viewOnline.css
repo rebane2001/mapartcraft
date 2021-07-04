@@ -1,0 +1,11 @@
+.viewOnline_waila {
+  font-family: "kenpixel_mini_square";
+  background: var(--rebaneGreen);
+  color: white;
+  padding: 0.3em;
+}
+
+.viewOnline_waila h3 {
+  margin: 0;
+  font-weight: normal;
+}

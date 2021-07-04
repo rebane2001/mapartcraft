@@ -1,27 +1,32 @@
-# Mapartcraft
-A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like 2b2t, running in your browser  
-  
+# MapartCraft
+
+A Minecraft mapart schematic and map.dat generator, designed to be feasible for both server admins and survival players on servers like 2b2t, running in your browser
+
 # Requirements
-The default building mechanism requires the following requirements, but you can easily modify them to work on different systems (eg Linux)  
-- Windows
-- ImageMagick
-- Python3 (as `python.exe` in %PATH%)
-- Pillow for Python
+
+MapartCraft is written in ReactJS; running and building requires NPM / Node. Extra scripts in `tools` are written in Python3
 
 # Building
-1. Run `make.bat`  
-2. Your static website will be in the `web` directory, host it however you wish
+
+1. Acquire packages with `npm install`
+2. Build using `npm run build`, or run a debug version with `npm run start`
+3. Alternatively use the shell script `build.sh` for deployment on Linux. This will also copy a `.htaccess` file to the build folder for use with Apache
+
+The default build settings assume the app is being hosted at https://YOUR-SITE-HERE.com/mapartcraft. To change the folder from which the site is hosted modify the following:
+
+- `homepage` in `package.json`
+- `basename` in the Router in `src/app.js`
+- The `RewriteRule` in `buildSources/apache/.htaccess` if using Apache
 
 # Usage
-Visit [mapartcraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](https://rebane2001.com) or use a mirror on [web.archive.org](https://web.archive.org/web/*/https://rebane2001.com/mapartcraft)  
-Since all the processing occurs client-side, it is possible to host your own built instance with a very simple HTTP server, like python3's http.server  
-However, it is recommended to use the [rebane2001.com](https://rebane2001.com/mapartcraft) site as it is always up to date with new features and bugfixes
+
+Visit [MapartCraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](https://rebane2001.com) or use a mirror on [web.archive.org](https://web.archive.org/web/*/https://rebane2001.com/mapartcraft). However, it is recommended to use the [rebane2001.com](https://rebane2001.com/mapartcraft) site as it is always up to date with new features and bugfixes.
 
 # Credits/Thanks
-Minecraft for the block textures  
-[KenPixel Mini Square](https://opengameart.org/content/kenney-fonts) font by [Kenney](https://www.kenney.nl/)  
-[NBT.js](https://github.com/sjmulder/nbt-js) by [sjmulder](https://github.com/sjmulder)  
-[Tooltip.js](https://github.com/matthias-schuetz/Tooltip) by [Matthias Schuetz](http://matthiasschuetz.com)  
-[pako](https://github.com/matthias-schuetz/Tooltip)  
-Translation credits can be seen on the translated pages  
-Code contributors can be seen on the [contributions page](https://github.com/rebane2001/mapartcraft/graphs/contributors)
+
+- Minecraft for the block textures
+- [KenPixel Mini Square](https://opengameart.org/content/kenney-fonts) font by [Kenney](https://www.kenney.nl/)
+- [pako](https://www.npmjs.com/package/pako)'s zipping library
+- Translation credits can be seen on the translated pages
+- [SelfAdjointOperator](https://github.com/SelfAdjointOperator) for some extra features
+- Code contributors can be seen on the [contributions page](https://github.com/rebane2001/mapartcraft/graphs/contributors)

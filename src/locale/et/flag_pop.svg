@@ -1,0 +1,71 @@
+<svg id="emoji" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+  <g id="color">
+    <rect x="5" y="17" width="62" height="38" fill="#fff"/>
+    <rect x="5" y="30" width="62" height="12" fill="#222222"/>
+    <rect x="5" y="17" width="62" height="13" fill="#1e50a0"/>
+  </g>
+  <g>
+    <rect x="20" y="18" width="4" height="4" fill="#2e7bd8"/>
+    <rect x="24" y="18" width="20" height="4" fill="#3083e8"/>
+    <rect x="44" y="18" width="4" height="4" fill="#3082e7"/>
+    <rect x="48" y="18" width="4" height="4" fill="#2e7ad6"/>
+    <rect x="20" y="22" width="4" height="4" fill="#2f7fe0"/>
+    <rect x="24" y="22" width="4" height="4" fill="#131313"/>
+    <rect x="28" y="22" width="4" height="4" fill="#121111"/>
+    <rect x="32" y="22" width="4" height="4" fill="#1a1919"/>
+    <rect x="36" y="22" width="4" height="4" fill="#2e7ddd"/>
+    <rect x="40" y="22" width="4" height="4" fill="#191818"/>
+    <rect x="44" y="22" width="4" height="4" fill="#282727"/>
+    <rect x="48" y="22" width="4" height="4" fill="#3080e1"/>
+    <rect x="20" y="26" width="4" height="4" fill="#3790fd"/>
+    <rect x="24" y="26" width="4" height="4" fill="#2e7ddd"/>
+    <rect x="28" y="26" width="4" height="4" fill="#2d79d6"/>
+    <rect x="32" y="26" width="4" height="4" fill="#131313"/>
+    <rect x="36" y="26" width="4" height="4" fill="#3183e8"/>
+    <rect x="40" y="26" width="4" height="4" fill="#3489f1"/>
+    <rect x="44" y="26" width="4" height="4" fill="#2f7edf"/>
+    <rect x="48" y="26" width="4" height="4" fill="#3690fd"/>
+    <rect x="20" y="30" width="4" height="4" fill="#161616"/>
+    <rect x="24" y="30" width="4" height="4" fill="#656464"/>
+    <rect x="28" y="30" width="4" height="4" fill="#181818"/>
+    <rect x="32" y="30" width="8" height="4" fill="#565252"/>
+    <rect x="40" y="30" width="4" height="4" fill="#201f1f"/>
+    <rect x="44" y="30" width="4" height="4" fill="#5f5e5e"/>
+    <rect x="48" y="30" width="4" height="4" fill="#131212"/>
+    <rect x="20" y="34" width="4" height="4" fill="#020202"/>
+    <rect x="24" y="34" width="4" height="4" fill="#0e0e0e"/>
+    <rect x="28" y="34" width="4" height="4" fill="#020202"/>
+    <rect x="32" y="34" width="4" height="4" fill="#0d0d0d"/>
+    <rect x="36" y="34" width="4" height="4" fill="#090808"/>
+    <rect x="40" y="34" width="4" height="4" fill="#060606"/>
+    <rect x="44" y="34" width="4" height="4" fill="#1c1c1c"/>
+    <rect x="48" y="34" width="4" height="4" fill="#646363"/>
+    <rect x="20" y="38" width="4" height="4" fill="#0d0d0d"/>
+    <rect x="24" y="38" width="4" height="4" fill="#616161"/>
+    <rect x="28" y="38" width="4" height="4" fill="#0f0f0f"/>
+    <rect x="32" y="38" width="4" height="4" fill="#5e5e5e"/>
+    <rect x="36" y="38" width="4" height="4" fill="#121212"/>
+    <rect x="40" y="38" width="4" height="4" fill="#5d5d5d"/>
+    <rect x="44" y="38" width="4" height="4" fill="#151515"/>
+    <rect x="48" y="38" width="4" height="4" fill="#545151"/>
+    <rect x="20" y="42" width="4" height="4" fill="#fbfbfb"/>
+    <rect x="24" y="42" width="4" height="4" fill="#0d0c0c"/>
+    <rect x="28" y="42" width="4" height="4" fill="#030303"/>
+    <rect x="32" y="42" width="4" height="4" fill="#0a0a0a"/>
+    <rect x="36" y="42" width="4" height="4" fill="#040404"/>
+    <rect x="40" y="42" width="4" height="4" fill="#1d1c1c"/>
+    <rect x="44" y="42" width="4" height="4" fill="#f9f6f6"/>
+    <rect x="48" y="42" width="4" height="4" fill="#d7d2d2"/>
+    <rect x="20" y="46" width="4" height="4" fill="#e1e0e0"/>
+    <rect x="24" y="46" width="4" height="4" fill="#fdfcfc"/>
+    <rect x="28" y="46" width="4" height="4" fill="#dad5d5"/>
+    <rect x="32" y="46" width="4" height="4" fill="#fdfafa"/>
+    <rect x="36" y="46" width="4" height="4" fill="#e9dfdf"/>
+    <rect x="40" y="46" width="4" height="4" fill="#fcf9f9"/>
+    <rect x="44" y="46" width="4" height="4" fill="#d9d5d5"/>
+    <rect x="48" y="46" width="4" height="4" fill="#fcfcfc"/>
+  </g>
+  <g id="line">
+    <rect x="5" y="17" width="62" height="38" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

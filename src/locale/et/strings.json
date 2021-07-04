@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "Estonian",
+    "CREDITS": "Tõlge: popstonia"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": "Minecrafti kaardikunsti schematic'u ja map.dat failide generaator."
+  },
+  "FAQ": {
+    "FAQ": "KKK",
+    "PLEASE-READ-1": "Palun lugege ",
+    "PLEASE-READ-2": " enne küsimuste küsimist!",
+    "HAVE-YOU-READ": "Kas sa oled lugenud KKK?",
+    "HELP-IN-ENGLISH": "Märkus: Abi pakutakse vaid inglise ja eesti keeles",
+    "VIDEO-TUTORIAL": "Videoõpetus"
+  },
+  "DESCRIPTION": {
+    "1": "Minecrafti kaardikunsti schematic'u ja map.dat failide generaator, loodud nii serveri administraatorite kui ka survival serverite jaoks, nagu ",
+    "2": ", jooksmas sinu brauseris",
+    "3": "Inspireeritud ",
+    "4": "Redstonehelperi kaardikunsti programmi",
+    "5": " põhjal, eesmärgiga lisada paljunõutud lisavõimalusi ning eemaldada vajadus programmi alla laadida",
+    "6": "Võite minuga ühedust võtta Discordi ",
+    "7": " või Redditi ",
+    "8": " kaudu, lisavõimaluste taotlused ning putukad lähevad "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Plokkide valik",
+    "PRESETS": {
+      "TITLE": "Eelseadistused",
+      "DELETE": "Kustuta",
+      "DELETE-ERROR-DEFAULT": "See on tehaseseadistus mida ei anna muuta/kustutada.",
+      "SAVE": "Salvesta",
+      "SAVE-PROMPT-ENTER-NAME": "Vali nimi oma eelseadistustele:",
+      "SHARE": "Jaga",
+      "SHARE-TT": "Jagab praegu valitud plokke lingina",
+      "SHARE-WARNING-NONE-SELECTED": "Vali plokid enne jagamist!",
+      "SHARE-LINK": "Jaga seda linki, et jagada oma praegu valitud plokke",
+      "DOWNLOAD": "Lae",
+      "DOWNLOAD-TT": "Laeb värvipaleti alla Paint.net'is kasutamiseks",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Vali plokid enne paleti allalaadimist!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Märkus, sinu palettis on ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " värvi, aga Paint.net\\'i maksimum on 96. Mõned värvid ei ole saadaval Paint.net\\'is",
+      "IMPORT-ERROR-CORRUPTED": "Eelseadistuse link on katki!",
+      "NONE": "Ei miskit",
+      "EVERYTHING": "Kõik",
+      "CARPETS": "Vaibad",
+      "GREYSCALE": "Mustvalge"
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Kaardi eelvaade",
+    "BEST-RESOLUTION-TT": "Sellise resolutsiooniga pilt töötab kõige paremini",
+    "ASPECT-RATIO-MISMATCH-TT": "Pildi külgede suhe ei ühtu kaardi omaga",
+    "SCALE-MINUS-TT": "Tee eelvaade väiksemaks",
+    "SCALE-PLUS-TT": "Tee eelvaade suuremaks"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Sätted",
+    "MODE": "Režiim",
+    "MODE-TT": "Vali režiim, milles soovid tegutseda",
+    "MODE-VISUAL": "Visuaalne",
+    "MODE-VISUAL-NA": "Visuaalne (pole saadaval)",
+    "VERSION": "Versioon",
+    "VERSION-TT": "Vali versioon, mis on lähim sellele, mida kasutad",
+    "MAP-SIZE": "Kaardi suurus",
+    "CROP": "Pügamine",
+    "CROP-TT": "Pügab su pilti välja venitamise asemel",
+    "GRID-OVERLAY": "Ruudustik",
+    "GRID-OVERLAY-TT": "Joonestab ruudustiku mis näitab 16x16 kamakaid ja 1x1 lõhestusi",
+    "3D": {
+      "TITLE": "Trepitamine",
+      "TITLE-TT": "Teeb kaardi 3Dks. Raskem ehitada, kuid 3 korda rohkem värve!",
+      "OFF": "Väljas (2D)",
+      "CLASSIC": "Sees (klassikaline)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Lisa plokid alla",
+        "NONE": "Ära lisa",
+        "IMPORTANT": "Tähtsad plokid",
+        "ALL": "Kõik plokid",
+        "ALL-OPTIMIZED": "Kõik plokid (optimiseeritud)",
+        "ALL-DOUBLE": "Kõik topelt",
+        "ALL-DOUBLE-OPTIMIZED": "Kõik topelt (optimiseeritud)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Plokk, mida lisada",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Seotud eelneva valikuga"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Saavutamatud värvid",
+      "UNOBTAINABLE-COLOURS-TT": "Lülitab sisse map.dat failid, mida schematic'utega ei saa",
+      "TRANSPARENCY": "Läbipaistvus",
+      "TRANSPARENCY-TT": "Lubab läbipaistvuse map.dat failidel",
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Paremad värvid",
+    "BETTER-COLOUR-TT": "Annab parema värvitäpsuse",
+    "DITHERING": {
+      "TITLE": "Värelemine",
+      "TITLE-TT": "Lisab näiliselt suvalisi piksleid, tekitades illusiooni rohkematest värvidest",
+      "NONE": "Puudub"
+    },
+    "PREPROCESSING": {
+      "TITLE": "Pilditöötlus",
+      "ENABLE": "Jah, tahan!",
+      "BRIGHTNESS": "Heledus",
+      "CONTRAST": "Kontrast",
+      "SATURATION": "Küllastus",
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Vali plokid enne allalaadimist!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "LAE ALLA",
+      "DOWNLOAD-TT": "Lae alla nbt",
+      "DOWNLOAD-SPLIT": "LAE ALLA 1x1 KAMAKATENA",
+      "DOWNLOAD-SPLIT-TT": "Lae alla nbt lõhestatuna 1x1 kamakateks"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "LAE ALLA",
+      "DOWNLOAD-TT": "Lae alla map.dat lõhestatuna 1x1 kamakateks"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Materjalid",
+    "BLOCK": "Plokk",
+    "AMOUNT": "Kogus",
+    "PLACEHOLDER-BLOCK-TT": "Kohatäite Plokk",
+    "SHOW-PER-SPLIT": "Näita maksimaalseid materjale ühe lõhestuse kohta",
+    "SHOW-PER-SPLIT-TT": "Materjalide taaskasutamiseks lukustatud kaartidega",
+    "REFRESH-MATERIALS": "VÄRSKENDA MATERJALE",
+    "REFRESH-MATERIALS-TT": "Värskenda materjalide listi"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Suurus"
+  },
+  "DONATE": {
+    "TITLE": "PÄÄSTA MIND JÄRJEKORRAST",
+    "TITLE-TT": "Vaata toetajaid ja anneta"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Märkus: Microsoft Edge kasutamine ei ole toetatud.\\nPalun kasutage Chrome (soovitatud) või Tulirebane MapartCrafti jaoks",
+  "NONE": "Puudub",
+  "UNUSED": {
+    "SECOND": "sekund",
+    "SECONDS": "sekundit",
+    "REMAINING": "jäänud",
+    "SETTINGS-3D-OPTIMIZED": "Sees (optimiseeritud)"
+  }
+}

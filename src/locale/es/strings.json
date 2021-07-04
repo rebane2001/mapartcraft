@@ -1,0 +1,167 @@
+{
+  "TRANSLATION": {
+    "NAME": "Spanish",
+    "CREDITS": "Jalvaviel"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": null
+  },
+  "FAQ": {
+    "FAQ": "Preguntas frecuentes",
+    "PLEASE-READ-1": "Por favor, ¡Echa un vistazo a ",
+    "PLEASE-READ-2": " antes de realizar cualquier pregunta!",
+    "HAVE-YOU-READ": "¿Has leido la sección de preguntas frecuentes?",
+    "HELP-IN-ENGLISH": "Nota: La ayuda solo será en Inglés (al menos de momento)",
+    "VIDEO-TUTORIAL": "Video tutorial"
+  },
+  "DESCRIPTION": {
+    "1": "Un generador de map.dat y .schematic para Minecraft. Diseñado para ser factible tanto para administradores de servidores como para jugadores en modo supervivencia en servidores como ",
+    "2": ", ejecutándose en tu buscador.",
+    "3": "Inspirado por el ",
+    "4": "programa para map art de Redstonehelper",
+    "5": ", con el objetivo de añadir caraterísticas altamente solicitadas y eliminar la necesidad de descargar un programa.",
+    "6": "Siéntete libre de mensajearme en Discord ",
+    "7": " o Reddit ",
+    "8": ", las peticiones de nuevas características y los reportes de bugs siguen abiertos en "
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Selección de bloques",
+    "PRESETS": {
+      "TITLE": "Plantillas",
+      "DELETE": "Borrar",
+      "DELETE-ERROR-DEFAULT": null,
+      "SAVE": "Guardar",
+      "SAVE-PROMPT-ENTER-NAME": "Inserta un nombre para la plantilla:",
+      "SHARE": "Comparte",
+      "SHARE-TT": "Comparte los bloques que has seleccionado como enlace actualmente",
+      "SHARE-WARNING-NONE-SELECTED": "¡Selecciona los bloques antes de compartirlos!",
+      "SHARE-LINK": "Comparte éste link para compartir tus bloques seleccionados",
+      "DOWNLOAD": "Descargar",
+      "DOWNLOAD-TT": "Descarga la paleta de colores para Paint.net",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "¡Selecciona los bloques antes de descargar la paleta!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Advertencia, tu paleta tiene ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " colores, mientras que el máximo para Paint.net es 96. Algunos colores no estarán disponibles en Paint.net",
+      "IMPORT-ERROR-CORRUPTED": "¡El enlace de la plantilla está corrupto!",
+      "NONE": "Vacío",
+      "EVERYTHING": "Todo",
+      "CARPETS": "Alfombras",
+      "GREYSCALE": "Grises"
+    },
+    "UNSUPPORTED-PAST": null
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Vista previa del Mapa",
+    "BEST-RESOLUTION-TT": "Una imagen original con esta resolución funcionará mejor",
+    "ASPECT-RATIO-MISMATCH-TT": "¡La imagen no concuerda con la relación de aspecto del mapa!",
+    "SCALE-MINUS-TT": "Disminuir vista previa",
+    "SCALE-PLUS-TT": "Ampliar vista previa"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Opciones",
+    "MODE": "Modo",
+    "MODE-TT": "Selecciona el modo de operación",
+    "MODE-VISUAL": "Visualización",
+    "MODE-VISUAL-NA": "Visualización (no disponible)",
+    "VERSION": "Versión",
+    "VERSION-TT": "Selecciona la versión de Minecraft más adecuada",
+    "MAP-SIZE": "Tamaño del Mapa",
+    "CROP": "Recortar",
+    "CROP-TT": "Recorta la imagen en vez de extenderla",
+    "GRID-OVERLAY": "Cuadrícula",
+    "GRID-OVERLAY-TT": "Muestra una cuadrícula con bordes cada 16x16 y 1x1 chunks",
+    "3D": {
+      "TITLE": "Escalonado",
+      "TITLE-TT": "Hace el mapa 3D. Más difícil de construir, ¡Pero con 3 veces los colores!",
+      "OFF": "Apagado (2D)",
+      "CLASSIC": "Encendido (clásico)",
+      "VALLEY": null
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Añadir bloques abajo",
+        "NONE": "Sin bloques",
+        "IMPORTANT": "Bloques importantes",
+        "ALL": "Todos los bloques",
+        "ALL-OPTIMIZED": "Todos los bloques (óptimo)",
+        "ALL-DOUBLE": "Todos dobles",
+        "ALL-DOUBLE-OPTIMIZED": "Doble capa de bloques abajo (óptimo)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Bloque a añadir",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Relacionado con la opción anterior"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Colores no obtenibles",
+      "UNOBTAINABLE-COLOURS-TT": "Permite colores para map.dat no obtenibles en .schematic",
+      "TRANSPARENCY": null,
+      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY-TOLERANCE": null
+    },
+    "BETTER-COLOUR": "Mejores colores",
+    "BETTER-COLOUR-TT": "Da mayor precisión cromática",
+    "DITHERING": {
+      "TITLE": "Gradiente (dithering)",
+      "TITLE-TT": "Añade píxeles aleatorios para dar mayor impresión de color",
+      "NONE": "Sin gradiente (dithering)"
+    },
+    "PREPROCESSING": {
+      "TITLE": "Preprocesamiento de imagen",
+      "ENABLE": "Habilitado",
+      "BRIGHTNESS": "Brillo",
+      "CONTRAST": "Contraste",
+      "SATURATION": "Saturación",
+      "BACKGROUND": {
+        "TITLE": null,
+        "TITLE-TT": null,
+        "OFF": null,
+        "DITHERED": null,
+        "FLAT": null
+      },
+      "BACKGROUND-COLOUR": null
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "¡Selecciona los bloques antes de descargar!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "DESCARGAR",
+      "DOWNLOAD-TT": "Descarga el nbt",
+      "DOWNLOAD-SPLIT": "DESCARGAR EN 1X1",
+      "DOWNLOAD-SPLIT-TT": "Descarga el nbt en fragmentos de 1x1 chunks"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "DESCARGAR",
+      "DOWNLOAD-TT": "Descarga el map.dat en fragmentos de 1x1 chunks"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Materiales",
+    "BLOCK": "Bloque",
+    "AMOUNT": "Cantidad",
+    "PLACEHOLDER-BLOCK-TT": "Bloque de muestra",
+    "SHOW-PER-SPLIT": "El máximo de materiales por sección",
+    "SHOW-PER-SPLIT-TT": "Para reutilizar materiales con mapas bloqueados",
+    "REFRESH-MATERIALS": "REFRESCA",
+    "REFRESH-MATERIALS-TT": "Refresca la lista de materiales"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": null,
+    "TITLE-TT": null,
+    "TOO-BIG-FOR-SINGLE": null,
+    "CONTROLS": null,
+    "TO-EXIT": null,
+    "SIZE": "Tamaño"
+  },
+  "DONATE": {
+    "TITLE": "COLA DE 2B2T",
+    "TITLE-TT": "Mira los partidarios, y dóname para ayudarme a tener prioridad"
+  },
+  "LITEMATICA-WARNING": null,
+  "EDGE-WARNING": "Nota: Sin soporte para Microsoft Edge.\\nPor favor utiliza Chrome o Firefox para MapartCraft",
+  "NONE": "Vacío",
+  "UNUSED": {
+    "SECOND": "segundo",
+    "SECONDS": "segundos",
+    "REMAINING": "restante",
+    "SETTINGS-3D-OPTIMIZED": "Encendido (óptimo)"
+  }
+}

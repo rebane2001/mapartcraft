@@ -1,0 +1,20 @@
+.colourSet {
+  display: flex;
+  flex-direction: row;
+}
+
+.colourSetBox {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 6px;
+  margin-right: 3px;
+  margin-left: 3px;
+  flex-shrink: 0;
+}
+
+.colourSetBlocks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

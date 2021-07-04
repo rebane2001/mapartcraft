@@ -1,0 +1,56 @@
+.imgUpload {
+  display: none;
+}
+
+.gridOverlay {
+  position: absolute;
+  background-repeat: repeat;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+  pointer-events: none;
+}
+
+.mapCanvas {
+  image-rendering: optimizeSpeed; /* Older versions of FF */
+  image-rendering: -moz-crisp-edges; /* FF 6.0+ */
+  image-rendering: -webkit-optimize-contrast; /* Safari */
+  image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated; /* Awesome future-browsers */
+  -ms-interpolation-mode: nearest-neighbor; /* IE */
+  cursor: pointer;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  subpixel-antialias: none;
+}
+
+.mapResolutionAndZoom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sizeButton {
+  margin-top: 2px;
+  margin-left: 2px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.progress {
+  background-color: black;
+}
+
+.progressText {
+  position: absolute;
+  padding-left: 6px;
+}
+
+.progressDiv {
+  background-color: #688e6b;
+  height: 24px;
+}

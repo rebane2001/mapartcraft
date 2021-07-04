@@ -1,0 +1,14 @@
+.tooltipContainer {
+  display: inline-block;
+}
+
+.tooltipText {
+  position: absolute;
+  z-index: 100;
+  margin: 0;
+  padding: 0 0.3em 0.1em 0.3em;
+  font-family: "kenpixel_mini_square";
+  background: var(--rebaneGreen);
+  color: white;
+  font-weight: normal !important;
+}

@@ -1,0 +1,17 @@
+// Presets are stored as a list of the following object
+{
+    "name": "My Preset", // Name to display the preset as
+    "localeKey": "BLOCK-SELECTION/PRESETS/BLAH", // localeKey only appears in default presets, and it is a neat way solution to localisation of default presets;
+                                        // the controller will try to read for 'localeKey' first, else will default to 'name'
+    "blocks": [
+        [
+            11, // Colour set number as defined in example_coloursJSON.jsonc
+            6   // Block number as defined in example_coloursJSON.jsonc
+        ],
+        [
+            14, // Orangey
+            0   // Orange Wool
+        ]
+        // All non-specified colour sets will be reset to block number '-1' ie disabled when the preset is loaded
+    ]
+}

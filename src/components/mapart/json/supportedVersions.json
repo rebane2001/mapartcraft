@@ -1,0 +1,22 @@
+{
+  "1_12_2": {
+    "MCVersion": "1.12.2",
+    "NBTVersion": 1343
+  },
+  "1_13_2": {
+    "MCVersion": "1.13.2",
+    "NBTVersion": 1631
+  },
+  "1_14_4": {
+    "MCVersion": "1.14.4",
+    "NBTVersion": 1976
+  },
+  "1_15_2": {
+    "MCVersion": "1.15.2",
+    "NBTVersion": 2230
+  },
+  "1_16_5": {
+    "MCVersion": "1.16.5",
+    "NBTVersion": 2586
+  }
+}
