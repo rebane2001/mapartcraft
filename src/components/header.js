@@ -69,6 +69,14 @@ class Header extends Component {
           </a>
           {"."}
           <br></br>
+          <i>
+            {getLocaleString("DESCRIPTION/9")}
+            <a href="/mapartcraft/classic" target="_blank" rel="noopener noreferrer">
+              {getLocaleString("DESCRIPTION/10")}
+            </a>
+            {"."}
+          </i>
+          <br></br>
           <b>
             {getLocaleString("FAQ/PLEASE-READ-1")}
             <Link to={`/${![undefined, "en"].includes(this.props.countryCode) ? this.props.countryCode + "/" : ""}faq`}>
