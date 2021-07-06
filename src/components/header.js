@@ -69,13 +69,13 @@ class Header extends Component {
           </a>
           {"."}
           <br></br>
-          <i>
+          <em>
             {getLocaleString("DESCRIPTION/9")}
             <a href="/mapartcraft/classic" target="_blank" rel="noopener noreferrer">
               {getLocaleString("DESCRIPTION/10")}
             </a>
             {"."}
-          </i>
+          </em>
           <br></br>
           <b>
             {getLocaleString("FAQ/PLEASE-READ-1")}
