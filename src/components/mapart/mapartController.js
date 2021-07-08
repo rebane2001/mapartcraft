@@ -349,8 +349,7 @@ class MapartController extends Component {
     this.setState({ viewOnline_NBT });
   };
 
-  downloadBlobFile(data, mimeType, filename) {
-    const downloadBlob = new Blob([data], { type: mimeType });
+  downloadBlobFile(downloadBlob, filename) {
     const downloadURL = window.URL.createObjectURL(downloadBlob);
     const downloadElt = document.createElement("a");
     downloadElt.style = "display: none";
@@ -409,7 +408,8 @@ class MapartController extends Component {
         )}`
       );
     }
-    this.downloadBlobFile(paletteText, "text/plain", "MapartcraftPalette.txt");
+    const downloadBlob = new Blob([paletteText], { type: "text/plain" });
+    this.downloadBlobFile(downloadBlob, "MapartcraftPalette.txt");
   };
 
   handlePresetChange = (e) => {
