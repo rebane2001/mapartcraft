@@ -27,6 +27,7 @@ Visit [MapartCraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](http
 - Minecraft for the block textures
 - [KenPixel Mini Square](https://opengameart.org/content/kenney-fonts) font by [Kenney](https://www.kenney.nl/)
 - [pako](https://www.npmjs.com/package/pako)'s zipping library
+- [jszip](https://www.npmjs.com/package/jszip)'s zipping library
 - Translation credits can be seen on the translated pages
 - [SelfAdjointOperator](https://github.com/SelfAdjointOperator) for some extra features
 - Code contributors can be seen on the [contributions page](https://github.com/rebane2001/mapartcraft/graphs/contributors)
