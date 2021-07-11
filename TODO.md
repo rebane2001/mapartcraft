@@ -1,7 +1,10 @@
+# Soon
+
+- Deploy 1.17
+
 # Yes
 
 - Move coloursJSON to JSONs folder also add head
-- 1.17 Blocks
 - Look at issues on Rebane repo
 - Review locale jsons, strings such as preprocessing, source existing locale strings for others
 - 'Edit' mode for colour replacements etc: issue #124
