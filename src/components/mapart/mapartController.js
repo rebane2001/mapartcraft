@@ -64,7 +64,22 @@ class MapartController extends Component {
 
   constructor(props) {
     super(props);
-    this.state.presets = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(DefaultPresets)));
+    // update default presets to latest version; done via checking for localeString
+    let cookiesPresets_loaded = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(DefaultPresets)));
+    let cookiesPresets_updated = [];
+    for (const cookiesPreset_loaded of cookiesPresets_loaded) {
+      let cookiesPreset_updated = undefined;
+      if ("localeKey" in cookiesPreset_loaded) {
+        cookiesPreset_updated = DefaultPresets.find((defaultPreset) => defaultPreset.localeKey === cookiesPreset_loaded.localeKey);
+      }
+      if (cookiesPreset_updated === undefined) {
+        cookiesPreset_updated = cookiesPreset_loaded;
+      }
+      cookiesPresets_updated.push(cookiesPreset_updated);
+    }
+    CookieManager.setCookie("presets", JSON.stringify(cookiesPresets_updated));
+    this.state.presets = cookiesPresets_updated;
+
     Object.keys(coloursJSON).forEach((key) => (this.state.selectedBlocks[key] = "-1"));
 
     const cookieMCVersion = CookieManager.touchCookie("mcversion", Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1].MCVersion);
