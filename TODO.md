@@ -17,3 +17,8 @@
 - 2.5D maps (jkascpkmc's Fox for inspo)
 - Flammable parameter glass layer
 - View online on mobile (low priority)
+
+# Low priority
+
+- `tools/addColoursJSONColourSet.py` use ImageMagick to update `tools/Palette*.png`
+- `tools/addColoursJSONBlock.py` update textures size in `viewOnline.js` automatically
