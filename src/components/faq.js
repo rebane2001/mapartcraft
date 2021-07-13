@@ -98,14 +98,14 @@ function FAQ(props) {
       <b>What do I do with the map.dat file?</b>
       <p>
         You can use the map.dat file in singleplayer or a server you own. Create a new map in-game, go to your world's save file, then the data folder and from
-        there you can replace map_xxx.dat files.
+        there you can replace map_xxx.dat files. MapartCraft downloads a .zip file containing all of the 1x1 map.dat files.
       </p>
 
       <h2>Settings</h2>
       <b>Map size?</b>
       <p>
         This will define how many maps you will create for your picture. When creating bigger maps, it's recommended to split it into multiple schematics (lest
-        large staircased maps stretch above the world height limit). This can be done with the "DOWNLOAD AS 1X1 SPLIT" button.
+        large staircased maps stretch above the world height limit). This can be done with the "DOWNLOAD AS 1X1 SPLIT" button which downloads all the 1x1 NBTs in a .zip file.
       </p>
 
       <b>My image is stretched!</b>

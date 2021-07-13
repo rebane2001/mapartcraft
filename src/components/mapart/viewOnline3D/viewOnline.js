@@ -614,7 +614,7 @@ class ViewOnline extends Component {
     this.world = new BlockWorld({
       canvasRef: canvasRef,
       tileSize: 32,
-      tileTextureWidth: 512,
+      tileTextureWidth: 608,
       tileTextureHeight: 2080,
       camera_x: 0,
       camera_y: size_y + 1,

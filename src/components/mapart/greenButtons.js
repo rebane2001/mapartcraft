@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { gzip } from "pako"; // blocks when zipping
+import JSZip from "jszip";
 
 import Tooltip from "../tooltip";
 import coloursJSON from "./coloursJSON.json";
@@ -37,6 +38,8 @@ class GreenButtons extends Component {
     const {
       getLocaleString,
       optionValue_version,
+      optionValue_mapSize_x,
+      optionValue_mapSize_y,
       optionValue_staircasing,
       optionValue_whereSupportBlocks,
       optionValue_supportBlock,
@@ -56,6 +59,8 @@ class GreenButtons extends Component {
     }
     this.nbtWorker.terminate();
     this.resetButtonWidths();
+    let numberOfSplitsCalculated = 0;
+    let zipFile = new JSZip();
     const t0 = performance.now();
     this.nbtWorker = new Worker(NBTWorker);
     this.nbtWorker.onmessage = (e) => {
@@ -69,11 +74,11 @@ class GreenButtons extends Component {
           break;
         }
         case "PROGRESS_REPORT_CREATE_NBT_SPLIT": {
-          this.setState({ buttonWidth_NBT_Split: e.data.body });
+          this.setState({ buttonWidth_NBT_Split: (numberOfSplitsCalculated + e.data.body) / (optionValue_mapSize_x * optionValue_mapSize_y) });
           break;
         }
         case "PROGRESS_REPORT_CREATE_MAPDAT_SPLIT": {
-          this.setState({ buttonWidth_Mapdat_Split: e.data.body });
+          this.setState({ buttonWidth_Mapdat_Split: (numberOfSplitsCalculated + e.data.body) / (optionValue_mapSize_x * optionValue_mapSize_y) });
           break;
         }
         case "NBT_FOR_VIEW_ONLINE": {
@@ -86,19 +91,34 @@ class GreenButtons extends Component {
         case "NBT_ARRAY": {
           const t1 = performance.now();
           console.log(`Created NBT by ${(t1 - t0).toString()}ms`);
+          numberOfSplitsCalculated++;
           const { NBT_Array, whichMap_x, whichMap_y } = e.data.body;
-          downloadBlobFile(
-            gzip(NBT_Array),
-            "application/x-minecraft-level",
-            workerHeader === "CREATE_NBT_SPLIT" ? `${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.nbt` : `${uploadedImage_baseFilename}.nbt`
-          );
+          const NBT_Array_gzipped = gzip(NBT_Array);
+          if (workerHeader === "CREATE_NBT_SPLIT") {
+            zipFile.file(`${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.nbt`, NBT_Array_gzipped);
+            if (numberOfSplitsCalculated === optionValue_mapSize_x * optionValue_mapSize_y) {
+              zipFile.generateAsync({ type: "blob" }).then((content) => {
+                downloadBlobFile(content, `${uploadedImage_baseFilename}.zip`);
+              });
+            }
+          } else {
+            const downloadBlob = new Blob([NBT_Array_gzipped], { type: "application/x-minecraft-level" });
+            downloadBlobFile(downloadBlob, `${uploadedImage_baseFilename}.nbt`);
+          }
           break;
         }
         case "MAPDAT_BYTES": {
           const t1 = performance.now();
           console.log(`Created Mapdat by ${(t1 - t0).toString()}ms`);
+          numberOfSplitsCalculated++;
           const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
-          downloadBlobFile(gzip(Mapdat_Bytes), "application/x-minecraft-map", `${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.dat`);
+          const Mapdat_Bytes_gzipped = gzip(Mapdat_Bytes);
+          zipFile.file(`${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.dat`, Mapdat_Bytes_gzipped);
+          if (numberOfSplitsCalculated === optionValue_mapSize_x * optionValue_mapSize_y) {
+            zipFile.generateAsync({ type: "blob" }).then((content) => {
+              downloadBlobFile(content, `${uploadedImage_baseFilename}.zip`);
+            });
+          }
           break;
         }
         default: {
@@ -209,11 +229,13 @@ class GreenButtons extends Component {
     const { buttonWidth_viewOnline, buttonWidth_NBT_Joined, buttonWidth_NBT_Split, buttonWidth_Mapdat_Split } = this.state;
     const { getLocaleString, optionValue_modeNBTOrMapdat } = this.props;
     let buttons_mapModeConditional;
+    // dummy text used in divs with absolutely positioned children to create correct container height
     if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
       buttons_mapModeConditional = (
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("VIEW-ONLINE/TITLE-TT")}>
             <div className="greenButton" onClick={this.onViewOnlineClicked}>
+              <span className="greenButton_text_dummy">{getLocaleString("VIEW-ONLINE/TITLE")}</span>
               <span className="greenButton_text">{getLocaleString("VIEW-ONLINE/TITLE")}</span>
               <div
                 className="greenButton_progressDiv"
@@ -225,8 +247,9 @@ class GreenButtons extends Component {
           </Tooltip>
           <br />
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-TT")}>
-            <div className="greenButton greenButton_large" onClick={this.onGetNBTClicked}>
-              <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
+            <div className="greenButton" onClick={this.onGetNBTClicked}>
+              <span className="greenButton_large_text_dummy">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
+              <span className="greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
@@ -238,7 +261,8 @@ class GreenButtons extends Component {
           <br />
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT-TT")}>
             <div className="greenButton" onClick={this.onGetNBTSplitClicked}>
-              <span className="greenButton_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")}</span>
+              <span className="greenButton_text_dummy">{`${getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")} .ZIP`}</span>
+              <span className="greenButton_text">{`${getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")} .ZIP`}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
@@ -254,8 +278,9 @@ class GreenButtons extends Component {
       buttons_mapModeConditional = (
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
-            <div className="greenButton greenButton_large" onClick={this.onGetMapdatSplitClicked}>
-              <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")}</span>
+            <div className="greenButton" onClick={this.onGetMapdatSplitClicked}>
+              <span className="greenButton_large_text_dummy">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
+              <span className="greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
@@ -271,13 +296,17 @@ class GreenButtons extends Component {
     const button_donate = (
       <React.Fragment>
         <Tooltip tooltipText={getLocaleString("DONATE/TITLE-TT")}>
-          <a className="greenButton" style={{ textDecoration: "none" }} href="./supporters">
-            <span className="greenButton_text" style={{ backgroundColor: "#688e6b", color: "#333333" }}>
-              {getLocaleString("DONATE/TITLE")}
-            </span>
-          </a>
+          <div className="greenButton">
+            <a style={{ textDecoration: "none" }} href="./supporters">
+              <span className="greenButton_text_dummy" style={{ backgroundColor: "#688e6b", color: "#333333" }}>
+                {getLocaleString("DONATE/TITLE")}
+              </span>
+              <span className="greenButton_text" style={{ backgroundColor: "#688e6b", color: "#333333" }}>
+                {getLocaleString("DONATE/TITLE")}
+              </span>
+            </a>
+          </div>
         </Tooltip>
-        <br />
       </React.Fragment>
     );
     const buttonsDiv = (

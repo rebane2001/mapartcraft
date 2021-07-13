@@ -18,5 +18,9 @@
   "1_16_5": {
     "MCVersion": "1.16.5",
     "NBTVersion": 2586
+  },
+  "1_17_1": {
+    "MCVersion": "1.17.1",
+    "NBTVersion": 2730
   }
 }
