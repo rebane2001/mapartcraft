@@ -1,7 +1,3 @@
-# Soon
-
-- Fix download buttons css
-
 # Yes
 
 - Move coloursJSON to JSONs folder also add head

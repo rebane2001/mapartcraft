@@ -234,6 +234,7 @@ class GreenButtons extends Component {
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("VIEW-ONLINE/TITLE-TT")}>
             <div className="greenButton" onClick={this.onViewOnlineClicked}>
+              <span className="greenButton_text_dummy">{getLocaleString("VIEW-ONLINE/TITLE")}</span>
               <span className="greenButton_text">{getLocaleString("VIEW-ONLINE/TITLE")}</span>
               <div
                 className="greenButton_progressDiv"
@@ -246,6 +247,7 @@ class GreenButtons extends Component {
           <br />
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-TT")}>
             <div className="greenButton greenButton_large" onClick={this.onGetNBTClicked}>
+              <span className="greenButton_text_dummy greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
               <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
               <div
                 className="greenButton_progressDiv"
@@ -258,7 +260,8 @@ class GreenButtons extends Component {
           <br />
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT-TT")}>
             <div className="greenButton" onClick={this.onGetNBTSplitClicked}>
-              <span className="greenButton_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")}</span>
+              <span className="greenButton_text_dummy">{`${getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")} .ZIP`}</span>
+              <span className="greenButton_text">{`${getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-SPLIT")} .ZIP`}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
@@ -275,7 +278,8 @@ class GreenButtons extends Component {
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
             <div className="greenButton greenButton_large" onClick={this.onGetMapdatSplitClicked}>
-              <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")}</span>
+              <span className="greenButton_text_dummy greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
+              <span className="greenButton_text greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
@@ -291,13 +295,17 @@ class GreenButtons extends Component {
     const button_donate = (
       <React.Fragment>
         <Tooltip tooltipText={getLocaleString("DONATE/TITLE-TT")}>
-          <a className="greenButton" style={{ textDecoration: "none" }} href="./supporters">
-            <span className="greenButton_text" style={{ backgroundColor: "#688e6b", color: "#333333" }}>
-              {getLocaleString("DONATE/TITLE")}
-            </span>
-          </a>
+          <div className="greenButton">
+            <a style={{ textDecoration: "none" }} href="./supporters">
+              <span className="greenButton_text_dummy" style={{ backgroundColor: "#688e6b", color: "#333333" }}>
+                {getLocaleString("DONATE/TITLE")}
+              </span>
+              <span className="greenButton_text" style={{ backgroundColor: "#688e6b", color: "#333333" }}>
+                {getLocaleString("DONATE/TITLE")}
+              </span>
+            </a>
+          </div>
         </Tooltip>
-        <br />
       </React.Fragment>
     );
     const buttonsDiv = (
