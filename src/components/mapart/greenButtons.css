@@ -31,15 +31,34 @@
   z-index: 10;
 }
 
+.greenButton_large_text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  line-height: 50px;
+  z-index: 10;
+  font-size: 26px ;
+}
+
+.greenButton_large_text_dummy {
+  position: unset;
+  visibility: hidden;
+  width: 100%;
+  text-align: center;
+  display: block;
+
+  line-height: 50px;
+  z-index: 10;
+  font-size: 26px ;
+}
+
 .greenButton_progressDiv {
   position: absolute;
   top: 0;
   left: 0;
   background-color: #688e6b;
   height: 100%;
-}
-
-.greenButton_large_text {
-  line-height: 50px !important;
-  font-size: 26px !important;
 }

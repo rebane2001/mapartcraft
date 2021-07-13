@@ -229,6 +229,7 @@ class GreenButtons extends Component {
     const { buttonWidth_viewOnline, buttonWidth_NBT_Joined, buttonWidth_NBT_Split, buttonWidth_Mapdat_Split } = this.state;
     const { getLocaleString, optionValue_modeNBTOrMapdat } = this.props;
     let buttons_mapModeConditional;
+    // dummy text used in divs with absolutely positioned children to create correct container height
     if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
       buttons_mapModeConditional = (
         <React.Fragment>
@@ -246,9 +247,9 @@ class GreenButtons extends Component {
           </Tooltip>
           <br />
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD-TT")}>
-            <div className="greenButton greenButton_large" onClick={this.onGetNBTClicked}>
-              <span className="greenButton_text_dummy greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
-              <span className="greenButton_text greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
+            <div className="greenButton" onClick={this.onGetNBTClicked}>
+              <span className="greenButton_large_text_dummy">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
+              <span className="greenButton_large_text">{getLocaleString("DOWNLOAD/NBT-SPECIFIC/DOWNLOAD")}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
@@ -277,9 +278,9 @@ class GreenButtons extends Component {
       buttons_mapModeConditional = (
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
-            <div className="greenButton greenButton_large" onClick={this.onGetMapdatSplitClicked}>
-              <span className="greenButton_text_dummy greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
-              <span className="greenButton_text greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
+            <div className="greenButton" onClick={this.onGetMapdatSplitClicked}>
+              <span className="greenButton_large_text_dummy">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
+              <span className="greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
               <div
                 className="greenButton_progressDiv"
                 style={{
