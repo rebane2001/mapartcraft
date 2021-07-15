@@ -67,8 +67,14 @@
     "VERSION": "Версия игры",
     "VERSION-TT": "Выберите ближайшую к используемой версию",
     "MAP-SIZE": "Размер карты",
-    "CROP": "Обрезка",
-    "CROP-TT": "Обрезает, а не растягивает ваше изображение",
+    "CROP": {
+      "TITLE": "Обрезка",
+      "TITLE-TT": "Обрезает, а не растягивает ваше изображение",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": null,
     "GRID-OVERLAY-TT": null,
     "3D": {

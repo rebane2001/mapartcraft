@@ -10,6 +10,7 @@ import coloursJSON from "./coloursJSON.json";
 import ViewOnline from "./viewOnline3D/viewOnline";
 
 import BackgroundColourModes from "./json/backgroundColourModes.json";
+import CropModes from "./json/cropModes.json";
 import DefaultPresets from "./json/defaultPresets.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
@@ -30,7 +31,10 @@ class MapartController extends Component {
     optionValue_mapSize_x_buffer: "1",
     optionValue_mapSize_y: 1,
     optionValue_mapSize_y_buffer: "1",
-    optionValue_cropImage: true,
+    optionValue_cropImage: CropModes.CENTER.uniqueId,
+    optionValue_cropImage_zoom: 10, // this gets scaled down by a factor of 10
+    optionValue_cropImage_percent_x: 50,
+    optionValue_cropImage_percent_y: 50,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: StaircaseModes.VALLEY.uniqueId,
     optionValue_whereSupportBlocks: WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId,
@@ -244,8 +248,31 @@ class MapartController extends Component {
     }
   };
 
-  onOptionChange_cropImage = () => {
-    this.setState({ optionValue_cropImage: !this.state.optionValue_cropImage });
+  onOptionChange_cropImage = (e) => {
+    const cropValue = parseInt(e.target.value);
+    // CENTER is a special case of MANUAL
+    // reset cropImage variables any time we change
+    this.setState({
+      optionValue_cropImage: cropValue,
+      optionValue_cropImage_zoom: 10,
+      optionValue_cropImage_percent_x: 50,
+      optionValue_cropImage_percent_y: 50,
+    });
+  };
+
+  onOptionChange_cropImage_zoom = (e) => {
+    const zoom = parseInt(e.target.value);
+    this.setState({ optionValue_cropImage_zoom: zoom });
+  };
+
+  onOptionChange_cropImage_percent_x = (e) => {
+    const percent = parseInt(e.target.value);
+    this.setState({ optionValue_cropImage_percent_x: percent });
+  };
+
+  onOptionChange_cropImage_percent_y = (e) => {
+    const percent = parseInt(e.target.value);
+    this.setState({ optionValue_cropImage_percent_y: percent });
   };
 
   onOptionChange_showGridOverlay = () => {
@@ -589,6 +616,9 @@ class MapartController extends Component {
       optionValue_mapSize_y,
       optionValue_mapSize_y_buffer,
       optionValue_cropImage,
+      optionValue_cropImage_zoom,
+      optionValue_cropImage_percent_x,
+      optionValue_cropImage_percent_y,
       optionValue_showGridOverlay,
       optionValue_staircasing,
       optionValue_whereSupportBlocks,
@@ -642,6 +672,9 @@ class MapartController extends Component {
             optionValue_mapSize_x={optionValue_mapSize_x}
             optionValue_mapSize_y={optionValue_mapSize_y}
             optionValue_cropImage={optionValue_cropImage}
+            optionValue_cropImage_zoom={optionValue_cropImage_zoom}
+            optionValue_cropImage_percent_x={optionValue_cropImage_percent_x}
+            optionValue_cropImage_percent_y={optionValue_cropImage_percent_y}
             optionValue_showGridOverlay={optionValue_showGridOverlay}
             optionValue_staircasing={optionValue_staircasing}
             optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
@@ -674,6 +707,12 @@ class MapartController extends Component {
               onOptionChange_mapSize_y_buffer={this.onOptionChange_mapSize_y_buffer}
               optionValue_cropImage={optionValue_cropImage}
               onOptionChange_cropImage={this.onOptionChange_cropImage}
+              optionValue_cropImage_zoom={optionValue_cropImage_zoom}
+              onOptionChange_cropImage_zoom={this.onOptionChange_cropImage_zoom}
+              optionValue_cropImage_percent_x={optionValue_cropImage_percent_x}
+              onOptionChange_cropImage_percent_x={this.onOptionChange_cropImage_percent_x}
+              optionValue_cropImage_percent_y={optionValue_cropImage_percent_y}
+              onOptionChange_cropImage_percent_y={this.onOptionChange_cropImage_percent_y}
               optionValue_showGridOverlay={optionValue_showGridOverlay}
               onOptionChange_showGridOverlay={this.onOptionChange_showGridOverlay}
               optionValue_staircasing={optionValue_staircasing}
@@ -713,6 +752,9 @@ class MapartController extends Component {
               optionValue_mapSize_x={optionValue_mapSize_x}
               optionValue_mapSize_y={optionValue_mapSize_y}
               optionValue_cropImage={optionValue_cropImage}
+              optionValue_cropImage_zoom={optionValue_cropImage_zoom}
+              optionValue_cropImage_percent_x={optionValue_cropImage_percent_x}
+              optionValue_cropImage_percent_y={optionValue_cropImage_percent_y}
               optionValue_staircasing={optionValue_staircasing}
               optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
               optionValue_supportBlock={optionValue_supportBlock}

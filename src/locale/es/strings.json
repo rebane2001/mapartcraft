@@ -67,8 +67,14 @@
     "VERSION": "Versión",
     "VERSION-TT": "Selecciona la versión de Minecraft más adecuada",
     "MAP-SIZE": "Tamaño del Mapa",
-    "CROP": "Recortar",
-    "CROP-TT": "Recorta la imagen en vez de extenderla",
+    "CROP": {
+      "TITLE": "Recortar",
+      "TITLE-TT": "Recorta la imagen en vez de extenderla",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": "Cuadrícula",
     "GRID-OVERLAY-TT": "Muestra una cuadrícula con bordes cada 16x16 y 1x1 chunks",
     "3D": {

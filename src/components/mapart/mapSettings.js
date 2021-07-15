@@ -5,6 +5,7 @@ import AutoCompleteInputBlockToAdd from "./autoCompleteInputBlockToAdd/autoCompl
 import Tooltip from "../tooltip";
 
 import BackgroundColourModes from "./json/backgroundColourModes.json";
+import CropModes from "./json/cropModes.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -27,6 +28,12 @@ class MapSettings extends Component {
       onOptionChange_modeNBTOrMapdat,
       optionValue_cropImage,
       onOptionChange_cropImage,
+      optionValue_cropImage_zoom,
+      onOptionChange_cropImage_zoom,
+      optionValue_cropImage_percent_x,
+      onOptionChange_cropImage_percent_x,
+      optionValue_cropImage_percent_y,
+      onOptionChange_cropImage_percent_y,
       optionValue_showGridOverlay,
       onOptionChange_showGridOverlay,
       optionValue_staircasing,
@@ -108,16 +115,69 @@ class MapSettings extends Component {
     );
     const setting_crop = (
       <React.Fragment>
-        <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/CROP-TT")}>
+        <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/CROP/TITLE-TT")}>
           <b>
-            {getLocaleString("MAP-SETTINGS/CROP")}
+            {getLocaleString("MAP-SETTINGS/CROP/TITLE")}
             {":"}
           </b>
         </Tooltip>{" "}
-        <input type="checkbox" checked={optionValue_cropImage} onChange={onOptionChange_cropImage} />
+        <select onChange={onOptionChange_cropImage} value={optionValue_cropImage}>
+          {Object.values(CropModes).map((cropMode) => (
+            <option key={cropMode.uniqueId} value={cropMode.uniqueId}>
+              {getLocaleString(cropMode.localeKey)}
+            </option>
+          ))}
+        </select>
         <br />
       </React.Fragment>
     );
+    let setting_crop_zoom = null;
+    let setting_crop_percent_x = null;
+    let setting_crop_percent_y = null;
+    if (optionValue_cropImage === CropModes.MANUAL.uniqueId) {
+      setting_crop_zoom = (
+        <React.Fragment>
+          <b>
+            {getLocaleString("MAP-SETTINGS/CROP/ZOOM")}
+            {":"}
+          </b>{" "}
+          <input type="range" min="10" max="50" value={optionValue_cropImage_zoom} onChange={onOptionChange_cropImage_zoom} />
+          <br />
+        </React.Fragment>
+      );
+      setting_crop_percent_x = (
+        <React.Fragment>
+          <b>{"X:"}</b>
+          <input type="range" min="0" max="100" value={optionValue_cropImage_percent_x} onChange={onOptionChange_cropImage_percent_x} />
+          <input
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            value={optionValue_cropImage_percent_x}
+            onChange={onOptionChange_cropImage_percent_x}
+            style={{ width: "3em" }}
+          />
+          <br />
+        </React.Fragment>
+      );
+      setting_crop_percent_y = (
+        <React.Fragment>
+          <b>{"Y:"}</b>
+          <input type="range" min="0" max="100" value={optionValue_cropImage_percent_y} onChange={onOptionChange_cropImage_percent_y} />
+          <input
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            value={optionValue_cropImage_percent_y}
+            onChange={onOptionChange_cropImage_percent_y}
+            style={{ width: "3em" }}
+          />
+          <br />
+        </React.Fragment>
+      );
+    }
     const setting_grid = (
       <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/GRID-OVERLAY-TT")}>
@@ -399,7 +459,12 @@ class MapSettings extends Component {
         {setting_mode}
         {setting_version}
         {setting_mapSize}
-        {setting_crop}
+        <div className={optionValue_cropImage === CropModes.MANUAL.uniqueId ? "settingsGroup" : ""}>
+          {setting_crop}
+          {setting_crop_zoom}
+          {setting_crop_percent_x}
+          {setting_crop_percent_y}
+        </div>
         {setting_grid}
         {setting_staircasing}
         {settings_mapModeConditional}

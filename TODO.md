@@ -1,3 +1,7 @@
+# Soon
+
+- Mapdat transparency CSS like crop options box
+
 # Yes
 
 - Move coloursJSON to JSONs folder also add head
