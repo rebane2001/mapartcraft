@@ -1,7 +1,3 @@
-# Soon
-
-- Buffered integer input component for preprocessing and transparency and crop options
-
 # Yes
 
 - Move coloursJSON to JSONs folder also add head

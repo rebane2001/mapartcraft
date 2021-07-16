@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import AutoCompleteInputBlockToAdd from "./autoCompleteInputBlockToAdd/autoCompleteInputBlockToAdd";
 
+import BufferedNumberInput from "./bufferedNumberInput/bufferedNumberInput";
+
 import Tooltip from "../tooltip";
 
 import BackgroundColourModes from "./json/backgroundColourModes.json";
@@ -20,10 +22,10 @@ class MapSettings extends Component {
       getLocaleString,
       optionValue_version,
       onOptionChange_version,
-      optionValue_mapSize_x_buffer,
-      onOptionChange_mapSize_x_buffer,
-      optionValue_mapSize_y_buffer,
-      onOptionChange_mapSize_y_buffer,
+      optionValue_mapSize_x,
+      onOptionChange_mapSize_x,
+      optionValue_mapSize_y,
+      onOptionChange_mapSize_y,
       optionValue_modeNBTOrMapdat,
       onOptionChange_modeNBTOrMapdat,
       optionValue_cropImage,
@@ -54,12 +56,12 @@ class MapSettings extends Component {
       onOptionChange_dithering,
       optionValue_preprocessingEnabled,
       onOptionChange_PreProcessingEnabled,
-      preProcessingValue_brightness_buffer,
-      onOptionChange_PreProcessingBrightness_buffer,
-      preProcessingValue_contrast_buffer,
-      onOptionChange_PreProcessingContrast_buffer,
-      preProcessingValue_saturation_buffer,
-      onOptionChange_PreProcessingSaturation_buffer,
+      preProcessingValue_brightness,
+      onOptionChange_PreProcessingBrightness,
+      preProcessingValue_contrast,
+      onOptionChange_PreProcessingContrast,
+      preProcessingValue_saturation,
+      onOptionChange_PreProcessingSaturation,
       preProcessingValue_backgroundColourSelect,
       onOptionChange_PreProcessingBackgroundColourSelect,
       preProcessingValue_backgroundColour,
@@ -107,9 +109,25 @@ class MapSettings extends Component {
           {getLocaleString("MAP-SETTINGS/MAP-SIZE")}
           {":"}
         </b>{" "}
-        <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_x_buffer} onChange={onOptionChange_mapSize_x_buffer} />
+        <BufferedNumberInput
+          min="1"
+          max={null}
+          step="1"
+          value={optionValue_mapSize_x}
+          validators={[(t) => !isNaN(t), (t) => t > 0]}
+          onValidInput={onOptionChange_mapSize_x}
+          style={{ width: "2em" }}
+        />
         x
-        <input className="mapSizeInput" type="number" min="1" step="1" value={optionValue_mapSize_y_buffer} onChange={onOptionChange_mapSize_y_buffer} />
+        <BufferedNumberInput
+          min="1"
+          max={null}
+          step="1"
+          value={optionValue_mapSize_y}
+          validators={[(t) => !isNaN(t), (t) => t > 0]}
+          onValidInput={onOptionChange_mapSize_y}
+          style={{ width: "2em" }}
+        />
         <br />
       </React.Fragment>
     );
@@ -148,7 +166,13 @@ class MapSettings extends Component {
             </b>{" "}
           </th>
           <td>
-            <input type="range" min="10" max="50" value={optionValue_cropImage_zoom} onChange={onOptionChange_cropImage_zoom} />
+            <input
+              type="range"
+              min="10"
+              max="50"
+              value={optionValue_cropImage_zoom}
+              onChange={(e) => onOptionChange_cropImage_zoom(parseInt(e.target.value))}
+            />
           </td>
           <td />
         </tr>
@@ -159,16 +183,22 @@ class MapSettings extends Component {
             <b>{"X:"}</b>{" "}
           </th>
           <td>
-            <input type="range" min="0" max="100" value={optionValue_cropImage_percent_x} onChange={onOptionChange_cropImage_percent_x} />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={optionValue_cropImage_percent_x}
+              onChange={(e) => onOptionChange_cropImage_percent_x(parseInt(e.target.value))}
+            />
           </td>
           <td>
-            <input
-              type="number"
+            <BufferedNumberInput
               min="0"
               max="100"
               step="1"
               value={optionValue_cropImage_percent_x}
-              onChange={onOptionChange_cropImage_percent_x}
+              validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 100]}
+              onValidInput={onOptionChange_cropImage_percent_x}
               style={{ width: "3em" }}
             />
           </td>
@@ -180,16 +210,22 @@ class MapSettings extends Component {
             <b>{"Y:"}</b>{" "}
           </th>
           <td>
-            <input type="range" min="0" max="100" value={optionValue_cropImage_percent_y} onChange={onOptionChange_cropImage_percent_y} />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={optionValue_cropImage_percent_y}
+              onChange={(e) => onOptionChange_cropImage_percent_y(parseInt(e.target.value))}
+            />
           </td>
           <td>
-            <input
-              type="number"
+            <BufferedNumberInput
               min="0"
               max="100"
               step="1"
               value={optionValue_cropImage_percent_y}
-              onChange={onOptionChange_cropImage_percent_y}
+              validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 100]}
+              onValidInput={onOptionChange_cropImage_percent_y}
               style={{ width: "3em" }}
             />
           </td>
@@ -290,16 +326,22 @@ class MapSettings extends Component {
               </b>{" "}
             </th>
             <td>
-              <input type="range" min="0" max="256" value={optionValue_transparencyTolerance} onChange={onOptionChange_transparencyTolerance} />
+              <input
+                type="range"
+                min="0"
+                max="256"
+                value={optionValue_transparencyTolerance}
+                onChange={(e) => onOptionChange_transparencyTolerance(parseInt(e.target.value))}
+              />
             </td>
             <td>
-              <input
-                type="number"
+              <BufferedNumberInput
                 min="0"
                 max="256"
                 step="1"
                 value={optionValue_transparencyTolerance}
-                onChange={onOptionChange_transparencyTolerance}
+                validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 256]}
+                onValidInput={onOptionChange_transparencyTolerance}
                 style={{ width: "3em" }}
               />
             </td>
@@ -393,20 +435,21 @@ class MapSettings extends Component {
             type="range"
             min="0"
             max="200"
-            value={preProcessingValue_brightness_buffer}
-            onChange={onOptionChange_PreProcessingBrightness_buffer}
+            value={preProcessingValue_brightness}
+            onChange={(e) => onOptionChange_PreProcessingBrightness(parseInt(e.target.value))}
             disabled={!optionValue_preprocessingEnabled}
           />
         </td>
         <td>
-          <input
-            className="preProcessingInputBox"
-            type="number"
+          <BufferedNumberInput
             min="0"
+            max="200"
             step="1"
-            value={preProcessingValue_brightness_buffer}
-            onChange={onOptionChange_PreProcessingBrightness_buffer}
+            value={preProcessingValue_brightness}
+            validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 200]}
+            onValidInput={onOptionChange_PreProcessingBrightness}
             disabled={!optionValue_preprocessingEnabled}
+            style={{ width: "3em" }}
           />
         </td>
       </tr>
@@ -424,20 +467,21 @@ class MapSettings extends Component {
             type="range"
             min="0"
             max="200"
-            value={preProcessingValue_contrast_buffer}
-            onChange={onOptionChange_PreProcessingContrast_buffer}
+            value={preProcessingValue_contrast}
+            onChange={(e) => onOptionChange_PreProcessingContrast(parseInt(parseInt(e.target.value)))}
             disabled={!optionValue_preprocessingEnabled}
           />
         </td>
         <td>
-          <input
-            className="preProcessingInputBox"
-            type="number"
+          <BufferedNumberInput
             min="0"
+            max="200"
             step="1"
-            value={preProcessingValue_contrast_buffer}
-            onChange={onOptionChange_PreProcessingContrast_buffer}
+            value={preProcessingValue_contrast}
+            validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 200]}
+            onValidInput={onOptionChange_PreProcessingContrast}
             disabled={!optionValue_preprocessingEnabled}
+            style={{ width: "3em" }}
           />
         </td>
       </tr>
@@ -455,20 +499,21 @@ class MapSettings extends Component {
             type="range"
             min="0"
             max="200"
-            value={preProcessingValue_saturation_buffer}
-            onChange={onOptionChange_PreProcessingSaturation_buffer}
+            value={preProcessingValue_saturation}
+            onChange={(e) => onOptionChange_PreProcessingSaturation(parseInt(e.target.value))}
             disabled={!optionValue_preprocessingEnabled}
           />
         </td>
         <td>
-          <input
-            className="preProcessingInputBox"
-            type="number"
+          <BufferedNumberInput
             min="0"
+            max="200"
             step="1"
-            value={preProcessingValue_saturation_buffer}
-            onChange={onOptionChange_PreProcessingSaturation_buffer}
+            value={preProcessingValue_saturation}
+            validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 200]}
+            onValidInput={onOptionChange_PreProcessingSaturation}
             disabled={!optionValue_preprocessingEnabled}
+            style={{ width: "3em" }}
           />
         </td>
       </tr>
