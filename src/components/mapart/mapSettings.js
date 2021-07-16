@@ -113,71 +113,101 @@ class MapSettings extends Component {
         <br />
       </React.Fragment>
     );
-    const setting_crop = (
-      <React.Fragment>
-        <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/CROP/TITLE-TT")}>
-          <b>
-            {getLocaleString("MAP-SETTINGS/CROP/TITLE")}
-            {":"}
-          </b>
-        </Tooltip>{" "}
-        <select onChange={onOptionChange_cropImage} value={optionValue_cropImage}>
-          {Object.values(CropModes).map((cropMode) => (
-            <option key={cropMode.uniqueId} value={cropMode.uniqueId}>
-              {getLocaleString(cropMode.localeKey)}
-            </option>
-          ))}
-        </select>
-        <br />
-      </React.Fragment>
+    let setting_crop = (
+      <tr>
+        <th>
+          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/CROP/TITLE-TT")}>
+            <b>
+              {getLocaleString("MAP-SETTINGS/CROP/TITLE")}
+              {":"}
+            </b>
+          </Tooltip>{" "}
+        </th>
+        <td>
+          <select onChange={onOptionChange_cropImage} value={optionValue_cropImage}>
+            {Object.values(CropModes).map((cropMode) => (
+              <option key={cropMode.uniqueId} value={cropMode.uniqueId}>
+                {getLocaleString(cropMode.localeKey)}
+              </option>
+            ))}
+          </select>
+        </td>
+        <td />
+      </tr>
     );
     let setting_crop_zoom = null;
     let setting_crop_percent_x = null;
     let setting_crop_percent_y = null;
     if (optionValue_cropImage === CropModes.MANUAL.uniqueId) {
       setting_crop_zoom = (
-        <React.Fragment>
-          <b>
-            {getLocaleString("MAP-SETTINGS/CROP/ZOOM")}
-            {":"}
-          </b>{" "}
-          <input type="range" min="10" max="50" value={optionValue_cropImage_zoom} onChange={onOptionChange_cropImage_zoom} />
-          <br />
-        </React.Fragment>
+        <tr>
+          <th>
+            <b>
+              {getLocaleString("MAP-SETTINGS/CROP/ZOOM")}
+              {":"}
+            </b>{" "}
+          </th>
+          <td>
+            <input type="range" min="10" max="50" value={optionValue_cropImage_zoom} onChange={onOptionChange_cropImage_zoom} />
+          </td>
+          <td />
+        </tr>
       );
       setting_crop_percent_x = (
-        <React.Fragment>
-          <b>{"X:"}</b>
-          <input type="range" min="0" max="100" value={optionValue_cropImage_percent_x} onChange={onOptionChange_cropImage_percent_x} />
-          <input
-            type="number"
-            min="0"
-            max="100"
-            step="1"
-            value={optionValue_cropImage_percent_x}
-            onChange={onOptionChange_cropImage_percent_x}
-            style={{ width: "3em" }}
-          />
-          <br />
-        </React.Fragment>
+        <tr>
+          <th>
+            <b>{"X:"}</b>{" "}
+          </th>
+          <td>
+            <input type="range" min="0" max="100" value={optionValue_cropImage_percent_x} onChange={onOptionChange_cropImage_percent_x} />
+          </td>
+          <td>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              step="1"
+              value={optionValue_cropImage_percent_x}
+              onChange={onOptionChange_cropImage_percent_x}
+              style={{ width: "3em" }}
+            />
+          </td>
+        </tr>
       );
       setting_crop_percent_y = (
-        <React.Fragment>
-          <b>{"Y:"}</b>
-          <input type="range" min="0" max="100" value={optionValue_cropImage_percent_y} onChange={onOptionChange_cropImage_percent_y} />
-          <input
-            type="number"
-            min="0"
-            max="100"
-            step="1"
-            value={optionValue_cropImage_percent_y}
-            onChange={onOptionChange_cropImage_percent_y}
-            style={{ width: "3em" }}
-          />
-          <br />
-        </React.Fragment>
+        <tr>
+          <th>
+            <b>{"Y:"}</b>{" "}
+          </th>
+          <td>
+            <input type="range" min="0" max="100" value={optionValue_cropImage_percent_y} onChange={onOptionChange_cropImage_percent_y} />
+          </td>
+          <td>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              step="1"
+              value={optionValue_cropImage_percent_y}
+              onChange={onOptionChange_cropImage_percent_y}
+              style={{ width: "3em" }}
+            />
+          </td>
+        </tr>
       );
     }
+    let settingGroup_cropping = (
+      <div className={optionValue_cropImage === CropModes.MANUAL.uniqueId ? "settingsGroup" : null}>
+        <table>
+          <tbody>
+            {setting_crop}
+            {setting_crop_zoom}
+            {setting_crop_percent_x}
+            {setting_crop_percent_y}
+          </tbody>
+        </table>
+      </div>
+    );
     const setting_grid = (
       <React.Fragment>
         <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/GRID-OVERLAY-TT")}>
@@ -233,7 +263,60 @@ class MapSettings extends Component {
         </React.Fragment>
       );
     } else {
-      settings_mapModeConditional = (
+      let setting_transparency = (
+        <tr>
+          <th>
+            <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TT")}>
+              <b>
+                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY")}
+                {":"}
+              </b>
+            </Tooltip>{" "}
+          </th>
+          <td>
+            <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
+          </td>
+          <td />
+        </tr>
+      );
+      let setting_transparencyTolerance = null;
+      if (optionValue_transparency) {
+        setting_transparencyTolerance = (
+          <tr>
+            <th>
+              <b>
+                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TOLERANCE")}
+                {":"}
+              </b>{" "}
+            </th>
+            <td>
+              <input type="range" min="0" max="256" value={optionValue_transparencyTolerance} onChange={onOptionChange_transparencyTolerance} />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                max="256"
+                step="1"
+                value={optionValue_transparencyTolerance}
+                onChange={onOptionChange_transparencyTolerance}
+                style={{ width: "3em" }}
+              />
+            </td>
+          </tr>
+        );
+      }
+      let settingGroup_transparency = (
+        <div className={optionValue_transparency ? "settingsGroup" : null}>
+          <table>
+            <tbody>
+              {setting_transparency}
+              {setting_transparencyTolerance}
+            </tbody>
+          </table>
+        </div>
+      );
+      let setting_unobtainable = (
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS-TT")}>
             <b>
@@ -243,37 +326,12 @@ class MapSettings extends Component {
           </Tooltip>{" "}
           <input type="checkbox" checked={optionValue_unobtainable} onChange={onOptionChange_unobtainable} />
           <br />
-          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TT")}>
-            <b>
-              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY")}
-              {":"}
-            </b>
-          </Tooltip>{" "}
-          <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
-          <br />
-          <b>
-            {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TOLERANCE")}
-            {":"}
-          </b>{" "}
-          <input
-            type="range"
-            min="0"
-            max="256"
-            value={optionValue_transparencyTolerance}
-            onChange={onOptionChange_transparencyTolerance}
-            disabled={!optionValue_transparency}
-          />
-          <input
-            className="preProcessingInputBox"
-            type="number"
-            min="0"
-            max="256"
-            step="1"
-            value={optionValue_transparencyTolerance}
-            onChange={onOptionChange_transparencyTolerance}
-            disabled={!optionValue_transparency}
-          />
-          <br />
+        </React.Fragment>
+      );
+      settings_mapModeConditional = (
+        <React.Fragment>
+          {setting_unobtainable}
+          {settingGroup_transparency}
         </React.Fragment>
       );
     }
@@ -309,148 +367,172 @@ class MapSettings extends Component {
         <br />
       </React.Fragment>
     );
-    const preprocessing = (
-      <React.Fragment>
-        <details>
-          <summary>{getLocaleString("MAP-SETTINGS/PREPROCESSING/TITLE")}</summary>
+    const setting_preprocessing = (
+      <tr>
+        <th>
           <b>
             {getLocaleString("MAP-SETTINGS/PREPROCESSING/ENABLE")}
             {":"}
           </b>{" "}
           <input type="checkbox" checked={optionValue_preprocessingEnabled} onChange={onOptionChange_PreProcessingEnabled} />
-          <br />
-          <table>
-            <tbody>
-              <tr>
-                <th>
-                  <b>
-                    {getLocaleString("MAP-SETTINGS/PREPROCESSING/BRIGHTNESS")}
-                    {":"}
-                  </b>{" "}
-                </th>
-                <td>
-                  <input
-                    type="range"
-                    min="0"
-                    max="200"
-                    value={preProcessingValue_brightness_buffer}
-                    onChange={onOptionChange_PreProcessingBrightness_buffer}
-                    disabled={!optionValue_preprocessingEnabled}
-                  />
-                </td>
-                <td>
-                  <input
-                    className="preProcessingInputBox"
-                    type="number"
-                    min="0"
-                    step="1"
-                    value={preProcessingValue_brightness_buffer}
-                    onChange={onOptionChange_PreProcessingBrightness_buffer}
-                    disabled={!optionValue_preprocessingEnabled}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <b>
-                    {getLocaleString("MAP-SETTINGS/PREPROCESSING/CONTRAST")}
-                    {":"}
-                  </b>{" "}
-                </th>
-                <td>
-                  <input
-                    type="range"
-                    min="0"
-                    max="200"
-                    value={preProcessingValue_contrast_buffer}
-                    onChange={onOptionChange_PreProcessingContrast_buffer}
-                    disabled={!optionValue_preprocessingEnabled}
-                  />
-                </td>
-                <td>
-                  <input
-                    className="preProcessingInputBox"
-                    type="number"
-                    min="0"
-                    step="1"
-                    value={preProcessingValue_contrast_buffer}
-                    onChange={onOptionChange_PreProcessingContrast_buffer}
-                    disabled={!optionValue_preprocessingEnabled}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <b>
-                    {getLocaleString("MAP-SETTINGS/PREPROCESSING/SATURATION")}
-                    {":"}
-                  </b>{" "}
-                </th>
-                <td>
-                  <input
-                    type="range"
-                    min="0"
-                    max="200"
-                    value={preProcessingValue_saturation_buffer}
-                    onChange={onOptionChange_PreProcessingSaturation_buffer}
-                    disabled={!optionValue_preprocessingEnabled}
-                  />
-                </td>
-                <td>
-                  <input
-                    className="preProcessingInputBox"
-                    type="number"
-                    min="0"
-                    step="1"
-                    value={preProcessingValue_saturation_buffer}
-                    onChange={onOptionChange_PreProcessingSaturation_buffer}
-                    disabled={!optionValue_preprocessingEnabled}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/TITLE-TT")}>
-                    <b>
-                      {getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/TITLE")}
-                      {":"}
-                    </b>
-                  </Tooltip>{" "}
-                </th>
-                <td>
-                  <select
-                    onChange={onOptionChange_PreProcessingBackgroundColourSelect}
-                    value={preProcessingValue_backgroundColourSelect}
-                    disabled={!optionValue_preprocessingEnabled}
-                  >
-                    {Object.values(BackgroundColourModes).map((backgroundColourMode) => (
-                      <option key={backgroundColourMode.uniqueId} value={backgroundColourMode.uniqueId}>
-                        {getLocaleString(backgroundColourMode.localeKey)}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <b>
-                    {getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND-COLOUR")}
-                    {":"}
-                  </b>{" "}
-                </th>
-                <td>
-                  <input
-                    type="color"
-                    value={preProcessingValue_backgroundColour}
-                    onChange={onOptionChange_PreProcessingBackgroundColour}
-                    disabled={!optionValue_preprocessingEnabled || preProcessingValue_backgroundColourSelect === BackgroundColourModes.OFF.uniqueId}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        </th>
+        <td />
+        <td />
+      </tr>
+    );
+    const setting_preprocessing_brightness = (
+      <tr>
+        <th>
+          <b>
+            {getLocaleString("MAP-SETTINGS/PREPROCESSING/BRIGHTNESS")}
+            {":"}
+          </b>{" "}
+        </th>
+        <td>
+          <input
+            type="range"
+            min="0"
+            max="200"
+            value={preProcessingValue_brightness_buffer}
+            onChange={onOptionChange_PreProcessingBrightness_buffer}
+            disabled={!optionValue_preprocessingEnabled}
+          />
+        </td>
+        <td>
+          <input
+            className="preProcessingInputBox"
+            type="number"
+            min="0"
+            step="1"
+            value={preProcessingValue_brightness_buffer}
+            onChange={onOptionChange_PreProcessingBrightness_buffer}
+            disabled={!optionValue_preprocessingEnabled}
+          />
+        </td>
+      </tr>
+    );
+    const setting_preprocessing_contrast = (
+      <tr>
+        <th>
+          <b>
+            {getLocaleString("MAP-SETTINGS/PREPROCESSING/CONTRAST")}
+            {":"}
+          </b>{" "}
+        </th>
+        <td>
+          <input
+            type="range"
+            min="0"
+            max="200"
+            value={preProcessingValue_contrast_buffer}
+            onChange={onOptionChange_PreProcessingContrast_buffer}
+            disabled={!optionValue_preprocessingEnabled}
+          />
+        </td>
+        <td>
+          <input
+            className="preProcessingInputBox"
+            type="number"
+            min="0"
+            step="1"
+            value={preProcessingValue_contrast_buffer}
+            onChange={onOptionChange_PreProcessingContrast_buffer}
+            disabled={!optionValue_preprocessingEnabled}
+          />
+        </td>
+      </tr>
+    );
+    const setting_preprocessing_saturation = (
+      <tr>
+        <th>
+          <b>
+            {getLocaleString("MAP-SETTINGS/PREPROCESSING/SATURATION")}
+            {":"}
+          </b>{" "}
+        </th>
+        <td>
+          <input
+            type="range"
+            min="0"
+            max="200"
+            value={preProcessingValue_saturation_buffer}
+            onChange={onOptionChange_PreProcessingSaturation_buffer}
+            disabled={!optionValue_preprocessingEnabled}
+          />
+        </td>
+        <td>
+          <input
+            className="preProcessingInputBox"
+            type="number"
+            min="0"
+            step="1"
+            value={preProcessingValue_saturation_buffer}
+            onChange={onOptionChange_PreProcessingSaturation_buffer}
+            disabled={!optionValue_preprocessingEnabled}
+          />
+        </td>
+      </tr>
+    );
+    const setting_preprocessing_background = (
+      <tr>
+        <th>
+          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/TITLE-TT")}>
+            <b>
+              {getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND/TITLE")}
+              {":"}
+            </b>
+          </Tooltip>{" "}
+        </th>
+        <td>
+          <select
+            onChange={onOptionChange_PreProcessingBackgroundColourSelect}
+            value={preProcessingValue_backgroundColourSelect}
+            disabled={!optionValue_preprocessingEnabled}
+          >
+            {Object.values(BackgroundColourModes).map((backgroundColourMode) => (
+              <option key={backgroundColourMode.uniqueId} value={backgroundColourMode.uniqueId}>
+                {getLocaleString(backgroundColourMode.localeKey)}
+              </option>
+            ))}
+          </select>
+        </td>
+      </tr>
+    );
+    const setting_preprocessing_backgroundColour = (
+      <tr>
+        <th>
+          <b>
+            {getLocaleString("MAP-SETTINGS/PREPROCESSING/BACKGROUND-COLOUR")}
+            {":"}
+          </b>{" "}
+        </th>
+        <td>
+          <input
+            type="color"
+            value={preProcessingValue_backgroundColour}
+            onChange={onOptionChange_PreProcessingBackgroundColour}
+            disabled={!optionValue_preprocessingEnabled || preProcessingValue_backgroundColourSelect === BackgroundColourModes.OFF.uniqueId}
+          />
+        </td>
+      </tr>
+    );
+    const settingGroup_preprocessing = (
+      <React.Fragment>
+        <details>
+          <summary>{getLocaleString("MAP-SETTINGS/PREPROCESSING/TITLE")}</summary>
+          <div className={optionValue_preprocessingEnabled ? "settingsGroup" : null}>
+            <table>
+              <tbody>
+                {setting_preprocessing}
+                {setting_preprocessing_brightness}
+                {setting_preprocessing_contrast}
+                {setting_preprocessing_saturation}
+                {setting_preprocessing_background}
+                {setting_preprocessing_backgroundColour}
+              </tbody>
+            </table>
+          </div>
         </details>
-        <br />
       </React.Fragment>
     );
     const settingsDiv = (
@@ -459,18 +541,13 @@ class MapSettings extends Component {
         {setting_mode}
         {setting_version}
         {setting_mapSize}
-        <div className={optionValue_cropImage === CropModes.MANUAL.uniqueId ? "settingsGroup" : ""}>
-          {setting_crop}
-          {setting_crop_zoom}
-          {setting_crop_percent_x}
-          {setting_crop_percent_y}
-        </div>
+        {settingGroup_cropping}
         {setting_grid}
         {setting_staircasing}
         {settings_mapModeConditional}
         {setting_betterColour}
         {setting_dithering}
-        {preprocessing}
+        {settingGroup_preprocessing}
       </div>
     );
     return settingsDiv;

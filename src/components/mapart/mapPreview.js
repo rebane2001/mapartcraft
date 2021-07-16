@@ -192,7 +192,7 @@ class MapPreview extends Component {
         if (img_width * optionValue_mapSize_y > img_height * optionValue_mapSize_x) {
           // image w/h greater than canvas w/h
           samplingWidth = Math.floor((10 * img_height * optionValue_mapSize_x) / (optionValue_mapSize_y * optionValue_cropImage_zoom));
-          // the 10 is because the input is from 10 to 30 in steps of 1; scale down by 10
+          // the 10 is because the input is from 10 to 50 in steps of 1; scale down by 10
           samplingHeight = Math.floor((10 * img_height) / optionValue_cropImage_zoom);
           samplingOffset_x = Math.floor((optionValue_cropImage_percent_x * (img_width - samplingWidth)) / 100);
           samplingOffset_y = Math.floor((optionValue_cropImage_percent_y * (img_height - samplingHeight)) / 100);

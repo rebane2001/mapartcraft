@@ -119,12 +119,12 @@
       "SATURATION": "Saturation",
       "BACKGROUND": {
         "TITLE": "Background",
-        "TITLE-TT": "For transparent backgrounds",
+        "TITLE-TT": "For images with transparency",
         "OFF": "Off",
         "DITHERED": "On (dithered)",
         "FLAT": "On (flat)"
       },
-      "BACKGROUND-COLOUR": "Background color"
+      "BACKGROUND-COLOUR": "Colour"
     }
   },
   "DOWNLOAD": {

@@ -40,7 +40,7 @@ class MapartController extends Component {
     optionValue_whereSupportBlocks: WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId,
     optionValue_supportBlock: "cobblestone",
     optionValue_unobtainable: true,
-    optionValue_transparency: true,
+    optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
     optionValue_betterColour: true,
     optionValue_dithering: DitherMethods.FloydSteinberg.uniqueId,
