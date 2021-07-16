@@ -8,12 +8,19 @@
   color: white;
 }
 
-.blockToAddSuggestions tr th {
+.blockToAddSuggestion th {
   font-weight: normal;
+  padding: 0.2em;
+}
+
+.blockToAddSuggestion th:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .blockToAddSuggestion_active,
-.blockToAddSuggestions tr:hover {
+.blockToAddSuggestion:hover {
   background-color: #609060;
   cursor: pointer;
 }

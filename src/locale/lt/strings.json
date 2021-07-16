@@ -67,8 +67,14 @@
     "VERSION": "Versija",
     "VERSION-TT": "Pasirinkite versiją, kuri yra arčiausiai jūsų naudojama",
     "MAP-SIZE": "Žemėlapio dydis",
-    "CROP": "Apkarpyti",
-    "CROP-TT": "Apkarpo vaizda vietoj išlankso",
+    "CROP": {
+      "TITLE": "Apkarpyti",
+      "TITLE-TT": "Apkarpo vaizda vietoj išlankso",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": null,
     "GRID-OVERLAY-TT": null,
     "3D": {

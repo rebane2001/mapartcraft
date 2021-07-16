@@ -67,8 +67,14 @@
     "VERSION": "Version",
     "VERSION-TT": "Select the version closest to what you're running",
     "MAP-SIZE": "Map size",
-    "CROP": "Crop",
-    "CROP-TT": "Crops your image instead of stretching it out",
+    "CROP": {
+      "TITLE": "Crop",
+      "TITLE-TT": "Crops your image instead of stretching it out",
+      "OFF": "Off",
+      "CENTER": "Center",
+      "MANUAL": "Manual",
+      "ZOOM": "Zoom"
+    },
     "GRID-OVERLAY": "Grid",
     "GRID-OVERLAY-TT": "Overlays a grid that shows 16x16 chunks and 1x1 splits",
     "3D": {
@@ -113,12 +119,12 @@
       "SATURATION": "Saturation",
       "BACKGROUND": {
         "TITLE": "Background",
-        "TITLE-TT": "For transparent backgrounds",
+        "TITLE-TT": "For images with transparency",
         "OFF": "Off",
         "DITHERED": "On (dithered)",
         "FLAT": "On (flat)"
       },
-      "BACKGROUND-COLOUR": "Background color"
+      "BACKGROUND-COLOUR": "Colour"
     }
   },
   "DOWNLOAD": {

@@ -67,8 +67,14 @@
     "VERSION": "版本",
     "VERSION-TT": "选择最接近您正在运行的版本",
     "MAP-SIZE": "地图尺寸",
-    "CROP": "裁剪",
-    "CROP-TT": "裁剪图像而不是将其拉伸",
+    "CROP": {
+      "TITLE": "裁剪",
+      "TITLE-TT": "裁剪图像而不是将其拉伸",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": null,
     "GRID-OVERLAY-TT": null,
     "3D": {

@@ -67,8 +67,14 @@
     "VERSION": "Version",
     "VERSION-TT": "Wähle die nächstgelegene Version zu der aus, auf welcher Du spielst.",
     "MAP-SIZE": "Maße",
-    "CROP": "Zuschneiden",
-    "CROP-TT": "Schneidet das Bild zurecht, statt es zu verzerren",
+    "CROP": {
+      "TITLE": "Zuschneiden",
+      "TITLE-TT": "Schneidet das Bild zurecht, statt es zu verzerren",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": null,
     "GRID-OVERLAY-TT": null,
     "3D": {

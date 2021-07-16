@@ -67,8 +67,14 @@
     "VERSION": "Versioon",
     "VERSION-TT": "Vali versioon, mis on lähim sellele, mida kasutad",
     "MAP-SIZE": "Kaardi suurus",
-    "CROP": "Pügamine",
-    "CROP-TT": "Pügab su pilti välja venitamise asemel",
+    "CROP": {
+      "TITLE": "Pügamine",
+      "TITLE-TT": "Pügab su pilti välja venitamise asemel",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": "Ruudustik",
     "GRID-OVERLAY-TT": "Joonestab ruudustiku mis näitab 16x16 kamakaid ja 1x1 lõhestusi",
     "3D": {

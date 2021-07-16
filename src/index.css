@@ -41,6 +41,15 @@ a:visited {
   height: 0;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+th:first-child {
+  /* For tables in map settings to align with other settings */
+  padding-left: 0;
+}
+
 .cursorPointer {
   cursor: pointer;
 }

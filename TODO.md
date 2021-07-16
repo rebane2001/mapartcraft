@@ -9,6 +9,7 @@
 
 # Maybe
 
+- Compositing for mapdat images when uploaded image has transparency and preprocessing background enabled
 - Linear / none interpolation option for small uploads if easy
 - 2.5D maps (jkascpkmc's Fox for inspo)
 - Flammable parameter glass layer

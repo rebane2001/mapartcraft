@@ -67,8 +67,14 @@
     "VERSION": "Versio",
     "VERSION-TT": "Elektu la version la plej proksiman al versio, ĉe kiu vi ludas",
     "MAP-SIZE": "Mapa amplekso",
-    "CROP": "Ĉirkaŭtranĉi",
-    "CROP-TT": "Ĉirkaŭtranĉi vian bildon anstataŭ plilarĝigi ĝin",
+    "CROP": {
+      "TITLE": "Ĉirkaŭtranĉi",
+      "TITLE-TT": "Ĉirkaŭtranĉi vian bildon anstataŭ plilarĝigi ĝin",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": null,
     "GRID-OVERLAY-TT": null,
     "3D": {

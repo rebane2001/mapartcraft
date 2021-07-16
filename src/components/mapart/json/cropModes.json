@@ -1,0 +1,14 @@
+{
+  "OFF": {
+    "uniqueId": 0,
+    "localeKey": "MAP-SETTINGS/CROP/OFF"
+  },
+  "CENTER": {
+    "uniqueId": 1,
+    "localeKey": "MAP-SETTINGS/CROP/CENTER"
+  },
+  "MANUAL": {
+    "uniqueId": 2,
+    "localeKey": "MAP-SETTINGS/CROP/MANUAL"
+  }
+}

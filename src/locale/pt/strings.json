@@ -67,8 +67,14 @@
     "VERSION": "Versão",
     "VERSION-TT": "Selecione a versão mais próxima do que está a utilizar",
     "MAP-SIZE": "Tamanho do mapa",
-    "CROP": "Cortar",
-    "CROP-TT": "Cortar a sua imagem em vez de esticá-la",
+    "CROP": {
+      "TITLE": "Cortar",
+      "TITLE-TT": "Cortar a sua imagem em vez de esticá-la",
+      "OFF": null,
+      "CENTER": null,
+      "MANUAL": null,
+      "ZOOM": null
+    },
     "GRID-OVERLAY": null,
     "GRID-OVERLAY-TT": null,
     "3D": {
