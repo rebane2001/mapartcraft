@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import FAQ from "./components/faq";
+import Root from "./components/root";
 
 import "./index.css";
-import App from "./app";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router basename="/mapartcraft">
+      <Switch>
+        <Route path="/:countryCode?/faq" component={FAQ} />
+        <Route path="/:countryCode?" component={Root} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,7 +1,5 @@
 # Yes
 
-- See if adding 'zoom-point correction' to manual crop option is useful
-- Move coloursJSON to JSONs folder also add head
 - Look at issues on Rebane repo
 - Review locale jsons, strings such as preprocessing, source existing locale strings for others
 - 'Edit' mode for colour replacements etc: issue #124
