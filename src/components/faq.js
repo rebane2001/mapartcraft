@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import "./faq.css";
+import IMG_Palette from "../images/Palette128_Unobtainable_Trans.png";
 
 function FAQ(props) {
   return (
@@ -140,6 +141,10 @@ function FAQ(props) {
         You can use presets to save and load block configurations. Pick your blocks and click "Save" to save them as a preset, pick a preset to load it and
         click "Delete" to delete the loaded preset. It is also possible to share a link for your preset with others.
       </p>
+
+      <div style={{ textAlign: "center" }}>
+        <img alt="Palette" src={IMG_Palette} />
+      </div>
     </div>
   );
 }

@@ -7,7 +7,8 @@ import MapPreview from "./mapPreview";
 import MapSettings from "./mapSettings";
 import Materials from "./materials";
 import coloursJSON from "./coloursJSON.json";
-import ViewOnline from "./viewOnline3D/viewOnline";
+import ViewOnline2D from "./viewOnline2D/viewOnline2D";
+import ViewOnline3D from "./viewOnline3D/viewOnline3D";
 
 import BackgroundColourModes from "./json/backgroundColourModes.json";
 import CropModes from "./json/cropModes.json";
@@ -59,6 +60,7 @@ class MapartController extends Component {
     },
     mapPreviewWorker_inProgress: false,
     viewOnline_NBT: null,
+    viewOnline_3D: false,
   };
 
   constructor(props) {
@@ -557,6 +559,17 @@ class MapartController extends Component {
     this.setState({ currentMaterialsData: currentMaterialsData, mapPreviewWorker_inProgress: false });
   };
 
+  onChooseViewOnline3D = () => {
+    this.setState({ viewOnline_3D: true });
+  };
+
+  handleViewOnline3DEscape = () => {
+    this.setState({
+      viewOnline_NBT: null,
+      viewOnline_3D: false,
+    });
+  };
+
   render() {
     const { getLocaleString } = this.props;
     const {
@@ -591,6 +604,7 @@ class MapartController extends Component {
       currentMaterialsData,
       mapPreviewWorker_inProgress,
       viewOnline_NBT,
+      viewOnline_3D,
     } = this.state;
     return (
       <div className="mapartController">
@@ -733,14 +747,27 @@ class MapartController extends Component {
             />
           ) : null}
         </div>
-        {viewOnline_NBT !== null && (
-          <ViewOnline
-            getLocaleString={getLocaleString}
-            optionValue_version={optionValue_version}
-            viewOnline_NBT={viewOnline_NBT}
-            onGetViewOnlineNBT={this.onGetViewOnlineNBT}
-          />
-        )}
+        {viewOnline_NBT !== null &&
+          (viewOnline_3D ? (
+            <ViewOnline3D
+              getLocaleString={getLocaleString}
+              optionValue_version={optionValue_version}
+              optionValue_mapSize_x={optionValue_mapSize_x}
+              optionValue_mapSize_y={optionValue_mapSize_y}
+              viewOnline_NBT={viewOnline_NBT}
+              handleViewOnline3DEscape={this.handleViewOnline3DEscape}
+            />
+          ) : (
+            <ViewOnline2D
+              getLocaleString={getLocaleString}
+              optionValue_version={optionValue_version}
+              optionValue_mapSize_x={optionValue_mapSize_x}
+              optionValue_mapSize_y={optionValue_mapSize_y}
+              viewOnline_NBT={viewOnline_NBT}
+              onGetViewOnlineNBT={this.onGetViewOnlineNBT}
+              onChooseViewOnline3D={this.onChooseViewOnline3D}
+            />
+          ))}
       </div>
     );
   }

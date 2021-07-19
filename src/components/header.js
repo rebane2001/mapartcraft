@@ -37,6 +37,10 @@ class Header extends Component {
           <a href="https://discord.gg/r7Tuerq" target="_blank" rel="noopener noreferrer">
             2b2t Mapart Discord
           </a>
+          <span> | </span>
+          <a href="https://area51.selfadjointoperator.com/mapartcraft/" target="_blank" rel="noopener noreferrer">
+            Beta
+          </a>
         </h3>
         <p>
           {getLocaleString("DESCRIPTION/1")}

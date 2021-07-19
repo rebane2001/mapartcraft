@@ -1,0 +1,35 @@
+.viewOnline2DContainer {
+  position: fixed;
+  z-index: 120;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #7bae7f5e;
+}
+
+.viewOnline2DContainer .topBar {
+  position: relative;
+  z-index: 122;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--rebaneGreen);
+}
+
+.viewOnline2DContainer .topBar * {
+  z-index: 122;
+}
+
+.viewOnline2DContainer canvas {
+  z-index: 121;
+  image-rendering: optimizeSpeed; /* Older versions of FF */
+  image-rendering: -moz-crisp-edges; /* FF 6.0+ */
+  image-rendering: -webkit-optimize-contrast; /* Safari */
+  image-rendering: -o-crisp-edges; /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated; /* Awesome future-browsers */
+  -ms-interpolation-mode: nearest-neighbor; /* IE */
+}
