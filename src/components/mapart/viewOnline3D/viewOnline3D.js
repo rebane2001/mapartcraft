@@ -3,15 +3,15 @@ import React, { Component, createRef } from "react";
 import coloursJSON from "../coloursJSON.json";
 import Tooltip from "../../tooltip";
 
-import IMG_Null from "../../../images/null.png";
 import IMG_Textures from "../../../images/textures.png";
 
-import NBTReader from "./nbtReader";
+import NBTReader from "../nbtReader";
+import Waila from "../viewOnlineCommon/waila";
 
 import * as THREE from "three";
 import { PointerLockControls } from "./pointerLockControls";
 
-import "./viewOnline.css";
+import "./viewOnline3D.css";
 
 class BlockWorld {
   faces = [
@@ -516,7 +516,7 @@ class BlockWorld {
   }
 }
 
-class ViewOnline extends Component {
+class ViewOnline3D extends Component {
   state = {
     viewOnline_NBT_decompressed: null,
     selectedBlock: null,
@@ -599,10 +599,10 @@ class ViewOnline extends Component {
   }
 
   handleEscapeKeyDown = (e) => {
-    const { onGetViewOnlineNBT } = this.props;
+    const { handleViewOnline3DEscape } = this.props;
     e.preventDefault();
     if (e.key === "Escape") {
-      onGetViewOnlineNBT(null);
+      handleViewOnline3DEscape();
     }
   };
 
@@ -663,10 +663,10 @@ class ViewOnline extends Component {
               tooltipText={getLocaleString("VIEW-ONLINE/TOO-BIG-FOR-SINGLE")}
               textStyleOverrides={{
                 whiteSpace: "nowrap",
-                backgroundColor: "red",
+                backgroundColor: "orange",
               }}
             >
-              <b style={{ color: "red" }}>{size_y.toString()}</b>
+              <b style={{ color: "orange" }}>{size_y.toString()}</b>
             </Tooltip>
           ) : (
             size_y.toString()
@@ -692,53 +692,24 @@ class ViewOnline extends Component {
     let component_waila = null;
     if (selectedBlock !== null) {
       component_waila = (
-        <div
-          className={"viewOnline_waila"}
-          style={{
+        <Waila
+          getLocaleString={getLocaleString}
+          selectedBlock={selectedBlock}
+          styleOverrides={{
             position: "fixed",
             zIndex: 121,
             right: 0,
             top: 0,
           }}
-        >
-          <h3>{`x: ${selectedBlock.x.toString()} y: ${selectedBlock.y.toString()} z: ${selectedBlock.z.toString()}`}</h3>
-          {selectedBlock.colourSetId === 64 && selectedBlock.blockId === 2 ? (
-            <React.Fragment>
-              <img
-                src={IMG_Null}
-                alt={getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}
-                style={{
-                  backgroundImage: `url(${IMG_Textures})`,
-                  backgroundPositionX: "-200%",
-                  backgroundPositionY: "-6400%",
-                  verticalAlign: "middle",
-                }}
-              />{" "}
-              {getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <img
-                src={IMG_Null}
-                alt={coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].displayName}
-                style={{
-                  backgroundImage: `url(${IMG_Textures})`,
-                  backgroundPositionX: `-${selectedBlock.blockId}00%`,
-                  backgroundPositionY: `-${selectedBlock.colourSetId}00%`,
-                  verticalAlign: "middle",
-                }}
-              />{" "}
-              {coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].displayName}
-            </React.Fragment>
-          )}
-        </div>
+        />
       );
     }
+
     return (
       <React.Fragment>
-        {viewOnline_NBT_decompressed !== null && component_size}
+        {component_size}
         {component_controls}
-        {selectedBlock !== null && component_waila}
+        {component_waila}
         <b style={{ position: "fixed", zIndex: 121, top: "50%", left: "50%" }}>{"\\"}</b>
         <canvas
           ref={this.canvasRef_viewOnline}
@@ -758,4 +729,4 @@ class ViewOnline extends Component {
   }
 }
 
-export default ViewOnline;
+export default ViewOnline3D;

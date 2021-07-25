@@ -1,6 +1,5 @@
 # Yes
 
-- Move coloursJSON to JSONs folder also add head
 - Look at issues on Rebane repo
 - Review locale jsons, strings such as preprocessing, source existing locale strings for others
 - 'Edit' mode for colour replacements etc: issue #124
@@ -19,3 +18,4 @@
 
 - `tools/addColoursJSONColourSet.py` use ImageMagick to update `tools/Palette*.png`
 - `tools/addColoursJSONBlock.py` update textures size in `viewOnline.js` automatically
+- Check event listener bindings / unbindings to be function(){}.bind instead of lambdas
