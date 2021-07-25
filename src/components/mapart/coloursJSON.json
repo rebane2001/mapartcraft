@@ -4199,28 +4199,6 @@
                 "presetIndex": 6
             },
             "7": {
-                "displayName": "Dark Oak Slab",
-                "validVersions": {
-                    "1.12.2": {
-                        "NBTName": "wooden_slab",
-                        "NBTArgs": {
-                            "variant": "dark_oak"
-                        }
-                    },
-                    "1.13.2": {
-                        "NBTName": "dark_oak_slab",
-                        "NBTArgs": {}
-                    },
-                    "1.14.4": "&1.13.2",
-                    "1.15.2": "&1.13.2",
-                    "1.16.5": "&1.13.2",
-                    "1.17.1": "&1.13.2"
-                },
-                "supportBlockMandatory": true,
-                "flammable": true,
-                "presetIndex": 8
-            },
-            "8": {
                 "displayName": "Dark Oak Planks",
                 "validVersions": {
                     "1.12.2": {
@@ -4241,6 +4219,28 @@
                 "supportBlockMandatory": false,
                 "flammable": true,
                 "presetIndex": 7
+            },
+            "8": {
+                "displayName": "Dark Oak Slab",
+                "validVersions": {
+                    "1.12.2": {
+                        "NBTName": "wooden_slab",
+                        "NBTArgs": {
+                            "variant": "dark_oak"
+                        }
+                    },
+                    "1.13.2": {
+                        "NBTName": "dark_oak_slab",
+                        "NBTArgs": {}
+                    },
+                    "1.14.4": "&1.13.2",
+                    "1.15.2": "&1.13.2",
+                    "1.16.5": "&1.13.2",
+                    "1.17.1": "&1.13.2"
+                },
+                "supportBlockMandatory": true,
+                "flammable": true,
+                "presetIndex": 8
             },
             "9": {
                 "displayName": "Spruce Log (horizontal)",
