@@ -102,7 +102,10 @@
       "UNOBTAINABLE-COLOURS-TT": "启用schematic中无法获得的map.dat档颜色",
       "TRANSPARENCY": null,
       "TRANSPARENCY-TT": null,
-      "TRANSPARENCY-TOLERANCE": null
+      "TRANSPARENCY-TOLERANCE": null,
+      "MAPDAT-FILENAME-USE-ID": null,
+      "MAPDAT-FILENAME-USE-ID-TT": null,
+      "MAPDAT-FILENAME-ID-RANGE": null
     },
     "BETTER-COLOUR": "更好的色彩",
     "BETTER-COLOUR-TT": "为您提供更好的色彩准确性",

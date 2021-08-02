@@ -102,7 +102,10 @@
       "UNOBTAINABLE-COLOURS-TT": "Aktiviert map.dat exklusive Farben, die in Schematics nicht verfügbar sind",
       "TRANSPARENCY": null,
       "TRANSPARENCY-TT": null,
-      "TRANSPARENCY-TOLERANCE": null
+      "TRANSPARENCY-TOLERANCE": null,
+      "MAPDAT-FILENAME-USE-ID": null,
+      "MAPDAT-FILENAME-USE-ID-TT": null,
+      "MAPDAT-FILENAME-ID-RANGE": null
     },
     "BETTER-COLOUR": "Verbesserte Farben",
     "BETTER-COLOUR-TT": "Aktiviert eine optimierte Farbgenauigkeit",

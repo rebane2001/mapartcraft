@@ -102,7 +102,10 @@
       "UNOBTAINABLE-COLOURS-TT": "Tio ŝaltas kolorojn de map.dat malakireblajn en schematic-j",
       "TRANSPARENCY": null,
       "TRANSPARENCY-TT": null,
-      "TRANSPARENCY-TOLERANCE": null
+      "TRANSPARENCY-TOLERANCE": null,
+      "MAPDAT-FILENAME-USE-ID": null,
+      "MAPDAT-FILENAME-USE-ID-TT": null,
+      "MAPDAT-FILENAME-ID-RANGE": null
     },
     "BETTER-COLOUR": "Pli bona koloro",
     "BETTER-COLOUR-TT": "Tio igas pli bonan kolorakuratecon",

@@ -102,7 +102,10 @@
       "UNOBTAINABLE-COLOURS-TT": "Enables map.dat colors unobtainiable in schematics",
       "TRANSPARENCY": "Transparency",
       "TRANSPARENCY-TT": "Enables transparency for map.dat",
-      "TRANSPARENCY-TOLERANCE": "Tolerance"
+      "TRANSPARENCY-TOLERANCE": "Tolerance",
+      "MAPDAT-FILENAME-USE-ID": "Numerical Filename",
+      "MAPDAT-FILENAME-USE-ID-TT": "Save mapdats as 'map_#.dat'",
+      "MAPDAT-FILENAME-ID-RANGE": "Range"
     },
     "BETTER-COLOUR": "Better color",
     "BETTER-COLOUR-TT": "Gives you better color accuracy",

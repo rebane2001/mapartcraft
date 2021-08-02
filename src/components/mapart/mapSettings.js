@@ -50,6 +50,10 @@ class MapSettings extends Component {
       onOptionChange_transparency,
       optionValue_transparencyTolerance,
       onOptionChange_transparencyTolerance,
+      optionValue_mapdatFilenameUseId,
+      onOptionChange_mapdatFilenameUseId,
+      optionValue_mapdatFilenameIdStart,
+      onOptionChange_mapdatFilenameIdStart,
       optionValue_betterColour,
       onOptionChange_BetterColour,
       optionValue_dithering,
@@ -358,6 +362,66 @@ class MapSettings extends Component {
           </table>
         </div>
       );
+      let setting_mapdatFilenameUseId = (
+        <tr>
+          <th>
+            <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/MAPDAT-FILENAME-USE-ID-TT")}>
+              <b>
+                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/MAPDAT-FILENAME-USE-ID")}
+                {":"}
+              </b>
+            </Tooltip>{" "}
+          </th>
+          <td>
+            <input type="checkbox" checked={optionValue_mapdatFilenameUseId} onChange={onOptionChange_mapdatFilenameUseId} />
+          </td>
+          <td />
+          <td />
+        </tr>
+      );
+      let setting_mapdatFilenameIdStart = null;
+      if (optionValue_mapdatFilenameUseId) {
+        setting_mapdatFilenameIdStart = (
+          <tr>
+            <th>
+              <b>
+                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/MAPDAT-FILENAME-ID-RANGE")}
+                {":"}
+              </b>{" "}
+            </th>
+            <td>
+              <BufferedNumberInput
+                min="0"
+                step="1"
+                value={optionValue_mapdatFilenameIdStart}
+                validators={[(t) => !isNaN(t), (t) => t >= 0]}
+                onValidInput={onOptionChange_mapdatFilenameIdStart}
+                style={{ width: "3em" }}
+              />
+            </td>
+            <td>
+              <b>{"-"}</b>
+            </td>
+            <td>
+              <BufferedNumberInput
+                value={-1 + optionValue_mapdatFilenameIdStart + optionValue_mapSize_x * optionValue_mapSize_y}
+                disabled={true}
+                style={{ width: "3em" }}
+              />
+            </td>
+          </tr>
+        );
+      }
+      let settingGroup_mapdatFilename = (
+        <div className={optionValue_mapdatFilenameUseId ? "settingsGroup" : null}>
+          <table>
+            <tbody>
+              {setting_mapdatFilenameUseId}
+              {setting_mapdatFilenameIdStart}
+            </tbody>
+          </table>
+        </div>
+      );
       let setting_unobtainable = (
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS-TT")}>
@@ -374,6 +438,7 @@ class MapSettings extends Component {
         <React.Fragment>
           {setting_unobtainable}
           {settingGroup_transparency}
+          {settingGroup_mapdatFilename}
         </React.Fragment>
       );
     }
