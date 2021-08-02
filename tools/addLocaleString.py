@@ -1,33 +1,11 @@
 #!/bin/env python3
 
+"""Tool for adding a string to all locale files"""
+
 import os
-import json
 import argparse
 
-class JSONIO():
-    @staticmethod
-    def rectifiedPath(path):
-        """Norm path to remove double // and ./../dir etc, and expand ~"""
-        return os.path.expanduser(
-            os.path.normpath(path)
-        )
-
-    @classmethod
-    def loadFromFilename(cls, filename):
-        filename = cls.rectifiedPath(filename)
-        with open(filename) as f:
-            return json.load(f)
-
-    @classmethod
-    def saveToFilename(cls, filename, JSONObject):
-        filename = cls.rectifiedPath(filename)
-        with open(filename, "w") as f:
-            f.write(
-                json.dumps(JSONObject, indent = 2, ensure_ascii = False)
-            )
-            f.write("\n")
-
-languageCodes = ["de", "eo", "es", "et", "fr", "it", "lt", "pt", "ru", "zh-Hans", "zh-Hant"]
+from JSONIO import JSONIO
 
 def touchLocaleString(languageCode, force, path, enOrNull = None):
     filename = "../src/locale/{}/strings.json".format(languageCode)
@@ -36,9 +14,12 @@ def touchLocaleString(languageCode, force, path, enOrNull = None):
 
     localeFolder = localeJSON
     for pathSectionIndex, pathSection in enumerate(pathSections[:-1]):
-        if type(localeFolder[pathSection]) == dict:
+        if not pathSection in localeFolder:
+            localeFolder[pathSection] = {}
             localeFolder = localeFolder[pathSection]
-        elif force or not pathSection in localeFolder:
+        elif type(localeFolder[pathSection]) == dict:
+            localeFolder = localeFolder[pathSection]
+        elif force:
             localeFolder[pathSection] = {}
             localeFolder = localeFolder[pathSection]
         elif localeFolder[pathSection] is None:
@@ -62,8 +43,7 @@ def touchLocaleString(languageCode, force, path, enOrNull = None):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description =
-        """Tool for adding a string to all locale files""")
+    parser = argparse.ArgumentParser(description = __doc__)
     parser.add_argument("-f",
         action = "store_true",
         help = "Overwrite pre-existing string or subsection",
@@ -77,6 +57,9 @@ if __name__ == "__main__":
         default = None)
     args = parser.parse_args()
 
-    touchLocaleString("en", args.f, args.PATH.upper(), args.en)
+    languageCodes = [d for d in
+        os.listdir(JSONIO.rectifiedPath("../src/locale")) if
+        os.path.isdir(os.path.join(JSONIO.rectifiedPath("../src/locale"), d))
+    ]
     for languageCode in languageCodes:
-        touchLocaleString(languageCode, args.f, args.PATH.upper())
+        touchLocaleString(languageCode, args.f, args.PATH.upper(), args.en if languageCode == "en" else None)
