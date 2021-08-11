@@ -102,7 +102,7 @@
       "UNOBTAINABLE-COLOURS-TT": "啟用無法在 schematics 中取得的顏色",
       "TRANSPARENCY": "透明度",
       "TRANSPARENCY-TT": "為 map.dat 啟用透明度",
-      "TRANSPARENCY-TOLERANCE": "容忍度"
+      "TRANSPARENCY-TOLERANCE": "容忍度",
       "MAPDAT-FILENAME-USE-ID": null,
       "MAPDAT-FILENAME-USE-ID-TT": null,
       "MAPDAT-FILENAME-ID-RANGE": null
