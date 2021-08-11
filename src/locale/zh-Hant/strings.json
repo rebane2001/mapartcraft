@@ -1,60 +1,60 @@
 {
   "TRANSLATION": {
     "NAME": "Chinese (Traditional)",
-    "CREDITS": "OSC311"
+    "CREDITS": "OSC311, SiderealArt"
   },
   "HEAD-META-TAGS": {
     "DESCRIPTION": null
   },
   "FAQ": {
-    "FAQ": "FAQ",
-    "PLEASE-READ-1": "請先檢查",
-    "PLEASE-READ-2": "在任何地方問任何問題之前!",
-    "HAVE-YOU-READ": "你讀過FAQ了嗎?",
-    "HELP-IN-ENGLISH": "注意：幫助將僅以英語提供",
-    "VIDEO-TUTORIAL": "影片教学"
+    "FAQ": "常見問題",
+    "PLEASE-READ-1": "在詢問任何問題前，請先閱讀",
+    "PLEASE-READ-2": "！",
+    "HAVE-YOU-READ": "您讀過常見問題了嗎?",
+    "HELP-IN-ENGLISH": "提醒：將以英文提供協助",
+    "VIDEO-TUTORIAL": "影片教學"
   },
   "DESCRIPTION": {
-    "1": "一個Minecraft地圖藝術schematic檔和map.dat檔生成器, 服務器管理員和服務器上的生存玩家都可使用例如",
-    "2": ", 並在您的瀏覽器中運行",
-    "3": "啟發來自",
-    "4": "Redstonehelper地圖藝術程式",
-    "5": ", 其目標是添加需求量大的功能並消除下載程式的需要",
-    "6": "隨時在Discord ",
-    "7": " 或Reddit上向我發送消息 ",
-    "8": ", 功能請求和錯誤報告可發佈於",
-    "9": null,
-    "10": null
+    "1": "Minecraft 地圖畫產生器，可輸出 schematic 檔和 map.dat，伺服器管理員和例如在 ",
+    "2": "的生存玩家皆可使用，並直接在您的瀏覽器運行。",
+    "3": "啟發自 ",
+    "4": "Redstonehelper 製作的地圖畫產生器",
+    "5": "，目標為新增其他功能，且不再需要下載程式。",
+    "6": "歡迎在 Discord ",
+    "7": " 或 Reddit 私訊我 ",
+    "8": "。如要回報 Bug 或是建議功能，請至 ",
+    "9": "提醒：MapartCraft 已更新到新版本。如果在使用上有任何問題，您仍可使用 ",
+    "10": "舊版"
   },
   "BLOCK-SELECTION": {
-    "TITLE": "方塊選擇",
+    "TITLE": "選擇方塊",
     "PRESETS": {
-      "TITLE": "预设值",
+      "TITLE": "調色盤",
       "DELETE": "刪除",
-      "DELETE-ERROR-DEFAULT": null,
-      "SAVE": "保存",
-      "SAVE-PROMPT-ENTER-NAME": "輸入預設的名稱：",
+      "DELETE-ERROR-DEFAULT": "此為預設調色盤，故無法編輯或刪除",
+      "SAVE": "儲存",
+      "SAVE-PROMPT-ENTER-NAME": "請為您的調色盤取名字：",
       "SHARE": "分享",
-      "SHARE-TT": "以连结分享您當前選擇的方塊",
-      "SHARE-WARNING-NONE-SELECTED": "分享之前要選擇方塊！",
-      "SHARE-LINK": "分享此鏈接以分享您當前選擇的方塊",
+      "SHARE-TT": "將您目前選擇的方塊以連結分享",
+      "SHARE-WARNING-NONE-SELECTED": "請先選擇方塊再分享！",
+      "SHARE-LINK": "複製此連結以分享您目前選擇的方塊",
       "DOWNLOAD": "下載",
-      "DOWNLOAD-TT": "下載調色板以在Paint.net中使用",
-      "DOWNLOAD-WARNING-NONE-SELECTED": "在下載調色板之前要選擇方塊！",
-      "DOWNLOAD-WARNING-MAX-COLOURS-1": "警告，您的調色板有 ",
-      "DOWNLOAD-WARNING-MAX-COLOURS-2": " 顏色，而Paint.net中的最大值為96. 某些顏色在Paint.net中將不可用",
-      "IMPORT-ERROR-CORRUPTED": "預設鏈接已損壞！",
-      "NONE": "没有",
-      "EVERYTHING": "全部東西",
+      "DOWNLOAD-TT": "下載可於 Paint.NET 使用的調色盤",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "請先選擇方塊再下載調色盤！",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "警告：您的調色盤有 ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " 種顏色，但 Paint.NET 最多只支援 96 種顏色，某些顏色在 Paint.NET 將無法使用。",
+      "IMPORT-ERROR-CORRUPTED": "連結損毀！",
+      "NONE": "無",
+      "EVERYTHING": "所有方塊",
       "CARPETS": "地毯",
-      "GREYSCALE": null
+      "GREYSCALE": "灰階"
     },
-    "UNSUPPORTED-PAST": null
+    "UNSUPPORTED-PAST": "不支援的過往"
   },
   "MAP-PREVIEW": {
     "TITLE": "地圖預覽",
-    "BEST-RESOLUTION-TT": "具有此分辨率的源圖像效果最佳",
-    "ASPECT-RATIO-MISMATCH-TT": "圖片與地圖的長寬比例不符",
+    "BEST-RESOLUTION-TT": "建議使用此解析度的圖片",
+    "ASPECT-RATIO-MISMATCH-TT": "圖片與地圖的長寬比不相符",
     "SCALE-MINUS-TT": "縮小預覽",
     "SCALE-PLUS-TT": "放大預覽"
   },
@@ -62,114 +62,114 @@
     "TITLE": "設定",
     "MODE": "模式",
     "MODE-TT": "選擇您要使用的模式",
-    "MODE-VISUAL": "視覺效果",
-    "MODE-VISUAL-NA": "視覺效果（不可用）",
+    "MODE-VISUAL": "視覺化",
+    "MODE-VISUAL-NA": "視覺化 (無法使用)",
     "VERSION": "版本",
-    "VERSION-TT": "選擇最接近您正在運行的版本",
-    "MAP-SIZE": "地圖尺寸",
+    "VERSION-TT": "請選擇最接近您目前使用的版本",
+    "MAP-SIZE": "地圖大小",
     "CROP": {
-      "TITLE": "裁剪",
-      "TITLE-TT": "裁剪圖像而不是將其拉伸",
-      "OFF": null,
-      "CENTER": null,
-      "MANUAL": null,
-      "ZOOM": null
+      "TITLE": "裁切",
+      "TITLE-TT": "裁切您的圖片，而非將其拉伸",
+      "OFF": "關閉",
+      "CENTER": "中心",
+      "MANUAL": "手動",
+      "ZOOM": "縮放"
     },
-    "GRID-OVERLAY": null,
-    "GRID-OVERLAY-TT": null,
+    "GRID-OVERLAY": "網格",
+    "GRID-OVERLAY-TT": "在預覽圖中顯示 16*16 的區塊及 1x1 的方格網格。",
     "3D": {
-      "TITLE": "梯式",
-      "TITLE-TT": "將地圖製作為3D。 很難製造，但是表現出3倍的顏色！",
-      "OFF": "關（2D）",
-      "CLASSIC": "開（原版）",
-      "VALLEY": null
+      "TITLE": "階梯化",
+      "TITLE-TT": "讓地圖畫變成 3D。更難建造，但色彩範圍能夠擴增三倍！",
+      "OFF": "關閉 (2D)",
+      "CLASSIC": "啟用 (傳統)",
+      "VALLEY": "啟用 (山谷)"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
-        "TITLE": "在下面添加方塊",
-        "NONE": "沒有方塊",
+        "TITLE": "在下方添加方塊",
+        "NONE": "無",
         "IMPORTANT": "重要方塊",
-        "ALL": "全部方塊",
-        "ALL-OPTIMIZED": "全部方塊 (優化)",
-        "ALL-DOUBLE": "全部雙層",
-        "ALL-DOUBLE-OPTIMIZED": "全部雙層 (優化)"
+        "ALL": "所有方塊",
+        "ALL-OPTIMIZED": "所有方塊 (最佳化)",
+        "ALL-DOUBLE": "所有雙層",
+        "ALL-DOUBLE-OPTIMIZED": "所有雙層 (最佳化)"
       },
       "SUPPORT-BLOCK-TO-ADD": "要添加的方塊",
-      "SUPPORT-BLOCK-TO-ADD-TT": "與上一個選項相關"
+      "SUPPORT-BLOCK-TO-ADD-TT": "與先前選項關聯"
     },
     "MAPDAT-SPECIFIC": {
-      "UNOBTAINABLE-COLOURS": "無法獲得的顏色",
-      "UNOBTAINABLE-COLOURS-TT": "啟用schematic中無法獲得的map.dat檔顏色",
-      "TRANSPARENCY": null,
-      "TRANSPARENCY-TT": null,
-      "TRANSPARENCY-TOLERANCE": null
+      "UNOBTAINABLE-COLOURS": "無法取得的顏色",
+      "UNOBTAINABLE-COLOURS-TT": "啟用無法在 schematics 中取得的顏色",
+      "TRANSPARENCY": "透明度",
+      "TRANSPARENCY-TT": "為 map.dat 啟用透明度",
+      "TRANSPARENCY-TOLERANCE": "容忍度"
     },
-    "BETTER-COLOUR": "更好的色彩",
-    "BETTER-COLOUR-TT": "為您提供更好的色彩準確性",
+    "BETTER-COLOUR": "提高色準",
+    "BETTER-COLOUR-TT": "提升色彩準確度",
     "DITHERING": {
-      "TITLE": "抖動像素化",
-      "TITLE-TT": "添加看似隨機的像素以產生更多顏色的錯覺",
-      "NONE": "沒有"
+      "TITLE": "抖動",
+      "TITLE-TT": "添加看似隨機的像素，以產生更多顏色的錯覺",
+      "NONE": "無"
     },
     "PREPROCESSING": {
-      "TITLE": null,
-      "ENABLE": null,
-      "BRIGHTNESS": null,
-      "CONTRAST": null,
-      "SATURATION": null,
+      "TITLE": "預處理",
+      "ENABLE": "啟用",
+      "BRIGHTNESS": "亮度",
+      "CONTRAST": "對比度",
+      "SATURATION": "飽和度",
       "BACKGROUND": {
-        "TITLE": null,
-        "TITLE-TT": null,
-        "OFF": null,
-        "DITHERED": null,
-        "FLAT": null
+        "TITLE": "背景",
+        "TITLE-TT": "透明背景的圖片專用",
+        "OFF": "停用",
+        "DITHERED": "啟用 (抖動)",
+        "FLAT": "啟用 (一致)"
       },
-      "BACKGROUND-COLOUR": null
+      "BACKGROUND-COLOUR": "顏色"
     }
   },
   "DOWNLOAD": {
-    "ERROR-NONE-SELECTED": "下載之前要選擇方塊！",
+    "ERROR-NONE-SELECTED": "請先選擇方塊再下載！",
     "NBT-SPECIFIC": {
-      "DOWNLOAD": "下載",
-      "DOWNLOAD-TT": "下載nbt檔",
-      "DOWNLOAD-SPLIT": "以1x1分割下載",
-      "DOWNLOAD-SPLIT-TT": "下載將nbt分成1x1區塊"
+      "DOWNLOAD": "下載 NBT",
+      "DOWNLOAD-TT": "下載 NBT",
+      "DOWNLOAD-SPLIT": "分割為 1x1",
+      "DOWNLOAD-SPLIT-TT": "將 NBT 分割成 1x1 的區塊後下載"
     },
     "MAPDAT-SPECIFIC": {
-      "DOWNLOAD": "下載",
-      "DOWNLOAD-TT": "下載map.dat分成1x1區塊"
+      "DOWNLOAD": "下載 MAPDAT",
+      "DOWNLOAD-TT": "將 map.dat 分割成 1x1 的區塊後下載"
     },
-    "ZIPPING": null
+    "ZIPPING": "壓縮中"
   },
   "MATERIALS": {
     "TITLE": "材料",
     "BLOCK": "方塊",
-    "AMOUNT": "合計",
-    "PLACEHOLDER-BLOCK-TT": "占位符方塊",
-    "SHOW-PER-SPLIT": null,
-    "SHOW-PER-SPLIT-TT": null,
-    "REFRESH-MATERIALS": "刷新材料",
-    "REFRESH-MATERIALS-TT": "刷新材料清單"
+    "AMOUNT": "數量",
+    "PLACEHOLDER-BLOCK-TT": "預留方塊",
+    "SHOW-PER-SPLIT": "只顯示每個分割區塊所需的最大材料",
+    "SHOW-PER-SPLIT-TT": "用於鎖定地圖後材料重複使用",
+    "REFRESH-MATERIALS": "重新載入材料",
+    "REFRESH-MATERIALS-TT": "重新載入材料列表"
   },
   "VIEW-ONLINE": {
-    "TITLE": null,
-    "TITLE-TT": null,
-    "TOO-BIG-FOR-SINGLE": null,
-    "CONTROLS": null,
-    "TO-EXIT": null,
-    "SIZE": "地圖尺寸"
+    "TITLE": "線上檢視",
+    "TITLE-TT": "在下載前即可在線上預覽",
+    "TOO-BIG-FOR-SINGLE": "單一 schematic 過大；請下載 1x1 分割",
+    "CONTROLS": "操控",
+    "TO-EXIT": "以退出",
+    "SIZE": "大小"
   },
   "DONATE": {
-    "TITLE": "幫助我跳過隊列",
-    "TITLE-TT": "查看支持者並捐贈"
+    "TITLE": "幫我跳過佇列",
+    "TITLE-TT": "查看贊助者並捐贈"
   },
-  "LITEMATICA-WARNING": null,
-  "EDGE-WARNING": "注意：不支持使用Microsoft Edge。\\ n請為MapartCraft使用Chrome（首選）或Firefox",
-  "NONE": "沒有",
+  "LITEMATICA-WARNING": "警告：Litematica 不完全支援 1.15.2；建議升級至 1.16.5",
+  "EDGE-WARNING": "提醒：不支援 Microsoft Edge。\\n建議使用 Google Chrome 或是 Firefox.",
+  "NONE": "無",
   "UNUSED": {
     "SECOND": "秒",
     "SECONDS": "秒",
     "REMAINING": "剩餘",
-    "SETTINGS-3D-OPTIMIZED": "開（優化版）"
+    "SETTINGS-3D-OPTIMIZED": "啟用 (最佳化)"
   }
 }
