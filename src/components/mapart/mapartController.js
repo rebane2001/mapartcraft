@@ -41,6 +41,8 @@ class MapartController extends Component {
     optionValue_unobtainable: true,
     optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
+    optionValue_mapdatFilenameUseId: true,
+    optionValue_mapdatFilenameIdStart: 0,
     optionValue_betterColour: true,
     optionValue_dithering: DitherMethods.FloydSteinberg.uniqueId,
     optionValue_preprocessingEnabled: false,
@@ -284,6 +286,20 @@ class MapartController extends Component {
   onOptionChange_transparencyTolerance = (value) => {
     this.setState({
       optionValue_transparencyTolerance: value,
+    });
+  };
+
+  onOptionChange_mapdatFilenameUseId = () => {
+    this.setState((currentState) => {
+      return {
+        optionValue_mapdatFilenameUseId: !currentState.optionValue_mapdatFilenameUseId,
+      };
+    });
+  };
+
+  onOptionChange_mapdatFilenameIdStart = (value) => {
+    this.setState({
+      optionValue_mapdatFilenameIdStart: value,
     });
   };
 
@@ -589,6 +605,8 @@ class MapartController extends Component {
       optionValue_unobtainable,
       optionValue_transparency,
       optionValue_transparencyTolerance,
+      optionValue_mapdatFilenameUseId,
+      optionValue_mapdatFilenameIdStart,
       optionValue_betterColour,
       optionValue_dithering,
       optionValue_preprocessingEnabled,
@@ -688,6 +706,10 @@ class MapartController extends Component {
               onOptionChange_transparency={this.onOptionChange_transparency}
               optionValue_transparencyTolerance={optionValue_transparencyTolerance}
               onOptionChange_transparencyTolerance={this.onOptionChange_transparencyTolerance}
+              optionValue_mapdatFilenameUseId={optionValue_mapdatFilenameUseId}
+              onOptionChange_mapdatFilenameUseId={this.onOptionChange_mapdatFilenameUseId}
+              optionValue_mapdatFilenameIdStart={optionValue_mapdatFilenameIdStart}
+              onOptionChange_mapdatFilenameIdStart={this.onOptionChange_mapdatFilenameIdStart}
               optionValue_betterColour={optionValue_betterColour}
               onOptionChange_BetterColour={this.onOptionChange_BetterColour}
               optionValue_dithering={optionValue_dithering}
@@ -722,6 +744,8 @@ class MapartController extends Component {
               optionValue_unobtainable={optionValue_unobtainable}
               optionValue_transparency={optionValue_transparency}
               optionValue_transparencyTolerance={optionValue_transparencyTolerance}
+              optionValue_mapdatFilenameUseId={optionValue_mapdatFilenameUseId}
+              optionValue_mapdatFilenameIdStart={optionValue_mapdatFilenameIdStart}
               optionValue_betterColour={optionValue_betterColour}
               optionValue_dithering={optionValue_dithering}
               optionValue_preprocessingEnabled={optionValue_preprocessingEnabled}

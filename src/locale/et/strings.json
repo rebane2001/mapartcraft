@@ -102,7 +102,10 @@
       "UNOBTAINABLE-COLOURS-TT": "Lülitab sisse map.dat failid, mida schematic'utega ei saa",
       "TRANSPARENCY": "Läbipaistvus",
       "TRANSPARENCY-TT": "Lubab läbipaistvuse map.dat failidel",
-      "TRANSPARENCY-TOLERANCE": null
+      "TRANSPARENCY-TOLERANCE": null,
+      "MAPDAT-FILENAME-USE-ID": null,
+      "MAPDAT-FILENAME-USE-ID-TT": null,
+      "MAPDAT-FILENAME-ID-RANGE": null
     },
     "BETTER-COLOUR": "Paremad värvid",
     "BETTER-COLOUR-TT": "Annab parema värvitäpsuse",

@@ -3,34 +3,12 @@
 """For adding an empty colourSet to coloursJSON"""
 
 import os
-import json
 import argparse
 import logging
 
+from JSONIO import JSONIO
+
 filePath_coloursJSON = os.path.normpath("../src/components/mapart/coloursJSON.json")
-
-class JSONIO():
-    @staticmethod
-    def rectifiedPath(path):
-        """Norm path to remove double // and ./../dir etc, and expand ~"""
-        return os.path.expanduser(
-            os.path.normpath(path)
-        )
-
-    @classmethod
-    def loadFromFilename(cls, filename):
-        filename = cls.rectifiedPath(filename)
-        with open(filename) as f:
-            return json.load(f)
-
-    @classmethod
-    def saveToFilename(cls, filename, JSONObject, indent = 4):
-        filename = cls.rectifiedPath(filename)
-        with open(filename, "w") as f:
-            f.write(
-                json.dumps(JSONObject, indent = indent, ensure_ascii = False)
-            )
-            f.write("\n")
 
 def addColourSet(coloursJSON, mapdatId, tonesRGB):
     logging.debug("Adding colourSet")
@@ -100,5 +78,5 @@ if __name__ == "__main__":
     coloursJSON = addColourSet(coloursJSON, args.mapdatId, args.tonesRGB)
 
     logging.debug("Saving coloursJSON to {}".format(filePath_coloursJSON))
-    JSONIO.saveToFilename(filePath_coloursJSON, coloursJSON)
+    JSONIO.saveToFilename(filePath_coloursJSON, coloursJSON, indent = 4)
     logging.debug("Saved coloursJSON")

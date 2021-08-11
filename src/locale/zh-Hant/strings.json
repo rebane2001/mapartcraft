@@ -103,6 +103,9 @@
       "TRANSPARENCY": "透明度",
       "TRANSPARENCY-TT": "為 map.dat 啟用透明度",
       "TRANSPARENCY-TOLERANCE": "容忍度"
+      "MAPDAT-FILENAME-USE-ID": null,
+      "MAPDAT-FILENAME-USE-ID-TT": null,
+      "MAPDAT-FILENAME-ID-RANGE": null
     },
     "BETTER-COLOUR": "提高色準",
     "BETTER-COLOUR-TT": "提升色彩準確度",

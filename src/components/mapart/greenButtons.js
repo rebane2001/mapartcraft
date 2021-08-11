@@ -43,6 +43,8 @@ class GreenButtons extends Component {
       optionValue_staircasing,
       optionValue_whereSupportBlocks,
       optionValue_supportBlock,
+      optionValue_mapdatFilenameUseId,
+      optionValue_mapdatFilenameIdStart,
       uploadedImage_baseFilename,
       currentMaterialsData,
       mapPreviewWorker_inProgress,
@@ -113,7 +115,12 @@ class GreenButtons extends Component {
           numberOfSplitsCalculated++;
           const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
           const Mapdat_Bytes_gzipped = gzip(Mapdat_Bytes);
-          zipFile.file(`${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.dat`, Mapdat_Bytes_gzipped);
+          zipFile.file(
+            optionValue_mapdatFilenameUseId
+              ? `map_${(optionValue_mapdatFilenameIdStart + whichMap_y * optionValue_mapSize_x + whichMap_x).toString()}.dat`
+              : `${uploadedImage_baseFilename}_${whichMap_x.toString()}_${whichMap_y.toString()}.dat`,
+            Mapdat_Bytes_gzipped
+          );
           if (numberOfSplitsCalculated === optionValue_mapSize_x * optionValue_mapSize_y) {
             zipFile.generateAsync({ type: "blob" }).then((content) => {
               downloadBlobFile(content, `${uploadedImage_baseFilename}.zip`);
@@ -176,6 +183,8 @@ class GreenButtons extends Component {
       optionValue_unobtainable,
       optionValue_transparency,
       optionValue_transparencyTolerance,
+      optionValue_mapdatFilenameUseId,
+      optionValue_mapdatFilenameIdStart,
       optionValue_betterColour,
       optionValue_dithering,
       optionValue_preprocessingEnabled,
@@ -202,6 +211,8 @@ class GreenButtons extends Component {
       prevProps.optionValue_unobtainable !== optionValue_unobtainable,
       prevProps.optionValue_transparency !== optionValue_transparency,
       prevProps.optionValue_transparencyTolerance !== optionValue_transparencyTolerance,
+      prevProps.optionValue_mapdatFilenameUseId !== optionValue_mapdatFilenameUseId,
+      prevProps.optionValue_mapdatFilenameIdStart !== optionValue_mapdatFilenameIdStart,
       prevProps.optionValue_betterColour !== optionValue_betterColour,
       prevProps.optionValue_dithering !== optionValue_dithering,
       prevProps.optionValue_preprocessingEnabled !== optionValue_preprocessingEnabled,

@@ -1,3 +1,5 @@
+RewriteOptions InheritBefore
+
 RewriteEngine On
 
 AddType application/javascript .jsworker

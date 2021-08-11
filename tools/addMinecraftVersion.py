@@ -2,34 +2,9 @@
 
 """For adding to the necessary files to add another Minecraft version"""
 
-import os
-import json
 import argparse
 
-
-class JSONIO():
-    @staticmethod
-    def rectifiedPath(path):
-        """Norm path to remove double // and ./../dir etc, and expand ~"""
-        return os.path.expanduser(
-            os.path.normpath(path)
-        )
-
-    @classmethod
-    def loadFromFilename(cls, filename):
-        filename = cls.rectifiedPath(filename)
-        with open(filename) as f:
-            return json.load(f)
-
-    @classmethod
-    def saveToFilename(cls, filename, JSONObject, indent = 4):
-        filename = cls.rectifiedPath(filename)
-        with open(filename, "w") as f:
-            f.write(
-                json.dumps(JSONObject, indent = indent, ensure_ascii = False)
-            )
-            f.write("\n")
-
+from JSONIO import JSONIO
 
 def addVersion_coloursJSON(MCVersion):
     coloursJSON = JSONIO.loadFromFilename("../src/components/mapart/coloursJSON.json")
@@ -42,13 +17,13 @@ def addVersion_coloursJSON(MCVersion):
                     block["validVersions"][MCVersion] = block["validVersions"][lastVersion]
                 else:
                     block["validVersions"][MCVersion] = "&{}".format(lastVersion)
-    JSONIO.saveToFilename("../src/components/mapart/coloursJSON.json", coloursJSON)
+    JSONIO.saveToFilename("../src/components/mapart/coloursJSON.json", coloursJSON, indent = 4)
 
 
 def addVersion_supportedVersions(MCVersion, DataVersion):
     supportedVersions = JSONIO.loadFromFilename("../src/components/mapart/json/supportedVersions.json")
     supportedVersions[MCVersion.replace(".", "_")] = {"MCVersion": MCVersion, "NBTVersion": DataVersion}
-    JSONIO.saveToFilename("../src/components/mapart/json/supportedVersions.json", supportedVersions, indent = 2)
+    JSONIO.saveToFilename("../src/components/mapart/json/supportedVersions.json", supportedVersions)
 
 
 if __name__ == "__main__":
