@@ -115,13 +115,13 @@ class MapartController extends Component {
     return coloursJSON_custom;
   }
 
-  eventListener_dragover = (e) => {
+  eventListener_dragover = function (e) {
     // this has to be here for drop event to work
     e.preventDefault();
     e.stopPropagation();
   };
 
-  eventListener_drop = (e) => {
+  eventListener_drop = function (e) {
     e.preventDefault();
     e.stopPropagation();
     const files = e.dataTransfer.files;
@@ -130,9 +130,9 @@ class MapartController extends Component {
       const imgUrl = URL.createObjectURL(file);
       this.loadUploadedImageFromURL(imgUrl, "mapart");
     }
-  };
+  }.bind(this);
 
-  eventListener_paste = (e) => {
+  eventListener_paste = function (e) {
     e.preventDefault();
     e.stopPropagation();
     const files = e.clipboardData.files;
@@ -141,7 +141,7 @@ class MapartController extends Component {
       const imgUrl = URL.createObjectURL(file);
       this.loadUploadedImageFromURL(imgUrl, "mapart");
     }
-  };
+  }.bind(this);
 
   componentDidMount() {
     this.loadUploadedImageFromURL(IMG_Upload, "mapart");

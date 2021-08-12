@@ -151,12 +151,9 @@ class BlockWorld {
     document.addEventListener("keydown", this.handleKeyDown, { passive: false });
     document.addEventListener("keyup", this.handleKeyUp, { passive: false });
     this.controls.connect();
-    this.canvasRef.current.addEventListener("pointerdown", () => {
-      this.controls.lock();
-    });
   }
 
-  handleKeyDown = (e) => {
+  handleKeyDown = function (e) {
     e.preventDefault();
     switch (e.key) {
       case "w":
@@ -184,9 +181,9 @@ class BlockWorld {
       default:
         break;
     }
-  };
+  }.bind(this);
 
-  handleKeyUp = (e) => {
+  handleKeyUp = function (e) {
     e.preventDefault();
     switch (e.key) {
       case "c":
@@ -196,9 +193,9 @@ class BlockWorld {
       default:
         break;
     }
-  };
+  }.bind(this);
 
-  handlePointerDown = (e) => {
+  handlePointerDown = function (e) {
     e.preventDefault();
     this.mouse.x = e.clientX;
     this.mouse.y = e.clientY;
@@ -206,39 +203,40 @@ class BlockWorld {
     this.mouse.moveY = 0;
     this.canvasRef.current.addEventListener("pointermove", this.recordMovement);
     this.canvasRef.current.addEventListener("pointerup", this.selectBlockIfNoMovement);
-  };
+    this.controls.lock();
+  }.bind(this);
 
-  recordMovement = (e) => {
+  recordMovement = function (e) {
     this.mouse.moveX += Math.abs(this.mouse.x - e.clientX);
     this.mouse.moveY += Math.abs(this.mouse.y - e.clientY);
-  };
+  }.bind(this);
 
-  selectBlockIfNoMovement = (e) => {
+  selectBlockIfNoMovement = function (e) {
     if (this.mouse.moveX < 5 && this.mouse.moveY < 5) {
       this.selectBlock(e);
     }
     this.canvasRef.current.removeEventListener("pointermove", this.recordMovement);
     this.canvasRef.current.removeEventListener("pointerup", this.selectBlockIfNoMovement);
-  };
+  }.bind(this);
 
-  handleTouchStart = (e) => {
+  handleTouchStart = function (e) {
     // TODO test this on mobile
     e.preventDefault(); // prevent scrolling
   };
 
-  handleWindowResize = () => {
+  handleWindowResize = function () {
     const width = this.canvasRef.current.clientWidth;
     const height = this.canvasRef.current.clientHeight;
 
     this.renderer.setSize(width, height, false);
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
-  };
+  }.bind(this);
 
   removeEventListeners() {
     window.removeEventListener("resize", this.handleWindowResize);
-    this.canvasRef.current.removeEventListener("pointerdown", this.handlePointerDown);
-    this.canvasRef.current.removeEventListener("touchstart", this.handleTouchStart);
+    this.canvasRef.current.removeEventListener("pointerdown", this.handlePointerDown, { passive: false });
+    this.canvasRef.current.removeEventListener("touchstart", this.handleTouchStart, { passive: false });
     document.removeEventListener("keydown", this.handleKeyDown, { passive: false });
     document.removeEventListener("keyup", this.handleKeyUp, { passive: false });
     this.controls.unlock();
@@ -605,13 +603,13 @@ class ViewOnline3D extends Component {
     }
   }
 
-  handleEscapeKeyDown = (e) => {
+  handleEscapeKeyDown = function (e) {
     const { handleViewOnline3DEscape } = this.props;
     e.preventDefault();
     if (e.key === "Escape") {
       handleViewOnline3DEscape();
     }
-  };
+  }.bind(this);
 
   componentDidMount() {
     const { coloursJSON } = this.props;
