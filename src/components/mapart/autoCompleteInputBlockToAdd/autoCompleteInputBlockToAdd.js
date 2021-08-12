@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import coloursJSON from "../coloursJSON.json";
-
 import IMG_Null from "../../../images/null.png";
 import IMG_Textures from "../../../images/textures.png";
 
@@ -21,7 +19,7 @@ class AutoCompleteInputBlockToAdd extends Component {
   };
 
   getRelevantSuggestions = () => {
-    const { value, optionValue_version } = this.props;
+    const { coloursJSON, value, optionValue_version } = this.props;
     let suggestions_prefix = [];
     let suggestions_includes = [];
 
@@ -126,7 +124,7 @@ class AutoCompleteInputBlockToAdd extends Component {
   }
 
   render() {
-    const { value } = this.props;
+    const { coloursJSON, value } = this.props;
     const { activeSuggestionIndex, relevantSuggestions, suggestionSelected } = this.state;
 
     return (
@@ -143,13 +141,22 @@ class AutoCompleteInputBlockToAdd extends Component {
                 <th>
                   <img
                     src={IMG_Null}
-                    alt={coloursJSON[suggestion.colourSetId]["blocks"][suggestion.blockId]["displayName"]}
+                    alt={coloursJSON[suggestion.colourSetId].blocks[suggestion.blockId].displayName}
                     className={"blockImage"}
-                    style={{
-                      backgroundImage: `url(${IMG_Textures})`,
-                      backgroundPositionX: `-${suggestion.blockId}00%`,
-                      backgroundPositionY: `-${suggestion.colourSetId}00%`,
-                    }}
+                    style={
+                      coloursJSON[suggestion.colourSetId].blocks[suggestion.blockId].presetIndex === "CUSTOM"
+                        ? {
+                            backgroundImage: `url(${IMG_Textures})`,
+                            backgroundPositionX: `-500%`,
+                            backgroundPositionY: `-6400%`,
+                            backgroundColor: `rgb(${coloursJSON[suggestion.colourSetId].tonesRGB.normal.join(", ")})`,
+                          }
+                        : {
+                            backgroundImage: `url(${IMG_Textures})`,
+                            backgroundPositionX: `-${suggestion.blockId}00%`,
+                            backgroundPositionY: `-${suggestion.colourSetId}00%`,
+                          }
+                    }
                   />
                 </th>
                 <th>{suggestion.blockName}</th>

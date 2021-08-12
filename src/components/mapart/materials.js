@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 
 import IMG_Null from "../../images/null.png";
@@ -19,7 +18,7 @@ class Materials extends Component {
   };
 
   getMaterialsCount_nonZeroMaterialsItems() {
-    const { currentMaterialsData } = this.props;
+    const { coloursJSON, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
     const materialsCountDict = {};
     Object.keys(coloursJSON).forEach((colourSetId) => {
@@ -78,7 +77,7 @@ class Materials extends Component {
   };
 
   colourSetIdAndBlockIdFromNBTName(blockName) {
-    const { optionValue_version } = this.props;
+    const { coloursJSON, optionValue_version } = this.props;
     for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
       for (const [blockId, block] of Object.entries(colourSet.blocks)) {
         if (!(optionValue_version.MCVersion in block.validVersions)) {
@@ -101,7 +100,7 @@ class Materials extends Component {
   }
 
   render() {
-    const { getLocaleString, optionValue_supportBlock, currentMaterialsData } = this.props;
+    const { getLocaleString, coloursJSON, optionValue_supportBlock, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
     const nonZeroMaterialsItems = this.getMaterialsCount_nonZeroMaterialsItems();
     const supportBlockCount = this.getMaterialsCount_supportBlock();
@@ -138,6 +137,13 @@ class Materials extends Component {
                               backgroundPositionX: "-200%",
                               backgroundPositionY: "-6400%",
                             }
+                          : coloursJSON[supportBlockIds.colourSetId].blocks[supportBlockIds.blockId].presetIndex === "CUSTOM"
+                          ? {
+                              backgroundImage: `url(${IMG_Textures})`,
+                              backgroundPositionX: `-500%`,
+                              backgroundPositionY: `-6400%`,
+                              backgroundColor: `rgb(${coloursJSON[supportBlockIds.colourSetId].tonesRGB.normal.join(", ")})`,
+                            }
                           : {
                               backgroundImage: `url(${IMG_Textures})`,
                               backgroundPositionX: `-${supportBlockIds.blockId}00%`,
@@ -154,16 +160,25 @@ class Materials extends Component {
               currentMaterialsData.currentSelectedBlocks[colourSetId] !== "-1" ? (
                 <tr key={colourSetId}>
                   <th>
-                    <Tooltip tooltipText={coloursJSON[colourSetId]["blocks"][currentMaterialsData.currentSelectedBlocks[colourSetId]]["displayName"]}>
+                    <Tooltip tooltipText={coloursJSON[colourSetId].blocks[currentMaterialsData.currentSelectedBlocks[colourSetId]].displayName}>
                       <img
                         src={IMG_Null}
-                        alt={coloursJSON[colourSetId]["blocks"][currentMaterialsData.currentSelectedBlocks[colourSetId]]["displayName"]}
+                        alt={coloursJSON[colourSetId].blocks[currentMaterialsData.currentSelectedBlocks[colourSetId]].displayName}
                         className={"blockImage"}
-                        style={{
-                          backgroundImage: `url(${IMG_Textures})`,
-                          backgroundPositionX: `-${currentMaterialsData.currentSelectedBlocks[colourSetId]}00%`,
-                          backgroundPositionY: `-${colourSetId}00%`,
-                        }}
+                        style={
+                          coloursJSON[colourSetId].blocks[currentMaterialsData.currentSelectedBlocks[colourSetId]].presetIndex === "CUSTOM"
+                            ? {
+                                backgroundImage: `url(${IMG_Textures})`,
+                                backgroundPositionX: `-500%`,
+                                backgroundPositionY: `-6400%`,
+                                backgroundColor: `rgb(${coloursJSON[colourSetId].tonesRGB.normal.join(", ")})`,
+                              }
+                            : {
+                                backgroundImage: `url(${IMG_Textures})`,
+                                backgroundPositionX: `-${currentMaterialsData.currentSelectedBlocks[colourSetId]}00%`,
+                                backgroundPositionY: `-${colourSetId}00%`,
+                              }
+                        }
                       />
                     </Tooltip>
                   </th>

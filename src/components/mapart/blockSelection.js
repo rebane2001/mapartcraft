@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
+import BlockSelectionAddCustom from "./blockSelectionAddCustom/blockSelectionAddCustom";
 
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -13,6 +13,10 @@ import IMG_Textures from "../../images/textures.png";
 import "./blockSelection.css";
 
 class BlockSelection extends Component {
+  state = {
+    lastSelectedCustomBlock: null, // {colourSetId, blockId}
+  };
+
   cssRGB(RGBArray) {
     // RGB array to css compatible string
     return `rgb(${RGBArray.join(", ")})`;
@@ -20,6 +24,7 @@ class BlockSelection extends Component {
 
   render() {
     const {
+      coloursJSON,
       getLocaleString,
       onChangeColourSetBlock,
       optionValue_version,
@@ -34,7 +39,9 @@ class BlockSelection extends Component {
       onSavePreset,
       onSharePreset,
       onGetPDNPaletteClicked,
+      handleAddCustomBlock,
     } = this.props;
+    const { lastSelectedCustomBlock } = this.state;
     const presetsManagement = (
       <React.Fragment>
         <h2 id="blockselectiontitle">{getLocaleString("BLOCK-SELECTION/TITLE")}</h2>
@@ -101,6 +108,7 @@ class BlockSelection extends Component {
                       backgroundImage: `url(${IMG_Textures})`,
                       backgroundPositionX: "-100%",
                       backgroundPositionY: "-6400%",
+                      backgroundColor: selectedBlocks[colourSetId] === "-1" ? "#658968" : null,
                     }}
                     onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
                   />
@@ -139,12 +147,26 @@ class BlockSelection extends Component {
                           src={IMG_Null}
                           alt={block.displayName}
                           className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
-                          style={{
-                            backgroundImage: `url(${IMG_Textures})`,
-                            backgroundPositionX: `-${blockId}00%`,
-                            backgroundPositionY: `-${colourSetId}00%`,
+                          style={
+                            block.presetIndex === "CUSTOM"
+                              ? {
+                                  backgroundImage: `url(${IMG_Textures})`,
+                                  backgroundPositionX: `-500%`,
+                                  backgroundPositionY: `-6400%`,
+                                  backgroundColor: `rgb(${coloursJSON[colourSetId].tonesRGB.normal.join(", ")})`,
+                                }
+                              : {
+                                  backgroundImage: `url(${IMG_Textures})`,
+                                  backgroundPositionX: `-${blockId}00%`,
+                                  backgroundPositionY: `-${colourSetId}00%`,
+                                }
+                          }
+                          onClick={() => {
+                            onChangeColourSetBlock(colourSetId, blockId);
+                            if (block.presetIndex === "CUSTOM") {
+                              this.setState({ lastSelectedCustomBlock: {colourSetId, blockId} });
+                            }
                           }}
-                          onClick={() => onChangeColourSetBlock(colourSetId, blockId)}
                         />
                       </Tooltip>
                     </label>
@@ -158,6 +180,12 @@ class BlockSelection extends Component {
       <div className="section blockSelectionDiv">
         {presetsManagement}
         {blockSelection}
+        <BlockSelectionAddCustom
+          getLocaleString={getLocaleString}
+          coloursJSON={coloursJSON}
+          onAddCustomBlock={handleAddCustomBlock}
+          lastSelectedCustomBlock={lastSelectedCustomBlock}
+        />
       </div>
     );
   }

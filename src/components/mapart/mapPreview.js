@@ -1,6 +1,5 @@
 import React, { Component, createRef } from "react";
 
-import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 import MapCanvasWorker from "./workers/mapCanvas.jsworker"; // FINALLY got this to work; .js gets imported as code, anything else as URL
 
@@ -34,6 +33,7 @@ class MapPreview extends Component {
 
   shouldCanvasUpdate_source(prevProps, newProps, prevState, newState) {
     const propChanges = [
+      prevProps.coloursJSON === newProps.coloursJSON,
       prevProps.selectedBlocks === newProps.selectedBlocks,
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
       prevProps.optionValue_mapSize_y === newProps.optionValue_mapSize_y,
@@ -61,6 +61,7 @@ class MapPreview extends Component {
   shouldCanvasUpdate_display(prevProps, newProps, prevState, newState) {
     // ugly but useful method to determine whether map canvas contents should be redrawn on component update
     const propChanges = [
+      prevProps.coloursJSON === newProps.coloursJSON,
       prevProps.selectedBlocks === newProps.selectedBlocks,
       prevProps.optionValue_modeNBTOrMapdat === newProps.optionValue_modeNBTOrMapdat,
       prevProps.optionValue_mapSize_x === newProps.optionValue_mapSize_x,
@@ -103,7 +104,7 @@ class MapPreview extends Component {
   }
 
   closestFlatColourTo(colourHex) {
-    const { selectedBlocks } = this.props;
+    const { coloursJSON, selectedBlocks } = this.props;
     const rgbGroups_input = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colourHex);
     const colourRGB_input = [parseInt(rgbGroups_input[1], 16), parseInt(rgbGroups_input[2], 16), parseInt(rgbGroups_input[3], 16)];
     let smallestDistance = 9999999;
@@ -203,7 +204,17 @@ class MapPreview extends Component {
           samplingOffset_x = Math.floor((optionValue_cropImage_percent_x * (img_width - samplingWidth)) / 100);
           samplingOffset_y = Math.floor((optionValue_cropImage_percent_y * (img_height - samplingHeight)) / 100);
         }
-        ctx_source.drawImage(uploadedImage, samplingOffset_x, samplingOffset_y, samplingWidth, samplingHeight, 0, 0, ctx_source.canvas.width, ctx_source.canvas.height);
+        ctx_source.drawImage(
+          uploadedImage,
+          samplingOffset_x,
+          samplingOffset_y,
+          samplingWidth,
+          samplingHeight,
+          0,
+          0,
+          ctx_source.canvas.width,
+          ctx_source.canvas.height
+        );
         break;
       }
       default: {
@@ -216,6 +227,7 @@ class MapPreview extends Component {
     this.mapCanvasWorker.terminate();
     const { canvasRef_source, canvasRef_display } = this;
     const {
+      coloursJSON,
       selectedBlocks,
       optionValue_modeNBTOrMapdat,
       optionValue_mapSize_x,

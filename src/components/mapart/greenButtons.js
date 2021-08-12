@@ -3,7 +3,6 @@ import { gzip } from "pako"; // blocks when zipping
 import JSZip from "jszip";
 
 import Tooltip from "../tooltip";
-import coloursJSON from "./coloursJSON.json";
 
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
@@ -37,6 +36,7 @@ class GreenButtons extends Component {
   getNBT_base = (workerHeader) => {
     const {
       getLocaleString,
+      coloursJSON,
       optionValue_version,
       optionValue_mapSize_x,
       optionValue_mapSize_y,

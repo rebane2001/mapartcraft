@@ -1,6 +1,5 @@
 import React, { Component, createRef } from "react";
 
-import coloursJSON from "../coloursJSON.json";
 import Tooltip from "../../tooltip";
 
 import IMG_Textures from "../../../images/textures.png";
@@ -99,6 +98,7 @@ class BlockWorld {
 
   constructor(options) {
     this.canvasRef = options.canvasRef;
+    this.coloursJSON = options.coloursJSON;
     this.tileSize = options.tileSize;
     this.tileTextureWidth = options.tileTextureWidth;
     this.tileTextureHeight = options.tileTextureHeight;
@@ -416,7 +416,7 @@ class BlockWorld {
   }
 
   generateGeometryDataForChunk(chunkX, chunkY, chunkZ) {
-    const { chunkSize, tileSize, tileTextureWidth, tileTextureHeight } = this;
+    const { coloursJSON, chunkSize, tileSize, tileTextureWidth, tileTextureHeight } = this;
     const verticesComponents = [];
     const normalsComponents = [];
     const uvs = [];
@@ -435,8 +435,15 @@ class BlockWorld {
             const blockX = startX + x;
             const blockOffset = this.computeBlockOffset(x, y, z);
             const block = chunk.slice(blockOffset, blockOffset + 2);
-            const [colourSetId, blockId] = block;
+            let [colourSetId, blockId] = block;
             if (!(colourSetId === 255 && blockId === 255)) {
+              if (!(colourSetId === 64 && blockId === 2)) {
+                // if not placeholder texture then check if custom texture needed
+                if (coloursJSON[colourSetId.toString()].blocks[blockId.toString()].presetIndex === "CUSTOM") {
+                  colourSetId = 64;
+                  blockId = 5;
+                }
+              }
               // There is a block here but do we need faces for it?
               for (const { dir, vertices, uvRow } of this.faces) {
                 const neighbor = this.getBlock(blockX + dir[0], blockY + dir[1], blockZ + dir[2]);
@@ -536,7 +543,7 @@ class ViewOnline3D extends Component {
   }
 
   drawNBT() {
-    const { optionValue_version } = this.props;
+    const { coloursJSON, optionValue_version } = this.props;
     const { viewOnline_NBT_decompressed } = this.state;
     const [schematic_size_x, schematic_size_y, schematic_size_z] = viewOnline_NBT_decompressed.value.size.value.value;
 
@@ -607,12 +614,14 @@ class ViewOnline3D extends Component {
   };
 
   componentDidMount() {
+    const { coloursJSON } = this.props;
     const canvasRef = this.canvasRef_viewOnline;
     const viewOnline_NBT_decompressed = this.getNBTDecompressed();
     const [, size_y, size_z] = viewOnline_NBT_decompressed.value.size.value.value;
 
     this.world = new BlockWorld({
       canvasRef: canvasRef,
+      coloursJSON: coloursJSON,
       tileSize: 32,
       tileTextureWidth: 608,
       tileTextureHeight: 2080,
@@ -640,7 +649,7 @@ class ViewOnline3D extends Component {
   }
 
   render() {
-    const { getLocaleString } = this.props;
+    const { getLocaleString, coloursJSON } = this.props;
     const { viewOnline_NBT_decompressed, selectedBlock } = this.state;
     let component_size = null;
     if (viewOnline_NBT_decompressed !== null) {
@@ -694,6 +703,7 @@ class ViewOnline3D extends Component {
       component_waila = (
         <Waila
           getLocaleString={getLocaleString}
+          coloursJSON={coloursJSON}
           selectedBlock={selectedBlock}
           styleOverrides={{
             position: "fixed",

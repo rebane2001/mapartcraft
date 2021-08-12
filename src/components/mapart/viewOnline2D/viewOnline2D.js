@@ -1,6 +1,5 @@
 import React, { Component, createRef } from "react";
 
-import coloursJSON from "../coloursJSON.json";
 import Tooltip from "../../tooltip";
 
 import IMG_Textures from "../../../images/textures.png";
@@ -31,7 +30,7 @@ class ViewOnline2D extends Component {
   }
 
   drawNBT() {
-    const { optionValue_version, optionValue_mapSize_x, optionValue_mapSize_y } = this.props;
+    const { coloursJSON, optionValue_version, optionValue_mapSize_x, optionValue_mapSize_y } = this.props;
     const { viewOnline_NBT_decompressed } = this.state;
     const { canvasRef_viewOnline } = this;
 
@@ -103,7 +102,28 @@ class ViewOnline2D extends Component {
           }
         }
         const [int_colourSetId, int_blockId] = this.paletteIdToColourSetIdAndBlockId[block_paletteId];
-        canvasRef_viewOnline_ctx.drawImage(img_textures, 32 * int_blockId, 32 * int_colourSetId, 32, 32, 33 * block_coords[0], 33 * block_coords[2], 32, 32);
+        let int_colourSetId_toDraw, int_blockId_toDraw;
+        if (!(int_colourSetId === 64 && int_blockId === 2) && coloursJSON[int_colourSetId.toString()].blocks[int_blockId.toString()].presetIndex === "CUSTOM") {
+          // if not placeholder, and is a custom block, then draw colour on canvas
+          int_colourSetId_toDraw = 64;
+          int_blockId_toDraw = 5;
+          canvasRef_viewOnline_ctx.fillStyle = `rgb(${coloursJSON[int_colourSetId.toString()].tonesRGB.normal.join(", ")})`;
+          canvasRef_viewOnline_ctx.fillRect(33 * block_coords[0], 33 * block_coords[2], 32, 32);
+        } else {
+          int_colourSetId_toDraw = int_colourSetId;
+          int_blockId_toDraw = int_blockId;
+        }
+        canvasRef_viewOnline_ctx.drawImage(
+          img_textures,
+          32 * int_blockId_toDraw,
+          32 * int_colourSetId_toDraw,
+          32,
+          32,
+          33 * block_coords[0],
+          33 * block_coords[2],
+          32,
+          32
+        );
         if (block_coords[2] !== 0) {
           if (block_coords[1] > currentY) {
             canvasRef_viewOnline_ctx.fillStyle = "rgba(0, 0, 32, 0.2)";
@@ -250,7 +270,7 @@ class ViewOnline2D extends Component {
   }
 
   render() {
-    const { getLocaleString, optionValue_mapSize_x, optionValue_mapSize_y, onGetViewOnlineNBT, onChooseViewOnline3D } = this.props;
+    const { getLocaleString, coloursJSON, optionValue_mapSize_x, optionValue_mapSize_y, onGetViewOnlineNBT, onChooseViewOnline3D } = this.props;
     const { viewOnline_NBT_decompressed, selectedBlock, zoomFactor } = this.state;
     const { canvasOffset_x, canvasOffset_y } = this.state;
 
@@ -267,7 +287,7 @@ class ViewOnline2D extends Component {
 
     let component_waila = null;
     if (selectedBlock !== null) {
-      component_waila = <Waila getLocaleString={getLocaleString} selectedBlock={selectedBlock} />;
+      component_waila = <Waila coloursJSON={coloursJSON} getLocaleString={getLocaleString} selectedBlock={selectedBlock} />;
     }
 
     let component_size = null;

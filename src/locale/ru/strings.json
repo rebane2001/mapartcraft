@@ -49,7 +49,20 @@
       "CARPETS": "Коврики",
       "GREYSCALE": null
     },
-    "UNSUPPORTED-PAST": null
+    "UNSUPPORTED-PAST": null,
+    "ADD-CUSTOM": {
+      "TITLE": null,
+      "BLOCK-NAME": null,
+      "NEEDS-SUPPORT": null,
+      "FLAMMABLE": null,
+      "VERSIONS": null,
+      "COLOUR-SET": null,
+      "NBT-TAGS": null,
+      "ADD": null,
+      "ERROR-NONE-SELECTED": null,
+      "ERROR-NO-NAME": null,
+      "EXAMPLES": null
+    }
   },
   "MAP-PREVIEW": {
     "TITLE": "Предпросмотр",

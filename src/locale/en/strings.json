@@ -49,7 +49,20 @@
       "CARPETS": "Carpets",
       "GREYSCALE": "Greyscale"
     },
-    "UNSUPPORTED-PAST": "Unsupported past"
+    "UNSUPPORTED-PAST": "Unsupported past",
+    "ADD-CUSTOM": {
+      "TITLE": "Add Custom",
+      "BLOCK-NAME": "Block Name",
+      "NEEDS-SUPPORT": "Needs Support",
+      "FLAMMABLE": "Flammable",
+      "VERSIONS": "Versions",
+      "COLOUR-SET": "Colour Set",
+      "NBT-TAGS": "NBT Tags",
+      "ADD": "Add",
+      "ERROR-NONE-SELECTED": "Select version(s) before adding",
+      "ERROR-NO-NAME": "Enter block name before adding",
+      "EXAMPLES": "Examples"
+    }
   },
   "MAP-PREVIEW": {
     "TITLE": "Map preview",

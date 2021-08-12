@@ -20,6 +20,7 @@ class MapSettings extends Component {
   render() {
     const {
       getLocaleString,
+      coloursJSON,
       optionValue_version,
       onOptionChange_version,
       optionValue_mapSize_x,
@@ -298,7 +299,7 @@ class MapSettings extends Component {
             {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/SUPPORT-BLOCK-TO-ADD")}
             {":"}
           </b>{" "}
-          <AutoCompleteInputBlockToAdd value={optionValue_supportBlock} setValue={setOption_SupportBlock} optionValue_version={optionValue_version} />
+          <AutoCompleteInputBlockToAdd coloursJSON={coloursJSON} value={optionValue_supportBlock} setValue={setOption_SupportBlock} optionValue_version={optionValue_version} />
           <br />
         </React.Fragment>
       );

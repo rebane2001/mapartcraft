@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import coloursJSON from "../coloursJSON.json";
-
 import IMG_Null from "../../../images/null.png";
 import IMG_Textures from "../../../images/textures.png";
 
@@ -11,7 +9,7 @@ import "./waila.css";
 
 class Waila extends Component {
   render() {
-    const { getLocaleString, selectedBlock, styleOverrides } = this.props;
+    const { getLocaleString, coloursJSON, selectedBlock, styleOverrides } = this.props;
     return (
       <div className={"viewOnline_waila"} style={styleOverrides}>
         <h3>{`x: ${selectedBlock.x.toString()} y: ${selectedBlock.y.toString()} z: ${selectedBlock.z.toString()}`}</h3>
@@ -34,12 +32,22 @@ class Waila extends Component {
             <img
               src={IMG_Null}
               alt={coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].displayName}
-              style={{
-                backgroundImage: `url(${IMG_Textures})`,
-                backgroundPositionX: `-${selectedBlock.blockId}00%`,
-                backgroundPositionY: `-${selectedBlock.colourSetId}00%`,
-                verticalAlign: "middle",
-              }}
+              style={
+                coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].presetIndex === "CUSTOM"
+                  ? {
+                      backgroundImage: `url(${IMG_Textures})`,
+                      backgroundPositionX: `-500%`,
+                      backgroundPositionY: `-6400%`,
+                      backgroundColor: `rgb(${coloursJSON[selectedBlock.colourSetId].tonesRGB.normal.join(", ")})`,
+                      verticalAlign: "middle",
+                    }
+                  : {
+                      backgroundImage: `url(${IMG_Textures})`,
+                      backgroundPositionX: `-${selectedBlock.blockId}00%`,
+                      backgroundPositionY: `-${selectedBlock.colourSetId}00%`,
+                      verticalAlign: "middle",
+                    }
+              }
             />{" "}
             {coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].displayName}
           </React.Fragment>
