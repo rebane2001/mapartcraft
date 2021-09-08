@@ -2,13 +2,11 @@ import React, { Component } from "react";
 
 import Tooltip from "../tooltip";
 import BlockSelectionAddCustom from "./blockSelectionAddCustom/blockSelectionAddCustom";
+import BlockImage from "./blockImage";
 
 import MapModes from "./json/mapModes.json";
 import StaircaseModes from "./json/staircaseModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
-
-import IMG_Null from "../../images/null.png";
-import IMG_Textures from "../../images/textures.png";
 
 import "./blockSelection.css";
 
@@ -100,17 +98,19 @@ class BlockSelection extends Component {
               />
               <label>
                 <Tooltip tooltipText={getLocaleString("NONE")}>
-                  <img
-                    src={IMG_Null}
-                    alt={getLocaleString("NONE")}
-                    className={selectedBlocks[colourSetId] === "-1" ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
-                    style={{
-                      backgroundImage: `url(${IMG_Textures})`,
-                      backgroundPositionX: "-100%",
-                      backgroundPositionY: "-6400%",
-                      backgroundColor: selectedBlocks[colourSetId] === "-1" ? "#658968" : null,
-                    }}
+                  <BlockImage
+                    getLocaleString={getLocaleString}
+                    coloursJSON={coloursJSON}
+                    colourSetId={colourSetId}
+                    blockId={"-1"}
                     onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
+                    style={{
+                      cursor: "pointer",
+                      ...(selectedBlocks[colourSetId] === "-1" && {
+                        filter: "drop-shadow(0 0 4px #658968)",
+                        backgroundColor: "#658968",
+                      }),
+                    }}
                   />
                 </Tooltip>
               </label>
@@ -143,29 +143,24 @@ class BlockSelection extends Component {
                               </Tooltip>
                             </div>
                           )}
-                        <img
-                          src={IMG_Null}
-                          alt={block.displayName}
-                          className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
-                          style={
-                            block.presetIndex === "CUSTOM"
-                              ? {
-                                  backgroundImage: `url(${IMG_Textures})`,
-                                  backgroundPositionX: `-500%`,
-                                  backgroundPositionY: `-6400%`,
-                                  backgroundColor: `rgb(${coloursJSON[colourSetId].tonesRGB.normal.join(", ")})`,
-                                }
-                              : {
-                                  backgroundImage: `url(${IMG_Textures})`,
-                                  backgroundPositionX: `-${blockId}00%`,
-                                  backgroundPositionY: `-${colourSetId}00%`,
-                                }
-                          }
+                        <BlockImage
+                          coloursJSON={coloursJSON}
+                          colourSetId={colourSetId}
+                          blockId={blockId}
                           onClick={() => {
                             onChangeColourSetBlock(colourSetId, blockId);
                             if (block.presetIndex === "CUSTOM") {
-                              this.setState({ lastSelectedCustomBlock: {colourSetId, blockId} });
+                              this.setState({ lastSelectedCustomBlock: { colourSetId, blockId } });
                             }
+                          }}
+                          style={{
+                            cursor: "pointer",
+                            ...(selectedBlocks[colourSetId] === blockId && {
+                              filter: "drop-shadow(0 0 4px #658968)",
+                              ...(block.presetIndex !== "CUSTOM" && {
+                                backgroundColor: "#658968",
+                              }),
+                            }),
                           }}
                         />
                       </Tooltip>

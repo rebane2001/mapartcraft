@@ -276,10 +276,10 @@ class ViewOnline2D extends Component {
 
     const component_controls = (
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <h1 className="cursorPointer" onClick={() => onGetViewOnlineNBT(null)}>
+        <h1 style={{ cursor: "pointer" }} onClick={() => onGetViewOnlineNBT(null)}>
           ❌
         </h1>
-        <h1 className="cursorPointer" onClick={onChooseViewOnline3D}>
+        <h1 style={{ cursor: "pointer" }} onClick={onChooseViewOnline3D}>
           3D
         </h1>
       </div>

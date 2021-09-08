@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
-import IMG_Null from "../../../images/null.png";
-import IMG_Textures from "../../../images/textures.png";
+import BlockImage from "../blockImage";
 
 import "./autoCompleteInputBlockToAdd.css";
 
@@ -33,8 +32,8 @@ class AutoCompleteInputBlockToAdd extends Component {
           // this is of the form eg "&1.12.2"
           blockNBTData = block.validVersions[blockNBTData.slice(1)];
         }
-        if (Object.keys(blockNBTData.NBTArgs).length === 0 && !block.supportBlockMandatory) {
-          // no exotic blocks for support / noobline
+        if (!block.supportBlockMandatory) {
+          // no gravity affected blocks etc for support / noobline
           if (blockNBTData.NBTName.startsWith(value)) {
             suggestions_prefix.push({
               blockName: blockNBTData.NBTName,
@@ -135,29 +134,11 @@ class AutoCompleteInputBlockToAdd extends Component {
             {relevantSuggestions.map((suggestion, suggestionIndex) => (
               <tr
                 className={suggestionIndex === activeSuggestionIndex ? "blockToAddSuggestion blockToAddSuggestion_active" : "blockToAddSuggestion"}
-                key={suggestion.blockName}
+                key={`${suggestion.colourSetId}$_${suggestion.blockId}_${suggestion.blockName}`}
                 onClick={() => this.onSuggestionClicked(suggestion)}
               >
                 <th>
-                  <img
-                    src={IMG_Null}
-                    alt={coloursJSON[suggestion.colourSetId].blocks[suggestion.blockId].displayName}
-                    className={"blockImage"}
-                    style={
-                      coloursJSON[suggestion.colourSetId].blocks[suggestion.blockId].presetIndex === "CUSTOM"
-                        ? {
-                            backgroundImage: `url(${IMG_Textures})`,
-                            backgroundPositionX: `-500%`,
-                            backgroundPositionY: `-6400%`,
-                            backgroundColor: `rgb(${coloursJSON[suggestion.colourSetId].tonesRGB.normal.join(", ")})`,
-                          }
-                        : {
-                            backgroundImage: `url(${IMG_Textures})`,
-                            backgroundPositionX: `-${suggestion.blockId}00%`,
-                            backgroundPositionY: `-${suggestion.colourSetId}00%`,
-                          }
-                    }
-                  />
+                  <BlockImage coloursJSON={coloursJSON} colourSetId={suggestion.colourSetId} blockId={suggestion.blockId} />
                 </th>
                 <th>{suggestion.blockName}</th>
               </tr>

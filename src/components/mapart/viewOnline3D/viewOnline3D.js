@@ -703,7 +703,7 @@ class ViewOnline3D extends Component {
           getLocaleString={getLocaleString}
           coloursJSON={coloursJSON}
           selectedBlock={selectedBlock}
-          styleOverrides={{
+          style={{
             position: "fixed",
             zIndex: 121,
             right: 0,
