@@ -19,7 +19,6 @@
   align-items: center;
 }
 
-.blockToAddSuggestion_active,
 .blockToAddSuggestion:hover {
   background-color: #609060;
   cursor: pointer;
