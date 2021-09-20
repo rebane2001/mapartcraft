@@ -61,7 +61,9 @@
       "ADD": null,
       "ERROR-NONE-SELECTED": null,
       "ERROR-NO-NAME": null,
-      "EXAMPLES": null
+      "EXAMPLES": null,
+      "DELETE": "Apagar",
+      "NO-EXPORT": null
     }
   },
   "MAP-PREVIEW": {

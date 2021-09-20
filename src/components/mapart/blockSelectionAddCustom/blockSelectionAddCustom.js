@@ -29,7 +29,7 @@ class BlockSelectionAddCustom extends Component {
             facing: "north|east|south|west",
             half: "top|bottom",
           },
-          versions: ["1.12.2", "1.13.2", "1.14.4", "1.15.2", "1.16.5", "1.17.1"],
+          versions: ["1_12_2", "1_13_2", "1_14_4", "1_15_2", "1_16_5", "1_17_1"],
         },
       ],
     },
@@ -42,14 +42,14 @@ class BlockSelectionAddCustom extends Component {
             variant: "cobblestone",
             half: "top|bottom",
           },
-          versions: ["1.12.2"],
+          versions: ["1_12_2"],
         },
         {
           blockName: "cobblestone_slab",
           nbtTags: {
             type: "top|bottom",
           },
-          versions: ["1.13.2", "1.14.4", "1.15.2", "1.16.5", "1.17.1"],
+          versions: ["1_13_2", "1_14_4", "1_15_2", "1_16_5", "1_17_1"],
         },
       ],
     },
@@ -62,14 +62,14 @@ class BlockSelectionAddCustom extends Component {
             variant: "wood_old",
             half: "top|bottom",
           },
-          versions: ["1.12.2"],
+          versions: ["1_12_2"],
         },
         {
           blockName: "petrified_oak_slab",
           nbtTags: {
             type: "top|bottom",
           },
-          versions: ["1.13.2", "1.14.4", "1.15.2", "1.16.5", "1.17.1"],
+          versions: ["1_13_2", "1_14_4", "1_15_2", "1_16_5", "1_17_1"],
         },
       ],
     },
@@ -167,7 +167,7 @@ class BlockSelectionAddCustom extends Component {
   };
 
   render() {
-    const { getLocaleString, coloursJSON, onAddCustomBlock } = this.props;
+    const { getLocaleString, coloursJSON, onAddCustomBlock, onDeleteCustomBlock } = this.props;
     const { block_name, block_nbtTags, block_colourSetId, block_needsSupport, block_flammable, block_versions } = this.state;
     const examples = (
       <details open={false}>
@@ -225,10 +225,10 @@ class BlockSelectionAddCustom extends Component {
                         </b>{" "}
                       </th>
                       <td>
-                        {Object.values(SupportedVersions).map((block_version) => (
-                          <React.Fragment key={block_version.MCVersion}>
-                            <input type="checkbox" checked={block.versions.includes(block_version.MCVersion)} disabled={true} />
-                            {block_version.MCVersion}{" "}
+                        {Object.entries(SupportedVersions).map(([supportedVersion_key, supportedVersion_value]) => (
+                          <React.Fragment key={supportedVersion_key}>
+                            <input type="checkbox" checked={block.versions.includes(supportedVersion_key)} disabled={true} />
+                            {supportedVersion_value.MCVersion}{" "}
                           </React.Fragment>
                         ))}
                       </td>
@@ -237,7 +237,7 @@ class BlockSelectionAddCustom extends Component {
                 </table>
               </div>
             ))}
-            <br/>
+            <br />
           </div>
         ))}
       </details>
@@ -374,6 +374,15 @@ class BlockSelectionAddCustom extends Component {
         </th>
       </tr>
     );
+    const customBlock_delete = (
+      <tr>
+        <th colSpan="2">
+          <button style={{ width: "100%" }} onClick={() => onDeleteCustomBlock(block_colourSetId, block_name, block_versions)}>
+            {getLocaleString("BLOCK-SELECTION/ADD-CUSTOM/DELETE")}
+          </button>
+        </th>
+      </tr>
+    );
     return (
       <details className="blockSelectionAddCustom" open={false}>
         <summary>{getLocaleString("BLOCK-SELECTION/ADD-CUSTOM/TITLE")}</summary>
@@ -387,6 +396,7 @@ class BlockSelectionAddCustom extends Component {
             {setting_customBlock_flammable}
             {setting_customBlock_versions}
             {customBlock_submit}
+            {customBlock_delete}
           </tbody>
         </table>
       </details>

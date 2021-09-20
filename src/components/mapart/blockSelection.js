@@ -38,6 +38,7 @@ class BlockSelection extends Component {
       onSharePreset,
       onGetPDNPaletteClicked,
       handleAddCustomBlock,
+      handleDeleteCustomBlock,
     } = this.props;
     const { lastSelectedCustomBlock } = this.state;
     const presetsManagement = (
@@ -179,6 +180,7 @@ class BlockSelection extends Component {
           getLocaleString={getLocaleString}
           coloursJSON={coloursJSON}
           onAddCustomBlock={handleAddCustomBlock}
+          onDeleteCustomBlock={handleDeleteCustomBlock}
           lastSelectedCustomBlock={lastSelectedCustomBlock}
         />
       </div>

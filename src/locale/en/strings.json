@@ -61,7 +61,9 @@
       "ADD": "Add",
       "ERROR-NONE-SELECTED": "Select version(s) before adding",
       "ERROR-NO-NAME": "Enter block name before adding",
-      "EXAMPLES": "Examples"
+      "EXAMPLES": "Examples",
+      "DELETE": "Delete",
+      "NO-EXPORT": "Note: Custom blocks will not be exported."
     }
   },
   "MAP-PREVIEW": {
