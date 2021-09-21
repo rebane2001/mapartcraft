@@ -532,21 +532,24 @@ class Map_NBT {
       }
     }
 
-    if (optionValue_staircasing === StaircaseModes.VALLEY.uniqueId) {
-      // sort in terms of z and y first, necessary for determining when a plateau has finished
-      physicalColumn.sort((elt1, elt2) => {
-        if (elt1.pos.value.value[2] < elt2.pos.value.value[2]) {
+    // sort in terms of z and y, necessary for determining when a plateau has finished in valley mode, and correct noobline heights in map preview
+    physicalColumn.sort((elt1, elt2) => {
+      if (elt1.pos.value.value[2] < elt2.pos.value.value[2]) {
+        return -1;
+      } else if (elt1.pos.value.value[2] > elt2.pos.value.value[2]) {
+        // smaller Z first
+        return 1;
+      } else {
+        if (elt1.pos.value.value[1] > elt2.pos.value.value[1]) {
           return -1;
-        } else if (elt1.pos.value.value[2] > elt2.pos.value.value[2]) {
-          return 1;
         } else {
-          if (elt1.pos.value.value[1] > elt2.pos.value.value[1]) {
-            return -1;
-          } else {
-            return 1;
-          }
+          // higher Y first
+          return 1;
         }
-      });
+      }
+    });
+
+    if (optionValue_staircasing === StaircaseModes.VALLEY.uniqueId) {
       let plateaus = [{ startIndex: 0, endIndex: 0 }];
       // initial 0 width plateau useful just so we don't have a special case for the first proper plateau later
       let ascending = false; // weakly ascending

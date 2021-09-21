@@ -921,6 +921,7 @@ class MapartController extends Component {
               optionValue_version={optionValue_version}
               optionValue_mapSize_x={optionValue_mapSize_x}
               optionValue_mapSize_y={optionValue_mapSize_y}
+              optionValue_staircasing={optionValue_staircasing}
               viewOnline_NBT={viewOnline_NBT}
               onGetViewOnlineNBT={this.onGetViewOnlineNBT}
               onChooseViewOnline3D={this.onChooseViewOnline3D}

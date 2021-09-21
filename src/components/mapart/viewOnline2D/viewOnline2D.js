@@ -2,6 +2,8 @@ import React, { Component, createRef } from "react";
 
 import Tooltip from "../../tooltip";
 
+import StaircaseModes from "../json/staircaseModes.json";
+
 import IMG_Textures from "../../../images/textures.png";
 
 import NBTReader from "../nbtReader";
@@ -30,7 +32,7 @@ class ViewOnline2D extends Component {
   }
 
   drawNBT() {
-    const { coloursJSON, optionValue_version, optionValue_mapSize_x, optionValue_mapSize_y } = this.props;
+    const { coloursJSON, optionValue_version, optionValue_mapSize_x, optionValue_mapSize_y, optionValue_staircasing } = this.props;
     const { viewOnline_NBT_decompressed } = this.state;
     const { canvasRef_viewOnline } = this;
 
@@ -93,11 +95,13 @@ class ViewOnline2D extends Component {
             continue;
           } else {
             processedNoobline = true;
+            // since we ordered blocks by Z and Y in nbt.jsworker, the first block in the column is the highest block of the
+            // noobline pillar (the correct height for the map preview)
           }
         } else {
-          processedNoobline = false;
+          processedNoobline = false; // ready for next column
           if (block_paletteId === NBT_palette.length - 1) {
-            // only draw first (hence top) block, the one visible on the map
+            // last palette entry is support / noobline. don't draw this except on the noobline
             continue;
           }
         }
@@ -139,7 +143,9 @@ class ViewOnline2D extends Component {
         }
         currentY = block_coords[1];
         canvasRef_viewOnline_ctx.fillStyle = "rgba(255, 255, 255, 1)";
-        canvasRef_viewOnline_ctx.fillText(block_coords[1], 33 * block_coords[0] + 31, 33 * (block_coords[2] + 1) - 2, 31);
+        if (optionValue_staircasing !== StaircaseModes.OFF.uniqueId) {
+          canvasRef_viewOnline_ctx.fillText(block_coords[1], 33 * block_coords[0] + 31, 33 * (block_coords[2] + 1) - 2, 31);
+        }
       }
       for (let whichChunk_x = 0; whichChunk_x < 8 * optionValue_mapSize_x; whichChunk_x++) {
         for (let whichChunk_y = -1; whichChunk_y < 8 * optionValue_mapSize_y; whichChunk_y++) {
