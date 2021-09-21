@@ -1,10 +1,10 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
 """Tool for adding a string to all locale files"""
 
 import os
-import argparse
 
+from SAOLogging import getParser, setupRootLogger, criticalLogExit
 from JSONIO import JSONIO
 
 def touchLocaleString(languageCode, force, path, enOrNull = None):
@@ -17,45 +17,44 @@ def touchLocaleString(languageCode, force, path, enOrNull = None):
         if not pathSection in localeFolder:
             localeFolder[pathSection] = {}
             localeFolder = localeFolder[pathSection]
-        elif type(localeFolder[pathSection]) == dict:
+        elif isinstance(localeFolder[pathSection], dict):
             localeFolder = localeFolder[pathSection]
         elif force:
             localeFolder[pathSection] = {}
             localeFolder = localeFolder[pathSection]
         elif localeFolder[pathSection] is None:
-            print("{}: Refusing to override None entry {} with subfolder".format(languageCode, "/".join(pathSections[:pathSectionIndex + 1])))
-            return
-        elif type(localeFolder[pathSection]) == str:
-            print("{}: Refusing to override string {} with subfolder".format(languageCode, "/".join(pathSections[:pathSectionIndex + 1])))
-            return
+            criticalLogExit("{}: Refusing to override None entry {} with subfolder".format(languageCode, "/".join(pathSections[:pathSectionIndex + 1])))
+        elif isinstance(localeFolder[pathSection], str):
+            criticalLogExit("{}: Refusing to override string {} with subfolder".format(languageCode, "/".join(pathSections[:pathSectionIndex + 1])))
 
     finalPathSection = pathSections[-1]
     if force or not finalPathSection in localeFolder:
         localeFolder[finalPathSection] = enOrNull
-    elif type(localeFolder[finalPathSection]) == dict:
-        print("{}: Refusing to override folder {} with '{}'".format(languageCode, path, enOrNull))
+    elif isinstance(localeFolder[finalPathSection], dict):
+        criticalLogExit("{}: Refusing to override folder {} with '{}'".format(languageCode, path, enOrNull))
     elif localeFolder[finalPathSection] is None:
-        print("{}: Refusing to override None entry {} with '{}'".format(languageCode, path, enOrNull))
-    elif type(localeFolder[finalPathSection]) == str:
-        print("{}: Refusing to override string {} with '{}'".format(languageCode, path, enOrNull))
+        criticalLogExit("{}: Refusing to override None entry {} with '{}'".format(languageCode, path, enOrNull))
+    elif isinstance(localeFolder[finalPathSection], str):
+        criticalLogExit("{}: Refusing to override string {} with '{}'".format(languageCode, path, enOrNull))
 
     JSONIO.saveToFilename(filename, localeJSON)
 
-
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description = __doc__)
-    parser.add_argument("-f",
-        action = "store_true",
+    parser = getParser(__doc__)
+
+    parser.add_argument("-f", "--force",
         help = "Overwrite pre-existing string or subsection",
+        action = "store_true",
         default = False)
     parser.add_argument("PATH",
-        action = "store",
         help = "String path within locale JSON, eg 'BLOCK-SELECTION/TITLE'; '/' separates subsections")
     parser.add_argument("--en",
-        action = "store",
         help = "Optionally set the English version of the string now",
         default = None)
+
     args = parser.parse_args()
+
+    setupRootLogger(args.verbose, args.quiet)
 
     languageCodes = [d for d in
         os.listdir(JSONIO.rectifiedPath("../src/locale")) if

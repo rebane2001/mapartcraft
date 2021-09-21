@@ -1,13 +1,13 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
-"""For adding to the necessary files to add another Minecraft version"""
+"""For adding a version to coloursJSON.json and supportedVersions.json.
+This assumes that all blocks valid for the current last version are also valid for the version to be added; do check first!"""
 
-import argparse
-
+from SAOLogging import getParser, setupRootLogger
 from JSONIO import JSONIO
 
 def addVersion_coloursJSON(MCVersion):
-    coloursJSON = JSONIO.loadFromFilename("../src/components/mapart/coloursJSON.json")
+    coloursJSON = JSONIO.loadFromFilename("../src/components/mapart/json/coloursJSON.json")
     supportedVersions = JSONIO.loadFromFilename("../src/components/mapart/json/supportedVersions.json")
     lastVersion = list(supportedVersions.values())[-1]["MCVersion"]
     for colourSet in coloursJSON.values():
@@ -17,7 +17,7 @@ def addVersion_coloursJSON(MCVersion):
                     block["validVersions"][MCVersion] = block["validVersions"][lastVersion]
                 else:
                     block["validVersions"][MCVersion] = "&{}".format(lastVersion)
-    JSONIO.saveToFilename("../src/components/mapart/coloursJSON.json", coloursJSON, indent = 4)
+    JSONIO.saveToFilename("../src/components/mapart/json/coloursJSON.json", coloursJSON, indent = 4)
 
 
 def addVersion_supportedVersions(MCVersion, DataVersion):
@@ -27,17 +27,17 @@ def addVersion_supportedVersions(MCVersion, DataVersion):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="""Tool for adding a version to coloursJSON.json and supportedVersions.json.
-        This assumes that all blocks valid for the current last version are also valid for the version to be added; do check first!""")
+    parser = getParser(__doc__)
+
     parser.add_argument("MCVersion",
-                        action = "store",
-                        help = "Minecraft version to add, eg '1.14.4'")
+        help = "Minecraft version to add, eg '1.14.4'")
     parser.add_argument("DataVersion",
-                        action = "store",
-                        help = "Minecraft data version to add, eg '1976' for 1.14.4",
-                        type = int)
+        help = "Minecraft data version to add, eg '1976' for 1.14.4",
+        type = int)
+
     args = parser.parse_args()
+
+    setupRootLogger(args.verbose, args.quiet)
 
     addVersion_coloursJSON(args.MCVersion)
     addVersion_supportedVersions(args.MCVersion, args.DataVersion)

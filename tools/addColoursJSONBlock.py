@@ -1,14 +1,14 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
-"""For adding a block to coloursJSON, and optionally texture image to textures.png"""
+"""For adding a block to coloursJSON, and optionally a texture image to textures.png"""
 
 import os
-import argparse
 import logging
 
+from SAOLogging import getParser, setupRootLogger
 from JSONIO import JSONIO
 
-filePath_coloursJSON = os.path.normpath("../src/components/mapart/coloursJSON.json")
+filePath_coloursJSON = os.path.normpath("../src/components/mapart/json/coloursJSON.json")
 filePath_textures = os.path.normpath("../src/images/textures.png")
 
 def validateColourSetId(coloursJSON, colourSetId):
@@ -154,26 +154,19 @@ def addTexture(coloursJSON,
     logging.debug("Added texture")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="""Tool for adding a block to coloursJSON.json.""")
-    parser.add_argument("--verbose",
-        help = "Increase logging verbosity: --verbose for info, --verbose --verbose for debug",
-        action = "count",
-        default = 0)
+    parser = getParser(__doc__)
+
     parser.add_argument("colourSetId",
         help = "colourSetId of the colour set to add the block to",
         metavar = ("COLOURSETID",),
-        action = "store",
         type = int)
     parser.add_argument("blockId",
         help = "blockId within the colour set to add the block with. Set to -1 to default to the next available",
         metavar = ("BLOCKID",),
-        action = "store",
         type = int)
     parser.add_argument("displayName",
         help = "Block name to show to the user",
-        metavar = ("DISPLAYNAME",),
-        action = "store")
+        metavar = ("DISPLAYNAME",))
     parser.add_argument("-s",
         help = "Flag for if the block requires support eg because of gravity or if it is a slab, default false",
         action = "store_true",
@@ -194,17 +187,16 @@ if __name__ == "__main__":
     parser.add_argument("-t",
         help = "Set texture in textures.png for block using image at TEXTUREPATH. Requires Imagemagick. Supply 16x16 image",
         metavar = ("TEXTUREPATH",),
-        action = "store",
         dest = "texturePath",
         default = None)
-    parser.add_argument("-V",
+    parser.add_argument("--Version",
         help = "Add a version to this block that has full details (ie is not a reference to a different version). NAME_AND_ARGPAIRS must be the NBTName entry of the version and an even number of NBTArgs arguments in 'key value' form. Can be used multiple times.",
         metavar = ("NEWVERSION", "NAME_AND_ARGPAIRS"),
         nargs = "+",
         action = "append",
         dest = "versionsWithArgs",
         default = [])
-    parser.add_argument("-v",
+    parser.add_argument("--version",
         help = "Add a version that is a reference to a different version. Can be used multiple times.",
         metavar = ("NEWVERSION", "REFERENCEVERSION"),
         nargs = 2,
@@ -214,15 +206,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.verbose >= 2:
-        loggingLevel = logging.DEBUG
-    elif args.verbose == 1:
-        loggingLevel = logging.INFO
-    else:
-        loggingLevel = logging.WARNING
-    logging.basicConfig(format = "[%(asctime)s][%(levelname)s] %(message)s (%(filename)s:%(lineno)d)",
-        datefmt = "%Y-%m-%d %H:%M:%S",
-        level = loggingLevel)
+    setupRootLogger(args.verbose, args.quiet)
 
     logging.debug("args: {}".format(args))
 
