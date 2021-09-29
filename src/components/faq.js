@@ -87,7 +87,7 @@ function FAQ(props) {
       <b>How do I align the map?</b>
       <p>
         When you have found a suitable place to build your map (eg above an ocean) make sure to open the map first and find the bottom left corner for aligning
-        your schematic. Maps in Minecraft align to a fixed 128x128 grid. North is always the up-direction on maps and you shouldn't rotate the schematic.
+        your schematic. Maps in Minecraft align to a fixed 128x128 grid. North is always the up-direction on maps and you shouldn't need to rotate the schematic.
       </p>
 
       <h2>Datafile (.dat)</h2>
@@ -116,11 +116,14 @@ function FAQ(props) {
       <b>'Staircasing'?</b>
       <p>
         This will make your map 3D. Doing so will give you 3 times the colors, often producing a much richer mapart, but it will also make the map a lot harder
-        to build, as it is not flat. 3D 'Classic' and 'Valley' modes produce the exact same resulting map, however they are built differently; 'Valley' mode allows the map to be built without any downwards staircases, which may be easier in survival. Observe the difference:
+        to build, as it is not flat. 3D 'Classic' and 'Valley' modes produce the exact same resulting map image, however they are built differently; 'Valley' mode allows the map to be built without any downwards staircases, which may be easier in survival. Observe the difference:
       </p>
       <div style={{ textAlign: "center" }}>
         <img alt="classicVsValley.png" src={IMG_ClassicVsValley} style={{"maxWidth": "75%"}}></img>
       </div>
+      <p>
+        More staircasing modes can be enabled from the <em>Extras</em> settings tab.
+      </p>
 
       <b>Better color?</b>
       <p>
