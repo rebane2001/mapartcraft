@@ -97,7 +97,12 @@
       "TITLE-TT": "Tio igas la mapon 3D. Estas pli malfacile por konstrui sed triobligas la kvanton de eblaj koloroj!",
       "OFF": "Malŝaltita (2D)",
       "CLASSIC": "Ŝaltita (klasika)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "Ŝaltita",
+      "ON-UNOBTAINABLE": "Ŝaltita (Malakireblaj)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

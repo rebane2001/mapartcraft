@@ -97,7 +97,12 @@
       "TITLE-TT": "将地图制作为3D。 很难制造，但是表现出3倍的颜色！",
       "OFF": "关（2D）",
       "CLASSIC": "开（原版）",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "开",
+      "ON-UNOBTAINABLE": "开 (无法获得)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

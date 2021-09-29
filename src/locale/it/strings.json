@@ -97,7 +97,12 @@
       "TITLE-TT": "Aggiunge due ulteriori tonalità per ogni colore sfruttando le ombreggiature con cui le mappe rappresentano le differenze di quota",
       "OFF": "Off (2D)",
       "CLASSIC": "On (classico)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "On",
+      "ON-UNOBTAINABLE": "On (non ottenibili)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

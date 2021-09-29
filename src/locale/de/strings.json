@@ -97,7 +97,12 @@
       "TITLE-TT": "Exportiert eine treppenartige, dreidimensionale Struktur. Schwieriger zu bauen, ermöglicht jedoch das Dreifache an Farben!",
       "OFF": "Aus (2D)",
       "CLASSIC": "An (klassisch)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "An",
+      "ON-UNOBTAINABLE": "An (Nicht erhältliche)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

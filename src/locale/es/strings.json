@@ -97,7 +97,12 @@
       "TITLE-TT": "Hace el mapa 3D. Más difícil de construir, ¡Pero con 3 veces los colores!",
       "OFF": "Apagado (2D)",
       "CLASSIC": "Encendido (clásico)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "Encendido",
+      "ON-UNOBTAINABLE": "Encendido (no obtenibles)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

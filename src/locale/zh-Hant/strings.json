@@ -97,7 +97,12 @@
       "TITLE-TT": "讓地圖畫變成 3D。更難建造，但色彩範圍能夠擴增三倍！",
       "OFF": "關閉 (2D)",
       "CLASSIC": "啟用 (傳統)",
-      "VALLEY": "啟用 (山谷)"
+      "VALLEY": "啟用 (山谷)",
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "啟用",
+      "ON-UNOBTAINABLE": "啟用 (無法取得的)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": "啟用 (一致)"
       },
       "BACKGROUND-COLOUR": "顏色"
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

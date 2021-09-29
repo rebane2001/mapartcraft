@@ -5,7 +5,6 @@ import BlockSelectionAddCustom from "./blockSelectionAddCustom/blockSelectionAdd
 import BlockImage from "./blockImage";
 
 import MapModes from "./json/mapModes.json";
-import StaircaseModes from "./json/staircaseModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
 
 import "./blockSelection.css";
@@ -20,15 +19,63 @@ class BlockSelection extends Component {
     return `rgb(${RGBArray.join(", ")})`;
   }
 
+  getColourSetBox = (colourSet) => {
+    const { optionValue_staircasing } = this.props;
+    let background;
+    switch (optionValue_staircasing) {
+      case MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.OFF.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.normal);
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId:
+      case MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.ON.uniqueId: {
+        background = `linear-gradient(${this.cssRGB(colourSet.tonesRGB.dark)} 33%, ${this.cssRGB(colourSet.tonesRGB.normal)} 33%, ${this.cssRGB(
+          colourSet.tonesRGB.normal
+        )} 66%, ${this.cssRGB(colourSet.tonesRGB.light)} 66%)`;
+        break;
+      }
+      case MapModes.MAPDAT.staircaseModes.ON_UNOBTAINABLE.uniqueId: {
+        background = `linear-gradient(${this.cssRGB(colourSet.tonesRGB.unobtainable)} 25%, ${this.cssRGB(colourSet.tonesRGB.dark)} 25%, ${this.cssRGB(
+          colourSet.tonesRGB.dark
+        )} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 75%, ${this.cssRGB(colourSet.tonesRGB.light)} 75%)`;
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_DARK.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.FULL_DARK.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.dark);
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_LIGHT.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.FULL_LIGHT.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.light);
+        break;
+      }
+      case MapModes.MAPDAT.staircaseModes.FULL_UNOBTAINABLE.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.unobtainable);
+        break;
+      }
+      default: {
+        throw new Error("Unknown staircasing value");
+      }
+    }
+    return (
+      <div
+        className="colourSetBox"
+        style={{
+          background: background,
+        }}
+      />
+    );
+  };
+
   render() {
     const {
       coloursJSON,
       getLocaleString,
       onChangeColourSetBlock,
       optionValue_version,
-      optionValue_modeNBTOrMapdat,
-      optionValue_staircasing,
-      optionValue_unobtainable,
       selectedBlocks,
       presets,
       selectedPresetName,
@@ -80,23 +127,7 @@ class BlockSelection extends Component {
           .filter(([, colourSet]) => Object.values(colourSet.blocks).some((block) => Object.keys(block.validVersions).includes(optionValue_version.MCVersion)))
           .map(([colourSetId, colourSet]) => (
             <div key={colourSetId} className="colourSet">
-              <div
-                className="colourSetBox"
-                style={{
-                  background:
-                    optionValue_staircasing === StaircaseModes.OFF.uniqueId
-                      ? this.cssRGB(colourSet.tonesRGB.normal)
-                      : optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId || !optionValue_unobtainable
-                      ? `linear-gradient(${this.cssRGB(colourSet.tonesRGB.dark)} 33%, ${this.cssRGB(colourSet.tonesRGB.normal)} 33%, ${this.cssRGB(
-                          colourSet.tonesRGB.normal
-                        )} 66%, ${this.cssRGB(colourSet.tonesRGB.light)} 66%)`
-                      : `linear-gradient(${this.cssRGB(colourSet.tonesRGB.unobtainable)} 25%, ${this.cssRGB(colourSet.tonesRGB.dark)} 25%, ${this.cssRGB(
-                          colourSet.tonesRGB.dark
-                        )} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 75%, ${this.cssRGB(
-                          colourSet.tonesRGB.light
-                        )} 75%)`,
-                }}
-              />
+              {this.getColourSetBox(colourSet)}
               <label>
                 <Tooltip tooltipText={getLocaleString("NONE")}>
                   <BlockImage

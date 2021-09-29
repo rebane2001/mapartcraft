@@ -1,6 +1,6 @@
 // begin variables passed in onmessage
 var coloursJSON;
-var StaircaseModes;
+var MapModes;
 var WhereSupportBlocksModes;
 var optionValue_version;
 var optionValue_staircasing;
@@ -358,33 +358,37 @@ class Map_NBT {
   }
 
   getPhysicalLayout_individualColumn(columnNumber) {
+    const mapColoursLayoutColumn = this.mapColoursLayout[columnNumber];
     let physicalColumn = [];
     let currentHeight;
-    if (optionValue_staircasing === StaircaseModes.OFF.uniqueId) {
-      // start at y = 0 or 1 or 2 for flat maps depending on optionValue_whereSupportBlocks since we don't normalise the columns to a common base later
-      switch (optionValue_whereSupportBlocks) {
-        case WhereSupportBlocksModes.NONE.uniqueId: {
-          currentHeight = 0;
-          break;
-        }
-        case WhereSupportBlocksModes.IMPORTANT.uniqueId:
-        case WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId: {
-          currentHeight = 1;
-          break;
-        }
-        case WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId: {
-          currentHeight = 2;
-          break;
-        }
-        default: {
-          throw new Error("Unknown support-blocks option");
-        }
+    switch (optionValue_staircasing) {
+      case MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId: {
+        // start at y = 2 for flat maps; this covers the cases of support blocks 1 and or 2 blocks below
+        currentHeight = 2;
+        break;
       }
-    } else {
-      currentHeight = 0;
+      case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId:
+      case MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId: {
+        // this doesn't matter
+        // in the classic case each column is later adjusted to have its global minimum at y = 0 so the map has a common base / is as short as possible
+        // in the valley case valleys are pulled down to y = 0
+        currentHeight = 0;
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_DARK.uniqueId: {
+        // staircase descends from noobline southwards
+        currentHeight = 1 + mapColoursLayoutColumn.length;
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_LIGHT.uniqueId: {
+        // staircase ascends from noobline southwards
+        currentHeight = 1;
+        break;
+      }
+      default: {
+        throw new Error("Unknown staircase mode");
+      }
     }
-
-    const mapColoursLayoutColumn = this.mapColoursLayout[columnNumber];
 
     // initialize noobline
     physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, 0, "NOOBLINE_SCAFFOLD"));
@@ -413,6 +417,7 @@ class Map_NBT {
       physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, rowNumber + 1, coloursLayoutBlock.colourSetId));
       // the + 1 is because the noobline offsets everything South one block
 
+      // read docs/supportBlocks.md to know how this works
       switch (optionValue_whereSupportBlocks) {
         case WhereSupportBlocksModes.NONE.uniqueId: {
           break;
@@ -549,62 +554,75 @@ class Map_NBT {
       }
     });
 
-    if (optionValue_staircasing === StaircaseModes.VALLEY.uniqueId) {
-      let plateaus = [{ startIndex: 0, endIndex: 0 }];
-      // initial 0 width plateau useful just so we don't have a special case for the first proper plateau later
-      let ascending = false; // weakly ascending
-      let currentPlateauStartIndex = null;
-      let visibleBlocksHeight = physicalColumn[0].pos.value.value[1]; // initialise to noobline height
-      // visible blocks are blocks at the top height in a x-z column, the actual map blocks that give the colours
+    switch (optionValue_staircasing) {
+      case MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId: {
+        let plateaus = [{ startIndex: 0, endIndex: 0 }];
+        // initial 0 width plateau useful just so we don't have a special case for the first proper plateau later
+        let ascending = false; // weakly ascending
+        let currentPlateauStartIndex = null;
+        let visibleBlocksHeight = physicalColumn[0].pos.value.value[1]; // initialise to noobline height
+        // visible blocks are blocks at the top height in a x-z column, the actual map blocks that give the colours
 
-      for (let i = 0; i < physicalColumn.length; i++) {
-        const physicalBlock = physicalColumn[i];
-        if (this.palette_paletteId_colourSetId[physicalBlock.state.value] === "NOOBLINE_SCAFFOLD") {
-          continue;
+        for (let i = 0; i < physicalColumn.length; i++) {
+          const physicalBlock = physicalColumn[i];
+          if (this.palette_paletteId_colourSetId[physicalBlock.state.value] === "NOOBLINE_SCAFFOLD") {
+            continue;
+          }
+          if (ascending && physicalBlock.pos.value.value[1] < visibleBlocksHeight) {
+            // dark after ascent; plateau found
+            ascending = false;
+            plateaus.push({
+              startIndex: currentPlateauStartIndex,
+              endIndex: i,
+            });
+          } else if (physicalBlock.pos.value.value[1] > visibleBlocksHeight) {
+            // light
+            ascending = true;
+            currentPlateauStartIndex = i;
+          }
+          visibleBlocksHeight = physicalBlock.pos.value.value[1];
         }
-        if (ascending && physicalBlock.pos.value.value[1] < visibleBlocksHeight) {
-          // dark after ascent; plateau found
-          ascending = false;
-          plateaus.push({
-            startIndex: currentPlateauStartIndex,
-            endIndex: i,
-          });
-        } else if (physicalBlock.pos.value.value[1] > visibleBlocksHeight) {
-          // light
-          ascending = true;
-          currentPlateauStartIndex = i;
+
+        plateaus.push({ startIndex: physicalColumn.length, endIndex: physicalColumn.length });
+
+        let nonPlateauPulldownHeights = [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
+        while (plateaus.length !== 1) {
+          let pullDownHeight = Number.MAX_SAFE_INTEGER;
+          for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
+            pullDownHeight = Math.min(physicalColumn[i].pos.value.value[1], pullDownHeight);
+          }
+          for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
+            physicalColumn[i].pos.value.value[1] -= pullDownHeight;
+          }
+          nonPlateauPulldownHeights[1] = pullDownHeight;
+          const plateauPulldownHeight = Math.min(...nonPlateauPulldownHeights);
+          // we pull down a plateau by the minimum of the two values the surrounding non-plateaus were pulled down by
+          for (let i = plateaus[0].startIndex; i < plateaus[0].endIndex; i++) {
+            physicalColumn[i].pos.value.value[1] -= plateauPulldownHeight;
+          }
+          plateaus.shift();
+          nonPlateauPulldownHeights[0] = nonPlateauPulldownHeights[1];
         }
-        visibleBlocksHeight = physicalBlock.pos.value.value[1];
+        break;
       }
-
-      plateaus.push({ startIndex: physicalColumn.length, endIndex: physicalColumn.length });
-
-      let nonPlateauPulldownHeights = [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
-      while (plateaus.length !== 1) {
-        let pullDownHeight = Number.MAX_SAFE_INTEGER;
-        for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
-          pullDownHeight = Math.min(physicalColumn[i].pos.value.value[1], pullDownHeight);
-        }
-        for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
-          physicalColumn[i].pos.value.value[1] -= pullDownHeight;
-        }
-        nonPlateauPulldownHeights[1] = pullDownHeight;
-        const plateauPulldownHeight = Math.min(...nonPlateauPulldownHeights);
-        // we pull down a plateau by the minimum of the two values the surrounding non-plateaus were pulled down by
-        for (let i = plateaus[0].startIndex; i < plateaus[0].endIndex; i++) {
-          physicalColumn[i].pos.value.value[1] -= plateauPulldownHeight;
-        }
-        plateaus.shift();
-        nonPlateauPulldownHeights[0] = nonPlateauPulldownHeights[1];
+      case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId: {
+        // make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
+        const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
+        physicalColumn.forEach((block) => {
+          block.pos.value.value[1] -= columnMinimumY;
+        });
+        break;
       }
-    } else if (optionValue_staircasing === StaircaseModes.CLASSIC.uniqueId) {
-      // make sure the column's global minimum is at y = 0; doing this for every column gives the map a common base.
-      // Don't do this for flat maps
-      const columnMinimumY = physicalColumn.reduce((a, b) => (a.pos.value.value[1] < b.pos.value.value[1] ? a : b)).pos.value.value[1];
-      physicalColumn.forEach((block) => {
-        block.pos.value.value[1] -= columnMinimumY;
-      });
+      case MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId:
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_DARK.uniqueId:
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_LIGHT.uniqueId: {
+        break;
+      }
+      default: {
+        throw new Error("Unknown staircase mode");
+      }
     }
+
     this.NBT_json.value.blocks.value.value = this.NBT_json.value.blocks.value.value.concat(physicalColumn);
     this.columnHeightsCache.push(physicalColumn.reduce((a, b) => (a.pos.value.value[1] > b.pos.value.value[1] ? a : b)).pos.value.value[1]);
   }
@@ -803,7 +821,7 @@ function setupColoursLayoutsFromPixelsData() {
 
 onmessage = (e) => {
   coloursJSON = e.data.body.coloursJSON;
-  StaircaseModes = e.data.body.StaircaseModes;
+  MapModes = e.data.body.MapModes;
   WhereSupportBlocksModes = e.data.body.WhereSupportBlocksModes;
   optionValue_version = e.data.body.optionValue_version;
   optionValue_staircasing = e.data.body.optionValue_staircasing;

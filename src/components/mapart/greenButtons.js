@@ -5,7 +5,6 @@ import JSZip from "jszip";
 import Tooltip from "../tooltip";
 
 import MapModes from "./json/mapModes.json";
-import StaircaseModes from "./json/staircaseModes.json";
 import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
 import NBTWorker from "./workers/nbt.jsworker";
@@ -137,7 +136,7 @@ class GreenButtons extends Component {
       head: workerHeader,
       body: {
         coloursJSON: coloursJSON,
-        StaircaseModes: StaircaseModes,
+        MapModes: MapModes,
         WhereSupportBlocksModes: WhereSupportBlocksModes,
         optionValue_version: optionValue_version,
         optionValue_staircasing: optionValue_staircasing,
@@ -180,7 +179,6 @@ class GreenButtons extends Component {
       optionValue_staircasing,
       optionValue_whereSupportBlocks,
       optionValue_supportBlock,
-      optionValue_unobtainable,
       optionValue_transparency,
       optionValue_transparencyTolerance,
       optionValue_mapdatFilenameUseId,
@@ -208,7 +206,6 @@ class GreenButtons extends Component {
       prevProps.optionValue_staircasing !== optionValue_staircasing,
       prevProps.optionValue_whereSupportBlocks !== optionValue_whereSupportBlocks,
       prevProps.optionValue_supportBlock !== optionValue_supportBlock,
-      prevProps.optionValue_unobtainable !== optionValue_unobtainable,
       prevProps.optionValue_transparency !== optionValue_transparency,
       prevProps.optionValue_transparencyTolerance !== optionValue_transparencyTolerance,
       prevProps.optionValue_mapdatFilenameUseId !== optionValue_mapdatFilenameUseId,

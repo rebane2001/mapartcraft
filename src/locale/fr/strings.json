@@ -97,7 +97,12 @@
       "TITLE-TT": "Rend la map en 3D. Plus dure à construire, mais 3 fois plus de couleurs !",
       "OFF": "Off (2D)",
       "CLASSIC": "On (classique)",
-      "VALLEY": "On (Vallée)"
+      "VALLEY": "On (Vallée)",
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "On",
+      "ON-UNOBTAINABLE": "On (introuvables)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": "On (plat)"
       },
       "BACKGROUND-COLOUR": "Couleur"
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

@@ -97,7 +97,12 @@
       "TITLE-TT": "Padaro žemėlapį 3D. Sunkiau statyti, bet 3 kartus daugiau spalvų!",
       "OFF": "Išjungta (2D)",
       "CLASSIC": "Įjungta (clasikinė)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "Įjungta",
+      "ON-UNOBTAINABLE": "Įjungta (Nepasiekiamos)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

@@ -2,7 +2,7 @@ import React, { Component, createRef } from "react";
 
 import Tooltip from "../../tooltip";
 
-import StaircaseModes from "../json/staircaseModes.json";
+import MapModes from "../json/mapModes.json";
 
 import IMG_Textures from "../../../images/textures.png";
 
@@ -143,7 +143,14 @@ class ViewOnline2D extends Component {
         }
         currentY = block_coords[1];
         canvasRef_viewOnline_ctx.fillStyle = "rgba(255, 255, 255, 1)";
-        if (optionValue_staircasing !== StaircaseModes.OFF.uniqueId) {
+        if (
+          [
+            MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId,
+            MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId,
+            MapModes.MAPDAT.staircaseModes.ON.uniqueId,
+            MapModes.MAPDAT.staircaseModes.ON_UNOBTAINABLE.uniqueId,
+          ].includes(optionValue_staircasing)
+        ) {
           canvasRef_viewOnline_ctx.fillText(block_coords[1], 33 * block_coords[0] + 31, 33 * (block_coords[2] + 1) - 2, 31);
         }
       }

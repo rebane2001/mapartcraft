@@ -1,6 +1,5 @@
 var coloursJSON;
 var MapModes;
-var StaircaseModes;
 var WhereSupportBlocksModes;
 var DitherMethods;
 var canvasImageData;
@@ -10,7 +9,6 @@ var optionValue_mapSize_x;
 var optionValue_mapSize_y;
 var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
-var optionValue_unobtainable;
 var optionValue_transparency;
 var optionValue_transparencyTolerance;
 var optionValue_betterColour;
@@ -145,34 +143,18 @@ function setupColourSetsToUse() {
   });
 
   // now get appropriate shades
-  if (optionValue_staircasing === StaircaseModes.OFF.uniqueId) {
-    colourSetIdsToUse.forEach((colourSetId) => {
-      colourSetsToUse.push({
-        colourSetId: colourSetId,
-        tonesRGB: {
-          normal: coloursJSON[colourSetId]["tonesRGB"]["normal"],
-        },
-      });
-    });
-  } else if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId || !optionValue_unobtainable) {
-    colourSetIdsToUse.forEach((colourSetId) => {
-      colourSetsToUse.push({
-        colourSetId: colourSetId,
-        tonesRGB: {
-          dark: coloursJSON[colourSetId]["tonesRGB"]["dark"],
-          normal: coloursJSON[colourSetId]["tonesRGB"]["normal"],
-          light: coloursJSON[colourSetId]["tonesRGB"]["light"],
-        },
-      });
-    });
-  } else {
-    colourSetIdsToUse.forEach((colourSetId) => {
-      colourSetsToUse.push({
-        colourSetId: colourSetId,
-        tonesRGB: {
-          ...coloursJSON[colourSetId]["tonesRGB"],
-        },
-      });
+  const toneKeys = Object.values(Object.values(MapModes).find((mapMode) => mapMode.uniqueId === optionValue_modeNBTOrMapdat).staircaseModes).find(
+    (staircaseMode) => staircaseMode.uniqueId === optionValue_staircasing
+  ).toneKeys;
+
+  for (const colourSetId of colourSetIdsToUse) {
+    let tonesRGB = {};
+    for (const toneKey of toneKeys) {
+      tonesRGB[toneKey] = coloursJSON[colourSetId].tonesRGB[toneKey];
+    }
+    colourSetsToUse.push({
+      colourSetId: colourSetId,
+      tonesRGB: tonesRGB,
     });
   }
 }
@@ -581,7 +563,6 @@ function getMapartImageDataAndMaterials() {
 onmessage = (e) => {
   coloursJSON = e.data.body.coloursJSON;
   MapModes = e.data.body.MapModes;
-  StaircaseModes = e.data.body.StaircaseModes;
   WhereSupportBlocksModes = e.data.body.WhereSupportBlocksModes;
   DitherMethods = e.data.body.DitherMethods;
   canvasImageData = e.data.body.canvasImageData;
@@ -591,7 +572,6 @@ onmessage = (e) => {
   optionValue_mapSize_y = e.data.body.optionValue_mapSize_y;
   optionValue_staircasing = e.data.body.optionValue_staircasing;
   optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
-  optionValue_unobtainable = e.data.body.optionValue_unobtainable;
   optionValue_transparency = e.data.body.optionValue_transparency;
   optionValue_transparencyTolerance = e.data.body.optionValue_transparencyTolerance;
   optionValue_betterColour = e.data.body.optionValue_betterColour;

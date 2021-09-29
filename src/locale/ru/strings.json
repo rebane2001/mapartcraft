@@ -97,7 +97,12 @@
       "TITLE-TT": "Конструировать 3D карту. Строить тяжелее, но цветов в три раза больше!",
       "OFF": "Выкл. (2D)",
       "CLASSIC": "Вкл. (классическая)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "Вкл",
+      "ON-UNOBTAINABLE": "Вкл (Недоступные)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

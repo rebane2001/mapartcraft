@@ -97,7 +97,12 @@
       "TITLE-TT": "Teeb kaardi 3Dks. Raskem ehitada, kuid 3 korda rohkem värve!",
       "OFF": "Väljas (2D)",
       "CLASSIC": "Sees (klassikaline)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "Sees",
+      "ON-UNOBTAINABLE": "Sees (Saavutamatud)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {

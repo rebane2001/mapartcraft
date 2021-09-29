@@ -10,7 +10,6 @@ import BackgroundColourModes from "./json/backgroundColourModes.json";
 import CropModes from "./json/cropModes.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
-import StaircaseModes from "./json/staircaseModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
 import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
@@ -45,8 +44,6 @@ class MapSettings extends Component {
       onOptionChange_WhereSupportBlocks,
       optionValue_supportBlock,
       setOption_SupportBlock,
-      optionValue_unobtainable,
-      onOptionChange_unobtainable,
       optionValue_transparency,
       onOptionChange_transparency,
       optionValue_transparencyTolerance,
@@ -71,6 +68,8 @@ class MapSettings extends Component {
       onOptionChange_PreProcessingBackgroundColourSelect,
       preProcessingValue_backgroundColour,
       onOptionChange_PreProcessingBackgroundColour,
+      optionValue_extras_moreStaircasingOptions,
+      onOptionChange_extras_moreStaircasingOptions,
     } = this.props;
     const setting_mode = (
       <React.Fragment>
@@ -270,11 +269,15 @@ class MapSettings extends Component {
           </b>
         </Tooltip>{" "}
         <select onChange={onOptionChange_staircasing} value={optionValue_staircasing}>
-          {Object.values(StaircaseModes).map((staircaseMode) => (
-            <option key={staircaseMode.uniqueId} value={staircaseMode.uniqueId}>
-              {getLocaleString(staircaseMode.localeKey)}
-            </option>
-          ))}
+          {Object.values(
+            optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? MapModes.SCHEMATIC_NBT.staircaseModes : MapModes.MAPDAT.staircaseModes
+          )
+            .filter((staircaseMode) => optionValue_extras_moreStaircasingOptions || !staircaseMode.extra)
+            .map((staircaseMode) => (
+              <option key={staircaseMode.uniqueId} value={staircaseMode.uniqueId}>
+                {getLocaleString(staircaseMode.localeKey)}
+              </option>
+            ))}
         </select>
         <br />
       </React.Fragment>
@@ -299,7 +302,12 @@ class MapSettings extends Component {
             {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/SUPPORT-BLOCK-TO-ADD")}
             {":"}
           </b>{" "}
-          <AutoCompleteInputBlockToAdd coloursJSON={coloursJSON} value={optionValue_supportBlock} setValue={setOption_SupportBlock} optionValue_version={optionValue_version} />
+          <AutoCompleteInputBlockToAdd
+            coloursJSON={coloursJSON}
+            value={optionValue_supportBlock}
+            setValue={setOption_SupportBlock}
+            optionValue_version={optionValue_version}
+          />
           <br />
         </React.Fragment>
       );
@@ -423,21 +431,8 @@ class MapSettings extends Component {
           </table>
         </div>
       );
-      let setting_unobtainable = (
-        <React.Fragment>
-          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS-TT")}>
-            <b>
-              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/UNOBTAINABLE-COLOURS")}
-              {":"}
-            </b>
-          </Tooltip>{" "}
-          <input type="checkbox" checked={optionValue_unobtainable} onChange={onOptionChange_unobtainable} />
-          <br />
-        </React.Fragment>
-      );
       settings_mapModeConditional = (
         <React.Fragment>
-          {setting_unobtainable}
           {settingGroup_transparency}
           {settingGroup_mapdatFilename}
         </React.Fragment>
@@ -646,6 +641,31 @@ class MapSettings extends Component {
         </details>
       </React.Fragment>
     );
+    const setting_extras_moreStaircasingOptions = (
+      <tr>
+        <th>
+          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/EXTRAS/MORE-STAIRCASING-OPTIONS-TT")}>
+            <b>
+              {getLocaleString("MAP-SETTINGS/EXTRAS/MORE-STAIRCASING-OPTIONS")}
+              {":"}
+            </b>
+          </Tooltip>{" "}
+        </th>
+        <td>
+          <input type="checkbox" checked={optionValue_extras_moreStaircasingOptions} onChange={onOptionChange_extras_moreStaircasingOptions} />
+        </td>
+      </tr>
+    );
+    const settingGroup_extras = (
+      <React.Fragment>
+        <details>
+          <summary>{getLocaleString("MAP-SETTINGS/EXTRAS/TITLE")}</summary>
+          <table>
+            <tbody>{setting_extras_moreStaircasingOptions}</tbody>
+          </table>
+        </details>
+      </React.Fragment>
+    );
     const settingsDiv = (
       <div className="section settingsDiv">
         <h2>{getLocaleString("MAP-SETTINGS/TITLE")}</h2>
@@ -659,6 +679,7 @@ class MapSettings extends Component {
         {setting_betterColour}
         {setting_dithering}
         {settingGroup_preprocessing}
+        {settingGroup_extras}
       </div>
     );
     return settingsDiv;

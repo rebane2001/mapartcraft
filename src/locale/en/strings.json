@@ -97,7 +97,12 @@
       "TITLE-TT": "Makes the map 3D. Harder to build, but 3 times the colors!",
       "OFF": "Off (2D)",
       "CLASSIC": "On (Classic)",
-      "VALLEY": "On (Valley)"
+      "VALLEY": "On (Valley)",
+      "FULL-DARK": "Full-Dark",
+      "FULL-LIGHT": "Full-Light",
+      "ON": "On",
+      "ON-UNOBTAINABLE": "On (Unobtainable)",
+      "FULL-UNOBTAINABLE": "Full-Unobtainable"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": "On (flat)"
       },
       "BACKGROUND-COLOUR": "Colour"
+    },
+    "EXTRAS": {
+      "TITLE": "Extras",
+      "MORE-STAIRCASING-OPTIONS": "More Staircasing Options",
+      "MORE-STAIRCASING-OPTIONS-TT": "Full-Dark, Full-Light, and Full-Unobtainable options"
     }
   },
   "DOWNLOAD": {

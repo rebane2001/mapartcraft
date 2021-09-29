@@ -61,4 +61,4 @@ if __name__ == "__main__":
         os.path.isdir(os.path.join(JSONIO.rectifiedPath("../src/locale"), d))
     ]
     for languageCode in languageCodes:
-        touchLocaleString(languageCode, args.f, args.PATH.upper(), args.en if languageCode == "en" else None)
+        touchLocaleString(languageCode, args.force, args.PATH.upper(), args.en if languageCode == "en" else None)

@@ -97,7 +97,12 @@
       "TITLE-TT": "Tornar o mapa 3D. Mais difícil de construit mais terá 3 vezes mais cor!",
       "OFF": "Desligado (2D)",
       "CLASSIC": "Ligado (classico)",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "Ligado",
+      "ON-UNOBTAINABLE": "Ligado (inatingíveis)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -143,6 +148,11 @@
         "FLAT": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {
