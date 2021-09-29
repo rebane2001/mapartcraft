@@ -40,6 +40,7 @@ class MapPreview extends Component {
       prevProps.optionValue_cropImage_zoom === newProps.optionValue_cropImage_zoom,
       prevProps.optionValue_cropImage_percent_x === newProps.optionValue_cropImage_percent_x,
       prevProps.optionValue_cropImage_percent_y === newProps.optionValue_cropImage_percent_y,
+      prevProps.optionValue_staircasing === newProps.optionValue_staircasing,
       prevProps.optionValue_preprocessingEnabled === newProps.optionValue_preprocessingEnabled,
       prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
       prevProps.preProcessingValue_contrast === newProps.preProcessingValue_contrast,
@@ -101,8 +102,8 @@ class MapPreview extends Component {
     }
   }
 
-  closestFlatColourTo(colourHex) {
-    const { coloursJSON, selectedBlocks } = this.props;
+  closestSmoothColourTo(colourHex) {
+    const { coloursJSON, selectedBlocks, optionValue_staircasing } = this.props;
     const rgbGroups_input = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colourHex);
     const colourRGB_input = [parseInt(rgbGroups_input[1], 16), parseInt(rgbGroups_input[2], 16), parseInt(rgbGroups_input[3], 16)];
     let smallestDistance = 9999999;
@@ -111,14 +112,50 @@ class MapPreview extends Component {
       if (selectedBlocks[colourSetId] === "-1") {
         continue;
       }
-      const colourRGB_colourSet = colourSet.tonesRGB.normal;
-      const colourDistance =
-        Math.pow(colourRGB_input[0] - colourRGB_colourSet[0], 2) +
-        Math.pow(colourRGB_input[1] - colourRGB_colourSet[1], 2) +
-        Math.pow(colourRGB_input[2] - colourRGB_colourSet[2], 2);
-      if (colourDistance < smallestDistance) {
-        smallestDistance = colourDistance;
-        colourRGB_return = colourRGB_colourSet;
+      let coloursRGB_colourSet;
+      switch (optionValue_staircasing) {
+        case MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId:
+        case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId:
+        case MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId:
+        case MapModes.MAPDAT.staircaseModes.OFF.uniqueId: {
+          coloursRGB_colourSet = [colourSet.tonesRGB.normal];
+          break;
+        }
+        case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_DARK.uniqueId:
+        case MapModes.MAPDAT.staircaseModes.FULL_DARK.uniqueId: {
+          coloursRGB_colourSet = [colourSet.tonesRGB.dark];
+          break;
+        }
+        case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_LIGHT.uniqueId:
+        case MapModes.MAPDAT.staircaseModes.FULL_LIGHT.uniqueId: {
+          coloursRGB_colourSet = [colourSet.tonesRGB.light];
+          break;
+        }
+        case MapModes.MAPDAT.staircaseModes.FULL_UNOBTAINABLE.uniqueId: {
+          coloursRGB_colourSet = [colourSet.tonesRGB.unobtainable];
+          break;
+        }
+        case MapModes.MAPDAT.staircaseModes.ON.uniqueId: {
+          coloursRGB_colourSet = [colourSet.tonesRGB.dark, colourSet.tonesRGB.normal, colourSet.tonesRGB.light];
+          break;
+        }
+        case MapModes.MAPDAT.staircaseModes.ON_UNOBTAINABLE.uniqueId: {
+          coloursRGB_colourSet = [colourSet.tonesRGB.dark, colourSet.tonesRGB.normal, colourSet.tonesRGB.light, colourSet.tonesRGB.unobtainable];
+          break;
+        }
+        default: {
+          throw new Error("Unknown staircasing mode");
+        }
+      }
+      for (const colourRGB_colourSet of coloursRGB_colourSet) {
+        const colourDistance =
+          Math.pow(colourRGB_input[0] - colourRGB_colourSet[0], 2) +
+          Math.pow(colourRGB_input[1] - colourRGB_colourSet[1], 2) +
+          Math.pow(colourRGB_input[2] - colourRGB_colourSet[2], 2);
+        if (colourDistance < smallestDistance) {
+          smallestDistance = colourDistance;
+          colourRGB_return = colourRGB_colourSet;
+        }
       }
     }
     const colourHex_return = `#${colourRGB_return[0].toString(16).padStart(2, "0")}${colourRGB_return[1].toString(16).padStart(2, "0")}${colourRGB_return[2]
@@ -158,10 +195,10 @@ class MapPreview extends Component {
       if (preProcessingValue_backgroundColourSelect !== BackgroundColourModes.OFF.uniqueId && /^#?[a-f\d]{6}$/i.test(preProcessingValue_backgroundColour)) {
         let backgroundColour;
         if (
-          preProcessingValue_backgroundColourSelect === BackgroundColourModes.FLAT.uniqueId &&
+          preProcessingValue_backgroundColourSelect === BackgroundColourModes.SMOOTH.uniqueId &&
           !Object.values(selectedBlocks).every((selectedBlockId) => selectedBlockId === "-1")
         ) {
-          backgroundColour = this.closestFlatColourTo(preProcessingValue_backgroundColour);
+          backgroundColour = this.closestSmoothColourTo(preProcessingValue_backgroundColour);
         } else {
           backgroundColour = preProcessingValue_backgroundColour;
         }

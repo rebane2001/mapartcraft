@@ -145,7 +145,7 @@
         "TITLE-TT": "透明背景的圖片專用",
         "OFF": "停用",
         "DITHERED": "啟用 (抖動)",
-        "FLAT": "啟用 (一致)"
+        "SMOOTH": "啟用 (光滑的)"
       },
       "BACKGROUND-COLOUR": "顏色"
     },

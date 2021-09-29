@@ -145,7 +145,7 @@
         "TITLE-TT": "Pour les images transparentes",
         "OFF": "Off",
         "DITHERED": "On (dithered)",
-        "FLAT": "On (plat)"
+        "SMOOTH": "On (lisse)"
       },
       "BACKGROUND-COLOUR": "Couleur"
     },
