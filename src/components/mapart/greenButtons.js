@@ -113,7 +113,9 @@ class GreenButtons extends Component {
           console.log(`Created Mapdat by ${(t1 - t0).toString()}ms`);
           numberOfSplitsCalculated++;
           const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
-          downloadBlobFile(gzip(Mapdat_Bytes), "application/x-minecraft-map", optionValue_mapdatFilenameUseId
+          const NBT_Array_gzipped = gzip(NBT_Array);
+          const downloadBlob = new Blob([NBT_Array_gzipped], { type: "application/x-minecraft-level" });
+          downloadBlobFile(downloadBlob, optionValue_mapdatFilenameUseId
             ? `map_${(optionValue_mapdatFilenameIdStart + whichMap_y * optionValue_mapSize_x + whichMap_x).toString()}.dat`
             : `${uploadedImage_baseFilename}_${whichMap_x.toString()}_${whichMap_y.toString()}.dat`);
           break;
