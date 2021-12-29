@@ -1,27 +1,14 @@
 import React, { Component } from "react";
 
-import coloursJSON from "../coloursJSON.json";
-
-import IMG_Null from "../../../images/null.png";
-import IMG_Textures from "../../../images/textures.png";
+import BlockImage from "../blockImage";
 
 import "./autoCompleteInputBlockToAdd.css";
 
 class AutoCompleteInputBlockToAdd extends Component {
-  state = {
-    activeSuggestionIndex: -1,
-    relevantSuggestions: [],
-    suggestionSelected: true,
-  };
-
-  keyCodes = {
-    ENTER: 13,
-    UP: 38,
-    DOWN: 40,
-  };
+  state = { suggestionSelected: true };
 
   getRelevantSuggestions = () => {
-    const { value, optionValue_version } = this.props;
+    const { coloursJSON, value, optionValue_version } = this.props;
     let suggestions_prefix = [];
     let suggestions_includes = [];
 
@@ -35,8 +22,8 @@ class AutoCompleteInputBlockToAdd extends Component {
           // this is of the form eg "&1.12.2"
           blockNBTData = block.validVersions[blockNBTData.slice(1)];
         }
-        if (Object.keys(blockNBTData.NBTArgs).length === 0 && !block.supportBlockMandatory) {
-          // no exotic blocks for support / noobline
+        if (!block.supportBlockMandatory) {
+          // no gravity affected blocks etc for support / noobline
           if (blockNBTData.NBTName.startsWith(value)) {
             suggestions_prefix.push({
               blockName: blockNBTData.NBTName,
@@ -53,104 +40,42 @@ class AutoCompleteInputBlockToAdd extends Component {
         }
       }
     }
-    this.setState({
-      relevantSuggestions: suggestions_prefix.concat(suggestions_includes),
-    });
+    return suggestions_prefix.concat(suggestions_includes);
   };
 
-  handleChange = (e) => {
+  handleTextChange = (e) => {
     const newValue = e.target.value.replace(" ", "_").toLowerCase();
     this.props.setValue(newValue);
   };
 
-  handleKeyDown = (e) => {
-    const { activeSuggestionIndex, relevantSuggestions } = this.state;
-    this.setState({
-      suggestionSelected: false,
-    });
-    switch (e.keyCode) {
-      case this.keyCodes.UP: {
-        if (activeSuggestionIndex !== -1) {
-          this.setState({ activeSuggestionIndex: activeSuggestionIndex - 1 });
-        }
-        break;
-      }
-      case this.keyCodes.DOWN: {
-        if (activeSuggestionIndex !== relevantSuggestions.length - 1) {
-          this.setState({ activeSuggestionIndex: activeSuggestionIndex + 1 });
-        }
-        break;
-      }
-      case this.keyCodes.ENTER: {
-        if (activeSuggestionIndex !== -1) {
-          this.props.setValue(relevantSuggestions[activeSuggestionIndex].blockName);
-          this.setState({
-            activeSuggestionIndex: -1,
-            suggestionSelected: true,
-          });
-        }
-        break;
-      }
-      default: {
-        this.setState({
-          activeSuggestionIndex: -1,
-        });
-        break;
-      }
-    }
-  };
-
   onSuggestionClicked = (suggestion) => {
     this.props.setValue(suggestion.blockName);
-    this.setState({
-      activeSuggestionIndex: -1,
-      suggestionSelected: true,
-    });
+    this.setState({ suggestionSelected: true });
   };
 
   onFocus = () => {
-    this.setState({
-      suggestionSelected: false,
-    });
+    this.setState({ suggestionSelected: false });
   };
 
-  componentDidMount() {
-    this.getRelevantSuggestions();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { value, optionValue_version } = this.props;
-    if (prevProps.value !== value || prevProps.optionValue_version !== optionValue_version) {
-      this.getRelevantSuggestions();
-    }
-  }
-
   render() {
-    const { value } = this.props;
-    const { activeSuggestionIndex, relevantSuggestions, suggestionSelected } = this.state;
+    const { coloursJSON, value } = this.props;
+    const { suggestionSelected } = this.state;
+
+    const relevantSuggestions = this.getRelevantSuggestions();
 
     return (
       <React.Fragment>
-        <input type="text" value={value} onChange={this.handleChange} onKeyDown={this.handleKeyDown} onFocus={this.onFocus} onClick={this.onFocus} />
+        <input type="text" value={value} onChange={this.handleTextChange} onFocus={this.onFocus} onClick={this.onFocus} />
         <table className={"blockToAddSuggestions"} style={{ display: suggestionSelected || relevantSuggestions.length === 0 ? "none" : "table" }}>
           <tbody>
-            {relevantSuggestions.map((suggestion, suggestionIndex) => (
+            {relevantSuggestions.map((suggestion) => (
               <tr
-                className={suggestionIndex === activeSuggestionIndex ? "blockToAddSuggestion blockToAddSuggestion_active" : "blockToAddSuggestion"}
-                key={suggestion.blockName}
+                className={"blockToAddSuggestion"}
+                key={`${suggestion.colourSetId}$_${suggestion.blockId}_${suggestion.blockName}`}
                 onClick={() => this.onSuggestionClicked(suggestion)}
               >
                 <th>
-                  <img
-                    src={IMG_Null}
-                    alt={coloursJSON[suggestion.colourSetId]["blocks"][suggestion.blockId]["displayName"]}
-                    className={"blockImage"}
-                    style={{
-                      backgroundImage: `url(${IMG_Textures})`,
-                      backgroundPositionX: `-${suggestion.blockId}00%`,
-                      backgroundPositionY: `-${suggestion.colourSetId}00%`,
-                    }}
-                  />
+                  <BlockImage coloursJSON={coloursJSON} colourSetId={suggestion.colourSetId} blockId={suggestion.blockId} />
                 </th>
                 <th>{suggestion.blockName}</th>
               </tr>

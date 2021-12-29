@@ -1,31 +1,34 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
 """Tool for adding a new language to the locale folder. Make sure to manually add a flag and edit src/locale/locale.js"""
 
 import os
-import argparse
 
+from SAOLogging import getParser, setupRootLogger
 from JSONIO import JSONIO
 
-def nullifyDictionary(dictionary):
-    for key in dictionary:
-        if isinstance(dictionary[key], dict):
-            dictionary[key] = nullifyDictionary(dictionary[key])
-        else:
-            dictionary[key] = None
-    return dictionary
+def nullifyTree(tree):
+    if isinstance(tree, dict):
+        for key, value in tree.items():
+            tree[key] = nullifyTree(value)
+        return tree
+    else:
+        return None
 
 def addLocaleLanguage(languageCode):
     locale = JSONIO.loadFromFilename("../src/locale/en/strings.json")
     os.makedirs(JSONIO.rectifiedPath("../src/locale/{}".format(languageCode)), exist_ok = True)
-    locale = nullifyDictionary(locale)
+    locale = nullifyTree(locale)
     JSONIO.saveToFilename("../src/locale/{}/strings.json".format(languageCode), locale)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description = __doc__)
+    parser = getParser(__doc__)
+
     parser.add_argument("LANG",
-        action = "store",
         help = "Language code of the locale to create, eg 'en' or 'de'.")
+
     args = parser.parse_args()
+
+    setupRootLogger(args.verbose, args.quiet)
 
     addLocaleLanguage(args.LANG)

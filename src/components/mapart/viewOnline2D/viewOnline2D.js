@@ -1,7 +1,8 @@
 import React, { Component, createRef } from "react";
 
-import coloursJSON from "../coloursJSON.json";
 import Tooltip from "../../tooltip";
+
+import MapModes from "../json/mapModes.json";
 
 import IMG_Textures from "../../../images/textures.png";
 
@@ -31,7 +32,7 @@ class ViewOnline2D extends Component {
   }
 
   drawNBT() {
-    const { optionValue_version, optionValue_mapSize_x, optionValue_mapSize_y } = this.props;
+    const { coloursJSON, optionValue_version, optionValue_mapSize_x, optionValue_mapSize_y, optionValue_staircasing } = this.props;
     const { viewOnline_NBT_decompressed } = this.state;
     const { canvasRef_viewOnline } = this;
 
@@ -94,16 +95,39 @@ class ViewOnline2D extends Component {
             continue;
           } else {
             processedNoobline = true;
+            // since we ordered blocks by Z and Y in nbt.jsworker, the first block in the column is the highest block of the
+            // noobline pillar (the correct height for the map preview)
           }
         } else {
-          processedNoobline = false;
+          processedNoobline = false; // ready for next column
           if (block_paletteId === NBT_palette.length - 1) {
-            // only draw first (hence top) block, the one visible on the map
+            // last palette entry is support / noobline. don't draw this except on the noobline
             continue;
           }
         }
         const [int_colourSetId, int_blockId] = this.paletteIdToColourSetIdAndBlockId[block_paletteId];
-        canvasRef_viewOnline_ctx.drawImage(img_textures, 32 * int_blockId, 32 * int_colourSetId, 32, 32, 33 * block_coords[0], 33 * block_coords[2], 32, 32);
+        let int_colourSetId_toDraw, int_blockId_toDraw;
+        if (!(int_colourSetId === 64 && int_blockId === 2) && coloursJSON[int_colourSetId.toString()].blocks[int_blockId.toString()].presetIndex === "CUSTOM") {
+          // if not placeholder, and is a custom block, then draw colour on canvas
+          int_colourSetId_toDraw = 64;
+          int_blockId_toDraw = 5;
+          canvasRef_viewOnline_ctx.fillStyle = `rgb(${coloursJSON[int_colourSetId.toString()].tonesRGB.normal.join(", ")})`;
+          canvasRef_viewOnline_ctx.fillRect(33 * block_coords[0], 33 * block_coords[2], 32, 32);
+        } else {
+          int_colourSetId_toDraw = int_colourSetId;
+          int_blockId_toDraw = int_blockId;
+        }
+        canvasRef_viewOnline_ctx.drawImage(
+          img_textures,
+          32 * int_blockId_toDraw,
+          32 * int_colourSetId_toDraw,
+          32,
+          32,
+          33 * block_coords[0],
+          33 * block_coords[2],
+          32,
+          32
+        );
         if (block_coords[2] !== 0) {
           if (block_coords[1] > currentY) {
             canvasRef_viewOnline_ctx.fillStyle = "rgba(0, 0, 32, 0.2)";
@@ -119,7 +143,16 @@ class ViewOnline2D extends Component {
         }
         currentY = block_coords[1];
         canvasRef_viewOnline_ctx.fillStyle = "rgba(255, 255, 255, 1)";
-        canvasRef_viewOnline_ctx.fillText(block_coords[1], 33 * block_coords[0] + 31, 33 * (block_coords[2] + 1) - 2, 31);
+        if (
+          [
+            MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId,
+            MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId,
+            MapModes.MAPDAT.staircaseModes.ON.uniqueId,
+            MapModes.MAPDAT.staircaseModes.ON_UNOBTAINABLE.uniqueId,
+          ].includes(optionValue_staircasing)
+        ) {
+          canvasRef_viewOnline_ctx.fillText(block_coords[1], 33 * block_coords[0] + 31, 33 * (block_coords[2] + 1) - 2, 31);
+        }
       }
       for (let whichChunk_x = 0; whichChunk_x < 8 * optionValue_mapSize_x; whichChunk_x++) {
         for (let whichChunk_y = -1; whichChunk_y < 8 * optionValue_mapSize_y; whichChunk_y++) {
@@ -250,16 +283,16 @@ class ViewOnline2D extends Component {
   }
 
   render() {
-    const { getLocaleString, optionValue_mapSize_x, optionValue_mapSize_y, onGetViewOnlineNBT, onChooseViewOnline3D } = this.props;
+    const { getLocaleString, coloursJSON, optionValue_mapSize_x, optionValue_mapSize_y, onGetViewOnlineNBT, onChooseViewOnline3D } = this.props;
     const { viewOnline_NBT_decompressed, selectedBlock, zoomFactor } = this.state;
     const { canvasOffset_x, canvasOffset_y } = this.state;
 
     const component_controls = (
       <div style={{ display: "flex", flexDirection: "row" }}>
-        <h1 className="cursorPointer" onClick={() => onGetViewOnlineNBT(null)}>
+        <h1 style={{ cursor: "pointer" }} onClick={() => onGetViewOnlineNBT(null)}>
           ❌
         </h1>
-        <h1 className="cursorPointer" onClick={onChooseViewOnline3D}>
+        <h1 style={{ cursor: "pointer" }} onClick={onChooseViewOnline3D}>
           3D
         </h1>
       </div>
@@ -267,7 +300,7 @@ class ViewOnline2D extends Component {
 
     let component_waila = null;
     if (selectedBlock !== null) {
-      component_waila = <Waila getLocaleString={getLocaleString} selectedBlock={selectedBlock} />;
+      component_waila = <Waila coloursJSON={coloursJSON} getLocaleString={getLocaleString} selectedBlock={selectedBlock} />;
     }
 
     let component_size = null;

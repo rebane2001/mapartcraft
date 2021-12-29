@@ -1,31 +1,81 @@
 import React, { Component } from "react";
 
-import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
+import BlockSelectionAddCustom from "./blockSelectionAddCustom/blockSelectionAddCustom";
+import BlockImage from "./blockImage";
 
 import MapModes from "./json/mapModes.json";
-import StaircaseModes from "./json/staircaseModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
-
-import IMG_Null from "../../images/null.png";
-import IMG_Textures from "../../images/textures.png";
 
 import "./blockSelection.css";
 
 class BlockSelection extends Component {
+  state = {
+    lastSelectedCustomBlock: null, // {colourSetId, blockId}
+  };
+
   cssRGB(RGBArray) {
     // RGB array to css compatible string
     return `rgb(${RGBArray.join(", ")})`;
   }
 
+  getColourSetBox = (colourSet) => {
+    const { optionValue_staircasing } = this.props;
+    let background;
+    switch (optionValue_staircasing) {
+      case MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.OFF.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.normal);
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId:
+      case MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.ON.uniqueId: {
+        background = `linear-gradient(${this.cssRGB(colourSet.tonesRGB.dark)} 33%, ${this.cssRGB(colourSet.tonesRGB.normal)} 33%, ${this.cssRGB(
+          colourSet.tonesRGB.normal
+        )} 66%, ${this.cssRGB(colourSet.tonesRGB.light)} 66%)`;
+        break;
+      }
+      case MapModes.MAPDAT.staircaseModes.ON_UNOBTAINABLE.uniqueId: {
+        background = `linear-gradient(${this.cssRGB(colourSet.tonesRGB.unobtainable)} 25%, ${this.cssRGB(colourSet.tonesRGB.dark)} 25%, ${this.cssRGB(
+          colourSet.tonesRGB.dark
+        )} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 75%, ${this.cssRGB(colourSet.tonesRGB.light)} 75%)`;
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_DARK.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.FULL_DARK.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.dark);
+        break;
+      }
+      case MapModes.SCHEMATIC_NBT.staircaseModes.FULL_LIGHT.uniqueId:
+      case MapModes.MAPDAT.staircaseModes.FULL_LIGHT.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.light);
+        break;
+      }
+      case MapModes.MAPDAT.staircaseModes.FULL_UNOBTAINABLE.uniqueId: {
+        background = this.cssRGB(colourSet.tonesRGB.unobtainable);
+        break;
+      }
+      default: {
+        throw new Error("Unknown staircasing value");
+      }
+    }
+    return (
+      <div
+        className="colourSetBox"
+        style={{
+          background: background,
+        }}
+      />
+    );
+  };
+
   render() {
     const {
+      coloursJSON,
       getLocaleString,
       onChangeColourSetBlock,
       optionValue_version,
-      optionValue_modeNBTOrMapdat,
-      optionValue_staircasing,
-      optionValue_unobtainable,
       selectedBlocks,
       presets,
       selectedPresetName,
@@ -34,7 +84,10 @@ class BlockSelection extends Component {
       onSavePreset,
       onSharePreset,
       onGetPDNPaletteClicked,
+      handleAddCustomBlock,
+      handleDeleteCustomBlock,
     } = this.props;
+    const { lastSelectedCustomBlock } = this.state;
     const presetsManagement = (
       <React.Fragment>
         <h2 id="blockselectiontitle">{getLocaleString("BLOCK-SELECTION/TITLE")}</h2>
@@ -74,35 +127,22 @@ class BlockSelection extends Component {
           .filter(([, colourSet]) => Object.values(colourSet.blocks).some((block) => Object.keys(block.validVersions).includes(optionValue_version.MCVersion)))
           .map(([colourSetId, colourSet]) => (
             <div key={colourSetId} className="colourSet">
-              <div
-                className="colourSetBox"
-                style={{
-                  background:
-                    optionValue_staircasing === StaircaseModes.OFF.uniqueId
-                      ? this.cssRGB(colourSet.tonesRGB.normal)
-                      : optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId || !optionValue_unobtainable
-                      ? `linear-gradient(${this.cssRGB(colourSet.tonesRGB.dark)} 33%, ${this.cssRGB(colourSet.tonesRGB.normal)} 33%, ${this.cssRGB(
-                          colourSet.tonesRGB.normal
-                        )} 66%, ${this.cssRGB(colourSet.tonesRGB.light)} 66%)`
-                      : `linear-gradient(${this.cssRGB(colourSet.tonesRGB.unobtainable)} 25%, ${this.cssRGB(colourSet.tonesRGB.dark)} 25%, ${this.cssRGB(
-                          colourSet.tonesRGB.dark
-                        )} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 50%, ${this.cssRGB(colourSet.tonesRGB.normal)} 75%, ${this.cssRGB(
-                          colourSet.tonesRGB.light
-                        )} 75%)`,
-                }}
-              />
+              {this.getColourSetBox(colourSet)}
               <label>
                 <Tooltip tooltipText={getLocaleString("NONE")}>
-                  <img
-                    src={IMG_Null}
-                    alt={getLocaleString("NONE")}
-                    className={selectedBlocks[colourSetId] === "-1" ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
-                    style={{
-                      backgroundImage: `url(${IMG_Textures})`,
-                      backgroundPositionX: "-100%",
-                      backgroundPositionY: "-6400%",
-                    }}
+                  <BlockImage
+                    getLocaleString={getLocaleString}
+                    coloursJSON={coloursJSON}
+                    colourSetId={colourSetId}
+                    blockId={"-1"}
                     onClick={() => onChangeColourSetBlock(colourSetId, "-1")}
+                    style={{
+                      cursor: "pointer",
+                      ...(selectedBlocks[colourSetId] === "-1" && {
+                        filter: "drop-shadow(0 0 4px #658968)",
+                        backgroundColor: "#658968",
+                      }),
+                    }}
                   />
                 </Tooltip>
               </label>
@@ -135,16 +175,25 @@ class BlockSelection extends Component {
                               </Tooltip>
                             </div>
                           )}
-                        <img
-                          src={IMG_Null}
-                          alt={block.displayName}
-                          className={selectedBlocks[colourSetId] === blockId ? "cursorPointer blockImage blockImage_selected" : "cursorPointer blockImage"}
-                          style={{
-                            backgroundImage: `url(${IMG_Textures})`,
-                            backgroundPositionX: `-${blockId}00%`,
-                            backgroundPositionY: `-${colourSetId}00%`,
+                        <BlockImage
+                          coloursJSON={coloursJSON}
+                          colourSetId={colourSetId}
+                          blockId={blockId}
+                          onClick={() => {
+                            onChangeColourSetBlock(colourSetId, blockId);
+                            if (block.presetIndex === "CUSTOM") {
+                              this.setState({ lastSelectedCustomBlock: { colourSetId, blockId } });
+                            }
                           }}
-                          onClick={() => onChangeColourSetBlock(colourSetId, blockId)}
+                          style={{
+                            cursor: "pointer",
+                            ...(selectedBlocks[colourSetId] === blockId && {
+                              filter: "drop-shadow(0 0 4px #658968)",
+                              ...(block.presetIndex !== "CUSTOM" && {
+                                backgroundColor: "#658968",
+                              }),
+                            }),
+                          }}
                         />
                       </Tooltip>
                     </label>
@@ -158,6 +207,13 @@ class BlockSelection extends Component {
       <div className="section blockSelectionDiv">
         {presetsManagement}
         {blockSelection}
+        <BlockSelectionAddCustom
+          getLocaleString={getLocaleString}
+          coloursJSON={coloursJSON}
+          onAddCustomBlock={handleAddCustomBlock}
+          onDeleteCustomBlock={handleDeleteCustomBlock}
+          lastSelectedCustomBlock={lastSelectedCustomBlock}
+        />
       </div>
     );
   }

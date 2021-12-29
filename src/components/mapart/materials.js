@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 
-import coloursJSON from "./coloursJSON.json";
 import Tooltip from "../tooltip";
 
-import IMG_Null from "../../images/null.png";
-import IMG_Textures from "../../images/textures.png";
+import BlockImage from "./blockImage";
 
 import "./materials.css";
 
@@ -19,32 +17,28 @@ class Materials extends Component {
   };
 
   getMaterialsCount_nonZeroMaterialsItems() {
-    const { currentMaterialsData } = this.props;
+    const { coloursJSON, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
-    const materialsCountDict = {};
-    Object.keys(coloursJSON).forEach((colourSetId) => {
-      materialsCountDict[colourSetId] = 0;
-    });
-    currentMaterialsData.maps.forEach((row) => {
-      row.forEach((map) => {
-        const mapMaterialsEntry = map.materials;
-        Object.keys(mapMaterialsEntry).forEach((materialColourSetId) => {
+    const materialsCount = {};
+    for (const colourSetId of Object.keys(coloursJSON)) {
+      materialsCount[colourSetId] = 0;
+    }
+    for (const row of currentMaterialsData.maps) {
+      for (const map of row) {
+        for (const [colourSetId, materialCount] of Object.entries(map.materials)) {
           if (onlyMaxPerSplit) {
-            materialsCountDict[materialColourSetId] = Math.max(materialsCountDict[materialColourSetId], mapMaterialsEntry[materialColourSetId]);
+            materialsCount[colourSetId] = Math.max(materialsCount[colourSetId], materialCount);
           } else {
-            materialsCountDict[materialColourSetId] += mapMaterialsEntry[materialColourSetId];
+            materialsCount[colourSetId] += materialCount;
           }
-        });
+        }
+      }
+    }
+    return Object.entries(materialsCount)
+      .filter(([_, value]) => value !== 0)
+      .sort((first, second) => {
+        return second[1] - first[1];
       });
-    });
-    const nonZeroMaterials = Object.fromEntries(Object.entries(materialsCountDict).filter(([_, value]) => value !== 0));
-    let nonZeroMaterialsItems = Object.keys(nonZeroMaterials).map((key) => {
-      return [key, nonZeroMaterials[key]];
-    });
-    nonZeroMaterialsItems.sort((first, second) => {
-      return second[1] - first[1];
-    });
-    return nonZeroMaterialsItems;
   }
 
   getMaterialsCount_supportBlock() {
@@ -78,7 +72,7 @@ class Materials extends Component {
   };
 
   colourSetIdAndBlockIdFromNBTName(blockName) {
-    const { optionValue_version } = this.props;
+    const { coloursJSON, optionValue_version } = this.props;
     for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
       for (const [blockId, block] of Object.entries(colourSet.blocks)) {
         if (!(optionValue_version.MCVersion in block.validVersions)) {
@@ -101,7 +95,7 @@ class Materials extends Component {
   }
 
   render() {
-    const { getLocaleString, optionValue_supportBlock, currentMaterialsData } = this.props;
+    const { getLocaleString, coloursJSON, optionValue_supportBlock, currentMaterialsData } = this.props;
     const { onlyMaxPerSplit } = this.state;
     const nonZeroMaterialsItems = this.getMaterialsCount_nonZeroMaterialsItems();
     const supportBlockCount = this.getMaterialsCount_supportBlock();
@@ -123,54 +117,34 @@ class Materials extends Component {
               <th>{getLocaleString("MATERIALS/BLOCK")}</th>
               <th>{getLocaleString("MATERIALS/AMOUNT")}</th>
             </tr>
-            {supportBlockCount !== 0 ? (
+            {supportBlockCount !== 0 && (
               <tr>
                 <th>
                   <Tooltip tooltipText={getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}>
-                    <img
-                      src={IMG_Null}
-                      alt={getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}
-                      className={"blockImage"}
-                      style={
-                        supportBlockIds === null
-                          ? {
-                              backgroundImage: `url(${IMG_Textures})`,
-                              backgroundPositionX: "-200%",
-                              backgroundPositionY: "-6400%",
-                            }
-                          : {
-                              backgroundImage: `url(${IMG_Textures})`,
-                              backgroundPositionX: `-${supportBlockIds.blockId}00%`,
-                              backgroundPositionY: `-${supportBlockIds.colourSetId}00%`,
-                            }
-                      }
+                    <BlockImage
+                      getLocaleString={getLocaleString}
+                      coloursJSON={coloursJSON}
+                      colourSetId={supportBlockIds === null ? "64" : supportBlockIds.colourSetId}
+                      blockId={supportBlockIds === null ? "2" : supportBlockIds.blockId}
                     />
                   </Tooltip>
                 </th>
                 <th>{this.formatMaterialCount(supportBlockCount)}</th>
               </tr>
-            ) : null}
-            {nonZeroMaterialsItems.map(([colourSetId, materialCount]) =>
-              currentMaterialsData.currentSelectedBlocks[colourSetId] !== "-1" ? (
+            )}
+            {nonZeroMaterialsItems.map(([colourSetId, materialCount]) => {
+              const blockId = currentMaterialsData.currentSelectedBlocks[colourSetId];
+              return (
                 <tr key={colourSetId}>
                   <th>
-                    <Tooltip tooltipText={coloursJSON[colourSetId]["blocks"][currentMaterialsData.currentSelectedBlocks[colourSetId]]["displayName"]}>
-                      <img
-                        src={IMG_Null}
-                        alt={coloursJSON[colourSetId]["blocks"][currentMaterialsData.currentSelectedBlocks[colourSetId]]["displayName"]}
-                        className={"blockImage"}
-                        style={{
-                          backgroundImage: `url(${IMG_Textures})`,
-                          backgroundPositionX: `-${currentMaterialsData.currentSelectedBlocks[colourSetId]}00%`,
-                          backgroundPositionY: `-${colourSetId}00%`,
-                        }}
-                      />
+                    <Tooltip tooltipText={coloursJSON[colourSetId].blocks[blockId].displayName}>
+                      <BlockImage coloursJSON={coloursJSON} colourSetId={colourSetId} blockId={blockId} />
                     </Tooltip>
                   </th>
                   <th>{this.formatMaterialCount(materialCount)}</th>
                 </tr>
-              ) : null
-            )}
+              );
+            })}
           </tbody>
         </table>
       </div>

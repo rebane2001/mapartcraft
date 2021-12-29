@@ -49,7 +49,22 @@
       "CARPETS": "Carpets",
       "GREYSCALE": "Greyscale"
     },
-    "UNSUPPORTED-PAST": "Unsupported past"
+    "UNSUPPORTED-PAST": "Unsupported past",
+    "ADD-CUSTOM": {
+      "TITLE": "Add Custom",
+      "BLOCK-NAME": "Block Name",
+      "NEEDS-SUPPORT": "Needs Support",
+      "FLAMMABLE": "Flammable",
+      "VERSIONS": "Versions",
+      "COLOUR-SET": "Colour Set",
+      "NBT-TAGS": "NBT Tags",
+      "ADD": "Add",
+      "ERROR-NONE-SELECTED": "Select version(s) before adding",
+      "ERROR-NO-NAME": "Enter block name before adding",
+      "EXAMPLES": "Examples",
+      "DELETE": "Delete",
+      "NO-EXPORT": "Note: Custom blocks will not be exported."
+    }
   },
   "MAP-PREVIEW": {
     "TITLE": "Map preview",
@@ -82,7 +97,12 @@
       "TITLE-TT": "Makes the map 3D. Harder to build, but 3 times the colors!",
       "OFF": "Off (2D)",
       "CLASSIC": "On (Classic)",
-      "VALLEY": "On (Valley)"
+      "VALLEY": "On (Valley)",
+      "FULL-DARK": "Full-Dark",
+      "FULL-LIGHT": "Full-Light",
+      "ON": "On",
+      "ON-UNOBTAINABLE": "On (Unobtainable)",
+      "FULL-UNOBTAINABLE": "Full-Unobtainable"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -125,9 +145,14 @@
         "TITLE-TT": "For images with transparency",
         "OFF": "Off",
         "DITHERED": "On (dithered)",
-        "FLAT": "On (flat)"
+        "SMOOTH": "On (smooth)"
       },
       "BACKGROUND-COLOUR": "Colour"
+    },
+    "EXTRAS": {
+      "TITLE": "Extras",
+      "MORE-STAIRCASING-OPTIONS": "More Staircasing Options",
+      "MORE-STAIRCASING-OPTIONS-TT": "Full-Dark, Full-Light, and Full-Unobtainable options"
     }
   },
   "DOWNLOAD": {

@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-import coloursJSON from "../coloursJSON.json";
-
-import IMG_Null from "../../../images/null.png";
-import IMG_Textures from "../../../images/textures.png";
+import BlockImage from "../blockImage";
 
 import "./waila.css";
 
@@ -11,39 +8,20 @@ import "./waila.css";
 
 class Waila extends Component {
   render() {
-    const { getLocaleString, selectedBlock, styleOverrides } = this.props;
+    const { getLocaleString, coloursJSON, selectedBlock, ...props_others } = this.props;
     return (
-      <div className={"viewOnline_waila"} style={styleOverrides}>
+      <div className={"viewOnline_waila"} {...props_others}>
         <h3>{`x: ${selectedBlock.x.toString()} y: ${selectedBlock.y.toString()} z: ${selectedBlock.z.toString()}`}</h3>
-        {selectedBlock.colourSetId === 64 && selectedBlock.blockId === 2 ? (
-          <React.Fragment>
-            <img
-              src={IMG_Null}
-              alt={getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}
-              style={{
-                backgroundImage: `url(${IMG_Textures})`,
-                backgroundPositionX: "-200%",
-                backgroundPositionY: "-6400%",
-                verticalAlign: "middle",
-              }}
-            />{" "}
-            {getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")}
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <img
-              src={IMG_Null}
-              alt={coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].displayName}
-              style={{
-                backgroundImage: `url(${IMG_Textures})`,
-                backgroundPositionX: `-${selectedBlock.blockId}00%`,
-                backgroundPositionY: `-${selectedBlock.colourSetId}00%`,
-                verticalAlign: "middle",
-              }}
-            />{" "}
-            {coloursJSON[selectedBlock.colourSetId].blocks[selectedBlock.blockId].displayName}
-          </React.Fragment>
-        )}
+        <BlockImage
+          getLocaleString={getLocaleString}
+          coloursJSON={coloursJSON}
+          colourSetId={selectedBlock.colourSetId.toString()}
+          blockId={selectedBlock.blockId.toString()}
+          style={{ verticalAlign: "middle" }}
+        />{" "}
+        {selectedBlock.colourSetId === 64 && selectedBlock.blockId === 2
+          ? getLocaleString("MATERIALS/PLACEHOLDER-BLOCK-TT")
+          : coloursJSON[selectedBlock.colourSetId.toString()].blocks[selectedBlock.blockId.toString()].displayName}
       </div>
     );
   }

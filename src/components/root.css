@@ -10,6 +10,7 @@
     bottom: 0.1em;
     right: 0.1em;
     max-width: 20em;
+    z-index: 200;
 }
 
 .fixedMessage {

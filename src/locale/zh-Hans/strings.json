@@ -49,7 +49,22 @@
       "CARPETS": "地毯",
       "GREYSCALE": null
     },
-    "UNSUPPORTED-PAST": null
+    "UNSUPPORTED-PAST": null,
+    "ADD-CUSTOM": {
+      "TITLE": null,
+      "BLOCK-NAME": null,
+      "NEEDS-SUPPORT": null,
+      "FLAMMABLE": null,
+      "VERSIONS": null,
+      "COLOUR-SET": null,
+      "NBT-TAGS": null,
+      "ADD": null,
+      "ERROR-NONE-SELECTED": null,
+      "ERROR-NO-NAME": null,
+      "EXAMPLES": null,
+      "DELETE": "删除",
+      "NO-EXPORT": null
+    }
   },
   "MAP-PREVIEW": {
     "TITLE": "地图预览",
@@ -82,7 +97,12 @@
       "TITLE-TT": "将地图制作为3D。 很难制造，但是表现出3倍的颜色！",
       "OFF": "关（2D）",
       "CLASSIC": "开（原版）",
-      "VALLEY": null
+      "VALLEY": null,
+      "FULL-DARK": null,
+      "FULL-LIGHT": null,
+      "ON": "开",
+      "ON-UNOBTAINABLE": "开 (无法获得)",
+      "FULL-UNOBTAINABLE": null
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -125,9 +145,14 @@
         "TITLE-TT": null,
         "OFF": null,
         "DITHERED": null,
-        "FLAT": null
+        "SMOOTH": null
       },
       "BACKGROUND-COLOUR": null
+    },
+    "EXTRAS": {
+      "TITLE": null,
+      "MORE-STAIRCASING-OPTIONS": null,
+      "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
   "DOWNLOAD": {
