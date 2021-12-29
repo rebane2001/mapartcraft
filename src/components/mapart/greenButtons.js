@@ -113,6 +113,14 @@ class GreenButtons extends Component {
           console.log(`Created Mapdat by ${(t1 - t0).toString()}ms`);
           numberOfSplitsCalculated++;
           const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
+          downloadBlobFile(gzip(Mapdat_Bytes), "application/x-minecraft-map", `${uploadedImage_baseFilename}_${whichMap_x}_${whichMap_y}.dat`);
+          break;
+        }
+        case "MAPDAT_BYTES_ZIP": {
+          const t1 = performance.now();
+          console.log(`Created Mapdat by ${(t1 - t0).toString()}ms`);
+          numberOfSplitsCalculated++;
+          const { Mapdat_Bytes, whichMap_x, whichMap_y } = e.data.body;
           const Mapdat_Bytes_gzipped = gzip(Mapdat_Bytes);
           zipFile.file(
             optionValue_mapdatFilenameUseId
@@ -163,6 +171,10 @@ class GreenButtons extends Component {
 
   onGetMapdatSplitClicked = () => {
     this.getNBT_base("CREATE_MAPDAT_SPLIT");
+  };
+
+  onGetMapdatSplitZipClicked = () => {
+    this.getNBT_base("CREATE_MAPDAT_SPLIT_ZIP");
   };
 
   componentDidUpdate_shouldNBTWorkerTerminate(prevProps) {
@@ -293,6 +305,19 @@ class GreenButtons extends Component {
         <React.Fragment>
           <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
             <div className="greenButton" onClick={this.onGetMapdatSplitClicked}>
+              <span className="greenButton_large_text_dummy">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")}`}</span>
+              <span className="greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")}`}</span>
+              <div
+                className="greenButton_progressDiv"
+                style={{
+                  width: `${Math.floor(buttonWidth_Mapdat_Split * 100)}%`,
+                }}
+              />
+            </div>
+          </Tooltip>
+          <br />
+          <Tooltip tooltipText={getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD-TT")}>
+            <div className="greenButton" onClick={this.onGetMapdatSplitZipClicked}>
               <span className="greenButton_large_text_dummy">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
               <span className="greenButton_large_text">{`${getLocaleString("DOWNLOAD/MAPDAT-SPECIFIC/DOWNLOAD")} .ZIP`}</span>
               <div

@@ -862,13 +862,14 @@ onmessage = (e) => {
       }
       break;
     }
-    case "CREATE_MAPDAT_SPLIT": {
+    case "CREATE_MAPDAT_SPLIT":
+    case "CREATE_MAPDAT_SPLIT_ZIP": {
       for (let whichMap_y = 0; whichMap_y < maps.length; whichMap_y++) {
         for (let whichMap_x = 0; whichMap_x < maps[0].length; whichMap_x++) {
           const map_Mapdat = new Map_Mapdat(maps[whichMap_y][whichMap_x]);
           const Mapdat_Bytes = map_Mapdat.getNBT();
           postMessage({
-            head: "MAPDAT_BYTES",
+            head: headerMessage === "CREATE_MAPDAT_SPLIT_ZIP" ? "MAPDAT_BYTES_ZIP" : "MAPDAT_BYTES",
             body: {
               whichMap_x: whichMap_x,
               whichMap_y: whichMap_y,
