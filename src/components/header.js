@@ -26,7 +26,7 @@ class Header extends Component {
             <span className="FAQTextButton">{getLocaleString("FAQ/FAQ")}</span>
           </Link>
           <span> | </span>
-          <a href="https://youtu.be/bJ-wX68WNHM" target="_blank" rel="noopener noreferrer">
+          <a href="https://youtu.be/j-4RXPkJKU8" target="_blank" rel="noopener noreferrer">
             {getLocaleString("FAQ/VIDEO-TUTORIAL")}
           </a>
           <span> | </span>
