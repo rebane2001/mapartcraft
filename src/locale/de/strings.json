@@ -174,8 +174,8 @@
     "BLOCK": "Block",
     "AMOUNT": "Anzahl",
     "PLACEHOLDER-BLOCK-TT": "Platzhalter-Block",
-    "SHOW-PER-SPLIT": null,
-    "SHOW-PER-SPLIT-TT": null,
+    "SHOW-PER-SPLIT": "Nur maximale Materialienveränderung zeigen:",
+    "SHOW-PER-SPLIT-TT": "Für Materialwiderverwertung bei feststellbaren Karten",
     "REFRESH-MATERIALS": "MATERIALIEN AKTUALISIEREN",
     "REFRESH-MATERIALS-TT": "Materialliste aktualisieren"
   },
