@@ -4,7 +4,7 @@
     "CREDITS": "OSC311, SiderealArt"
   },
   "HEAD-META-TAGS": {
-    "DESCRIPTION": null
+    "DESCRIPTION": "一個 Minecraft 地圖畫 schematic 及 map.dat 產生器"
   },
   "FAQ": {
     "FAQ": "常見問題",
@@ -15,7 +15,7 @@
     "VIDEO-TUTORIAL": "影片教學"
   },
   "DESCRIPTION": {
-    "1": "Minecraft 地圖畫產生器，可輸出 schematic 檔和 map.dat，伺服器管理員和例如在 ",
+    "1": "一個 Minecraft 地圖畫 schematic 及 map.dat 產生器，伺服器管理員和例如在 ",
     "2": "的生存玩家皆可使用，並直接在您的瀏覽器運行。",
     "3": "啟發自 ",
     "4": "Redstonehelper 製作的地圖畫產生器",
@@ -51,19 +51,19 @@
     },
     "UNSUPPORTED-PAST": "不支援的過往",
     "ADD-CUSTOM": {
-      "TITLE": null,
-      "BLOCK-NAME": null,
-      "NEEDS-SUPPORT": null,
-      "FLAMMABLE": null,
-      "VERSIONS": null,
-      "COLOUR-SET": null,
-      "NBT-TAGS": null,
-      "ADD": null,
-      "ERROR-NONE-SELECTED": null,
-      "ERROR-NO-NAME": null,
-      "EXAMPLES": null,
+      "TITLE": "新增自訂方塊",
+      "BLOCK-NAME": "方塊名稱",
+      "NEEDS-SUPPORT": "需要支撐",
+      "FLAMMABLE": "可燃",
+      "VERSIONS": "版本",
+      "COLOUR-SET": "顏色集",
+      "NBT-TAGS": "NBT 標籤",
+      "ADD": "新增",
+      "ERROR-NONE-SELECTED": "請選擇版本再新增方塊。",
+      "ERROR-NO-NAME": "請輸入方塊名稱再新增。",
+      "EXAMPLES": "範例",
       "DELETE": "刪除",
-      "NO-EXPORT": null
+      "NO-EXPORT": "提醒：自訂方塊不會被匯出。"
     }
   },
   "MAP-PREVIEW": {
@@ -93,16 +93,16 @@
     "GRID-OVERLAY": "網格",
     "GRID-OVERLAY-TT": "在預覽圖中顯示 16*16 的區塊及 1x1 的方格網格。",
     "3D": {
-      "TITLE": "階梯化",
+      "TITLE": "階層化",
       "TITLE-TT": "讓地圖畫變成 3D。更難建造，但色彩範圍能夠擴增三倍！",
       "OFF": "關閉 (2D)",
       "CLASSIC": "啟用 (傳統)",
       "VALLEY": "啟用 (山谷)",
-      "FULL-DARK": null,
-      "FULL-LIGHT": null,
+      "FULL-DARK": "全暗",
+      "FULL-LIGHT": "全亮",
       "ON": "啟用",
-      "ON-UNOBTAINABLE": "啟用 (無法取得的)",
-      "FULL-UNOBTAINABLE": null
+      "ON-UNOBTAINABLE": "啟用 (無法取得)",
+      "FULL-UNOBTAINABLE": "全無法取得"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -123,9 +123,9 @@
       "TRANSPARENCY": "透明度",
       "TRANSPARENCY-TT": "為 map.dat 啟用透明度",
       "TRANSPARENCY-TOLERANCE": "容忍度",
-      "MAPDAT-FILENAME-USE-ID": null,
-      "MAPDAT-FILENAME-USE-ID-TT": null,
-      "MAPDAT-FILENAME-ID-RANGE": null
+      "MAPDAT-FILENAME-USE-ID": "檔名編號",
+      "MAPDAT-FILENAME-USE-ID-TT": "map.dat 的檔名格式將設為 'map_#.dat'",
+      "MAPDAT-FILENAME-ID-RANGE": "範圍"
     },
     "BETTER-COLOUR": "提高色準",
     "BETTER-COLOUR-TT": "提升色彩準確度",
@@ -150,9 +150,9 @@
       "BACKGROUND-COLOUR": "顏色"
     },
     "EXTRAS": {
-      "TITLE": null,
-      "MORE-STAIRCASING-OPTIONS": null,
-      "MORE-STAIRCASING-OPTIONS-TT": null
+      "TITLE": "額外",
+      "MORE-STAIRCASING-OPTIONS": "更多階層化選項",
+      "MORE-STAIRCASING-OPTIONS-TT": "全暗、全亮及全無法取得"
     }
   },
   "DOWNLOAD": {
