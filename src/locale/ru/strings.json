@@ -1,7 +1,7 @@
 {
   "TRANSLATION": {
     "NAME": "Russian",
-    "CREDITS": "Перевод: Cublay; Редактирование: Ajno"
+    "CREDITS": "Перевод: Cublay; Редактирование: Ajno, rekayno"
   },
   "HEAD-META-TAGS": {
     "DESCRIPTION": null
@@ -23,15 +23,15 @@
     "6": "Вы можете свободно писать мне в Discord ",
     "7": " или Reddit ",
     "8": ", предложения о добавлении новых функций и сообщения об ошибках отправляйте в ",
-    "9": null,
-    "10": null
+    "9": "Примечание: MapartCraft обновлен до новой сияющей версии. Если что-то сломалось, вы все равно можете использовать ",
+    "10": "классическую версию"
   },
   "BLOCK-SELECTION": {
     "TITLE": "Выбор блоков",
     "PRESETS": {
       "TITLE": "Шаблон",
       "DELETE": "Удалить",
-      "DELETE-ERROR-DEFAULT": null,
+      "DELETE-ERROR-DEFAULT": "Это предустановленный шаблон, и его нельзя редактировать / удалять.",
       "SAVE": "Сохранить",
       "SAVE-PROMPT-ENTER-NAME": "Введите название:",
       "SHARE": "Поделиться",
@@ -44,7 +44,7 @@
       "DOWNLOAD-WARNING-MAX-COLOURS-1": "Внимание, в вашей палитре ",
       "DOWNLOAD-WARNING-MAX-COLOURS-2": " цветов, максимум для Paint.net составляет 96. Некоторые цвета будут недоступны в Paint.net",
       "IMPORT-ERROR-CORRUPTED": "Ссылка повреждена!",
-      "NONE": "Нет",
+      "NONE": "Не выбран",
       "EVERYTHING": "Все",
       "CARPETS": "Коврики",
       "GREYSCALE": "Оттенки серого"
@@ -84,17 +84,17 @@
     "MAP-SIZE": "Размер карты",
     "CROP": {
       "TITLE": "Обрезка",
-      "TITLE-TT": "Обрезает, а не растягивает ваше изображение",
-      "OFF": null,
-      "CENTER": null,
-      "MANUAL": null,
-      "ZOOM": null
+      "TITLE-TT": "Обрезает ваше изображение вместо того, чтобы растягивать его",
+      "OFF": "Отключена",
+      "CENTER": "Центр",
+      "MANUAL": "Ручная",
+      "ZOOM": "Масштаб"
     },
-    "GRID-OVERLAY": null,
+    "GRID-OVERLAY": "Сетка",
     "GRID-OVERLAY-TT": null,
     "3D": {
       "TITLE": "Ступеньчатость",
-      "TITLE-TT": "Конструировать 3D карту. Строить тяжелее, но цветов в три раза больше!",
+      "TITLE-TT": "Делает карту в 3D. Сложнее построить, но в 3 раза больше цветов!",
       "OFF": "Выкл. (2D)",
       "CLASSIC": "Вкл. (классическая)",
       "VALLEY": null,
@@ -120,38 +120,38 @@
     "MAPDAT-SPECIFIC": {
       "UNOBTAINABLE-COLOURS": "Недоступные цвета",
       "UNOBTAINABLE-COLOURS-TT": "Включает цвета map.dat, недоступные в schematic-файлах",
-      "TRANSPARENCY": null,
-      "TRANSPARENCY-TT": null,
+      "TRANSPARENCY": "Прозрачность",
+      "TRANSPARENCY-TT": "Включает прозрачность для map.dat",
       "TRANSPARENCY-TOLERANCE": null,
       "MAPDAT-FILENAME-USE-ID": null,
       "MAPDAT-FILENAME-USE-ID-TT": null,
       "MAPDAT-FILENAME-ID-RANGE": null
     },
     "BETTER-COLOUR": "Улучшенный цвет",
-    "BETTER-COLOUR-TT": "Более точное отображение цвета",
+    "BETTER-COLOUR-TT": "Обеспечивает лучшую точность цветопередачи",
     "DITHERING": {
       "TITLE": "Смешение",
       "TITLE-TT": "Добавляет случайные пиксели для иллюзии большего количества цветов",
       "NONE": "Без смешения"
     },
     "PREPROCESSING": {
-      "TITLE": null,
-      "ENABLE": null,
-      "BRIGHTNESS": null,
-      "CONTRAST": null,
-      "SATURATION": null,
+      "TITLE": "Предварительная обработка изображения",
+      "ENABLE": "Включить",
+      "BRIGHTNESS": "Яркость",
+      "CONTRAST": "Контраст",
+      "SATURATION": "Насыщение",
       "BACKGROUND": {
-        "TITLE": null,
-        "TITLE-TT": null,
-        "OFF": null,
-        "DITHERED": null,
-        "SMOOTH": null
+        "TITLE": "Фон",
+        "TITLE-TT": "Для изображений с прозрачностью",
+        "OFF": "Выкл.",
+        "DITHERED": "Вкл. (смешанный)",
+        "SMOOTH": "Вкл. (сглаженный)"
       },
-      "BACKGROUND-COLOUR": null
+      "BACKGROUND-COLOUR": "Цвет"
     },
     "EXTRAS": {
-      "TITLE": null,
-      "MORE-STAIRCASING-OPTIONS": null,
+      "TITLE": "Дополнительно",
+      "MORE-STAIRCASING-OPTIONS": "Больше вариантов ступенчатости",
       "MORE-STAIRCASING-OPTIONS-TT": null
     }
   },
@@ -167,7 +167,7 @@
       "DOWNLOAD": "ЗАГРУЗИТЬ",
       "DOWNLOAD-TT": "Загрузить map.dat разделённую почанково"
     },
-    "ZIPPING": null
+    "ZIPPING": "Архивирование"
   },
   "MATERIALS": {
     "TITLE": "Материалы",
@@ -180,18 +180,18 @@
     "REFRESH-MATERIALS-TT": "Обновить список материалов"
   },
   "VIEW-ONLINE": {
-    "TITLE": null,
-    "TITLE-TT": null,
+    "TITLE": "ПОСМОТРЕТЬ ОНЛАЙН",
+    "TITLE-TT": "Посмотреть схему онлайн без скачивания",
     "TOO-BIG-FOR-SINGLE": null,
     "CONTROLS": null,
     "TO-EXIT": null,
     "SIZE": "Размер"
   },
   "DONATE": {
-    "TITLE": "ПОМОЩЬ ПРОЕКТУ",
+    "TITLE": "ПОМОЧЬ ПРОЕКТУ",
     "TITLE-TT": "Показать спонсоров и пожертвовать деньги"
   },
-  "LITEMATICA-WARNING": null,
+  "LITEMATICA-WARNING": "Предупреждение, Litematica не очень хорошо поддерживает 1.15.2; рекомендуется обновить до 1.16.5",
   "EDGE-WARNING": "Примечание: Microsoft Edge не поддерживается.\\nПожалуйста, используйте Chrome (предпочтительно) или Firefox ",
   "NONE": "Нет",
   "UNUSED": {
