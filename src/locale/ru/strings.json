@@ -29,7 +29,7 @@
   "BLOCK-SELECTION": {
     "TITLE": "Выбор блоков",
     "PRESETS": {
-      "TITLE": "Шаблоны",
+      "TITLE": "Шаблон",
       "DELETE": "Удалить",
       "DELETE-ERROR-DEFAULT": null,
       "SAVE": "Сохранить",
@@ -47,7 +47,7 @@
       "NONE": "Нет",
       "EVERYTHING": "Все",
       "CARPETS": "Коврики",
-      "GREYSCALE": null
+      "GREYSCALE": "Оттенки серого"
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {
