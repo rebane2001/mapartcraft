@@ -4,7 +4,7 @@
     "CREDITS": "Перевод: Cublay; Редактирование: Ajno, rekayno"
   },
   "HEAD-META-TAGS": {
-    "DESCRIPTION": null
+    "DESCRIPTION": "Генератор файлов schematic и map.dat для создания пиксель-артов на картах"
   },
   "FAQ": {
     "FAQ": "FAQ",
@@ -67,7 +67,7 @@
     }
   },
   "MAP-PREVIEW": {
-    "TITLE": "Предпросмотр",
+    "TITLE": "Предпросмотр карты",
     "BEST-RESOLUTION-TT": "Изображение такого разрешения будет выглядеть лучше всего",
     "ASPECT-RATIO-MISMATCH-TT": "Изображение не соответствует соотношению сторон карты",
     "SCALE-MINUS-TT": "Уменьшить мини-карту",
@@ -91,18 +91,18 @@
       "ZOOM": "Масштаб"
     },
     "GRID-OVERLAY": "Сетка",
-    "GRID-OVERLAY-TT": null,
+    "GRID-OVERLAY-TT": "Накладывает сетку, которая показывает чанки 16x16 и разбиения 1x1.",
     "3D": {
       "TITLE": "Ступеньчатость",
       "TITLE-TT": "Делает карту в 3D. Сложнее построить, но в 3 раза больше цветов!",
       "OFF": "Выкл. (2D)",
       "CLASSIC": "Вкл. (классическая)",
-      "VALLEY": null,
-      "FULL-DARK": null,
-      "FULL-LIGHT": null,
+      "VALLEY": "Вкл. (впадина)",
+      "FULL-DARK": "Полная темнота",
+      "FULL-LIGHT":  "Полный свет",
       "ON": "Вкл",
       "ON-UNOBTAINABLE": "Вкл (Недоступные)",
-      "FULL-UNOBTAINABLE": null
+      "FULL-UNOBTAINABLE": "Полностью-недоступные"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -175,7 +175,7 @@
     "AMOUNT": "Количество",
     "PLACEHOLDER-BLOCK-TT": "Заменяющий блок",
     "SHOW-PER-SPLIT": null,
-    "SHOW-PER-SPLIT-TT": null,
+    "SHOW-PER-SPLIT-TT": "Для повторного использования материалов с заблокированными картами",
     "REFRESH-MATERIALS": "ОБНОВИТЬ МАТЕРИАЛЫ",
     "REFRESH-MATERIALS-TT": "Обновить список материалов"
   },
@@ -183,7 +183,7 @@
     "TITLE": "ПОСМОТРЕТЬ ОНЛАЙН",
     "TITLE-TT": "Посмотреть схему онлайн без скачивания",
     "TOO-BIG-FOR-SINGLE": null,
-    "CONTROLS": null,
+    "CONTROLS": "Элементы управления",
     "TO-EXIT": null,
     "SIZE": "Размер"
   },
