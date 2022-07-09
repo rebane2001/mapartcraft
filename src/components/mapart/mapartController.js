@@ -68,7 +68,8 @@ class MapartController extends Component {
   constructor(props) {
     super(props);
     // update default presets to latest version; done via checking for localeString
-    let cookiesPresets_loaded = JSON.parse(CookieManager.touchCookie("presets", JSON.stringify(DefaultPresets)));
+    CookieManager.init();
+    let cookiesPresets_loaded = JSON.parse(CookieManager.touchCookie("mapartcraft_presets", JSON.stringify(DefaultPresets)));
     let cookiesPresets_updated = [];
     for (const cookiesPreset_loaded of cookiesPresets_loaded) {
       let cookiesPreset_updated = undefined;
@@ -80,17 +81,17 @@ class MapartController extends Component {
       }
       cookiesPresets_updated.push(cookiesPreset_updated);
     }
-    CookieManager.setCookie("presets", JSON.stringify(cookiesPresets_updated));
+    CookieManager.setCookie("mapartcraft_presets", JSON.stringify(cookiesPresets_updated));
     this.state.presets = cookiesPresets_updated;
 
-    let cookie_customBlocks = JSON.parse(CookieManager.touchCookie("customBlocks", JSON.stringify([])));
+    let cookie_customBlocks = JSON.parse(CookieManager.touchCookie("mapartcraft_customBlocks", JSON.stringify([])));
     this.state.coloursJSON = this.getMergedColoursJSON(cookie_customBlocks);
 
     for (const colourSetId of Object.keys(this.state.coloursJSON)) {
       this.state.selectedBlocks[colourSetId] = "-1";
     }
 
-    const cookieMCVersion = CookieManager.touchCookie("mcversion", Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1].MCVersion);
+    const cookieMCVersion = CookieManager.touchCookie("mapartcraft_mcversion", Object.values(SupportedVersions)[Object.keys(SupportedVersions).length - 1].MCVersion);
     const supportedVersionFound = Object.values(SupportedVersions).find((supportedVersion) => supportedVersion.MCVersion === cookieMCVersion);
     if (supportedVersionFound !== undefined) {
       this.state.optionValue_version = supportedVersionFound;
@@ -226,7 +227,7 @@ class MapartController extends Component {
   onOptionChange_version = (e) => {
     const { coloursJSON } = this.state;
     const mcVersion = e.target.value;
-    CookieManager.setCookie("mcversion", mcVersion);
+    CookieManager.setCookie("mapartcraft_mcversion", mcVersion);
     const supportedVersionFound = Object.values(SupportedVersions).find((supportedVersion) => supportedVersion.MCVersion === mcVersion);
     this.setState((currentState) => {
       let selectedBlocks = { ...currentState.selectedBlocks };
@@ -479,7 +480,7 @@ class MapartController extends Component {
       presets: presets_new,
       selectedPresetName: "None",
     });
-    CookieManager.setCookie("presets", JSON.stringify(presets_new));
+    CookieManager.setCookie("mapartcraft_presets", JSON.stringify(presets_new));
   };
 
   handleSavePreset = () => {
@@ -503,7 +504,7 @@ class MapartController extends Component {
       presets: presets_new,
       selectedPresetName: presetToSave_name,
     });
-    CookieManager.setCookie("presets", JSON.stringify(presets_new));
+    CookieManager.setCookie("mapartcraft_presets", JSON.stringify(presets_new));
   };
 
   selectedBlocksToURL = () => {
@@ -669,7 +670,7 @@ class MapartController extends Component {
       }
     }
 
-    const customBlocks = JSON.parse(CookieManager.getCookie("customBlocks"));
+    const customBlocks = JSON.parse(CookieManager.getCookie("mapartcraft_customBlocks"));
     let customBlocks_new = customBlocks.filter(
       (customBlock) =>
         customBlock[0] !== block_colourSetId ||
@@ -684,7 +685,7 @@ class MapartController extends Component {
     this.setState((currentState) => {
       return { coloursJSON: this.getMergedColoursJSON(customBlocks_new), selectedBlocks: { ...currentState.selectedBlocks, [block_colourSetId]: "-1" } };
     });
-    CookieManager.setCookie("customBlocks", JSON.stringify(customBlocks_new));
+    CookieManager.setCookie("mapartcraft_customBlocks", JSON.stringify(customBlocks_new));
   };
 
   handleDeleteCustomBlock = (block_colourSetId, block_name, block_versions) => {
@@ -700,7 +701,7 @@ class MapartController extends Component {
       }
     }
 
-    const customBlocks = JSON.parse(CookieManager.getCookie("customBlocks"));
+    const customBlocks = JSON.parse(CookieManager.getCookie("mapartcraft_customBlocks"));
     let customBlocks_new = customBlocks.filter(
       (customBlock) =>
         customBlock[0] !== block_colourSetId ||
@@ -723,7 +724,7 @@ class MapartController extends Component {
         },
       };
     });
-    CookieManager.setCookie("customBlocks", JSON.stringify(customBlocks_new));
+    CookieManager.setCookie("mapartcraft_customBlocks", JSON.stringify(customBlocks_new));
   };
 
   render() {

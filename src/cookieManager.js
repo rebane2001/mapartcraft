@@ -1,4 +1,14 @@
 class CookieManager {
+  static init() {
+    // Handle cookie migration
+    const cookieNames = ["presets", "mcversion", "customBlocks"];
+    cookieNames.forEach(name => {
+      if (this.getCookie(`mapartcraft_${name}`) === null && this.getCookie(name) !== null) {
+        this.setCookie(`mapartcraft_${name}`, this.getCookie(name));
+      }
+    });
+  }
+
   //Thx
   //https://www.w3schools.com/js/js_cookies.asp
   static setCookie(cname, cvalue) {
@@ -8,8 +18,6 @@ class CookieManager {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
-  //Thx
-  //https://www.w3schools.com/js/js_cookies.asp
   static getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(";");
@@ -22,12 +30,12 @@ class CookieManager {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return null;
   }
 
   static touchCookie(cname, defaultValue) {
     const cookieValue = this.getCookie(cname);
-    if (cookieValue !== "") {
+    if (cookieValue !== null) {
       return cookieValue;
     } else {
       this.setCookie(cname, defaultValue);
