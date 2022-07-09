@@ -1,7 +1,7 @@
 {
   "TRANSLATION": {
     "NAME": "Chinese (Traditional)",
-    "CREDITS": "OSC311, SiderealArt"
+    "CREDITS": "翻譯自: OSC311, SiderealArt"
   },
   "HEAD-META-TAGS": {
     "DESCRIPTION": "一個 Minecraft 地圖畫 schematic 及 map.dat 產生器"

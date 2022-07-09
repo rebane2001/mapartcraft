@@ -1,69 +1,69 @@
 {
   "TRANSLATION": {
     "NAME": "Chinese (Simplified)",
-    "CREDITS": "OSC311"
+    "CREDITS": "翻译自: OSC311"
   },
   "HEAD-META-TAGS": {
-    "DESCRIPTION": null
+    "DESCRIPTION": "我的世界地图画 schematic 档和 map.dat 档生成器"
   },
   "FAQ": {
-    "FAQ": "FAQ",
-    "PLEASE-READ-1": "请先检查",
-    "PLEASE-READ-2": "在任何地方问任何问题之前!",
-    "HAVE-YOU-READ": "你读过FAQ了吗?",
-    "HELP-IN-ENGLISH": "注意：帮助将仅以英语提供",
+    "FAQ": "常见问题",
+    "PLEASE-READ-1": "在询问任何问题前，请先阅读",
+    "PLEASE-READ-2": "!",
+    "HAVE-YOU-READ": "你读过'常见问题'了吗?",
+    "HELP-IN-ENGLISH": "注意：常见问题将仅以英语提供",
     "VIDEO-TUTORIAL": "影片教学"
   },
   "DESCRIPTION": {
-    "1": "一个Minecraft地图艺术schematic档和map.dat档生成器, 服务器管理员和服务器上的生存玩家都可使用例如",
-    "2": ", 并在您的浏览器中运行",
-    "3": "启发来自",
-    "4": "Redstonehelper地图艺术程式",
-    "5": ", 其目标是添加需求量大的功能并消除下载程式的需要",
-    "6": "随时在Discord ",
-    "7": " 或Reddit上向我发送消息 ",
+    "1": "一个我的世界地图画 schematic 档和 map.dat 档生成器, 服务器管理员和例如在",
+    "2": "服务器上的生存玩家都可使用, 并允许您在浏览器中运行",
+    "3": "启发自",
+    "4": "Redstonehelper 地图画生成程序",
+    "5": ", 其目标是添加需求量大的功能并消除下载程序的需要",
+    "6": "可以随时在 Discord ",
+    "7": " 或 Reddit 上向我发送消息 ",
     "8": ", 功能请求和错误报告可发布于",
-    "9": null,
-    "10": null
+    "9": "注意：MapartCraft 已更新为新版本。 如果有任何损坏，您仍然可以使用 ",
+    "10": "旧版本"
   },
   "BLOCK-SELECTION": {
     "TITLE": "方块选择",
     "PRESETS": {
-      "TITLE": "预设值",
+      "TITLE": "预设调色",
       "DELETE": "删除",
-      "DELETE-ERROR-DEFAULT": null,
+      "DELETE-ERROR-DEFAULT": "这是默认预设调色，无法被编辑/删除",
       "SAVE": "保存",
-      "SAVE-PROMPT-ENTER-NAME": "输入预设的名称：",
+      "SAVE-PROMPT-ENTER-NAME": "输入预设调色的名称：",
       "SHARE": "分享",
       "SHARE-TT": "以连结分享您当前选择的方块",
       "SHARE-WARNING-NONE-SELECTED": "分享之前要选择方块！",
       "SHARE-LINK": "分享此链接以分享您当前选择的方块",
       "DOWNLOAD": "下载",
-      "DOWNLOAD-TT": "下载调色板以在Paint.net中使用",
+      "DOWNLOAD-TT": "下载调色板以在 Paint.net 中使用",
       "DOWNLOAD-WARNING-NONE-SELECTED": "在下载调色板之前要选择方块！",
       "DOWNLOAD-WARNING-MAX-COLOURS-1": "警告，您的调色板有 ",
-      "DOWNLOAD-WARNING-MAX-COLOURS-2": " 颜色，而Paint.net中的最大值为96. 某些颜色在Paint.net中将不可用",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " 颜色，而 Paint.net 中的最大值为96. 某些颜色在 Paint.net 中将不可用",
       "IMPORT-ERROR-CORRUPTED": "预设链接已损坏！",
       "NONE": "没有",
       "EVERYTHING": "全部东西",
       "CARPETS": "地毯",
-      "GREYSCALE": null
+      "GREYSCALE": "灰阶"
     },
-    "UNSUPPORTED-PAST": null,
+    "UNSUPPORTED-PAST": "不受支援的过去",
     "ADD-CUSTOM": {
-      "TITLE": null,
-      "BLOCK-NAME": null,
-      "NEEDS-SUPPORT": null,
-      "FLAMMABLE": null,
-      "VERSIONS": null,
-      "COLOUR-SET": null,
-      "NBT-TAGS": null,
-      "ADD": null,
-      "ERROR-NONE-SELECTED": null,
-      "ERROR-NO-NAME": null,
-      "EXAMPLES": null,
+      "TITLE": "新增自订方块",
+      "BLOCK-NAME": "方块名称",
+      "NEEDS-SUPPORT": "需要承托",
+      "FLAMMABLE": "可燃",
+      "VERSIONS": "版本",
+      "COLOUR-SET": "颜色集",
+      "NBT-TAGS": "NBT 标签",
+      "ADD": "新增",
+      "ERROR-NONE-SELECTED": "新增前要先选择版本",
+      "ERROR-NO-NAME": "新增前要先输入方块名称",
+      "EXAMPLES": "范例",
       "DELETE": "删除",
-      "NO-EXPORT": null
+      "NO-EXPORT": "提醒：自订方块不会被汇出"
     }
   },
   "MAP-PREVIEW": {
@@ -80,29 +80,29 @@
     "MODE-VISUAL": "视觉效果",
     "MODE-VISUAL-NA": "视觉效果（不可用）",
     "VERSION": "版本",
-    "VERSION-TT": "选择最接近您正在运行的版本",
+    "VERSION-TT": "选择最接近您正在使用的版本",
     "MAP-SIZE": "地图尺寸",
     "CROP": {
       "TITLE": "裁剪",
       "TITLE-TT": "裁剪图像而不是将其拉伸",
-      "OFF": null,
-      "CENTER": null,
-      "MANUAL": null,
-      "ZOOM": null
+      "OFF": "关闭",
+      "CENTER": "中心",
+      "MANUAL": "手动",
+      "ZOOM": "缩放"
     },
-    "GRID-OVERLAY": null,
-    "GRID-OVERLAY-TT": null,
+    "GRID-OVERLAY": "网格",
+    "GRID-OVERLAY-TT": "显示 16x16 的区块和 1x1 分割的网格",
     "3D": {
       "TITLE": "梯式",
-      "TITLE-TT": "将地图制作为3D。 很难制造，但是表现出3倍的颜色！",
+      "TITLE-TT": "将地图制作为3D。 很难制造，但是表现出3倍的颜色范围！",
       "OFF": "关（2D）",
       "CLASSIC": "开（原版）",
-      "VALLEY": null,
-      "FULL-DARK": null,
-      "FULL-LIGHT": null,
+      "VALLEY": "开(山谷版)",
+      "FULL-DARK": "全暗",
+      "FULL-LIGHT": "全亮",
       "ON": "开",
-      "ON-UNOBTAINABLE": "开 (无法获得)",
-      "FULL-UNOBTAINABLE": null
+      "ON-UNOBTAINABLE": "开 (无法取得)",
+      "FULL-UNOBTAINABLE": "全无法取得"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {
@@ -119,15 +119,15 @@
     },
     "MAPDAT-SPECIFIC": {
       "UNOBTAINABLE-COLOURS": "无法获得的颜色",
-      "UNOBTAINABLE-COLOURS-TT": "启用schematic中无法获得的map.dat档颜色",
-      "TRANSPARENCY": null,
-      "TRANSPARENCY-TT": null,
-      "TRANSPARENCY-TOLERANCE": null,
-      "MAPDAT-FILENAME-USE-ID": null,
-      "MAPDAT-FILENAME-USE-ID-TT": null,
-      "MAPDAT-FILENAME-ID-RANGE": null
+      "UNOBTAINABLE-COLOURS-TT": "启用schematic中无法获得的 map.dat 档颜色",
+      "TRANSPARENCY": "透明度",
+      "TRANSPARENCY-TT": "为 map.dat 启用透明度",
+      "TRANSPARENCY-TOLERANCE": "宽容度",
+      "MAPDAT-FILENAME-USE-ID": "数字文件名",
+      "MAPDAT-FILENAME-USE-ID-TT": "将地图数据另存为'map_#.dat'",
+      "MAPDAT-FILENAME-ID-RANGE": "范围"
     },
-    "BETTER-COLOUR": "更好的色彩",
+    "BETTER-COLOUR": "更好的色准",
     "BETTER-COLOUR-TT": "为您提供更好的色彩准确性",
     "DITHERING": {
       "TITLE": "抖动像素化",
@@ -135,64 +135,64 @@
       "NONE": "没有"
     },
     "PREPROCESSING": {
-      "TITLE": null,
-      "ENABLE": null,
-      "BRIGHTNESS": null,
-      "CONTRAST": null,
-      "SATURATION": null,
+      "TITLE": "图像预处理",
+      "ENABLE": "开",
+      "BRIGHTNESS": "亮度",
+      "CONTRAST": "对比度",
+      "SATURATION": "饱和度",
       "BACKGROUND": {
-        "TITLE": null,
-        "TITLE-TT": null,
-        "OFF": null,
-        "DITHERED": null,
-        "SMOOTH": null
+        "TITLE": "背景",
+        "TITLE-TT": "专用于有透明背景的图像",
+        "OFF": "关",
+        "DITHERED": "开（抖动化）",
+        "FLAT": "开（一致化）"
       },
-      "BACKGROUND-COLOUR": null
+      "BACKGROUND-COLOUR": "颜色"
     },
     "EXTRAS": {
-      "TITLE": null,
-      "MORE-STAIRCASING-OPTIONS": null,
-      "MORE-STAIRCASING-OPTIONS-TT": null
+      "TITLE": "额外",
+      "MORE-STAIRCASING-OPTIONS": "更多梯式选项",
+      "MORE-STAIRCASING-OPTIONS-TT": "全暗、全亮及全无法取得选项"
     }
   },
   "DOWNLOAD": {
-    "ERROR-NONE-SELECTED": "下载之前要选择方块！",
+    "ERROR-NONE-SELECTED": "下载之前要先选择方块！",
     "NBT-SPECIFIC": {
-      "DOWNLOAD": "下载",
-      "DOWNLOAD-TT": "下载nbt档",
+      "DOWNLOAD": "下载 NBT",
+      "DOWNLOAD-TT": "下载 nbt 档",
       "DOWNLOAD-SPLIT": "以1x1分割下载",
-      "DOWNLOAD-SPLIT-TT": "下载将nbt分成1x1区块"
+      "DOWNLOAD-SPLIT-TT": "将 nbt 分成1x1区块来下载"
     },
     "MAPDAT-SPECIFIC": {
-      "DOWNLOAD": "下载",
-      "DOWNLOAD-TT": "下载map.dat分成1x1区块"
+      "DOWNLOAD": "下载 MAPDAT",
+      "DOWNLOAD-TT": "将 map.dat 分成1x1区块来下载"
     },
-    "ZIPPING": null
+    "ZIPPING": "压缩中"
   },
   "MATERIALS": {
     "TITLE": "材料",
     "BLOCK": "方块",
     "AMOUNT": "合计",
-    "PLACEHOLDER-BLOCK-TT": "占位符方块",
-    "SHOW-PER-SPLIT": null,
-    "SHOW-PER-SPLIT-TT": null,
+    "PLACEHOLDER-BLOCK-TT": "占位方块",
+    "SHOW-PER-SPLIT": "只显示每个分割区块需要的最大材料",
+    "SHOW-PER-SPLIT-TT": "用于锁定地图的材料重用",
     "REFRESH-MATERIALS": "刷新材料",
     "REFRESH-MATERIALS-TT": "刷新材料清单"
   },
   "VIEW-ONLINE": {
-    "TITLE": null,
-    "TITLE-TT": null,
-    "TOO-BIG-FOR-SINGLE": null,
-    "CONTROLS": null,
-    "TO-EXIT": null,
+    "TITLE": "线上检视",
+    "TITLE-TT": "无需下载即可在线检视 schematic 档",
+    "TOO-BIG-FOR-SINGLE": "单个 schematic 档太大； 需要分割 1x1 来下载",
+    "CONTROLS": "操控",
+    "TO-EXIT": "前往退出",
     "SIZE": "地图尺寸"
   },
   "DONATE": {
     "TITLE": "帮助我跳过队列",
     "TITLE-TT": "查看支持者并捐赠"
   },
-  "LITEMATICA-WARNING": "注意：如果您使用的是Litematica 1.15.2，请使用1.15版本\\ n如果出于某种原因选择了其他版本，Litematica似乎会出错。",
-  "EDGE-WARNING": "注意：不支持使用Microsoft Edge。\\ n请为MapartCraft使用Chrome（首选）或Firefox",
+  "LITEMATICA-WARNING": "警告，Litematica 对 1.15.2 的支援不是很好； 建议更新到 1.16.5",
+  "EDGE-WARNING": "注意：不支持使用 Microsoft Edge。\\ n请使用 Chrome（首选）或 Firefox 来登上 MapartCraft",
   "NONE": "没有",
   "UNUSED": {
     "SECOND": "秒",
