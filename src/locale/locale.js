@@ -1,6 +1,9 @@
 import Flag_de from "./de/flag.svg";
 import Strings_de from "./de/strings.json";
 
+import Flag_ua from "./ua/flag.svg";
+import Strings_ua from "./ua/strings.json";
+
 import Flag_en from "./en/flag.svg";
 import Strings_en from "./en/strings.json";
 
@@ -37,6 +40,7 @@ import Strings_zh_Hant from "./zh-Hant/strings.json";
 
 const Locale = {
   en: { strings: Strings_en, flag: Flag_en },
+  ua: { strings: Strings_ua, flag: Flag_ua },
   et: { strings: Strings_et, flag: Flag_et, flag_special: Flag_et_pop },
   lt: { strings: Strings_lt, flag: Flag_lt },
   ru: { strings: Strings_ru, flag: Flag_ru },
