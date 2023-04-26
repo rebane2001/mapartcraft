@@ -479,8 +479,10 @@ class MapartController extends Component {
   };
 
   handleDeletePreset = () => {
-    if (!this.canDeletePreset()) return;
+    const { getLocaleString } = this.props;
     const { presets, selectedPresetName } = this.state;
+    if (!this.canDeletePreset()) return;
+    if (!window.confirm(`${getLocaleString("BLOCK-SELECTION/PRESETS/DELETE-CONFIRM")} ${selectedPresetName}`)) return;
     const presets_new = presets.filter((preset) => preset.name !== selectedPresetName);
     this.setState({
       presets: presets_new,

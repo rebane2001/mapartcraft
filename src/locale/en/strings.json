@@ -31,6 +31,7 @@
     "PRESETS": {
       "TITLE": "Presets",
       "DELETE": "Delete",
+      "DELETE-CONFIRM": "Would you like to delete this preset:",
       "DELETE-ERROR-DEFAULT": "This is a default preset and can't be edited/deleted.",
       "SAVE": "Save",
       "SAVE-PROMPT-ENTER-NAME": "Enter a name for your preset:",

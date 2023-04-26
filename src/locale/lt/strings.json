@@ -47,7 +47,8 @@
       "NONE": "Niekas",
       "EVERYTHING": "Viskas",
       "CARPETS": "Kilimėliai",
-      "GREYSCALE": null
+      "GREYSCALE": null,
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {

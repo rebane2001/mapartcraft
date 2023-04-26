@@ -47,7 +47,8 @@
       "NONE": "Нічого",
       "EVERYTHING": "Все",
       "CARPETS": "Килими",
-      "GREYSCALE": "Чорно-біле"
+      "GREYSCALE": "Чорно-біле",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": "Unsupported past",
     "ADD-CUSTOM": {

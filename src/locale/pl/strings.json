@@ -47,7 +47,8 @@
       "NONE": "Nic",
       "EVERYTHING": "Wszystkp",
       "CARPETS": "Dywany",
-      "GREYSCALE": "Szare bloki"
+      "GREYSCALE": "Szare bloki",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {

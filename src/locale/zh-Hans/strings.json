@@ -47,7 +47,8 @@
       "NONE": "没有",
       "EVERYTHING": "全部东西",
       "CARPETS": "地毯",
-      "GREYSCALE": "灰阶"
+      "GREYSCALE": "灰阶",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": "不受支援的过去",
     "ADD-CUSTOM": {

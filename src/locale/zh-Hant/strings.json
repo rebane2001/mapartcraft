@@ -47,7 +47,8 @@
       "NONE": "無",
       "EVERYTHING": "所有方塊",
       "CARPETS": "地毯",
-      "GREYSCALE": "灰階"
+      "GREYSCALE": "灰階",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": "不支援的過往",
     "ADD-CUSTOM": {

@@ -47,7 +47,8 @@
       "NONE": "Aucun",
       "EVERYTHING": "Tout",
       "CARPETS": "Carpets",
-      "GREYSCALE": "Nuance de gris"
+      "GREYSCALE": "Nuance de gris",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": "Non supporté",
     "ADD-CUSTOM": {

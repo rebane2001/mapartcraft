@@ -47,7 +47,8 @@
       "NONE": "Ei miskit",
       "EVERYTHING": "Kõik",
       "CARPETS": "Vaibad",
-      "GREYSCALE": "Mustvalge"
+      "GREYSCALE": "Mustvalge",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {

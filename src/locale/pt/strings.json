@@ -47,7 +47,8 @@
       "NONE": "Nada",
       "EVERYTHING": "Tudo",
       "CARPETS": "Carpete",
-      "GREYSCALE": null
+      "GREYSCALE": null,
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {

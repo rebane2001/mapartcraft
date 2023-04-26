@@ -47,7 +47,8 @@
       "NONE": "Не выбран",
       "EVERYTHING": "Все блоки",
       "CARPETS": "Коврики",
-      "GREYSCALE": "Оттенки серого"
+      "GREYSCALE": "Оттенки серого",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {

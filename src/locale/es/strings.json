@@ -47,7 +47,8 @@
       "NONE": "Vacío",
       "EVERYTHING": "Todo",
       "CARPETS": "Alfombras",
-      "GREYSCALE": "Grises"
+      "GREYSCALE": "Grises",
+      "DELETE-CONFIRM": null
     },
     "UNSUPPORTED-PAST": null,
     "ADD-CUSTOM": {
