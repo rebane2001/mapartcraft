@@ -5239,6 +5239,56 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 9
+            },
+            "10": {
+                "displayName": "Mangrove Log (vertical)",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mangrove_log",
+                        "NBTArgs": {
+                            "axis": "y"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 10
+            },
+            "11": {
+                "displayName": "Mangrove Planks",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mangrove_planks",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 11
+            },
+            "12": {
+                "displayName": "Mangrove Slab",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mangrove_slab",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 12
+            },
+            "13": {
+                "displayName": "Mangrove Pressure Plate",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mangrove_pressure_plate",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 13
             }
         },
         "mapdatId": 28,
@@ -6057,6 +6107,32 @@
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 6
+            },
+            "7": {
+                "displayName": "Mangrove Log (horizontal)",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mangrove_log",
+                        "NBTArgs": {
+                            "axis": "x"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 7
+            },
+            "8": {
+                "displayName": "Mangrove Roots",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mangrove_roots",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 8
             }
         },
         "mapdatId": 34,
