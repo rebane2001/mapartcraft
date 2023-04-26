@@ -1,0 +1,203 @@
+{
+  "TRANSLATION": {
+    "NAME": "Polish",
+    "CREDITS": "Przetłumaczone przez: hipostajm"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": "Minecraftowy generator mapartów używający plików schematic i map.dat"
+  },
+  "FAQ": {
+    "FAQ": "FAQ",
+    "PLEASE-READ-1": "Proszę sprawdź ",
+    "PLEASE-READ-2": " Przed zadaniem mi jakiego kolwiek pytania!",
+    "HAVE-YOU-READ": "Przeczytałeś FAQ?",
+    "HELP-IN-ENGLISH": "Uwaga: Pomoc będzie udzielana wyłącznie w języku angielskim",
+    "VIDEO-TUTORIAL": "Wideo tutorial"
+  },
+  "DESCRIPTION": {
+    "1": "Minecraftowy generator mapartów używający plików schematic i map.dat, zaprojektowany do bycia przyjaznym dla adminów serwerów i graczy surwiwalowych na serwerach jak ",
+    "2": ", działający w twojej przeglądarce.",
+    "3": "Inspirowany ",
+    "4": "map art'owym programem Redstonehelper'a",
+    "5": ", z celem do dodania bardzo chcianych rozwiązań oraz z usunięciem potrzeby pobierania programu.",
+    "6": "Śmiało pisz do mnie na Discordzie ",
+    "7": " lub na reddit'cie ",
+    "8": ". chciane funkcje oraz zgłaszanie bug'ów idą na ",
+    "9": "Uwaga: MapartCraft został zaktualizowany do nowych wersji. Jeżeli coś jest zepsute, możesz cięgle używać ",
+    "10": "klasycznej wersji"
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Wybieranie bloków",
+    "PRESETS": {
+      "TITLE": "Presety",
+      "DELETE": "Usuń",
+      "DELETE-ERROR-DEFAULT": "To jest podstawowym preset i nie może on być edytowany/usunięty.",
+      "SAVE": "Zapisz",
+      "SAVE-PROMPT-ENTER-NAME": "Wpisz nazwe dla twojego presetu:",
+      "SHARE": "Udostępnij",
+      "SHARE-TT": "Udostępniaj bloki które aktualnie wybrałeś w linku",
+      "SHARE-WARNING-NONE-SELECTED": "Wybierz bloki zanim je udostępnisz!",
+      "SHARE-LINK": "Skopiuj ten link aby udostępnić aktualnie wybrane bloki",
+      "DOWNLOAD": "Eksportuj do PDN",
+      "DOWNLOAD-TT": "Pobiera palete kolorów do użycia w Paint.NET",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Wybierz bloki zanim pobierzesz palete!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Ostrzeżenie, twoja paleta ma",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " kolory, podczas gdy maksimum w Paint.NET to 96. Niektóre kolory będą niedostępne w Paint.NET",
+      "IMPORT-ERROR-CORRUPTED": "Link z presetem jest uszkodzony!",
+      "NONE": "Nic",
+      "EVERYTHING": "Wszystkp",
+      "CARPETS": "Dywany",
+      "GREYSCALE": "Szare bloki"
+    },
+    "UNSUPPORTED-PAST": null,
+    "ADD-CUSTOM": {
+      "TITLE": null,
+      "BLOCK-NAME": null,
+      "NEEDS-SUPPORT": null,
+      "FLAMMABLE": null,
+      "VERSIONS": null,
+      "COLOUR-SET": null,
+      "NBT-TAGS": null,
+      "ADD": null,
+      "ERROR-NONE-SELECTED": null,
+      "ERROR-NO-NAME": null,
+      "EXAMPLES": null,
+      "DELETE": "Usuń",
+      "NO-EXPORT": null
+    }
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Podgląd mapy",
+    "BEST-RESOLUTION-TT": "Źródłowy obraz z tą rozdzielczością będzie działał lepiej",
+    "ASPECT-RATIO-MISMATCH-TT": "Obraz nie pasuje do rozmiaru mapy",
+    "SCALE-MINUS-TT": "Zrób podgląd mniejszy",
+    "SCALE-PLUS-TT": "Zrób podgląd większy"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Ustawienia",
+    "MODE": "Tryb",
+    "MODE-TT": "Wibierz tryb który wolisz",
+    "MODE-VISUAL": null,
+    "MODE-VISUAL-NA": "Visual (nie dostępne)",
+    "VERSION": "Wersja",
+    "VERSION-TT": "Wybierz wersje najbliższą do tej na której grasz",
+    "MAP-SIZE": "Rozmiar mapy",
+    "CROP": {
+      "TITLE": "Przytnij",
+      "TITLE-TT": "Przytnij swój obraz zamiast rozciągania go",
+      "OFF": "Wył.",
+      "CENTER": "Centur",
+      "MANUAL": "Ręcznie",
+      "ZOOM": null
+    },
+    "GRID-OVERLAY": "Siatka",
+    "GRID-OVERLAY-TT": "Nakłada siatkę przedstawiającą fragmenty 16x16 i podziały 1x1",
+    "3D": {
+      "TITLE": "Rodzaj podbudowy",
+      "TITLE-TT": "Robi mape 3D. Cięższe do zbudowania, ale 3 razy więcej kolorów!",
+      "OFF": "Wył. (2D)",
+      "CLASSIC": "Wł. (Classic)",
+      "VALLEY": "Wł. (Valley)",
+      "FULL-DARK": "Full-Ciemne",
+      "FULL-LIGHT": "Full-Jasne",
+      "ON": "Wł.",
+      "ON-UNOBTAINABLE": "Wł. (Niedostępne)",
+      "FULL-UNOBTAINABLE": "Całkowicie niedostępne"
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Dodać bloki pod",
+        "NONE": "Bez bloków",
+        "IMPORTANT": "Ważne bloki",
+        "ALL": "Wszystkie bloki",
+        "ALL-OPTIMIZED": "Wszystkie bloki (zoptymalizowany)",
+        "ALL-DOUBLE": "Wszystkie podwójnie",
+        "ALL-DOUBLE-OPTIMIZED": "Wszystkie podwójnie (zoptymalizowany)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Blok pod",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Powiązane z poprzednią opcją"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "niedostępne kolory",
+      "UNOBTAINABLE-COLOURS-TT": "Umożliwia kolory w map.dat których są nie dostępne w schematics",
+      "TRANSPARENCY": "Przezroczystość",
+      "TRANSPARENCY-TT": "Umożliwia przeztoczystość dla map.dat",
+      "TRANSPARENCY-TOLERANCE": "Tolerancja",
+      "MAPDAT-FILENAME-USE-ID": "Numeryczne nazwy plików",
+      "MAPDAT-FILENAME-USE-ID-TT": "Pobiera pliki map.dat jako 'map_#.dat'",
+      "MAPDAT-FILENAME-ID-RANGE": "Przedział"
+    },
+    "BETTER-COLOUR": "Lepsze kolory",
+    "BETTER-COLOUR-TT": "Zapewnia lepszą dokładność kolorów",
+    "DITHERING": {
+      "TITLE": "Tryb towrzenia",
+      "TITLE-TT": "Dodaje pozornie losowe pixele dające iluzje większej ilości kolorów",
+      "NONE": "Nic"
+    },
+    "PREPROCESSING": {
+      "TITLE": "Wstępne przetwarzanie obrazu",
+      "ENABLE": "Włączone",
+      "BRIGHTNESS": "Jasność",
+      "CONTRAST": "Kontrast",
+      "SATURATION": "Saturacja",
+      "BACKGROUND": {
+        "TITLE": "tło",
+        "TITLE-TT": "Dla obrazów z przezroczystością",
+        "OFF": "Wył.",
+        "DITHERED": "Wł. (dithered)",
+        "SMOOTH": "Wł. (gładkie)"
+      },
+      "BACKGROUND-COLOUR": "kolory"
+    },
+    "EXTRAS": {
+      "TITLE": "Dodadki",
+      "MORE-STAIRCASING-OPTIONS": "Więcej rodzajów podbudowy",
+      "MORE-STAIRCASING-OPTIONS-TT": "Full-Ciemne, Full-Jasne, oraz Całkowicie niedostępne opcje"
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Wybierz bloki przed pobraniem!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "POBIERZ NBT",
+      "DOWNLOAD-TT": "Pobierz nbt",
+      "DOWNLOAD-SPLIT": "POBIERZ JAKO PODZIAŁ 1x1",
+      "DOWNLOAD-SPLIT-TT": "Pobierz nbt podzielone na chunki 1x1"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "POBIERZ MAPDAT",
+      "DOWNLOAD-TT": "Pobierz map.dat podzielone na chunki 1x1"
+    },
+    "ZIPPING": null
+  },
+  "MATERIALS": {
+    "TITLE": "Materiały",
+    "BLOCK": "Bloki",
+    "AMOUNT": "Ilość",
+    "PLACEHOLDER-BLOCK-TT": "Placeholderowe bloki",
+    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT-TT": null,
+    "REFRESH-MATERIALS": "odśwież materiały",
+    "REFRESH-MATERIALS-TT": "odśwież liczbe materiałów"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": "POKAŻ ONLINE",
+    "TITLE-TT": "Pokaż schemat online bez pobierania",
+    "TOO-BIG-FOR-SINGLE": "Za duże na pojedyńczy schemat; pobierz 1x1 podział    ",
+    "CONTROLS": "Sterowanie",
+    "TO-EXIT": "By wyjść",
+    "SIZE": "Rozmiar"
+  },
+  "DONATE": {
+    "TITLE": "POMÓŻ MI SKIPNĄĆ KOLEJKE",
+    "TITLE-TT": "Pokaż wspierających oraz donejtorów"
+  },
+  "LITEMATICA-WARNING": "Warning, Litematica does not support 1.15.2 very well; recommended action is to update to 1.16.5",
+  "EDGE-WARNING": "Note: using Microsoft Edge is unsupported.\\nPlease use Chrome (preferred) or Firefox for MapartCraft",
+  "NONE": "None",
+  "UNUSED": {
+    "SECOND": "Drugi",
+    "SECONDS": "Drugie",
+    "REMAINING": "pozostałe",
+    "SETTINGS-3D-OPTIMIZED": "Wł. (zoptymalizowane)"
+  }
+}

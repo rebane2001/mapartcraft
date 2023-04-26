@@ -38,6 +38,9 @@ import Strings_zh_Hans from "./zh-Hans/strings.json";
 import Flag_zh_Hant from "./zh-Hant/flag.svg";
 import Strings_zh_Hant from "./zh-Hant/strings.json";
 
+import Flag_pl from "./pl/flag.svg";
+import Strings_pl from "./pl/strings.json";
+
 const Locale = {
   en: { strings: Strings_en, flag: Flag_en },
   ua: { strings: Strings_ua, flag: Flag_ua },
@@ -45,6 +48,7 @@ const Locale = {
   lt: { strings: Strings_lt, flag: Flag_lt },
   ru: { strings: Strings_ru, flag: Flag_ru },
   de: { strings: Strings_de, flag: Flag_de },
+  pl: { strings: Strings_pl, flag: Flag_pl },
   fr: { strings: Strings_fr, flag: Flag_fr },
   it: { strings: Strings_it, flag: Flag_it },
   pt: { strings: Strings_pt, flag: Flag_pt },
