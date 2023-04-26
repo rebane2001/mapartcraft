@@ -5618,6 +5618,42 @@
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 13
+            },
+            "14": {
+                "displayName": "Sculk",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "sculk",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 14
+            },
+            "15": {
+                "displayName": "Sculk Catalyst",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "sculk_catalyst",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 15
+            },
+            "16": {
+                "displayName": "Sculk Shrieker",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "sculk_shrieker",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 16
             }
         },
         "mapdatId": 29,
