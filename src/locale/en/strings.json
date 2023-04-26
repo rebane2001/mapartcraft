@@ -39,7 +39,7 @@
       "SHARE-TT": "Shares the blocks you have currently selected as a link",
       "SHARE-WARNING-NONE-SELECTED": "Select blocks before sharing them!",
       "SHARE-LINK": "Copy this link to share your currently selected blocks",
-      "DOWNLOAD": "Export PDN",
+      "DOWNLOAD": "Export palette",
       "DOWNLOAD-TT": "Downloads color palette for use in Paint.NET",
       "DOWNLOAD-WARNING-NONE-SELECTED": "Select blocks before downloading palette!",
       "DOWNLOAD-WARNING-MAX-COLOURS-1": "Warning, your palette has ",
