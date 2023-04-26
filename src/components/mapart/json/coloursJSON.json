@@ -345,6 +345,18 @@
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 11
+            },
+            "12": {
+                "displayName": "Ochre Froglight",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "ochre_froglight",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 12
             }
         },
         "mapdatId": 2,
@@ -3475,6 +3487,18 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 5
+            },
+            "6": {
+                "displayName": "Pearlescent Froglight",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "pearlescent_froglight",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 6
             }
         },
         "mapdatId": 20,
@@ -7866,6 +7890,18 @@
                 "supportBlockMandatory": true,
                 "flammable": true,
                 "presetIndex": 0
+            },
+            "1": {
+                "displayName": "Verdant Froglight",
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "verdant_froglight",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 1
             }
         },
         "mapdatId": 61,
