@@ -413,6 +413,20 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 1
+            },
+            "2": {
+                "displayName": "White Candle",
+                "validVersions": {
+                    "1.17.1": {
+                        "NBTName": "white_candle",
+                        "NBTArgs": {}
+                    },
+                    "1.18.2": "&1.17.1",
+                    "1.19": "&1.17.1"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 2
             }
         },
         "mapdatId": 3,
@@ -6943,6 +6957,20 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 1
+            },
+            "2": {
+                "displayName": "Pointed Dripstone",
+                "validVersions": {
+                    "1.17.1": {
+                        "NBTName": "pointed_dripstone",
+                        "NBTArgs": {}
+                    },
+                    "1.18.2": "&1.17.1",
+                    "1.19": "&1.17.1"
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 2
             }
         },
         "mapdatId": 48,
