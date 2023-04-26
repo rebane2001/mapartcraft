@@ -98,7 +98,7 @@
       "TITLE-TT": "Создает карту в 3D. Труднее строить, но в цветов в 3 раза больше!",
       "OFF": "Выкл. (2D)",
       "CLASSIC": "Вкл. (классическая)",
-      "VALLEY": "Вкл. (впадина)",
+      "VALLEY": "Вкл. (режим долины)",
       "FULL-DARK": "Полная темнота",
       "FULL-LIGHT": "Полный свет",
       "ON": "Вкл",
@@ -125,8 +125,8 @@
       "TRANSPARENCY-TT": "Включает прозрачность для map.dat",
       "TRANSPARENCY-TOLERANCE": "Допуск",
       "MAPDAT-FILENAME-USE-ID": "Числовое имя файла",
-      "MAPDAT-FILENAME-USE-ID-TT": null,
-      "MAPDAT-FILENAME-ID-RANGE": null
+      "MAPDAT-FILENAME-USE-ID-TT": "Сохраняет dat файлы под названием 'map_#.dat'",
+      "MAPDAT-FILENAME-ID-RANGE": "Диапазон"
     },
     "BETTER-COLOUR": "Улучшенный цвет",
     "BETTER-COLOUR-TT": "Обеспечивает лучшую точность цветопередачи",
@@ -145,28 +145,28 @@
         "TITLE": "Фон",
         "TITLE-TT": "Для изображений с прозрачностью",
         "OFF": "Выкл.",
-        "DITHERED": "Вкл. (смешанный)",
-        "SMOOTH": "Вкл. (сглаженный)"
+        "DITHERED": "Вкл. (с дитерингом)",
+        "SMOOTH": "Вкл. (сплошной цвет)"
       },
       "BACKGROUND-COLOUR": "Цвет"
     },
     "EXTRAS": {
       "TITLE": "Дополнительно",
       "MORE-STAIRCASING-OPTIONS": "Больше вариантов ступенчатости",
-      "MORE-STAIRCASING-OPTIONS-TT": null
+      "MORE-STAIRCASING-OPTIONS-TT": "Варианты всего темного, всего светлого и всех недоступных"
     }
   },
   "DOWNLOAD": {
     "ERROR-NONE-SELECTED": "Выберите блоки перед загрузкой!",
     "NBT-SPECIFIC": {
-      "DOWNLOAD": "ЗАГРУЗИТЬ",
-      "DOWNLOAD-TT": "Загрузить nbt",
-      "DOWNLOAD-SPLIT": "ЗАГРУЗИТЬ УЧАСТОК 1х1",
-      "DOWNLOAD-SPLIT-TT": "Загрузить nbt, разделённый почанково"
+      "DOWNLOAD": "СКАЧАТЬ",
+      "DOWNLOAD-TT": "Скачать nbt",
+      "DOWNLOAD-SPLIT": "СКАЧАТЬ УЧАСТОК 1х1",
+      "DOWNLOAD-SPLIT-TT": "Скачать map.dat файл разделенный на карты 1х1"
     },
     "MAPDAT-SPECIFIC": {
-      "DOWNLOAD": "ЗАГРУЗИТЬ",
-      "DOWNLOAD-TT": "Загрузить map.dat разделённую почанково"
+      "DOWNLOAD": "СКАЧАТЬ",
+      "DOWNLOAD-TT": "Скачать map.dat файл разделенный на карты 1х1"
     },
     "ZIPPING": "Архивирование"
   },
@@ -175,7 +175,7 @@
     "BLOCK": "Блок",
     "AMOUNT": "Количество",
     "PLACEHOLDER-BLOCK-TT": "Заменяющий блок",
-    "SHOW-PER-SPLIT": null,
+    "SHOW-PER-SPLIT": "Показывать макс. количество материалов только на 1 карту",
     "SHOW-PER-SPLIT-TT": "Для повторного использования материалов с заблокированными картами",
     "REFRESH-MATERIALS": "ОБНОВИТЬ МАТЕРИАЛЫ",
     "REFRESH-MATERIALS-TT": "Обновить список материалов"
@@ -183,7 +183,7 @@
   "VIEW-ONLINE": {
     "TITLE": "ПОСМОТРЕТЬ ОНЛАЙН",
     "TITLE-TT": "Посмотреть схему онлайн без скачивания",
-    "TOO-BIG-FOR-SINGLE": "Слишком большая карта для одной схематики, загрузите схематику разделённую почанково",
+    "TOO-BIG-FOR-SINGLE": "Слишком большая схематика, загрузите схематику разделённую на карты",
     "CONTROLS": "Управление",
     "TO-EXIT": "Выйти",
     "SIZE": "Размер"
@@ -199,6 +199,6 @@
     "SECOND": "сек.",
     "SECONDS": "сек.",
     "REMAINING": "осталось",
-    "SETTINGS-3D-OPTIMIZED": "Вкл. (оптимизирована)"
+    "SETTINGS-3D-OPTIMIZED": "Вкл. (оптимизировано)"
   }
 }
