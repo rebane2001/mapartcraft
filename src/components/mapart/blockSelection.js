@@ -79,6 +79,7 @@ class BlockSelection extends Component {
       selectedBlocks,
       presets,
       selectedPresetName,
+      canDeletePreset,
       onPresetChange,
       onDeletePreset,
       onSavePreset,
@@ -103,7 +104,7 @@ class BlockSelection extends Component {
             </option>
           ))}
         </select>
-        <button type="button" onClick={onDeletePreset}>
+        <button type="button" disabled={!canDeletePreset()} onClick={onDeletePreset}>
           {getLocaleString("BLOCK-SELECTION/PRESETS/DELETE")}
         </button>
         <button type="button" onClick={onSavePreset}>

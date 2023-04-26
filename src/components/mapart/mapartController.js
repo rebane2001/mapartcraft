@@ -473,7 +473,13 @@ class MapartController extends Component {
     }
   };
 
+  canDeletePreset = () => {
+    const { selectedPresetName } = this.state;
+    return selectedPresetName !== "None" && !DefaultPresets.find((defaultPreset) => defaultPreset.name === selectedPresetName);
+  };
+
   handleDeletePreset = () => {
+    if (!this.canDeletePreset()) return;
     const { presets, selectedPresetName } = this.state;
     const presets_new = presets.filter((preset) => preset.name !== selectedPresetName);
     this.setState({
@@ -778,6 +784,7 @@ class MapartController extends Component {
           selectedBlocks={selectedBlocks}
           presets={presets}
           selectedPresetName={selectedPresetName}
+          canDeletePreset={this.canDeletePreset}
           onPresetChange={this.handlePresetChange}
           onDeletePreset={this.handleDeletePreset}
           onSavePreset={this.handleSavePreset}
