@@ -1204,6 +1204,16 @@
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 9
+            },
+            "10": {
+                "displayName": "Packed Mud",
+                "1.19": {
+                    "NBTName": "packed_mud",
+                    "NBTArgs": {}
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 10
             }
         },
         "mapdatId": 10,
@@ -6835,6 +6845,26 @@
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 2
+            },
+            "3": {
+                "displayName": "Mud Bricks",
+                "1.19": {
+                    "NBTName": "mud_bricks",
+                    "NBTArgs": {}
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 3
+            },
+            "4": {
+                "displayName": "Mud Brick Slab",
+                "1.19": {
+                    "NBTName": "mud_brick_slab",
+                    "NBTArgs": {}
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 4
             }
         },
         "mapdatId": 44,
@@ -6887,6 +6917,16 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 0
+            },
+            "1": {
+                "displayName": "Mud",
+                "1.19": {
+                    "NBTName": "mud",
+                    "NBTArgs": {}
+                },
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 1
             }
         },
         "mapdatId": 45,
