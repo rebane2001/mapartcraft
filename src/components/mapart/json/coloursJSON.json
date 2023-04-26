@@ -1207,9 +1207,11 @@
             },
             "10": {
                 "displayName": "Packed Mud",
-                "1.19": {
-                    "NBTName": "packed_mud",
-                    "NBTArgs": {}
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "packed_mud",
+                        "NBTArgs": {}
+                    }
                 },
                 "supportBlockMandatory": false,
                 "flammable": false,
@@ -6884,9 +6886,11 @@
             },
             "3": {
                 "displayName": "Mud Bricks",
-                "1.19": {
-                    "NBTName": "mud_bricks",
-                    "NBTArgs": {}
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mud_bricks",
+                        "NBTArgs": {}
+                    }
                 },
                 "supportBlockMandatory": false,
                 "flammable": false,
@@ -6894,9 +6898,11 @@
             },
             "4": {
                 "displayName": "Mud Brick Slab",
-                "1.19": {
-                    "NBTName": "mud_brick_slab",
-                    "NBTArgs": {}
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mud_brick_slab",
+                        "NBTArgs": {}
+                    }
                 },
                 "supportBlockMandatory": false,
                 "flammable": false,
@@ -6956,9 +6962,11 @@
             },
             "1": {
                 "displayName": "Mud",
-                "1.19": {
-                    "NBTName": "mud",
-                    "NBTArgs": {}
+                "validVersions": {
+                    "1.19": {
+                        "NBTName": "mud",
+                        "NBTArgs": {}
+                    }
                 },
                 "supportBlockMandatory": false,
                 "flammable": false,
