@@ -919,6 +919,20 @@
                 "supportBlockMandatory": false,
                 "flammable": true,
                 "presetIndex": 6
+            },
+            "7": {
+                "displayName": "Block of Bamboo (horizontal)",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_block",
+                        "NBTArgs": {
+                            "axis": "x"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 7
             }
         },
         "mapdatId": 7,
@@ -3143,6 +3157,80 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 7
+            },
+            "8": {
+                "displayName": "Block of Bamboo (vertical)",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_block",
+                        "NBTArgs": {
+                            "axis": "y"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 8
+            },
+            "9": {
+                "displayName": "Bamboo Planks",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_planks",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 9
+            },
+            "10": {
+                "displayName": "Bamboo Slab",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_slab",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": true,
+                "presetIndex": 10
+            },
+            "11": {
+                "displayName": "Bamboo Mosaic",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_mosaic",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 11
+            },
+            "12": {
+                "displayName": "Bamboo Mosaic Slab",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_mosaic_slab",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": true,
+                "presetIndex": 12
+            },
+            "13": {
+                "displayName": "Bamboo Pressure Plate",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "bamboo_pressure_plate",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 13
             }
         },
         "mapdatId": 18,
@@ -3511,6 +3599,20 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 6
+            },
+            "7": {
+                "displayName": "Cherry Leaves",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_leaves",
+                        "NBTArgs": {
+                            "persistent": "true"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 7
             }
         },
         "mapdatId": 20,
@@ -6425,6 +6527,70 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 1
+            },
+            "2": {
+                "displayName": "Cherry Planks",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_planks",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 2
+            },
+            "3": {
+                "displayName": "Cherry Slab",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_slab",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": true,
+                "presetIndex": 3
+            },
+            "4": {
+                "displayName": "Cherry Log (vertical)",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_log",
+                        "NBTArgs": {
+                            "axis": "y"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 4
+            },
+            "5": {
+                "displayName": "Stripped Cherry Log (vertical)",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "stripped_cherry_log",
+                        "NBTArgs": {
+                            "axis": "y"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 5
+            },
+            "6": {
+                "displayName": "Cherry Pressure Plate",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_pressure_plate",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 6
             }
         },
         "mapdatId": 36,
@@ -6737,6 +6903,32 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 0
+            },
+            "1": {
+                "displayName": "Stripped Cherry Log (horizontal)",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "stripped_cherry_log",
+                        "NBTArgs": {
+                            "axis": "x"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 1
+            },
+            "2": {
+                "displayName": "Stripped Cherry Wood",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "stripped_cherry_wood",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 2
             }
         },
         "mapdatId": 42,
@@ -6803,6 +6995,32 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 1
+            },
+            "2": {
+                "displayName": "Cherry Log (horizontal)",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_log",
+                        "NBTArgs": {
+                            "axis": "x"
+                        }
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 2
+            },
+            "3": {
+                "displayName": "Cherry Wood",
+                "validVersions": {
+                    "1.20": {
+                        "NBTName": "cherry_wood",
+                        "NBTArgs": {}
+                    }
+                },
+                "supportBlockMandatory": false,
+                "flammable": true,
+                "presetIndex": 3
             }
         },
         "mapdatId": 43,
