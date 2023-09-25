@@ -150,7 +150,7 @@ function FAQ(props) {
       </p>
 
       <h2>Custom Blocks</h2>
-      <p>Custom blocks can be added from the bottom of the blocks selection pane. Different versions of a block can be added for the same block name, eg for 1.12.2 and 1.13.2+. Some examples are provided in the 'examples' section. NBT tags / block states can be found on the <a href="https://minecraft.fandom.com/wiki/Block_states" target="_blank" rel="noopener noreferrer">Minecraft Wiki</a>. To edit an existing custom block, select it, edit the tags / versions etc, and then click the 'add' button to overwrite. Note that presets URLs do not support custom blocks.</p>
+      <p>Custom blocks can be added from the bottom of the blocks selection pane. Different versions of a block can be added for the same block name, eg for 1.12.2 and 1.13.2+. Some examples are provided in the 'examples' section. NBT tags / block states can be found on the <a href="https://minecraft.wiki/w/Block_states" target="_blank" rel="noopener noreferrer">Minecraft Wiki</a>. To edit an existing custom block, select it, edit the tags / versions etc, and then click the 'add' button to overwrite. Note that presets URLs do not support custom blocks.</p>
 
       <div style={{ textAlign: "center" }}>
         <img alt="Palette" src={IMG_Palette} />
