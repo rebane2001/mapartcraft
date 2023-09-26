@@ -42,7 +42,7 @@ if __name__ == "__main__":
     #     action = "store",
     #     type = int)
     parser.add_argument("mapdatId",
-        help = "Mojang-specified mapdatId (see https://minecraft.fandom.com/wiki/Map_item_format#Color_table)",
+        help = "Mojang-specified mapdatId (see https://minecraft.wiki/w/Map_item_format#Color_table)",
         metavar = "MAPDATID",
         action = "store",
         type = int)

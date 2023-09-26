@@ -1,7 +1,7 @@
 /*
   A mapping from type names to NBT type numbers.
   This is NOT just an enum, these values have to stay as they are
-  https://minecraft.fandom.com/wiki/NBT_format#TAG_definition
+  https://minecraft.wiki/w/NBT_format#TAG_definition
 */
 const TagTypes = {
   end: 0,
