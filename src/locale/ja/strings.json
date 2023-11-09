@@ -1,0 +1,204 @@
+{
+  "TRANSLATION": {
+    "NAME": "Japanese",
+    "CREDITS": "Translated by: co 91"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": "Minecraftの地図アート用 schematic / map.dat 生成ツール"
+  },
+  "FAQ": {
+    "FAQ": "よくある質問",
+    "PLEASE-READ-1": "ご質問の前に",
+    "PLEASE-READ-2": "をお読みください！",
+    "HAVE-YOU-READ": "「よくある質問」はお読みになりましたか？",
+    "HELP-IN-ENGLISH": "注意：サポートは英語でのみ提供されます",
+    "VIDEO-TUTORIAL": "動画チュートリアル"
+  },
+  "DESCRIPTION": {
+    "1": "Minecraftの地図アート用 schematic および map.dat 生成ツール: ",
+    "2": "のようなサーバーで管理者とサバイバルプレイヤーの双方が利用可能なように作られており，ブラウザ上で動作します．",
+    "3": "このツールは",
+    "4": "Redstonehelper氏の地図アートプログラム",
+    "5": "に影響を受けており，要望の多い機能を追加し，プログラムをダウンロードせずに利用できることを目標としています．",
+    "6": "Discord ",
+    "7": " または Redit ",
+    "8": " にてお気軽にお問い合わせください．機能の要望やバグ報告は GitHub で受け付けています: ",
+    "9": "注意：MapartCraft は新しいバージョンに更新されました．不具合がある場合，以前のバージョンも利用できます: ",
+    "10": "従来版"
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "ブロック選択",
+    "PRESETS": {
+      "TITLE": "プリセット",
+      "DELETE": "削除",
+      "DELETE-CONFIRM": "次のプリセットを削除しますか: ",
+      "DELETE-ERROR-DEFAULT": "このプリセットはデフォルトであり，編集や削除はできません．",
+      "SAVE": "保存",
+      "SAVE-PROMPT-ENTER-NAME": "プリセット名を入力してください: ",
+      "SHARE": "共有",
+      "SHARE-TT": "現在選択されているブロックをリンクとして共有する",
+      "SHARE-WARNING-NONE-SELECTED": "共有する前にブロックを選択してください！",
+      "SHARE-LINK": "リンクをコピーして現在選択されているブロックを共有",
+      "DOWNLOAD": "パレットをエクスポート",
+      "DOWNLOAD-TT": "Paint.NET で利用できるカラーパレットをダウンロードする",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "パレットをダウンロードする前にブロックを選択してください！",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "注意：パレットには",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": "色ありますが，Paint.NET では最大96色です．一部の色は Paint.NET では利用できません．",
+      "IMPORT-ERROR-CORRUPTED": "プリセットのリンクが壊れています！",
+      "NONE": "なし",
+      "EVERYTHING": "すべて",
+      "CARPETS": "カーペット",
+      "GREYSCALE": "グレースケール"
+    },
+    "UNSUPPORTED-PAST": null,
+    "ADD-CUSTOM": {
+      "TITLE": "カスタムブロックを追加",
+      "BLOCK-NAME": "ブロック名",
+      "NEEDS-SUPPORT": "支えとなるブロックが必要",
+      "FLAMMABLE": "可燃性",
+      "VERSIONS": "バージョン",
+      "COLOUR-SET": "カラーセット",
+      "NBT-TAGS": "NBTタグ",
+      "ADD": "追加",
+      "ERROR-NONE-SELECTED": "追加する前にバージョンを選択してください",
+      "ERROR-NO-NAME": "追加する前にブロック名を入力してください",
+      "EXAMPLES": "例",
+      "DELETE": "削除",
+      "NO-EXPORT": "注意：カスタムブロックはエクスポートされません．"
+    }
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "地図プレビュー",
+    "BEST-RESOLUTION-TT": "この解像度の画像が最適です",
+    "ASPECT-RATIO-MISMATCH-TT": "画像と地図の縦横比が一致しません",
+    "SCALE-MINUS-TT": "プレビューを小さく",
+    "SCALE-PLUS-TT": "プレビューを大きく"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "設定",
+    "MODE": "形式",
+    "MODE-TT": "利用するモードを選択してください",
+    "MODE-VISUAL": "視覚化",
+    "MODE-VISUAL-NA": "視覚化 (利用不可)",
+    "VERSION": "バージョン",
+    "VERSION-TT": "お使いのバージョンに最も近いものを選択してください",
+    "MAP-SIZE": "地図サイズ",
+    "CROP": {
+      "TITLE": "切り抜き",
+      "TITLE-TT": "画像を引き伸ばさずに切り抜きます",
+      "OFF": "オフ",
+      "CENTER": "中心",
+      "MANUAL": "手動",
+      "ZOOM": "ズーム"
+    },
+    "GRID-OVERLAY": "グリッド",
+    "GRID-OVERLAY-TT": "チャンクと地図の境界をオーバーレイ表示します",
+    "3D": {
+      "TITLE": "階段化",
+      "TITLE-TT": "地図を3Dにします．建造は難しくなりますが，色数が3倍になります！",
+      "OFF": "オフ (2D)",
+      "CLASSIC": "オン (Classic; 高さの変化が連続的)",
+      "VALLEY": "オン (Valley; 高さの極小値を0に揃える)",
+      "FULL-DARK": "すべて暗色",
+      "FULL-LIGHT": "すべて明色",
+      "ON": "オン",
+      "ON-UNOBTAINABLE": "オン (標準では使用不可の色を使う)",
+      "FULL-UNOBTAINABLE": "すべて使用不可の色"
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "下にブロックを付加",
+        "NONE": "なし",
+        "IMPORTANT": "必要なブロック",
+        "ALL": "すべてのブロック",
+        "ALL-OPTIMIZED": "すべてのブロック (最適化)",
+        "ALL-DOUBLE": "すべて2層 ",
+        "ALL-DOUBLE-OPTIMIZED": "すべて2層 (最適化)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "付加するブロック",
+      "SUPPORT-BLOCK-TO-ADD-TT": "前のオプションの関連設定"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "使用不可の色",
+      "UNOBTAINABLE-COLOURS-TT": "schematicでは使用できない色を有効にします",
+      "TRANSPARENCY": "透明度",
+      "TRANSPARENCY-TT": "map.datの透明度を有効にします",
+      "TRANSPARENCY-TOLERANCE": "許容値",
+      "MAPDAT-FILENAME-USE-ID": "ファイル名の番号",
+      "MAPDAT-FILENAME-USE-ID-TT": "地図データを 'map_#.dat' として保存します",
+      "MAPDAT-FILENAME-ID-RANGE": "範囲"
+    },
+    "BETTER-COLOUR": "色の改善",
+    "BETTER-COLOUR-TT": "色の精度を高めます",
+    "DITHERING": {
+      "TITLE": "ディザリング",
+      "TITLE-TT": "見かけ上ランダムなピクセルを追加し，より多くの色を錯覚させます",
+      "NONE": "なし"
+    },
+    "PREPROCESSING": {
+      "TITLE": "画像の前処理",
+      "ENABLE": "有効",
+      "BRIGHTNESS": "明度",
+      "CONTRAST": "コントラスト",
+      "SATURATION": "彩度",
+      "BACKGROUND": {
+        "TITLE": "背景",
+        "TITLE-TT": "透明度のある画像用",
+        "OFF": "オフ",
+        "DITHERED": "オン (ディザ)",
+        "SMOOTH": "オン (平滑)"
+      },
+      "BACKGROUND-COLOUR": "色"
+    },
+    "EXTRAS": {
+      "TITLE": "その他",
+      "MORE-STAIRCASING-OPTIONS": "追加の階段化オプション",
+      "MORE-STAIRCASING-OPTIONS-TT": "すべて暗色，すべて明色，すべて使用不可の色"
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "ダウンロードする前にブロックを選択してください！",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "NBTをダウンロード",
+      "DOWNLOAD-TT": "nbtファイルをダウンロードします",
+      "DOWNLOAD-SPLIT": "1x1分割でダウンロード",
+      "DOWNLOAD-SPLIT-TT": "地図単位に分割してnbtファイルをダウンロードします"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "MAPDATをダウンロード",
+      "DOWNLOAD-TT": "地図単位に分割してmap.datファイルをダウンロードします"
+    },
+    "ZIPPING": "圧縮中"
+  },
+  "MATERIALS": {
+    "TITLE": "材料",
+    "BLOCK": "ブロック",
+    "AMOUNT": "数",
+    "PLACEHOLDER-BLOCK-TT": "プレースホルダ",
+    "SHOW-PER-SPLIT": "各地図で最大の必要数のみ表示",
+    "SHOW-PER-SPLIT-TT": "地図をロックして材料を使いまわす場合",
+    "REFRESH-MATERIALS": "材料を更新",
+    "REFRESH-MATERIALS-TT": "材料のリストを更新します"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": "オンラインで表示",
+    "TITLE-TT": "schematicをダウンロードせずにオンラインで表示します",
+    "TOO-BIG-FOR-SINGLE": "単一のschematicとしては大きすぎます; 1x1分割でダウンロードしてください",
+    "CONTROLS": "操作",
+    "TO-EXIT": "で終了",
+    "SIZE": "サイズ"
+  },
+  "DONATE": {
+    "TITLE": "プロジェクトの支援",
+    "TITLE-TT": "支援者を見る/寄付する"
+  },
+  "LITEMATICA-WARNING": "警告：Litematica のサポートは1.15.2では十分ではありません; 1.16.5以上へのアップデートをお勧めします",
+  "EDGE-WARNING": "注意：Microsoft Edge はサポートされていません．\\nGoogle Chrome (推奨) または Firefox をお使いください．",
+  "NONE": "なし",
+  "UNUSED": {
+    "SECOND": "秒",
+    "SECONDS": "秒",
+    "REMAINING": "残り",
+    "SETTINGS-3D-OPTIMIZED": "オン (最適化)"
+  }
+}
