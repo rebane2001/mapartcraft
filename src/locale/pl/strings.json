@@ -45,7 +45,7 @@
       "DOWNLOAD-WARNING-MAX-COLOURS-2": " kolory, podczas gdy maksimum w Paint.NET to 96. Niektóre kolory będą niedostępne w Paint.NET",
       "IMPORT-ERROR-CORRUPTED": "Link z presetem jest uszkodzony!",
       "NONE": "Nic",
-      "EVERYTHING": "Wszystkp",
+      "EVERYTHING": "Wszystko",
       "CARPETS": "Dywany",
       "GREYSCALE": "Szare bloki",
       "DELETE-CONFIRM": null
@@ -87,7 +87,7 @@
       "TITLE": "Przytnij",
       "TITLE-TT": "Przytnij swój obraz zamiast rozciągania go",
       "OFF": "Wył.",
-      "CENTER": "Centur",
+      "CENTER": "Wycentrowany",
       "MANUAL": "Ręcznie",
       "ZOOM": null
     },
