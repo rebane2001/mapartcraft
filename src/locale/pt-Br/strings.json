@@ -1,0 +1,204 @@
+{
+  "TRANSLATION": {
+    "NAME": "Brazilian Portuguese",
+    "CREDITS": "Translated by: Wanadi"
+  },
+  "HEAD-META-TAGS": {
+    "DESCRIPTION": "Um gerador de esquemas e arquivos map.dat do Minecraft"
+  },
+  "FAQ": {
+    "FAQ": "FAQ (Perguntas frequentes)" ,
+    "PLEASE-READ-1": "Por-favor verifique o ",
+    "PLEASE-READ-2": " antes de fazer qualquer pergunta!",
+    "HAVE-YOU-READ": "Você já leu o FAQ? (Perguntas frequentes)",
+    "HELP-IN-ENGLISH": "Nota: Ajuda só será dada em Inglês",
+    "VIDEO-TUTORIAL": "Tutorial em vídeo"
+  },
+  "DESCRIPTION": {
+    "1": "Um gerador de esquemas e arquivos map.dat do Minecraft, projetado para ser prático tanto para administradores de servidores quanto para jogadores em servidores como ",
+    "2": ", rodando no seu navegador.",
+    "3": "Inspirado pelo ",
+    "4": "programa de arte de mapa do Redstonehelper",
+    "5": ", com o objetivo de adicionar recursos muito pedidos e remover a necessidade de fazer download de um programa.",
+    "6": "Sinta-se à vontade para me mandar uma mensagem no Discord ",
+    "7": " ou no Reddit ",
+    "8": ". Pedidos de novos recursos e relatórios de erros são feitos no ",
+    "9": "Nota: O MapartCraft foi atualizado para uma nova versão. Se alguma coisa não funcionar, você ainda pode usar a ",
+    "10": "versão clássica"
+  },
+  "BLOCK-SELECTION": {
+    "TITLE": "Seleção de blocos",
+    "PRESETS": {
+      "TITLE": "Predefinições",
+      "DELETE": "Remover",
+      "DELETE-CONFIRM": "Você gostaria de remover esta predefinição?:",
+      "DELETE-ERROR-DEFAULT": "Esta é uma predefinição padrão e não pode ser modificada ou removida.",
+      "SAVE": "Salvar",
+      "SAVE-PROMPT-ENTER-NAME": "Insira um nome para a sua predefinição:",
+      "SHARE": "Compartilhar",
+      "SHARE-TT": "Compartilha a sua seleção atual de blocos como um link",
+      "SHARE-WARNING-NONE-SELECTED": "Selecione blocos antes de compartilhá-los!",
+      "SHARE-LINK": "Copie este link para compartilhar a sua seleção atual de blocos",
+      "DOWNLOAD": "Exportar paleta",
+      "DOWNLOAD-TT": "Faz o download da paleta de cores para ser usada no Paint.NET",
+      "DOWNLOAD-WARNING-NONE-SELECTED": "Selecione blocos antes de fazer o download da paleta!",
+      "DOWNLOAD-WARNING-MAX-COLOURS-1": "Aviso, sua paleta tem ",
+      "DOWNLOAD-WARNING-MAX-COLOURS-2": " cores, mas a quantidade máxima no Paint.NET é 96. Algumas cores não estarão disponíveis no Paint.NET",
+      "IMPORT-ERROR-CORRUPTED": "O link de predefinição está corrompido!",
+      "NONE": "Nenhum",
+      "EVERYTHING": "Tudo",
+      "CARPETS": "Carpetes",
+      "GREYSCALE": "Cinzento"
+    },
+    "UNSUPPORTED-PAST": "Sem suporte",
+    "ADD-CUSTOM": {
+      "TITLE": "Adicionar Customizado",
+      "BLOCK-NAME": "Nome do Bloco",
+      "NEEDS-SUPPORT": "Precisa de Apoio",
+      "FLAMMABLE": "Inflamável",
+      "VERSIONS": "Versões",
+      "COLOUR-SET": "Conjunto de Cores",
+      "NBT-TAGS": "Marcações NBT",
+      "ADD": "Adicionar",
+      "ERROR-NONE-SELECTED": "Selecione a(s) versão(ões) antes de adicionar",
+      "ERROR-NO-NAME": "Insira o nome de um bloco antes de adicionar",
+      "EXAMPLES": "Exemplos",
+      "DELETE": "Remover",
+      "NO-EXPORT": "Nota: Blocos customizados não serão exportados."
+    }
+  },
+  "MAP-PREVIEW": {
+    "TITLE": "Pré-visualização do mapa",
+    "BEST-RESOLUTION-TT": "Uma imagem com esta resolução vai se encaixar melhor",
+    "ASPECT-RATIO-MISMATCH-TT": "A imagem não corresponde à proporção do mapa",
+    "SCALE-MINUS-TT": "Diminuir a pré-visualização",
+    "SCALE-PLUS-TT": "Aumentar a pré-visualização"
+  },
+  "MAP-SETTINGS": {
+    "TITLE": "Configurações",
+    "MODE": "Modo",
+    "MODE-TT": "Selecione o modo você deseja operar",
+    "MODE-VISUAL": "Visual",
+    "MODE-VISUAL-NA": "Visual (não disponível)",
+    "VERSION": "Versão",
+    "VERSION-TT": "Selecione a versão mais próxima da utilizada por você",
+    "MAP-SIZE": "Tamanho do mapa",
+    "CROP": {
+      "TITLE": "Corte",
+      "TITLE-TT": "Corta a sua imagem em vez de esticá-la",
+      "OFF": "Desligado",
+      "CENTER": "Centro",
+      "MANUAL": "Manual",
+      "ZOOM": "Ampliação"
+    },
+    "GRID-OVERLAY": "Grade",
+    "GRID-OVERLAY-TT": "Exibe uma grade que mostra 16x16 chunks e pedaços 1x1",
+    "3D": {
+      "TITLE": "Escadaria",
+      "TITLE-TT": "Transforma o mapa em 3D. Mais difícil de construir, mas com o triplo de cores!",
+      "OFF": "Desligado (2D)",
+      "CLASSIC": "Ligado (Clássico)",
+      "VALLEY": "Ligado (Vale)",
+      "FULL-DARK": "Escuro",
+      "FULL-LIGHT": "Claro",
+      "ON": "Ligado",
+      "ON-UNOBTAINABLE": "Ligado (não obtenível)",
+      "FULL-UNOBTAINABLE": "Não obtenível"
+    },
+    "NBT-SPECIFIC": {
+      "WHERE-SUPPORT-BLOCKS": {
+        "TITLE": "Adicionar blocos embaixo",
+        "NONE": "Sem blocos",
+        "IMPORTANT": "Blocos importantes",
+        "ALL": "Todos os blocos",
+        "ALL-OPTIMIZED": "Todos os blocos (otimizado)",
+        "ALL-DOUBLE": "Todos, em dobro",
+        "ALL-DOUBLE-OPTIMIZED": "Todos, em dobro (otimizado)"
+      },
+      "SUPPORT-BLOCK-TO-ADD": "Bloco a ser adicionado",
+      "SUPPORT-BLOCK-TO-ADD-TT": "Relacionado à opção anterior"
+    },
+    "MAPDAT-SPECIFIC": {
+      "UNOBTAINABLE-COLOURS": "Cores não obteníveis",
+      "UNOBTAINABLE-COLOURS-TT": "Habilita cores no map.dat não obteníveis em esquemas",
+      "TRANSPARENCY": "Transparência",
+      "TRANSPARENCY-TT": "Habilita transparência no map.dat",
+      "TRANSPARENCY-TOLERANCE": "Tolerância",
+      "MAPDAT-FILENAME-USE-ID": "Nome de arquivo numérico",
+      "MAPDAT-FILENAME-USE-ID-TT": "Salva arquivos map.dat como 'map_#.dat'",
+      "MAPDAT-FILENAME-ID-RANGE": "Intervalo"
+    },
+    "BETTER-COLOUR": "Cores melhores",
+    "BETTER-COLOUR-TT": "Provê uma maior precisão nas cores",
+    "DITHERING": {
+      "TITLE": "Pontilhado",
+      "TITLE-TT": "Adiciona pixeis aparentemente aleatórios para criar a ilusão de mais cores",
+      "NONE": "Nenhum"
+    },
+    "PREPROCESSING": {
+      "TITLE": "Pré-processamento da imagem",
+      "ENABLE": "Habilitar",
+      "BRIGHTNESS": "Brilho",
+      "CONTRAST": "Contraste",
+      "SATURATION": "Saturação",
+      "BACKGROUND": {
+        "TITLE": "Plano de fundo",
+        "TITLE-TT": "Para imagens com transparência",
+        "OFF": "Desligado",
+        "DITHERED": "Ligado (pontilhado)",
+        "SMOOTH": "Ligado (suave)"
+      },
+      "BACKGROUND-COLOUR": "Cor"
+    },
+    "EXTRAS": {
+      "TITLE": "Extras",
+      "MORE-STAIRCASING-OPTIONS": "Mais opções de escadaria",
+      "MORE-STAIRCASING-OPTIONS-TT": "As opções Escuro, Claro e Não Obteníveis"
+    }
+  },
+  "DOWNLOAD": {
+    "ERROR-NONE-SELECTED": "Selecione blocos antes de fazer o download!",
+    "NBT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD NBT",
+      "DOWNLOAD-TT": "Download do nbt",
+      "DOWNLOAD-SPLIT": "DOWNLOAD COMO PEDAÇOS 1X1",
+      "DOWNLOAD-SPLIT-TT": "Download do nbt divido em pedaços 1x1"
+    },
+    "MAPDAT-SPECIFIC": {
+      "DOWNLOAD": "DOWNLOAD MAPDAT",
+      "DOWNLOAD-TT": "Download do map.dat divido em pedaços 1x1"
+    },
+    "ZIPPING": "Compactado"
+  },
+  "MATERIALS": {
+    "TITLE": "Materiais",
+    "BLOCK": "Bloco",
+    "AMOUNT": "Quantidade",
+    "PLACEHOLDER-BLOCK-TT": "Bloco de apoio",
+    "SHOW-PER-SPLIT": "Mostrar apenas o máximo de materiais por pedaço",
+    "SHOW-PER-SPLIT-TT": "Para o reuso de materiais com mapas trancados",
+    "REFRESH-MATERIALS": "REFRESH MATERIALS",
+    "REFRESH-MATERIALS-TT": "Atualiza a lista de materiais"
+  },
+  "VIEW-ONLINE": {
+    "TITLE": "VEJA ONLINE",
+    "TITLE-TT": "Visualiza o esquema online sem fazer download",
+    "TOO-BIG-FOR-SINGLE": "Grande demais para apenas um esquema; download do pedaço 1x1",
+    "CONTROLS": "Controles",
+    "TO-EXIT": "Para a saída",
+    "SIZE": "Tamanho"
+  },
+  "DONATE": {
+    "TITLE": "ME AJUDE A PULAR A FILA",
+    "TITLE-TT": "Veja os apoiadores e faça uma doação"
+  },
+  "LITEMATICA-WARNING": "Aviso, O Litematica não funciona bem na versão 1.15.2; A ação recomendada é atualizar para a versão 1.16.5",
+  "EDGE-WARNING": "Nota: o uso do Microsoft Edge não é suportado.\\nPor-favor use o Chrome (preferível) ou o Firefox para usar o MapartCraft",
+  "NONE": "Nenhum",
+  "UNUSED": {
+    "SECOND": "segundo",
+    "SECONDS": "segundos",
+    "REMAINING": "faltando",
+    "SETTINGS-3D-OPTIMIZED": "Ligado (otimizado)"
+  }
+}
