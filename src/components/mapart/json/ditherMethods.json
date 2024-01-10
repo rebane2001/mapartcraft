@@ -64,9 +64,8 @@
     "uniqueId": 7,
     "name": "Sierra Lite",
     "ditherMatrix": [
-      [0, 0, 0, 2, 0],
-      [0, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0]
+      [0, 0, 2],
+      [1, 1, 0]
     ],
     "ditherDivisor": 4.0
   },
