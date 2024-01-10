@@ -23,8 +23,35 @@
     ],
     "ditherDivisor": 8.0
   },
-  "SierraFilterLite": {
+  "Fan": {
     "uniqueId": 3,
+    "name": "Fan",
+    "ditherMatrix": [
+      [0, 0, 0, 7],
+      [1, 3, 5, 0]
+    ],
+    "ditherDivisor": 16.0
+  },
+  "ShiauFan": {
+    "uniqueId": 4,
+    "name": "Shiau-Fan",
+    "ditherMatrix": [
+      [0, 0, 0, 4],
+      [1, 1, 2, 0]
+    ],
+    "ditherDivisor": 8.0
+  },
+  "ShiauFan2": {
+    "uniqueId": 5,
+    "name": "Shiau-Fan 2",
+    "ditherMatrix": [
+      [0, 0, 0, 0, 8],
+      [1, 1, 2, 4, 0]
+    ],
+    "ditherDivisor": 16.0
+  },
+  "SierraFilterLite": {
+    "uniqueId": 6,
     "name": "Sierra (Filter Lite)",
     "ditherMatrix": [
       [0, 0, 2],
@@ -33,7 +60,7 @@
     "ditherDivisor": 4.0
   },
   "JarvisJudiceNinke": {
-    "uniqueId": 4,
+    "uniqueId": 7,
     "name": "Jarvis-Judice-Ninke",
     "ditherMatrix": [
       [0, 0, 0, 7, 5],
@@ -43,7 +70,7 @@
     "ditherDivisor": 48.0
   },
   "Stucki": {
-    "uniqueId": 5,
+    "uniqueId": 8,
     "name": "Stucki",
     "ditherMatrix": [
       [0, 0, 0, 8, 4],
@@ -53,7 +80,7 @@
     "ditherDivisor": 42.0
   },
   "Burkes": {
-    "uniqueId": 6,
+    "uniqueId": 9,
     "name": "Burkes",
     "ditherMatrix": [
       [0, 0, 0, 8, 4],
@@ -61,8 +88,27 @@
     ],
     "ditherDivisor": 32.0
   },
+  "Sierra": {
+    "uniqueId": 10,
+    "name": "Sierra",
+    "ditherMatrix": [
+      [0, 0, 0, 5, 3],
+      [2, 4, 5, 4, 2],
+      [0, 2, 3, 2, 0]
+    ],
+    "ditherDivisor": 32.0
+  },
+  "SierraTworow": {
+    "uniqueId": 11,
+    "name": "Sierra (Two-row)",
+    "ditherMatrix": [
+      [0, 0, 0, 4, 3],
+      [1, 2, 3, 2, 1]
+    ],
+    "ditherDivisor": 16.0
+  },
   "Bayer22": {
-    "uniqueId": 7,
+    "uniqueId": 12,
     "name": "Bayer (2x2)",
     "ditherMatrix": [
       [1, 3],
@@ -70,7 +116,7 @@
     ]
   },
   "Bayer44": {
-    "uniqueId": 8,
+    "uniqueId": 13,
     "name": "Bayer (4x4)",
     "ditherMatrix": [
       [1, 9, 3, 11],
@@ -80,7 +126,7 @@
     ]
   },
   "Ordered33": {
-    "uniqueId": 9,
+    "uniqueId": 14,
     "name": "Ordered (3x3)",
     "ditherMatrix": [
       [1, 7, 4],
