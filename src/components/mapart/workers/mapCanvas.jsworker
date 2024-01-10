@@ -221,9 +221,9 @@ function getMapartImageDataAndMaterials() {
   if (
     [
       DitherMethods.FloydSteinberg.uniqueId,
-      DitherMethods.MinAvgErr.uniqueId,
+      DitherMethods.JarvisJudiceNinke.uniqueId,
       DitherMethods.Burkes.uniqueId,
-      DitherMethods.SierraLite.uniqueId,
+      DitherMethods.SierraFilterLite.uniqueId,
       DitherMethods.Stucki.uniqueId,
       DitherMethods.Atkinson.uniqueId,
     ].includes(chosenDitherMethod.uniqueId)
@@ -295,9 +295,9 @@ function getMapartImageDataAndMaterials() {
         }
         //Error diffusion algorithms
         case DitherMethods.FloydSteinberg.uniqueId:
-        case DitherMethods.MinAvgErr.uniqueId:
+        case DitherMethods.JarvisJudiceNinke.uniqueId:
         case DitherMethods.Burkes.uniqueId:
-        case DitherMethods.SierraLite.uniqueId:
+        case DitherMethods.SierraFilterLite.uniqueId:
         case DitherMethods.Stucki.uniqueId:
         case DitherMethods.Atkinson.uniqueId: {
           closestColourSetIdAndTone = findClosestColourSetIdAndToneAndRGBTo(oldPixel);
