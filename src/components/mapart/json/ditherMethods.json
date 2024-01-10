@@ -6,7 +6,7 @@
   },
   "FloydSteinberg": {
     "uniqueId": 1,
-    "name": "Floyd-Steinberg",
+    "name": "Floyd–Steinberg",
     "ditherMatrix": [
       [0, 0, 7],
       [3, 5, 1]
@@ -34,7 +34,7 @@
   },
   "ShiauFan": {
     "uniqueId": 4,
-    "name": "Shiau-Fan",
+    "name": "Shiau–Fan",
     "ditherMatrix": [
       [0, 0, 0, 4],
       [1, 1, 2, 0]
@@ -43,7 +43,7 @@
   },
   "ShiauFan2": {
     "uniqueId": 5,
-    "name": "Shiau-Fan 2",
+    "name": "Shiau–Fan 2",
     "ditherMatrix": [
       [0, 0, 0, 0, 8],
       [1, 1, 2, 4, 0]
@@ -61,7 +61,7 @@
   },
   "JarvisJudiceNinke": {
     "uniqueId": 7,
-    "name": "Jarvis-Judice-Ninke",
+    "name": "Jarvis–Judice–Ninke",
     "ditherMatrix": [
       [0, 0, 0, 7, 5],
       [3, 5, 7, 5, 3],
