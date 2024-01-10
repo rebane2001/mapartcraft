@@ -8,9 +8,8 @@
     "uniqueId": 1,
     "name": "Floyd-Steinberg",
     "ditherMatrix": [
-      [0, 0, 0, 7, 0],
-      [0, 3, 5, 1, 0],
-      [0, 0, 0, 0, 0]
+      [0, 0, 7],
+      [3, 5, 1]
     ],
     "ditherDivisor": 16.0
   },
