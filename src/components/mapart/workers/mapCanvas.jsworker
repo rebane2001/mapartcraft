@@ -222,10 +222,15 @@ function getMapartImageDataAndMaterials() {
     [
       DitherMethods.FloydSteinberg.uniqueId,
       DitherMethods.Atkinson.uniqueId,
+      DitherMethods.Fan.uniqueId,
+      DitherMethods.ShiauFan.uniqueId,
+      DitherMethods.ShiauFan2.uniqueId,
       DitherMethods.SierraFilterLite.uniqueId,
       DitherMethods.JarvisJudiceNinke.uniqueId,
       DitherMethods.Stucki.uniqueId,
       DitherMethods.Burkes.uniqueId,
+      DitherMethods.Sierra.uniqueId,
+      DitherMethods.SierraTworow.uniqueId,
     ].includes(chosenDitherMethod.uniqueId)
   ) {
     divisor = chosenDitherMethod.ditherDivisor;
@@ -296,10 +301,15 @@ function getMapartImageDataAndMaterials() {
         //Error diffusion algorithms
         case DitherMethods.FloydSteinberg.uniqueId:
         case DitherMethods.Atkinson.uniqueId:
+        case DitherMethods.Fan.uniqueId:
+        case DitherMethods.ShiauFan.uniqueId:
+        case DitherMethods.ShiauFan2.uniqueId:
         case DitherMethods.SierraFilterLite.uniqueId:
         case DitherMethods.JarvisJudiceNinke.uniqueId:
         case DitherMethods.Stucki.uniqueId:
-        case DitherMethods.Burkes.uniqueId: {
+        case DitherMethods.Burkes.uniqueId:
+        case DitherMethods.Sierra.uniqueId:
+        case DitherMethods.SierraTworow.uniqueId: {
           closestColourSetIdAndTone = findClosestColourSetIdAndToneAndRGBTo(oldPixel);
           const closestColour = colourSetIdAndToneToRGB(closestColourSetIdAndTone.colourSetId, closestColourSetIdAndTone.tone);
           canvasImageData.data[indexR] = closestColour[0];
