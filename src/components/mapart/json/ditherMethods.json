@@ -61,7 +61,7 @@
   },
   "SierraLite": {
     "uniqueId": 7,
-    "name": "Sierra Lite",
+    "name": "Sierra (Filter Lite)",
     "ditherMatrix": [
       [0, 0, 2],
       [1, 1, 0]
