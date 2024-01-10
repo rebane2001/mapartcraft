@@ -59,7 +59,7 @@
     ],
     "ditherDivisor": 32.0
   },
-  "SierraLite": {
+  "SierraFilterLite": {
     "uniqueId": 7,
     "name": "Sierra (Filter Lite)",
     "ditherMatrix": [
