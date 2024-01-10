@@ -222,10 +222,10 @@ function getMapartImageDataAndMaterials() {
     [
       DitherMethods.FloydSteinberg.uniqueId,
       DitherMethods.Atkinson.uniqueId,
+      DitherMethods.SierraFilterLite.uniqueId,
       DitherMethods.Fan.uniqueId,
       DitherMethods.ShiauFan.uniqueId,
       DitherMethods.ShiauFan2.uniqueId,
-      DitherMethods.SierraFilterLite.uniqueId,
       DitherMethods.JarvisJudiceNinke.uniqueId,
       DitherMethods.Stucki.uniqueId,
       DitherMethods.Burkes.uniqueId,
@@ -301,10 +301,10 @@ function getMapartImageDataAndMaterials() {
         //Error diffusion algorithms
         case DitherMethods.FloydSteinberg.uniqueId:
         case DitherMethods.Atkinson.uniqueId:
+        case DitherMethods.SierraFilterLite.uniqueId:
         case DitherMethods.Fan.uniqueId:
         case DitherMethods.ShiauFan.uniqueId:
         case DitherMethods.ShiauFan2.uniqueId:
-        case DitherMethods.SierraFilterLite.uniqueId:
         case DitherMethods.JarvisJudiceNinke.uniqueId:
         case DitherMethods.Stucki.uniqueId:
         case DitherMethods.Burkes.uniqueId:
