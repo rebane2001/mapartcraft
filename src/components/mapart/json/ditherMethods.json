@@ -107,8 +107,19 @@
     ],
     "ditherDivisor": 16.0
   },
+  "StevensonArce": {
+    "uniqueId": 7,
+    "name": "Stevenson–Arce",
+    "ditherMatrix": [
+      [0, 0, 0, 0, 32, 0, 0],
+      [6, 13, 10, 19, 10, 18, 8],
+      [0, 0, 12, 26, 12, 0, 0],
+      [3, 6, 4, 8, 4, 7, 2]
+    ],
+    "ditherDivisor": 200.0
+  },
   "Bayer22": {
-    "uniqueId": 12,
+    "uniqueId": 13,
     "name": "Bayer (2x2)",
     "ditherMatrix": [
       [1, 3],
@@ -116,7 +127,7 @@
     ]
   },
   "Bayer44": {
-    "uniqueId": 13,
+    "uniqueId": 14,
     "name": "Bayer (4x4)",
     "ditherMatrix": [
       [1, 9, 3, 11],
@@ -126,7 +137,7 @@
     ]
   },
   "Ordered33": {
-    "uniqueId": 14,
+    "uniqueId": 15,
     "name": "Ordered (3x3)",
     "ditherMatrix": [
       [1, 7, 4],
