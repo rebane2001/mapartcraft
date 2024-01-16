@@ -282,6 +282,7 @@ function getMapartImageDataAndMaterials() {
         }
         case DitherMethods.Bayer22.uniqueId:
         case DitherMethods.Bayer44.uniqueId:
+        case DitherMethods.Bayer88.uniqueId:
         case DitherMethods.Ordered33.uniqueId: {
           const newPixels = findClosest2ColourSetIdAndToneAndRGBTo(oldPixel);
           // newPixels = [shortestDistance1, shortestDistance2, newPixel1, newPixel2]
