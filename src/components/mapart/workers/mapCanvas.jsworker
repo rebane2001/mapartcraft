@@ -281,6 +281,7 @@ function getMapartImageDataAndMaterials() {
           break;
         }
         case DitherMethods.Bayer22.uniqueId:
+        case DitherMethods.Bayer33.uniqueId:
         case DitherMethods.Bayer44.uniqueId:
         case DitherMethods.Bayer88.uniqueId:
         case DitherMethods.Ordered33.uniqueId: {
