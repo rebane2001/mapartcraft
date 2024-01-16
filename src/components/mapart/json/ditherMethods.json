@@ -108,7 +108,7 @@
     "ditherDivisor": 16.0
   },
   "StevensonArce": {
-    "uniqueId": 7,
+    "uniqueId": 12,
     "name": "Stevenson–Arce",
     "ditherMatrix": [
       [0, 0, 0, 0, 32, 0, 0],
