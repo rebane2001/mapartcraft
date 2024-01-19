@@ -201,7 +201,7 @@
   },
   "VoidAndCluster1414": {
     "uniqueId": 20,
-    "name": "Void and cluster (14x14)",
+    "name": "Void-and-cluster (14x14)",
     "ditherMatrix": [
       [132, 188, 9, 79, 51, 19, 135, 90, 156, 103, 30, 96, 185, 74],
       [23, 87, 114, 172, 143, 106, 35, 167, 10, 61, 152, 129, 41, 111],
