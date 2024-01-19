@@ -9,7 +9,8 @@
     "name": "Floyd–Steinberg",
     "ditherMatrix": [
       [0, 0, 0, 7, 0],
-      [0, 3, 5, 1, 0]
+      [0, 3, 5, 1, 0],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 16.0
   },
@@ -28,7 +29,8 @@
     "name": "Sierra (Filter Lite)",
     "ditherMatrix": [
       [0, 0, 0, 2, 0],
-      [0, 1, 1, 0, 0]
+      [0, 1, 1, 0, 0],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 4.0
   },
@@ -37,7 +39,8 @@
     "name": "Fan",
     "ditherMatrix": [
       [0, 0, 0, 7, 0],
-      [1, 3, 5, 0, 0]
+      [1, 3, 5, 0, 0],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 16.0
   },
@@ -46,7 +49,8 @@
     "name": "Shiau–Fan",
     "ditherMatrix": [
       [0, 0, 0, 4, 0],
-      [1, 1, 2, 0, 0]
+      [1, 1, 2, 0, 0],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 8.0
   },
@@ -55,7 +59,8 @@
     "name": "Shiau–Fan 2",
     "ditherMatrix": [
       [0, 0, 0, 0, 8],
-      [1, 1, 2, 4, 0]
+      [1, 1, 2, 4, 0],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 16.0
   },
@@ -84,7 +89,8 @@
     "name": "Burkes",
     "ditherMatrix": [
       [0, 0, 0, 8, 4],
-      [2, 4, 8, 4, 2]
+      [2, 4, 8, 4, 2],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 32.0
   },
@@ -103,7 +109,8 @@
     "name": "Sierra (Two-row)",
     "ditherMatrix": [
       [0, 0, 0, 4, 3],
-      [1, 2, 3, 2, 1]
+      [1, 2, 3, 2, 1],
+      [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 16.0
   },
