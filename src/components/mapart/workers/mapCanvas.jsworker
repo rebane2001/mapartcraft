@@ -230,6 +230,9 @@ function getMapartImageDataAndMaterials() {
   ) {
     divisor = chosenDitherMethod.ditherDivisor;
   }
+
+  const unnecessarySupportBlock = new Map();
+
   for (let i = 0; i < canvasImageData.data.length; i += 4) {
     const indexR = i;
     const indexG = i + 1;
@@ -242,6 +245,18 @@ function getMapartImageDataAndMaterials() {
     const whichMap_x = Math.floor(multimap_x / 128);
     const whichMap_y = Math.floor(multimap_y / 128);
     const individualMap_y = multimap_y % 128;
+
+    const unnecessarySupportBlockMapIndex =
+      (whichMap_y * optionValue_mapSize_x + whichMap_x) * 128 +
+      (multimap_x % 128);
+    if (!unnecessarySupportBlock.has(unnecessarySupportBlockMapIndex)) {
+      unnecessarySupportBlock.set(unnecessarySupportBlockMapIndex, {
+        ascending: false,
+        plateauLength: 0,
+        count: 0,
+      });
+    }
+
     if (multimap_x === 0) {
       postMessage({
         head: "PROGRESS_REPORT",
@@ -555,8 +570,35 @@ function getMapartImageDataAndMaterials() {
           }
         }
         maps[whichMap_y][whichMap_x].materials[closestColourSetIdAndTone.colourSetId] += 1;
+
+        if (optionValue_staircasing === MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId) {
+          // In valley mode, we count for unnecessary support block.
+          const data = unnecessarySupportBlock.get(
+            unnecessarySupportBlockMapIndex
+          );
+          if (data.ascending && closestColourSetIdAndTone.tone === "dark") {
+            data.ascending = false;
+            if (data.plateauLength > 0) {
+              data.count += 1;
+            }
+          } else if (closestColourSetIdAndTone.tone === "light") {
+            data.ascending = true;
+            data.plateauLength = 0;
+          } else {
+            data.plateauLength += 1;
+          }
+          unnecessarySupportBlock.set(unnecessarySupportBlockMapIndex, data);
+        }
       }
     }
+  }
+
+  for (const [index, value] of unnecessarySupportBlock.entries()) {
+    const row = index % 128;
+    const whichMap_x = ((index - row) / 128) % optionValue_mapSize_x;
+    const whichMap_y =
+      ((index - row) / 128 - whichMap_x) / optionValue_mapSize_x;
+    maps[whichMap_y][whichMap_x].supportBlockCount -= value.count;
   }
 }
 

@@ -586,6 +586,7 @@ class Map_NBT {
         plateaus.push({ startIndex: physicalColumn.length, endIndex: physicalColumn.length });
 
         let nonPlateauPulldownHeights = [Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
+        const ignoredBlocks = [];
         while (plateaus.length !== 1) {
           let pullDownHeight = Number.MAX_SAFE_INTEGER;
           for (let i = plateaus[0].endIndex; i < plateaus[1].startIndex; i++) {
@@ -600,9 +601,59 @@ class Map_NBT {
           for (let i = plateaus[0].startIndex; i < plateaus[0].endIndex; i++) {
             physicalColumn[i].pos.value.value[1] -= plateauPulldownHeight;
           }
+
+          if (
+            physicalColumn[plateaus[0].endIndex].pos.value.value[2] -
+              physicalColumn[plateaus[0].startIndex].pos.value.value[2] >
+            1
+          ) {
+            // If a plateau is longer than 1 block, there is an overhang that is unneccessary for building in survival mode
+            if (
+              optionValue_whereSupportBlocks ===
+              WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId
+            ) {
+              // In All Double (optimized) mode, there are 2 support blocks under the top block of the edge of the particular plateau, we ignore the lowest one.
+              ignoredBlocks.push(
+                plateauPulldownHeight === nonPlateauPulldownHeights[0]
+                  ? plateaus[0].endIndex - 1
+                  : plateaus[0].startIndex + 2
+              );
+            } else if (
+              optionValue_whereSupportBlocks ===
+              WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId
+            ) {
+              // In All Blocks (optimized) mode, we ignore the lowest support block. (There may be 1 or 2 support blocks in this mode.)
+              ignoredBlocks.push(
+                plateauPulldownHeight === nonPlateauPulldownHeights[0]
+                  ? // If the plateau is connected to the valley on the north side, the endIndex - 1 is always the lowest support block.
+                    plateaus[0].endIndex - 1
+                  : // If the plateau is connected to the valley on the south side, we check if startIndex + 2 is still the support block, by comparing
+                  // its Z coordinate to the top block (startIndex), and choose the block to be ignored appropiately.
+                  physicalColumn[plateaus[0].startIndex].pos.value.value[2] ===
+                    physicalColumn[plateaus[0].startIndex + 2].pos.value
+                      .value[2]
+                  ? plateaus[0].startIndex + 2
+                  : plateaus[0].startIndex + 1
+              );
+            }
+          }
+
           plateaus.shift();
           nonPlateauPulldownHeights[0] = nonPlateauPulldownHeights[1];
         }
+
+        if (
+          optionValue_whereSupportBlocks ===
+            WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId ||
+          optionValue_whereSupportBlocks ===
+            WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId
+        ) {
+          // Filter out the overhangs
+          physicalColumn = physicalColumn.filter(
+            (_, i) => !ignoredBlocks.includes(i)
+          );
+        }
+
         break;
       }
       case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId: {
